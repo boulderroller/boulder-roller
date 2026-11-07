@@ -1,0 +1,532 @@
+{
+  "case_count": 37,
+  "cases": [
+    {
+      "byte_length": 0,
+      "category": "malformed_fit",
+      "expected": {},
+      "file": "fit_empty.fit",
+      "file_type": "fit",
+      "id": "fit_empty",
+      "outcome": "reject",
+      "purpose": "Zero-byte FIT input must fail without panic.",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_length": 14,
+      "category": "malformed_fit",
+      "expected": {},
+      "file": "fit_header_only.fit",
+      "file_type": "fit",
+      "id": "fit_header_only",
+      "outcome": "reject",
+      "purpose": "A valid-looking 14-byte header without the required data CRC is truncated.",
+      "sha256": "206fc1ab0c552f0545368d7229c8e4c4364e5f382f94d6b97e47fcce778e270f"
+    },
+    {
+      "byte_length": 42,
+      "category": "malformed_fit",
+      "expected": {},
+      "file": "fit_truncated_mid_record.fit",
+      "file_type": "fit",
+      "id": "fit_truncated_mid_record",
+      "outcome": "reject",
+      "purpose": "The declared FIT payload is cut through the first record.",
+      "sha256": "6c842448a23c015b18d8a0cce7b07d8ab1fbbb577dab8589b0f8e52287b26aef"
+    },
+    {
+      "byte_length": 71,
+      "category": "malformed_fit",
+      "expected": {},
+      "file": "fit_bad_header_crc.fit",
+      "file_type": "fit",
+      "id": "fit_bad_header_crc",
+      "outcome": "reject",
+      "purpose": "Header CRC corruption must be reported cleanly.",
+      "sha256": "20461801ffe5effe9c074767dc441417c946f1653724f71063ed38a646cc2a62"
+    },
+    {
+      "byte_length": 71,
+      "category": "malformed_fit",
+      "expected": {},
+      "file": "fit_bad_file_crc.fit",
+      "file_type": "fit",
+      "id": "fit_bad_file_crc",
+      "outcome": "reject",
+      "purpose": "Data CRC corruption must be reported cleanly.",
+      "sha256": "6ecfd8992c78c246b39a6a456949a741338fffed3093479256f16984b4e36ff6"
+    },
+    {
+      "byte_length": 71,
+      "category": "malformed_fit",
+      "expected": {},
+      "file": "fit_wrong_architecture.fit",
+      "file_type": "fit",
+      "id": "fit_wrong_architecture",
+      "outcome": "reject",
+      "purpose": "A definition with an architecture byte outside little/big endian is invalid even with a repaired CRC.",
+      "sha256": "e04ad1fb059191372b3adae5714cf90f8615ec581c51216cf3b54d0e0bf077c3"
+    },
+    {
+      "byte_length": 16,
+      "category": "enormous_input",
+      "expected": {},
+      "file": "fit_oversized_declared.fit",
+      "file_type": "fit",
+      "id": "fit_oversized_declared",
+      "outcome": "reject",
+      "purpose": "A tiny FIT claiming a four-gigabyte data section must not allocate or partially parse.",
+      "sha256": "5794deafb72780cf7658287c1b2472ca49128fd19eedd79ba0569bfe74b5f0be"
+    },
+    {
+      "byte_length": 465,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "lat_e7": [
+          399500000,
+          -338600000
+        ],
+        "sample_count": 2
+      },
+      "file": "gps_teleport.gpx",
+      "file_type": "gpx",
+      "id": "gps_teleport",
+      "outcome": "accept",
+      "purpose": "A syntactically valid teleport is preserved exactly for the downstream integrity gate; parsing does not invent an interpolated path.",
+      "sha256": "364509c9e7d10137e132c8a06765ae98d125c03245318580e307e94f5816c538"
+    },
+    {
+      "byte_length": 456,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "lat_e7": [
+          399500000,
+          0
+        ],
+        "sample_count": 2
+      },
+      "file": "gps_null_island.gpx",
+      "file_type": "gpx",
+      "id": "gps_null_island",
+      "outcome": "accept",
+      "purpose": "A (0,0) no-fix sample is syntactically valid device testimony preserved exactly; the ratified Null Island rejection (TRUTH_CONTRACT INV-DATA-1) is a per-sample downstream gate in is_valid_gps and sensor integrity, never whole-source parse rejection.",
+      "sha256": "3a7c1506b4038a4e3a772c40478e574d030834d8756788dc3fda5d3095cef43d"
+    },
+    {
+      "byte_length": 465,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "lat_e7": [
+          399500000,
+          399600000
+        ],
+        "sample_count": 2
+      },
+      "file": "gps_impossible_speed.gpx",
+      "file_type": "gpx",
+      "id": "gps_impossible_speed",
+      "outcome": "accept",
+      "purpose": "A physically impossible but syntactically valid jump remains exact evidence for downstream abstention.",
+      "sha256": "459155d8a84a0a05cf21d04f16d75aa55ed80327f4e718acb31be5be6b9bd343"
+    },
+    {
+      "byte_length": 561,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 2,
+        "elevation_m": [
+          10.0,
+          6000.0,
+          12.0
+        ],
+        "gps_count": 3,
+        "sample_count": 3
+      },
+      "file": "gps_altitude_spike.gpx",
+      "file_type": "gpx",
+      "id": "gps_altitude_spike",
+      "outcome": "accept",
+      "purpose": "An altitude spike is retained rather than smoothed or fabricated by the parser.",
+      "sha256": "d5ba78eef969b76d64830b55d041d795bb0c017afc742ec94568a9a4f2b07aed"
+    },
+    {
+      "byte_length": 546,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 2,
+        "elevation_m": [
+          10.0,
+          null,
+          12.0
+        ],
+        "gps_count": 3,
+        "sample_count": 3
+      },
+      "file": "gps_altitude_dropout.gpx",
+      "file_type": "gpx",
+      "id": "gps_altitude_dropout",
+      "outcome": "accept",
+      "purpose": "Missing elevation remains missing, never sea level.",
+      "sha256": "13954dbf6d7ec1601be123bed063d0a906aa3d5135d6ce9a8631daad9b03dfd7"
+    },
+    {
+      "byte_length": 559,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 3,
+        "sample_count": 3
+      },
+      "file": "gps_duplicate_timestamps.gpx",
+      "file_type": "gpx",
+      "id": "gps_duplicate_timestamps",
+      "outcome": "accept",
+      "purpose": "Equal timestamps remain bounded same-clock observations; no time is fabricated between them.",
+      "sha256": "08d880d6ebd0dd1e4f9a96c50f5463d498af869870970c464df74bce765b272a"
+    },
+    {
+      "byte_length": 469,
+      "category": "gps_pathology",
+      "expected": {},
+      "file": "gps_out_of_order.gpx",
+      "file_type": "gpx",
+      "id": "gps_out_of_order",
+      "outcome": "reject",
+      "purpose": "A decreasing sample clock must reject the entire source.",
+      "sha256": "2a5da614e0cc24edf8a5ddfe56d584abf7c569022edb857a8246c2bd634c50b2"
+    },
+    {
+      "byte_length": 376,
+      "category": "gps_pathology",
+      "expected": {
+        "duration_s": 0,
+        "gps_count": 1,
+        "lat_e7": [
+          910000000
+        ],
+        "sample_count": 1
+      },
+      "file": "gps_out_of_range.gpx",
+      "file_type": "gpx",
+      "id": "gps_out_of_range",
+      "outcome": "accept",
+      "purpose": "An out-of-range latitude that is exactly representable in e7 is preserved as device testimony for the per-sample downstream gate (TRUTH_CONTRACT INV-DATA-1): H3 projection and climb detection drop the sample without destroying the source.",
+      "sha256": "10451af848a6aa89051d9a1f51f0c2381cf216ba67214b9a46d9fd2dd078f881"
+    },
+    {
+      "byte_length": 377,
+      "category": "unit_and_encoding",
+      "expected": {},
+      "file": "gps_nonfinite.gpx",
+      "file_type": "gpx",
+      "id": "gps_nonfinite",
+      "outcome": "reject",
+      "purpose": "NaN coordinates must not saturate to zero and masquerade as real data.",
+      "sha256": "f626b86dcc643bdf5d036659f0edb314c86f48694c1109617f6f3f1be43bee57"
+    },
+    {
+      "byte_length": 479,
+      "category": "time_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "sample_count": 2
+      },
+      "file": "time_dst_spring_forward.gpx",
+      "file_type": "gpx",
+      "id": "time_dst_spring_forward",
+      "outcome": "accept",
+      "purpose": "RFC3339 offsets make the US spring-forward transition a one-second UTC interval.",
+      "sha256": "2741c9bf21f3f314d8650b9b24477595ae113b9ea9648c9310c6bc625f67744f"
+    },
+    {
+      "byte_length": 479,
+      "category": "time_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "sample_count": 2
+      },
+      "file": "time_dst_fall_back.gpx",
+      "file_type": "gpx",
+      "id": "time_dst_fall_back",
+      "outcome": "accept",
+      "purpose": "RFC3339 offsets disambiguate the repeated fall-back hour.",
+      "sha256": "7046fb65e904f9d7af35ad9fd6e8f9b60b075a49d900b2dcdf75ff97d1fdd838"
+    },
+    {
+      "byte_length": 681,
+      "category": "time_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "sample_count": 2
+      },
+      "file": "time_offset_change.tcx",
+      "file_type": "tcx",
+      "id": "time_offset_change",
+      "outcome": "accept",
+      "purpose": "A timezone offset change mid-ride is normalized to one UTC timeline.",
+      "sha256": "7062962eb074e1f75648487f8bbe397bef200659c386342611d9c01d1d3078e3"
+    },
+    {
+      "byte_length": 601,
+      "category": "time_pathology",
+      "expected": {},
+      "file": "time_non_monotonic.tcx",
+      "file_type": "tcx",
+      "id": "time_non_monotonic",
+      "outcome": "reject",
+      "purpose": "A non-monotonic TCX clock is rejected rather than sorted.",
+      "sha256": "8cc654e2abc3bcbbddaa6f4b67bc96042c473b2c393a0c9e17cebc54cc37cb95"
+    },
+    {
+      "byte_length": 469,
+      "category": "time_pathology",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "sample_count": 2,
+        "started_at_ms": 0
+      },
+      "file": "time_unix_epoch_zero.gpx",
+      "file_type": "gpx",
+      "id": "time_unix_epoch_zero",
+      "outcome": "accept",
+      "purpose": "Unix epoch zero is a valid clock-domain start, not a missing-value sentinel.",
+      "sha256": "82c71b1e7abbe2bfd6c1d9f7d83aec2cbd050059ed64d8e92398d78b50459c30"
+    },
+    {
+      "byte_length": 379,
+      "category": "time_pathology",
+      "expected": {},
+      "file": "time_year_zero.gpx",
+      "file_type": "gpx",
+      "id": "time_year_zero",
+      "outcome": "reject",
+      "purpose": "Chrono can represent year zero but the Python binding contract cannot; reject before adapter conversion.",
+      "sha256": "c755dc0bc5e3e2bce00f1bb777237e7d6efe3feb5f522b82afe2e507708c6b90"
+    },
+    {
+      "byte_length": 459,
+      "category": "time_pathology",
+      "expected": {},
+      "file": "time_invalid_timestamp.gpx",
+      "file_type": "gpx",
+      "id": "time_invalid_timestamp",
+      "outcome": "reject",
+      "purpose": "One corrupt timestamp must not silently delete its point while later points survive.",
+      "sha256": "0f70e52d3a3d500f247581e47749efaab5c6a94592ede6ac1a1b2c06f61fdb29"
+    },
+    {
+      "byte_length": 646,
+      "category": "device_quirk",
+      "expected": {
+        "duration_s": 2,
+        "gps_count": 3,
+        "pwr_w": [
+          250,
+          null,
+          260
+        ],
+        "sample_count": 3
+      },
+      "file": "device_wahoo_sparse_power.gpx",
+      "file_type": "gpx",
+      "id": "device_wahoo_sparse_power",
+      "outcome": "accept",
+      "purpose": "Wahoo-shaped sparse power preserves the unpaired-sensor gap as missing.",
+      "sha256": "de9cdaf43f8d55204b1cc28a7ff18eaea13b021fa4795d4dcdc86005d06598da"
+    },
+    {
+      "byte_length": 802,
+      "category": "device_quirk",
+      "expected": {
+        "cadence_rpm": [
+          86,
+          87
+        ],
+        "duration_s": 1,
+        "gps_count": 2,
+        "hr_bpm": [
+          145,
+          146
+        ],
+        "pwr_w": null,
+        "sample_count": 2
+      },
+      "file": "device_garmin_hr_cadence.tcx",
+      "file_type": "tcx",
+      "id": "device_garmin_hr_cadence",
+      "outcome": "accept",
+      "purpose": "Garmin-shaped TCX with HR/cadence and no power keeps field availability exact.",
+      "sha256": "af602216e3d3504dd424b3e30fe1e0914a847198e2a2a19af7c25c966ba8ffde"
+    },
+    {
+      "byte_length": 171,
+      "category": "device_quirk",
+      "expected": {
+        "duration_s": 1,
+        "gps_count": 2,
+        "pwr_w": [
+          275,
+          280
+        ],
+        "sample_count": 2
+      },
+      "file": "device_hammerhead_developer_noise.fit",
+      "file_type": "fit",
+      "id": "device_hammerhead_developer_noise",
+      "outcome": "accept",
+      "purpose": "Hammerhead-shaped FIT developer fields are ignored without shifting standard record fields.",
+      "sha256": "d579824a38a4595297e6399dfe80b82326d46e8ad0c365596c7f15e8d52dd69d"
+    },
+    {
+      "byte_length": 685,
+      "category": "device_quirk",
+      "expected": {
+        "cadence_rpm": null,
+        "duration_s": 1,
+        "gps_count": 2,
+        "hr_bpm": [
+          138,
+          140
+        ],
+        "pwr_w": null,
+        "sample_count": 2
+      },
+      "file": "device_apple_watch_hr_only.gpx",
+      "file_type": "gpx",
+      "id": "device_apple_watch_hr_only",
+      "outcome": "accept",
+      "purpose": "Apple-Watch-shaped HR-only GPX does not invent power or cadence.",
+      "sha256": "b53eb89dca68d5f984a354fa3333e56b383d95e2e34cae64c81c06c333e2a07a"
+    },
+    {
+      "byte_length": 467,
+      "category": "device_quirk",
+      "expected": {
+        "cadence_rpm": null,
+        "duration_s": 1,
+        "gps_count": 2,
+        "hr_bpm": null,
+        "pwr_w": null,
+        "sample_count": 2
+      },
+      "file": "device_phone_only.gpx",
+      "file_type": "gpx",
+      "id": "device_phone_only",
+      "outcome": "accept",
+      "purpose": "Phone-only GPS remains a valid sensor-free activity.",
+      "sha256": "d43aca02dd56ea8fe934087ef593fca30a561b9301e58183eb960bea000a0c2d"
+    },
+    {
+      "byte_length": 387,
+      "category": "unit_and_encoding",
+      "expected": {},
+      "file": "unit_semicircles_as_degrees.gpx",
+      "file_type": "gpx",
+      "id": "unit_semicircles_as_degrees",
+      "outcome": "reject",
+      "purpose": "FIT semicircles pasted into degree-valued GPX attributes must not saturate i32 coordinates.",
+      "sha256": "dc695da0819ddfaf6f006ec39eac375c9b5d823c8290de08447408363e3ac969"
+    },
+    {
+      "byte_length": 391,
+      "category": "unit_and_encoding",
+      "expected": {},
+      "file": "unit_imperial_elevation.gpx",
+      "file_type": "gpx",
+      "id": "unit_imperial_elevation",
+      "outcome": "reject",
+      "purpose": "A non-standard feet marker on GPX elevation must not be silently treated as meters.",
+      "sha256": "df0637a49c68a092e6e422b404a4b05c3af7ecea6052a60fd0a96c0491e41f99"
+    },
+    {
+      "byte_length": 114,
+      "category": "unit_and_encoding",
+      "expected": {},
+      "file": "encoding_utf16.gpx",
+      "file_type": "gpx",
+      "id": "encoding_utf16",
+      "outcome": "reject",
+      "purpose": "UTF-16 input is unsupported by the byte-oriented XML parser and must fail cleanly.",
+      "sha256": "60bca829c0030594cb033484496dca43bdec4b22c22f4c514e07926b6ce48100"
+    },
+    {
+      "byte_length": 156,
+      "category": "unit_and_encoding",
+      "expected": {},
+      "file": "encoding_invalid_utf8.gpx",
+      "file_type": "gpx",
+      "id": "encoding_invalid_utf8",
+      "outcome": "reject",
+      "purpose": "Invalid UTF-8 text must not be skipped around an otherwise valid point.",
+      "sha256": "f1a04ab780f80ff855393818bdc4705f4fe7acb79b61c1a7a112950a74ae19b4"
+    },
+    {
+      "byte_length": 39,
+      "category": "empty_input",
+      "expected": {},
+      "file": "zero_length_stream.gpx",
+      "file_type": "gpx",
+      "id": "zero_length_stream",
+      "outcome": "reject",
+      "purpose": "A structurally present but empty track stream has no activity to parse.",
+      "sha256": "1a16c5b48768857fe4df2ab5dd46fefd3f47aa8f6818edb321a7873c471513ca"
+    },
+    {
+      "byte_length": 91,
+      "category": "truncated_xml",
+      "expected": {},
+      "file": "xml_truncated_after_trackpoint.gpx",
+      "file_type": "gpx",
+      "id": "xml_truncated_after_trackpoint",
+      "outcome": "reject",
+      "purpose": "EOF after a complete point but before closing ancestors is still a truncated document.",
+      "sha256": "b0a99172cbe014acdcf2ecd7fd87786dcee57e34cb6728cc03889f5eb0c35852"
+    },
+    {
+      "byte_length": 116,
+      "category": "truncated_xml",
+      "expected": {},
+      "file": "tcx_truncated_after_trackpoint.tcx",
+      "file_type": "tcx",
+      "id": "tcx_truncated_after_trackpoint",
+      "outcome": "reject",
+      "purpose": "TCX EOF after one complete Trackpoint must not yield a partial ride.",
+      "sha256": "29c0b1b94fc663a8a60339a62f3d0d529b343fcb62dbd7f6c921d0f20cac90f5"
+    },
+    {
+      "byte_length": 439,
+      "category": "unit_and_encoding",
+      "expected": {},
+      "file": "tcx_half_coordinate.tcx",
+      "file_type": "tcx",
+      "id": "tcx_half_coordinate",
+      "outcome": "reject",
+      "purpose": "A TCX position with only latitude must not become half-valid GPS evidence.",
+      "sha256": "958b4e0baaf2be2268ae31574eb09d496e5e40956bb9e22bdc72d285c375081e"
+    },
+    {
+      "byte_length": 103016,
+      "category": "enormous_input",
+      "expected": {},
+      "file": "enormous_gzip_bomb.gpx.gz",
+      "file_type": "gpx",
+      "id": "enormous_gzip_bomb",
+      "outcome": "reject",
+      "purpose": "A small gzip expanding past the 100 MiB limit must stop before parser allocation.",
+      "sha256": "066c280ae217e215d0b3bbee2f70dfd5e6f7cdfb51557034c86a86beba051e80"
+    }
+  ],
+  "generator": "generate_corpus.py",
+  "privacy": "fully synthetic; no rider data",
+  "schema": "boulderroller.workout_parse_torture.v1"
+}

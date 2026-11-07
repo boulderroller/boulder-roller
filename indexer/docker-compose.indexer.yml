@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  indexer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PROGRAM_ID=${PROGRAM_ID}
+      - DUNG_MINT_ADDRESS=${DUNG_MINT_ADDRESS:-CqDFJWLpr49tB8xjHegy5JR5jwMCfmhicjuWawtKLeCk}
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-https://api.devnet.solana.com}
+      - SOLANA_WS_URL=${SOLANA_WS_URL:-wss://api.devnet.solana.com}
+      - DATABASE_URL=postgresql://postgres.qzkqjevawthyboymqrle:${SUPABASE_DB_PASSWORD}@aws-0-us-west-2.pooler.supabase.com:5432/postgres
+      - INDEXER_MODE=stream
+      - POLL_INTERVAL_MS=300000
+      - DUNG_SUPPLY_REFRESH_INTERVAL_MS=240000
+      - HEALTH_PORT=3001
+    ports:
+      - "${INDEXER_HOST_PORT:-3001}:3001"
+    volumes:
+      # Mount the committed IDL artifact so local/staging runs do not depend on
+      # untracked target/idl output.
+      - ../protocol/anchor/idl:/app/idl:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

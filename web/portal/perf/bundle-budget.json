@@ -1,0 +1,119 @@
+{
+  "budgets": [
+    {
+      "name": "initial app entry",
+      "entrypoint": true,
+      "maxGzipKb": 16.0,
+      "forbidStrings": [
+        "walletconnect",
+        "reown",
+        "Solana",
+        "WalletAdapter"
+      ]
+    },
+    {
+      "name": "AuthenticatedApp",
+      "pattern": "^AuthenticatedApp-.*\\.js$",
+      "maxGzipKb": 9.2
+    },
+    {
+      "name": "DashboardLayout",
+      "pattern": "^DashboardLayout-.*\\.js$",
+      "maxGzipKb": 9.0
+    },
+    {
+      "name": "RideView",
+      "pattern": "^RideView-.*\\.js$",
+      "maxGzipKb": 12.8
+    },
+    {
+      "name": "Climbs",
+      "pattern": "^Climbs-.*\\.js$",
+      "maxGzipKb": 6.5
+    },
+    {
+      "name": "ClimbView",
+      "pattern": "^ClimbView-.*\\.js$",
+      "maxGzipKb": 16.0
+    },
+    {
+      "name": "Settings",
+      "pattern": "^Settings-.*\\.js$",
+      "maxGzipKb": 11.5
+    },
+    {
+      "name": "ActivityFeed",
+      "pattern": "^ActivityFeed-.*\\.js$",
+      "maxGzipKb": 8.1
+    },
+    {
+      "name": "Data",
+      "pattern": "^Data-.*\\.js$",
+      "maxGzipKb": 2.5
+    },
+    {
+      "name": "Notifications",
+      "pattern": "^Notifications-.*\\.js$",
+      "maxGzipKb": 4.0
+    },
+    {
+      "name": "maps vendor",
+      "pattern": "^maps-.*\\.js$",
+      "maxGzipKb": 105.0
+    },
+    {
+      "name": "charts vendor",
+      "pattern": "^charts-.*\\.js$",
+      "maxGzipKb": 112.0
+    },
+    {
+      "name": "react core vendor",
+      "pattern": "^react-core-.*\\.js$",
+      "maxGzipKb": 103.0
+    },
+    {
+      "name": "tanstack vendor",
+      "pattern": "^tanstack-.*\\.js$",
+      "maxGzipKb": 16.0
+    },
+    {
+      "name": "lazy auth/wallet runtime",
+      "pattern": "^auth-wallet-runtime-.*\\.js$",
+      "maxGzipKb": 850.0
+    },
+    {
+      "name": "lazy walletconnect vendor",
+      "pattern": "^core-.*\\.js$",
+      "maxGzipKb": 158.0
+    },
+    {
+      "name": "lazy Privy runtime",
+      "pattern": "^PrivyContext-.*\\.js$",
+      "maxGzipKb": 325.0
+    },
+    {
+      "name": "lazy email sign-in runtime",
+      "pattern": "^SocialLoginLauncher-.*\\.js$",
+      "maxGzipKb": 2.1,
+      "forbidStrings": [
+        "walletconnect",
+        "reown",
+        "WalletAdapter",
+        "@solana",
+        "Solana",
+        "Phantom",
+        "useWallet"
+      ]
+    },
+    {
+      "name": "lazy Climb vector map",
+      "pattern": "^ClimbMap-.*\\.js$",
+      "maxGzipKb": 270.0
+    },
+    {
+      "name": "Climb map worker",
+      "pattern": "^maplibre-gl-worker-.*\\.js$",
+      "maxGzipKb": 150.0
+    }
+  ]
+}

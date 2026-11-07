@@ -1,0 +1,5 @@
+.vercel
+
+# Local env overrides
+.env.local
+.env*.local

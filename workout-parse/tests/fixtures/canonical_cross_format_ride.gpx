@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1"
+  xmlns:br="https://boulderroller.xyz/xmlschemas/ride/v1">
+  <trk><trkseg>
+    <trkpt lat="39.95" lon="-75.16"><ele>10</ele><time>2026-04-16T12:00:00Z</time><extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>140</gpxtpx:hr><gpxtpx:cad>85</gpxtpx:cad></gpxtpx:TrackPointExtension><br:power>200</br:power></extensions></trkpt>
+    <trkpt lat="39.9501" lon="-75.1599"><ele>20</ele><time>2026-04-16T12:00:01Z</time><extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>145</gpxtpx:hr><gpxtpx:cad>88</gpxtpx:cad></gpxtpx:TrackPointExtension><br:power>220</br:power></extensions></trkpt>
+    <trkpt lat="39.9502" lon="-75.1598"><ele>30</ele><time>2026-04-16T12:00:02Z</time><extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>150</gpxtpx:hr><gpxtpx:cad>90</gpxtpx:cad></gpxtpx:TrackPointExtension><br:power>240</br:power></extensions></trkpt>
+  </trkseg></trk>
+</gpx>

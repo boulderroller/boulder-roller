@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Native builds
+ios/
+android/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+
+# TypeScript
+*.tsbuildinfo
+
+# Metro bundler
+.metro-health-check*
+
+# Code signing (NEVER commit)
+*.jks
+*.keystore
+*.mobileprovision
+*.p12
+google-services.json
+
+# Test coverage
+coverage/

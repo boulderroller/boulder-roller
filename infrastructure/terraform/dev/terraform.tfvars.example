@@ -1,0 +1,12 @@
+# DigitalOcean access
+do_token      = "dop_v1_xxx"   # replace with your DO API token
+ssh_key_ids   = ["123456"]     # numeric IDs from `doctl compute ssh-key list`
+
+# Network
+region   = "nyc3"
+vpc_cidr = "10.0.0.0/16"
+domain   = ""                  # optional; leave empty for dev IP-only
+
+# Services (toggle per environment)
+enable_database = false        # set true to provision DO managed Postgres
+enable_redis    = false        # set true if Redis needed

@@ -1,0 +1,12 @@
+Cannot upload to TestFlight yet. Missing:
+  - ios/.release-config.env (gitignored config file)
+  - DEVELOPMENT_TEAM (founder's Apple Developer team id)
+  - ASC_KEY_ID (App Store Connect API key id)
+  - ASC_ISSUER_ID (App Store Connect issuer id)
+  - ASC_KEY_PATH (path to the AuthKey_*.p8 file)
+
+These come from the founder's Apple Developer account (one-time
+setup steps in ios/RELEASE.md). Nothing else is missing: the
+archive lane, build numbering, dSYM preservation, and this upload
+lane are ready.
+exit=2 (expected 2)

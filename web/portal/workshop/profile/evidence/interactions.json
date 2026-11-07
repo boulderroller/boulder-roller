@@ -1,0 +1,140 @@
+[
+  {
+    "width": 1440,
+    "name": "Exact iframe sizes and Fit",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Keyboard history and room return retain month and measurement",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Owned tabs preserve distinct room owners",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Profile tabs restore another room scenario instead of resetting it",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Supplied Ride detail URL retains Profile return",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Climb mismatch stays unavailable instead of opening a different specimen",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Historical section references, source widths, Squint and close focus",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Scoped JSON paste, file import, copy, download, rejection and restore",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Public and private boundaries, phone tap and unavailable detail",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Loading release, error recovery and retained offline recovery",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "Candidate V1 switch and separate Ride/Climb candidate return",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "name": "No candidate runtime errors",
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "externalRequestCount": 19,
+    "externalOrigins": [
+      "https://fonts.googleapis.com",
+      "http://localhost:4330",
+      "https://fonts.gstatic.com"
+    ]
+  },
+  {
+    "width": 390,
+    "name": "Exact iframe sizes and Fit",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Keyboard history and room return retain month and measurement",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Owned tabs preserve distinct room owners",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Profile tabs restore another room scenario instead of resetting it",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Supplied Ride detail URL retains Profile return",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Climb mismatch stays unavailable instead of opening a different specimen",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Historical section references, source widths, Squint and close focus",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Scoped JSON paste, file import, copy, download, rejection and restore",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Public and private boundaries, phone tap and unavailable detail",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Loading release, error recovery and retained offline recovery",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "Candidate V1 switch and separate Ride/Climb candidate return",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "name": "No candidate runtime errors",
+    "pass": true
+  },
+  {
+    "width": 390,
+    "externalRequestCount": 18,
+    "externalOrigins": [
+      "https://fonts.googleapis.com",
+      "http://localhost:4330",
+      "https://fonts.gstatic.com"
+    ]
+  }
+]

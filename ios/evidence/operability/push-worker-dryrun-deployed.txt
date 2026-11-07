@@ -1,0 +1,35 @@
+Push send worker — DEPLOYED evidence class (to the p8 key boundary)
+===================================================================
+Date: 2026-08-12. Backend commit 5548f204 on production.
+
+1) Resting default proven at deploy restart (flag OFF):
+   api-1 | 2026-08-12 06:19:54,504:INFO - Mobile push worker disabled by MOBILE_PUSH_WORKER_ENABLED
+
+2) Dry-run mode exercised (temporary enable, single env flip + restart):
+   api-1 | 2026-08-12 06:25:22,814:INFO - [MobilePush] background worker task created
+   api-1 | 2026-08-12 06:25:22,814:INFO - Mobile push worker started
+   api-1 | 2026-08-12 06:25:22,815:INFO - [MobilePush] worker started (dry_run=True, interval=30.0s, window=48.0h)
+
+   Multiple 30s cycles ran with zero [MobilePush] errors. Quiet cycles are
+   the truthful outcome of the current world-state, verified in-container:
+     pending_window_notifications=0   (no settlement_finalized /
+                                       leaderboard_bumped rows in 48h)
+     deliveries_ledger=0              (exactly-once ledger empty)
+   No rows were hand-inserted to fake a delivery — cycle behavior on real
+   rows is proven by the unit suite (dry-run payload ledgering, no_devices,
+   fail-closed unroutable displacement, placeholder-copy send refusal).
+
+3) Restored resting state (flag back OFF; production healthy):
+   api-1 | 2026-08-12 06:27:01,814:INFO - Mobile push worker disabled by MOBILE_PUSH_WORKER_ENABLED
+   /status version 5548f204, environment production, API health ok.
+
+Send-path locks (in order): MOBILE_PUSH_WORKER_ENABLED=false (default) ->
+MOBILE_PUSH_DRY_RUN=true (default) -> APNs .p8 required (truthful
+ApnsConfigError names APNS_KEY_PATH/KEY_ID/TEAM_ID when absent) ->
+COPY_RATIFIED latch in code (rider-facing strings are [COPY: Tim]
+placeholders; env flags alone can never ship them).
+
+Honestly gated (founder's Apple account): real APNs delivery to a device —
+needs the APNs .p8 on the droplet AND team-signed builds carrying the
+aps-environment entitlement, then Tim's ratified copy.
+Runbook: docs/runbooks/MOBILE_PUSH_OPERATIONS.md.

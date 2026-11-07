@@ -1,0 +1,53 @@
+{
+  "model": "canon_corridor_equivalence_v1",
+  "generated_at": "2026-07-20T23:49:00Z",
+  "canon_report_sha256": "9b195178701eb9f01e890faf9a30f55f31d3e55a0f78fba9340edf9e3440c0c7",
+  "candidate_count": 53,
+  "authority": {
+    "engine": "PostgreSQL 17 with PostGIS",
+    "expression": "ST_Multi(ST_Buffer(ST_GeomFromText(centerline_wkt,4326)::geography,corridor_half_width_m)::geometry)",
+    "geometry_contract": "valid SRID 4326 MultiPolygon",
+    "valid_geometries": 53
+  },
+  "local_reconstruction": "per-candidate azimuthal-equidistant centerline buffer transformed back to EPSG:4326",
+  "authoritative_wkb_manifest": {
+    "line_model": "candidate_fingerprint_ascii_nul_raw_st_asewkb_bytes_lf_sorted_by_fingerprint",
+    "sha256": "1d534a6d41bb5d29529ca690c223724a0a620a45f65b1d72a5b3ed212eeb2191"
+  },
+  "geometry_comparison": {
+    "hausdorff_m": {
+      "max": 0.221826,
+      "p95": 0.218101,
+      "median": 0.142138
+    },
+    "symmetric_difference_area_m2": {
+      "max": 109.476210,
+      "p95": 61.758637,
+      "median": 29.084065,
+      "sum": 1723.109967
+    },
+    "relative_area_difference_pct": {
+      "max": 0.049777,
+      "p95": 0.032842
+    }
+  },
+  "reference_sensitivity": {
+    "templates": 10,
+    "expected_passes": 93,
+    "mapped_identically": true,
+    "local_matches": 83,
+    "authoritative_matches": 83,
+    "observed_patterns_each": 85,
+    "match_vector_identical": true,
+    "timestamps_identical": true,
+    "rejection_taxonomy_identical": true
+  },
+  "sample_membership_sensitivity": {
+    "tests": 621380,
+    "flipped_points": 1,
+    "affected_activity_candidate_pairs": 1,
+    "pass_or_classification_changes": 0
+  },
+  "h3_tile_lists_changed": false,
+  "conclusion": "The local AEQD reconstruction is near-equivalent, not byte-identical, and is classification-equivalent for this pinned replay."
+}

@@ -1,0 +1,258 @@
+{
+  "source_commit": "d5340381d",
+  "recipe": "3600 native 1 Hz GPX power samples, real processor and climb builder; fixed identity/FTP; stale policy at +45 days",
+  "cases": [
+    {
+      "name": "rewardable_climb",
+      "power_w": 200,
+      "tss": 64.0,
+      "payload": {
+        "plan": {
+          "ride_id": "11111111-1111-4111-8111-111111111111",
+          "user_id": "22222222-2222-4222-8222-222222222222",
+          "wallet": "11111111111111111111111111111111",
+          "ride_hash_hex": "1212121212121212121212121212121212121212121212121212121212121212",
+          "attestation_commitment_hex": "2323232323232323232323232323232323232323232323232323232323232323",
+          "parser_version": 5,
+          "policy_version": "ride_effort_policy_2026_07_14_ftp_v1",
+          "reward_policy": "rewardable",
+          "tribute_policy_version": "cal_tribute_segment_tss_v2",
+          "reward_ftp_w": 250,
+          "reward_ftp_source": "derived_eftp",
+          "reward_ftp_authority_id": "44444444-4444-4444-8444-444444444444",
+          "reward_ftp_policy_version": "reward_ftp_policy_2026_08_24_threshold_v1",
+          "source_kind": 1,
+          "started_at": "2026-08-24T15:00:00+00:00",
+          "completed_at": "2026-08-24T15:59:59+00:00",
+          "total_tss": 64,
+          "total_distance_m": 0,
+          "total_vert_m": 0,
+          "exact_cal_base_units": 64000000000,
+          "exact_tribute_budget_base_units": 5333333333,
+          "climbs_crossed": 1,
+          "exact_tribute_base_units": 5333333333,
+          "expected_attestation_pda": "4NSkmiCqp5Va3R6gWJPCatXVGEbYCuQ8KHZGTvtkP1rB",
+          "expected_cal_receipt_pda": "CpUidQes7mh3tCKS9814o8tLofKDjMdiScV91mf7muEH",
+          "plan_evidence_hash_hex": "9dc95cc6e4630080c967b3da8a0b842f624683d81e30d9dc25326838bb026b97"
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "pattern_id": "33333333-3333-4333-8333-333333333333",
+            "vault_id": 7,
+            "vault_signature": "0707070707070707070707070707070707070707070707070707070707070707",
+            "completion_time_s": 300,
+            "completed_at": "2026-08-24T15:59:59+00:00",
+            "exact_tribute_base_units": 5333333333,
+            "intensity_bps": 8000,
+            "segment_start_offset_s": 60,
+            "segment_end_offset_s": 359,
+            "segment_np_w": 200,
+            "segment_np_milliwatts": 200000,
+            "segment_np_duration_s": 300,
+            "segment_power_sample_count": 300,
+            "segment_power_coverage_bps": 10000,
+            "segment_power_metrics_version": "workout_parse_metrics_v1",
+            "tribute_weight": 0,
+            "climb_distance_m": 1200,
+            "climb_vert_m": 90,
+            "completion_evidence_hash_hex": "87103fefb7bcba87811a4e5fff711156996185834fc6f34f4e3b830a2eafad7b",
+            "completion_evidence_version": 2,
+            "expected_receipt_pda": "9Vt4jykPf25G8mooSSYBRgFENsDUjfj8rRdTJaoXYytA"
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "vault_id": 7,
+          "vault_signature": "0707070707070707070707070707070707070707070707070707070707070707",
+          "cal_tribute": 5333333333,
+          "time_in_vault_s": 300,
+          "intensity_bps": 8000,
+          "segment_np_w": 200,
+          "segment_np_milliwatts": 200000,
+          "segment_np_duration_s": 300,
+          "segment_power_sample_count": 300,
+          "segment_power_coverage_bps": 10000,
+          "segment_power_metrics_version": "workout_parse_metrics_v1",
+          "tribute_weight": 0
+        }
+      ],
+      "vault_allocations": [
+        {
+          "vault_id": 7,
+          "vault_signature": "0707070707070707070707070707070707070707070707070707070707070707",
+          "cal_tribute": 5333333333,
+          "time_in_vault_s": 300,
+          "intensity_bps": 8000,
+          "segment_np_w": 200,
+          "segment_np_milliwatts": 200000,
+          "segment_np_duration_s": 300,
+          "segment_power_sample_count": 300,
+          "segment_power_coverage_bps": 10000,
+          "segment_power_metrics_version": "workout_parse_metrics_v1",
+          "tribute_weight": 0
+        }
+      ]
+    },
+    {
+      "name": "not_counted_prior_file_policy",
+      "power_w": 200,
+      "tss": 64.0,
+      "payload": {
+        "plan": {
+          "ride_id": "11111111-1111-4111-8111-111111111111",
+          "user_id": "22222222-2222-4222-8222-222222222222",
+          "wallet": "11111111111111111111111111111111",
+          "ride_hash_hex": "1212121212121212121212121212121212121212121212121212121212121212",
+          "attestation_commitment_hex": "2323232323232323232323232323232323232323232323232323232323232323",
+          "parser_version": 5,
+          "policy_version": "ride_effort_policy_2026_07_14_ftp_v1",
+          "reward_policy": "not_counted",
+          "tribute_policy_version": "cal_tribute_segment_tss_v2",
+          "reward_ftp_w": 250,
+          "reward_ftp_source": "derived_eftp",
+          "reward_ftp_authority_id": "44444444-4444-4444-8444-444444444444",
+          "reward_ftp_policy_version": "reward_ftp_policy_2026_08_24_threshold_v1",
+          "source_kind": 1,
+          "started_at": "2026-08-24T15:00:00+00:00",
+          "completed_at": "2026-08-24T15:59:59+00:00",
+          "total_tss": 64,
+          "total_distance_m": 0,
+          "total_vert_m": 0,
+          "exact_cal_base_units": 0,
+          "exact_tribute_budget_base_units": 0,
+          "climbs_crossed": 1,
+          "exact_tribute_base_units": 0,
+          "expected_attestation_pda": "4NSkmiCqp5Va3R6gWJPCatXVGEbYCuQ8KHZGTvtkP1rB",
+          "expected_cal_receipt_pda": "CpUidQes7mh3tCKS9814o8tLofKDjMdiScV91mf7muEH",
+          "plan_evidence_hash_hex": "463c10f0ad33598203850a2a0f3b9a9e260eb57a7173be32b6e63ead83ee1fc2"
+        },
+        "steps": []
+      },
+      "allocations": [],
+      "vault_allocations": []
+    },
+    {
+      "name": "not_counted_small_tss",
+      "power_w": 10,
+      "tss": 0.2,
+      "payload": {
+        "plan": {
+          "ride_id": "11111111-1111-4111-8111-111111111111",
+          "user_id": "22222222-2222-4222-8222-222222222222",
+          "wallet": "11111111111111111111111111111111",
+          "ride_hash_hex": "1212121212121212121212121212121212121212121212121212121212121212",
+          "attestation_commitment_hex": "2323232323232323232323232323232323232323232323232323232323232323",
+          "parser_version": 5,
+          "policy_version": "ride_effort_policy_2026_07_14_ftp_v1",
+          "reward_policy": "not_counted",
+          "tribute_policy_version": "cal_tribute_segment_tss_v2",
+          "reward_ftp_w": 250,
+          "reward_ftp_source": "derived_eftp",
+          "reward_ftp_authority_id": "44444444-4444-4444-8444-444444444444",
+          "reward_ftp_policy_version": "reward_ftp_policy_2026_08_24_threshold_v1",
+          "source_kind": 1,
+          "started_at": "2026-08-24T15:00:00+00:00",
+          "completed_at": "2026-08-24T15:59:59+00:00",
+          "total_tss": 0,
+          "total_distance_m": 0,
+          "total_vert_m": 0,
+          "exact_cal_base_units": 0,
+          "exact_tribute_budget_base_units": 0,
+          "climbs_crossed": 1,
+          "exact_tribute_base_units": 0,
+          "expected_attestation_pda": "4NSkmiCqp5Va3R6gWJPCatXVGEbYCuQ8KHZGTvtkP1rB",
+          "expected_cal_receipt_pda": "CpUidQes7mh3tCKS9814o8tLofKDjMdiScV91mf7muEH",
+          "plan_evidence_hash_hex": "c21e60c81fd506c58e0987365215f5f6df483d26140ec5c507f8720c72765fee"
+        },
+        "steps": []
+      },
+      "allocations": [],
+      "vault_allocations": []
+    },
+    {
+      "name": "threshold_hold_climb",
+      "power_w": 200,
+      "tss": 100.0,
+      "payload": {
+        "plan": {
+          "ride_id": "11111111-1111-4111-8111-111111111111",
+          "user_id": "22222222-2222-4222-8222-222222222222",
+          "wallet": "11111111111111111111111111111111",
+          "ride_hash_hex": "1212121212121212121212121212121212121212121212121212121212121212",
+          "attestation_commitment_hex": "2323232323232323232323232323232323232323232323232323232323232323",
+          "parser_version": 5,
+          "policy_version": "ride_effort_policy_2026_07_14_ftp_v1",
+          "reward_policy": "threshold_provisional_hold_v1",
+          "tribute_policy_version": "cal_tribute_segment_tss_v2",
+          "reward_ftp_w": 200,
+          "reward_ftp_source": "network_default",
+          "reward_ftp_authority_id": null,
+          "reward_ftp_policy_version": "reward_ftp_policy_2026_08_24_threshold_v1",
+          "source_kind": 1,
+          "started_at": "2026-08-24T15:00:00+00:00",
+          "completed_at": "2026-08-24T15:59:59+00:00",
+          "total_tss": 0,
+          "total_distance_m": 0,
+          "total_vert_m": 0,
+          "exact_cal_base_units": 0,
+          "exact_tribute_budget_base_units": 0,
+          "climbs_crossed": 1,
+          "exact_tribute_base_units": 0,
+          "expected_attestation_pda": "4NSkmiCqp5Va3R6gWJPCatXVGEbYCuQ8KHZGTvtkP1rB",
+          "expected_cal_receipt_pda": "CpUidQes7mh3tCKS9814o8tLofKDjMdiScV91mf7muEH",
+          "plan_evidence_hash_hex": "d3c25d121e5ece3e3e504c43a5fbfed88975179e01aecaba4cd3b44b49e88039"
+        },
+        "steps": [],
+        "threshold_hold": {
+          "ride_id": "11111111-1111-4111-8111-111111111111",
+          "user_id": "22222222-2222-4222-8222-222222222222",
+          "ride_started_at": "2026-08-24T15:00:00+00:00",
+          "admission_plan_evidence_hash_hex": "d3c25d121e5ece3e3e504c43a5fbfed88975179e01aecaba4cd3b44b49e88039",
+          "hold_evidence": {
+            "version": 2,
+            "metrics": {
+              "normalized_power_raw_w": 200.0,
+              "normalized_power_duration_s": 3600,
+              "normalized_power_w": 200.0,
+              "avg_power_w": 200.0,
+              "avg_hr_bpm": null,
+              "metrics_version": "workout_parse_metrics_v1",
+              "moving_time_sec": 3600,
+              "duration_sec": 3599,
+              "power_sample_count": 3600,
+              "power_sample_coverage_bps": 10000,
+              "heart_rate_sample_count": 0,
+              "heart_rate_sample_coverage_bps": 0,
+              "started_at": "2026-08-24T15:00:00+00:00",
+              "completed_at": "2026-08-24T15:59:59+00:00"
+            },
+            "completion_steps": [
+              {
+                "pattern_id": "33333333-3333-4333-8333-333333333333",
+                "vault_id": 7,
+                "vault_signature": "0707070707070707070707070707070707070707070707070707070707070707",
+                "completion_time_s": 300,
+                "completed_at": "2026-08-24T15:59:59+00:00",
+                "segment_start_offset_s": 60,
+                "segment_end_offset_s": 359,
+                "segment_np_w": 200,
+                "segment_np_milliwatts": 200000,
+                "segment_np_duration_s": 300,
+                "segment_power_sample_count": 300,
+                "segment_power_coverage_bps": 10000,
+                "segment_power_metrics_version": "workout_parse_metrics_v1",
+                "tribute_weight": 0,
+                "climb_distance_m": 1200,
+                "climb_vert_m": 90
+              }
+            ]
+          }
+        }
+      },
+      "allocations": [],
+      "vault_allocations": []
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "DUNG",
+  "symbol": "DUNG",
+  "description": "Boulder Rollers ride reward token. Earned by completing cycling activities with verified GPS data.",
+  "image": "https://raw.githubusercontent.com/anthropics/boulder-rollers/main/assets/dung-token.png",
+  "external_url": "https://boulderrollers.com",
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Utility Token"
+    },
+    {
+      "trait_type": "Ecosystem",
+      "value": "Boulder Rollers"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://raw.githubusercontent.com/anthropics/boulder-rollers/main/assets/dung-token.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "currency"
+  }
+}

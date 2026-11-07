@@ -1,0 +1,21 @@
+{
+  "contract": "auth.v1",
+  "phases": [
+    "invite_gate",
+    "choose_access_method",
+    "provider_pending",
+    "wallet_resolution",
+    "session_exchange",
+    "profile_completion",
+    "authenticated",
+    "recoverable_error"
+  ],
+  "access_methods": [
+    "email_wallet",
+    "external_wallet"
+  ],
+  "backend_auth_method_map": {
+    "privy": "email_wallet",
+    "wallet": "external_wallet"
+  }
+}

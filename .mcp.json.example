@@ -1,0 +1,13 @@
+{
+  "boulder-rollers": {
+    "command": "node",
+    "args": ["tools/mcp-server/dist/index.js"],
+    "env": {
+      "DB_HOST": "your-supabase-host.supabase.co",
+      "DB_PORT": "5432",
+      "DB_USER": "postgres",
+      "DB_PASSWORD": "your-password",
+      "DB_NAME": "postgres"
+    }
+  }
+}

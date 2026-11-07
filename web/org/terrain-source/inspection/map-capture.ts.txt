@@ -1,0 +1,88 @@
+import { Map, LngLatBounds, setWorkerUrl } from 'maplibre-gl';
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { v12Ground } from '../src/map/v12Ground';
+
+setWorkerUrl(workerUrl);
+const mobile = new URLSearchParams(location.search).get('mode') === 'mobile';
+const logicalWidth = mobile ? 340 : 608;
+const logicalHeight = mobile ? 138 : 161;
+const pixelRatio = mobile ? 2 : 1;
+const nativeWidth = logicalWidth * pixelRatio;
+const nativeHeight = logicalHeight * pixelRatio;
+const frame = document.querySelector<HTMLElement>('#capture-frame')!;
+const container = document.querySelector<HTMLElement>('#map')!;
+Object.assign(frame.style, { width: `${nativeWidth}px`, height: `${nativeHeight}px` });
+Object.assign(container.style, {
+  width: `${logicalWidth}px`, height: `${logicalHeight}px`, transform: `scale(${pixelRatio})`,
+});
+
+async function sha256(text: string) {
+  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(bytes)].map(value => value.toString(16).padStart(2, '0')).join('');
+}
+
+async function mount() {
+  const routeResponse = await fetch('/assets/route.json');
+  const styleResponse = await fetch('https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json');
+  if (!routeResponse.ok || !styleResponse.ok) throw new Error('Source unavailable');
+  const routeText = await routeResponse.text();
+  const providerText = await styleResponse.text();
+  const route = JSON.parse(routeText);
+  if (route.coordinates.length !== 236) throw new Error('Unexpected recorded sample count');
+  const style = v12Ground(JSON.parse(providerText));
+  style.sources['recorded-climb'] = { type: 'geojson', data: {
+    type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: route.coordinates },
+  }};
+  style.sources['recorded-endpoints'] = { type: 'geojson', data: {
+    type: 'FeatureCollection', features: [route.coordinates[0], route.coordinates.at(-1)].map(coordinates => ({
+      type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates },
+    })),
+  }};
+  style.layers.push(
+    { id: 'climb-halo', type: 'line', source: 'recorded-climb', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#fafff7', 'line-width': 7 } },
+    { id: 'climb-route', type: 'line', source: 'recorded-climb', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#456ca0', 'line-width': 3.6 } },
+    { id: 'climb-endpoints', type: 'circle', source: 'recorded-endpoints', paint: { 'circle-color': '#456ca0', 'circle-radius': 4.5, 'circle-stroke-color': '#fafff7', 'circle-stroke-width': 2 } },
+  );
+  const bounds = new LngLatBounds();
+  route.coordinates.forEach((point: [number, number]) => bounds.extend(point));
+  const map = new Map({ container, style, pixelRatio, interactive: false,
+    attributionControl: false, canvasContextAttributes: { preserveDrawingBuffer: true },
+    center: bounds.getCenter(), zoom: 12, pitch: 0, bearing: 0,
+  });
+  // Freeze fitBounds' actual MapLibre camera before any capture. This is a new,
+  // reproducible native capture, not a reconstruction of missing old metadata.
+  const fitted = map.cameraForBounds(bounds, { padding: 24, maxZoom: 16, bearing: 0 });
+  if (!fitted) throw new Error('Camera fit unavailable');
+  map.jumpTo({ center: fitted.center, zoom: fitted.zoom, bearing: 0, pitch: 0, padding: 0 });
+  const routeSha256 = await sha256(routeText);
+  const providerStyleSha256 = await sha256(providerText);
+  map.on('error', event => {
+    document.body.dataset.captureError = event.error?.message ?? 'Map error';
+  });
+  map.on('idle', () => {
+    const canvas = map.getCanvas();
+    if (canvas.width !== nativeWidth || canvas.height !== nativeHeight) throw new Error('Native frame mismatch');
+    const camera = { center: map.getCenter().toArray(), zoom: map.getZoom(),
+      bearing: map.getBearing(), pitch: map.getPitch(), padding: map.getPadding() };
+    const metadata = {
+      ready: true, frameName: mobile ? 'mapMobile' : 'mapDesktop',
+      sourceGpsSha256: 'cc2b59a73369d6a33d561a149ae6ae807a05b9cf286b5d63629c15f4476d9fe7',
+      routeSha256, providerStyleSha256,
+      width: nativeWidth, height: nativeHeight,
+      logicalWidth, logicalHeight, pixelRatio, displayScale: pixelRatio,
+      camera, fitBounds: { padding: 24, maxZoom: 16 },
+      nativePixelPositions: route.coordinates.map((point: [number, number]) => {
+        const projected = map.project(point);
+        return [projected.x * pixelRatio, projected.y * pixelRatio];
+      }),
+      attribution: 'CARTO/OSM linked credit supplied in adjacent production figure caption.',
+      evidenceClass: 'New native source map capture camera and exact MapLibre projection; retained historical GPS.',
+    };
+    document.querySelector('#map-projection-metadata')!.textContent = JSON.stringify(metadata);
+    document.body.dataset.captureReady = 'true';
+    document.body.dataset.nativeFrame = `${nativeWidth}x${nativeHeight}`;
+    Object.assign(window, { __mapCaptureMetadata: metadata });
+  });
+}
+mount().catch(error => { document.body.dataset.captureError = String(error); console.error(error); });

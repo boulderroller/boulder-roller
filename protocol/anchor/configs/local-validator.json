@@ -1,0 +1,10 @@
+{
+  "json_rpc_url": "http://127.0.0.1:8899",
+  "websocket_url": "ws://127.0.0.1:8900",
+  "faucet_keypair_path": "~/.config/solana/id.json",
+  "ledger_path": "./target/localnet-ledger",
+  "accounts": [],
+  "slots_per_epoch": 32,
+  "snapshot_interval_slots": 128,
+  "ticks_per_slot": 64
+}

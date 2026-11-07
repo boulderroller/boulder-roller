@@ -1,0 +1,272 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'indexer/**'
+      - 'mobile/src/**'
+      - 'ios/BoulderRoller/Design/EstimateCopy.swift'
+      - 'web/portal/src/**'
+      - 'web/scan/src/**'
+      - 'workout-parse/**'
+      - 'tests/fixtures/canonical_*'
+      - 'tools/check_parser_semantics_version.sh'
+      - 'tools/verify_parser_semantics.py'
+      - 'tests/validation/test_ride_canonicalization.py'
+      - 'tests/validation/workout_parse_runtime.py'
+      - 'supabase/migrations/**'
+      - 'supabase/README.md'
+      - 'docker-compose.yml'
+      - '.github/workflows/backend-ci.yml'
+      # Shipped to the droplet but not tested here: they deploy when they change.
+      - 'tools/stage1_reference/**'
+      - 'history/hill-bonding-diamond-2026-10-08/diamond.yaml'
+      - 'protocol/anchor/idl/**'
+      - 'infrastructure/Caddyfile'
+      - 'scripts/deploy-backend-release.sh'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'backend/**'
+      - 'indexer/**'
+      - 'mobile/src/**'
+      - 'ios/BoulderRoller/Design/EstimateCopy.swift'
+      - 'web/portal/src/**'
+      - 'web/scan/src/**'
+      - 'workout-parse/**'
+      - 'tests/fixtures/canonical_*'
+      - 'tools/check_parser_semantics_version.sh'
+      - 'tools/verify_parser_semantics.py'
+      - 'tests/validation/test_ride_canonicalization.py'
+      - 'tests/validation/workout_parse_runtime.py'
+      - 'supabase/migrations/**'
+      - 'supabase/README.md'
+      - 'docker-compose.yml'
+      - '.github/workflows/backend-ci.yml'
+
+# Pull request runs cancel when a newer push lands; runs on main never cancel
+# in progress, so a deploy is never interrupted.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.event.pull_request.draft || false }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    # Drafts skip CI; Codex runs the full suites locally each round.
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      ships: ${{ steps.ships.outputs.ships }}
+    defaults:
+      run:
+        working-directory: backend
+
+    # Placeholders only. The tests start their own temporary Postgres, so no
+    # production credential belongs here; nothing listens at these addresses.
+    # Program IDs come from protocol/anchor/addresses.devnet.json.
+    env:
+      DATABASE_URL: postgresql://ci-placeholder:ci-placeholder@127.0.0.1:1/ci_placeholder
+      JWT_SECRET: ci-placeholder-jwt-secret-not-a-real-key
+      ACCESS_TOKEN_SECRET: ci-placeholder-access-secret-not-a-real-key
+      REFRESH_TOKEN_SECRET: ci-placeholder-refresh-secret-not-a-real-key
+      SOLANA_RPC_URL: https://api.devnet.solana.com
+      SOLANA_STUB: false
+      SUPABASE_URL: http://127.0.0.1:1
+      SUPABASE_SERVICE_KEY: ci-placeholder-service-key
+      REQUIRE_PG_RUNTIME: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      # Portal, scan and mobile sources are tested here, since the alignment
+      # gates read them, but they never ship to the droplet. Only a push that
+      # changes something the images or compose use redeploys it.
+      - name: Decide whether this push ships to the droplet
+        id: ships
+        if: github.event_name == 'push'
+        working-directory: .
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [[ ! "$BEFORE" =~ ^[0-9a-f]{40}$ ]] || [[ "$BEFORE" =~ ^0+$ ]] \
+            || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            echo "No usable base commit; deploying."
+            echo "ships=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          shipped='^(backend/|workout-parse/|indexer/|tools/stage1_reference/|protocol/anchor/idl/'
+          shipped+='|history/hill-bonding-diamond-2026-10-08/diamond\.yaml$|docker-compose\.yml$'
+          shipped+='|infrastructure/Caddyfile$|scripts/deploy-backend-release\.sh$|\.github/workflows/backend-ci\.yml$)'
+          # A variable, not a pipe: under pipefail, grep -q can make git diff die of SIGPIPE.
+          changed="$(git diff --name-only "$BEFORE" "$GITHUB_SHA")"
+          if grep -Eq "$shipped" <<< "$changed"; then
+            echo "ships=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Nothing in this push ships to the droplet; the deploy job will skip."
+            echo "ships=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11'
+
+      - name: Reject edits to deployed SQL migrations
+        run: python scripts/check_sql_migration_immutability.py
+
+      - name: Set up Rust
+        # The action's @stable branch is rebuilt from master, orphaning its old
+        # commits, so pin master's commit and name the toolchain instead.
+        uses: dtolnay/rust-toolchain@e2a55d2ffb04f378e9626c28d38b36d230d1e12f # v1
+        with:
+          toolchain: stable
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: indexer/package-lock.json
+
+      - name: Run indexer tests
+        working-directory: indexer
+        run: |
+          npm ci
+          npm test
+
+      - name: Run workout-parse tests
+        working-directory: workout-parse
+        run: |
+          cargo test
+          cargo test --features osm
+
+      - name: Check the iOS parser feature build
+        working-directory: workout-parse
+        run: cargo check --locked --no-default-features --features swift --lib
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install ../workout-parse
+
+      - name: Install mobile vector test dependencies
+        working-directory: mobile
+        run: npm ci
+
+      - name: Reject unversioned parser semantic drift
+        working-directory: .
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base_ref="origin/${{ github.base_ref }}"
+          else
+            base_ref="${{ github.event.before }}"
+          fi
+          tools/check_parser_semantics_version.sh "$base_ref"
+
+      # TestClient never starts the server itself, so on 21 Oct a uvicorn that
+      # crashed at start-up passed every test and failed the deploy. Start the
+      # app with the production command and require an answer on /health.
+      # NATS is off as in the tests; the Supabase client needs a JWT-shaped key.
+      - name: Start the API the way production does
+        env:
+          NATS_ENABLED: "false"
+          SUPABASE_SERVICE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY2ktcGxhY2Vob2xkZXIifQ.Y2ktcGxhY2Vob2xkZXI
+        run: |
+          log="$RUNNER_TEMP/api-start.log"
+          uvicorn app.main:app --host 127.0.0.1 --port 8080 > "$log" 2>&1 &
+          pid=$!
+          for _ in $(seq 60); do
+            if curl -fsS http://127.0.0.1:8080/health; then
+              echo
+              kill "$pid"
+              exit 0
+            fi
+            kill -0 "$pid" 2>/dev/null || break
+            sleep 1
+          done
+          kill "$pid" 2>/dev/null || true
+          tail -n 80 "$log"
+          echo "::error::The API did not answer /health within 60 seconds of starting"
+          exit 1
+
+      - name: Run tests
+        run: pytest -v
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && needs.test.outputs.ships == 'true'
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_SHA: ${{ github.sha }}
+    steps:
+      - name: Deploy to droplet
+        # The runner's own OpenSSH holds the droplet's root key, so no
+        # downloaded binary sees it, and it accepts only a host key pinned in
+        # vars.DROPLET_KNOWN_HOSTS: the droplet's /etc/ssh/ssh_host_*_key.pub,
+        # read over trusted access and filed under the alias "droplet".
+        # The image build alone took 7.6 minutes on 8 Oct, so the release gets
+        # 30; its own health checks decide success.
+        timeout-minutes: 30
+        env:
+          DROPLET_IP: ${{ secrets.DROPLET_IP }}
+          DROPLET_SSH_KEY: ${{ secrets.DROPLET_SSH_KEY }}
+          DROPLET_KNOWN_HOSTS: ${{ vars.DROPLET_KNOWN_HOSTS }}
+          # The droplet runs this after `export DEPLOY_SHA='<sha>'`, the same
+          # command string appleboy/ssh-action sent.
+          REMOTE_SCRIPT: |
+            set -eu
+            cd /root/boulder-repo
+            git fetch origin main
+            git checkout main
+            git reset --hard "$DEPLOY_SHA"
+            export APP_VERSION="$DEPLOY_SHA"
+            export ENVIRONMENT=production
+            export APP_ENV=production
+            # Current services: caddy, api, nats, indexer
+            # Celery/Redis removed — March 2026
+            scripts/deploy-backend-release.sh "$DEPLOY_SHA"
+        shell: bash
+        run: |
+          if [[ ! "$DEPLOY_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::DEPLOY_SHA is not a commit SHA"
+            exit 1
+          fi
+          if [ -z "$DROPLET_KNOWN_HOSTS" ]; then
+            echo "::error::Repository variable DROPLET_KNOWN_HOSTS has no droplet host keys"
+            exit 1
+          fi
+          umask 077
+          ssh_dir="$RUNNER_TEMP/droplet-ssh"
+          mkdir -p "$ssh_dir"
+          trap 'rm -rf "$ssh_dir"' EXIT
+          # Like the action's Go client, read the key's PEM block and ignore
+          # stray text, carriage returns and whitespace around the secrets.
+          printf '%s\n' "$DROPLET_SSH_KEY" | tr -d '\r' |
+            sed -n '/^-----BEGIN /,/^-----END /p' > "$ssh_dir/key"
+          unset DROPLET_SSH_KEY
+          if [ ! -s "$ssh_dir/key" ]; then
+            echo "::error::Secret DROPLET_SSH_KEY holds no PEM private key"
+            exit 1
+          fi
+          host="${DROPLET_IP//[[:space:]]/}"
+          printf '%s\n' "$DROPLET_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          echo "Pinned droplet host keys:"
+          ssh-keygen -lf "$ssh_dir/known_hosts"
+          printf -v remote_command "export DEPLOY_SHA='%s'\n%s" "$DEPLOY_SHA" "${REMOTE_SCRIPT%$'\n'}"
+          # -n -T: no stdin and no terminal on the droplet, as under the action.
+          # Keepalives every 15 s stand in for the TCP keepalives the action's
+          # Go client sent, so a quiet stretch of the release keeps its link.
+          ssh -F /dev/null -n -T -i "$ssh_dir/key" \
+            -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=30 \
+            -o StrictHostKeyChecking=yes -o HostKeyAlias=droplet \
+            -o UserKnownHostsFile="$ssh_dir/known_hosts" \
+            -o GlobalKnownHostsFile=/dev/null \
+            -o ServerAliveInterval=15 -o ServerAliveCountMax=10 \
+            -- "root@$host" "$remote_command"

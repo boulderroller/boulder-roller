@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Boulder Rollers - Curve.fi Light Mode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <style>
+        body {
+            background-color: #c0c0c0;
+            color: #000;
+            font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+            padding: 10px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Curve.fi Header Style */
+        .header-window {
+            margin-bottom: 10px;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            min-width: 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .nav-btn.active {
+            background: #fff;
+            border: 2px solid #000;
+            box-shadow: none;
+        }
+
+        /* Main Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 800px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Stats Panel */
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px;
+            background: #fff;
+            border: 2px inset #dfdfdf;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: #000080;
+            /* Classic Navy */
+        }
+
+        .stat-value {
+            font-weight: bold;
+        }
+
+        /* Curve Table Style */
+        .curve-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border: 2px inset #dfdfdf;
+        }
+
+        .curve-table th {
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            padding: 4px;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .curve-table td {
+            padding: 4px;
+            border: 1px dotted #808080;
+        }
+
+        .curve-table tr:hover {
+            background: #000080;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .curve-table tr:hover .stat-label {
+            color: #fff;
+        }
+
+        /* Fieldsets */
+        fieldset {
+            border: 2px groove #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        /* Status Indicators */
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            margin-right: 4px;
+        }
+
+        .status-green {
+            background: #0f0;
+        }
+
+        .status-red {
+            background: #f00;
+        }
+
+        /* Input Fields */
+        input[type="text"] {
+            font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+            padding: 2px 4px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+
+        a {
+            color: #000080;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Header Window -->
+        <div class="window header-window">
+            <div class="title-bar">
+                <div class="title-bar-text">Boulder Rollers Protocol v1.0</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <h2 style="margin: 0;">🪲 DUNG BEETLE CYCLING</h2>
+                    <div>
+                        <span class="status-dot status-green"></span> Connected: 0x...B33T
+                    </div>
+                </div>
+
+                <div class="nav-bar">
+                    <button class="nav-btn active">Home</button>
+                    <button class="nav-btn">Piles</button>
+                    <button class="nav-btn">DAO</button>
+                    <button class="nav-btn">Stats</button>
+                    <button class="nav-btn">Docs</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+
+            <!-- Sidebar / Info -->
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">My Beetle</div>
+                </div>
+                <div class="window-body">
+                    <fieldset>
+                        <legend>Wallet Stats</legend>
+                        <div class="stats-row">
+                            <span class="stat-label">DUNG Balance:</span>
+                            <span class="stat-value">12,340.80</span>
+                        </div>
+                        <div class="stats-row">
+                            <span class="stat-label">CAL Energy:</span>
+                            <span class="stat-value">1,600 / 2,500</span>
+                        </div>
+                        <div class="stats-row">
+                            <span class="stat-label">veDUNG:</span>
+                            <span class="stat-value">420.00</span>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Actions</legend>
+                        <button style="width: 100%; margin-bottom: 4px;">Claim Rewards</button>
+                        <button style="width: 100%; margin-bottom: 4px;">Stake DUNG</button>
+                        <button style="width: 100%;">Vote</button>
+                    </fieldset>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">Active Piles (Segments)</div>
+                </div>
+                <div class="window-body">
+                    <p>Total Value Locked: <strong>$42,800,120</strong></p>
+                    <p>Daily Volume: <strong>$1,200,500</strong></p>
+
+                    <table class="curve-table">
+                        <thead>
+                            <tr>
+                                <th>Pile Name</th>
+                                <th>Base vAPY</th>
+                                <th>Rewards</th>
+                                <th>Volume (24h)</th>
+                                <th>Liquidity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Col du Bas Bois</td>
+                                <td>12.4%</td>
+                                <td><span class="status-dot status-green"></span> +4.2%</td>
+                                <td>$450k</td>
+                                <td>$12.4m</td>
+                            </tr>
+                            <tr>
+                                <td>Philly Crit Circuit</td>
+                                <td>8.1%</td>
+                                <td><span class="status-dot status-green"></span> +18.2%</td>
+                                <td>$1.2m</td>
+                                <td>$8.1m</td>
+                            </tr>
+                            <tr>
+                                <td>Back Alley Kicker</td>
+                                <td>42.0%</td>
+                                <td><span class="status-dot status-red"></span> -2.1%</td>
+                                <td>$50k</td>
+                                <td>$1.2m</td>
+                            </tr>
+                            <tr>
+                                <td>Manayunk Wall</td>
+                                <td>15.5%</td>
+                                <td><span class="status-dot status-green"></span> +5.5%</td>
+                                <td>$800k</td>
+                                <td>$5.5m</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <fieldset>
+                        <legend>Swap / Roll</legend>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <label>From:</label>
+                            <input type="text" value="100" style="width: 80px;">
+                            <select>
+                                <option>USDC</option>
+                                <option>SOL</option>
+                            </select>
+                            <span>-></span>
+                            <label>To:</label>
+                            <input type="text" value="98.2" style="width: 80px;">
+                            <select>
+                                <option>DUNG</option>
+                            </select>
+                            <button>Exchange</button>
+                        </div>
+                    </fieldset>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <a href="#">Twitter</a> | <a href="#">Telegram</a> | <a href="#">Discord</a> | <a href="#">Github</a>
+            <br>
+            Boulder Rollers Protocol © 2025
+        </div>
+
+    </div>
+
+</body>
+
+</html>

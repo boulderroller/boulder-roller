@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+      --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+
+      /* GREY - the real palette */
+      --bg: #141414;
+      --surface: #1a1a1a;
+      --raised: #222;
+      --border: #2a2a2a;
+      --border-strong: #3a3a3a;
+      --text-1: #e8e8e8;
+      --text-2: #a0a0a0;
+      --text-3: #666;
+      --text-4: #444;
+
+      /* ONE accent - that's it */
+      --accent: #7dd3fc; /* sky blue - readable, not neon */
+      --accent-dim: #3b82a0;
+
+      /* semantic - muted, not screaming */
+      --positive: #6ee7b7;
+      --negative: #f87171;
+      --warning: #fbbf24;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-2);
+      min-height: 100vh;
+    }
+
+    /* ================================================
+       LAYOUT - simple, no sidebar nonsense
+    ================================================ */
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    /* ================================================
+       HEADER
+    ================================================ */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-1);
+      letter-spacing: 0.02em;
+    }
+
+    .logo span {
+      color: var(--text-3);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .epoch {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    .epoch strong {
+      color: var(--warning);
+      font-weight: 600;
+    }
+
+    .wallet {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 8px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wallet::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--positive);
+    }
+
+    /* ================================================
+       IDENTITY ROW
+    ================================================ */
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .beetle-shell {
+      width: 64px;
+      height: 64px;
+      background: var(--surface);
+      border: 2px solid var(--border-strong);
+      border-radius: 50% 50% 45% 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .beetle-letter {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
+      background: var(--raised);
+      border: 2px solid var(--border-strong);
+      border-radius: 50%;
+    }
+
+    .identity-info h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 2px;
+    }
+
+    .identity-info p {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    .identity-info p span {
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    /* ================================================
+       STATS ROW - just numbers, no decoration
+    ================================================ */
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 700px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat {
+      background: var(--bg);
+      padding: 24px;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    /* color on the NUMBER, not the container */
+    .stat-value.accent { color: var(--accent); }
+    .stat-value.positive { color: var(--positive); }
+    .stat-value.warning { color: var(--warning); }
+
+    .stat-sub {
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    .stat-sub strong {
+      color: var(--text-2);
+    }
+
+    /* ================================================
+       MAIN GRID
+    ================================================ */
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================
+       SECTION
+    ================================================ */
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .section-link {
+      font-size: 12px;
+      color: var(--text-3);
+      text-decoration: none;
+    }
+
+    .section-link:hover {
+      color: var(--text-2);
+    }
+
+    /* ================================================
+       PILES TABLE - actual table, not cards
+    ================================================ */
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table th:last-child {
+      text-align: right;
+    }
+
+    .table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .table tr:hover td {
+      background: var(--surface);
+    }
+
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pile-name {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pile-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .pile-status.leader { background: var(--accent); }
+    .pile-status.staked { background: var(--text-3); }
+    .pile-status.available { background: transparent; border: 1px solid var(--text-4); }
+
+    .pile-title {
+      font-weight: 600;
+      color: var(--text-1);
+      font-size: 13px;
+    }
+
+    .pile-meta {
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    .pile-earning {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .pile-earning.active { color: var(--positive); }
+    .pile-earning.inactive { color: var(--text-4); }
+
+    .pile-pr {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-2);
+      text-align: right;
+    }
+
+    /* ================================================
+       LOG - monospace, minimal
+    ================================================ */
+
+    .log {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .log-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .log-title {
+      font-size: 11px;
+    }
+
+    .log-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--positive);
+    }
+
+    .log-status::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--positive);
+    }
+
+    .log-body {
+      padding: 16px;
+      line-height: 2;
+    }
+
+    .log-line {
+      display: flex;
+      gap: 12px;
+    }
+
+    .log-prompt {
+      color: var(--text-4);
+      user-select: none;
+    }
+
+    .log-text {
+      color: var(--text-3);
+    }
+
+    .log-val { color: var(--text-1); }
+    .log-val.accent { color: var(--accent); }
+    .log-val.positive { color: var(--positive); }
+    .log-val.negative { color: var(--negative); }
+    .log-val.warning { color: var(--warning); }
+
+    /* ================================================
+       SIDEBAR
+    ================================================ */
+
+    .sidebar-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .sidebar-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--positive);
+    }
+
+    .claim-list {
+      padding: 8px;
+    }
+
+    .claim-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+    }
+
+    .claim-item:hover {
+      background: var(--raised);
+    }
+
+    .claim-name {
+      font-size: 13px;
+      color: var(--text-2);
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--text-4);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--positive);
+    }
+
+    .claim-btn {
+      display: block;
+      width: calc(100% - 16px);
+      margin: 8px;
+      padding: 12px;
+      background: var(--accent);
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--bg);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .claim-btn:hover {
+      opacity: 0.85;
+    }
+
+    /* ACTIVITY */
+    .activity-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .activity-item {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-item:hover {
+      background: var(--raised);
+    }
+
+    .activity-action {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 2px;
+    }
+
+    .activity-meta {
+      font-size: 11px;
+      color: var(--text-4);
+    }
+
+    .activity-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .activity-amount.positive { color: var(--positive); }
+    .activity-amount.negative { color: var(--negative); }
+    .activity-amount.neutral { color: var(--text-3); }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-4);
+    }
+
+    .footer a {
+      color: var(--text-3);
+      text-decoration: none;
+      margin-left: 24px;
+    }
+
+    .footer a:hover {
+      color: var(--text-2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">dung beetle<span>.cycling</span></div>
+      <div class="header-right">
+        <div class="epoch">epoch 47 ends in <strong>2d 14h</strong></div>
+        <div class="wallet">8xK4...mN9p</div>
+      </div>
+    </header>
+
+    <!-- IDENTITY -->
+    <div class="identity">
+      <div class="beetle-shell">
+        <span class="beetle-letter">S</span>
+        <div class="beetle-boulder"></div>
+      </div>
+      <div class="identity-info">
+        <h1>booka_shade</h1>
+        <p><span>S Rank</span> · "The Alpine Assassin"</p>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">Boulder</div>
+        <div class="stat-value accent">8,450</div>
+        <div class="stat-sub"><strong>+247</strong> this epoch</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Weekly TSS</div>
+        <div class="stat-value">847</div>
+        <div class="stat-sub">CTL <strong>78</strong> · ATL 42</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">CAL Balance</div>
+        <div class="stat-value">1,847</div>
+        <div class="stat-sub">of 2,500 daily</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Unclaimed</div>
+        <div class="stat-value positive">+36.5</div>
+        <div class="stat-sub">DUNG rewards</div>
+      </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="main-grid">
+      <div class="main-left">
+
+        <!-- PILES -->
+        <section class="section">
+          <div class="section-header">
+            <h2 class="section-title">Your Piles</h2>
+            <a href="#" class="section-link">View all →</a>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Pile</th>
+                <th>Earning</th>
+                <th>PR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="pile-name">
+                    <div class="pile-status leader"></div>
+                    <div>
+                      <div class="pile-title">PHILLY CRIT</div>
+                      <div class="pile-meta">Leader · 847 DUNG staked</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pile-earning active">+18.4/day</span></td>
+                <td class="pile-pr">2:34</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="pile-name">
+                    <div class="pile-status staked"></div>
+                    <div>
+                      <div class="pile-title">MANAYUNK WALL</div>
+                      <div class="pile-meta">Challenger · 420 DUNG staked</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pile-earning active">+6.2/day</span></td>
+                <td class="pile-pr">4:12</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="pile-name">
+                    <div class="pile-status staked"></div>
+                    <div>
+                      <div class="pile-title">SOUTH HILL</div>
+                      <div class="pile-meta">Swanny seat · Passive</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pile-earning active">+3.3/day</span></td>
+                <td class="pile-pr">—</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="pile-name">
+                    <div class="pile-status available"></div>
+                    <div>
+                      <div class="pile-title">LEMON HILL</div>
+                      <div class="pile-meta">Available · No stake</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pile-earning inactive">—</span></td>
+                <td class="pile-pr">1:58</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- LOG -->
+        <section class="section">
+          <div class="section-header">
+            <h2 class="section-title">System Log</h2>
+          </div>
+          <div class="log">
+            <div class="log-header">
+              <span class="log-title">roll@dung-beetle</span>
+              <span class="log-status">connected</span>
+            </div>
+            <div class="log-body">
+              <div class="log-line">
+                <span class="log-prompt">$</span>
+                <span class="log-text">ride synced · TSS <span class="log-val">118</span> · crossings <span class="log-val">9</span></span>
+              </div>
+              <div class="log-line">
+                <span class="log-prompt">$</span>
+                <span class="log-text">boulder updated · <span class="log-val positive">+118.0 DUNG</span></span>
+              </div>
+              <div class="log-line">
+                <span class="log-prompt">!</span>
+                <span class="log-text">MANAYUNK WALL challenged by <span class="log-val negative">velodrome_king</span></span>
+              </div>
+              <div class="log-line">
+                <span class="log-prompt">$</span>
+                <span class="log-text">epoch distribution in <span class="log-val warning">2d 14h</span></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+
+        <!-- CLAIM -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Unclaimed</span>
+            <span class="sidebar-value">+36.5</span>
+          </div>
+          <div class="claim-list">
+            <div class="claim-item">
+              <div>
+                <div class="claim-name">PHILLY CRIT</div>
+                <div class="claim-detail">Leader + stake</div>
+              </div>
+              <div class="claim-amount">+18.4</div>
+            </div>
+            <div class="claim-item">
+              <div>
+                <div class="claim-name">MANAYUNK WALL</div>
+                <div class="claim-detail">Stake yield</div>
+              </div>
+              <div class="claim-amount">+6.2</div>
+            </div>
+            <div class="claim-item">
+              <div>
+                <div class="claim-name">SOUTH HILL</div>
+                <div class="claim-detail">Swanny passive</div>
+              </div>
+              <div class="claim-amount">+3.3</div>
+            </div>
+            <div class="claim-item">
+              <div>
+                <div class="claim-name">TSS Rewards</div>
+                <div class="claim-detail">This epoch</div>
+              </div>
+              <div class="claim-amount">+8.6</div>
+            </div>
+          </div>
+          <button class="claim-btn">CLAIM ALL</button>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Activity</span>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div>
+                <div class="activity-action">Morning ride synced</div>
+                <div class="activity-meta">9 pile crossings · 2h ago</div>
+              </div>
+              <div class="activity-amount positive">+118.0</div>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-action">Staked PHILLY CRIT</div>
+                <div class="activity-meta">420 DUNG · 1d ago</div>
+              </div>
+              <div class="activity-amount neutral">−420.0</div>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-action">Defended PHILLY CRIT</div>
+                <div class="activity-meta">vs sprint_master · 2d ago</div>
+              </div>
+              <div class="activity-amount positive">+25.0</div>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-action">Lost RIDGE AVE</div>
+                <div class="activity-meta">Dethroned · 3d ago</div>
+              </div>
+              <div class="activity-amount negative">−45.0</div>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-action">New PR: LEMON HILL</div>
+                <div class="activity-meta">1:58 (−4s) · 4d ago</div>
+              </div>
+              <div class="activity-amount positive">+15.0</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>dung beetle cycling · epoch 47 · devnet</div>
+      <div>
+        <a href="#">docs</a>
+        <a href="#">discord</a>
+        <a href="#">github</a>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

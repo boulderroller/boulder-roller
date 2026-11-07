@@ -1,0 +1,20 @@
+{
+  "comment": "Open fonts (SIL OFL 1.1) behind the map labels, and the exact stacks the pinned Voyager style and the ground recipe request. Each stack lists the faces CARTO's own glyph server answered with, so labels keep the accepted look: it had no Montserrat Regular Italic and no CJK faces (MapLibre draws CJK locally).",
+  "fonts": {
+    "Montserrat Regular": { "url": "https://raw.githubusercontent.com/JulietaUla/Montserrat/5dae7a4ef9c0bf9fe48dc54fd1076eefaa0a8c7e/fonts/ttf/Montserrat-Regular.ttf", "sha256": "6eabd0fb8e3066b6155bac338ef5a6c35b9963ab3f39be7c67edc4a99d870699" },
+    "Montserrat Medium": { "url": "https://raw.githubusercontent.com/JulietaUla/Montserrat/5dae7a4ef9c0bf9fe48dc54fd1076eefaa0a8c7e/fonts/ttf/Montserrat-Medium.ttf", "sha256": "7ce96811837174f00c087b73332aed3f04a19069248ab46213d9ea05ff879cbc" },
+    "Montserrat Medium Italic": { "url": "https://raw.githubusercontent.com/JulietaUla/Montserrat/5dae7a4ef9c0bf9fe48dc54fd1076eefaa0a8c7e/fonts/ttf/Montserrat-MediumItalic.ttf", "sha256": "c1715ca387d44de2216a7b3e298aa7ec80d89619aead93ba4db6ae8d5bd37abf" },
+    "Open Sans Regular": { "url": "https://raw.githubusercontent.com/googlefonts/opensans/bd7e37632246368c60fdcbd374dbf9bad11969b6/fonts/ttf/OpenSans-Regular.ttf", "sha256": "c53aceea2dcf5b4098099c0c4d0a061d17e178a049317b42a422b1a9f7f8eb59" },
+    "Open Sans Bold": { "url": "https://raw.githubusercontent.com/googlefonts/opensans/bd7e37632246368c60fdcbd374dbf9bad11969b6/fonts/ttf/OpenSans-Bold.ttf", "sha256": "27da758f4dcac9a65abe914c13b463b42982b9909bc65713424099f4810bd1e6" },
+    "Open Sans Italic": { "url": "https://raw.githubusercontent.com/googlefonts/opensans/bd7e37632246368c60fdcbd374dbf9bad11969b6/fonts/ttf/OpenSans-Italic.ttf", "sha256": "93bc1bb6abf4e6b7c75d7131714061d5b57cc478abcabe4cb3519bb38fb917aa" },
+    "Noto Sans Regular": { "url": "https://raw.githubusercontent.com/openmaptiles/fonts/d48c5fce2fc58b55c98d353558d807cac45e7262/noto-sans/NotoSans-Regular.ttf", "sha256": "371924e7480d3d01807fdc1bd30442d0a6651e6b5ea546482f5883d613cf0419" }
+  },
+  "stacks": {
+    "Montserrat Regular,Open Sans Regular,Noto Sans Regular,HanWangHeiLight Regular,NanumBarunGothic Regular": ["Montserrat Regular", "Open Sans Regular", "Noto Sans Regular"],
+    "Montserrat Regular Italic,Open Sans Italic,Noto Sans Regular,HanWangHeiLight Regular,NanumBarunGothic Regular": ["Open Sans Italic", "Noto Sans Regular"],
+    "Montserrat Medium Italic,Open Sans Italic,Noto Sans Regular,HanWangHeiLight Regular,NanumBarunGothic Regular": ["Montserrat Medium Italic", "Open Sans Italic", "Noto Sans Regular"],
+    "Montserrat Medium,Open Sans Bold,Noto Sans Regular,HanWangHeiLight Regular,NanumBarunGothic Regular": ["Montserrat Medium", "Open Sans Bold", "Noto Sans Regular"],
+    "Montserrat Medium,Open Sans Bold": ["Montserrat Medium", "Open Sans Bold"],
+    "Montserrat Regular Italic,Open Sans Italic": ["Open Sans Italic"]
+  }
+}

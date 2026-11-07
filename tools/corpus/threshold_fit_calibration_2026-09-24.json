@@ -1,0 +1,479 @@
+{
+  "evidence_class": "local exploratory historical imported power rides; not iOS establishments or verified honest riders",
+  "module_path": "/tmp/threshold-calibration-module/workout_parse/workout_parse.cpython-39-darwin.so",
+  "module_binary_sha256": "a62bf6d2d607e1ed41014c0afe552c34cbf2b357206bfb38b48a98eeef96f1be",
+  "database_sha256": "64b15790bed2628b3e7e8371657b408ec5e96305db84bfe050507b14860b98ee",
+  "database_counts": {
+    "streams": 1416,
+    "with_watts": 480,
+    "missing_180": 0,
+    "missing_420": 1,
+    "missing_900": 6,
+    "positive_cp_and_w": 468,
+    "canonical_error_ValueError": 6,
+    "canonical_duration_limit_exceeded": 6
+  },
+  "power_date_range": [
+    "2012-09-22T14:28:21Z",
+    "2018-02-23T19:05:47Z"
+  ],
+  "individual_hypothetical_first_fit_existing_bounds": {
+    "count": 468,
+    "cp": {
+      "min": 51.878739,
+      "p01": 87.315776,
+      "p05": 121.947151,
+      "median": 241.280662,
+      "p95": 316.339886,
+      "p99": 336.447293,
+      "max": 373.723273
+    },
+    "w": {
+      "min": 734.0,
+      "p01": 1324.490385,
+      "p05": 3414.182692,
+      "median": 14260.875,
+      "p95": 39859.798077,
+      "p99": 50055.913462,
+      "max": 52689.798077
+    },
+    "ratio": {
+      "min": 0.30032062598356357,
+      "p01": 0.35526490898639584,
+      "p05": 0.4580348713400717,
+      "median": 0.7554425462685115,
+      "p95": 0.9279907956796047,
+      "p99": 0.9706393213890876,
+      "max": 0.9889659688239615
+    },
+    "residual": {
+      "min": 0.013461897619038155,
+      "p01": 0.09871802619051095,
+      "p05": 0.42777766666665684,
+      "median": 5.397079742857159,
+      "p95": 24.626638614285753,
+      "p99": 35.964245307142846,
+      "max": 46.151637947619065
+    },
+    "gates": [
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 40000,
+        "review_count": 24,
+        "ratio_only": 0,
+        "w_only": 24,
+        "review_pct": 5.128205128205129
+      },
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 50000,
+        "review_count": 6,
+        "ratio_only": 0,
+        "w_only": 6,
+        "review_pct": 1.2820512820512822
+      },
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 40000,
+        "review_count": 24,
+        "ratio_only": 0,
+        "w_only": 24,
+        "review_pct": 5.128205128205129
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 50000,
+        "review_count": 6,
+        "ratio_only": 0,
+        "w_only": 6,
+        "review_pct": 1.2820512820512822
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 40000,
+        "review_count": 25,
+        "ratio_only": 4,
+        "w_only": 24,
+        "review_pct": 5.3418803418803416
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 50000,
+        "review_count": 9,
+        "ratio_only": 4,
+        "w_only": 6,
+        "review_pct": 1.9230769230769231
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 60000,
+        "review_count": 4,
+        "ratio_only": 4,
+        "w_only": 0,
+        "review_pct": 0.8547008547008547
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 40000,
+        "review_count": 26,
+        "ratio_only": 13,
+        "w_only": 24,
+        "review_pct": 5.555555555555555
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 50000,
+        "review_count": 14,
+        "ratio_only": 13,
+        "w_only": 6,
+        "review_pct": 2.9914529914529915
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 60000,
+        "review_count": 13,
+        "ratio_only": 13,
+        "w_only": 0,
+        "review_pct": 2.7777777777777777
+      }
+    ],
+    "collinear_review_counts": {
+      "1e-06": 0,
+      "0.01": 0,
+      "0.1": 5,
+      "1": 60
+    }
+  },
+  "pooled_chronological_envelopes_existing_bounds": {
+    "count": 474,
+    "cp": {
+      "min": 202.55739,
+      "p01": 248.901425,
+      "p05": 272.622133,
+      "median": 335.576798,
+      "p95": 341.001674,
+      "p99": 341.001674,
+      "max": 341.001674
+    },
+    "w": {
+      "min": 3904.875,
+      "p01": 21345.673077,
+      "p05": 21345.673077,
+      "median": 30272.259615,
+      "p95": 33348.894231,
+      "p99": 37025.144231,
+      "max": 40407.567308
+    },
+    "ratio": {
+      "min": 0.475517837626345,
+      "p01": 0.5541935396180661,
+      "p05": 0.5949922272203698,
+      "median": 0.6596968605222634,
+      "p95": 0.7442291763564716,
+      "p99": 0.7442291763564716,
+      "max": 0.9203330247578042
+    },
+    "residual": {
+      "min": 1.1871084619047565,
+      "p01": 1.6831904095237746,
+      "p05": 1.7903843595238413,
+      "median": 4.880056769047599,
+      "p95": 8.243945435714295,
+      "p99": 8.243945435714295,
+      "max": 22.87215053809524
+    },
+    "gates": [
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 0.2109704641350211
+      },
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 0.2109704641350211
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 0.2109704641350211
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 0.2109704641350211
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      }
+    ],
+    "collinear_review_counts": {
+      "1e-06": 0,
+      "0.01": 0,
+      "0.1": 0,
+      "1": 0
+    }
+  },
+  "pooled_changed_envelopes_existing_bounds": {
+    "count": 19,
+    "cp": {
+      "min": 202.55739,
+      "p01": 202.55739,
+      "p05": 202.55739,
+      "median": 274.947934,
+      "p95": 338.049608,
+      "p99": 338.049608,
+      "max": 341.001674
+    },
+    "w": {
+      "min": 3904.875,
+      "p01": 3904.875,
+      "p05": 3904.875,
+      "median": 32221.086538,
+      "p95": 38061.615385,
+      "p99": 38061.615385,
+      "max": 40407.567308
+    },
+    "ratio": {
+      "min": 0.475517837626345,
+      "p01": 0.475517837626345,
+      "p05": 0.475517837626345,
+      "median": 0.63001406826311,
+      "p95": 0.7666491761595854,
+      "p99": 0.7666491761595854,
+      "max": 0.9203330247578042
+    },
+    "residual": {
+      "min": 1.1871084619047565,
+      "p01": 1.1871084619047565,
+      "p05": 1.1871084619047565,
+      "median": 4.880056769047599,
+      "p95": 13.35933046190479,
+      "p99": 13.35933046190479,
+      "max": 22.87215053809524
+    },
+    "gates": [
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 5.2631578947368425
+      },
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.25,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 5.2631578947368425
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.3,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 5.2631578947368425
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.35,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 40000,
+        "review_count": 1,
+        "ratio_only": 0,
+        "w_only": 1,
+        "review_pct": 5.2631578947368425
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 50000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      },
+      {
+        "ratio_floor": 0.4,
+        "w_ceiling_j": 60000,
+        "review_count": 0,
+        "ratio_only": 0,
+        "w_only": 0,
+        "review_pct": 0.0
+      }
+    ],
+    "collinear_review_counts": {
+      "1e-06": 0,
+      "0.01": 0,
+      "0.1": 0,
+      "1": 0
+    }
+  },
+  "final_pooled_anchors": [
+    508.68333333333334,
+    400.51190476190476,
+    375.61555555555555
+  ],
+  "example_degenerate": {
+    "cp": 60.0,
+    "w": 61200.0,
+    "ratio": 0.15,
+    "residual": 0.0
+  },
+  "example_honest": {
+    "cp": 233.814103,
+    "w": 29682.692308,
+    "ratio": 0.5845352575,
+    "residual": 4.487179923809549
+  },
+  "example_ideal_collinear_pass": {
+    "cp": 200.0,
+    "w": 18000.0,
+    "ratio": 0.6666666666666666,
+    "residual": 0.0
+  },
+  "limitations": [
+    "No athlete identifier column; pooling is only a corpus-level sensitivity exercise, not multiple rider lifetime histories.",
+    "Imported power is not iOS-attested, effort-certified, or ground-truth honest.",
+    "Per-ride MMP is a hypothetical first fit, not a real establishment.",
+    "Observed flag rates are not validated false-positive rates or independent-rider estimates.",
+    "Conservative provisional gates cannot establish physiological plausibility or prevent all tailored profiles."
+  ]
+}

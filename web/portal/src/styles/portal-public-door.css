@@ -1,0 +1,8 @@
+
+.public-room-sign-in {
+  min-height: 44px;
+  background: transparent;
+  color: var(--br-terrain);
+  font-size: 14px;
+  font-weight: 600;
+}

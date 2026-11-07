@@ -1,0 +1,23 @@
+{
+  "name": "boulder-rollers-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Boulder Rollers dynamic queries",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "@solana/web3.js": "^1.87.0",
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.10.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "evidenceClass": "Local browser renders. Profile and donors contain supplied examples; no production or rider proof.",
+  "capturedAt": "2026-09-13T22:08:33.280Z",
+  "records": [
+    {
+      "id": "profile",
+      "url": "http://localhost:4330/?profile-preview=1&scenario=owner",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "draft",
+      "url": "http://localhost:4330/?profile-preview=1&scenario=owner&draft=original",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "feed-v9",
+      "url": "http://localhost:4330/?feed-preview=1&variant=feed-v9&scenario=mixed",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "ride-v13",
+      "url": "http://localhost:4330/?preview=1&variant=candidate-v13&scenario=recorded",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "climb-v7",
+      "url": "http://localhost:4318/?climb-preview=1&variant=climb-v7&scenario=wises&viewer=rider",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "map-v4",
+      "url": "http://localhost:4323/?surface=map&variant=map-v4&scenario=wises&viewer=rider&origin=43f15658-a824-438d-9925-e61c67ddabe9&map-preview=1",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "profile",
+      "url": "http://localhost:4330/?profile-preview=1&scenario=owner",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "draft",
+      "url": "http://localhost:4330/?profile-preview=1&scenario=owner&draft=original",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "feed-v9",
+      "url": "http://localhost:4330/?feed-preview=1&variant=feed-v9&scenario=mixed",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "ride-v13",
+      "url": "http://localhost:4330/?preview=1&variant=candidate-v13&scenario=recorded",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "climb-v7",
+      "url": "http://localhost:4318/?climb-preview=1&variant=climb-v7&scenario=wises&viewer=rider",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "map-v4",
+      "url": "http://localhost:4323/?surface=map&variant=map-v4&scenario=wises&viewer=rider&origin=43f15658-a824-438d-9925-e61c67ddabe9&map-preview=1",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "original-draft-toggle",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+export const mobileMapColors = {
+  base: '#f5f4f0',
+  baseDetail: '#ede8db',
+  baseMuted: '#ebe5d9',
+  water: 'rgba(151, 199, 216, 0.34)',
+  park: 'rgba(89, 120, 72, 0.18)',
+  road: 'rgba(255, 253, 247, 0.88)',
+  roadMuted: 'rgba(255, 253, 247, 0.54)',
+  route: '#3C96AA',
+  routeHighlight: '#5AAFB9',
+  routeHalo: 'rgba(255, 253, 247, 0.92)',
+  start: '#46AF64',
+  end: '#7D695A',
+  labelBackground: 'rgba(255, 253, 247, 0.86)',
+  labelText: '#676155',
+  liveScrim: 'rgba(12, 11, 8, 0.18)',
+};

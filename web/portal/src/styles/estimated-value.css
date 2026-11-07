@@ -1,0 +1,80 @@
+/* Variant B: all ink, line and paper come from the shared portal palette. */
+.climb-power { display: inline-flex; align-items: baseline; flex-wrap: wrap; justify-content: flex-end; gap: 4px 8px; }
+.climb-power__wkg { font-size: var(--br-label-size); line-height: var(--br-label-line-height); color: var(--br-ink-soft); }
+.climb-power .estimated-value { text-decoration: underline dotted var(--portal-public-line); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.estimated-value {
+  appearance: none;
+  display: inline;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
+}
+button.estimated-value {
+  cursor: pointer;
+  text-decoration: underline dotted var(--portal-public-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.estimated-value .estimated-value__mark,
+.estimated-value__card .estimated-value__mark {
+  color: var(--portal-public-ink-muted);
+  font: inherit;
+  letter-spacing: inherit;
+}
+.estimated-value:focus-visible {
+  outline: 1px solid var(--portal-public-ink-muted);
+  outline-offset: 4px;
+}
+.estimated-value__card {
+  z-index: 90;
+  box-sizing: border-box;
+  width: 248px;
+  max-width: calc(100vw - 24px);
+  max-height: var(--radix-popover-content-available-height);
+  overflow: auto;
+  padding: 12px 14px;
+  border: 1px solid var(--portal-public-line);
+  background: var(--portal-public-paper-soft);
+  color: var(--portal-public-ink);
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-sans);
+  outline: none;
+}
+.estimated-value__numbers {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.estimated-value__number {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.estimated-value__range {
+  color: var(--portal-public-ink-muted);
+}
+.estimated-value__copy {
+  margin: 0;
+  color: var(--portal-public-ink-soft);
+  overflow-wrap: anywhere;
+}
+.estimated-value__copy:last-child {
+  color: var(--portal-public-ink-muted);
+}
+
+.estimated-value__description {
+  display: grid;
+  gap: 8px;
+}

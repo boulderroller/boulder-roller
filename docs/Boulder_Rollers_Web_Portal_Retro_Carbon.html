@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boulder Rollers · Piles Retro</title>
+  <style>
+    :root {
+      --bg1: #6a2ba3;
+      --bg2: #f2692a;
+      --yellow: #ffd447;
+      --green: #16b655;
+      --blue: #1f79f2;
+      --purple: #a121e0;
+      --panel: #f7f6f2;
+      --panel-alt: #fef9e5;
+      --border: #000;
+      --text: #111;
+      --muted: #555;
+      --shadow: 8px 8px 0 #000;
+      --radius: 6px;
+      --sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", "Berkeley Mono", "SF Mono", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      font-family: var(--sans);
+      color: var(--text);
+      padding: 24px;
+    }
+    .banner {
+      max-width: 1260px;
+      margin: 0 auto 18px;
+      background: linear-gradient(90deg, #ffd447, #f7b733);
+      border: 4px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 18px 24px 22px;
+      text-align: center;
+    }
+    .banner h1 { margin: 0; font-size: 42px; letter-spacing: -0.02em; }
+    .banner p { margin: 4px 0 0; font-weight: 700; }
+    .nav { display: flex; justify-content: center; gap: 12px; margin-top: 12px; }
+    .nav button {
+      border: 4px solid var(--border);
+      background: #fff;
+      padding: 10px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--border);
+      border-radius: 4px;
+    }
+    .nav button.active { background: #ffd447; }
+
+    .grid { max-width: 1260px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      border: 4px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--panel);
+    }
+    .card-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; font-weight: 800; color: #fff; text-transform: uppercase; font-size: 13px; }
+    .card-body { padding: 12px 14px 16px; }
+
+    /* Left */
+    .evolution-item { margin-bottom: 10px; }
+    .label-row { display: flex; align-items: center; gap: 6px; font-weight: 800; margin-bottom: 4px; }
+    .progress { height: 10px; background: #eee; border: 2px solid var(--border); box-shadow: inset 2px 2px 0 #00000022; border-radius: 4px; }
+    .progress span { display: block; height: 100%; background: #f4c431; }
+    .progress.larva span { background: linear-gradient(90deg, #50c878, #4db6f2); }
+    .stat-grid { display: grid; gap: 6px; margin-top: 8px; }
+    .stat-row { display: flex; justify-content: space-between; align-items: center; border: 2px solid var(--border); padding: 6px 8px; background: #fff; font-weight: 800; }
+    .list { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-weight: 700; }
+
+    /* Swap */
+    .swap-box { border: 4px solid var(--border); padding: 10px; background: var(--panel-alt); box-shadow: 4px 4px 0 var(--border); }
+    .field { border: 3px solid var(--border); padding: 10px; background: #fff; margin-top: 10px; }
+    .field label { font-weight: 800; display: block; margin-bottom: 6px; }
+    .select-row { display: flex; justify-content: space-between; align-items: center; border: 3px solid var(--border); background: #fefefe; padding: 8px; }
+    .select-row select { border: none; font-weight: 800; font-size: 14px; background: transparent; }
+    .input { width: 100%; border: none; font-size: 16px; font-weight: 800; margin-top: 8px; font-family: var(--mono); }
+    .swap-btn { width: 52px; height: 52px; display: grid; place-items: center; margin: 14px auto; border: 3px solid var(--border); background: #ffd447; font-size: 18px; font-weight: 900; box-shadow: 4px 4px 0 var(--border); cursor: pointer; }
+    .cta { width: 100%; border: 4px solid var(--border); padding: 12px; font-weight: 900; font-size: 15px; background: #b8e1b2; box-shadow: 4px 4px 0 var(--border); cursor: pointer; text-transform: uppercase; }
+
+    /* Right */
+    .pill { border: 3px solid var(--border); border-radius: 3px; padding: 8px; text-align: center; font-weight: 800; background: #fff; box-shadow: 3px 3px 0 var(--border); }
+    .claim-box { border: 4px solid var(--border); background: #ffd447; padding: 14px; font-size: 26px; font-weight: 900; text-align: center; box-shadow: 4px 4px 0 var(--border); }
+    .claim-btn { width: 100%; border: 4px solid var(--border); padding: 12px; background: #1dcf75; font-weight: 900; box-shadow: 4px 4px 0 var(--border); cursor: pointer; margin-top: 10px; text-transform: uppercase; }
+    .liquidity { border: 3px solid var(--border); padding: 10px; background: #fff; margin-top: 10px; box-shadow: 3px 3px 0 var(--border); }
+    .liquidity .row { display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 4px; }
+    .active-piles { margin-top: 10px; }
+    .pile-item { border: 3px solid var(--border); padding: 8px; margin-bottom: 8px; background: #fff; box-shadow: 3px 3px 0 var(--border); }
+    .badge { display: inline-block; padding: 4px 8px; border: 2px solid var(--border); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <h1>🪲 BOULDER ROLLERS 🪲</h1>
+    <p>Stake, Roll, Evolve — The Retro DeFi Experience</p>
+    <div class="nav">
+      <button class="active">Home</button>
+      <button>Piles</button>
+      <button>DAO</button>
+      <button>Stats</button>
+      <button>Docs</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Left: What is pile? -->
+    <div class="card">
+      <div class="card-header" style="background: var(--green);">? What is Pile?</div>
+      <div class="card-body">
+        <div style="font-weight:800; margin-bottom:8px;">🪲 Beetle Evolution</div>
+        <div class="evolution-item">
+          <div class="label-row">🥚 Egg - Level 1</div>
+          <div class="progress"><span style="width: 82%;"></span></div>
+        </div>
+        <div class="evolution-item">
+          <div class="label-row">🐛 Larva - Level 2</div>
+          <div class="progress larva"><span style="width: 46%;"></span></div>
+        </div>
+        <div class="evolution-item" style="opacity:0.5;">
+          <div class="label-row">🦋 Pupa - Level 3</div>
+          <div class="progress"><span style="width: 0%;"></span></div>
+        </div>
+        <div class="evolution-item" style="opacity:0.5;">
+          <div class="label-row">🪲 Beetle - Level 4</div>
+          <div class="progress"><span style="width: 0%;"></span></div>
+        </div>
+
+        <div style="font-weight:800; margin:10px 0 6px;">⚡ Game Mechanics</div>
+        <div class="stat-grid">
+          <div class="stat-row">Energy: <span>75/100</span></div>
+          <div class="stat-row">Stake Power: <span>2,500 DUNG</span></div>
+          <div class="stat-row">Daily Yield: <span>+12.5%</span></div>
+          <div class="stat-row">Next Feed: <span>2h 15m</span></div>
+        </div>
+
+        <div style="font-weight:800; margin:12px 0 6px;">🎮 How to Play</div>
+        <ul class="list">
+          <li>Stake DUNG tokens to create a Pile</li>
+          <li>Feed your beetle to earn energy</li>
+          <li>Level up to unlock higher rewards</li>
+          <li>Claim rewards daily</li>
+          <li>Join the DAO and vote!</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Center: Swap tokens -->
+    <div class="card">
+      <div class="card-header" style="background: var(--blue);">🔁 Swap Tokens</div>
+      <div class="card-body">
+        <div class="field">
+          <label>From</label>
+          <div class="select-row">
+            <select>
+              <option>DUNG</option>
+              <option>SOL</option>
+            </select>
+            <span style="font-size:12px; color:var(--muted);">Balance: 12,000</span>
+          </div>
+          <input class="input" type="number" placeholder="0.00">
+        </div>
+        <button class="swap-btn">⇅</button>
+        <div class="field">
+          <label>To</label>
+          <div class="select-row" style="background:#f6f6f6;">
+            <select>
+              <option>SOL</option>
+              <option>DUNG</option>
+            </select>
+            <span style="font-size:12px; color:var(--muted);">Balance: 5,000</span>
+          </div>
+          <input class="input" type="number" placeholder="0.00">
+        </div>
+        <button class="cta">Swap Now</button>
+        <div style="margin-top:10px; font-weight:700; font-size:12px; display:flex; justify-content: space-between;">
+          <span>Exchange Rate:</span><span>1 DUNG ≈ 0 SOL</span>
+        </div>
+        <div style="font-weight:700; font-size:12px; display:flex; justify-content: space-between;">
+          <span>Fee:</span><span>0.3% (Retro Tax)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Pile dashboard -->
+    <div class="card">
+      <div class="card-header" style="background: var(--purple);">📊 Pile Dashboard</div>
+      <div class="card-body">
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; margin-bottom:12px;">
+          <div class="pill">TVL<br>$42.8M</div>
+          <div class="pill">Stakers<br>8,432</div>
+          <div class="pill">APY<br>125%</div>
+        </div>
+        <div class="claim-box">1,250.50 DUNG</div>
+        <button class="claim-btn">Claim Rewards</button>
+
+        <div class="liquidity">
+          <div style="font-weight:800; margin-bottom:6px;">💧 Liquidity Info</div>
+          <div class="row"><span>Total Liquidity:</span><span>$42,800,000</span></div>
+          <div class="row"><span>24h Volume:</span><span>$1,200,000</span></div>
+          <div class="row"><span>24h Fees:</span><span>$5,040</span></div>
+          <div class="row"><span>Your Share:</span><span>0.15%</span></div>
+        </div>
+
+        <div class="active-piles">
+          <div style="font-weight:800; margin-bottom:6px;">🧊 Your Active Piles</div>
+          <div class="pile-item">
+            <div style="font-weight:800;">Pile #1 - 🐛 Larva</div>
+            <div style="font-size:13px;">Staked: 10,000 DUNG</div>
+            <div class="badge" style="background:#b7ffb2;">Active</div>
+          </div>
+          <div class="pile-item">
+            <div style="font-weight:800;">Pile #2 - 🥚 Egg</div>
+            <div style="font-size:13px;">Staked: 5,000 DUNG</div>
+            <div class="badge" style="background:#ffe6a1;">Growing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

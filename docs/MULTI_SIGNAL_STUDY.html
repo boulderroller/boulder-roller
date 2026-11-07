@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Multi-Signal Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      /* THE VOID — Consistent base */
+      --void: #000000;
+      --void-1: #080808;
+      --void-2: #0E0E0E;
+      --void-3: #151515;
+      --void-4: #1C1C1C;
+      --void-5: #242424;
+      
+      /* TEXT — High contrast */
+      --light-100: #FFFFFF;
+      --light-90: rgba(255,255,255,0.92);
+      --light-75: rgba(255,255,255,0.75);
+      --light-55: rgba(255,255,255,0.55);
+      --light-35: rgba(255,255,255,0.35);
+      --light-15: rgba(255,255,255,0.15);
+      --light-08: rgba(255,255,255,0.08);
+      
+      /* 
+        MULTI-SIGNAL SYSTEM
+        Each color = different data domain
+        Pattern: Cycling data (fitness) vs Economic data (tokens) vs System state
+      */
+      
+      /* MINT — Fitness / Performance / Health */
+      --mint: #3DFFA3;
+      --mint-bright: #6AFFBC;
+      --mint-dim: #2ACC83;
+      --mint-glow: rgba(61, 255, 163, 0.5);
+      --mint-wash: rgba(61, 255, 163, 0.12);
+      
+      /* VIOLET — Economic / Tokens / Value */
+      --violet: #A78BFA;
+      --violet-bright: #C4B5FD;
+      --violet-dim: #8B5CF6;
+      --violet-glow: rgba(167, 139, 250, 0.5);
+      --violet-wash: rgba(167, 139, 250, 0.12);
+      
+      /* CORAL — Action / Energy / CTA */
+      --coral: #FF6B8A;
+      --coral-bright: #FF8FA8;
+      --coral-dim: #E84D6F;
+      --coral-glow: rgba(255, 107, 138, 0.5);
+      --coral-wash: rgba(255, 107, 138, 0.12);
+      
+      /* AMBER — Warning / Time / Urgency */
+      --amber: #FBBF24;
+      --amber-bright: #FCD34D;
+      --amber-dim: #D97706;
+      --amber-glow: rgba(251, 191, 36, 0.5);
+      --amber-wash: rgba(251, 191, 36, 0.12);
+      
+      /* CYAN — System / Info / Neutral */
+      --cyan: #22D3EE;
+      --cyan-bright: #67E8F9;
+      --cyan-dim: #06B6D4;
+      --cyan-glow: rgba(34, 211, 238, 0.5);
+      --cyan-wash: rgba(34, 211, 238, 0.12);
+      
+      /* THE GRADIENT — Brand signature */
+      --gradient-main: linear-gradient(135deg, var(--mint), var(--violet), var(--coral));
+      --gradient-eco: linear-gradient(135deg, var(--violet), var(--coral));
+      --gradient-fitness: linear-gradient(135deg, var(--mint), var(--cyan));
+      
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--void);
+      color: var(--light-90);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+
+    body {
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* ================================================
+       AMBIENT GRADIENT BACKGROUND
+    ================================================ */
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .ambient-orb.mint {
+      width: 600px;
+      height: 600px;
+      background: var(--mint);
+      top: -200px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .ambient-orb.violet {
+      width: 500px;
+      height: 500px;
+      background: var(--violet);
+      top: 30%;
+      right: -150px;
+      animation-delay: -7s;
+    }
+
+    .ambient-orb.coral {
+      width: 400px;
+      height: 400px;
+      background: var(--coral);
+      bottom: -100px;
+      left: 30%;
+      animation-delay: -14s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    /* ================================================
+       CONTENT
+    ================================================ */
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 48px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* ================================================
+       HEADER
+    ================================================ */
+
+    .header {
+      margin-bottom: 80px;
+    }
+
+    .header-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .header-title {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .header-title .gradient {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-desc {
+      font-size: 17px;
+      color: var(--light-55);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ================================================
+       SECTION
+    ================================================ */
+
+    .section {
+      margin-bottom: 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--light-35);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-55);
+    }
+
+    /* ================================================
+       COLOR LEGEND
+    ================================================ */
+
+    .legend {
+      display: flex;
+      gap: 32px;
+      padding: 20px 24px;
+      background: var(--void-2);
+      border: 1px solid var(--light-08);
+      border-radius: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.mint { background: var(--mint); box-shadow: 0 0 12px var(--mint-glow); }
+    .legend-dot.violet { background: var(--violet); box-shadow: 0 0 12px var(--violet-glow); }
+    .legend-dot.coral { background: var(--coral); box-shadow: 0 0 12px var(--coral-glow); }
+    .legend-dot.amber { background: var(--amber); box-shadow: 0 0 12px var(--amber-glow); }
+    .legend-dot.cyan { background: var(--cyan); box-shadow: 0 0 12px var(--cyan-glow); }
+
+    .legend-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--light-75);
+    }
+
+    .legend-desc {
+      font-size: 11px;
+      color: var(--light-35);
+    }
+
+    /* ================================================
+       METRIC GRID — Color-coded by domain
+    ================================================ */
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 1200px) {
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .metric-grid { grid-template-columns: 1fr; }
+    }
+
+    .metric {
+      background: var(--void-2);
+      border: 1px solid var(--light-08);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .metric.mint::before { background: linear-gradient(90deg, var(--mint), transparent 80%); }
+    .metric.violet::before { background: linear-gradient(90deg, var(--violet), transparent 80%); }
+    .metric.coral::before { background: linear-gradient(90deg, var(--coral), transparent 80%); }
+    .metric.amber::before { background: linear-gradient(90deg, var(--amber), transparent 80%); }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-35);
+      margin-bottom: 12px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric.mint .metric-value { color: var(--mint); text-shadow: 0 0 30px var(--mint-glow); }
+    .metric.violet .metric-value { color: var(--violet); text-shadow: 0 0 30px var(--violet-glow); }
+    .metric.coral .metric-value { color: var(--coral); text-shadow: 0 0 30px var(--coral-glow); }
+    .metric.amber .metric-value { color: var(--amber); text-shadow: 0 0 30px var(--amber-glow); }
+
+    .metric-unit {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--light-55);
+    }
+
+    .metric-spark {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 32px;
+      margin-top: 16px;
+    }
+
+    .spark {
+      flex: 1;
+      border-radius: 2px;
+      opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+
+    .spark:hover { opacity: 1; }
+
+    .metric.mint .spark { background: var(--mint); }
+    .metric.violet .spark { background: var(--violet); }
+    .metric.coral .spark { background: var(--coral); }
+    .metric.amber .spark { background: var(--amber); }
+
+    /* ================================================
+       TERMINAL — Multi-signal
+    ================================================ */
+
+    .terminal {
+      background: var(--void-2);
+      border: 1px solid var(--light-08);
+      border-radius: 20px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+    }
+
+    .terminal-bar {
+      padding: 14px 20px;
+      background: var(--void-3);
+      border-bottom: 1px solid var(--light-08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--light-75);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .terminal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: var(--mint); box-shadow: 0 0 8px var(--mint-glow); }
+    .terminal-dot:nth-child(2) { background: var(--violet); box-shadow: 0 0 8px var(--violet-glow); }
+    .terminal-dot:nth-child(3) { background: var(--coral); box-shadow: 0 0 8px var(--coral-glow); }
+
+    .terminal-meta {
+      font-size: 10px;
+      color: var(--light-35);
+    }
+
+    .terminal-body {
+      padding: 20px;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.1s;
+    }
+
+    .t-line:hover {
+      background: var(--light-08);
+    }
+
+    .t-time {
+      color: var(--light-35);
+      font-size: 10px;
+      min-width: 50px;
+    }
+
+    .t-prompt {
+      font-weight: 600;
+    }
+
+    .t-prompt.mint { color: var(--mint); }
+    .t-prompt.violet { color: var(--violet); }
+    .t-prompt.coral { color: var(--coral); }
+    .t-prompt.cyan { color: var(--cyan); }
+
+    .t-text {
+      color: var(--light-75);
+    }
+
+    .t-val {
+      font-weight: 600;
+    }
+
+    .t-val.mint { color: var(--mint); }
+    .t-val.violet { color: var(--violet); }
+    .t-val.coral { color: var(--coral); }
+    .t-val.amber { color: var(--amber); }
+    .t-val.cyan { color: var(--cyan); }
+
+    .t-tag {
+      margin-left: auto;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .t-tag.ok {
+      background: var(--mint-wash);
+      color: var(--mint);
+    }
+
+    .t-tag.pending {
+      background: var(--amber-wash);
+      color: var(--amber);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ================================================
+       BEETLE CARD — Gradient border
+    ================================================ */
+
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .identity-grid { grid-template-columns: 1fr; }
+    }
+
+    .beetle-card {
+      background: var(--void-2);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gradient border effect */
+    .beetle-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: var(--gradient-main);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .beetle-card::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--violet-wash) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .beetle-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .beetle-rank {
+      display: inline-flex;
+      padding: 8px 16px;
+      background: var(--gradient-main);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--void);
+      margin-bottom: 24px;
+    }
+
+    .beetle-visual {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .beetle-shell {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--void-4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gradient border on shell */
+    .beetle-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: var(--gradient-main);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .beetle-shell::after {
+      content: 'S';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-mono);
+      font-size: 42px;
+      font-weight: 800;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-eco);
+      box-shadow: 0 0 30px var(--violet-glow);
+      animation: pulse-boulder 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-boulder {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.9; }
+    }
+
+    .beetle-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .beetle-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--light-100);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .beetle-title {
+      font-size: 13px;
+      color: var(--light-55);
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .beetle-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-08);
+    }
+
+    .beetle-stat {
+      text-align: center;
+    }
+
+    .beetle-stat-value {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .beetle-stat:nth-child(1) .beetle-stat-value { color: var(--violet); }
+    .beetle-stat:nth-child(2) .beetle-stat-value { color: var(--mint); }
+    .beetle-stat:nth-child(3) .beetle-stat-value { color: var(--coral); }
+
+    .beetle-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-35);
+      margin-top: 4px;
+    }
+
+    /* ================================================
+       CLAIM CARD
+    ================================================ */
+
+    .claim-card {
+      background: var(--void-2);
+      border: 1px solid var(--light-08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .claim-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--light-08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .claim-header-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-35);
+    }
+
+    .claim-header-value {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      background: var(--gradient-eco);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .claim-list {
+      padding: 12px;
+    }
+
+    .claim-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      transition: background 0.15s;
+    }
+
+    .claim-item:hover {
+      background: var(--light-08);
+    }
+
+    .claim-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .claim-icon.eco { background: var(--violet-wash); }
+    .claim-icon.fit { background: var(--mint-wash); }
+
+    .claim-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--light-100);
+      font-size: 13px;
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--light-35);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-action {
+      padding: 16px 20px;
+    }
+
+    .btn-gradient {
+      width: 100%;
+      padding: 16px;
+      background: var(--gradient-eco);
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--void);
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px var(--violet-glow);
+    }
+
+    /* ================================================
+       ACTIVITY FEED
+    ================================================ */
+
+    .feed {
+      background: var(--void-2);
+      border: 1px solid var(--light-08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .feed-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--light-08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .feed-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-55);
+    }
+
+    .feed-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mint);
+    }
+
+    .feed-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 8px var(--mint-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--light-08);
+      transition: background 0.15s;
+    }
+
+    .feed-item:last-child {
+      border-bottom: none;
+    }
+
+    .feed-item:hover {
+      background: var(--light-08);
+    }
+
+    .feed-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .feed-icon.mint { background: var(--mint-wash); }
+    .feed-icon.violet { background: var(--violet-wash); }
+    .feed-icon.coral { background: var(--coral-wash); }
+
+    .feed-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .feed-action {
+      font-weight: 600;
+      color: var(--light-100);
+      font-size: 13px;
+    }
+
+    .feed-detail {
+      font-size: 11px;
+      color: var(--light-35);
+    }
+
+    .feed-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .feed-amount.positive { color: var(--mint); }
+    .feed-amount.neutral { color: var(--violet); }
+
+    .feed-time {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--light-35);
+      text-align: right;
+    }
+
+    /* ================================================
+       WAVEFORM — Gradient
+    ================================================ */
+
+    .waveform-card {
+      background: var(--void-2);
+      border: 1px solid var(--light-08);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .waveform-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+
+    .waveform-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-35);
+    }
+
+    .waveform-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--mint);
+    }
+
+    .waveform-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 100px;
+    }
+
+    .wave {
+      flex: 1;
+      border-radius: 3px;
+      background: var(--gradient-fitness);
+      opacity: 0.7;
+      transition: opacity 0.1s, transform 0.1s;
+    }
+
+    .wave:hover {
+      opacity: 1;
+      transform: scaleY(1.05);
+      transform-origin: bottom;
+    }
+
+    /* ================================================
+       BUTTON VARIANTS
+    ================================================ */
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-mint {
+      background: var(--mint);
+      color: var(--void);
+    }
+
+    .btn-mint:hover {
+      box-shadow: 0 0 30px var(--mint-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-violet {
+      background: var(--violet);
+      color: var(--void);
+    }
+
+    .btn-violet:hover {
+      box-shadow: 0 0 30px var(--violet-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-coral {
+      background: var(--coral);
+      color: var(--void);
+    }
+
+    .btn-coral:hover {
+      box-shadow: 0 0 30px var(--coral-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-gradient-full {
+      background: var(--gradient-main);
+      color: var(--void);
+    }
+
+    .btn-gradient-full:hover {
+      box-shadow: 0 0 30px var(--violet-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--light-15);
+      color: var(--light-75);
+    }
+
+    .btn-ghost:hover {
+      background: var(--light-08);
+      border-color: var(--light-35);
+    }
+
+    /* ================================================
+       LAYOUT
+    ================================================ */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1000px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================
+       SUMMARY
+    ================================================ */
+
+    .summary {
+      margin-top: 100px;
+      padding: 48px;
+      background: var(--void-2);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: var(--gradient-main);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .summary-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .summary h2 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 32px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: 800px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    .summary-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--light-100);
+      margin-bottom: 8px;
+    }
+
+    .summary-item p {
+      font-size: 13px;
+      color: var(--light-55);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient">
+    <div class="ambient-orb mint"></div>
+    <div class="ambient-orb violet"></div>
+    <div class="ambient-orb coral"></div>
+  </div>
+
+  <div class="content">
+
+    <header class="header">
+      <div class="header-tag">Multi-Signal System</div>
+      <h1 class="header-title">Color <span class="gradient">With Purpose</span></h1>
+      <p class="header-desc">Each color represents a distinct data domain. Mint for fitness/performance. Violet for economy/tokens. Coral for action states. Amber for time/urgency. The gradient becomes your signature.</p>
+    </header>
+
+    <!-- LEGEND -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <span class="section-title">Signal Legend</span>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot mint"></div>
+          <span class="legend-label">Mint</span>
+          <span class="legend-desc">— Fitness, TSS, Performance</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot violet"></div>
+          <span class="legend-label">Violet</span>
+          <span class="legend-desc">— Economy, DUNG, Value</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot coral"></div>
+          <span class="legend-label">Coral</span>
+          <span class="legend-desc">— Action, CTAs, Energy</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot amber"></div>
+          <span class="legend-label">Amber</span>
+          <span class="legend-desc">— Time, Urgency, Pending</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot cyan"></div>
+          <span class="legend-label">Cyan</span>
+          <span class="legend-desc">— System, Info, Neutral</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <span class="section-title">Color-Coded Metrics</span>
+      </div>
+      <div class="metric-grid">
+        <div class="metric violet">
+          <div class="metric-label">Boulder</div>
+          <div class="metric-value">8,450</div>
+          <div class="metric-unit">DUNG balance</div>
+          <div class="metric-spark">
+            <div class="spark" style="height: 45%;"></div>
+            <div class="spark" style="height: 62%;"></div>
+            <div class="spark" style="height: 58%;"></div>
+            <div class="spark" style="height: 71%;"></div>
+            <div class="spark" style="height: 85%;"></div>
+            <div class="spark" style="height: 78%;"></div>
+            <div class="spark" style="height: 92%;"></div>
+          </div>
+        </div>
+        <div class="metric mint">
+          <div class="metric-label">Weekly TSS</div>
+          <div class="metric-value">847</div>
+          <div class="metric-unit">stress score</div>
+          <div class="metric-spark">
+            <div class="spark" style="height: 30%;"></div>
+            <div class="spark" style="height: 48%;"></div>
+            <div class="spark" style="height: 55%;"></div>
+            <div class="spark" style="height: 72%;"></div>
+            <div class="spark" style="height: 88%;"></div>
+            <div class="spark" style="height: 95%;"></div>
+            <div class="spark" style="height: 100%;"></div>
+          </div>
+        </div>
+        <div class="metric coral">
+          <div class="metric-label">CAL Balance</div>
+          <div class="metric-value">1,847</div>
+          <div class="metric-unit">of 2,500 daily</div>
+          <div class="metric-spark">
+            <div class="spark" style="height: 100%;"></div>
+            <div class="spark" style="height: 95%;"></div>
+            <div class="spark" style="height: 88%;"></div>
+            <div class="spark" style="height: 82%;"></div>
+            <div class="spark" style="height: 78%;"></div>
+            <div class="spark" style="height: 74%;"></div>
+            <div class="spark" style="height: 74%;"></div>
+          </div>
+        </div>
+        <div class="metric amber">
+          <div class="metric-label">Epoch Ends</div>
+          <div class="metric-value">2d 14h</div>
+          <div class="metric-unit">until distribution</div>
+          <div class="metric-spark">
+            <div class="spark" style="height: 15%;"></div>
+            <div class="spark" style="height: 22%;"></div>
+            <div class="spark" style="height: 30%;"></div>
+            <div class="spark" style="height: 42%;"></div>
+            <div class="spark" style="height: 55%;"></div>
+            <div class="spark" style="height: 70%;"></div>
+            <div class="spark" style="height: 88%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERMINAL -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <span class="section-title">Multi-Signal Terminal</span>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="terminal-dots">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+            <span>roll@dung-beetle</span>
+          </div>
+          <div class="terminal-meta">mainnet-beta · slot 284,291,847</div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-time">14:32:08</span>
+            <span class="t-prompt cyan">→</span>
+            <span class="t-text">connecting indexer</span>
+            <span class="t-tag ok">OK</span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:09</span>
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">ingest <span class="t-val mint">crit-session.fit</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:11</span>
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">parsed <span class="t-val mint">847</span> points · duration <span class="t-val mint">1h 42m</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:11</span>
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS calculated: <span class="t-val mint">118</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:12</span>
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:12</span>
+            <span class="t-prompt coral">●</span>
+            <span class="t-text">CAL burned: <span class="t-val coral">900</span> across 9 piles</span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:14</span>
+            <span class="t-prompt cyan">→</span>
+            <span class="t-text">submit solana</span>
+            <span class="t-tag pending">PENDING</span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:16</span>
+            <span class="t-prompt cyan">→</span>
+            <span class="t-text">tx <span class="t-val cyan">8fjK...Xa3</span></span>
+            <span class="t-tag ok">CONFIRMED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDENTITY + CLAIM -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <span class="section-title">Identity & Actions</span>
+      </div>
+      <div class="identity-grid">
+        <div class="beetle-card">
+          <div class="beetle-content">
+            <div class="beetle-rank">S RANK</div>
+            <div class="beetle-visual">
+              <div class="beetle-shell"></div>
+              <div class="beetle-boulder"></div>
+            </div>
+            <div class="beetle-id">Beetle #4821</div>
+            <div class="beetle-name">booka_shade</div>
+            <div class="beetle-title">"The Alpine Assassin"</div>
+            <div class="beetle-stats">
+              <div class="beetle-stat">
+                <div class="beetle-stat-value">8,450</div>
+                <div class="beetle-stat-label">Boulder</div>
+              </div>
+              <div class="beetle-stat">
+                <div class="beetle-stat-value">23</div>
+                <div class="beetle-stat-label">Piles</div>
+              </div>
+              <div class="beetle-stat">
+                <div class="beetle-stat-value">285w</div>
+                <div class="beetle-stat-label">FTP</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="claim-card">
+          <div class="claim-header">
+            <span class="claim-header-label">Unclaimed Rewards</span>
+            <span class="claim-header-value">+36.5 DUNG</span>
+          </div>
+          <div class="claim-list">
+            <div class="claim-item">
+              <div class="claim-icon eco">💎</div>
+              <div class="claim-info">
+                <div class="claim-name">PHILLY CRIT CIRCUIT</div>
+                <div class="claim-detail">Leaderboard #1 + stake rewards</div>
+              </div>
+              <div class="claim-amount">+18.4</div>
+            </div>
+            <div class="claim-item">
+              <div class="claim-icon eco">📍</div>
+              <div class="claim-info">
+                <div class="claim-name">COL DU BAS BOIS</div>
+                <div class="claim-detail">Leaderboard #2</div>
+              </div>
+              <div class="claim-amount">+14.8</div>
+            </div>
+            <div class="claim-item">
+              <div class="claim-icon fit">🦢</div>
+              <div class="claim-info">
+                <div class="claim-name">SOUTH HILL CLIMB</div>
+                <div class="claim-detail">Swanny seat dividend</div>
+              </div>
+              <div class="claim-amount">+3.3</div>
+            </div>
+          </div>
+          <div class="claim-action">
+            <button class="btn-gradient">CLAIM ALL → 36.5 DUNG</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEED + WAVEFORM -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <span class="section-title">Activity & Data</span>
+      </div>
+      <div class="grid-2">
+        <div class="feed">
+          <div class="feed-header">
+            <span class="feed-title">Recent Activity</span>
+            <span class="feed-live">Live</span>
+          </div>
+          <div class="feed-item">
+            <div class="feed-icon mint">🚴</div>
+            <div class="feed-content">
+              <div class="feed-action">TSS Reward</div>
+              <div class="feed-detail">Ride #847 · 9 pile crossings</div>
+            </div>
+            <div>
+              <div class="feed-amount positive">+118.0</div>
+              <div class="feed-time">2m ago</div>
+            </div>
+          </div>
+          <div class="feed-item">
+            <div class="feed-icon violet">💰</div>
+            <div class="feed-content">
+              <div class="feed-action">Staked in PHILLY CRIT</div>
+              <div class="feed-detail">420 DUNG (6.2% of pool)</div>
+            </div>
+            <div>
+              <div class="feed-amount neutral">−120.0</div>
+              <div class="feed-time">14m ago</div>
+            </div>
+          </div>
+          <div class="feed-item">
+            <div class="feed-icon coral">🎯</div>
+            <div class="feed-content">
+              <div class="feed-action">Epoch 46 Claimed</div>
+              <div class="feed-detail">3 piles · 1 swanny seat</div>
+            </div>
+            <div>
+              <div class="feed-amount positive">+147.0</div>
+              <div class="feed-time">2d ago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="waveform-card">
+          <div class="waveform-header">
+            <span class="waveform-label">30-Day TSS</span>
+            <span class="waveform-value">12,450</span>
+          </div>
+          <div class="waveform-bars">
+            <div class="wave" style="height: 35%;"></div>
+            <div class="wave" style="height: 42%;"></div>
+            <div class="wave" style="height: 38%;"></div>
+            <div class="wave" style="height: 55%;"></div>
+            <div class="wave" style="height: 48%;"></div>
+            <div class="wave" style="height: 62%;"></div>
+            <div class="wave" style="height: 58%;"></div>
+            <div class="wave" style="height: 71%;"></div>
+            <div class="wave" style="height: 65%;"></div>
+            <div class="wave" style="height: 78%;"></div>
+            <div class="wave" style="height: 72%;"></div>
+            <div class="wave" style="height: 85%;"></div>
+            <div class="wave" style="height: 82%;"></div>
+            <div class="wave" style="height: 88%;"></div>
+            <div class="wave" style="height: 75%;"></div>
+            <div class="wave" style="height: 92%;"></div>
+            <div class="wave" style="height: 88%;"></div>
+            <div class="wave" style="height: 95%;"></div>
+            <div class="wave" style="height: 85%;"></div>
+            <div class="wave" style="height: 100%;"></div>
+            <div class="wave" style="height: 92%;"></div>
+            <div class="wave" style="height: 88%;"></div>
+            <div class="wave" style="height: 82%;"></div>
+            <div class="wave" style="height: 78%;"></div>
+            <div class="wave" style="height: 85%;"></div>
+            <div class="wave" style="height: 90%;"></div>
+            <div class="wave" style="height: 95%;"></div>
+            <div class="wave" style="height: 88%;"></div>
+            <div class="wave" style="height: 92%;"></div>
+            <div class="wave" style="height: 98%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <span class="section-title">Button System</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-mint">Upload Ride</button>
+        <button class="btn btn-violet">Stake DUNG</button>
+        <button class="btn btn-coral">Claim Rewards</button>
+        <button class="btn btn-gradient-full">Connect Wallet</button>
+        <button class="btn btn-ghost">Learn More</button>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      <div class="summary-content">
+        <h2>Multi-Signal Design System</h2>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <h3>Semantic Color</h3>
+            <p>Each color maps to a data domain. Mint = fitness/performance. Violet = economy/tokens. Coral = actions/energy. Amber = time/urgency. Users learn the system unconsciously — glancing at the screen tells them what type of information they're looking at.</p>
+          </div>
+          <div class="summary-item">
+            <h3>Gradient as Signature</h3>
+            <p>The mint→violet→coral gradient becomes the brand signature. Used on borders, buttons, text highlights, and the beetle identity. It's immediately recognizable and ties the multi-color system together into a cohesive visual language.</p>
+          </div>
+          <div class="summary-item">
+            <h3>Ambient Atmosphere</h3>
+            <p>Floating color orbs in the background create depth without distraction. They drift slowly, suggesting life and energy. The interface feels alive without being busy. This is borrowed from modern social apps but applied subtly.</p>
+          </div>
+          <div class="summary-item">
+            <h3>Higher Contrast</h3>
+            <p>Text legibility improved from the 2027 study. Primary text at 92% opacity, secondary at 75%, tertiary at 55%. Labels at 35%. All pass WCAG AA. The void base makes every color pop without competing.</p>
+          </div>
+          <div class="summary-item">
+            <h3>Terminal Integration</h3>
+            <p>The terminal uses different prompt symbols and colors for different data types. Fitness data gets mint (◆), economic data gets violet (◇), action states get coral (●), system messages get cyan (→). Power users can scan the log by color.</p>
+          </div>
+          <div class="summary-item">
+            <h3>Identity Card</h3>
+            <p>The beetle card uses the gradient border and gradient text to tie together the multi-color system. Stats are color-coded by domain. The boulder pulses with the violet→coral gradient. It's unmistakably yours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

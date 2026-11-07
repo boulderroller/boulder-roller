@@ -1,0 +1,268 @@
+{
+  "source": "Finish Lines review page https://claude.ai/artifact/F4oJ6qKAYTGM3mfYZ4s6V7 (collection decisions)",
+  "reviewed_by": "Tim (founder)",
+  "reviewed_on": "2026-10-20",
+  "summary": {
+    "approve": 15,
+    "adjust": 0,
+    "field_check": 0
+  },
+  "note": "Positions shown on the page were the reviewed positions; West School House showed 32.89 m before fix round 1 snapped its cut to the profile point 0.9 m upstream (rule M1).",
+  "decisions": [
+    {
+      "registry_id": "b51920f8-4707-4984-890d-656c7078f36a",
+      "climb": "Black Rock Road",
+      "decision": "approve",
+      "finish_m_before_junction": 32.14,
+      "note": "",
+      "updated_at": "2026-10-20T19:05:57.502Z"
+    },
+    {
+      "registry_id": "13ab82c7-063a-4178-b753-fa56a56ef4f6",
+      "climb": "Calumet Street / West Coulter Street",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:09.650Z"
+    },
+    {
+      "registry_id": "c73804d9-bc01-40fb-b510-4091c944f156",
+      "climb": "Centennial Road",
+      "decision": "approve",
+      "finish_m_before_junction": 27.64,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:13.525Z"
+    },
+    {
+      "registry_id": "9a9b1cb6-1eba-420b-ad88-04726980cc21",
+      "climb": "Conshohocken State Road",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:20.117Z"
+    },
+    {
+      "registry_id": "8254f8ea-be7a-4a73-b988-0f305407d0f6",
+      "climb": "Ellis Road",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:23.846Z"
+    },
+    {
+      "registry_id": "27137dbc-5bbe-4b2a-9388-f39f14cfce2a",
+      "climb": "Falls Road / Conshohocken Avenue",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:26.227Z"
+    },
+    {
+      "registry_id": "98cf1c5e-138e-45aa-9350-fbf40fe77bd0",
+      "climb": "Gay Street",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:28.391Z"
+    },
+    {
+      "registry_id": "35fc7a81-3199-498c-9249-e24a8661c420",
+      "climb": "Leverington Avenue",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:31.227Z"
+    },
+    {
+      "registry_id": "372f52a5-1c88-4e49-97eb-f3887e68166f",
+      "climb": "Midvale Avenue",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:34.036Z"
+    },
+    {
+      "registry_id": "b6029653-5b11-4f55-98a8-8e33554caa98",
+      "climb": "Port Royal Avenue",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:38.082Z"
+    },
+    {
+      "registry_id": "cfd560e9-1f8d-4464-b192-2ad44de97ee2",
+      "climb": "Shurs Lane",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:41.019Z"
+    },
+    {
+      "registry_id": "cfaea96b-d478-4d39-a47c-30e3e3bf6bc3",
+      "climb": "West School House Lane",
+      "decision": "approve",
+      "finish_m_before_junction": 32.89,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:44.119Z"
+    },
+    {
+      "registry_id": "43f15658-a824-438d-9925-e61c67ddabe9",
+      "climb": "Wises Mill Road",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:46.806Z"
+    },
+    {
+      "registry_id": "beb71d2e-d725-4034-91d0-04a06233639b",
+      "climb": "Wynnefield Avenue",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:49.119Z"
+    },
+    {
+      "registry_id": "3312d952-a916-4425-af45-03f83994a640",
+      "climb": "Youngs Ford Road",
+      "decision": "approve",
+      "finish_m_before_junction": 27,
+      "note": "",
+      "updated_at": "2026-10-20T19:06:51.661Z"
+    }
+  ],
+  "amendments": [
+    {
+      "registry_id": "43f15658-a824-438d-9925-e61c67ddabe9",
+      "climb": "Wises Mill Road",
+      "decision": "approve",
+      "finish_m_before_junction": 30.0,
+      "approved_position": {
+        "lat": 40.05390761234485,
+        "lon": -75.23084522693883,
+        "setback_from_junction_m": 30.0
+      },
+      "approved_by": "Tim",
+      "approved_on": "2026-10-20",
+      "approval_quote": "yes shift both back",
+      "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-3.md",
+      "requested_setback_m": 30.0,
+      "previous_approved_position": {
+        "lat": 40.05389179794209,
+        "lon": -75.23087378410072,
+        "setback_from_junction_m": 27
+      },
+      "source": {
+        "commit": "18a4fb39c8d087250ca4e7684a34b1660460bca4",
+        "path": "history/codex-reports-2026-10-20/stop-map/RESULTS.json",
+        "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d",
+        "evidence_class": "consented_single_rider_aggregate_stop_spot",
+        "position_precision_decimal_places": 5
+      },
+      "spot": {
+        "class": "likely unmapped control",
+        "confidence": "low",
+        "day_count": 6,
+        "direction": {
+          "along_osm_way": "backward",
+          "bearing_deg": 236
+        },
+        "matched_control": null,
+        "median_length_s": 24.0,
+        "osm_way_id": 1218053063,
+        "position": {
+          "lat": 40.05383,
+          "lon": -75.23099
+        },
+        "position_spread_m": {
+          "iqr": 4.1,
+          "p90_minus_p10": 8.0
+        },
+        "reason": "short pauses before a junction; map omission is unconfirmed",
+        "ride_count": 6,
+        "rider_count": 1,
+        "spot_id": "spot-0387",
+        "stop_count": 6
+      },
+      "clearance_note": "Apply the approved nominal setback and at least 15 m upstream clearance from the published aggregate; then M1 and the existing 0.5 m position binding. This is not a surveyed stop line."
+    },
+    {
+      "registry_id": "c73804d9-bc01-40fb-b510-4091c944f156",
+      "climb": "Centennial Road",
+      "decision": "approve",
+      "finish_m_before_junction": 29.0,
+      "approved_position": {
+        "lat": 40.02345272756255,
+        "lon": -75.25512252974858,
+        "setback_from_junction_m": 29.0
+      },
+      "approved_by": "Tim",
+      "approved_on": "2026-10-20",
+      "approval_quote": "yes shift both back",
+      "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-3.md",
+      "requested_setback_m": 29.0,
+      "previous_approved_position": {
+        "lat": 40.0234460267485,
+        "lon": -75.25513589107968,
+        "setback_from_junction_m": 27.64
+      },
+      "source": {
+        "commit": "18a4fb39c8d087250ca4e7684a34b1660460bca4",
+        "path": "history/codex-reports-2026-10-20/stop-map/RESULTS.json",
+        "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d",
+        "evidence_class": "consented_single_rider_aggregate_stop_spot",
+        "position_precision_decimal_places": 5
+      },
+      "spot": {
+        "class": "mapped control",
+        "confidence": "medium",
+        "day_count": 6,
+        "direction": {
+          "along_osm_way": "backward",
+          "bearing_deg": 240
+        },
+        "matched_control": {
+          "kind": "stop",
+          "osm_node_id": 5673550132
+        },
+        "median_length_s": 10.0,
+        "osm_way_id": 12333811,
+        "position": {
+          "lat": 40.02338,
+          "lon": -75.25527
+        },
+        "position_spread_m": {
+          "iqr": 4.2,
+          "p90_minus_p10": 8.3
+        },
+        "reason": "applicable control within 40 m on the connected approach; cause is inferred",
+        "ride_count": 6,
+        "rider_count": 1,
+        "spot_id": "spot-0019",
+        "stop_count": 7
+      },
+      "clearance_note": "Apply the approved nominal setback and at least 15 m upstream clearance from the published aggregate; then M1 and the existing 0.5 m position binding. This is not a surveyed stop line."
+    },
+    {
+      "registry_id": "d4716fc9-c7d8-4c04-8d5b-fe97188c5122",
+      "climb": "Lafayette Road",
+      "decision": "extend_crest",
+      "finish_at": "lump crest",
+      "finish_m_past_current": 715.53,
+      "reason": "The founder chose the natural top: bear left on Lafayette at Stony Lane and continue up the lump. The bend cuts off the climb and two corner-cutting efforts miss its line. The new line is 106.7 m before Conshohocken State Road with no nearby traffic control; D7.5 junction setbacks do not apply.",
+      "type": "crest finish (founder-approved)",
+      "approved_by": "Tim (founder)",
+      "approved_at": "2026-10-21T00:13:00Z",
+      "approval_quote": "decision: \"extend_crest\", finish_at: \"lump crest\", finish_m_past_current: 715.53",
+      "authority": "history/codex-briefs-2026-10-20/lafayette-crest.md",
+      "approved_position": {
+        "exact_gate": null,
+        "label": "Lafayette Road lump crest, downhill edge of the flat top",
+        "lat": 40.05129374835202,
+        "lon": -75.29571220380879,
+        "osm_node_id": null,
+        "resolved_offset_m": 0.0
+      },
+      "publication_authorized": false
+    }
+  ]
+}

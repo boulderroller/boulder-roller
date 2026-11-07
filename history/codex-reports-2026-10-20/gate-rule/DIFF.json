@@ -1,0 +1,3301 @@
+{
+  "climbs": [
+    {
+      "canon_id": "28e5fdf1-f1d2-4e1f-8560-86ab5db688ca",
+      "finish_moved": false,
+      "name": "Jefferson Street / North Woodbine Avenue",
+      "new": {
+        "avg_gradient_pct": 4.301,
+        "gate_end_wkt": "LINESTRING(-75.2501137 40.0236583, -75.2498155 40.0232715)",
+        "length_m": 2031.31,
+        "max_gradient_pct": 27.888,
+        "vert_m": 87.36
+      },
+      "old": {
+        "avg_gradient_pct": 4.301,
+        "gate_end_wkt": "LINESTRING(-75.2501137 40.0236583, -75.2498155 40.0232715)",
+        "length_m": 2031.31,
+        "max_gradient_pct": 27.888,
+        "vert_m": 87.36
+      },
+      "registry_id": "aec5dcc5-ea67-46ec-8b8a-4f0d77fa1862",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "84862018-534e-4966-9abc-0746a5510b11",
+      "control_types": [
+        "all_way_stop"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.99999942247814,
+      "name": "Port Royal Avenue",
+      "new": {
+        "avg_gradient_pct": 6.185,
+        "gate_end_wkt": "LINESTRING(-75.2415006 40.0571773, -75.2419099 40.0574999)",
+        "length_m": 1503.43,
+        "max_gradient_pct": 27.188,
+        "vert_m": 92.98
+      },
+      "new_gate_center": {
+        "lat": 40.0573386,
+        "lon": -75.24170525
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2415006,
+          40.0571773
+        ],
+        [
+          -75.2419099,
+          40.0574999
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 6.081,
+        "gate_end_wkt": "LINESTRING(-75.2412732 40.0573467, -75.2416822 40.0576689)",
+        "length_m": 1530.43,
+        "max_gradient_pct": 27.188,
+        "vert_m": 93.07
+      },
+      "registry_id": "b6029653-5b11-4f55-98a8-8e33554caa98",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1530.428835196359,
+            "kind": "all_way_stop",
+            "lat": 40.0575078,
+            "lon": -75.2414777,
+            "node_id": 110443757,
+            "tags": {
+              "highway": "stop",
+              "stop": "all"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.0573385961658,
+            "lon": -75.24170523508451,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1530.428835196359,
+          "lat": 40.0575078,
+          "lon": -75.2414777,
+          "node_id": 110443757
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 26.99999942247814,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2412732 40.0573467, -75.2416822 40.0576689)",
+        "predecessor_fingerprint": "2a260047ed00fcc757867345844fc7b0655ad7a8e9a94a44e10aac6735f77dfe",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.99999942247814,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "a36ed516-82a2-4bb8-a14b-c21e34281db5",
+      "finish_moved": false,
+      "name": "Rose Glen Road",
+      "new": {
+        "avg_gradient_pct": 5.334,
+        "gate_end_wkt": "LINESTRING(-75.278527 40.0404051, -75.2783848 40.0399693)",
+        "length_m": 1623.37,
+        "max_gradient_pct": 31.89,
+        "vert_m": 86.59
+      },
+      "old": {
+        "avg_gradient_pct": 5.334,
+        "gate_end_wkt": "LINESTRING(-75.278527 40.0404051, -75.2783848 40.0399693)",
+        "length_m": 1623.37,
+        "max_gradient_pct": 31.89,
+        "vert_m": 86.59
+      },
+      "registry_id": "04cd0ed7-d210-4885-9abd-38be688274a5",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "6d5c0bbc-6eb2-43a8-9929-db97a65d1155",
+      "control_types": [
+        "stop_ratified_direction_unknown"
+      ],
+      "finish_moved": true,
+      "metres_moved": 27.000000403860668,
+      "name": "Youngs Ford Road",
+      "new": {
+        "avg_gradient_pct": 4.119,
+        "gate_end_wkt": "LINESTRING(-75.2798131 40.044445, -75.2793451 40.0447166)",
+        "length_m": 2010.01,
+        "max_gradient_pct": 25.654,
+        "vert_m": 82.8
+      },
+      "new_gate_center": {
+        "lat": 40.044580800000006,
+        "lon": -75.2795791
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2798131,
+          40.044445
+        ],
+        [
+          -75.2793451,
+          40.0447166
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 4.149,
+        "gate_end_wkt": "LINESTRING(-75.2796213 40.0442516, -75.2791537 40.044523)",
+        "length_m": 2037.01,
+        "max_gradient_pct": 25.654,
+        "vert_m": 84.52
+      },
+      "registry_id": "3312d952-a916-4425-af45-03f83994a640",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 2037.010349606484,
+            "kind": "stop_ratified_direction_unknown",
+            "lat": 40.044387300000004,
+            "lon": -75.2793875,
+            "node_id": 111663714,
+            "tags": {
+              "highway": "stop"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.04458080086323,
+            "lon": -75.27957911275283,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 2037.010349606484,
+          "lat": 40.044387300000004,
+          "lon": -75.2793875,
+          "node_id": 111663714
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 27.000000403860668,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2796213 40.0442516, -75.2791537 40.044523)",
+        "predecessor_fingerprint": "c1b072c5dcb791b534b6ba287a71e605c2b5a42bffe63c94a697bccb653d6ce6",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 27.00000040323107,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "978c610a-57cf-415a-af70-f19c31cb6bcd",
+      "finish_moved": false,
+      "name": "Conshohocken State Road",
+      "new": {
+        "avg_gradient_pct": 7.906,
+        "gate_end_wkt": "LINESTRING(-75.2780802 40.0379116, -75.278581 40.0376776)",
+        "length_m": 1023.52,
+        "max_gradient_pct": 34.75,
+        "vert_m": 80.92
+      },
+      "old": {
+        "avg_gradient_pct": 7.906,
+        "gate_end_wkt": "LINESTRING(-75.2780802 40.0379116, -75.278581 40.0376776)",
+        "length_m": 1023.52,
+        "max_gradient_pct": 34.75,
+        "vert_m": 80.92
+      },
+      "registry_id": "9358a8db-3ab7-4ead-90dd-41c10d31e379",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "a219a65b-8c32-420a-98e0-bce5502f5fe8",
+      "finish_moved": false,
+      "name": "Manor Road",
+      "new": {
+        "avg_gradient_pct": 3.393,
+        "gate_end_wkt": "LINESTRING(-75.2482003 40.0749055, -75.2486721 40.0751727)",
+        "length_m": 2492.72,
+        "max_gradient_pct": 19.601,
+        "vert_m": 84.58
+      },
+      "old": {
+        "avg_gradient_pct": 3.393,
+        "gate_end_wkt": "LINESTRING(-75.2482003 40.0749055, -75.2486721 40.0751727)",
+        "length_m": 2492.72,
+        "max_gradient_pct": 19.601,
+        "vert_m": 84.58
+      },
+      "registry_id": "9592cc22-76ad-4266-8066-3753f7845fcd",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "237879b5-c4e0-45ca-8576-753bca2ef350",
+      "finish_moved": false,
+      "name": "Righters Mill Road",
+      "new": {
+        "avg_gradient_pct": 8.889,
+        "gate_end_wkt": "LINESTRING(-75.2780652 40.0358044, -75.2785012 40.035504)",
+        "length_m": 862.39,
+        "max_gradient_pct": 43.067,
+        "vert_m": 76.66
+      },
+      "old": {
+        "avg_gradient_pct": 8.889,
+        "gate_end_wkt": "LINESTRING(-75.2780652 40.0358044, -75.2785012 40.035504)",
+        "length_m": 862.39,
+        "max_gradient_pct": 43.067,
+        "vert_m": 76.66
+      },
+      "registry_id": "82182865-4b21-4468-abb6-73b1f92b372d",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "8761b9a4-ae3b-4206-be17-6da0cb91ff1a",
+      "finish_moved": false,
+      "name": "Valley Green Road",
+      "new": {
+        "avg_gradient_pct": 6.377,
+        "gate_end_wkt": "LINESTRING(-75.2080546 40.0609637, -75.2083798 40.0613375)",
+        "length_m": 1102.36,
+        "max_gradient_pct": 50.414,
+        "vert_m": 70.3
+      },
+      "old": {
+        "avg_gradient_pct": 6.377,
+        "gate_end_wkt": "LINESTRING(-75.2080546 40.0609637, -75.2083798 40.0613375)",
+        "length_m": 1102.36,
+        "max_gradient_pct": 50.414,
+        "vert_m": 70.3
+      },
+      "registry_id": "8582724d-5ad5-43ae-a88f-7759b9e7ed61",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "e63cabfd-c6a4-4460-9e58-d63eb516a406",
+      "finish_moved": true,
+      "metres_extended": 715.5300000000002,
+      "name": "Lafayette Road",
+      "new": {
+        "avg_gradient_pct": 4.513,
+        "gate_end_wkt": "LINESTRING(-75.2958554 40.0514897, -75.295569 40.0510978)",
+        "length_m": 2244.4,
+        "max_gradient_pct": 24.944,
+        "vert_m": 101.3
+      },
+      "new_gate_center": {
+        "lat": 40.05129375,
+        "lon": -75.2957122
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2958554,
+          40.0514897
+        ],
+        [
+          -75.295569,
+          40.0510978
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 4.858,
+        "gate_end_wkt": "LINESTRING(-75.290271 40.0549764, -75.2897062 40.0548548)",
+        "length_m": 1528.87,
+        "max_gradient_pct": 24.944,
+        "vert_m": 74.28
+      },
+      "registry_id": "d4716fc9-c7d8-4c04-8d5b-fe97188c5122",
+      "rule": {
+        "algorithm": "canon_ratified_boundaries_v1",
+        "anchors": {
+          "end": {
+            "exact_gate": null,
+            "label": "Lafayette Road lump crest, downhill edge of the flat top",
+            "lat": 40.05129374835202,
+            "lon": -75.29571220380879,
+            "osm_node_id": null,
+            "resolved_offset_m": 0.0
+          },
+          "start": {
+            "exact_gate": {
+              "a_lat": 40.0591552,
+              "a_lon": -75.2743164,
+              "b_lat": 40.0594566,
+              "b_lon": -75.2738812
+            },
+            "label": "Existing Lafayette Road start (unchanged)",
+            "lat": 40.059305911481175,
+            "lon": -75.27409876839457,
+            "osm_node_id": null,
+            "resolved_offset_m": 0.0
+          }
+        },
+        "decision_id": "lafayette-lump-crest",
+        "evidence": {
+          "geometry_translation": {
+            "resolved_at": "2026-10-20",
+            "resolved_by": "Retained founder review evidence",
+            "source": "history/codex-briefs-2026-10-20/lafayette-crest.md; crest.json sha256:4738879be537e5430c1cb265b2454eb3d4364e61dbb1474e59407e0b7eac8226"
+          },
+          "requirement": {
+            "approved_at": "2026-10-21T00:13:00Z",
+            "approved_by": "Tim (founder)",
+            "source": "history/codex-briefs-2026-10-20/lafayette-crest.md"
+          },
+          "visual_approval": {
+            "approved_at": "2026-10-21T00:13:00Z",
+            "approved_by": "Tim (founder)",
+            "source": "history/codex-briefs-2026-10-20/lafayette-crest.md"
+          }
+        },
+        "finish_decision": {
+          "decision": "extend_crest",
+          "finish_at": "lump crest",
+          "finish_m_past_current": 715.53,
+          "reason": "The founder chose the natural top: bear left on Lafayette at Stony Lane and continue up the lump. The bend cuts off the climb and two corner-cutting efforts miss its line. The new line is 106.7 m before Conshohocken State Road with no nearby traffic control; D7.5 junction setbacks do not apply.",
+          "type": "crest finish (founder-approved)"
+        },
+        "ordered_osm_way_refs": [
+          12370459,
+          12329089,
+          594346758,
+          12370452
+        ],
+        "publication_status": "review_only",
+        "record_continuity_policy": "new_record_board",
+        "replaces_candidate_fingerprint": "5082caadd5b7828ea5593ab29ba803fc6b6d2bb70065f6ff9f6aa6a15b60d638",
+        "reversed_way_refs": [
+          12370459,
+          12329089,
+          594346758,
+          12370452
+        ],
+        "seam_elevation_deltas_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "seam_gaps_m": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "70a75869-e6ac-4902-a63c-2abbf14ebea5",
+      "finish_moved": false,
+      "name": "Barren Hill Road",
+      "new": {
+        "avg_gradient_pct": 3.157,
+        "gate_end_wkt": "LINESTRING(-75.2522167 40.0778662, -75.2523158 40.0783089)",
+        "length_m": 2597.11,
+        "max_gradient_pct": 16.206,
+        "vert_m": 81.98
+      },
+      "old": {
+        "avg_gradient_pct": 3.157,
+        "gate_end_wkt": "LINESTRING(-75.2522167 40.0778662, -75.2523158 40.0783089)",
+        "length_m": 2597.11,
+        "max_gradient_pct": 16.206,
+        "vert_m": 81.98
+      },
+      "registry_id": "deabc865-a4ba-454b-9f47-ade250530908",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "fb315f93-cda9-4806-8cfe-d302e1033084",
+      "finish_moved": false,
+      "name": "Waverly Road",
+      "new": {
+        "avg_gradient_pct": 8.241,
+        "gate_end_wkt": "LINESTRING(-75.2736116 40.0499838, -75.2730274 40.0499426)",
+        "length_m": 1012.39,
+        "max_gradient_pct": 20.195,
+        "vert_m": 83.44
+      },
+      "old": {
+        "avg_gradient_pct": 8.241,
+        "gate_end_wkt": "LINESTRING(-75.2736116 40.0499838, -75.2730274 40.0499426)",
+        "length_m": 1012.39,
+        "max_gradient_pct": 20.195,
+        "vert_m": 83.44
+      },
+      "registry_id": "554c4d95-d80d-4809-8323-e7c4da4fbf02",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "7c161649-61ef-4f1b-a1a3-574bb040d734",
+      "finish_moved": false,
+      "name": "Hagys Mill Road",
+      "new": {
+        "avg_gradient_pct": 8.732,
+        "gate_end_wkt": "LINESTRING(-75.2543082 40.0604002, -75.2540964 40.0608192)",
+        "length_m": 855.25,
+        "max_gradient_pct": 29.836,
+        "vert_m": 74.68
+      },
+      "old": {
+        "avg_gradient_pct": 8.732,
+        "gate_end_wkt": "LINESTRING(-75.2543082 40.0604002, -75.2540964 40.0608192)",
+        "length_m": 855.25,
+        "max_gradient_pct": 29.836,
+        "vert_m": 74.68
+      },
+      "registry_id": "545c9819-e801-401c-a1b1-cc50398c810b",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "a759add7-5fda-46d7-a6c9-0fd68ff823ab",
+      "finish_moved": false,
+      "name": "Old Gulph Road / Williamson Road / Youngs Ford Road",
+      "new": {
+        "avg_gradient_pct": 3.475,
+        "gate_end_wkt": "LINESTRING(-75.2815599 40.0361481, -75.2820267 40.0364201)",
+        "length_m": 2098.35,
+        "max_gradient_pct": 18.37,
+        "vert_m": 72.92
+      },
+      "old": {
+        "avg_gradient_pct": 3.475,
+        "gate_end_wkt": "LINESTRING(-75.2815599 40.0361481, -75.2820267 40.0364201)",
+        "length_m": 2098.35,
+        "max_gradient_pct": 18.37,
+        "vert_m": 72.92
+      },
+      "registry_id": "682ce122-97b4-4f87-8815-4506a4c70b6c",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "b049942e-a2b8-4c0e-85b6-1545700625b2",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 27.000000267114046,
+      "name": "Conshohocken State Road",
+      "new": {
+        "avg_gradient_pct": 6.291,
+        "gate_end_wkt": "LINESTRING(-75.3015203 40.0582446, -75.3010428 40.0585067)",
+        "length_m": 1213.97,
+        "max_gradient_pct": 11.852,
+        "vert_m": 76.37
+      },
+      "new_gate_center": {
+        "lat": 40.05837565,
+        "lon": -75.30128155
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.3015203,
+          40.0582446
+        ],
+        [
+          -75.3010428,
+          40.0585067
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 6.361,
+        "gate_end_wkt": "LINESTRING(-75.3013746 40.0580609, -75.3008594 40.0582759)",
+        "length_m": 1240.97,
+        "max_gradient_pct": 11.852,
+        "vert_m": 78.94
+      },
+      "registry_id": "9a9b1cb6-1eba-420b-ad88-04726980cc21",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1240.9693941177115,
+            "kind": "traffic_signals",
+            "lat": 40.0581684,
+            "lon": -75.301117,
+            "node_id": 111646278,
+            "tags": {
+              "highway": "traffic_signals"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.058375653612075,
+            "lon": -75.30128155039029,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1240.9693941177115,
+          "lat": 40.0581684,
+          "lon": -75.301117,
+          "node_id": 111646278
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 27.000000267114046,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.3013746 40.0580609, -75.3008594 40.0582759)",
+        "predecessor_fingerprint": "717006225c672bdad7a25b153959f64007a52ab47ce81ff016be730755b77ccb",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 27.000000267114046,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "a11e2b3e-ceb4-497f-a640-9d3956c8a2c7",
+      "control_types": [
+        "crossing=traffic_signals",
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.999999521946165,
+      "name": "Leverington Avenue",
+      "new": {
+        "avg_gradient_pct": 5.912,
+        "gate_end_wkt": "LINESTRING(-75.2174958 40.0352885, -75.2178086 40.0356691)",
+        "length_m": 1179.32,
+        "max_gradient_pct": 14.005,
+        "vert_m": 69.73
+      },
+      "new_gate_center": {
+        "lat": 40.0354788,
+        "lon": -75.2176522
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2174958,
+          40.0352885
+        ],
+        [
+          -75.2178086,
+          40.0356691
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 5.823,
+        "gate_end_wkt": "LINESTRING(-75.2172276 40.035418, -75.21754 40.0357982)",
+        "length_m": 1206.32,
+        "max_gradient_pct": 14.005,
+        "vert_m": 70.24
+      },
+      "registry_id": "35fc7a81-3199-498c-9249-e24a8661c420",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1206.322103343618,
+            "kind": "traffic_signals",
+            "lat": 40.035608100000005,
+            "lon": -75.21738380000001,
+            "node_id": 110149601,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals": "traffic_lights",
+              "traffic_signals:direction": "both"
+            }
+          },
+          {
+            "along_m": 1196.444966023707,
+            "kind": "crossing=traffic_signals",
+            "lat": 40.0355608,
+            "lon": -75.217482,
+            "node_id": 11208105077,
+            "tags": {
+              "button_operated": "no",
+              "crossing": "traffic_signals",
+              "crossing:island": "no",
+              "crossing:markings": "zebra",
+              "highway": "crossing",
+              "tactile_paving": "yes",
+              "traffic_signals:sound": "no",
+              "traffic_signals:vibration": "no"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.03547879974724,
+            "lon": -75.21765223657414,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1206.322103343618,
+          "lat": 40.035608100000005,
+          "lon": -75.21738380000001,
+          "node_id": 110149601
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 26.999999521946165,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2172276 40.035418, -75.21754 40.0357982)",
+        "predecessor_fingerprint": "289af8c222f75a7b2a029c61c4b75c36e6674f91eca08d5a82d25d0c31643b80",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.999999521946165,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "08651fff-8d95-4feb-93ba-4df87f268a89",
+      "control_types": [
+        "stop"
+      ],
+      "finish_moved": true,
+      "metres_moved": 29.064477888122838,
+      "name": "Centennial Road",
+      "new": {
+        "avg_gradient_pct": 4.129,
+        "gate_end_wkt": "LINESTRING(-75.2552828 40.0236411, -75.254961 40.023265)",
+        "length_m": 1610.73,
+        "max_gradient_pct": 19.474,
+        "vert_m": 66.5
+      },
+      "new_gate_center": {
+        "lat": 40.02345305,
+        "lon": -75.2551219
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2552828,
+          40.0236411
+        ],
+        [
+          -75.254961,
+          40.023265
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 4.146,
+        "gate_end_wkt": "LINESTRING(-75.2555387 40.0235305, -75.2552987 40.0231207)",
+        "length_m": 1639.79,
+        "max_gradient_pct": 19.474,
+        "vert_m": 67.99
+      },
+      "registry_id": "c73804d9-bc01-40fb-b510-4091c944f156",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1627.1573811663027,
+            "kind": "stop",
+            "lat": 40.0233721,
+            "lon": -75.2552833,
+            "node_id": 5673550132,
+            "tags": {
+              "direction": "backward",
+              "highway": "stop"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.02345272756255,
+            "lon": -75.25512252974858,
+            "setback_from_junction_m": 29.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes shift both back"
+        },
+        "junction": {
+          "along_m": 1639.7931725522064,
+          "lat": 40.0233256,
+          "lon": -75.2554187,
+          "node_id": 5673550134
+        },
+        "mapped_stop_positions_m": {
+          "node/5673550132": 1627.1573811663027
+        },
+        "metres_moved": 29.064477888122838,
+        "model": "finish_before_traffic_control_v1",
+        "observed_stop_along_m": 1625.72869524381,
+        "observed_stop_clearance_m": 15.000000579726475,
+        "old_gate_end_wkt": "LINESTRING(-75.2555387 40.0235305, -75.2552987 40.0231207)",
+        "predecessor_fingerprint": "ab15f3a5915d384ba53505c09d31cd9a0a3c44dab55baf99b8a3162ef9c25064",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 29.064477888122838,
+        "stop_evidence_amendment": {
+          "approval_quote": "yes shift both back",
+          "approved_by": "Tim",
+          "approved_on": "2026-10-20",
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-3.md",
+          "clearance_note": "Apply the approved nominal setback and at least 15 m upstream clearance from the published aggregate; then M1 and the existing 0.5 m position binding. This is not a surveyed stop line.",
+          "previous_approved_position": {
+            "lat": 40.0234460267485,
+            "lon": -75.25513589107968,
+            "setback_from_junction_m": 27.64
+          },
+          "requested_setback_m": 29.0,
+          "source": {
+            "commit": "18a4fb39c8d087250ca4e7684a34b1660460bca4",
+            "evidence_class": "consented_single_rider_aggregate_stop_spot",
+            "path": "history/codex-reports-2026-10-20/stop-map/RESULTS.json",
+            "position_precision_decimal_places": 5,
+            "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d"
+          },
+          "spot": {
+            "class": "mapped control",
+            "confidence": "medium",
+            "day_count": 6,
+            "direction": {
+              "along_osm_way": "backward",
+              "bearing_deg": 240
+            },
+            "matched_control": {
+              "kind": "stop",
+              "osm_node_id": 5673550132
+            },
+            "median_length_s": 10.0,
+            "osm_way_id": 12333811,
+            "position": {
+              "lat": 40.02338,
+              "lon": -75.25527
+            },
+            "position_spread_m": {
+              "iqr": 4.2,
+              "p90_minus_p10": 8.3
+            },
+            "reason": "applicable control within 40 m on the connected approach; cause is inferred",
+            "ride_count": 6,
+            "rider_count": 1,
+            "spot_id": "spot-0019",
+            "stop_count": 7
+          }
+        },
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "9d760e8d-4e65-4108-b486-c4231e590e79",
+      "finish_moved": false,
+      "name": "Green Lane",
+      "new": {
+        "avg_gradient_pct": 8.763,
+        "gate_end_wkt": "LINESTRING(-75.2190129 40.0318192, -75.2193841 40.032167)",
+        "length_m": 823.97,
+        "max_gradient_pct": 21.334,
+        "vert_m": 72.21
+      },
+      "old": {
+        "avg_gradient_pct": 8.763,
+        "gate_end_wkt": "LINESTRING(-75.2190129 40.0318192, -75.2193841 40.032167)",
+        "length_m": 823.97,
+        "max_gradient_pct": 21.334,
+        "vert_m": 72.21
+      },
+      "registry_id": "a253c363-6bc7-4b10-9181-72a48a81527b",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "929f78f4-adf0-411e-b0e0-defaa8dddcb6",
+      "finish_moved": false,
+      "name": "Cynwyd Heritage Trail",
+      "new": {
+        "avg_gradient_pct": 2.083,
+        "gate_end_wkt": "LINESTRING(-75.2320669 40.0067007, -75.2314919 40.0067889)",
+        "length_m": 2712.85,
+        "max_gradient_pct": 29.819,
+        "vert_m": 56.52
+      },
+      "old": {
+        "avg_gradient_pct": 2.083,
+        "gate_end_wkt": "LINESTRING(-75.2320669 40.0067007, -75.2314919 40.0067889)",
+        "length_m": 2712.85,
+        "max_gradient_pct": 29.819,
+        "vert_m": 56.52
+      },
+      "registry_id": "293e7b48-7e1c-47c6-88c0-f15569a45363",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "dabd12d8-ba9e-41a6-b8f3-40254a4c8fcc",
+      "finish_moved": false,
+      "name": "Conshohocken State Road",
+      "new": {
+        "avg_gradient_pct": 5.755,
+        "gate_end_wkt": "LINESTRING(-75.2595693 40.0270634, -75.2590819 40.0273132)",
+        "length_m": 1158.51,
+        "max_gradient_pct": 14.932,
+        "vert_m": 66.67
+      },
+      "old": {
+        "avg_gradient_pct": 5.755,
+        "gate_end_wkt": "LINESTRING(-75.2595693 40.0270634, -75.2590819 40.0273132)",
+        "length_m": 1158.51,
+        "max_gradient_pct": 14.932,
+        "vert_m": 66.67
+      },
+      "registry_id": "8d732652-db1d-4dd8-b25a-50e753cc9794",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "b1c54864-2bab-4abe-9709-06bf48977434",
+      "finish_moved": false,
+      "name": "Sprague Road",
+      "new": {
+        "avg_gradient_pct": 7.866,
+        "gate_end_wkt": "LINESTRING(-75.252064 40.0316095, -75.2514954 40.0317197)",
+        "length_m": 886.21,
+        "max_gradient_pct": 24.416,
+        "vert_m": 69.71
+      },
+      "old": {
+        "avg_gradient_pct": 7.866,
+        "gate_end_wkt": "LINESTRING(-75.252064 40.0316095, -75.2514954 40.0317197)",
+        "length_m": 886.21,
+        "max_gradient_pct": 24.416,
+        "vert_m": 69.71
+      },
+      "registry_id": "4fd1981e-50a5-4abb-804a-5b7cacb7a523",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "3eb1035a-4af2-42e6-9545-c2e641ed3b4a",
+      "finish_moved": false,
+      "name": "Bryn Tyddyn Drive",
+      "new": {
+        "avg_gradient_pct": 10.362,
+        "gate_end_wkt": "LINESTRING(-75.2884348 40.0665324, -75.2879147 40.0667405)",
+        "length_m": 651.5,
+        "max_gradient_pct": 29.885,
+        "vert_m": 67.51
+      },
+      "old": {
+        "avg_gradient_pct": 10.362,
+        "gate_end_wkt": "LINESTRING(-75.2884348 40.0665324, -75.2879147 40.0667405)",
+        "length_m": 651.5,
+        "max_gradient_pct": 29.885,
+        "vert_m": 67.51
+      },
+      "registry_id": "390dfafb-4722-4120-af1e-9dc38268e00b",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "1f472a07-9817-4fb5-9dff-30be291f0a23",
+      "finish_moved": false,
+      "name": "Hagys Ford Road North / Hagys Ford Road",
+      "new": {
+        "avg_gradient_pct": 4.356,
+        "gate_end_wkt": "LINESTRING(-75.2546923 40.0302673, -75.2542725 40.0305809)",
+        "length_m": 1497.64,
+        "max_gradient_pct": 13.462,
+        "vert_m": 65.23
+      },
+      "old": {
+        "avg_gradient_pct": 4.356,
+        "gate_end_wkt": "LINESTRING(-75.2546923 40.0302673, -75.2542725 40.0305809)",
+        "length_m": 1497.64,
+        "max_gradient_pct": 13.462,
+        "vert_m": 65.23
+      },
+      "registry_id": "ef9aa753-de77-42fd-8520-50efcf602a73",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "0b7efc0c-e70b-41a1-92d4-d469ac3c5a68",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 30.0000005916836,
+      "name": "Wises Mill Road",
+      "new": {
+        "avg_gradient_pct": 6.239,
+        "gate_end_wkt": "LINESTRING(-75.2310174 40.0540898, -75.230673 40.0537255)",
+        "length_m": 1057.96,
+        "max_gradient_pct": 23.901,
+        "vert_m": 66.01
+      },
+      "new_gate_center": {
+        "lat": 40.05390765,
+        "lon": -75.2308452
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2310174,
+          40.0540898
+        ],
+        [
+          -75.230673,
+          40.0537255
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 6.263,
+        "gate_end_wkt": "LINESTRING(-75.2312932 40.0539466, -75.2309808 40.0535664)",
+        "length_m": 1087.96,
+        "max_gradient_pct": 23.901,
+        "vert_m": 68.13
+      },
+      "registry_id": "43f15658-a824-438d-9925-e61c67ddabe9",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": true,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1087.9564751806904,
+            "kind": "traffic_signals",
+            "lat": 40.053756500000006,
+            "lon": -75.231137,
+            "node_id": 109979615,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals": "traffic_lights",
+              "traffic_signals:direction": "both"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.05390761234485,
+            "lon": -75.23084522693883,
+            "setback_from_junction_m": 30.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes shift both back"
+        },
+        "junction": {
+          "along_m": 1087.9564751806904,
+          "lat": 40.053756500000006,
+          "lon": -75.231137,
+          "node_id": 109979615
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 30.0000005916836,
+        "model": "finish_before_traffic_control_v1",
+        "observed_stop_along_m": 1072.9983789193118,
+        "observed_stop_clearance_m": 15.041904329884346,
+        "old_gate_end_wkt": "LINESTRING(-75.2312932 40.0539466, -75.2309808 40.0535664)",
+        "predecessor_fingerprint": "f39b5e3500a7542755bb82f55af3bd863c234468cbba46ea8f97337e9b88f0a0",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 30.00000059126296,
+        "stop_evidence_amendment": {
+          "approval_quote": "yes shift both back",
+          "approved_by": "Tim",
+          "approved_on": "2026-10-20",
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-3.md",
+          "clearance_note": "Apply the approved nominal setback and at least 15 m upstream clearance from the published aggregate; then M1 and the existing 0.5 m position binding. This is not a surveyed stop line.",
+          "previous_approved_position": {
+            "lat": 40.05389179794209,
+            "lon": -75.23087378410072,
+            "setback_from_junction_m": 27.0
+          },
+          "requested_setback_m": 30.0,
+          "source": {
+            "commit": "18a4fb39c8d087250ca4e7684a34b1660460bca4",
+            "evidence_class": "consented_single_rider_aggregate_stop_spot",
+            "path": "history/codex-reports-2026-10-20/stop-map/RESULTS.json",
+            "position_precision_decimal_places": 5,
+            "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d"
+          },
+          "spot": {
+            "class": "likely unmapped control",
+            "confidence": "low",
+            "day_count": 6,
+            "direction": {
+              "along_osm_way": "backward",
+              "bearing_deg": 236
+            },
+            "matched_control": null,
+            "median_length_s": 24.0,
+            "osm_way_id": 1218053063,
+            "position": {
+              "lat": 40.05383,
+              "lon": -75.23099
+            },
+            "position_spread_m": {
+              "iqr": 4.1,
+              "p90_minus_p10": 8.0
+            },
+            "reason": "short pauses before a junction; map omission is unconfirmed",
+            "ride_count": 6,
+            "rider_count": 1,
+            "spot_id": "spot-0387",
+            "stop_count": 6
+          }
+        },
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "bcf05492-f31a-4a9d-89e8-c4d0c65eb428",
+      "finish_moved": false,
+      "name": "Mill Creek Road",
+      "new": {
+        "avg_gradient_pct": 2.927,
+        "gate_end_wkt": "LINESTRING(-75.2904877 40.0104125, -75.2899221 40.0102939)",
+        "length_m": 1620.69,
+        "max_gradient_pct": 24.255,
+        "vert_m": 47.43
+      },
+      "old": {
+        "avg_gradient_pct": 2.927,
+        "gate_end_wkt": "LINESTRING(-75.2904877 40.0104125, -75.2899221 40.0102939)",
+        "length_m": 1620.69,
+        "max_gradient_pct": 24.255,
+        "vert_m": 47.43
+      },
+      "registry_id": "125085d8-c433-470f-935f-5af27b572c01",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "275fbb94-cf1d-4678-97d7-a2a741beed7c",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.99999949495725,
+      "name": "Shurs Lane",
+      "new": {
+        "avg_gradient_pct": 7.77,
+        "gate_end_wkt": "LINESTRING(-75.2095409 40.0266339, -75.2098501 40.0270162)",
+        "length_m": 863.45,
+        "max_gradient_pct": 16.85,
+        "vert_m": 67.09
+      },
+      "new_gate_center": {
+        "lat": 40.02682505,
+        "lon": -75.2096955
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2095409,
+          40.0266339
+        ],
+        [
+          -75.2098501,
+          40.0270162
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 7.622,
+        "gate_end_wkt": "LINESTRING(-75.2092239 40.0268178, -75.2096593 40.0271188)",
+        "length_m": 890.45,
+        "max_gradient_pct": 16.85,
+        "vert_m": 67.87
+      },
+      "registry_id": "cfd560e9-1f8d-4464-b192-2ad44de97ee2",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 890.4543561938312,
+            "kind": "traffic_signals",
+            "lat": 40.0269683,
+            "lon": -75.2094416,
+            "node_id": 110417901,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals:direction": "both"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.02682502270547,
+            "lon": -75.20969552722147,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 890.4543561938312,
+          "lat": 40.0269683,
+          "lon": -75.2094416,
+          "node_id": 110417901
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 26.99999949495725,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2092239 40.0268178, -75.2096593 40.0271188)",
+        "predecessor_fingerprint": "048fec31d6e62261c9bdde25487de3fd730a775a343cfddf9e5b80c860abd043",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.99999949495725,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "05925846-f1ac-4080-bdf2-6526d307ba31",
+      "finish_moved": false,
+      "name": "Old Gulph Road",
+      "new": {
+        "avg_gradient_pct": 6.568,
+        "gate_end_wkt": "LINESTRING(-75.2679297 40.0202891, -75.2677077 40.0207048)",
+        "length_m": 937.16,
+        "max_gradient_pct": 24.883,
+        "vert_m": 61.55
+      },
+      "old": {
+        "avg_gradient_pct": 6.568,
+        "gate_end_wkt": "LINESTRING(-75.2679297 40.0202891, -75.2677077 40.0207048)",
+        "length_m": 937.16,
+        "max_gradient_pct": 24.883,
+        "vert_m": 61.55
+      },
+      "registry_id": "31cee316-5217-40e2-b134-c84d681611b2",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "86febdde-90b2-4b14-9a1a-593b43bd958e",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 27.00000032265757,
+      "name": "Falls Road / Conshohocken Avenue",
+      "new": {
+        "avg_gradient_pct": 3.357,
+        "gate_end_wkt": "LINESTRING(-75.2108957 40.0024085, -75.2107716 40.001969)",
+        "length_m": 1659.52,
+        "max_gradient_pct": 9.403,
+        "vert_m": 55.71
+      },
+      "new_gate_center": {
+        "lat": 40.00218875,
+        "lon": -75.21083365
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2108957,
+          40.0024085
+        ],
+        [
+          -75.2107716,
+          40.001969
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 3.316,
+        "gate_end_wkt": "LINESTRING(-75.211201 40.002359, -75.2110866 40.0019184)",
+        "length_m": 1686.52,
+        "max_gradient_pct": 9.403,
+        "vert_m": 55.93
+      },
+      "registry_id": "27137dbc-5bbe-4b2a-9388-f39f14cfce2a",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1686.5231778044304,
+            "kind": "traffic_signals",
+            "lat": 40.0021387,
+            "lon": -75.2111438,
+            "node_id": 109997899,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals": "signal"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.00218874530661,
+            "lon": -75.21083363015407,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1686.5231778044304,
+          "lat": 40.0021387,
+          "lon": -75.2111438,
+          "node_id": 109997899
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 27.00000032265757,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.211201 40.002359, -75.2110866 40.0019184)",
+        "predecessor_fingerprint": "162607a27fdf9d52729c4d9e41543e6e79d56fb8d1836ac3ccf557db9777b8f0",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 27.00000032265757,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "01f9913b-fa32-4860-8acb-8178e2d0c78f",
+      "finish_moved": false,
+      "name": "Morris Avenue",
+      "new": {
+        "avg_gradient_pct": 2.433,
+        "gate_end_wkt": "LINESTRING(-75.3100971 40.0485652, -75.3106097 40.0483466)",
+        "length_m": 1958.51,
+        "max_gradient_pct": 13.376,
+        "vert_m": 47.64
+      },
+      "old": {
+        "avg_gradient_pct": 2.433,
+        "gate_end_wkt": "LINESTRING(-75.3100971 40.0485652, -75.3106097 40.0483466)",
+        "length_m": 1958.51,
+        "max_gradient_pct": 13.376,
+        "vert_m": 47.64
+      },
+      "registry_id": "a8693ac1-09b0-4fe4-8be5-3350fb49eb7a",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "36f20ded-68e4-40d6-923e-083b7193626c",
+      "finish_moved": false,
+      "name": "Grays Lane",
+      "new": {
+        "avg_gradient_pct": 4.347,
+        "gate_end_wkt": "LINESTRING(-75.2999952 40.0160294, -75.2997123 40.0156359)",
+        "length_m": 1332.41,
+        "max_gradient_pct": 18.143,
+        "vert_m": 57.91
+      },
+      "old": {
+        "avg_gradient_pct": 4.347,
+        "gate_end_wkt": "LINESTRING(-75.2999952 40.0160294, -75.2997123 40.0156359)",
+        "length_m": 1332.41,
+        "max_gradient_pct": 18.143,
+        "vert_m": 57.91
+      },
+      "registry_id": "7a04d7b3-253a-4656-8417-5800d8aee08f",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "8bd6867b-004a-4272-b7af-eaefe2492195",
+      "control_types": [
+        "stop"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.999999693986638,
+      "name": "Ellis Road",
+      "new": {
+        "avg_gradient_pct": 2.953,
+        "gate_end_wkt": "LINESTRING(-75.3270595 39.9916429, -75.3274311 39.991991)",
+        "length_m": 1617.02,
+        "max_gradient_pct": 17.389,
+        "vert_m": 47.76
+      },
+      "new_gate_center": {
+        "lat": 39.99181695,
+        "lon": -75.3272453
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.3270595,
+          39.9916429
+        ],
+        [
+          -75.3274311,
+          39.991991
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 3.025,
+        "gate_end_wkt": "LINESTRING(-75.3268144 39.9917969, -75.3271856 39.9921445)",
+        "length_m": 1644.02,
+        "max_gradient_pct": 17.389,
+        "vert_m": 49.72
+      },
+      "registry_id": "8254f8ea-be7a-4a73-b988-0f305407d0f6",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1635.5888862971515,
+            "kind": "stop",
+            "lat": 39.9919227,
+            "lon": -75.3270766,
+            "node_id": 5864234055,
+            "tags": {
+              "direction": "backward",
+              "highway": "stop"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 39.99181696017904,
+            "lon": -75.3272453182838,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1644.0192202268202,
+          "lat": 39.9919707,
+          "lon": -75.327,
+          "node_id": 110187493
+        },
+        "mapped_stop_positions_m": {
+          "node/5864234055": 1635.5888862971515
+        },
+        "metres_moved": 26.999999693986638,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.3268144 39.9917969, -75.3271856 39.9921445)",
+        "predecessor_fingerprint": "d245703771852a36060d112fbc0e4be79e536c21832a51aae7a14ac856e89404",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.999999693986638,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "c6cf5368-91fe-410a-b732-5f9b7e61c31b",
+      "finish_moved": false,
+      "name": "Merion Square Road",
+      "new": {
+        "avg_gradient_pct": 4.267,
+        "gate_end_wkt": "LINESTRING(-75.2831955 40.0349295, -75.2836189 40.0346185)",
+        "length_m": 1287.49,
+        "max_gradient_pct": 16.184,
+        "vert_m": 54.94
+      },
+      "old": {
+        "avg_gradient_pct": 4.267,
+        "gate_end_wkt": "LINESTRING(-75.2831955 40.0349295, -75.2836189 40.0346185)",
+        "length_m": 1287.49,
+        "max_gradient_pct": 16.184,
+        "vert_m": 54.94
+      },
+      "registry_id": "6d622c61-1ac4-488a-8018-c7d270827ceb",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "4c3287e0-fa3f-48ca-a2dd-1c2dff856d00",
+      "finish_moved": false,
+      "name": "Flat Rock Road",
+      "new": {
+        "avg_gradient_pct": 9.323,
+        "gate_end_wkt": "LINESTRING(-75.2469435 40.033352, -75.2467173 40.0329376)",
+        "length_m": 715.47,
+        "max_gradient_pct": 15.2,
+        "vert_m": 66.7
+      },
+      "old": {
+        "avg_gradient_pct": 9.323,
+        "gate_end_wkt": "LINESTRING(-75.2469435 40.033352, -75.2467173 40.0329376)",
+        "length_m": 715.47,
+        "max_gradient_pct": 15.2,
+        "vert_m": 66.7
+      },
+      "registry_id": "05c90c28-6411-4593-abdc-04ba436b027d",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "cdf7b9b4-72ab-4034-8cab-0e516095a6e8",
+      "finish_moved": false,
+      "name": "McClenaghan Mill Road",
+      "new": {
+        "avg_gradient_pct": 4.448,
+        "gate_end_wkt": "LINESTRING(-75.2680689 40.014317, -75.2675259 40.0144868)",
+        "length_m": 1188.2,
+        "max_gradient_pct": 18.991,
+        "vert_m": 52.85
+      },
+      "old": {
+        "avg_gradient_pct": 4.448,
+        "gate_end_wkt": "LINESTRING(-75.2680689 40.014317, -75.2675259 40.0144868)",
+        "length_m": 1188.2,
+        "max_gradient_pct": 18.991,
+        "vert_m": 52.85
+      },
+      "registry_id": "63630665-5c06-435b-9b14-610422104365",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "85e85f21-a374-4b69-b0b4-92623afd00e0",
+      "finish_moved": false,
+      "name": "Cheltenham Avenue",
+      "new": {
+        "avg_gradient_pct": 2.917,
+        "gate_end_wkt": "LINESTRING(-75.1836596 40.0885991, -75.1833022 40.0889553)",
+        "length_m": 1604.87,
+        "max_gradient_pct": 12.144,
+        "vert_m": 46.81
+      },
+      "old": {
+        "avg_gradient_pct": 2.917,
+        "gate_end_wkt": "LINESTRING(-75.1836596 40.0885991, -75.1833022 40.0889553)",
+        "length_m": 1604.87,
+        "max_gradient_pct": 12.144,
+        "vert_m": 46.81
+      },
+      "registry_id": "4d743e20-2a32-4c7d-8443-61e092a3e014",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "c24a594c-7ccb-42c9-8108-0c59dcc06d3c",
+      "finish_moved": false,
+      "name": "Andorra Road",
+      "new": {
+        "avg_gradient_pct": 3.06,
+        "gate_end_wkt": "LINESTRING(-75.2507756 40.082895, -75.2512728 40.0826562)",
+        "length_m": 1646.74,
+        "max_gradient_pct": 15.367,
+        "vert_m": 50.39
+      },
+      "old": {
+        "avg_gradient_pct": 3.06,
+        "gate_end_wkt": "LINESTRING(-75.2507756 40.082895, -75.2512728 40.0826562)",
+        "length_m": 1646.74,
+        "max_gradient_pct": 15.367,
+        "vert_m": 50.39
+      },
+      "registry_id": "38a0f999-4947-4bd8-819f-2c96151d8195",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "0b042c47-4eb3-4d5f-8668-45416fb7fab2",
+      "finish_moved": false,
+      "name": "Paoli Avenue",
+      "new": {
+        "avg_gradient_pct": 5.746,
+        "gate_end_wkt": "LINESTRING(-75.2296003 40.0431076, -75.2299009 40.0434934)",
+        "length_m": 944.23,
+        "max_gradient_pct": 21.926,
+        "vert_m": 54.26
+      },
+      "old": {
+        "avg_gradient_pct": 5.746,
+        "gate_end_wkt": "LINESTRING(-75.2296003 40.0431076, -75.2299009 40.0434934)",
+        "length_m": 944.23,
+        "max_gradient_pct": 21.926,
+        "vert_m": 54.26
+      },
+      "registry_id": "6c6ae57a-cd5e-4820-97d8-c026d116c00f",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "75dd14da-bae4-4612-a43f-037b18d4a420",
+      "control_types": [
+        "crossing=traffic_signals",
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 33.79101073520587,
+      "name": "West School House Lane",
+      "new": {
+        "avg_gradient_pct": 4.758,
+        "gate_end_wkt": "LINESTRING(-75.1924309 40.0201133, -75.1928826 40.0204006)",
+        "length_m": 1178.26,
+        "max_gradient_pct": 13.81,
+        "vert_m": 56.06
+      },
+      "new_gate_center": {
+        "lat": 40.020256950000004,
+        "lon": -75.19265675
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.1924309,
+          40.0201133
+        ],
+        [
+          -75.1928826,
+          40.0204006
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 4.655,
+        "gate_end_wkt": "LINESTRING(-75.1921777 40.0203474, -75.1926289 40.0206342)",
+        "length_m": 1212.05,
+        "max_gradient_pct": 13.81,
+        "vert_m": 56.42
+      },
+      "registry_id": "cfaea96b-d478-4d39-a47c-30e3e3bf6bc3",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": true,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1212.0491066809452,
+            "kind": "traffic_signals",
+            "lat": 40.020490800000005,
+            "lon": -75.19240330000001,
+            "node_id": 109980148,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals": "traffic_lights",
+              "traffic_signals:direction": "both"
+            }
+          },
+          {
+            "along_m": 1194.1579133445143,
+            "kind": "crossing=traffic_signals",
+            "lat": 40.020367,
+            "lon": -75.1925375,
+            "node_id": 1772731209,
+            "tags": {
+              "button_operated": "yes",
+              "crossing": "traffic_signals",
+              "crossing:island": "no",
+              "crossing:markings": "zebra",
+              "highway": "crossing",
+              "tactile_paving": "yes",
+              "traffic_signals:sound": "yes",
+              "traffic_signals:vibration": "no"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.02026321940357,
+            "lon": -75.19265001253872,
+            "setback_from_junction_m": 32.89
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": {
+            "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-2.md",
+            "note": "Positions shown on the page were the reviewed positions; West School House showed 32.89 m before fix round 1 snapped its cut to the profile point 0.9 m upstream (rule M1). The founder was informed on 20 Oct 2026; this covers only the recorded M1 snap.",
+            "position": {
+              "lat": 40.020256985079634,
+              "lon": -75.19265677140923,
+              "setback_from_junction_m": 33.79101073504103
+            }
+          },
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1212.0491066809452,
+          "lat": 40.020490800000005,
+          "lon": -75.19240330000001,
+          "node_id": 109980148
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 33.79101073520587,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.1921777 40.0203474, -75.1926289 40.0206342)",
+        "predecessor_fingerprint": "56aad7164f1372b9e67d40766c0a5174d72c74125ecbc85b86c770cf81e028e1",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 33.79101073504103,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "53c6d3f2-3f5a-4b29-98bf-b0b541df2876",
+      "finish_moved": false,
+      "name": "Levering Street / Lyceum Avenue",
+      "new": {
+        "avg_gradient_pct": 10.866,
+        "gate_end_wkt": "LINESTRING(-75.2191885 40.0295894, -75.2195597 40.0299372)",
+        "length_m": 546.66,
+        "max_gradient_pct": 21.154,
+        "vert_m": 59.4
+      },
+      "old": {
+        "avg_gradient_pct": 10.866,
+        "gate_end_wkt": "LINESTRING(-75.2191885 40.0295894, -75.2195597 40.0299372)",
+        "length_m": 546.66,
+        "max_gradient_pct": 21.154,
+        "vert_m": 59.4
+      },
+      "registry_id": "b3c31818-fc11-435e-9196-ef10bbfc141a",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "c03cce2b-319e-482d-a17d-f52bf90c2738",
+      "finish_moved": false,
+      "name": "Schuylkill River Trail",
+      "new": {
+        "avg_gradient_pct": 0.238,
+        "gate_end_wkt": "LINESTRING(-75.3197559 40.0962613, -75.3203407 40.0963016)",
+        "length_m": 4979.21,
+        "max_gradient_pct": 48.899,
+        "vert_m": 11.86
+      },
+      "old": {
+        "avg_gradient_pct": 0.238,
+        "gate_end_wkt": "LINESTRING(-75.3197559 40.0962613, -75.3203407 40.0963016)",
+        "length_m": 4979.21,
+        "max_gradient_pct": 48.899,
+        "vert_m": 11.86
+      },
+      "registry_id": "964488ee-92cc-40c9-bfa1-1949fdb21cec",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "9effc2c9-a921-4945-8879-27f5cc0001a3",
+      "finish_moved": false,
+      "name": "Falls Road / Neill Drive",
+      "new": {
+        "avg_gradient_pct": 4.882,
+        "gate_end_wkt": "LINESTRING(-75.2092468 40.0072325, -75.209684 40.0069331)",
+        "length_m": 1019.91,
+        "max_gradient_pct": 16.738,
+        "vert_m": 49.79
+      },
+      "old": {
+        "avg_gradient_pct": 4.882,
+        "gate_end_wkt": "LINESTRING(-75.2092468 40.0072325, -75.209684 40.0069331)",
+        "length_m": 1019.91,
+        "max_gradient_pct": 16.738,
+        "vert_m": 49.79
+      },
+      "registry_id": "182a6026-3923-4597-b199-3efb1a9f8a25",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "4d523250-9556-49f6-8e0f-cd42bc4d4d1e",
+      "finish_moved": false,
+      "name": "West Bells Mill Road",
+      "new": {
+        "avg_gradient_pct": 9.61,
+        "gate_end_wkt": "LINESTRING(-75.2198636 40.0817342, -75.2202662 40.082061)",
+        "length_m": 529.44,
+        "max_gradient_pct": 23.469,
+        "vert_m": 50.88
+      },
+      "old": {
+        "avg_gradient_pct": 9.61,
+        "gate_end_wkt": "LINESTRING(-75.2198636 40.0817342, -75.2202662 40.082061)",
+        "length_m": 529.44,
+        "max_gradient_pct": 23.469,
+        "vert_m": 50.88
+      },
+      "registry_id": "b7d82a29-dc2e-4d4f-a08f-9ad184681336",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "3a250936-47dc-4469-a64a-75820f91fd60",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 27.000000538711674,
+      "name": "Calumet Street / West Coulter Street",
+      "new": {
+        "avg_gradient_pct": 4.605,
+        "gate_end_wkt": "LINESTRING(-75.1922967 40.0142255, -75.1918569 40.0145234)",
+        "length_m": 695.59,
+        "max_gradient_pct": 54.775,
+        "vert_m": 32.03
+      },
+      "new_gate_center": {
+        "lat": 40.014374450000005,
+        "lon": -75.1920768
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.1922967,
+          40.0142255
+        ],
+        [
+          -75.1918569,
+          40.0145234
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 4.292,
+        "gate_end_wkt": "LINESTRING(-75.1920824 40.014042, -75.191649 40.0143446)",
+        "length_m": 722.59,
+        "max_gradient_pct": 54.775,
+        "vert_m": 31.01
+      },
+      "registry_id": "13ab82c7-063a-4178-b753-fa56a56ef4f6",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 722.5935308476554,
+            "kind": "traffic_signals",
+            "lat": 40.0141933,
+            "lon": -75.19186570000001,
+            "node_id": 109820431,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals": "traffic_lights"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.014374431910205,
+            "lon": -75.19207683402874,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 722.5935308476554,
+          "lat": 40.0141933,
+          "lon": -75.19186570000001,
+          "node_id": 109820431
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 27.000000538711674,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.1920824 40.014042, -75.191649 40.0143446)",
+        "predecessor_fingerprint": "0b3903c31e6cfb8ff2c62393f793dfa04187eb16461f35dc5eafd7c92bcde9df",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 27.000000537896312,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "e34948e8-d6d5-44d8-bc0c-93b2f13db212",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.999999734696303,
+      "name": "Midvale Avenue",
+      "new": {
+        "avg_gradient_pct": 4.809,
+        "gate_end_wkt": "LINESTRING(-75.1884193 40.0166596, -75.1887967 40.017004)",
+        "length_m": 1035.07,
+        "max_gradient_pct": 6.902,
+        "vert_m": 49.77
+      },
+      "new_gate_center": {
+        "lat": 40.0168318,
+        "lon": -75.188608
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.1884193,
+          40.0166596
+        ],
+        [
+          -75.1887967,
+          40.017004
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 4.772,
+        "gate_end_wkt": "LINESTRING(-75.1881823 40.0168073, -75.1885415 40.0171623)",
+        "length_m": 1062.07,
+        "max_gradient_pct": 6.902,
+        "vert_m": 50.68
+      },
+      "registry_id": "372f52a5-1c88-4e49-97eb-f3887e68166f",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 1062.0652442462083,
+            "kind": "traffic_signals",
+            "lat": 40.0169848,
+            "lon": -75.1883619,
+            "node_id": 109980205,
+            "tags": {
+              "highway": "traffic_signals",
+              "traffic_signals": "traffic_lights",
+              "traffic_signals:direction": "both"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.01683181181363,
+            "lon": -75.18860803219401,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 1062.0652442462083,
+          "lat": 40.0169848,
+          "lon": -75.1883619,
+          "node_id": 109980205
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 26.999999734696303,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.1881823 40.0168073, -75.1885415 40.0171623)",
+        "predecessor_fingerprint": "e8ae6b133ffa8268d6022284ac275baff97073b5d3a541cb137255b65a7f98e6",
+        "prior_ratified_end_anchor_is_historical": true,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.999999734696303,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "b62bcc88-d72f-4e93-b57f-3bba4bae774e",
+      "finish_moved": false,
+      "name": "Shawmont Avenue",
+      "new": {
+        "avg_gradient_pct": 6.677,
+        "gate_end_wkt": "LINESTRING(-75.2391441 40.0515346, -75.2394457 40.0519198)",
+        "length_m": 721.17,
+        "max_gradient_pct": 21.464,
+        "vert_m": 48.15
+      },
+      "old": {
+        "avg_gradient_pct": 6.677,
+        "gate_end_wkt": "LINESTRING(-75.2391441 40.0515346, -75.2394457 40.0519198)",
+        "length_m": 721.17,
+        "max_gradient_pct": 21.464,
+        "vert_m": 48.15
+      },
+      "registry_id": "281af3df-fdd7-4b7d-92be-910012280575",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "1ad919e8-5888-4846-8392-2d68a281bccb",
+      "finish_moved": false,
+      "name": "Dehaven Avenue",
+      "new": {
+        "avg_gradient_pct": 15.501,
+        "gate_end_wkt": "LINESTRING(-75.3267045 40.067225, -75.3272129 40.0670004)",
+        "length_m": 211.43,
+        "max_gradient_pct": 23.616,
+        "vert_m": 32.77
+      },
+      "old": {
+        "avg_gradient_pct": 15.501,
+        "gate_end_wkt": "LINESTRING(-75.3267045 40.067225, -75.3272129 40.0670004)",
+        "length_m": 211.43,
+        "max_gradient_pct": 23.616,
+        "vert_m": 32.77
+      },
+      "registry_id": "b24159c1-7854-4579-8376-05f44fcacd9c",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "9beed435-1509-42ba-9649-25c9e662281a",
+      "finish_moved": false,
+      "name": "Mary Waters Ford Road",
+      "new": {
+        "avg_gradient_pct": 11.663,
+        "gate_end_wkt": "LINESTRING(-75.2400453 40.0278147, -75.2394589 40.0278279)",
+        "length_m": 330.82,
+        "max_gradient_pct": 18.159,
+        "vert_m": 38.58
+      },
+      "old": {
+        "avg_gradient_pct": 11.663,
+        "gate_end_wkt": "LINESTRING(-75.2400453 40.0278147, -75.2394589 40.0278279)",
+        "length_m": 330.82,
+        "max_gradient_pct": 18.159,
+        "vert_m": 38.58
+      },
+      "registry_id": "00af30ab-a894-4077-b050-7289b049b1d4",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "377dd9cb-e164-4e6c-b42c-433bddb895e5",
+      "finish_moved": false,
+      "name": "Fairview Avenue",
+      "new": {
+        "avg_gradient_pct": 13.739,
+        "gate_end_wkt": "LINESTRING(-75.236841 40.0266233, -75.236683 40.0261907)",
+        "length_m": 204.14,
+        "max_gradient_pct": 23.55,
+        "vert_m": 28.05
+      },
+      "old": {
+        "avg_gradient_pct": 13.739,
+        "gate_end_wkt": "LINESTRING(-75.236841 40.0266233, -75.236683 40.0261907)",
+        "length_m": 204.14,
+        "max_gradient_pct": 23.55,
+        "vert_m": 28.05
+      },
+      "registry_id": "a82b0077-a92c-43dc-8049-15d1804cc914",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "393aa3ad-02e6-40f2-a23f-3d06f96c871b",
+      "finish_moved": false,
+      "name": "Church Street",
+      "new": {
+        "avg_gradient_pct": 13.666,
+        "gate_end_wkt": "LINESTRING(-75.3184448 40.0693155, -75.3190278 40.0692639)",
+        "length_m": 216.3,
+        "max_gradient_pct": 25.958,
+        "vert_m": 29.56
+      },
+      "old": {
+        "avg_gradient_pct": 13.666,
+        "gate_end_wkt": "LINESTRING(-75.3184448 40.0693155, -75.3190278 40.0692639)",
+        "length_m": 216.3,
+        "max_gradient_pct": 25.958,
+        "vert_m": 29.56
+      },
+      "registry_id": "c8b70854-dd78-4b51-ba40-af804fb0bc6b",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "b4d4bdd9-537e-4cd2-ac0f-e286bc0d3d5f",
+      "finish_moved": false,
+      "name": "Gypsy Lane",
+      "new": {
+        "avg_gradient_pct": 10.344,
+        "gate_end_wkt": "LINESTRING(-75.1992872 40.0155768, -75.1988964 40.0159118)",
+        "length_m": 337.46,
+        "max_gradient_pct": 13.928,
+        "vert_m": 34.91
+      },
+      "old": {
+        "avg_gradient_pct": 10.344,
+        "gate_end_wkt": "LINESTRING(-75.1992872 40.0155768, -75.1988964 40.0159118)",
+        "length_m": 337.46,
+        "max_gradient_pct": 13.928,
+        "vert_m": 34.91
+      },
+      "registry_id": "9259f572-3d46-48a6-af23-0ff0a68e54de",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "de8128c2-53f4-46df-bef5-2757335c220d",
+      "finish_moved": false,
+      "name": "Domino Lane",
+      "new": {
+        "avg_gradient_pct": 6.367,
+        "gate_end_wkt": "LINESTRING(-75.2365606 40.0430916, -75.2368672 40.0434746)",
+        "length_m": 496.19,
+        "max_gradient_pct": 11.953,
+        "vert_m": 31.59
+      },
+      "old": {
+        "avg_gradient_pct": 6.367,
+        "gate_end_wkt": "LINESTRING(-75.2365606 40.0430916, -75.2368672 40.0434746)",
+        "length_m": 496.19,
+        "max_gradient_pct": 11.953,
+        "vert_m": 31.59
+      },
+      "registry_id": "4baf34ad-9348-4ae0-b7f1-9b4c5ba510b4",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "c225c181-e60b-4070-91d0-ae7510eed58f",
+      "finish_moved": false,
+      "name": "Rockland Avenue",
+      "new": {
+        "avg_gradient_pct": 11.431,
+        "gate_end_wkt": "LINESTRING(-75.2375122 40.0271647, -75.2373514 40.0267327)",
+        "length_m": 197.87,
+        "max_gradient_pct": 25.833,
+        "vert_m": 22.62
+      },
+      "old": {
+        "avg_gradient_pct": 11.431,
+        "gate_end_wkt": "LINESTRING(-75.2375122 40.0271647, -75.2373514 40.0267327)",
+        "length_m": 197.87,
+        "max_gradient_pct": 25.833,
+        "vert_m": 22.62
+      },
+      "registry_id": "3e619621-1000-4bf0-8692-2831ad5609fe",
+      "tim_named_boundary": true
+    },
+    {
+      "canon_id": "f6ca600f-e40d-4b4b-96c5-8382578e9758",
+      "finish_moved": false,
+      "name": "Stony Lane",
+      "new": {
+        "avg_gradient_pct": 9.502,
+        "gate_end_wkt": "LINESTRING(-75.2909891 40.0567735, -75.2915135 40.0565719)",
+        "length_m": 223.78,
+        "max_gradient_pct": 23.077,
+        "vert_m": 21.26
+      },
+      "old": {
+        "avg_gradient_pct": 9.502,
+        "gate_end_wkt": "LINESTRING(-75.2909891 40.0567735, -75.2915135 40.0565719)",
+        "length_m": 223.78,
+        "max_gradient_pct": 23.077,
+        "vert_m": 21.26
+      },
+      "registry_id": "358be76b-8e71-4b4d-984e-417fc1cbeeb5",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "2489b7a3-e1bc-43b5-8bdf-acc9bd56e5b2",
+      "control_types": [
+        "all_way_stop"
+      ],
+      "finish_moved": true,
+      "metres_moved": 32.14442253235154,
+      "name": "Black Rock Road",
+      "new": {
+        "avg_gradient_pct": 5.351,
+        "gate_end_wkt": "LINESTRING(-75.2983225 40.0304033, -75.2983402 40.0299539)",
+        "length_m": 544.55,
+        "max_gradient_pct": 10.775,
+        "vert_m": 29.14
+      },
+      "new_gate_center": {
+        "lat": 40.0301786,
+        "lon": -75.29833135
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2983225,
+          40.0304033
+        ],
+        [
+          -75.2983402,
+          40.0299539
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 5.351,
+        "gate_end_wkt": "LINESTRING(-75.2988198 40.0304629, -75.2985916 40.0298581)",
+        "length_m": 576.69,
+        "max_gradient_pct": 10.775,
+        "vert_m": 30.86
+      },
+      "registry_id": "b51920f8-4707-4984-890d-656c7078f36a",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": true,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 559.5467328282028,
+            "kind": "all_way_stop",
+            "lat": 40.030180800000004,
+            "lon": -75.2985075,
+            "node_id": 9813524872,
+            "tags": {
+              "direction": "backward",
+              "highway": "stop",
+              "stop": "all"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.03017860873473,
+            "lon": -75.29833140362028,
+            "setback_from_junction_m": 32.14
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 576.6911553977061,
+          "lat": 40.0301605,
+          "lon": -75.2987057,
+          "node_id": 9813522381
+        },
+        "mapped_stop_positions_m": {
+          "node/9813524872": 559.5467328282028
+        },
+        "metres_moved": 32.14442253235154,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2988198 40.0304629, -75.2985916 40.0298581)",
+        "predecessor_fingerprint": "5161e8eda0ce68934cdd4d135a6f2a8c68501bf3853d6e249ba4e1440b383cda",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 32.14442253235154,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "32395724-b008-47dc-88cf-7396deeea6e8",
+      "control_types": [
+        "traffic_signals"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.99999996301085,
+      "name": "Wynnefield Avenue",
+      "new": {
+        "avg_gradient_pct": 6.177,
+        "gate_end_wkt": "LINESTRING(-75.2188824 39.9900378, -75.2192525 39.9896888)",
+        "length_m": 359.33,
+        "max_gradient_pct": 8.356,
+        "vert_m": 22.2
+      },
+      "new_gate_center": {
+        "lat": 39.9898633,
+        "lon": -75.21906745
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2188824,
+          39.9900378
+        ],
+        [
+          -75.2192525,
+          39.9896888
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 6.159,
+        "gate_end_wkt": "LINESTRING(-75.2192131 39.9901826, -75.2194743 39.9897804)",
+        "length_m": 386.33,
+        "max_gradient_pct": 8.356,
+        "vert_m": 23.79
+      },
+      "registry_id": "beb71d2e-d725-4034-91d0-04a06233639b",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 386.3343772444484,
+            "kind": "traffic_signals",
+            "lat": 39.9899815,
+            "lon": -75.21934370000001,
+            "node_id": 109855687,
+            "tags": {
+              "highway": "traffic_signals"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 39.98986331520123,
+            "lon": -75.21906741792976,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 386.3343772444484,
+          "lat": 39.9899815,
+          "lon": -75.21934370000001,
+          "node_id": 109855687
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 26.99999996301085,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2192131 39.9901826, -75.2194743 39.9897804)",
+        "predecessor_fingerprint": "9417ed5b90b2e4d228e67859a4ebe51d2b56db13cb6019b01060724eb32efcd2",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.99999996301085,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "04686034-def4-4cb8-b861-81840c59612e",
+      "control_types": [
+        "all_way_stop"
+      ],
+      "finish_moved": true,
+      "metres_moved": 26.999999556739425,
+      "name": "Gay Street",
+      "new": {
+        "avg_gradient_pct": 10.729,
+        "gate_end_wkt": "LINESTRING(-75.2224229 40.0276395, -75.2228119 40.0279763)",
+        "length_m": 193.39,
+        "max_gradient_pct": 13.953,
+        "vert_m": 20.75
+      },
+      "new_gate_center": {
+        "lat": 40.0278079,
+        "lon": -75.22261739999999
+      },
+      "new_gate_endpoints_lon_lat": [
+        [
+          -75.2224229,
+          40.0276395
+        ],
+        [
+          -75.2228119,
+          40.0279763
+        ]
+      ],
+      "old": {
+        "avg_gradient_pct": 10.544,
+        "gate_end_wkt": "LINESTRING(-75.2221858 40.0278003, -75.2225738 40.0281371)",
+        "length_m": 220.39,
+        "max_gradient_pct": 13.953,
+        "vert_m": 23.24
+      },
+      "registry_id": "98cf1c5e-138e-45aa-9350-fbf40fe77bd0",
+      "rule": {
+        "admission": "founder_admitted",
+        "clearance_extends_default_setback": false,
+        "clearance_interpretation": {
+          "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+          "date": "2026-10-20",
+          "decided_by": "Claude",
+          "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+        },
+        "controls": [
+          {
+            "along_m": 220.39208979628896,
+            "kind": "all_way_stop",
+            "lat": 40.0279687,
+            "lon": -75.2223798,
+            "node_id": 109792544,
+            "tags": {
+              "highway": "stop",
+              "stop": "all"
+            }
+          }
+        ],
+        "decision_resource": "workout-parse/resources/philly_finish_gate_decisions_v1.json",
+        "default_setback_m": 27.0,
+        "founder_approval": {
+          "approved_position": {
+            "lat": 40.02780788166711,
+            "lon": -75.22261738599789,
+            "setback_from_junction_m": 27.0
+          },
+          "authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+          "by": "Tim",
+          "covering_note": null,
+          "initial_authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+          "on": "2026-10-20",
+          "position_tolerance_m": 0.5,
+          "quote": "yes all 15"
+        },
+        "junction": {
+          "along_m": 220.39208979628896,
+          "lat": 40.0279687,
+          "lon": -75.2223798,
+          "node_id": 109792544
+        },
+        "mapped_stop_positions_m": {},
+        "metres_moved": 26.999999556739425,
+        "model": "finish_before_traffic_control_v1",
+        "old_gate_end_wkt": "LINESTRING(-75.2221858 40.0278003, -75.2225738 40.0281371)",
+        "predecessor_fingerprint": "45183af8f933b69198ce14f10b5ad114cdec826dd800c8344644b887d221362b",
+        "prior_ratified_end_anchor_is_historical": false,
+        "record_continuity_policy": "new_record_board",
+        "setback_from_junction_m": 26.999999556739425,
+        "stop_line_clearance_m": 15.0
+      },
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "ce4b7b0c-3c9b-42a2-ba70-3de7c11afc19",
+      "finish_moved": false,
+      "name": "Parker Avenue",
+      "new": {
+        "avg_gradient_pct": 8.314,
+        "gate_end_wkt": "LINESTRING(-75.2273391 40.0412075, -75.2277819 40.0415021)",
+        "length_m": 260.94,
+        "max_gradient_pct": 11.456,
+        "vert_m": 21.7
+      },
+      "old": {
+        "avg_gradient_pct": 8.314,
+        "gate_end_wkt": "LINESTRING(-75.2273391 40.0412075, -75.2277819 40.0415021)",
+        "length_m": 260.94,
+        "max_gradient_pct": 11.456,
+        "vert_m": 21.7
+      },
+      "registry_id": "2068fd1f-2095-435e-aa96-dbe95cd0f5f5",
+      "tim_named_boundary": false
+    },
+    {
+      "canon_id": "8cced87b-e0cd-472b-aec5-bb99ae494bc7",
+      "finish_moved": false,
+      "name": "Stanton Street",
+      "new": {
+        "avg_gradient_pct": 8.012,
+        "gate_end_wkt": "LINESTRING(-75.1934474 40.0116405, -75.19397 40.0118441)",
+        "length_m": 289.43,
+        "max_gradient_pct": 17.174,
+        "vert_m": 23.19
+      },
+      "old": {
+        "avg_gradient_pct": 8.012,
+        "gate_end_wkt": "LINESTRING(-75.1934474 40.0116405, -75.19397 40.0118441)",
+        "length_m": 289.43,
+        "max_gradient_pct": 17.174,
+        "vert_m": 23.19
+      },
+      "registry_id": "723e3169-e4d8-44d6-9120-cd7503fe1e54",
+      "tim_named_boundary": false
+    }
+  ],
+  "evidence_class": "offline_retained_2026_09_10_snapshot",
+  "extra_proposals": [],
+  "interior_controls_unchanged": [
+    {
+      "controls": [
+        [
+          2125.4,
+          [
+            "Harts Lane"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "name": "Barren Hill Road",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          547.1,
+          [
+            "unnamed connector road"
+          ],
+          [
+            "not a control"
+          ]
+        ],
+        [
+          559.55,
+          [
+            "climber-facing stop sign"
+          ],
+          [
+            "stop"
+          ]
+        ]
+      ],
+      "name": "Black Rock Road",
+      "rail_crossings": 0,
+      "retained_research_labels_superseded": [
+        [
+          547.1,
+          [
+            ""
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          283.6,
+          [
+            "Stanton Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          310.2,
+          [
+            "Cresson Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          403.0,
+          [
+            "Dobson Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          636.7,
+          [
+            "West Coulter Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "Calumet Street / West Coulter Street",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [],
+      "name": "Centennial Road",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "stop_climb"
+      ]
+    },
+    {
+      "controls": [
+        [
+          621.7,
+          [
+            "Hollow Road"
+          ],
+          [
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Conshohocken State Road",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          43.6,
+          [
+            ""
+          ],
+          [
+            "signal"
+          ]
+        ],
+        [
+          243.4,
+          [
+            "Merion Hill Lane"
+          ],
+          [
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Conshohocken State Road",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [],
+      "name": "Cynwyd Heritage Trail",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "ped_crossing",
+        "rail"
+      ]
+    },
+    {
+      "controls": [
+        [
+          996.1,
+          [
+            "East Country Club Road"
+          ],
+          [
+            "ped_crossing",
+            "signal"
+          ]
+        ],
+        [
+          1386.7,
+          [
+            "West Country Club Road"
+          ],
+          [
+            "ped_crossing",
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Falls Road / Conshohocken Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          574.3,
+          [
+            "Laurel Lane"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "name": "Grays Lane",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "barrier"
+      ]
+    },
+    {
+      "controls": [
+        [
+          94.9,
+          [
+            "Smick Street"
+          ],
+          [
+            "ped_crossing",
+            "stop_climb",
+            "stop_cross_traffic"
+          ]
+        ],
+        [
+          113.3,
+          [
+            "Saint Davids Street"
+          ],
+          [
+            "ped_crossing",
+            "stop_climb",
+            "stop_cross_traffic",
+            "stop_opposite"
+          ]
+        ],
+        [
+          121.8,
+          [
+            "Saint Davids Street"
+          ],
+          [
+            "ped_crossing",
+            "stop_climb",
+            "stop_cross_traffic",
+            "stop_opposite"
+          ]
+        ],
+        [
+          345.8,
+          [
+            "Silverwood Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          687.0,
+          [
+            "Manayunk Avenue"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "Green Lane",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          930.5,
+          [
+            "Hollow Road"
+          ],
+          [
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Hagys Ford Road North / Hagys Ford Road",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          1819.2,
+          [
+            "Hillcrest Road"
+          ],
+          [
+            "stop_climb",
+            "stop_cross_traffic"
+          ]
+        ]
+      ],
+      "name": "Jefferson Street / North Woodbine Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          194.4,
+          [
+            "Silverwood Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "Levering Street / Lyceum Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          462.5,
+          [
+            "Silverwood Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          491.4,
+          [
+            "Boone Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          849.3,
+          [
+            "Jacob Street",
+            "Pechin Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          1010.0,
+          [
+            "Mitchell Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "Leverington Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          627.3,
+          [
+            "Conrad Street",
+            "Warden Drive"
+          ],
+          [
+            "ped_crossing",
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Midvale Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "ped_crossing",
+        "signal"
+      ]
+    },
+    {
+      "controls": [
+        [
+          654.9,
+          [
+            "Cherry Lane",
+            "Glenn Road"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "name": "Mill Creek Road",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "barrier"
+      ]
+    },
+    {
+      "controls": [
+        [
+          343.8,
+          [
+            "Williamson Road"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ],
+        [
+          1264.5,
+          [
+            "Lafayette Road",
+            "North Ithan Avenue"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "name": "Morris Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          478.9,
+          [
+            "Mill Creek Road"
+          ],
+          [
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Old Gulph Road / Williamson Road / Youngs Ford Road",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "barrier",
+        "stop_cross_traffic"
+      ]
+    },
+    {
+      "controls": [],
+      "name": "Port Royal Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "barrier"
+      ]
+    },
+    {
+      "controls": [
+        [
+          150.9,
+          [
+            "Lee Street"
+          ],
+          [
+            "ped_crossing",
+            "rail"
+          ]
+        ],
+        [
+          1118.2,
+          [
+            "Cherry Street"
+          ],
+          [
+            "ped_crossing",
+            "rail"
+          ]
+        ],
+        [
+          1378.1,
+          [
+            "Poplar Street"
+          ],
+          [
+            "ped_crossing",
+            "rail",
+            "stop_cross_traffic"
+          ]
+        ],
+        [
+          1614.6,
+          [
+            "Ash Street"
+          ],
+          [
+            "ped_crossing",
+            "rail",
+            "stop_cross_traffic"
+          ]
+        ],
+        [
+          1812.8,
+          [
+            "Harry Street"
+          ],
+          [
+            "ped_crossing",
+            "rail",
+            "stop_cross_traffic"
+          ]
+        ],
+        [
+          2090.5,
+          [
+            "Oak Street"
+          ],
+          [
+            "rail"
+          ]
+        ]
+      ],
+      "name": "Schuylkill River Trail",
+      "rail_crossings": 1,
+      "standalone_flags": [
+        "rail"
+      ]
+    },
+    {
+      "controls": [
+        [
+          102.9,
+          [
+            "Green Tree Run"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "name": "Shawmont Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          51.0,
+          [
+            "Cresson Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          281.2,
+          [
+            "Terrace Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          554.0,
+          [
+            "Pechin Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ],
+        [
+          721.4,
+          [
+            "Mitchell Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "Shurs Lane",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          886.1,
+          [
+            "Sweet Briar Road"
+          ],
+          [
+            "all_way_stop"
+          ]
+        ]
+      ],
+      "name": "Waverly Road",
+      "rail_crossings": 0,
+      "standalone_flags": []
+    },
+    {
+      "controls": [
+        [
+          440.0,
+          [
+            "Gypsy Lane"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "West School House Lane",
+      "rail_crossings": 2,
+      "standalone_flags": [
+        "ped_crossing_signal",
+        "rail"
+      ]
+    },
+    {
+      "controls": [],
+      "name": "Wises Mill Road",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "ped_crossing"
+      ]
+    },
+    {
+      "controls": [],
+      "name": "Wynnefield Avenue",
+      "rail_crossings": 0,
+      "standalone_flags": [
+        "ped_crossing"
+      ]
+    }
+  ],
+  "moved_count": 16,
+  "near_start_controls_unchanged": [
+    {
+      "controls": [
+        [
+          43.6,
+          [
+            ""
+          ],
+          [
+            "signal"
+          ]
+        ]
+      ],
+      "name": "Conshohocken State Road",
+      "registry_id_prefix": "9a9b1cb6"
+    },
+    {
+      "controls": [
+        [
+          94.9,
+          [
+            "Smick Street"
+          ],
+          [
+            "ped_crossing",
+            "stop_climb",
+            "stop_cross_traffic"
+          ]
+        ]
+      ],
+      "name": "Green Lane",
+      "registry_id_prefix": "a253c363"
+    },
+    {
+      "controls": [
+        [
+          51.0,
+          [
+            "Cresson Street"
+          ],
+          [
+            "all_way_stop",
+            "ped_crossing"
+          ]
+        ]
+      ],
+      "name": "Shurs Lane",
+      "registry_id_prefix": "cfd560e9"
+    }
+  ],
+  "registration_check": {
+    "evidence_class": "retained_index_snapshot_not_fresh_chain_read",
+    "moved_registered": 0,
+    "registered_name": "Shawmont Avenue",
+    "status_counts": {
+      "index_record_absent": 56,
+      "indexed_commitment_verified": 1
+    }
+  },
+  "unchanged_count": 41,
+  "unmapped_t_junction_field_checks": [
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Church Road"
+      ],
+      "name": "Andorra Road"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "New Dehaven Street"
+      ],
+      "name": "Dehaven Avenue"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Spring Lane"
+      ],
+      "name": "Hagys Mill Road"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Jefferson Street",
+        "North Woodbine Avenue"
+      ],
+      "name": "Mary Waters Ford Road"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Hansell Road"
+      ],
+      "name": "McClenaghan Mill Road"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Youngs Ford Road"
+      ],
+      "name": "Merion Square Road"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Ridgewood Road",
+        "Roscommon Road"
+      ],
+      "name": "Morris Avenue"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Highland Avenue"
+      ],
+      "name": "Rockland Avenue"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "Youngs Ford Road"
+      ],
+      "name": "Rose Glen Road"
+    },
+    {
+      "classification": "research terminates_or_turns; field check",
+      "cross_roads": [
+        "West Springfield Avenue"
+      ],
+      "name": "Valley Green Road"
+    }
+  ]
+}

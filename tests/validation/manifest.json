@@ -1,0 +1,293 @@
+{
+  "version": 2,
+  "description": "Climb detection v2 validation dataset. Ground-truth climbs annotated from local knowledge + GPS review. Rows marked annotation_status=pending_review are retained as review hints, not scorecard truth.",
+  "created": "2026-02-24",
+  "terrain_coverage": {
+    "flat": 1,
+    "rolling": 2,
+    "hilly_urban": 3,
+    "mountainous": 2
+  },
+  "files": [
+    {
+      "file": "Afternoon_Ride (1).fit",
+      "terrain": "flat",
+      "description": "76min NJ coast ride. Truly flat: 5-15m elevation range. Power meter, no HR. Control file — no real climbs.",
+      "notes": "GPS: 39.91N, -74.93W. Perfect negative-control for false positive testing. All terrain modes correctly find 0 climbs.",
+      "expected_climbs": []
+    },
+    {
+      "file": "Afternoon_Ride.fit",
+      "terrain": "rolling",
+      "description": "131min Philly rolling terrain. 541m gain across many small rollers. Power meter, no HR.",
+      "notes": "GPS has some sentinel values (-214.748) but elevation data is clean (-8 to 31m range). terrain=auto classifies as rolling and finds 5 climbs. Good rolling terrain validation.",
+      "expected_climbs": [
+        {
+          "name": "Roller 1",
+          "approx_vert_m": 28,
+          "approx_start_s": 780,
+          "approx_gradient_pct": 3.6,
+          "notes": "Short roller. auto mode finds this."
+        },
+        {
+          "name": "Roller 2",
+          "approx_vert_m": 25,
+          "approx_start_s": 1265,
+          "approx_gradient_pct": 3.4,
+          "notes": "Short roller. auto mode finds this."
+        },
+        {
+          "name": "Roller 3",
+          "approx_vert_m": 28,
+          "approx_start_s": 3852,
+          "approx_gradient_pct": 2.1,
+          "notes": "Gentler sustained roller."
+        },
+        {
+          "name": "Roller 4",
+          "approx_vert_m": 27,
+          "approx_start_s": 4953,
+          "approx_gradient_pct": 3.0,
+          "notes": "Short roller."
+        },
+        {
+          "name": "Roller 5",
+          "approx_vert_m": 26,
+          "approx_start_s": 5257,
+          "approx_gradient_pct": 3.4,
+          "notes": "Short roller."
+        }
+      ]
+    },
+    {
+      "file": "05_07_2015_Philadelphia_Pennsylvania.fit",
+      "terrain": "hilly",
+      "description": "159min Philly ride. 669m gain. Power meter, no HR. Older ride (2015).",
+      "notes": "GPS has sentinel values but elevation is clean (-16 to 91m). HTML review on 2026-04-29 with corrected canonical_v2 lane shows 6 displayed climbs; persistence shows 6, with 5 keepers and one low-grade review row, and all displayed persistence rows align with canonical_v2 anchors.",
+      "expected_climbs": [
+        {
+          "name": "Philly low-grade shoulder",
+          "approx_vert_m": 58,
+          "approx_start_s": 1978,
+          "approx_gradient_pct": 1.9,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 shows 32:58-39:18; persistence overlaps as a broader 32:52-46:34 low-grade review segment."
+        },
+        {
+          "name": "Philly climb 2",
+          "approx_vert_m": 89,
+          "approx_start_s": 3692,
+          "approx_gradient_pct": 4.3,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 1:01:32-1:06:13."
+        },
+        {
+          "name": "Philly climb 3",
+          "approx_vert_m": 76,
+          "approx_start_s": 4111,
+          "approx_gradient_pct": 5.8,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 shows 1:08:31-1:12:41 and persistence overlaps at 1:08:41-1:13:46."
+        },
+        {
+          "name": "Philly climb 4",
+          "approx_vert_m": 73,
+          "approx_start_s": 4859,
+          "approx_gradient_pct": 5.3,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 1:20:59-1:25:10; persistence also has a tighter overlapping child row, so the broader canonical anchor is the manifest truth."
+        },
+        {
+          "name": "Philly climb 5",
+          "approx_vert_m": 61,
+          "approx_start_s": 5204,
+          "approx_gradient_pct": 4.7,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 1:26:44-1:30:04."
+        },
+        {
+          "name": "Philly late low-grade shoulder",
+          "approx_vert_m": 63,
+          "approx_start_s": 6187,
+          "approx_gradient_pct": 1.9,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 shows 1:43:07-1:52:01; kept as a low-grade but sustained reviewed climb."
+        }
+      ]
+    },
+    {
+      "file": "in_the_bag_.fit",
+      "terrain": "rolling",
+      "description": "5-hour Philly ride: Manayunk, Roxborough, NW Philly. Power meter, no HR. 1021m naive gain. GPS: 39.96-40.06N, 75.16-75.33W.",
+      "notes": "terrain=auto classifies as mountainous (wrong), detects 0 climbs. Discrete classification gap: ride has real climbs but auto picks the wrong preset. hilly=5, flat=18.",
+      "expected_climbs": [
+        {
+          "name": "Early river shoulder",
+          "approx_vert_m": 62,
+          "approx_start_s": 770,
+          "approx_gradient_pct": 1.4,
+          "notes": "Broad early shoulder before the first sharper rollers. Confirmed by HTML review on 2026-03-13."
+        },
+        {
+          "name": "Manayunk Ridge (Lyceum approach)",
+          "approx_vert_m": 80,
+          "approx_start_s": 6700,
+          "approx_gradient_pct": 4.7,
+          "notes": "The main ridge climb. v1 hilly mode finds this."
+        },
+        {
+          "name": "Roxborough climb",
+          "approx_vert_m": 71,
+          "approx_start_s": 12200,
+          "approx_gradient_pct": 5.3,
+          "notes": "Steep mid-ride climb. v1 hilly mode finds this."
+        },
+        {
+          "name": "Ridge Ave return",
+          "approx_vert_m": 95,
+          "approx_start_s": 15100,
+          "approx_gradient_pct": 4.5,
+          "notes": "Final big effort. v1 hilly mode finds this as a merged climb."
+        },
+        {
+          "name": "Kelly Drive rollers",
+          "approx_vert_m": 45,
+          "approx_start_s": 2400,
+          "approx_gradient_pct": 2.7,
+          "notes": "Smaller roller. v1 flat/rolling modes find this, hilly does not. Borderline for v2."
+        },
+        {
+          "name": "Early Manayunk approach",
+          "approx_vert_m": 58,
+          "approx_start_s": 5780,
+          "approx_gradient_pct": 3.7,
+          "notes": "Moderate sustained climb. v1 hilly finds this."
+        }
+      ]
+    },
+    {
+      "file": "Lunch_Ride.fit",
+      "terrain": "hilly",
+      "description": "261min Philly+west ride. 947m gain. Power meter, no HR. Extends to western suburbs.",
+      "notes": "GPS: 39.96-40.06N, 75.16-75.51W. HTML review on 2026-04-29 with corrected canonical_v2 lane shows 9 canonical_v2 climbs. Seven persistence rows line up with canonical_v2 and are all keeper-class; the manifest promotes those seven and leaves the two canonical-only small rollers as scorecard extras.",
+      "expected_climbs": [
+        {
+          "name": "Western suburb climb 1",
+          "approx_vert_m": 79,
+          "approx_start_s": 1634,
+          "approx_gradient_pct": 2.2,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 27:14-39:29."
+        },
+        {
+          "name": "Western suburb climb 2",
+          "approx_vert_m": 53,
+          "approx_start_s": 2984,
+          "approx_gradient_pct": 2.2,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 49:44-57:27."
+        },
+        {
+          "name": "Western suburb climb 3",
+          "approx_vert_m": 66,
+          "approx_start_s": 4976,
+          "approx_gradient_pct": 2.6,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 1:22:56-1:29:56."
+        },
+        {
+          "name": "Western suburb climb 4",
+          "approx_vert_m": 34,
+          "approx_start_s": 6090,
+          "approx_gradient_pct": 3.1,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 1:41:30-1:44:44."
+        },
+        {
+          "name": "Western suburb climb 5",
+          "approx_vert_m": 36,
+          "approx_start_s": 7490,
+          "approx_gradient_pct": 5.7,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 2:04:50-2:07:11."
+        },
+        {
+          "name": "Western suburb climb 6",
+          "approx_vert_m": 47,
+          "approx_start_s": 8496,
+          "approx_gradient_pct": 2.7,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 2:21:36-2:25:57."
+        },
+        {
+          "name": "Western suburb climb 7",
+          "approx_vert_m": 89,
+          "approx_start_s": 12201,
+          "approx_gradient_pct": 4.1,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 3:23:21-3:30:48."
+        }
+      ]
+    },
+    {
+      "file": "Morning_Ride (1).fit",
+      "terrain": "mountainous",
+      "description": "528min (8.8hr) Tucson, AZ ride. 1967m gain, 705-1638m elevation. Mt. Lemmon area. Power meter, no HR.",
+      "notes": "GPS: 31.71-32.32N, 111.10-110.84W. REAL mountainous terrain. terrain=auto correctly classifies as mountainous. Annotations revised 2026-03-20: foothills updated to full detected extent (was 119m/5657s, now 275m/4840s), mid-mountain removed (no detector finds it as discrete segment), return climb added (190m visible in elevation data).",
+      "expected_climbs": [
+        {
+          "name": "Tucson foothills approach",
+          "approx_vert_m": 275,
+          "approx_start_s": 4840,
+          "approx_gradient_pct": 1.9,
+          "notes": "Continuous 14.6km approach from 774m to 1085m. Detectors find the full extent starting at ~4839. Original annotation (119m at 5657) described a narrower segment mid-climb."
+        },
+        {
+          "name": "Mt. Lemmon main ascent",
+          "approx_vert_m": 514,
+          "approx_start_s": 11174,
+          "approx_gradient_pct": 6.3,
+          "notes": "The big one. 8.2km at 6.3%. 31 minutes. auto mode finds this. Should be HC or Cat 1."
+        },
+        {
+          "name": "Return foothills climb",
+          "approx_vert_m": 190,
+          "approx_start_s": 17350,
+          "approx_gradient_pct": 1.9,
+          "notes": "Return through foothills. 200m gain from 876m to 1077m visible in elevation profile. Not in original annotations."
+        }
+      ]
+    },
+    {
+      "file": "Morning_Ride.fit",
+      "terrain": "hilly",
+      "description": "426min (7hr) Philly to NJ ride. 1633m gain. Power meter, no HR.",
+      "notes": "GPS: 39.96-40.37N, 75.29-74.95W. Long ride, lots of climbing. HTML review on 2026-04-29 with corrected canonical_v2 lane shows 5 canonical_v2 climbs and 7 persistence rows. The old unanchored 'Major climb' annotation was stale; only two short steep efforts are clearly corroborated by both canonical_v2 and persistence.",
+      "expected_climbs": [
+        {
+          "name": "Short steep climb 1",
+          "approx_vert_m": 37,
+          "approx_start_s": 3645,
+          "approx_gradient_pct": 7.8,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 1:00:45-1:02:41."
+        },
+        {
+          "name": "Short steep climb 2",
+          "approx_vert_m": 32,
+          "approx_start_s": 11017,
+          "approx_gradient_pct": 6.5,
+          "notes": "Anchored by canonical_v2 HTML review on 2026-04-29. canonical_v2 and persistence both show 3:03:37-3:05:11."
+        }
+      ]
+    },
+    {
+      "file": "t_h_e_w_a_l_l.fit",
+      "terrain": "urban_hills",
+      "description": "36-min ride focused on Manayunk Wall (Lyceum Ave). No power, no HR. 213m naive gain. GPS: 39.96-40.03N, 75.18-75.22W.",
+      "notes": "The Wall is the canonical Philly wall climb. terrain=auto classifies as rolling, finds 2 (correct!). v1 hilly mode MISSES the Wall (below 120s time_min). Critical v2 validation case.",
+      "expected_climbs": [
+        {
+          "name": "Manayunk approach",
+          "approx_vert_m": 81,
+          "approx_start_s": 1400,
+          "approx_gradient_pct": 4.6,
+          "notes": "Longer gradual climb up to the ridge. All presets find this."
+        },
+        {
+          "name": "Manayunk Wall (Lyceum Ave)",
+          "approx_vert_m": 59,
+          "approx_start_s": 2076,
+          "approx_gradient_pct": 11.2,
+          "notes": "THE Wall. ~525m, 11.2% avg. v1 hilly mode MISSES this (below 120s time_min). v2 MUST detect this."
+        }
+      ]
+    }
+  ]
+}

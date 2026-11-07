@@ -1,0 +1,8 @@
+# Copy to dev/terraform.tfvars or prod/terraform.tfvars and fill in
+do_token     = "dop_v1_xxxxxx"
+ssh_key_ids  = ["123456"]          # `doctl compute ssh-key list`
+region       = "nyc3"
+vpc_cidr     = "10.0.0.0/16"
+domain       = ""                  # e.g., "dev-api.boulderrollers.com" or "api.boulderrollers.com"
+enable_database = true
+enable_redis    = true

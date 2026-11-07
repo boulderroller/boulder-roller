@@ -1,0 +1,26 @@
+{
+  "contract_version": "client.v1",
+  "truth_source": "projected",
+  "has_vault": true,
+  "vault_id": 142,
+  "vault_signature": "abababababababababababababababababababababababababababababababab",
+  "total_staked": "84200",
+  "total_staked_base_units": "84200000000000",
+  "total_cal_staked": "84200",
+  "total_cal_staked_base_units": "84200000000000",
+  "total_completions": 93,
+  "current_carry": {
+    "record_royalty": "120",
+    "record_royalty_base_units": "120000000000",
+    "stakers": "60",
+    "stakers_base_units": "60000000000",
+    "local_legend": "30",
+    "local_legend_base_units": "30000000000",
+    "pol": "10",
+    "pol_base_units": "10000000000",
+    "treasury": "10",
+    "treasury_base_units": "10000000000",
+    "total": "230",
+    "total_base_units": "230000000000"
+  }
+}

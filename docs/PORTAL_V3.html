@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+    :root {
+      --font-sans: 'Space Grotesk', system-ui, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+
+      /* warm dark - not cold, not dead */
+      --ink: #0f0f0e;
+      --surface: #171715;
+      --raised: #1e1e1b;
+      --border: #2a2a26;
+      --border-light: #363630;
+
+      /* warm lights - cream, not harsh */
+      --text-bright: #f5f4ef;
+      --text: #d4d3cb;
+      --text-dim: #8a8980;
+      --text-mute: #5c5b54;
+
+      /* the one accent that matters */
+      --gold: #e2b340;
+      --gold-dim: #a68420;
+
+      /* semantic - still need these */
+      --up: #7ccf8e;
+      --down: #e85c5c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      background: var(--ink);
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ================================================
+       LAYOUT
+    ================================================ */
+
+    .app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ================================================
+       TOP BAR
+    ================================================ */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .brand-text {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text-bright);
+      letter-spacing: -0.01em;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .epoch-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .epoch-tag span {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .wallet-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .wallet-pill:hover {
+      border-color: var(--border-light);
+    }
+
+    .wallet-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--up);
+      border-radius: 50%;
+    }
+
+    /* ================================================
+       HERO - the beetle takes center stage
+    ================================================ */
+
+    .hero {
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 0;
+        text-align: center;
+      }
+    }
+
+    .hero-left h1 {
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-left h1 { font-size: 40px; }
+    }
+
+    .hero-left h1 .gold {
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-size: 18px;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-stats { justify-content: center; }
+    }
+
+    @media (max-width: 500px) {
+      .hero-stats { 
+        flex-direction: column; 
+        gap: 20px;
+        align-items: center;
+      }
+    }
+
+    .hero-stat {
+      text-align: left;
+    }
+
+    @media (max-width: 800px) {
+      .hero-stat { text-align: center; }
+    }
+
+    .hero-stat-value {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1;
+    }
+
+    .hero-stat-value.gold { color: var(--gold); }
+    .hero-stat-value.up { color: var(--up); }
+
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--text-mute);
+      margin-top: 4px;
+    }
+
+    /* BEETLE AVATAR - make it special */
+    .beetle-avatar {
+      position: relative;
+    }
+
+    .beetle-shell {
+      width: 180px;
+      height: 180px;
+      background: var(--surface);
+      border: 3px solid var(--border-light);
+      border-radius: 50% 50% 42% 42%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 
+        0 0 0 1px var(--ink),
+        0 20px 60px -20px rgba(0,0,0,0.5),
+        inset 0 -20px 40px -20px rgba(0,0,0,0.3);
+    }
+
+    .beetle-shell::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .beetle-rank {
+      font-family: var(--font-mono);
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--gold);
+      text-shadow: 0 2px 20px rgba(226, 179, 64, 0.3);
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -8px;
+      right: -8px;
+      width: 56px;
+      height: 56px;
+      background: var(--raised);
+      border: 3px solid var(--border-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.4);
+    }
+
+    .boulder-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .beetle-title {
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* ================================================
+       MAIN CONTENT
+    ================================================ */
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+      padding-bottom: 64px;
+    }
+
+    @media (max-width: 1000px) {
+      .main { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================
+       SECTION
+    ================================================ */
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .section-head {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
+    .section-link {
+      font-size: 13px;
+      color: var(--text-mute);
+      transition: color 0.15s;
+    }
+
+    .section-link:hover {
+      color: var(--gold);
+    }
+
+    /* ================================================
+       PILES LIST
+    ================================================ */
+
+    .pile {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .pile:last-child {
+      border-bottom: none;
+    }
+
+    .pile:hover {
+      background: var(--raised);
+    }
+
+    .pile-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .pile-badge.leader {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .pile-badge.staked {
+      background: var(--raised);
+      border: 2px solid var(--border-light);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .pile-badge.open {
+      background: transparent;
+      border: 2px dashed var(--border-light);
+      color: var(--text-mute);
+    }
+
+    .pile-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-bright);
+      margin-bottom: 3px;
+    }
+
+    .pile-info p {
+      font-size: 13px;
+      color: var(--text-mute);
+    }
+
+    .pile-info p strong {
+      color: var(--text-dim);
+    }
+
+    .pile-right {
+      text-align: right;
+    }
+
+    .pile-earning {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--up);
+      margin-bottom: 2px;
+    }
+
+    .pile-earning.inactive {
+      color: var(--text-mute);
+    }
+
+    .pile-pr {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+
+    /* ================================================
+       LOG
+    ================================================ */
+
+    .log-body {
+      padding: 20px 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 2.2;
+    }
+
+    .log-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .log-marker {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .log-marker.sync { background: var(--up); }
+    .log-marker.earn { background: var(--gold); }
+    .log-marker.alert { background: var(--down); }
+    .log-marker.info { background: var(--text-mute); }
+
+    .log-text {
+      color: var(--text-dim);
+    }
+
+    .log-text b {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .log-text .gold { color: var(--gold); }
+    .log-text .up { color: var(--up); }
+    .log-text .down { color: var(--down); }
+
+    /* ================================================
+       SIDEBAR
+    ================================================ */
+
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .sidebar-head {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .sidebar-value {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--up);
+    }
+
+    .sidebar-list {
+      padding: 8px;
+    }
+
+    .sidebar-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 10px;
+      transition: background 0.15s;
+    }
+
+    .sidebar-item:hover {
+      background: var(--raised);
+    }
+
+    .sidebar-item-name {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .sidebar-item-meta {
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+
+    .sidebar-item-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .sidebar-item-value.up { color: var(--up); }
+    .sidebar-item-value.down { color: var(--down); }
+    .sidebar-item-value.neutral { color: var(--text-dim); }
+
+    .claim-btn {
+      display: block;
+      width: calc(100% - 16px);
+      margin: 8px;
+      padding: 14px;
+      background: var(--gold);
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .claim-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    /* ACTIVITY */
+    .activity-list {
+      max-height: 380px;
+      overflow-y: auto;
+    }
+
+    .activity-item {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .activity-action {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .activity-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .activity-value.up { color: var(--up); }
+    .activity-value.down { color: var(--down); }
+    .activity-value.neutral { color: var(--text-dim); }
+
+    .activity-meta {
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+
+    .footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">🪲</div>
+      <span class="brand-text">Dung Beetle</span>
+    </div>
+    <div class="topbar-right">
+      <div class="epoch-tag">Epoch 47 ends <span>2d 14h</span></div>
+      <div class="wallet-pill">
+        <div class="wallet-dot"></div>
+        8xK4...mN9p
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1>booka_shade<span class="gold">.dung</span></h1>
+      <p class="hero-tagline">"The Alpine Assassin" · Rolling since March 2024</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value gold">8,450</div>
+          <div class="hero-stat-label">Boulder (DUNG)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">847</div>
+          <div class="hero-stat-label">Weekly TSS</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value up">+36.5</div>
+          <div class="hero-stat-label">Unclaimed</div>
+        </div>
+      </div>
+    </div>
+    <div class="beetle-avatar">
+      <div class="beetle-shell">
+        <span class="beetle-rank">S</span>
+      </div>
+      <div class="beetle-boulder">
+        <span class="boulder-value">8.4K</span>
+      </div>
+      <div class="beetle-title">S RANK</div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="main-left">
+
+      <!-- PILES -->
+      <section class="section">
+        <div class="section-head">
+          <h2 class="section-title">Your Piles</h2>
+          <a href="#" class="section-link">See all →</a>
+        </div>
+        <div class="pile-list">
+          <div class="pile">
+            <div class="pile-badge leader">👑</div>
+            <div class="pile-info">
+              <h3>PHILLY CRIT</h3>
+              <p>Leader · <strong>847 DUNG</strong> staked</p>
+            </div>
+            <div class="pile-right">
+              <div class="pile-earning">+18.4/day</div>
+              <div class="pile-pr">PR 2:34</div>
+            </div>
+          </div>
+          <div class="pile">
+            <div class="pile-badge staked">2</div>
+            <div class="pile-info">
+              <h3>MANAYUNK WALL</h3>
+              <p>Challenger · <strong>420 DUNG</strong> staked</p>
+            </div>
+            <div class="pile-right">
+              <div class="pile-earning">+6.2/day</div>
+              <div class="pile-pr">PR 4:12</div>
+            </div>
+          </div>
+          <div class="pile">
+            <div class="pile-badge staked">🦢</div>
+            <div class="pile-info">
+              <h3>SOUTH HILL</h3>
+              <p>Swanny seat · Passive income</p>
+            </div>
+            <div class="pile-right">
+              <div class="pile-earning">+3.3/day</div>
+              <div class="pile-pr">—</div>
+            </div>
+          </div>
+          <div class="pile">
+            <div class="pile-badge open">+</div>
+            <div class="pile-info">
+              <h3>LEMON HILL</h3>
+              <p>Open · No stake yet</p>
+            </div>
+            <div class="pile-right">
+              <div class="pile-earning inactive">—</div>
+              <div class="pile-pr">PR 1:58</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOG -->
+      <section class="section">
+        <div class="section-head">
+          <h2 class="section-title">System Log</h2>
+        </div>
+        <div class="log-body">
+          <div class="log-line">
+            <div class="log-marker sync"></div>
+            <div class="log-text">Ride synced — <b>TSS 118</b>, crossed <b>9 piles</b></div>
+          </div>
+          <div class="log-line">
+            <div class="log-marker earn"></div>
+            <div class="log-text">Boulder updated — <span class="gold">+118.0 DUNG</span> earned</div>
+          </div>
+          <div class="log-line">
+            <div class="log-marker alert"></div>
+            <div class="log-text"><span class="down">velodrome_king</span> is challenging MANAYUNK WALL</div>
+          </div>
+          <div class="log-line">
+            <div class="log-marker info"></div>
+            <div class="log-text">Epoch 47 distribution in <b>2d 14h</b></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- CLAIM -->
+      <div class="sidebar-card">
+        <div class="sidebar-head">
+          <span class="sidebar-title">Unclaimed Rewards</span>
+          <span class="sidebar-value">+36.5</span>
+        </div>
+        <div class="sidebar-list">
+          <div class="sidebar-item">
+            <div>
+              <div class="sidebar-item-name">PHILLY CRIT</div>
+              <div class="sidebar-item-meta">Leader + stake</div>
+            </div>
+            <div class="sidebar-item-value up">+18.4</div>
+          </div>
+          <div class="sidebar-item">
+            <div>
+              <div class="sidebar-item-name">MANAYUNK WALL</div>
+              <div class="sidebar-item-meta">Stake yield</div>
+            </div>
+            <div class="sidebar-item-value up">+6.2</div>
+          </div>
+          <div class="sidebar-item">
+            <div>
+              <div class="sidebar-item-name">SOUTH HILL</div>
+              <div class="sidebar-item-meta">Swanny passive</div>
+            </div>
+            <div class="sidebar-item-value up">+3.3</div>
+          </div>
+          <div class="sidebar-item">
+            <div>
+              <div class="sidebar-item-name">TSS Rewards</div>
+              <div class="sidebar-item-meta">This epoch</div>
+            </div>
+            <div class="sidebar-item-value up">+8.6</div>
+          </div>
+        </div>
+        <button class="claim-btn">Claim All Rewards</button>
+      </div>
+
+      <!-- ACTIVITY -->
+      <div class="sidebar-card">
+        <div class="sidebar-head">
+          <span class="sidebar-title">Recent Activity</span>
+        </div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-top">
+              <span class="activity-action">Morning ride synced</span>
+              <span class="activity-value up">+118.0</span>
+            </div>
+            <div class="activity-meta">9 pile crossings · 2h ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-top">
+              <span class="activity-action">Staked PHILLY CRIT</span>
+              <span class="activity-value neutral">−420.0</span>
+            </div>
+            <div class="activity-meta">420 DUNG · 1d ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-top">
+              <span class="activity-action">Defended PHILLY CRIT</span>
+              <span class="activity-value up">+25.0</span>
+            </div>
+            <div class="activity-meta">vs sprint_master · 2d ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-top">
+              <span class="activity-action">Lost RIDGE AVE</span>
+              <span class="activity-value down">−45.0</span>
+            </div>
+            <div class="activity-meta">Dethroned · 3d ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-top">
+              <span class="activity-action">New PR: LEMON HILL</span>
+              <span class="activity-value up">+15.0</span>
+            </div>
+            <div class="activity-meta">1:58 (−4s) · 4d ago</div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>Dung Beetle Cycling · Epoch 47 · Devnet</div>
+    <div class="footer-links">
+      <a href="#">Docs</a>
+      <a href="#">Discord</a>
+      <a href="#">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

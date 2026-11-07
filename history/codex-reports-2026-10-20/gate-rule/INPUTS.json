@@ -1,0 +1,102 @@
+{
+  "admitted_after": {
+    "path": "/private/tmp/lafayette-crest-6ewxw/admitted-after.json",
+    "sha256": "120fe24c1bfaae51cff46198de5b42fff89f9a05c34ed92139fcc8e2819161f4"
+  },
+  "corpus": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-v2/tools/corpus/golden_corpus.db",
+    "sha256": "64b15790bed2628b3e7e8371657b408ec5e96305db84bfe050507b14860b98ee"
+  },
+  "engine": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/lafayette-crest/backend/app/services/canon_traversal.py",
+    "sha256": "9378aeb62d94eaea08f56d9cf1042d6c47b0d847a17852cf328df4703ff80168"
+  },
+  "finish_decisions": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/gate-rule/workout-parse/resources/philly_finish_gate_decisions_v1.json",
+    "sha256": "330f4a1fd942f3fee7a49bef7d1813b0cfbc859c741c1216608d5f80a2e14dd0"
+  },
+  "hydrated_before": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix3/before.json",
+    "sha256": "7d1a934026fc20b5771971737855104e2ff8d3ff52f0714034ace3b0f862a4fd"
+  },
+  "local_profiles": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-v2/workout-parse/data/canon/philly_wissahickon_3dep_profiles.json",
+    "sha256": "8c50e0b8305fe4b67b270b0ebe10f0a99a39114d686c1249faeef98bf4238b97"
+  },
+  "offline_proposed": {
+    "path": "/private/tmp/lafayette-crest-6ewxw/full/offline-1.json",
+    "sha256": "7a08a405812cdb8e0085cb1792b25ba9aeeb1476b50909cbd2c6fda0462164b4"
+  },
+  "pbf": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-v2/workout-parse/data/pennsylvania.osm.pbf",
+    "sha256": "5129ee348de183112b514c76dcfbe2db548c85b8be6bc72df9da8d6a996f8d99"
+  },
+  "placement_approvals": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/lafayette-crest/history/codex-reports-2026-10-20/gate-rule/APPROVALS.json",
+    "sha256": "d2dcdf434559456a3a15504cb9b8a553908fa64cb1d380d468475046a3f484f6"
+  },
+  "ratified_boundary_decisions": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/lafayette-crest/workout-parse/resources/philly_ratified_boundaries_v1.json",
+    "sha256": "edbe0257b6a2df5719bb055ae8dca8f6aae099cf3ffa99a1aad012ee0214b99d"
+  },
+  "ratified_boundary_profiles": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/lafayette-crest/workout-parse/resources/philly_ratified_boundary_3dep_profiles_v1.json",
+    "sha256": "8c68b45a1fb1b8a5ac5c660454c5f996ab2e892e222e56758ba5cf6684f28c31"
+  },
+  "registration_manifest": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/atlas-m1-inputs/private-philly-capture-2026-09-10/sealed/4473c7575f2f827306e80573eb29f5580d91eb42e1532fe59ebe545608bd9bec/registration-manifest.json",
+    "sha256": "5768bd2ccd6ba4502e1db1f71384fe0415e94759fc13ed8294a70af152277148"
+  },
+  "registry": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/atlas-m1-inputs/private-philly-capture-2026-09-10/sealed/4473c7575f2f827306e80573eb29f5580d91eb42e1532fe59ebe545608bd9bec/registry-geography.json",
+    "sha256": "35395f69dc3a90e65855e5678859ee5d0ff2957676bdff8c023d96dfb129b647"
+  },
+  "research_census": {
+    "path": "/private/tmp/claude-501/-Users-gabetemp-curahee-BoulderRoller-v2/d2f6ecef-59d2-4052-b49e-47ebb90ed030/scratchpad/crossings-research/out/gate_census.json",
+    "sha256": "0b3e4168065e538cffcc630b3533a6fdbe85411bded04b3f97ef0c4e2e99eb9b"
+  },
+  "research_geo": {
+    "path": "/private/tmp/claude-501/-Users-gabetemp-curahee-BoulderRoller-v2/d2f6ecef-59d2-4052-b49e-47ebb90ed030/scratchpad/crossings-research/scripts/geo.py",
+    "sha256": "98239b151dd8f933cf0db848f99a87c913e4fbfb25105b9fe0fdc2c4025a0939"
+  },
+  "research_raw_census": {
+    "path": "/private/tmp/claude-501/-Users-gabetemp-curahee-BoulderRoller-v2/d2f6ecef-59d2-4052-b49e-47ebb90ed030/scratchpad/crossings-research/out/gate_census_raw.json",
+    "sha256": "a1b896a38e51d887eb75c7c2ab41c76dd16864cb2534b757fc79f788b6b2edad"
+  },
+  "research_stop_analysis": {
+    "path": "/private/tmp/claude-501/-Users-gabetemp-curahee-BoulderRoller-v2/d2f6ecef-59d2-4052-b49e-47ebb90ed030/scratchpad/crossings-research/scripts/corpus_stops.py",
+    "sha256": "b704e516f53c72d592fd80b4407c4ff478b22bf0f628672594bba67d56e1a163"
+  },
+  "retained_compiler_report": {
+    "path": "/Users/gabetemp/curahee/BoulderRoller-worktrees/atlas-m1-inputs/canon-v025-jhbd9-nodrift.json",
+    "sha256": "de67892dc600affd97e0a5158f3a369ca29777b214ecce41be0e47060736bf0e"
+  },
+  "round2_admitted_after": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix2/admitted-after.json",
+    "sha256": "92d197f5c238a1c3d92c2bd24f9d228f0b44cc11f6a1e4474a6e1d5b2aa42b9e"
+  },
+  "round3_admitted_after": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix3/admitted-after.json",
+    "sha256": "3fe3f69b561128022895aa9a9d705073b0dc5769cd30333314bcea3dcf2a075c"
+  },
+  "round3_offline_proposed": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix3/proposed.json",
+    "sha256": "64b29d8560626c7761be9c0b2005fbe1a5fd045c247a5696e4d846de182459e4"
+  },
+  "round3_unrounded_full_compile": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix3/full/full-1.json",
+    "sha256": "e45459189984f2e8b1464ef6993497d8533bc865afa75c8f6e06d7e84e881608"
+  },
+  "scorecard_definitions": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix3/metrics/canon_traversal_replay.py",
+    "sha256": "ffb7e47bed3f8f779e50dad911c8555d6dc815a4245345669dd58dbf1016fad1"
+  },
+  "stop_map_results": {
+    "path": "/private/tmp/gate-rule-6ewxw/fix3/stop-map-results.json",
+    "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d"
+  },
+  "unrounded_full_compile": {
+    "path": "/private/tmp/lafayette-crest-6ewxw/full/full-1.json",
+    "sha256": "1b68afacb6c40b2532fbc32fbc610155c8b98b8404a13062bcaecff9207a3372"
+  }
+}

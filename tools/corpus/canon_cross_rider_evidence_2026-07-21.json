@@ -1,0 +1,123 @@
+{
+  "canon_report_sha256": "de67892dc600affd97e0a5158f3a369ca29777b214ecce41be0e47060736bf0e",
+  "corridor_authority": "postgis_geography_buffer_v1",
+  "dogfood_negative_control": {
+    "accepted_passes": 0,
+    "attempts": 0,
+    "content_manifest_sha256": "5900f60f1f3831c301e4c9da6b0bc93f7858bd2d26201e283405ce2dcbc3054d",
+    "corridor_hits": 0,
+    "riders": 1,
+    "rides": 11,
+    "source_bytes": 4013161,
+    "source_selection": "lower(file_type)=tcx and uploaded_at<=2026-06-12T21:43:26.751280Z"
+  },
+  "generated_at": "2026-07-21T20:56:00Z",
+  "geographic_census": {
+    "corridor_file_types": {
+      "fit": 9,
+      "gpx": 34
+    },
+    "corridor_intersecting_candidate_rider_pairs": 83,
+    "corridor_intersecting_candidates": 43,
+    "corridor_intersecting_riders": 3,
+    "corridor_intersecting_rides": 43,
+    "launch_candidates": 57
+  },
+  "limitations": [
+    "Cross-rider agreement is measured on 3 independent pairs from 1 supported candidates.",
+    "4 of 177 frozen source objects fail under the pinned parser runtime.",
+    "The eleven outcome-independently selected agent dogfood rides are outside Philadelphia and serve only as negative controls."
+  ],
+  "model": "canon_cross_rider_evidence_v2",
+  "privacy_mode": "aggregate_counts_and_content_digests_no_rider_or_ride_ids",
+  "replay": {
+    "accepted_candidates": 8,
+    "accepted_distinct_riders": 2,
+    "accepted_passes": 24,
+    "accepted_rides": 20,
+    "parseable_source_rides": 173,
+    "parser_error_taxonomy": {
+      "fit_timestamp_regression": 1,
+      "gpx_no_trackpoints": 3
+    },
+    "parser_errors": 4,
+    "rejections": {
+      "malformed_sample": 7821,
+      "partial_traversal": 101,
+      "reverse_direction": 155,
+      "u_turn": 22
+    }
+  },
+  "replay_runtime": {
+    "execution_model": "one_clean_subprocess_per_ride",
+    "native_parser_sha256": "9f2915020fe49af36880f09a132da81d92910d85824a9329b6b7eb65f7f1e31d",
+    "parser_adapter_sha256": "67736a2634112e04c7a0cc884909b7e815cebbc3fdca5e32e7894b124ac35dd7",
+    "parser_contract_version": 5,
+    "parser_init_sha256": "fccce6af7dc6ef239204de5105a360d394e3bdd4019ffce6ac4db291bcb7e78b",
+    "parser_package_version": "0.1.0",
+    "sample_contract": "relative_time_lat_lon_power_hr_preserve_source_index_and_malformed_rows",
+    "traversal_engine_sha256": "869b69c26f86d7d2229cd14b5d048e5dc24a5ca53113f18de4fbdd819ef05106"
+  },
+  "same_canon_cross_rider_agreement": {
+    "agreements": 3,
+    "definition": "distinct-rider, distinct-byte-source pairs independently eligible on the same candidate before D11 outcome",
+    "eligibility": "raw trace crosses the candidate start gate then finish gate in canon direction with at least one valid timed GPS sample strictly between; no corridor-coverage, monotonicity, rejection, or acceptance result enters eligibility",
+    "eligible_attempts": 25,
+    "eligible_candidates": 8,
+    "eligible_distinct_riders": 2,
+    "eligible_rides": 21,
+    "eligible_unique_sources": 19,
+    "exact_duplicate_cross_rider_pairs_excluded": 2,
+    "finding": "3 of 3 independently eligible, same-canon cross-rider pairs were accepted by D11.",
+    "pairs": 3,
+    "raw_cross_rider_pairs": 5,
+    "same_rider_pairs_excluded": 36,
+    "supported_candidate_decision_ids": [
+      "canon-f900cfb8fdb96b47"
+    ],
+    "supported_candidates": 1,
+    "value": 1.0
+  },
+  "source": {
+    "file_types": {
+      "fit": 14,
+      "gpx": 151,
+      "tcx": 12
+    },
+    "project_ref": "qzkqjevawthyboymqrle",
+    "raw_uploads": 177,
+    "source_bytes": 67244165,
+    "source_riders": 29,
+    "storage_bucket": "ride-uploads"
+  },
+  "source_manifest": {
+    "accepted_objects": 20,
+    "accepted_objects_multiset_sha256": "50078db820282717a5dc6a41d4bbc826758e9a6720fb04fc57ff1f65b7e3ae2e",
+    "accepted_unique_content_hashes": 18,
+    "accepted_unique_objects_sha256": "5ee0f5257f3b9c9af9434c12404fb90d5d3a639362e37dfb75fd98770e0fa170",
+    "all_objects": 177,
+    "all_objects_sha256": "b714f82e043c58599ad248f00c7f01b92c6ed4f42983ec8306bbe9260cf83f68",
+    "all_unique_content_hashes": 175,
+    "authoritative_wkb_manifest_sha256": "d5c1d27838d7a1ff59676c123da7b9860ce4e9700477e536684797b0b03ad8ac",
+    "candidate_corridor_manifest_line_model": "decision_id_tab_launch_authority_tab_candidate_fingerprint_tab_sha256_of_postgis_st_asbinary_corridor_sorted_utf8_final_newline",
+    "candidate_corridor_manifest_sha256": "10104ffe2c5f9bfee18e9653b01fb2ce5ece7df9aa7169779925c38ec53d3cbc",
+    "corridor_hit_bytes": 22849912,
+    "corridor_hit_objects": 43,
+    "corridor_hit_objects_sha256": "eb55ee6675979019dc63934d736f28943eea784247fed4188a4be8c41ba7cee0",
+    "corridor_hit_unique_content_hashes": 41,
+    "eligible_attempt_line_model": "decision_id_tab_raw_byte_sha256_tab_start_s_tab_finish_s_sorted_utf8_final_newline",
+    "eligible_attempts_sha256": "497d284ede32b566f470d79c4c9dcc26bd8e0954f8bcb27d5e781af8a7167774",
+    "eligible_objects": 21,
+    "eligible_objects_multiset_sha256": "ddac1abd5ad4521543c98a424409d65b9d9fe4905139af9483ada7f031e6822c",
+    "eligible_pair_line_model": "decision_id_tab_lexically_ordered_raw_sha_colon_start_fixed_9dp_colon_finish_fixed_9dp_attempts_sorted_utf8_final_newline",
+    "eligible_pair_manifest_sha256": "98104861417bef31ec08bcf7a1b400f9937ef5e76b47c3a8bff8089b778a47a9",
+    "eligible_unique_content_hashes": 19,
+    "eligible_unique_objects_sha256": "28ca6d6b4599db9a32448e4e31dfe20378319ef0d7a62d7f58c5007bf9bf484d",
+    "eligible_unique_sources_sha256": "28ca6d6b4599db9a32448e4e31dfe20378319ef0d7a62d7f58c5007bf9bf484d",
+    "line_model": "raw_byte_sha256_tab_lower_file_type_tab_byte_count_sorted_with_duplicates_final_newline",
+    "scored_attempt_outcome_line_model": "eligible_attempt_line_tab_accepted_tab_rejection_sorted_utf8_final_newline",
+    "scored_attempt_outcomes_sha256": "ef3800a0cbadb98f49009b89530a1f358460b044c0d398fbeda0e60876abaa84",
+    "scored_pair_outcome_line_model": "eligible_pair_line_tab_agreement_bit_sorted_utf8_final_newline",
+    "scored_pair_outcomes_sha256": "356344a38b5bfa1f1ffecbe2e510fe913867fdd149d3570f226b592551e72d62"
+  }
+}

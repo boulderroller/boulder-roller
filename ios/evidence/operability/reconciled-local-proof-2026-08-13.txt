@@ -1,0 +1,104 @@
+iOS lane 2 — reconciled local proof
+Date: 2026-08-13
+Class: local/offline only
+Bead owners: boulderroller-v2-odmi6.8, .11, .14, and .5
+
+SOURCE AND TRACKER RECONCILIATION
+
+Branch: claude/boulderroller-v2-dhj3d-ios-slice-one
+Merge commit: 8a9abe4314f8192ae206531da1b7ab3da202120b
+Parents:
+  190d9b16f6b42e33067a05aefee70c0e1c20ec1d
+  cf1c61bc4755d9b8bce958fae9285b8c4e3d9273 (origin/main)
+
+The exact-row tracker union has 1,311 rows, 1,311 unique IDs, and no
+duplicates. Every origin/main row is retained unless it is one of the 18
+explicit branch-owned dhj3d/odmi6 rows, which are retained byte-for-byte.
+The protected boulderroller-v2-4crx.19 gate is unchanged. Newer main closures
+for fy7x2, odmi6.2.1, coq7q, and g0o24 are retained. Both backend add/add
+resolutions are byte-identical to origin/main.
+
+FRESH SIMULATOR SUITE
+
+Project generation:
+  xcodegen generate --spec project.yml
+
+Test command:
+  xcodebuild -project BoulderRoller.xcodeproj -scheme BoulderRoller \
+    -destination 'platform=iOS Simulator,id=83285814-8448-43E4-9AB5-630A48FFF29C' \
+    CODE_SIGNING_ALLOWED=NO test
+
+Outcome: 292 tests executed, 292 passed, 0 failures, 0 unexpected.
+Result bundle:
+  /Users/gabetemp/Library/Developer/Xcode/DerivedData/BoulderRoller-dtukdjelvqcdhobfokdundupyobw/Logs/Test/Test-BoulderRoller-2026.08.13_11-47-25--0400.xcresult
+
+DETERMINISTIC FIXTURE WALKTHROUGH
+
+The current Debug app was installed on the same iPhone 17 simulator. All 16
+launches returned a live process and rendered through the production views.
+Screenshots are 1206x2622 and are retained locally under:
+  /Users/gabetemp/curahee/BoulderRoller-artifacts/ios-reconciliation-2026-08-13/fixtures/
+
+Visually checked outcomes:
+- Recording: power shows the real three-sample 241 W hero plus 10-second
+  projection; GPS-only keeps time as hero and omits power; rejected-location
+  empty state stays at 0.0 mph with unknown climbing shown as a dash.
+- Recovery: eligible offers Save & Upload; ineligible offers Save Ride;
+  local-saved renders Saved on this device without fabricating upload success.
+- Upload/feed: processing retains known metrics; failure exposes Retry and
+  unknown metrics remain dashes; feed cards distinguish unavailable evidence,
+  processing, local-only, complete, and under-review states.
+- Sensors: two-meter source selection, calibrate, calibrated offset, and
+  timeout all render as distinct truthful states.
+- Balance: inactive climb rollout keeps deposited/position values as dashes;
+  settlement states distinguish Collect from Needs review.
+
+Screenshot SHA-256 manifest:
+  balance-climb-rollout.png                    f994d6f57933a535fcc30ef3b8c0f50e3d5dd156d7da5c38ee8702dd2d37d48c
+  balance-settlements-collect.png              7255c873c06f8e74babf67d95b6280e4adb4fb4de25c3da4baa139226375f7fc
+  balance-settlements-needs-review.png         1bc0fda08cf01e7e4a14cef1a654c3469ea35d3156857e1b8ed6706b05db8c4b
+  feed-cards.png                               f0a5347bc3bb568b22ae66c7d6308ec86831be60cef1eb7f31251bb68cd97138
+  recording-empty.png                          9e32f2f8c3a0912af5cd432e582c10742dd0f9ec4eaebfcc4abccfe38a58afc8
+  recording-gps-only.png                       305012db6b213ceb7f6a6f34dd8d0c3ab3c461ed891c9b5917983259d164e8d7
+  recording-power.png                          1b337080002744fde442e8d2eab22bcffac01849f851a3cb1a5f474d39b4edd9
+  recovery-eligible.png                        4a691be580ee47cc96aec367ee47e9d887e9e30fb3d037f209b8bd22664e274e
+  recovery-ineligible.png                      6351e223302c91480c88b70c01eb1d26b563dc4a8a7fb71bbeff4ff3e128e228
+  recovery-local-saved.png                     6ee8e53fe3370228ff8158f2ba0d7a84716c771ab8bb5be24f9556facf22d9c6
+  sensor-detail-calibrate.png                  931b40e7e7d16a94c7e551f2ddc53d191f75bff86ec32c3c4bb0b9ec994a2540
+  sensor-detail-calibrated.png                 775665607f5f15df50d7a061c5bde2cec8095306ea636049f55cff44e40a108e
+  sensor-detail-timeout.png                    ce9bd2013d2050ad27baa9902016967cf6d2a06aa45e86ff3031673166b6eef5
+  sensor-source-conflict.png                   f2dc8ced9f145850d98c874f1f702fcc62111b52674996027e00ff851385a192
+  upload-failed.png                            408125ed4855e3ae42de75f9a06c55b65666b5ba36e3ec5ed87c850e9bf08c21
+  upload-processing.png                        34cf5d94512acaf00cb15c3a6db15eeae361df8b20c9a22dc81bab61e46d4c90
+
+FRESH UNSIGNED RELEASE ARCHIVE
+
+Command: bash ios/scripts/archive.sh
+Outcome: ARCHIVE SUCCEEDED, unsigned 0.1.0 (2145) @ 8a9abe43.
+Archive:
+  /Users/gabetemp/curahee/BoulderRoller-worktrees/ios-slice-one/ios/build/BoulderRoller.xcarchive
+
+Archive application properties: arm64, com.boulderroller.app, empty signing
+identity, empty team. The Release binary contains zero occurrences of all
+seven DEBUG render-fixture launch arguments and the DEBUG forced-crash launch
+argument. Release build settings point CODE_SIGN_ENTITLEMENTS at
+BoulderRoller/Support/BoulderRoller.entitlements; that file contains the APNs
+development entitlement. The archived Info.plist contains background mode
+"processing" and permitted task identifier
+"com.boulderroller.app.ride-upload.reconcile".
+
+Archive dSYMs:
+  BoulderRoller.app.dSYM
+  PrivySDK.framework.dSYM
+Preserved copy:
+  /Users/gabetemp/BoulderRoller-dSYMs/0.1.0-2145-8a9abe43/
+App and app-dSYM UUID (matching):
+  E5EEF23C-70CC-3065-9A0F-9E28499BB69A (arm64)
+
+BOUNDARY
+
+This proves source reconciliation, simulator behavior, Release compilation,
+DEBUG-fixture exclusion, background-task configuration, and symbol custody.
+It does not prove Apple signing, TestFlight upload/install, APNs delivery,
+MetricKit delivery, locked-screen/background GPS, BLE sensors, a real power
+ride, real CAL/money movement, production mutation, or Tim's physical review.

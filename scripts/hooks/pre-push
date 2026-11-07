@@ -1,0 +1,17 @@
+#!/bin/sh
+# BoulderRoller pre-push tracker guard.
+#
+# Pushing while tracker state is still in the worktree or index strands the
+# issue lifecycle away from its related commit. This hook is deliberately
+# non-mutating: it never invokes bd and never stages files.
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+if ! git -C "$REPO_ROOT" diff --quiet -- .beads/issues.jsonl ||
+   ! git -C "$REPO_ROOT" diff --cached --quiet -- .beads/issues.jsonl; then
+    echo "Pre-push blocked: .beads/issues.jsonl has uncommitted changes." >&2
+    echo "Review and commit the tracker diff with its related work before pushing." >&2
+    exit 1
+fi
+
+exit 0

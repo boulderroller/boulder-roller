@@ -1,0 +1,223 @@
+x-backend-build: &backend-build
+  context: .
+  dockerfile: backend/Dockerfile
+  args:
+    APP_VERSION: ${APP_VERSION:-dev}
+
+x-backend-image: &backend-image boulder-repo-backend:${APP_VERSION:-dev}
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./infrastructure/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+    networks:
+      default:
+      boulder-net:
+        aliases:
+          - caddy
+
+  api:
+    image: *backend-image
+    build: *backend-build
+    restart: unless-stopped
+    ports:
+      # Loopback only: Caddy reaches the API as api:8080 on the compose network,
+      # and the release script checks health on localhost.
+      - "127.0.0.1:8080:8080"
+    environment:
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-CHANGE_ME_ACCESS}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-CHANGE_ME_REFRESH}
+      REQUIRE_INVITE_CODE: ${REQUIRE_INVITE_CODE:-}
+      INVITE_CODE_SECRET: ${INVITE_CODE_SECRET:-}
+      COHORT_ADMISSION_REQUIRED: ${COHORT_ADMISSION_REQUIRED:-false}
+      AUTH_AUDIENCE: ${AUTH_AUDIENCE:-boulderrollers}
+      AUTH_SIGNATURE_BYPASS: ${AUTH_SIGNATURE_BYPASS:-false}
+      AUTH_ACCESS_TOKEN_MINUTES: ${AUTH_ACCESS_TOKEN_MINUTES:-15}
+      AUTH_REFRESH_TOKEN_DAYS: ${AUTH_REFRESH_TOKEN_DAYS:-14}
+      AUTH_NONCE_TTL_SECONDS: ${AUTH_NONCE_TTL_SECONDS:-300}
+      SUPABASE_URL: ${SUPABASE_URL:-http://supabase.local}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_KEY:-CHANGE_ME_SERVICE_KEY}
+      ENVIRONMENT: ${ENVIRONMENT:-${APP_ENV:-development}}
+      APP_ENV: ${APP_ENV:-${ENVIRONMENT:-development}}
+      # Error tracking stays off until a DSN is set (backend/app/main.py:105).
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      STRAVA_CLIENT_ID: ${STRAVA_CLIENT_ID:-}
+      STRAVA_CLIENT_SECRET: ${STRAVA_CLIENT_SECRET:-}
+      STRAVA_SYNC_ENABLED: ${STRAVA_SYNC_ENABLED:-false}
+      STRAVA_REDIRECT_URI: ${STRAVA_REDIRECT_URI:-}
+      STRAVA_WEBHOOK_VERIFY_TOKEN: ${STRAVA_WEBHOOK_VERIFY_TOKEN:-}
+      STRAVA_WEBHOOK_CALLBACK_URL: ${STRAVA_WEBHOOK_CALLBACK_URL:-}
+      SOLANA_RPC_URL: ${SOLANA_RPC_URL:-https://api.devnet.solana.com}
+      BOULDER_ROLLERS_PROGRAM_ID: ${BOULDER_ROLLERS_PROGRAM_ID:-EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH}
+      CAL_MINT_ADDRESS: ${CAL_MINT_ADDRESS:-4bxTCxEQp993cXs5nqhfWthRCPSTDv5K6PMgsfunEaJh}
+      DUNG_MINT_ADDRESS: ${DUNG_MINT_ADDRESS:-CqDFJWLpr49tB8xjHegy5JR5jwMCfmhicjuWawtKLeCk}
+      SOLANA_PAYER_SECRET: ${SOLANA_PAYER_SECRET:-}
+      SOLANA_BACKEND_AUTHORITY_SECRET: ${SOLANA_BACKEND_AUTHORITY_SECRET:-}
+      SOLANA_BACKEND_AUTHORITY_PATH: ${SOLANA_BACKEND_AUTHORITY_PATH:-}
+      EXPECTED_BACKEND_AUTHORITY: ${EXPECTED_BACKEND_AUTHORITY:-}
+      ENABLE_DEV_ROUTES: ${ENABLE_DEV_ROUTES:-false}
+      BALANCE_ROLLOUT_STAGE: ${BALANCE_ROLLOUT_STAGE:-off}
+      BALANCE_ROLLOUT_COHORT: ${BALANCE_ROLLOUT_COHORT:-internal}
+      BALANCE_ROLLOUT_OWNER: ${BALANCE_ROLLOUT_OWNER:-}
+      BALANCE_ROLLOUT_ROLLBACK_OWNER: ${BALANCE_ROLLOUT_ROLLBACK_OWNER:-}
+      BALANCE_ROLLOUT_ROLLBACK_CONTACT: ${BALANCE_ROLLOUT_ROLLBACK_CONTACT:-}
+      BALANCE_ROLLOUT_STARTED_AT: ${BALANCE_ROLLOUT_STARTED_AT:-}
+      BALANCE_ROLLOUT_ENFORCED: ${BALANCE_ROLLOUT_ENFORCED:-}
+      BALANCE_ROLLOUT_ENABLE_COLLECT_DUNG: ${BALANCE_ROLLOUT_ENABLE_COLLECT_DUNG:-}
+      BALANCE_ROLLOUT_ENABLE_DEPOSIT_CAL: ${BALANCE_ROLLOUT_ENABLE_DEPOSIT_CAL:-}
+      BALANCE_ROLLOUT_ENABLE_WITHDRAW_CAL: ${BALANCE_ROLLOUT_ENABLE_WITHDRAW_CAL:-}
+      BALANCE_ROLLOUT_ENABLE_ADD_FUNDS: ${BALANCE_ROLLOUT_ENABLE_ADD_FUNDS:-}
+      BALANCE_ROLLOUT_ENABLE_CREATE_VAULT_USDC: ${BALANCE_ROLLOUT_ENABLE_CREATE_VAULT_USDC:-}
+      BALANCE_ROLLOUT_ENABLE_WITHDRAW_TO_WALLET: ${BALANCE_ROLLOUT_ENABLE_WITHDRAW_TO_WALLET:-}
+      CAL_ALLOCATION_MODE: ${CAL_ALLOCATION_MODE:-batch}
+      POL_TOKEN_ACCOUNT: ${POL_TOKEN_ACCOUNT:-}
+      PROTOCOL_TREASURY_ACCOUNT: ${PROTOCOL_TREASURY_ACCOUNT:-}
+      NATS_URL: nats://nats:4222
+      ENABLE_NATS_RIDE_CONSUMER: ${ENABLE_NATS_RIDE_CONSUMER:-true}
+      # Mobile push (boulderroller-v2-k7387): worker OFF by default; dry-run
+      # logs instead of sends. Real sends need the APNs p8 on this host
+      # (never in git) plus ratified copy in code.
+      MOBILE_PUSH_WORKER_ENABLED: ${MOBILE_PUSH_WORKER_ENABLED:-false}
+      MOBILE_PUSH_DRY_RUN: ${MOBILE_PUSH_DRY_RUN:-true}
+      APNS_KEY_PATH: ${APNS_KEY_PATH:-}
+      APNS_KEY_ID: ${APNS_KEY_ID:-}
+      APNS_TEAM_ID: ${APNS_TEAM_ID:-}
+      APNS_TOPIC: ${APNS_TOPIC:-com.boulderroller.app}
+      GEOCODER_ENABLED: ${GEOCODER_ENABLED:-true}
+      GEOCODER_SEARCH_URL: ${GEOCODER_SEARCH_URL:-https://nominatim.openstreetmap.org/search}
+      PROMETHEUS_METRICS_TOKEN: ${PROMETHEUS_METRICS_TOKEN:-}
+      PRIVY_APP_ID: ${PRIVY_APP_ID:-}
+      PRIVY_VERIFICATION_KEY: ${PRIVY_VERIFICATION_KEY:-}
+      AUTH_SIWS_DOMAIN: ${AUTH_SIWS_DOMAIN:-app.boulderroller.xyz}
+      AUTH_SIWS_URI: ${AUTH_SIWS_URI:-https://app.boulderroller.xyz}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres.qzkqjevawthyboymqrle:${SUPABASE_DB_PASSWORD:-PASSWORD}@aws-0-us-west-2.pooler.supabase.com:5432/postgres}
+      APPROVED_PUBLIC_DATA_API_RLS_SHA256: ${APPROVED_PUBLIC_DATA_API_RLS_SHA256:-}
+      APPROVED_PUBLIC_DATA_API_RLS_PROJECT_REF: ${APPROVED_PUBLIC_DATA_API_RLS_PROJECT_REF:-}
+      APPROVED_PUBLIC_DATA_API_RLS_CATALOG_SHA256: ${APPROVED_PUBLIC_DATA_API_RLS_CATALOG_SHA256:-}
+      USE_ASYNCPG_BULK: "true"
+      PORT: 8080
+    volumes:
+      # DEM correction grid (boulderroller-v2-odmi6.2.1): deploy asset kept
+      # out of git (see tools/dem/build_delaware_valley_grid.py). An empty or
+      # missing host dir is safe — corrections abstain with dem_grid_missing.
+      - ./data/dem:/app/resources/dem:ro
+    depends_on:
+      - nats
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      default:
+      boulder-net:
+        aliases:
+          - boulder-api
+
+  nats:
+    image: nats:2.10-alpine
+    restart: unless-stopped
+    command: ["-js", "-sd", "/data"]
+    # No host port mapping — only reachable via boulder-net (nats:4222)
+    expose:
+      - "4222"
+    volumes:
+      - nats_data:/data
+    networks:
+      default:
+      boulder-net:
+        aliases:
+          - nats
+
+  indexer:
+    build:
+      context: ./indexer
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      # Keep the container health port at 3001, but allow the host mapping to move
+      # so the service can coexist with Grafana on staging.
+      # Loopback only, like the API; Caddy reaches it as indexer:3001.
+      - "127.0.0.1:${INDEXER_HOST_PORT:-3002}:3001"
+    environment:
+      PROGRAM_ID: ${BOULDER_ROLLERS_PROGRAM_ID:-EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH}
+      DUNG_MINT_ADDRESS: ${DUNG_MINT_ADDRESS:-CqDFJWLpr49tB8xjHegy5JR5jwMCfmhicjuWawtKLeCk}
+      SOLANA_RPC_URL: ${SOLANA_RPC_URL:-https://api.devnet.solana.com}
+      SOLANA_WS_URL: ${SOLANA_WS_URL:-wss://api.devnet.solana.com}
+      DATABASE_URL: ${INDEXER_DATABASE_URL:-postgresql://postgres.qzkqjevawthyboymqrle:${SUPABASE_DB_PASSWORD:-PASSWORD}@aws-0-us-west-2.pooler.supabase.com:5432/postgres}
+      INDEXER_MODE: ${INDEXER_MODE:-stream}
+      # The shared replay page proves coverage, which /health accepts for 90 s.
+      # The reviewed RPC budget (indexer/README.md) assumes this 30 s cadence.
+      POLL_INTERVAL_MS: ${INDEXER_POLL_INTERVAL_MS:-30000}
+      RECONCILIATION_INTERVAL_MS: "86400000"
+      DUNG_SUPPLY_REFRESH_INTERVAL_MS: "240000"
+      HEALTH_PORT: "3001"
+      API_ALLOWED_ORIGINS: ${INDEXER_API_ALLOWED_ORIGINS:-https://scan.boulderroller.xyz,http://localhost:3004,http://127.0.0.1:3004}
+      # Devnet runs the devnet ELF, whose test-pool instruction and account
+      # exist only in boulder_rollers.devnet.json; set INDEXER_IDL_PATH there.
+      IDL_PATH: ${INDEXER_IDL_PATH:-/app/idl/boulder_rollers.json}
+    volumes:
+      # Mount the committed IDL artifact so deployed hosts do not depend on an
+      # untracked/stale target/idl output.
+      - ./protocol/anchor/idl:/app/idl:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      default:
+      boulder-net:
+        aliases:
+          - indexer
+
+  # Stage 1 weekly keeper (docs/runbooks/STAGE1_DEVNET_UPGRADE.md). It exits
+  # at once unless STAGE1_KEEPER_ENABLED=true; a failure restarts after 10 s.
+  keeper:
+    image: *backend-image
+    restart: on-failure
+    stop_grace_period: 30s
+    command: ["sh", "-c", "python -m app.services.stage1_keeper || { sleep 10; exit 1; }"]
+    environment:
+      ENVIRONMENT: ${ENVIRONMENT:-${APP_ENV:-development}}
+      APP_ENV: ${APP_ENV:-${ENVIRONMENT:-development}}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      STAGE1_KEEPER_ENABLED: ${STAGE1_KEEPER_ENABLED:-false}
+      STAGE1_KEEPER_ALLOWED_CLUSTERS: ${STAGE1_KEEPER_ALLOWED_CLUSTERS:-localnet}
+      STAGE1_KEEPER_MAINNET_RELEASE_ENABLED: ${STAGE1_KEEPER_MAINNET_RELEASE_ENABLED:-false}
+      STAGE1_KEEPER_RPC_URL: ${STAGE1_KEEPER_RPC_URL:-${SOLANA_RPC_URL:-https://api.devnet.solana.com}}
+      STAGE1_KEEPER_PROGRAM_ID: ${BOULDER_ROLLERS_PROGRAM_ID:-EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH}
+      # JSON of distinct localnet/devnet/mainnet-beta publisher public keys.
+      STAGE1_KEEPER_PUBLISHER_KEYS: ${STAGE1_KEEPER_PUBLISHER_KEYS:-}
+      STAGE1_KEEPER_PUBLISHER_KEYPAIR: /run/secrets/stage1-keeper-publisher.json
+      STAGE1_KEEPER_EXPORT_DIR: /var/lib/stage1-keeper
+      # Session pooler (5432): asyncpg's prepared statements need it.
+      STAGE1_KEEPER_DATABASE_URL: ${STAGE1_KEEPER_DATABASE_URL:-${DATABASE_URL:-}}
+    volumes:
+      # Owner-only key outside the checkout, readable by the image's uid 1000.
+      - ${STAGE1_KEEPER_PUBLISHER_KEYPAIR_FILE:-/dev/null}:/run/secrets/stage1-keeper-publisher.json:ro
+      # Durable proof exports; a host directory owned by uid 1000 when enabled.
+      - ${STAGE1_KEEPER_EXPORT_HOST_DIR:-stage1_keeper_exports}:/var/lib/stage1-keeper
+
+volumes:
+  nats_data:
+  caddy_data:
+  caddy_config:
+  stage1_keeper_exports:
+
+networks:
+  boulder-net:
+    external: true
+    name: boulder-net

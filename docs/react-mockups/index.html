@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Boulder Rollers - Elemental React Mockup (Fully Functional)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        :root {
+            /* Elemental / Rhythmical Palette */
+            --bg: #0f0b0b;
+            --bg-elevated: #1a1616;
+            --bg-card: #241e1e;
+            --bg-soft: #332b2b;
+
+            --accent: #D9381E;
+            --accent-soft: rgba(217, 56, 30, 0.15);
+            --accent-strong: #FF4D30;
+            --accent-gold: #C5A059;
+
+            --text: #F2F0E9;
+            --text-soft: #B0A8A0;
+            --text-softer: #807870;
+
+            --border-subtle: #403535;
+            --border-strong: #594a4a;
+
+            --shadow-sharp: 4px 4px 0px rgba(0, 0, 0, 0.5);
+
+            --radius-md: 4px;
+
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #080808;
+            color: var(--text);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .app-shell {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            width: 100%;
+            max-width: 1400px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-strong);
+            box-shadow: var(--shadow-sharp);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background: var(--bg);
+            border-right: 1px solid var(--border-strong);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main {
+            padding: 24px 32px;
+            overflow-y: auto;
+            background: #161616;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sharp);
+        }
+
+        .btn {
+            background: var(--bg-soft);
+            border: 1px solid var(--border-subtle);
+            color: var(--text);
+            padding: 12px 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #000;
+            transition: all 0.1s;
+            border-radius: 2px;
+        }
+
+        .btn:hover {
+            background: var(--border-subtle);
+        }
+
+        .btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent-strong);
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: #D4B068;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .gold {
+            color: var(--accent-gold);
+        }
+
+        .red {
+            color: var(--accent-strong);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-subtle);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-strong);
+        }
+
+        .beetle-shell {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beetle-shell::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px dashed var(--border-strong);
+            border-radius: 2px;
+        }
+
+        .pile-marker {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--accent-soft);
+            box-shadow: 0 0 16px rgba(217, 56, 30, 0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-strong);
+        }
+
+        .pile-marker:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 24px rgba(217, 56, 30, 0.6);
+        }
+
+        .wardrobe-item {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-subtle);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            text-align: center;
+            padding: 4px;
+        }
+
+        .wardrobe-item:hover {
+            border-color: var(--accent-gold);
+            background: var(--bg-soft);
+        }
+
+        .wardrobe-item.equipped {
+            border-color: var(--accent);
+            background: var(--bg-soft);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- Mock Data ---
+        const MOCK_PILES = [
+            { id: 1, name: "Col du Bas Bois", type: "Gravel", distance: "2.4km", grade: "4%", x: 30, y: 40, pot: 420.5, staked: 1200, rank: 1 },
+            { id: 2, name: "Philly Crit Circuit", type: "Road", distance: "1.1km", grade: "Flat", x: 55, y: 25, pot: 112.0, staked: 500, rank: 3 },
+            { id: 3, name: "Manayunk Wall", type: "Road", distance: "0.8km", grade: "14%", x: 70, y: 60, pot: 850.2, staked: 0, rank: null },
+            { id: 4, name: "Back Alley Sprint", type: "Urban", distance: "0.5km", grade: "2%", x: 15, y: 70, pot: 88.4, staked: 250, rank: 2 }
+        ];
+
+        const MOCK_RIDES = [
+            { id: 1, date: "2025-11-25", time: "08:30", duration: "2h 15m", tss: 118, dung: 118, cal: 900, piles: ["Col du Bas Bois", "Philly Crit"] },
+            { id: 2, date: "2025-11-24", time: "17:00", duration: "1h 30m", tss: 82, dung: 82, cal: 600, piles: ["Manayunk Wall"] },
+            { id: 3, date: "2025-11-23", time: "07:00", duration: "3h 00m", tss: 145, dung: 145, cal: 1100, piles: ["Col du Bas Bois", "Back Alley Sprint"] }
+        ];
+
+        const MOCK_WARDROBE = [
+            { id: 1, name: "Classic Shell", rarity: "Common", bonus: "+0% TSS", equipped: true },
+            { id: 2, name: "Gilded Carapace", rarity: "Rare", bonus: "+5% DUNG", equipped: false },
+            { id: 3, name: "Dragon Scale", rarity: "Epic", bonus: "+10% CAL Efficiency", equipped: false },
+            { id: 4, name: "Crystal Wings", rarity: "Legendary", bonus: "+15% All Stats", equipped: false }
+        ];
+
+        // --- Components ---
+
+        const Icon = ({ name, size = 16, color = "currentColor" }) => {
+            const icons = {
+                LayoutDashboard: (
+                    <>
+                        <path d="M7 9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z" />
+                        <path d="M2 13a2 2 0 0 1 2-2h3" />
+                        <path d="M17 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3" />
+                        <path d="M2 9V6a2 2 0 0 1 2-2h3" />
+                        <path d="M17 5h3a2 2 0 0 1 2 2v2" />
+                    </>
+                ),
+                Map: (
+                    <>
+                        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                        <line x1="9" x2="9" y1="3" y2="18" />
+                        <line x1="15" x2="15" y1="6" y2="21" />
+                    </>
+                ),
+                User: (
+                    <>
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </>
+                ),
+                Activity: (
+                    <>
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </>
+                )
+            };
+
+            return (
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={size}
+                    height={size}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={color}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                >
+                    {icons[name] || <circle cx="12" cy="12" r="10" />}
+                </svg>
+            );
+        };
+
+        const NavItem = ({ label, icon, active, onClick }) => (
+            <div
+                onClick={onClick}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '10px 12px',
+                    borderRadius: '2px',
+                    cursor: 'pointer',
+                    color: active ? '#F2F0E9' : '#807870',
+                    background: active ? '#332b2b' : 'transparent',
+                    borderLeft: active ? '2px solid #D9381E' : '2px solid transparent',
+                    marginBottom: '2px',
+                    transition: 'all 0.1s'
+                }}
+            >
+                <Icon name={icon} size={16} color={active ? '#D9381E' : 'currentColor'} />
+                <span style={{ fontSize: '13px', fontWeight: 500 }}>{label}</span>
+            </div>
+        );
+
+        const Metric = ({ label, value, sub, isGold }) => (
+            <div style={{
+                background: 'var(--bg-elevated)',
+                padding: '12px',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: '2px',
+                minWidth: '120px',
+                flex: 1
+            }}>
+                <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600, marginBottom: '6px' }}>
+                    {label}
+                </div>
+                <div className="mono" style={{ fontSize: '18px', fontWeight: 500, color: isGold ? 'var(--accent-gold)' : 'var(--text)', marginBottom: '4px' }}>
+                    {value}
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--text-soft)' }}>{sub}</div>
+            </div>
+        );
+
+        const TableRow = ({ pile, time, rank, cal }) => (
+            <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                <td className="mono red" style={{ padding: '12px', fontSize: '11px', fontWeight: 500 }}>{pile}</td>
+                <td style={{ padding: '12px', color: 'var(--text-soft)' }}>{time}</td>
+                <td style={{ padding: '12px', color: 'var(--text-soft)' }}>{rank}</td>
+                <td className="mono" style={{ padding: '12px', color: 'var(--text)' }}>{cal}</td>
+            </tr>
+        );
+
+        // --- Views ---
+
+        const DashboardView = ({ dungBalance, onClaim }) => (
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    <div className="card">
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', borderBottom: '1px dashed var(--border-subtle)', paddingBottom: '12px' }}>
+                            <div>
+                                <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '4px' }}>Today</div>
+                                <div style={{ fontSize: '15px', fontWeight: 600 }}>Roll Summary</div>
+                            </div>
+                            <div className="mono" style={{ fontSize: '11px', color: 'var(--text-softer)' }}>Sync · 3m ago</div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
+                            <Metric label="TSS · Today" value="118" sub="2 rides" />
+                            <Metric label="DUNG Minted" value="+118.0" sub="1:1 vs TSS" isGold />
+                            <Metric label="CAL Spent" value="900" sub="9 crossings" />
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                            <div>
+                                <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600, marginBottom: '12px' }}>Segments Touched</div>
+                                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+                                    <tbody>
+                                        <TableRow pile="COL DU BAS BOIS" time="8:21" rank="#2" cal="400" />
+                                        <TableRow pile="PHILLY CRIT" time="4:03" rank="#1" cal="300" />
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600, marginBottom: '12px' }}>Projected Rewards</div>
+                                <div style={{ background: 'var(--bg-elevated)', padding: '12px', borderRadius: '2px', border: '1px solid var(--border-subtle)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                        <span className="mono" style={{ fontSize: '11px', color: 'var(--text-soft)' }}>CRIT CIRCUIT</span>
+                                        <span className="mono gold" style={{ fontSize: '11px' }}>+12.4</span>
+                                    </div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <span className="mono" style={{ fontSize: '11px', color: 'var(--text-soft)' }}>BAS BOIS</span>
+                                        <span className="mono gold" style={{ fontSize: '11px' }}>+6.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    <div className="card">
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+                            <div>
+                                <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Map</div>
+                                <div style={{ fontSize: '15px', fontWeight: 600 }}>Philly Piles</div>
+                            </div>
+                        </div>
+                        <div style={{ height: '180px', background: '#050505', border: '1px solid var(--border-subtle)', borderRadius: '2px', position: 'relative', overflow: 'hidden' }}>
+                            <div style={{ position: 'absolute', inset: 0, opacity: 0.2, backgroundImage: 'linear-gradient(#403535 1px, transparent 1px), linear-gradient(90deg, #403535 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+                            <div style={{ position: 'absolute', top: '50%', left: '30%', width: '40px', height: '40px', borderRadius: '50%', border: '1px solid var(--accent)', background: 'rgba(217, 56, 30, 0.15)', boxShadow: '0 0 12px rgba(217, 56, 30, 0.3)' }}></div>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+                            <div>
+                                <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Payouts</div>
+                                <div style={{ fontSize: '15px', fontWeight: 600 }}>Claim Center</div>
+                            </div>
+                            <div style={{ fontSize: '10px', padding: '4px 8px', background: '#111', border: '1px solid var(--accent-strong)', color: 'var(--accent-strong)', borderRadius: '2px', fontWeight: 600 }}>36.5 DUNG</div>
+                        </div>
+                        <button className="btn btn-primary" style={{ width: '100%' }} onClick={onClaim}>
+                            Claim All Rewards
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const MapView = ({ piles, onPileClick }) => (
+            <div className="card" style={{ height: '600px' }}>
+                <div style={{ marginBottom: '16px' }}>
+                    <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Interactive Map</div>
+                    <div style={{ fontSize: '20px', fontWeight: 700 }}>Philadelphia Piles · Epoch 12</div>
+                </div>
+
+                <div style={{ height: 'calc(100% - 60px)', background: '#050505', border: '1px solid var(--border-subtle)', borderRadius: '2px', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', inset: 0, opacity: 0.2, backgroundImage: 'linear-gradient(#403535 1px, transparent 1px), linear-gradient(90deg, #403535 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+
+                    {piles.map(pile => (
+                        <div
+                            key={pile.id}
+                            className="pile-marker"
+                            style={{ top: `${pile.y}%`, left: `${pile.x}%` }}
+                            onClick={() => onPileClick(pile)}
+                        >
+                            {pile.rank || '?'}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const BeetleView = ({ wardrobe, onEquipItem }) => (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '24px' }}>
+                <div className="card">
+                    <div style={{ marginBottom: '16px' }}>
+                        <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Identity</div>
+                        <div style={{ fontSize: '18px', fontWeight: 700 }}>booka_shade</div>
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+                        <div className="beetle-shell"></div>
+                    </div>
+
+                    <div style={{ background: 'var(--bg-elevated)', padding: '12px', borderRadius: '2px', border: '1px solid var(--border-subtle)', marginBottom: '12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                            <span style={{ fontSize: '11px', color: 'var(--text-softer)' }}>Coherence</span>
+                            <span className="gold mono" style={{ fontSize: '11px', fontWeight: 600 }}>92 / 100</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <span style={{ fontSize: '11px', color: 'var(--text-softer)' }}>Career TSS</span>
+                            <span className="mono" style={{ fontSize: '11px' }}>74,320</span>
+                        </div>
+                    </div>
+
+                    <button className="btn btn-gold" style={{ width: '100%' }}>View Bio-Passport</button>
+                </div>
+
+                <div className="card">
+                    <div style={{ marginBottom: '16px' }}>
+                        <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Wardrobe</div>
+                        <div style={{ fontSize: '18px', fontWeight: 700 }}>Cosmetic NFTs</div>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '12px' }}>
+                        {wardrobe.map(item => (
+                            <div
+                                key={item.id}
+                                className={`wardrobe-item ${item.equipped ? 'equipped' : ''}`}
+                                onClick={() => onEquipItem(item.id)}
+                            >
+                                <div>
+                                    <div style={{ fontWeight: 600, marginBottom: '4px' }}>{item.name}</div>
+                                    <div style={{ fontSize: '9px', color: item.rarity === 'Legendary' ? 'var(--accent-gold)' : 'var(--text-softer)' }}>{item.rarity}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div style={{ marginTop: '24px', padding: '16px', background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)', borderRadius: '2px' }}>
+                        <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '8px' }}>Current Bonuses</div>
+                        <div className="mono" style={{ fontSize: '11px', color: 'var(--accent-gold)' }}>
+                            {wardrobe.find(i => i.equipped)?.bonus || 'None'}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const HistoryView = ({ rides }) => (
+            <div className="card">
+                <div style={{ marginBottom: '16px' }}>
+                    <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>History</div>
+                    <div style={{ fontSize: '20px', fontWeight: 700 }}>Ride Log · Last 30 Days</div>
+                </div>
+
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                        <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
+                            <th style={{ padding: '12px', textAlign: 'left', fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600 }}>Date</th>
+                            <th style={{ padding: '12px', textAlign: 'left', fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600 }}>Duration</th>
+                            <th style={{ padding: '12px', textAlign: 'left', fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600 }}>TSS</th>
+                            <th style={{ padding: '12px', textAlign: 'left', fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600 }}>DUNG</th>
+                            <th style={{ padding: '12px', textAlign: 'left', fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600 }}>CAL</th>
+                            <th style={{ padding: '12px', textAlign: 'left', fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600 }}>Piles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rides.map(ride => (
+                            <tr key={ride.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                                <td style={{ padding: '12px' }}>
+                                    <div style={{ fontWeight: 600 }}>{ride.date}</div>
+                                    <div style={{ fontSize: '11px', color: 'var(--text-softer)' }}>{ride.time}</div>
+                                </td>
+                                <td className="mono" style={{ padding: '12px', color: 'var(--text-soft)' }}>{ride.duration}</td>
+                                <td className="mono" style={{ padding: '12px', color: 'var(--text)' }}>{ride.tss}</td>
+                                <td className="mono gold" style={{ padding: '12px', fontWeight: 500 }}>+{ride.dung}</td>
+                                <td className="mono" style={{ padding: '12px', color: 'var(--text-soft)' }}>{ride.cal}</td>
+                                <td style={{ padding: '12px', fontSize: '11px', color: 'var(--text-soft)' }}>{ride.piles.join(', ')}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        );
+
+        // --- Main App ---
+
+        const App = () => {
+            const [activeTab, setActiveTab] = useState('Dashboard');
+            const [dungBalance, setDungBalance] = useState(12340.8);
+            const [selectedPile, setSelectedPile] = useState(null);
+            const [wardrobe, setWardrobe] = useState(MOCK_WARDROBE);
+
+            const handleClaim = () => {
+                setDungBalance(prev => prev + 36.5);
+                alert("✅ Claimed 36.5 DUNG!");
+            };
+
+            const handlePileClick = (pile) => {
+                setSelectedPile(pile);
+                alert(`📍 ${pile.name}\n${pile.type} · ${pile.distance} · ${pile.grade}\n\nPot: ${pile.pot} DUNG\nYour Stake: ${pile.staked || 'None'}\n${pile.rank ? `Rank: #${pile.rank}` : 'Not Ranked'}`);
+            };
+
+            const handleEquipItem = (itemId) => {
+                setWardrobe(prev => prev.map(item => ({
+                    ...item,
+                    equipped: item.id === itemId
+                })));
+            };
+
+            const renderView = () => {
+                switch (activeTab) {
+                    case 'Map':
+                        return <MapView piles={MOCK_PILES} onPileClick={handlePileClick} />;
+                    case 'Beetle':
+                        return <BeetleView wardrobe={wardrobe} onEquipItem={handleEquipItem} />;
+                    case 'History':
+                        return <HistoryView rides={MOCK_RIDES} />;
+                    default:
+                        return <DashboardView dungBalance={dungBalance} onClaim={handleClaim} />;
+                }
+            };
+
+            return (
+                <div className="app-shell">
+
+                    {/* Sidebar */}
+                    <aside className="sidebar">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', paddingLeft: '4px' }}>
+                            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--accent)', border: '2px solid #fff', boxShadow: '0 0 12px rgba(217, 56, 30, 0.5)' }}></div>
+                            <div>
+                                <div style={{ fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '-0.01em' }}>Boulder Rollers</div>
+                                <div style={{ fontSize: '10px', color: 'var(--accent-gold)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Dung Beetle Cycling</div>
+                            </div>
+                        </div>
+
+                        <div style={{ marginBottom: '24px' }}>
+                            <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-softer)', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '8px', paddingLeft: '12px' }}>Main</div>
+                            <NavItem label="Dashboard" icon="LayoutDashboard" active={activeTab === 'Dashboard'} onClick={() => setActiveTab('Dashboard')} />
+                            <NavItem label="Piles Map" icon="Map" active={activeTab === 'Map'} onClick={() => setActiveTab('Map')} />
+                            <NavItem label="Beetle" icon="User" active={activeTab === 'Beetle'} onClick={() => setActiveTab('Beetle')} />
+                            <NavItem label="History" icon="Activity" active={activeTab === 'History'} onClick={() => setActiveTab('History')} />
+                        </div>
+
+                        <div style={{ marginTop: 'auto', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--text-softer)', marginBottom: '8px' }}>
+                                <span>Solana Status</span>
+                                <span className="gold">Healthy</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--text-softer)' }}>
+                                <span>Epoch</span>
+                                <span>12</span>
+                            </div>
+                        </div>
+                    </aside>
+
+                    {/* Main Content */}
+                    <main className="main">
+
+                        {/* Topbar */}
+                        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '16px' }}>
+                            <div>
+                                <div style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '4px' }}>{activeTab}</div>
+                                <div style={{ fontSize: '24px', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                                    {activeTab === 'Dashboard' && 'Today\'s Roll'}
+                                    {activeTab === 'Map' && 'Pile Explorer'}
+                                    {activeTab === 'Beetle' && 'My Beetle & Wardrobe'}
+                                    {activeTab === 'History' && 'Ride Archive'}
+                                </div>
+                            </div>
+
+                            <div style={{ display: 'flex', gap: '12px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 12px', background: '#0a0a0a', border: '1px solid var(--border-subtle)', borderRadius: '4px' }}>
+                                    <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--text-softer)' }}>DUNG</span>
+                                    <span className="mono gold" style={{ fontSize: '12px', fontWeight: 500 }}>{dungBalance.toLocaleString()}</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 12px', background: 'var(--bg-soft)', border: '1px solid var(--border-subtle)', borderRadius: '4px' }}>
+                                    <div style={{ width: '20px', height: '20px', background: 'var(--accent)', borderRadius: '2px' }}></div>
+                                    <span style={{ fontSize: '12px', fontWeight: 600 }}>booka_shade</span>
+                                </div>
+                            </div>
+                        </header>
+
+                        {/* Active View */}
+                        {renderView()}
+
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

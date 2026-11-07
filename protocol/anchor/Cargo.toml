@@ -1,0 +1,11 @@
+[workspace]
+members = [
+  "programs/boulder_rollers"
+]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+
+# Keep Solana crates aligned with the toolchain used in CI (solana-ci.yml installs 1.18.26).
+# Anchor 0.29.0 pulls Solana 1.18.x transitively; version pinning is done in individual Cargo.toml files.

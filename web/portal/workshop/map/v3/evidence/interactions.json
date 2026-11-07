@@ -1,0 +1,57 @@
+{
+  "evidenceClass": "Local workshop browser observations using retained published canonical geography",
+  "recordedAt": "2026-09-13",
+  "candidate": "map-v3",
+  "tests": {"passed": 99, "failed": 0, "typecheck": "pass", "build": "pass"},
+  "observed": {
+    "desktopListTogglePreservesCamera": true,
+    "desktopKeyboardNeighborSelectionPreservesZoom": true,
+    "desktopDetailReturnPreservesCameraSelectionListAndScroll": true,
+    "desktopDetailReturnFocus": "Open climb",
+    "phoneKeyboardSelectionClosesListAndFocusesOpenClimb": true,
+    "phoneEscapeFocusesVisibleListDisclosure": true,
+    "phoneErrorEscapeFocusesVisibleListDisclosure": true,
+    "phoneNativeBackPreservesCameraSelectionAndListState": true,
+    "mapRetryPreservesManuallyPannedCamera": true,
+    "v2AndV3SnapshotsRemainIndependent": true,
+    "allScenariosUseV3": true,
+    "viewers": ["rider", "visitor", "signed-out"],
+    "states": ["loading", "empty", "error", "map-error", "ready"],
+    "invalidImportRejected": "Include Map identity and source.",
+    "boundsOnlyImport": {"climbs": 1, "routes": 0, "markers": 1},
+    "inspectableExportReimportAndReload": "pass",
+    "importDetailRetainsV3AndShowsMissingRoute": true,
+    "workshopClimbToMapReturn": "map-v3",
+    "stravaReference": {"pressed": true, "visibleImages": 1}
+  },
+  "scenarioRouteMarkerCounts": {
+    "area": [57, 57],
+    "valley-green": [57, 57],
+    "bounds-only": [0, 57],
+    "mixed-geography": [1, 57],
+    "no-climbs": [0, 0],
+    "wises": [57, 57]
+  },
+  "cameraMeasurements": {
+    "desktopListClosedAndOpened": {"center": [-75.22548025, 40.0557876], "zoom": 13},
+    "desktopNeighborBeforeAndAfterDetailReturn": {
+      "center": [-75.22883717736812, 40.053905152087395],
+      "zoom": 13,
+      "selected": "8582724d-5ad5-43ae-a88f-7759b9e7ed61",
+      "listOpen": true,
+      "listScrollTop": 804
+    },
+    "phoneBeforeAndAfterNativeBack": {
+      "center": [-75.22548024999998, 40.04987467001013],
+      "zoom": 13,
+      "selected": "43f15658-a824-438d-9925-e61c67ddabe9",
+      "listOpen": false
+    },
+    "beforeAndAfterMapRetry": {"center": [-75.22126081442696, 40.05330609746741], "zoom": 12.813514746086083},
+    "pointerSelectedValleyGreen": {"center": [-75.21295850000001, 40.05233363333977], "zoom": 13, "selected": "8582724d-5ad5-43ae-a88f-7759b9e7ed61"},
+    "pointerPanThenClear": {"center": [-75.21668896151095, 40.05518908141747], "zoom": 13, "clearedWithoutCameraChange": true}
+  },
+  "layoutsReviewed": [{"width": 1440, "height": 1000, "scrollWidth": 1440, "scrollHeight": 1000, "capture": "map-v3-1440.jpg"}, {"width": 390, "height": 844, "scrollWidth": 390, "scrollHeight": 844, "capture": "map-v3-390.jpg"}],
+  "finalBrowserErrorsAndWarnings": [],
+  "limitations": ["No physical-device touch claim", "No native download completion claim", "No authenticated production baseline claim"]
+}

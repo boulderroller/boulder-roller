@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Boulder Rollers / DUNG Beetle Cycling — Web Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Azeret+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Hybrid Palette: Warmer, Softer, but Still Edgy */
+            --bg-void: #1a1616;
+            --bg-deep: #2a2424;
+            --bg: #3a3232;
+            --bg-elevated: #4a4040;
+            --bg-card: #f5f1ed;
+            --bg-soft: #e8e3de;
+            --bg-ultra: #dcd7d2;
+            --bg-panel: #c9c4bf;
+
+            /* Playful Pastel Accents with Edge */
+            --accent-primary: #D9381E;
+            --accent-hot: #FF6B4A;
+            --accent-gold: #C5A059;
+            --accent-gold-bright: #E5C080;
+            --accent-teal: #5DA9A0;
+            --accent-coral: #E88873;
+            --accent-purple: #9B7FA8;
+            --accent-blue: #4A8FA8;
+
+            /* Colored Glows - Softer */
+            --glow-red: 217, 56, 30;
+            --glow-gold: 197, 160, 89;
+            --glow-teal: 93, 169, 160;
+            --glow-coral: 232, 136, 115;
+
+            /* Text - Inverted for Light Cards */
+            --text-dark: #1a1616;
+            --text-mid: #3a3232;
+            --text-soft: #6a6060;
+            --text-dim: #8a7e7e;
+            --text-ghost: #b0a8a0;
+
+            /* Light Text for Dark Areas */
+            --text-light: #F2F0E9;
+            --text-light-soft: #d0cbc5;
+
+            /* Borders - Thicker, More Defined */
+            --border-subtle: #d0cbc5;
+            --border-med: #b8b0a8;
+            --border-strong: #8a7e7e;
+            --border-dark: #3a3232;
+
+            /* Typography */
+            --font-display: 'Teko', sans-serif;
+            --font-body: 'Syne', sans-serif;
+            --font-mono: 'Azeret Mono', monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 12px rgba(var(--glow-gold), 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(var(--glow-gold), 0.5);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        html, body {
+            height: 100%;
+            background: linear-gradient(135deg, #e8e3de 0%, #d5cfc8 100%);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-weight: 500;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            display: flex;
+            padding: clamp(12px, 3vw, 32px);
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        /* Subtle texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .app-shell {
+            display: grid;
+            grid-template-columns: 240px minmax(0, 1fr);
+            width: 100%;
+            max-width: 1600px;
+            min-height: 90vh;
+            background: var(--bg-card);
+            border: 4px solid var(--border-dark);
+            box-shadow:
+                0 0 0 2px var(--bg-card),
+                0 24px 48px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: relative;
+            z-index: 10;
+            border-right: 4px solid var(--border-dark);
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-void) 100%);
+            padding: 28px 16px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeSlideRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            padding: 14px 10px 20px;
+            border-bottom: 3px solid var(--bg-elevated);
+            position: relative;
+        }
+
+        .sidebar-header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(
+                90deg,
+                var(--accent-primary) 0%,
+                var(--accent-gold) 100%
+            );
+        }
+
+        .logo-orb {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 30% 30%, var(--accent-hot), var(--accent-primary));
+            border: 3px solid var(--accent-gold);
+            box-shadow:
+                0 0 24px rgba(var(--glow-red), 0.4),
+                inset 0 -6px 12px rgba(0, 0, 0, 0.3),
+                inset 0 2px 8px rgba(255, 255, 255, 0.3);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo-orb::before {
+            content: "";
+            position: absolute;
+            top: 7px;
+            left: 11px;
+            width: 14px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            filter: blur(3px);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .logo-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 0.01em;
+            line-height: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-sub {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--accent-gold-bright);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-shadow: 0 0 8px rgba(var(--glow-gold), 0.4);
+        }
+
+        .sidebar-section {
+            margin-bottom: 32px;
+        }
+
+        .sidebar-section-label {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin: 0 10px 14px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 10px rgba(var(--glow-gold), 0.3);
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 4px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 11px 12px;
+            text-decoration: none;
+            color: var(--text-light-soft);
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .nav-link-active {
+            background: linear-gradient(90deg, rgba(var(--glow-red), 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+            color: var(--accent-gold-bright);
+            border-color: rgba(var(--glow-gold), 0.4);
+            box-shadow: 0 0 16px rgba(var(--glow-red), 0.2);
+            font-weight: 700;
+        }
+
+        .nav-link-active .nav-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-gold);
+            display: inline-block;
+            margin-right: 8px;
+            border-radius: 1px;
+            box-shadow: 0 0 10px rgba(var(--glow-gold), 0.6);
+            transform: rotate(45deg);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            border-top: 2px solid var(--bg-elevated);
+            padding-top: 20px;
+            font-size: 11px;
+            color: var(--text-light-soft);
+            font-family: var(--font-mono);
+        }
+
+        .sidebar-footer-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .status-pill {
+            font-size: 9px;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            background: var(--bg-void);
+            border: 2px solid var(--bg-elevated);
+            font-weight: 700;
+            border-radius: 5px;
+            letter-spacing: 0.08em;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .status-pill.ok {
+            color: var(--accent-gold-bright);
+            border-color: rgba(var(--glow-gold), 0.5);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 12px rgba(var(--glow-gold), 0.2);
+        }
+
+        .status-pill.warn {
+            color: var(--accent-hot);
+            border-color: rgba(var(--glow-red), 0.5);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 12px rgba(var(--glow-red), 0.2);
+        }
+
+        /* Main Content */
+        .main {
+            position: relative;
+            z-index: 10;
+            padding: 36px clamp(24px, 4vw, 48px);
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            background: var(--bg-card);
+            animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            margin-bottom: 12px;
+            padding-bottom: 24px;
+            border-bottom: 3px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .topbar::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-gold) 60%, transparent 100%);
+            box-shadow: 0 0 8px rgba(var(--glow-red), 0.3);
+        }
+
+        .topbar-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .topbar-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-shadow: 0 0 12px rgba(var(--glow-red), 0.3);
+        }
+
+        .topbar-title {
+            font-family: var(--font-display);
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: 0.01em;
+            line-height: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .topbar-subtitle {
+            font-size: 14px;
+            color: var(--text-soft);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .token-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-ultra) 100%);
+            border: 3px solid var(--border-strong);
+            font-size: 12px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .token-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .token-chip span.label {
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            font-family: var(--font-mono);
+        }
+
+        .token-chip span.value {
+            font-family: var(--font-mono);
+            color: var(--accent-gold);
+            font-weight: 700;
+            text-shadow: 0 0 12px rgba(var(--glow-gold), 0.3);
+            font-size: 13px;
+        }
+
+        .user-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 16px 6px 6px;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-ultra) 100%);
+            border: 3px solid var(--border-strong);
+            font-size: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .user-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: radial-gradient(ellipse at 30% 30%, var(--accent-hot), var(--accent-primary));
+            border: 3px solid var(--accent-gold);
+            border-radius: 8px;
+            box-shadow: 0 0 16px rgba(var(--glow-red), 0.4), inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .user-tagline {
+            font-size: 10px;
+            color: var(--text-soft);
+            font-weight: 500;
+            font-family: var(--font-mono);
+        }
+
+        .layout-main {
+            display: grid;
+            grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.4fr);
+            gap: 28px;
+            align-items: flex-start;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border: 4px solid var(--border-dark);
+            padding: 28px;
+            font-size: 13px;
+            color: var(--text-mid);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 3px dashed var(--border-subtle);
+            position: relative;
+        }
+
+        .card-header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--accent-primary);
+        }
+
+        .card-kicker {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            font-weight: 700;
+            margin-bottom: 7px;
+            letter-spacing: 0.15em;
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--text-dark);
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            line-height: 1.1;
+        }
+
+        .card-meta {
+            font-size: 11px;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            padding: 6px 11px;
+            background: var(--bg-soft);
+            border: 2px solid var(--border-med);
+            color: var(--text-soft);
+            font-weight: 700;
+            border-radius: 6px;
+            letter-spacing: 0.08em;
+            font-family: var(--font-mono);
+        }
+
+        .card-tag-accent {
+            color: var(--accent-primary);
+            border-color: var(--accent-coral);
+            background: rgba(var(--glow-coral), 0.15);
+        }
+
+        .columns-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .metric-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-blue) 100%);
+            padding: 16px;
+            border: 3px solid var(--border-dark);
+            min-width: 130px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .metric:nth-child(2) {
+            background: linear-gradient(135deg, var(--accent-coral) 0%, #d97563 100%);
+        }
+
+        .metric:nth-child(3) {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #8b6f98 100%);
+        }
+
+        .metric:nth-child(4) {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b59049 100%);
+        }
+
+        .metric:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .metric-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-family: var(--font-mono);
+        }
+
+        .metric-value {
+            font-family: var(--font-mono);
+            font-size: 22px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            line-height: 1;
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 12px;
+            margin-top: 18px;
+            border: 3px solid var(--border-med);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background: var(--bg-soft);
+        }
+
+        th, td {
+            padding: 13px 16px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-subtle);
+        }
+
+        tbody tr {
+            transition: background 0.15s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(var(--glow-teal), 0.08);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            border-bottom: 3px solid var(--border-med);
+            font-family: var(--font-mono);
+        }
+
+        td {
+            color: var(--text-mid);
+            font-weight: 500;
+        }
+
+        td.key {
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .sparkline {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 20px;
+        }
+
+        .sparkline-bar {
+            width: 5px;
+            background: linear-gradient(180deg, var(--accent-teal) 0%, var(--accent-blue) 100%);
+            border-radius: 2px;
+            box-shadow: 0 0 6px rgba(var(--glow-teal), 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .sparkline-bar:hover {
+            background: linear-gradient(180deg, var(--accent-gold-bright) 0%, var(--accent-gold) 100%);
+            box-shadow: 0 0 12px rgba(var(--glow-gold), 0.6);
+        }
+
+        .sparkline-bar.dim {
+            background: linear-gradient(180deg, var(--border-med) 0%, var(--border-subtle) 100%);
+            box-shadow: none;
+        }
+
+        .claim-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 16px;
+            border: 3px solid var(--border-med);
+            background: var(--bg-soft);
+            margin-bottom: 10px;
+            border-radius: 10px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .claim-row:hover {
+            border-color: var(--border-strong);
+            transform: translateX(6px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .claim-row-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .claim-row-sub {
+            font-size: 11px;
+            color: var(--text-dim);
+            font-weight: 500;
+            font-family: var(--font-mono);
+        }
+
+        .claim-amount {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            text-shadow: 0 0 12px rgba(var(--glow-gold), 0.3);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-blue) 100%);
+            border: 4px solid var(--border-dark);
+            color: white;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-family: var(--font-display);
+            box-shadow:
+                0 6px 0 var(--border-dark),
+                0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 9px 0 var(--border-dark),
+                0 12px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow:
+                0 3px 0 var(--border-dark),
+                0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-hot) 0%, var(--accent-primary) 100%);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: 18px;
+        }
+
+        .map-shell {
+            border: 4px solid var(--border-dark);
+            background: radial-gradient(ellipse at center, #1a1616 0%, #0f0b0b 100%);
+            height: 260px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .map-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+
+        .map-blob {
+            position: absolute;
+            border: 3px solid var(--accent-primary);
+            background: radial-gradient(
+                ellipse at center,
+                rgba(var(--glow-red), 0.4) 0%,
+                rgba(var(--glow-red), 0.15) 100%
+            );
+            box-shadow:
+                0 0 30px rgba(var(--glow-red), 0.5),
+                inset 0 0 20px rgba(var(--glow-red), 0.2);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .map-blob:hover {
+            transform: scale(1.15);
+            box-shadow:
+                0 0 50px rgba(var(--glow-red), 0.8),
+                inset 0 0 30px rgba(var(--glow-red), 0.3);
+            border-color: var(--accent-hot);
+        }
+
+        .map-blob.hill {
+            width: 80px;
+            height: 80px;
+            top: 52%;
+            left: 22%;
+            border-radius: 50%;
+        }
+
+        .map-blob.crit {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            left: 55%;
+            border-radius: 50%;
+        }
+
+        .map-blob.alley {
+            width: 48px;
+            height: 48px;
+            top: 62%;
+            left: 70%;
+            border-radius: 50%;
+        }
+
+        .map-label {
+            position: absolute;
+            transform: translate(16px, -50%);
+            font-size: 10px;
+            background: var(--bg-void);
+            padding: 5px 10px;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-hot);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            border-radius: 6px;
+            box-shadow:
+                0 0 16px rgba(var(--glow-red), 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+        }
+
+        .beetle-card {
+            display: grid;
+            grid-template-columns: 100px minmax(0, 1fr);
+            gap: 22px;
+            align-items: center;
+        }
+
+        .beetle-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-ultra) 100%);
+            border: 4px solid var(--accent-primary);
+            position: relative;
+            box-shadow: 0 0 24px rgba(var(--glow-red), 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 14px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .beetle-avatar:hover {
+            transform: rotate(5deg) scale(1.08);
+            box-shadow: 0 0 40px rgba(var(--glow-red), 0.5), 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .beetle-meta-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .beetle-meta-sub {
+            font-size: 12px;
+            color: var(--text-soft);
+            margin-bottom: 12px;
+            font-family: var(--font-mono);
+        }
+
+        .pill-row-soft {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .pill-soft {
+            font-size: 10px;
+            padding: 6px 11px;
+            background: var(--bg-soft);
+            border: 2px solid var(--border-med);
+            color: var(--text-soft);
+            font-weight: 700;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+            font-family: var(--font-mono);
+        }
+
+        .pill-soft:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-1px);
+        }
+
+        .pill-soft span {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 5px 10px;
+            background: var(--bg-soft);
+            border: 2px solid var(--border-med);
+            color: var(--text-soft);
+            font-weight: 700;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: var(--font-mono);
+        }
+
+        .badge-accent {
+            color: var(--accent-primary);
+            border-color: var(--accent-coral);
+            background: rgba(var(--glow-coral), 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .app-shell {
+                grid-template-columns: 220px minmax(0, 1fr);
+            }
+
+            .layout-main {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .app-shell {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                padding: 24px 16px;
+            }
+
+            .columns-2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topbar-right {
+                width: 100%;
+            }
+        }
+
+        /* Stagger animations */
+        .card:nth-child(1) { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards; }
+        .card:nth-child(2) { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards; }
+        .card:nth-child(3) { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards; }
+        .card:nth-child(4) { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards; }
+        .card:nth-child(5) { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.45s backwards; }
+        .card:nth-child(6) { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.55s backwards; }
+    </style>
+</head>
+
+<body>
+    <div class="app-shell">
+        <!-- Sidebar navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-orb"></div>
+                <div class="logo-text">
+                    <div class="logo-title">Boulder Rollers</div>
+                    <div class="logo-sub">Dung Beetle Cycling</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-label">Main</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-active">
+                            <span class="label"><span class="nav-dot"></span> Dashboard</span>
+                            <span class="key">⌘1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Piles map</span>
+                            <span class="key">⌘2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Beetle &amp; wardrobe</span>
+                            <span class="key">⌘3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Ride history</span>
+                            <span class="key">⌘4</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-label">Protocol</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Staking &amp; vaults</span>
+                            <span class="key">⌘5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Swanny seats</span>
+                            <span class="key">⌘6</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Seasons &amp; events</span>
+                            <span class="key">⌘7</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-label">System</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Settings</span>
+                            <span class="key">⌘,</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Docs &amp; spec</span>
+                            <span class="key">?</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-row">
+                    <span>Solana status</span>
+                    <span class="status-pill ok">Healthy</span>
+                </div>
+                <div class="sidebar-footer-row">
+                    <span>Epoch</span>
+                    <span class="status-pill">Week 12 · 2025</span>
+                </div>
+                <div class="sidebar-footer-row">
+                    <span>Version</span>
+                    <span class="status-pill warn">V1 · Alpha</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="topbar-eyebrow">Dashboard</div>
+                    <div class="topbar-title-row">
+                        <div class="topbar-title">Today's Roll</div>
+                        <div class="topbar-subtitle">Your training, piles, and beetle at a glance.</div>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="token-chip">
+                        <span class="label">DUNG</span>
+                        <span class="value">12,340.8</span>
+                    </div>
+                    <div class="token-chip">
+                        <span class="label">CAL · today</span>
+                        <span class="value">1,600 / 2,500</span>
+                    </div>
+                    <div class="user-pill">
+                        <div class="user-avatar"></div>
+                        <div>
+                            <div class="user-name">booka_shade</div>
+                            <div class="user-tagline">S-grade beetle · 3 cities</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Two-column main layout -->
+            <div class="layout-main">
+                <!-- Left column -->
+                <section class="col">
+                    <!-- Card: Today / ride summary -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Today</div>
+                                <div class="card-title">Roll summary</div>
+                            </div>
+                            <div class="card-meta">Last sync · 3 min ago</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="metric-row">
+                                <div class="metric">
+                                    <div class="metric-label">TSS · today</div>
+                                    <div class="metric-value">118</div>
+                                    <div class="metric-sub">2 rides · 3:15 h</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">DUNG minted</div>
+                                    <div class="metric-value">+118.0</div>
+                                    <div class="metric-sub">1:1 vs TSS</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">CAL spent</div>
+                                    <div class="metric-value">900</div>
+                                    <div class="metric-sub">9 counted crossings</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Pile touch count</div>
+                                    <div class="metric-value">12</div>
+                                    <div class="metric-sub">3 tracked piles</div>
+                                </div>
+                            </div>
+                            <div class="columns-2">
+                                <div>
+                                    <div class="card-kicker">Segments touched</div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Pile</th>
+                                                <th>Best time</th>
+                                                <th>Rank</th>
+                                                <th>CAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="key">COL DU BAS BOIS</td>
+                                                <td>8:21</td>
+                                                <td>#2 / 47</td>
+                                                <td>400</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">PHILLY CRIT CIRCUIT</td>
+                                                <td>4:03</td>
+                                                <td>#1 / 92</td>
+                                                <td>300</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">BACK ALLEY KICKER</td>
+                                                <td>1:19</td>
+                                                <td>#5 / 31</td>
+                                                <td>200</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                    <div class="card-kicker">Projected pile rewards</div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Pile</th>
+                                                <th>Est. Payout</th>
+                                                <th>Slice</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="key">CRIT CIRCUIT</td>
+                                                <td>+12.4 DUNG</td>
+                                                <td>Leaderboard</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">COL DU BAS BOIS</td>
+                                                <td>+6.8 DUNG</td>
+                                                <td>Leaderboard</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">PHILLY HILL STACK</td>
+                                                <td>+3.1 DUNG</td>
+                                                <td>Staker</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pill-row-soft">
+                                        <span class="pill-soft"><span>+22.3</span>&nbsp; est. from piles today</span>
+                                        <span class="pill-soft">Epoch ends in · 2d 14h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Piles you care about -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Piles</div>
+                                <div class="card-title">Piles you care about</div>
+                            </div>
+                            <div class="card-tag card-tag-accent">Stake &amp; yield</div>
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Pile</th>
+                                        <th>Your stake</th>
+                                        <th>Epoch pot</th>
+                                        <th>Est. share</th>
+                                        <th>Crossings</th>
+                                        <th>Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="key">COL DU BAS BOIS</td>
+                                        <td>420 DUNG</td>
+                                        <td>210.0 DUNG</td>
+                                        <td>18.2%</td>
+                                        <td>5 / 25</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar dim" style="height: 6px;"></div>
+                                                <div class="sparkline-bar dim" style="height: 9px;"></div>
+                                                <div class="sparkline-bar" style="height: 14px;"></div>
+                                                <div class="sparkline-bar" style="height: 16px;"></div>
+                                                <div class="sparkline-bar" style="height: 18px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">PHILLY CRIT CIRCUIT</td>
+                                        <td>150 DUNG</td>
+                                        <td>320.0 DUNG</td>
+                                        <td>9.4%</td>
+                                        <td>3 / 25</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar dim" style="height: 5px;"></div>
+                                                <div class="sparkline-bar" style="height: 11px;"></div>
+                                                <div class="sparkline-bar" style="height: 13px;"></div>
+                                                <div class="sparkline-bar dim" style="height: 9px;"></div>
+                                                <div class="sparkline-bar" style="height: 15px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pill-row-soft">
+                                <span class="pill-soft">Total staked · <span>650</span> DUNG</span>
+                                <span class="pill-soft">Avg pile APY (est.) · 14.2%</span>
+                                <span class="pill-soft">Active piles · 3 / 12</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Activity feed -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Feed</div>
+                                <div class="card-title">Recent roll events</div>
+                            </div>
+                            <div class="card-tag">Log</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">You defended #1 on PHILLY CRIT CIRCUIT</div>
+                                    <div class="claim-row-sub">+4.3 DUNG projected leaderboard slice · 2h ago</div>
+                                </div>
+                                <div class="badge badge-accent">Piles</div>
+                            </div>
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">Staked 120 DUNG into COL DU BAS BOIS</div>
+                                    <div class="claim-row-sub">Stake now 420 DUNG · lock ends next epoch</div>
+                                </div>
+                                <div class="badge">Stake</div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Right column -->
+                <section class="col">
+                    <!-- Card: Map + featured pile -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Map</div>
+                                <div class="card-title">Philly piles · Epoch 12</div>
+                            </div>
+                            <div class="card-tag card-tag-accent">Featured: CRIT CIRCUIT</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="map-shell">
+                                <div class="map-grid"></div>
+                                <div class="map-blob hill">
+                                    <div class="map-label">Hill stack</div>
+                                </div>
+                                <div class="map-blob crit">
+                                    <div class="map-label">Crit circuit</div>
+                                </div>
+                                <div class="map-blob alley">
+                                    <div class="map-label">Back alley</div>
+                                </div>
+                            </div>
+                            <div class="pill-row-soft">
+                                <span class="pill-soft">Total pot · <span>1,240.0</span> DUNG</span>
+                                <span class="pill-soft">Your projected share · <span>7.8%</span></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Claim center -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Payouts</div>
+                                <div class="card-title">Claim center</div>
+                            </div>
+                            <div class="card-tag card-tag-accent">Unclaimed · 36.5 DUNG</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">COL DU BAS BOIS</div>
+                                    <div class="claim-row-sub">Leaderboard · #2 this epoch</div>
+                                </div>
+                                <div class="claim-amount">+14.8</div>
+                            </div>
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">PHILLY CRIT CIRCUIT</div>
+                                    <div class="claim-row-sub">Leaderboard + staker share</div>
+                                </div>
+                                <div class="claim-amount">+18.4</div>
+                            </div>
+                            <button class="btn btn-primary btn-full">Claim all · 36.5 DUNG</button>
+                        </div>
+                    </article>
+
+                    <!-- Card: Beetle & wardrobe -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Beetle</div>
+                                <div class="card-title">booka_shade · S-grade shell</div>
+                            </div>
+                            <div class="card-tag">Identity</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="beetle-card">
+                                <div class="beetle-avatar"></div>
+                                <div>
+                                    <div class="beetle-meta-title">Gilded Alley Roller</div>
+                                    <div class="beetle-meta-sub">Coherence score · 92 / 100</div>
+                                    <div class="pill-row-soft">
+                                        <span class="pill-soft">Career TSS · <span>74,320</span></span>
+                                        <span class="pill-soft">Cities rolled · <span>3</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

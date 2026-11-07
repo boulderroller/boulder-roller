@@ -1,0 +1,41 @@
+{
+  "contract_version": "client.v1",
+  "truth_source": "onchain",
+  "climb_id": "climb-manayunk-wall",
+  "climb_name": "Manayunk Wall",
+  "segment_id": "climb-manayunk-wall",
+  "segment_name": "Manayunk Wall",
+  "vault_id": 142,
+  "entries": [
+    {
+      "position": 1,
+      "rank": 1,
+      "competition_rank": 1,
+      "tie_size": 1,
+      "is_tied": false,
+      "wallet": "Wallet11111111111111111111111111111111111111",
+      "best_time_seconds": 161,
+      "avg_power_w": 428.5,
+      "completion_id": "completion-1",
+      "achieved_at": "2026-04-20T13:05:00+00:00",
+      "vault_signature": "abababababababababababababababababababababababababababababababab"
+    }
+  ],
+  "leaderboard": [
+    {
+      "position": 1,
+      "rank": 1,
+      "competition_rank": 1,
+      "tie_size": 1,
+      "is_tied": false,
+      "wallet": "Wallet11111111111111111111111111111111111111",
+      "best_time_seconds": 161,
+      "avg_power_w": 428.5,
+      "completion_id": "completion-1",
+      "achieved_at": "2026-04-20T13:05:00+00:00",
+      "vault_signature": "abababababababababababababababababababababababababababababababab"
+    }
+  ],
+  "kom_holder": "Wallet11111111111111111111111111111111111111",
+  "kom_time_s": 161
+}

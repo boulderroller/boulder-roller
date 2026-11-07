@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boulder Rollers — Curve Light V2 / ProTerminal 98</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <style>
+    :root {
+      --ink: #0b1321;
+      --panel: #0f1828;
+      --stroke: #1c2a3f;
+      --muted: #7f92b3;
+      --accent: #42c1ff;
+      --accent-2: #59f6c9;
+      --warn: #ff8c42;
+      --error: #ff5f6d;
+      --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, Menlo, monospace;
+      --sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #c0c0c0;
+      color: #000;
+      font-family: var(--sans);
+      padding: 12px;
+    }
+
+    .desktop {
+      max-width: 1260px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ticker {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .ticker .window-body { padding: 6px 8px; }
+    .tick { display: flex; justify-content: space-between; align-items: center; }
+    .label { color: #555; letter-spacing: 0.05em; }
+    .value { color: #000; }
+    .up { color: green; }
+    .down { color: #b7410e; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 10px;
+    }
+
+    .mono-title {
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .stat-grid { display: grid; gap: 8px; }
+    .stat-line { display: flex; justify-content: space-between; font-family: var(--mono); }
+
+    .bar {
+      position: relative;
+      width: 100%;
+      height: 10px;
+      background: #e5e5e5;
+      border: 2px inset #fff;
+      margin: 4px 0 6px;
+      overflow: hidden;
+    }
+    .bar span { display: block; height: 100%; background: linear-gradient(90deg, #42c1ff, #59f6c9); }
+    .bar.warn span { background: linear-gradient(90deg, #ffb347, #42c1ff); }
+
+    .sparkline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .spark {
+      height: 40px;
+      background: repeating-linear-gradient(90deg, rgba(66,193,255,0.25) 0 6px, transparent 6px 12px),
+                  linear-gradient(180deg, rgba(89,246,201,0.35), transparent);
+      border: 2px inset #fff;
+    }
+
+    .quick { display: grid; gap: 6px; }
+    .quick button {
+      width: 100%;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 8px;
+    }
+
+    .schedule { display: grid; gap: 6px; }
+    .slot { background: #f1f1f1; padding: 6px 8px; border: 2px inset #fff; }
+    .slot-head { display: flex; justify-content: space-between; font-family: var(--mono); }
+    .slot-sub { color: #555; font-size: 12px; margin-top: 2px; }
+
+    .terminal-shell {
+      background: var(--panel);
+      border: 2px inset #1e2b42;
+      color: #d7e4ff;
+      font-family: var(--mono);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .terminal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      background: #101c30;
+      border-bottom: 1px solid #0d1523;
+    }
+
+    .dots { display: flex; gap: 6px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: #1f2f49; box-shadow: inset 0 0 0 1px #0d1523; }
+    .dot.live { background: #59f6c9; box-shadow: 0 0 10px #59f6c9; }
+
+    .terminal-body {
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      background: linear-gradient(135deg, rgba(66,193,255,0.08), transparent), #0f1828;
+      min-height: 460px;
+    }
+
+    .line { display: grid; grid-template-columns: 100px 1fr; gap: 8px; padding: 2px 0; }
+    .ts { color: var(--muted); font-size: 12px; }
+    .prompt { color: var(--accent-2); }
+    .cmd { color: #e5f1ff; }
+    .resp { color: var(--muted); }
+    .success { color: var(--accent-2); }
+    .warn { color: var(--warn); }
+    .err { color: var(--error); }
+
+    .table {
+      margin: 8px 0;
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+    }
+    .table table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 8px 10px; border-bottom: 1px solid var(--stroke); font-size: 12px; text-align: left; }
+    .table th { color: var(--muted); letter-spacing: 0.04em; }
+    .table tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: 1fr; }
+      .ticker { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      body { padding: 10px; }
+      .ticker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .line { grid-template-columns: 80px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Boulder Rollers · Curve Light V2 · ProTerminal 98</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body" style="padding: 10px 12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;">
+          <span>session 9931.af · tls:on · wallet 0xB33T</span>
+          <span style="color:green;">connected ●</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker">
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">TVL</div></div>
+        <div class="window-body"><div class="tick"><span class="label">total</span><span class="value">$42.8m</span></div></div>
+      </div>
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">VOL 24h</div></div>
+        <div class="window-body"><div class="tick"><span class="label">flow</span><span class="value up">$1.20m</span></div></div>
+      </div>
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">DUNG</div></div>
+        <div class="window-body"><div class="tick"><span class="label">bal</span><span class="value">12,590.8</span></div></div>
+      </div>
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">veDUNG</div></div>
+        <div class="window-body"><div class="tick"><span class="label">locked</span><span class="value">440.4</span></div></div>
+      </div>
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">LAT</div></div>
+        <div class="window-body"><div class="tick"><span class="label">net</span><span class="value up">42ms</span></div></div>
+      </div>
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">CPU</div></div>
+        <div class="window-body"><div class="tick"><span class="label">heap</span><span class="value">31%</span></div></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">Load + Wallet</div></div>
+        <div class="window-body">
+          <div class="stat-grid">
+            <div class="stat-line"><span>Role</span><span>Pilot</span></div>
+            <div class="stat-line"><span>Network</span><span>Solana main</span></div>
+            <div class="stat-line"><span>DUNG</span><span>12,340.80</span></div>
+            <div class="stat-line"><span>veDUNG</span><span>420.00</span></div>
+            <div class="stat-line"><span>CAL</span><span>1,600 / 2,500</span></div>
+          </div>
+
+          <div style="margin-top:10px; font-family:var(--mono); font-size:12px; color:#333;">Training Load</div>
+          <div class="bar"><span style="width:64%"></span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:#333;">
+            <span>CTL 64</span><span>TSB +8</span><span>Ramp 5.2</span>
+          </div>
+
+          <div style="margin-top:12px; font-family:var(--mono); font-size:12px; color:#333;">Cardio Blocks</div>
+          <div class="sparkline">
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="window">
+        <div class="title-bar"><div class="title-bar-text">Console Shortcuts</div></div>
+        <div class="window-body">
+          <div class="quick">
+            <button class="button">roll pile --target "Col du Bas Bois" --amount 500</button>
+            <button class="button">stake --token DUNG --amount 250</button>
+            <button class="button">claim --rewards all --route vault</button>
+            <button class="button">vote --prop 18 --weight 24</button>
+          </div>
+
+          <div style="margin-top:12px;" class="mono-title">Work Blocks</div>
+          <div class="schedule">
+            <div class="slot">
+              <div class="slot-head"><span>09:30 · Threshold</span><span>45m</span></div>
+              <div class="slot-sub">4x8 @ 92% · RPE 8/10 · HR cap 172</div>
+            </div>
+            <div class="slot">
+              <div class="slot-head"><span>11:00 · Skills</span><span>25m</span></div>
+              <div class="slot-sub">roll timing drills · torque 75nm · cadence 92</div>
+            </div>
+            <div class="slot">
+              <div class="slot-head"><span>14:00 · Recovery</span><span>35m</span></div>
+              <div class="slot-sub">zone 1 · keep CAL under 1,600</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" style="border: 2px outset #fff;">
+      <div class="title-bar">
+        <div class="title-bar-text">curve.light // market + training feed</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body" style="padding:0;">
+        <div class="terminal-shell">
+          <div class="terminal-head">
+            <div class="dots"><span class="dot live"></span><span class="dot"></span><span class="dot"></span><span style="color:var(--muted);font-family:var(--mono);font-size:12px;">lat 42ms · oracle synced</span></div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--muted);">channel: rolls/perf</div>
+          </div>
+          <div class="terminal-body">
+            <div class="line">
+              <div class="ts">09:13:02</div>
+              <div class="cmd"><span class="prompt">br@pilot »</span> connect wallet --addr 0xB33T</div>
+            </div>
+            <div class="line"><div class="ts"></div><div class="resp success">connected ✓ · provider: helios · slot: 241,991,225</div></div>
+
+            <div class="line">
+              <div class="ts">09:13:10</div>
+              <div class="cmd"><span class="prompt">br@pilot »</span> show piles --sort yield --limit 4</div>
+            </div>
+            <div class="table">
+              <table>
+                <thead><tr><th>pile</th><th>base vAPY</th><th>boost</th><th>liq</th><th>24h vol</th></tr></thead>
+                <tbody>
+                  <tr><td>Col du Bas Bois</td><td>12.4%</td><td class="success">+4.2%</td><td>$12.4m</td><td>$450k</td></tr>
+                  <tr><td>Philly Crit Circuit</td><td>8.1%</td><td class="success">+18.2%</td><td>$8.1m</td><td>$1.2m</td></tr>
+                  <tr><td>Back Alley Kicker</td><td>42.0%</td><td class="warn">-2.1%</td><td>$1.2m</td><td>$50k</td></tr>
+                  <tr><td>Manayunk Wall</td><td>15.5%</td><td class="success">+5.5%</td><td>$5.5m</td><td>$800k</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="line">
+              <div class="ts">09:13:28</div>
+              <div class="cmd"><span class="prompt">br@pilot »</span> roll pile "Col du Bas Bois" --amount 500 --slip 0.3%</div>
+            </div>
+            <div class="line"><div class="ts"></div><div class="resp">broadcasting… sig: 3FJ9k…Pq</div></div>
+            <div class="line"><div class="ts"></div><div class="resp success">confirmed · slot 241,991,240 · received 498.2 DUNG</div></div>
+
+            <div class="line">
+              <div class="ts">09:13:44</div>
+              <div class="cmd"><span class="prompt">br@pilot »</span> stake --token DUNG --amount 250</div>
+            </div>
+            <div class="line"><div class="ts"></div><div class="resp success">locked ✓ · veDUNG +20.4 · unlock: 2025-08-20</div></div>
+
+            <div class="line">
+              <div class="ts">09:14:03</div>
+              <div class="cmd"><span class="prompt">br@pilot »</span> status --wallet</div>
+            </div>
+            <div class="line"><div class="ts"></div><div class="resp">balances: DUNG 12,590.80 | veDUNG 440.4 | CAL 1,480 / 2,500</div></div>
+            <div class="line"><div class="ts"></div><div class="resp warn">note: utilization spike on Back Alley Kicker; rebalance advised</div></div>
+            <div class="line"><div class="ts">09:14:22</div><div class="cmd"><span class="prompt">br@pilot »</span> exit</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window">
+      <div class="title-bar"><div class="title-bar-text">footer</div></div>
+      <div class="window-body" style="font-family:var(--mono);font-size:12px;">curve light v2 · Boulder Rollers protocol · proterminal 98 study</div>
+    </div>
+  </div>
+</body>
+</html>

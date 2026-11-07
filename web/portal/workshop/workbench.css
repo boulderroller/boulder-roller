@@ -1,0 +1,12 @@
+.workbench-page-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:46px;padding:7px 24px;background:#e4e7dc;border-bottom:1px solid #cfd5c3;color:#4f5d41;font:11px 'Geist',sans-serif}.workbench-page-bar label{display:flex;align-items:center;gap:13px}.workbench-page-bar select{min-width:125px;background:#fafbf6;border:1px solid #c7cebb;border-radius:3px;padding:5px 26px 5px 10px;color:#35422a;font-size:12px}.feed-workshop[hidden]{display:none}.feed-workshop .workshop-subbar>span{font-size:11px;color:#69745d}.feed-workshop .reference-heading{gap:10px}.feed-workshop .reference-panel{height:calc(100vh - 187px)}.feed-workshop .preview-frame:not([data-viewport=desktop]):not([data-viewport=phone]){height:calc(100vh - 187px)}
+@media(max-width:760px){.workbench-page-bar{padding:7px 15px}.workbench-page-bar>span{display:none}.feed-workshop .workshop-subbar>span{display:none}}
+
+.feed-workshop .viewport-phone .reference-panel{width:390px;max-width:100%}
+
+/* Finals: one toggle in the page bar hides every room's candidate ladder and opens each room on its locked candidate. Candidate files are untouched. */
+.workbench-controls{display:flex;align-items:center;gap:22px}.finals-toggle{display:flex;align-items:center;gap:7px;font-size:12px;color:#35422a;cursor:pointer;user-select:none}.finals-toggle input{margin:0;accent-color:#5b6b47}
+html[data-finals] .workbench-page-bar{background:#d7ddca;border-bottom-color:#b9c2a6}html[data-finals] .workbench-page-bar>span{color:#2f3a24;font-weight:500}
+html[data-finals] .workshop-toolbar [role="group"][aria-label="Design"],html[data-finals] [role="group"][aria-label$=" candidates"],html[data-finals] .p2-generation-bar{display:none}
+
+/* Courtesy passphrase panel for hosted copies (see Gate in main.tsx). */
+.workshop-gate{max-width:360px;margin:18vh auto;padding:28px;display:grid;gap:12px;background:#f7f7f3;border:1px solid #d9dad2;border-radius:4px;font:13px 'Geist',sans-serif;color:#35422a}.workshop-gate strong{font-size:15px;color:#20261a}.workshop-gate label{font-size:11px;color:#69745d}.workshop-gate input{padding:8px 10px;border:1px solid #c7cebb;border-radius:3px;font-size:14px;background:#fff}.workshop-gate button{justify-self:start;padding:7px 14px;border:1px solid #5b6b47;background:#5b6b47;color:#fff;border-radius:3px;font-size:12px}.workshop-gate p{margin:0;font-size:12px;color:#8a3b2e}

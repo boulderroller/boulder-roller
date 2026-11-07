@@ -1,0 +1,225 @@
+groups:
+  - name: boulder-api
+    rules:
+      # API is down
+      - alert: APIDown
+        expr: up{job="boulder-api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Boulder API is down"
+          description: "The Boulder Rollers API has been unreachable for more than 2 minutes."
+
+      # High error rate (5xx responses). Health checks and scrapes are left
+      # out, and the rule needs at least 30 requests in 5 minutes, so one
+      # error on a quiet night isn't "more than 5%".
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(http_requests_total{job="boulder-api", status=~"5..", endpoint!~"/health.*|/metrics"}[5m]))
+            /
+            sum(rate(http_requests_total{job="boulder-api", endpoint!~"/health.*|/metrics"}[5m]))
+          ) > 0.05
+          and sum(rate(http_requests_total{job="boulder-api", endpoint!~"/health.*|/metrics"}[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate on Boulder API"
+          description: "More than 5% of requests are returning 5xx errors."
+
+      # High latency, on the same footing: on 14 Oct the only overnight
+      # traffic was health checks, and /health/db's first call after a deploy
+      # (about 2.4 s) alone pushed the 95th percentile over a second.
+      - alert: HighLatency
+        expr: |
+          histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job="boulder-api", endpoint!~"/health.*|/metrics"}[5m])) by (le))
+          > 1
+          and sum(rate(http_request_duration_seconds_count{job="boulder-api", endpoint!~"/health.*|/metrics"}[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency on Boulder API"
+          description: "95th percentile latency is above 1 second."
+
+  - name: infrastructure
+    rules:
+      # High CPU usage
+      - alert: HighCPUUsage
+        expr: 100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage has been above 80% for 10 minutes."
+
+      # High memory usage
+      - alert: HighMemoryUsage
+        expr: |
+          (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 85%."
+
+      # Low disk space
+      - alert: LowDiskSpace
+        expr: |
+          (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 15
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space"
+          description: "Less than 15% disk space remaining."
+
+      # Container down. Compose names containers <project>-<service>-<n>, so
+      # the live names are boulder-repo-api-1 and so on; the old pattern
+      # matched nothing and this alert was permanently true.
+      - alert: ContainerDown
+        expr: |
+          absent(container_last_seen{name=~"boulder-repo-api-[0-9]+"})
+          or absent(container_last_seen{name=~"boulder-repo-indexer-[0-9]+"})
+          or absent(container_last_seen{name=~"boulder-repo-nats-[0-9]+"})
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical container is down"
+          description: "A critical Boulder container has been missing for 2 minutes."
+
+      # Container high CPU
+      - alert: ContainerHighCPU
+        expr: |
+          sum(rate(container_cpu_usage_seconds_total{name=~"boulder-api|boulder-celery"}[5m])) by (name) * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.name }} has high CPU usage"
+          description: "Container CPU usage above 80% for 10 minutes."
+
+      # Container restart: Docker restarts the same container, so its start
+      # time changes. (The indexer restarted 3,774 times on 8-11 Oct unseen.)
+      - alert: ContainerRestarting
+        expr: |
+          changes(container_start_time_seconds{name=~"boulder-repo-(api|indexer|nats|keeper)-[0-9]+"}[1h]) > 3
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.name }} is restarting frequently"
+          description: "Container has restarted more than 3 times in the last hour."
+
+  - name: solana-ops
+    rules:
+      # Payer wallet SOL balance low. The gauge reads 0 until the API's first
+      # successful read after a restart, so only a read from the last hour
+      # counts; PayerSolBalanceUnread covers a balance nobody can read.
+      - alert: PayerSolBalanceLow
+        expr: |
+          solana_payer_balance_sol < 0.5
+          and (time() - solana_payer_balance_checked_timestamp_seconds) < 3600
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Payer wallet SOL balance is low"
+          description: "Payer wallet SOL balance is {{ $value }} SOL (threshold: 0.5 SOL). Top up to avoid failed transactions."
+
+      # Payer wallet SOL balance critical
+      - alert: PayerSolBalanceCritical
+        expr: |
+          solana_payer_balance_sol < 0.1
+          and (time() - solana_payer_balance_checked_timestamp_seconds) < 3600
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Payer wallet SOL balance CRITICAL"
+          description: "Payer wallet SOL balance is {{ $value }} SOL. On-chain operations will fail imminently."
+
+      # Nothing has read the payer balance for an hour: the API reads it at
+      # most every 15 minutes on scrape, retrying 5 minutes after a failure.
+      - alert: PayerSolBalanceUnread
+        expr: (time() - solana_payer_balance_checked_timestamp_seconds) > 3600
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Payer wallet SOL balance hasn't been read for an hour"
+          description: "The API couldn't read the payer balance from Solana RPC; the low-balance alerts can't fire until it does."
+
+      # Solana RPC error rate
+      - alert: SolanaRPCErrorRateHigh
+        expr: |
+          (
+            sum(rate(solana_rpc_errors_total[5m]))
+            /
+            clamp_min(sum(rate(solana_rpc_calls_total[5m])), 1)
+          ) > 0.20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Solana RPC error rate is high"
+          description: "More than 20% of Solana RPC calls are failing."
+
+  - name: auth-entry
+    rules:
+      - alert: AuthVerifyFailureRateHigh
+        expr: |
+          (
+            sum(rate(http_requests_total{job="boulder-api", endpoint=~"/auth/verify|/auth/privy/verify", status=~"4..|5.."}[10m]))
+            /
+            clamp_min(sum(rate(http_requests_total{job="boulder-api", endpoint=~"/auth/verify|/auth/privy/verify"}[10m])), 1)
+          ) > 0.25
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Auth verify failure rate is high"
+          description: "More than 25% of wallet/Privy verify calls are failing over the last 10 minutes."
+
+      - alert: AuthRefreshFailureRateHigh
+        expr: |
+          (
+            sum(rate(http_requests_total{job="boulder-api", endpoint="/auth/refresh", status=~"4..|5.."}[10m]))
+            /
+            clamp_min(sum(rate(http_requests_total{job="boulder-api", endpoint="/auth/refresh"}[10m])), 1)
+          ) > 0.15
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Auth refresh failure rate is high"
+          description: "More than 15% of refresh calls are failing over the last 10 minutes."
+
+      - alert: InviteValidationFailuresHigh
+        expr: |
+          (
+            sum(rate(auth_funnel_events_total{stage="invite_validate", result=~"invalid|error|service_unavailable"}[10m]))
+            /
+            clamp_min(sum(rate(auth_funnel_events_total{stage="invite_validate"}[10m])), 1)
+          ) > 0.50
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Invite validation failures are elevated"
+          description: "Over half of invite validation attempts are invalid/error over the last 10 minutes."
+
+      - alert: CorsPreflightFailuresHigh
+        expr: |
+          sum(rate(http_requests_total{job="boulder-api", method="OPTIONS", endpoint=~"/auth/.*|/points/config", status=~"4..|5.."}[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CORS preflight failures detected"
+          description: "OPTIONS preflight requests are failing for auth or points endpoints."

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Boulder Rollers - Realistic Production Mockup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root{--bg:#0f0b0b;--bg-elevated:#1a1616;--bg-card:#241e1e;--bg-soft:#332b2b;--accent:#D9381E;--accent-soft:rgba(217,56,30,0.15);--accent-strong:#FF4D30;--accent-gold:#C5A059;--text:#F2F0E9;--text-soft:#B0A8A0;--text-softer:#807870;--border-subtle:#403535;--border-strong:#594a4a;--shadow-sharp:4px 4px 0 rgba(0,0,0,0.5);--radius-md:4px;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+    *{box-sizing:border-box}body{margin:0;background:#080808;color:var(--text);font-family:var(--font-body);height:100vh;display:flex;justify-content:center;padding:24px}
+    .app-shell{display:grid;grid-template-columns:240px 1fr;width:100%;max-width:1400px;background:var(--bg-elevated);border:1px solid var(--border-strong);box-shadow:var(--shadow-sharp);border-radius:var(--radius-md);overflow:hidden}
+    .sidebar{background:var(--bg);border-right:1px solid var(--border-strong);padding:24px 16px;display:flex;flex-direction:column}
+    .main{padding:24px 32px;overflow-y:auto;background:#161616}
+    .card{background:var(--bg-card);border:1px solid var(--border-subtle);padding:24px;border-radius:var(--radius-md);box-shadow:var(--shadow-sharp);margin-bottom:24px}
+    .btn{background:var(--bg-soft);border:1px solid var(--border-subtle);color:var(--text);padding:12px 16px;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.05em;cursor:pointer;box-shadow:2px 2px 0 #000;transition:all 0.1s;border-radius:2px}
+    .btn:hover{background:var(--border-subtle)}.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 #000}.btn-primary{background:var(--accent);color:#000;border-color:var(--accent-strong)}
+    .btn-gold{background:var(--accent-gold);color:#000;border-color:#D4B068}.btn:disabled{opacity:0.5;cursor:not-allowed}
+    .mono{font-family:var(--font-mono)}.gold{color:var(--accent-gold)}.red{color:var(--accent-strong)}.green{color:#2EFF5D}
+    ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-subtle);border-radius:4px}
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:1000}
+    .modal{background:var(--bg-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:8px 8px 0 rgba(0,0,0,0.5);max-width:600px;width:90%;max-height:80vh;overflow-y:auto}
+    .modal-header{padding:24px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center}
+    .modal-body{padding:24px}.modal-footer{padding:24px;border-top:1px solid var(--border-subtle);display:flex;gap:12px;justify-content:flex-end}
+    .toast-container{position:fixed;top:24px;right:24px;z-index:2000;display:flex;flex-direction:column;gap:12px}
+    .toast{background:var(--bg-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);padding:16px;min-width:300px;box-shadow:var(--shadow-sharp);animation:slideIn 0.2s ease}
+    .toast.success{border-left:4px solid var(--accent-gold)}.toast.error{border-left:4px solid var(--accent)}
+    @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+    .input{background:var(--bg-elevated);border:1px solid var(--border-subtle);color:var(--text);padding:12px;border-radius:2px;font-family:var(--font-body);width:100%;font-size:13px}
+    .input:focus{outline:none;border-color:var(--accent)}
+    .spinner{border:2px solid var(--border-subtle);border-top:2px solid var(--accent);border-radius:50%;width:16px;height:16px;animation:spin 0.8s linear infinite;display:inline-block}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .progress-bar{background:var(--bg-elevated);height:8px;border-radius:4px;overflow:hidden}
+    .progress-fill{background:var(--accent-gold);height:100%;transition:width 0.3s ease}
+    .badge{display:inline-block;padding:4px 8px;border-radius:2px;font-size:10px;font-weight:600;text-transform:uppercase}
+    .badge.common{background:rgba(128,128,128,0.2);color:#999}
+    .badge.rare{background:rgba(77,184,214,0.2);color:#4DB8D6}
+    .badge.epic{background:rgba(197,160,89,0.2);color:#C5A059}
+    .badge.legendary{background:rgba(217,56,30,0.2);color:#FF4D30}
+    .sparkline{display:inline-flex;align-items:flex-end;gap:2px;height:16px}
+    .sparkline-bar{width:3px;background:var(--accent-gold)}
+    .tooltip{position:absolute;background:#000;border:1px solid var(--accent);padding:8px;border-radius:2px;font-size:11px;pointer-events:none;z-index:100;white-space:nowrap}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const {useState,useEffect,useCallback,useMemo}=React;
+    
+    // Utility: Storage
+    const storage={get:(k,d)=>{try{const i=localStorage.getItem(k);return i?JSON.parse(i):d}catch{return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+    
+    // Utility: Random data generation
+    const randInt=(min,max)=>Math.floor(Math.random()*(max-min+1)+min);
+    const randFloat=(min,max)=>Math.random()*(max-min)+min;
+    const randItem=arr=>arr[randInt(0,arr.length-1)];
+    
+    // Generate realistic pile data
+    const generatePiles=()=>{
+      const names=['Col du Bas Bois','Philly Crit Circuit','Manayunk Wall','Back Alley Sprint','Kelly Drive Loop','Schuylkill Banks','Forbidden Drive','Lincoln Drive Climb','Wissahickon Valley','Belmont Plateau','MLK Drive Sprint','Strawberry Mansion','Fairmount Park Loop','West River Drive','Ridge Avenue Climb','Roxborough Climb','Andorra Natural Area','Valley Green Sprint','Chestnut Hill Loop','Mt Airy Kicker'];
+      const types=['Gravel','Road','Urban','Mixed','Trail'];
+      return names.map((name,i)=>({id:i+1,name,type:randItem(types),distance:`${randFloat(0.5,5).toFixed(1)}km`,grade:randItem(['Flat','2%','4%','6%','8%','10%','12%','14%']),x:randInt(10,85),y:randInt(10,85),pot:randFloat(50,1200).toFixed(1),staked:randInt(0,2000),rank:Math.random()>0.3?randInt(1,15):null,apy:randFloat(8,25).toFixed(1),tvl:randFloat(5000,80000).toFixed(0)}));
+    };
+    
+    // Generate activity feed
+    const generateActivity=()=>{
+      const users=['booka_shade','fast_roller','dung_master','midnight_beetle','speed_demon'];
+      const actions=['staked','claimed','joined pile','defended rank'];
+      return Array.from({length:10},((_,i)=>{
+        const user=randItem(users);
+        const action=randItem(actions);
+        const value=randInt(50,500);
+        const mins=randInt(1,60);
+        return{id:i,user,action,value,time:`${mins}m ago`};
+      }));
+    };
+    
+    // Generate leaderboard
+    const generateLeaderboard=()=>{
+      const names=['speed_demon','fast_roller','dung_master','midnight_beetle','pro_cyclist','hill_crusher','crit_king','enduro_beast','sprint_master','climb_wizard'];
+      return names.map((name,i)=>({rank:i+1,name,tss:randInt(50000,100000),dung:randFloat(10000,50000).toFixed(1)}));
+    };
+    
+    // Icons
+    const Icon=({name,size=16,color="currentColor"})=>{
+      const icons={X:<path d="M18 6 6 18M6 6l12 12"/>,Check:<path d="M20 6 9 17l-5-5"/>,Info:<><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></>,
+        ChevronDown:<path d="m6 9 6 6 6-6"/>,Search:<><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></>,
+        TrendingUp:<><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16 7 22 7 22 13"/></>,
+        LayoutDashboard:<><path d="M7 9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path d="M2 13a2 2 0 0 1 2-2h3"/></>,
+        Map:<><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/></>,
+        User:<><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>,
+        Activity:<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>,Filter:<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>,
+        Plus:<><path d="M5 12h14"/><path d="M12 5v14"/></>,Settings:<><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.2 4.2l4.2 4.2M15.6 15.6l4.2 4.2M1 12h6M17 12h6M4.2 19.8l4.2-4.2M15.6 8.4l4.2-4.2"/></>,
+        Trophy:<><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M6 9v5a9 9 0 0 0 9 9 9 9 0 0 0-9-9ZM18 9v5a9 9 0 0 1-9 9 9 9 0 0 1 9-9Z"/><path d="M12 18v3"/><path d="M8 21h8"/></>,
+        Clock:<><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>};
+      return<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icons[name]||<circle cx="12" cy="12" r="10"/>}</svg>;
+    };
+    
+    // Components
+    const Toast=({message,type='info',onClose})=>{
+      useEffect(()=>{const t=setTimeout(onClose,3000);return()=>clearTimeout(t)},[onClose]);
+      return<div className={`toast ${type}`}><div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:'12px'}}>
+        <div style={{display:'flex',gap:'8px',alignItems:'center'}}><Icon name={type==='success'?'Check':'Info'} color={type==='success'?'#C5A059':'#D9381E'}/>
+        <span style={{fontSize:'13px'}}>{message}</span></div><button onClick={onClose} style={{background:'none',border:'none',cursor:'pointer',padding:0}}><Icon name="X" size={16} color="#807870"/></button></div></div>;
+    };
+    
+    const Modal=({isOpen,onClose,title,children,footer})=>{
+      if(!isOpen)return null;
+      return<div className="modal-overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
+        <div className="modal-header"><h2 style={{margin:0,fontSize:'18px',fontWeight:700}}>{title}</h2>
+        <button onClick={onClose} style={{background:'none',border:'none',cursor:'pointer',padding:0}}><Icon name="X" size={20}/></button></div>
+        <div className="modal-body">{children}</div>{footer&&<div className="modal-footer">{footer}</div>}</div></div>;
+    };
+    
+    const LineChart=({data,width=400,height=120})=>{
+      const max=Math.max(...data),min=Math.min(...data),range=max-min||1;
+      const points=data.map((val,i)=>{const x=(i/(data.length-1))*width,y=height-((val-min)/range)*(height-20);return`${x},${y}`}).join(' ');
+      return<svg width={width} height={height} style={{display:'block'}}><polyline points={points} fill="none" stroke="#D9381E" strokeWidth="2"/>
+        {data.map((val,i)=>{const x=(i/(data.length-1))*width,y=height-((val-min)/range)*(height-20);return<circle key={i} cx={x} cy={y} r="3" fill="#C5A059"/>;})}</svg>;
+    };
+    
+    const Sparkline=({data})=>{
+      const max=Math.max(...data);
+      return<div className="sparkline">{data.map((v,i)=><div key={i} className="sparkline-bar" style={{height:`${(v/max)*16}px`}}/>)}</div>;
+    };
+    
+    // Main App
+    const App=()=>{
+      const[activeTab,setActiveTab]=useState('Dashboard');
+      const[dungBalance,setDungBalance]=useState(()=>storage.get('dungBalance',12340.8));
+      const[toasts,setToasts]=useState([]);
+      const[modalState,setModalState]=useState({open:false,type:null,data:null});
+      const[searchFilter,setSearchFilter]=useState('');
+      const[isLoading,setIsLoading]=useState(false);
+      const[tssHistory,setTssHistory]=useState(()=>storage.get('tssHistory',[95,110,88,118,102,130,118]));
+      const[piles,setPiles]=useState(()=>storage.get('piles',generatePiles()));
+      const[transactions,setTransactions]=useState(()=>storage.get('transactions',[]));
+      const[activityFeed,setActivityFeed]=useState(()=>generateActivity());
+      const[leaderboard,setLeaderboard]=useState(()=>generateLeaderboard());
+      const[dungPrice,setDungPrice]=useState(0.42);
+      const[epochTimeLeft,setEpochTimeLeft]=useState(172800);
+      const[settings,setSettings]=useState(()=>storage.get('settings',{displayMode:'detailed',notifications:true,defaultLockDuration:'1m'}));
+      
+      useEffect(()=>{storage.set('dungBalance',dungBalance)},[dungBalance]);
+      useEffect(()=>{storage.set('piles',piles)},[piles]);
+      useEffect(()=>{storage.set('transactions',transactions)},[transactions]);
+      useEffect(()=>{storage.set('settings',settings)},[settings]);
+      
+      // Live epoch countdown
+      useEffect(()=>{
+        const timer=setInterval(()=>{
+          setEpochTimeLeft(prev=>{const next=prev-1;if(next<=0){addToast('🎉 New Epoch Started!','success');return 604800}return next});
+        },1000);
+        return()=>clearInterval(timer);
+      },[]);
+      
+      // Price ticker
+      useEffect(()=>{
+        const ticker=setInterval(()=>{setDungPrice(prev=>prev*(1+randFloat(-0.02,0.02)))},5000);
+        return()=>clearInterval(ticker);
+      },[]);
+      
+      // Activity feed refresh
+      useEffect(()=>{
+        const refresh=setInterval(()=>{setActivityFeed(generateActivity())},30000);
+        return()=>clearInterval(refresh);
+      },[]);
+      
+      const formatTime=seconds=>{
+        const d=Math.floor(seconds/86400),h=Math.floor((seconds%86400)/3600),m=Math.floor((seconds%3600)/60),s=seconds%60;
+        return`${d}d ${h}h ${m}m ${s}s`;
+      };
+      
+      const addToast=useCallback((message,type='info')=>{const id=Date.now();setToasts(prev=>[...prev,{id,message,type}])},[]);
+      const removeToast=useCallback(id=>{setToasts(prev=>prev.filter(t=>t.id!==id))},[]);
+      
+      const handleClaim=useCallback(()=>{
+        setIsLoading(true);
+        setTimeout(()=>{
+          const amount=36.5;
+          setDungBalance(prev=>prev+amount);
+          setTransactions(prev=>[{id:Date.now(),type:'claim',amount,timestamp:new Date().toISOString()},...prev]);
+          addToast(`✅ Successfully claimed ${amount} DUNG!`,'success');
+          setIsLoading(false);
+        },800);
+      },[addToast]);
+      
+      const handleStake=useCallback((pile,amount)=>{
+        setIsLoading(true);
+        setTimeout(()=>{
+          setPiles(prev=>prev.map(p=>p.id===pile.id?{...p,staked:p.staked+amount,pot:(parseFloat(p.pot)+amount*0.1).toFixed(1)}:p));
+          setDungBalance(prev=>prev-amount);
+          setTransactions(prev=>[{id:Date.now(),type:'stake',pile:pile.name,amount,timestamp:new Date().toISOString()},...prev]);
+          addToast(`✅ Successfully staked ${amount} DUNG in ${pile.name}`,'success');
+          setModalState({open:false,type:null,data:null});
+          setIsLoading(false);
+        },1000);
+      },[addToast]);
+      
+      const openPileModal=useCallback(pile=>{setModalState({open:true,type:'pile',data:pile})},[]);
+      const openStakeModal=useCallback(pile=>{setModalState({open:true,type:'stake',data:pile})},[]);
+      const openSettingsModal=useCallback(()=>{setModalState({open:true,type:'settings',data:settings})},[settings]);
+      const closeModal=useCallback(()=>{setModalState({open:false,type:null,data:null})},[]);
+      
+      const filteredPiles=useMemo(()=>piles.filter(p=>p.name.toLowerCase().includes(searchFilter.toLowerCase())),[piles,searchFilter]);
+      
+      return<div className="app-shell"><aside className="sidebar">
+        <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'32px',paddingLeft:'4px'}}>
+          <div style={{width:'32px',height:'32px',borderRadius:'50%',background:'var(--accent)',border:'2px solid #fff',boxShadow:'0 0 12px rgba(217, 56, 30, 0.5)'}}/>
+          <div><div style={{fontSize:'14px',fontWeight:700,textTransform:'uppercase',letterSpacing:'-0.01em'}}>Boulder Rollers</div>
+          <div style={{fontSize:'10px',color:'var(--accent-gold)',fontWeight:600,textTransform:'uppercase',letterSpacing:'0.05em'}}>Dung Beetle Cycling</div></div></div>
+        <div style={{marginBottom:'24px'}}><div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600,letterSpacing:'0.05em',marginBottom:'8px',paddingLeft:'12px'}}>Main</div>
+          {['Dashboard','Map','Beetle','History','Leaderboard'].map(tab=><div key={tab} onClick={()=>setActiveTab(tab)} style={{display:'flex',alignItems:'center',gap:'12px',padding:'10px 12px',borderRadius:'2px',cursor:'pointer',color:activeTab===tab?'#F2F0E9':'#807870',background:activeTab===tab?'#332b2b':'transparent',borderLeft:activeTab===tab?'2px solid #D9381E':'2px solid transparent',marginBottom:'2px',transition:'all 0.1s'}}>
+            <Icon name={tab==='Dashboard'?'LayoutDashboard':tab==='Map'?'Map':tab==='Beetle'?'User':tab==='History'?'Activity':'Trophy'} size={16} color={activeTab===tab?'#D9381E':'currentColor'}/>
+            <span style={{fontSize:'13px',fontWeight:500}}>{tab}</span></div>)}</div>
+        <div style={{marginTop:'auto'}}>
+          <div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600,marginBottom:'8px',paddingLeft:'12px'}}>Live Status</div>
+          <div style={{background:'var(--bg-card)',padding:'12px',borderRadius:'2px',border:'1px solid var(--border-subtle)',marginBottom:'12px'}}>
+            <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'8px'}}><Icon name="Clock" size={14} color="#C5A059"/>
+              <span style={{fontSize:'11px',fontWeight:600}}>Epoch Ends In</span></div>
+            <div className="mono" style={{fontSize:'12px',color:'var(--accent-gold)'}}>{formatTime(epochTimeLeft)}</div></div>
+          <div style={{background:'var(--bg-card)',padding:'12px',borderRadius:'2px',border:'1px solid var(--border-subtle)',marginBottom:'12px'}}>
+            <div style={{fontSize:'11px',color:'var(--text-softer)',marginBottom:'4px'}}>DUNG/USD</div>
+            <div className="mono green" style={{fontSize:'14px'}}>${dungPrice.toFixed(4)}</div></div>
+          <button className="btn" onClick={openSettingsModal} style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',gap:'8px'}}>
+            <Icon name="Settings" size={14}/>Settings</button></div></aside>
+      
+      <main className="main"><header style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'32px',borderBottom:'1px solid var(--border-subtitle)',paddingBottom:'16px'}}>
+        <div><div style={{fontSize:'11px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,letterSpacing:'0.05em',marginBottom:'4px'}}>{activeTab}</div>
+          <div style={{fontSize:'24px',fontWeight:700,letterSpacing:'-0.02em'}}>
+            {activeTab==='Dashboard'&&"Today's Roll"}{activeTab==='Map'&&'Pile Explorer'}{activeTab==='Beetle'&&'My Beetle'}{activeTab==='History'&&'Transaction History'}{activeTab==='Leaderboard'&&'Global Rankings'}</div></div>
+        <div style={{display:'flex',gap:'12px',alignItems:'center'}}>
+          <div style={{display:'flex',alignItems:'center',gap:'8px',padding:'6px 12px',background:'#0a0a0a',border:'1px solid var(--border-subtle)',borderRadius:'4px'}}>
+            <span style={{fontSize:'10px',fontWeight:600,textTransform:'uppercase',color:'var(--text-softer)'}}>DUNG</span>
+            <span className="mono gold" style={{fontSize:'12px',fontWeight:500}}>{dungBalance.toLocaleString()}</span></div>
+          <div style={{fontSize:'11px',color:'var(--text-soft)'}}>≈ ${(dungBalance*dungPrice).toFixed(2)}</div></div></header>
+        
+       {activeTab==='Dashboard'&&<><div className="card"><div style={{marginBottom:'20px'}}>
+          <div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600}}>TSS Trend (7d)</div></div>
+          <LineChart data={tssHistory} width={600} height={120}/></div>
+        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:'24px'}}><div className="card">
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'16px'}}>
+            <div><div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600}}>Payouts</div>
+              <div style={{fontSize:'15px',fontWeight:600}}>Unclaimed: 36.5 DUNG</div></div>
+            <button className="btn btn-primary" onClick={handleClaim} disabled={isLoading}>{isLoading?<span className="spinner"/>:'Claim Rewards'}</button></div>
+          <div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:'12px',marginTop:'24px'}}>CAL Energy Usage</div>
+          <div className="progress-bar"><div className="progress-fill" style={{width:'64%'}}/></div>
+          <div style={{display:'flex',justifyContent:'space-between',fontSize:'11px',marginTop:'8px'}}>
+            <span className="mono" style={{color:'var(--text-soft)'}}>1,600 / 2,500</span><span className="mono gold">64%</span></div></div>
+        <div className="card"><div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:'12px'}}>Recent Activity</div>
+          {activityFeed.slice(0,5).map(a=><div key={a.id} style={{fontSize:'11px',marginBottom:'8px',color:'var(--text-soft)'}}>
+            <span className="mono">{a.user}</span> {a.action} <span className="mono gold">{a.value} DUNG</span> · {a.time}</div>)}</div></div></>}
+        
+        {activeTab==='Map'&&<div className="card"><div style={{marginBottom:'16px',display:'flex',gap:'12px'}}>
+          <div style={{position:'relative',flex:1}}><input className="input" placeholder="Search piles..." value={searchFilter} onChange={e=>setSearchFilter(e.target.value)}/>
+            <div style={{position:'absolute',right:'12px',top:'50%',transform:'translateY(-50%)'}}><Icon name="Search" size={16} color="#807870"/></div></div>
+          <button className="btn"><Icon name="Filter" size={14}/>Filter</button></div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:'12px'}}>
+          {filteredPiles.map(pile=><div key={pile.id} style={{background:'var(--bg-elevated)',border:'1px solid var(--border-subtle)',padding:'16px',borderRadius:'2px',cursor:'pointer',transition:'all 0.1s'}} onClick={()=>openPileModal(pile)}>
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'start',marginBottom:'8px'}}>
+              <div><div style={{fontSize:'14px',fontWeight:600,marginBottom:'4px'}}>{pile.name}</div>
+                <div style={{fontSize:'11px',color:'var(--text-soft)'}}>{pile.type} · {pile.distance} · {pile.grade}</div></div>
+              {pile.rank&&<div style={{background:'var(--accent)',color:'#000',padding:'4px 8px',borderRadius:'2px',fontSize:'10px',fontWeight:700'}}>#{pile.rank}</div>}</div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'12px',marginTop:'12px'}}>
+              <div><div style={{fontSize:'10px',color:'var(--text-softer)'}}>Pot</div><div className="mono gold" style={{fontSize:'12px'}}>{pile.pot}</div></div>
+              <div><div style={{fontSize:'10px',color:'var(--text-softer)'}}>APY</div><div className="mono green" style={{fontSize:'12px'}}>{pile.apy}%</div></div>
+              <div><div style={{fontSize:'10px',color:'var(--text-softer)'}}>TVL</div><div className="mono" style={{fontSize:'12px'}}>${pile.tvl}</div></div></div>
+            <div style={{marginTop:'12px'}}><Sparkline data={[3,7,5,9,12,8,11,6,10]}/></div></div>)}</div></div>}
+        
+        {activeTab==='Beetle'&&<div className="card"><div style={{textAlign:'center',marginBottom:'24px'}}>
+          <div style={{width:'120px',height:'120px',margin:'0 auto 16px',background:'linear-gradient(135deg,var(--bg-soft) 0%,var(--bg-card) 100%)',border:'2px solid var(--accent)',borderRadius:'4px',boxShadow:'4px 4px 0 rgba(0,0,0,0.2)',position:'relative'}}>
+            <div style={{position:'absolute',inset:'10px',border:'1px dashed var(--border-strong)',borderRadius:'2px'}}/></div>
+          <div style={{fontSize:'18px',fontWeight:700}}>booka_shade</div>
+          <div style={{fontSize:'11px',color:'var(--text-soft)',marginBottom:'8px'}}>S-Grade Shell · Gen 2</div>
+          <span className="badge epic">Epic</span></div>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'16px',marginBottom:'16px'}}>
+          <div style={{background:'var(--bg-elevated)',padding:'12px',borderRadius:'2px'}}><div style={{fontSize:'10px',color:'var(--text-softer)',marginBottom:'4px'}}>Speed</div>
+            <div style={{fontSize:'16px',fontWeight:600}}>87</div></div>
+          <div style={{background:'var(--bg-elevated)',padding:'12px',borderRadius:'2px'}}><div style={{fontSize:'10px',color:'var(--text-softer)',marginBottom:'4px'}}>Stamina</div>
+            <div style={{fontSize:'16px',fontWeight:600}}>92</div></div>
+          <div style={{background:'var(--bg-elevated)',padding:'12px',borderRadius:'2px'}}><div style={{fontSize:'10px',color:'var(--text-softer)',marginBottom:'4px'}}>Luck</div>
+            <div style={{fontSize:'16px',fontWeight:600}}>78</div></div></div>
+        <div style={{background:'var(--bg-elevated)',padding:'16px',borderRadius:'2px',border:'1px solid var(--border-subtle)'}}>
+          <div style={{display:'flex',justifyContent:'space-between',marginBottom:'12px'}}><span style={{fontSize:'11px'}}>Coherence</span>
+            <span className="mono gold" style={{fontSize:'11px'}}>92 / 100</span></div>
+          <div style={{display:'flex',justifyContent:'space-between',marginBottom:'12px'}}><span style={{fontSize:'11px'}}>Career TSS</span>
+            <span className="mono" style={{fontSize:'11px'}}>74,320</span></div>
+          <div style={{display:'flex',justifyContent:'space-between'}}><span style={{fontSize:'11px'}}>Active Bonuses</span>
+            <span className="mono gold" style={{fontSize:'11px'}}>+5% DUNG</span></div></div></div>}
+        
+        {activeTab==='History'&&<div className="card">
+          <div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:'16px'}}>All Transactions ({transactions.length})</div>
+          {transactions.length===0?<div style={{textAlign:'center',padding:'48px',color:'var(--text-softer)'}}>No transactions yet</div>:
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr style={{borderBottom:'2px solid var(--border-strong)'}}>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Type</th>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Details</th>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Amount</th>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Time</th></tr></thead>
+            <tbody>{transactions.map(tx=><tr key={tx.id} style={{borderBottom:'1px solid var(--border-subtle)'}}>
+              <td style={{padding:'12px'}}><span className="badge">{tx.type}</span></td>
+              <td style={{padding:'12px',fontSize:'12px'}}>{tx.pile||'—'}</td>
+              <td className="mono gold" style={{padding:'12px',fontWeight:500}}>{tx.type==='claim'?'+':'-'}{tx.amount}</td>
+              <td style={{padding:'12px',fontSize:'11px',color:'var(--text-soft)'}}>{new Date(tx.timestamp).toLocaleString()}</td></tr>)}</tbody></table>}</div>}
+        
+        {activeTab==='Leaderboard'&&<div className="card">
+          <div style={{fontSize:'10px',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:'16px'}}>Top Cyclists by TSS</div>
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr style={{borderBottom:'2px solid var(--border-strong)'}}>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Rank</th>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Cyclist</th>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>Career TSS</th>
+              <th style={{padding:'12px',textAlign:'left',fontSize:'10px',textTransform:'uppercase',color:'var(--text-softer)',fontWeight:600}}>DUNG Earned</th></tr></thead>
+            <tbody>{leaderboard.map(user=><tr key={user.rank} style={{borderBottom:'1px solid var(--border-subtle)',background:user.name==='booka_shade'?'var(--accent-soft)':'transparent'}}>
+              <td style={{padding:'12px'}}>
+                {user.rank<=3?<Icon name="Trophy" size={16} color={user.rank===1?'#FFD700':user.rank===2?'#C0C0C0':'#CD7F32'}/>:
+                <span style={{fontSize:'14px',fontWeight:600}}>#{user.rank}</span>}</td>
+              <td style={{padding:'12px',fontWeight:user.name==='booka_shade'?700:400}}>{user.name}{user.name==='booka_shade'&&<span className="mono" style={{marginLeft:'8px',fontSize:'10px',color:'var(--accent-gold)'}}> (You)</span>}</td>
+              <td className="mono" style={{padding:'12px'}}>{user.tss.toLocaleString()}</td>
+              <td className="mono gold" style={{padding:'12px'}}>{user.dung}</td></tr>)}</tbody></table></div>}
+      </main>
+      
+      {/* Modals */}
+      {modalState.type==='pile'&&<Modal isOpen={modalState.open} onClose={closeModal} title={modalState.data.name} footer={<>
+        <button className="btn" onClick={closeModal}>Close</button>
+        <button className="btn btn-primary" onClick={()=>openStakeModal(modalState.data)}>Stake DUNG</button></>}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'16px',marginBottom:'16px'}}>
+          <div><div style={{fontSize:'11px',color:'var(--text-softer)',marginBottom:'4px'}}>Type</div><div style={{fontSize:'14px'}}>{modalState.data.type}</div></div>
+          <div><div style={{fontSize:'11px',color:'var(--text-softer)',marginBottom:'4px'}}>Distance</div><div style={{fontSize:'14px'}}>{modalState.data.distance}</div></div>
+          <div><div style={{fontSize:'11px',color:'var(--text-softer)',marginBottom:'4px'}}>Grade</div><div style={{fontSize:'14px'}}>{modalState.data.grade}</div></div>
+          <div><div style={{fontSize:'11px',color:'var(--text-softer)',marginBottom:'4px'}}>Rank</div><div style={{fontSize:'14px'}}>{modalState.data.rank?`#${modalState.data.rank}`:'Unranked'}</div></div></div>
+        <div style={{background:'var(--bg-elevated)',padding:'16px',borderRadius:'2px',marginBottom:'16px'}}>
+          <div style={{display:'flex',justifyContent:'space-between',marginBottom:'12px'}}><span style={{fontSize:'11px',color:'var(--text-softer)'}}>Current Pot</span>
+            <span className="mono gold" style={{fontSize:'16px'}}>{modalState.data.pot} DUNG</span></div>
+          <div style={{display:'flex',justifyContent:'space-between',marginBottom:'12px'}}><span style={{fontSize:'11px',color:'var(--text-softer)'}}>TVL</span>
+            <span className="mono" style={{fontSize:'14px'}}>${modalState.data.tvl}</span></div>
+          <div style={{display:'flex',justifyContent:'space-between'}}><span style={{fontSize:'11px',color:'var(--text-softer)'}}>Estimated APY</span>
+            <span className="mono green" style={{fontSize:'16px'}}>{modalState.data.apy}%</span></div></div>
+        <div style={{fontSize:'11px',color:'var(--text-soft)'}}>Your stake: <span className="mono">{modalState.data.staked} DUNG</span></div></Modal>}
+      
+      {modalState.type==='stake'&&<Modal isOpen={modalState.open} onClose={closeModal} title={`Stake in ${modalState.data.name}`} footer={<>
+        <button className="btn" onClick={closeModal}>Cancel</button>
+        <button className="btn btn-primary" onClick={()=>handleStake(modalState.data,100)} disabled={isLoading}>{isLoading?<span className="spinner"/>:'Stake 100 DUNG'}</button></>}>
+        <div><div style={{marginBottom:'16px'}}><label style={{display:'block',marginBottom:'8px',fontSize:'12px',fontWeight:600}}>Amount (DUNG)</label>
+          <input className="input" type="number" placeholder="100" defaultValue="100"/><button className="btn" style={{marginTop:'8px',width:'100%'}}>Max ({dungBalance.toFixed(0)} DUNG)</button></div>
+        <div style={{marginBottom:'16px'}}><label style={{display:'block',marginBottom:'8px',fontSize:'12px',fontWeight:600}}>Lock Duration</label>
+          <select className="input"><option value="1w">1 Week (+5% APY)</option><option value="1m">1 Month (+10% APY)</option><option value="3m">3 Months (+15% APY)</option><option value="6m">6 Months (+20% APY)</option></select></div>
+        <div style={{background:'var(--bg-elevated)',padding:'12px',borderRadius:'2px'}}><div style={{fontSize:'11px',color:'var(--text-soft)',marginBottom:'8px'}}>Projected Returns (1 month):</div>
+          <div style={{display:'flex',justifyContent:'space-between'}}><span style={{fontSize:'11px'}}>Base APY:</span><span className="mono green">{modalState.data.apy}%</span></div>
+          <div style={{display:'flex',justifyContent:'space-between'}}><span style={{fontSize:'11px'}}>Lock Bonus:</span><span className="mono green">+10%</span></div>
+          <div style={{display:'flex',justifyContent:'space-between',marginTop:'8px',paddingTop:'8px',borderTop:'1px solid var(--border-subtle)'}}>
+            <span style={{fontSize:'12px',fontWeight:600}}>Total Estimated:</span><span className="mono gold" style={{fontSize:'14px',fontWeight:600}}>+{(100*parseFloat(modalState.data.apy)/12).toFixed(2)} DUNG</span></div></div></div></Modal>}
+      
+      {modalState.type==='settings'&&<Modal isOpen={modalState.open} onClose={closeModal} title="Settings" footer={<>
+        <button className="btn" onClick={closeModal}>Close</button>
+        <button className="btn btn-primary" onClick={()=>{storage.set('settings',modalState.data);setSettings(modalState.data);closeModal();addToast('Settings saved','success')}}>Save</button></>}>
+        <div><div style={{marginBottom:'16px'}}><label style={{display:'block',marginBottom:'8px',fontSize:'12px',fontWeight:600}}>Display Mode</label>
+          <select className="input" value={modalState.data.displayMode} onChange={e=>setModalState(prev=>({...prev,data:{...prev.data,displayMode:e.target.value}}))}><option value="compact">Compact</option><option value="detailed">Detailed</option></select></div>
+        <div style={{marginBottom:'16px'}}><label style={{display:'flex',alignItems:'center',gap:'8px',cursor:'pointer'}}>
+          <input type="checkbox" checked={modalState.data.notifications} onChange={e=>setModalState(prev=>({...prev,data:{...prev.data,notifications:e.target.checked}}))}/>
+          <span style={{fontSize:'12px',fontWeight:600}}>Enable Notifications</span></label></div>
+        <div><label style={{display:'block',marginBottom:'8px',fontSize:'12px',fontWeight:600}}>Default Lock Duration</label>
+          <select className="input" value={modalState.data.defaultLockDuration} onChange={e=>setModalState(prev=>({...prev,data:{...prev.data,defaultLockDuration:e.target.value}}))}><option value="1w">1 Week</option><option value="1m">1 Month</option><option value="3m">3 Months</option><option value="6m">6 Months</option></select></div></div></Modal>}
+      
+      {/* Toasts */}
+      <div className="toast-container">{toasts.map(toast=><Toast key={toast.id} message={toast.message} type={toast.type} onClose={()=>removeToast(toast.id)}/>)}</div>
+    </div>;
+    };
+    
+    const root=ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App/>);
+  </script>
+</body>
+</html>

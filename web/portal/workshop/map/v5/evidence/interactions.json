@@ -1,0 +1,110 @@
+{
+  "evidenceClass": "local workshop browser and source verification",
+  "viewportChecks": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    }
+  ],
+  "scenarios": {
+    "wises": [
+      57,
+      57
+    ],
+    "area": [
+      57,
+      57
+    ],
+    "valley-green": [
+      57,
+      57
+    ],
+    "bounds-only": [
+      0,
+      57
+    ],
+    "mixed-geography": [
+      1,
+      57
+    ],
+    "no-climbs": [
+      0,
+      0
+    ]
+  },
+  "scenarioCounts": "routes, markers",
+  "viewers": [
+    "rider",
+    "visitor",
+    "signed-out"
+  ],
+  "standingAbsentWhenNotSupplied": true,
+  "states": [
+    "ready",
+    "loading",
+    "empty",
+    "error",
+    "map-error"
+  ],
+  "neighborSelection": {
+    "before": {
+      "center": [
+        -75.23117835000005,
+        40.04929046011006
+      ],
+      "zoom": 14.103833234456625
+    },
+    "after": {
+      "center": [
+        -75.26658846074719,
+        40.05959776780523
+      ],
+      "zoom": 14.103833234456625
+    },
+    "detailReturnExact": true
+  },
+  "phoneKeyboardSelection": {
+    "climb": "Valley Green Road",
+    "focus": "Open climb",
+    "listOpen": false,
+    "browserBackReturned": true
+  },
+  "escapeClearsWithoutCameraMove": true,
+  "independentFilters": {
+    "v4": {
+      "distance": "1-2",
+      "grade": "any"
+    },
+    "v5": {
+      "distance": "any",
+      "grade": "8-12"
+    }
+  },
+  "boundsOnlyExportImport": {
+    "climbs": 57,
+    "routes": 0
+  },
+  "invalidImportRejected": true,
+  "earlierCandidatesVerified": [
+    "map-v1 retained capture",
+    "map-v2",
+    "map-v3",
+    "map-v4"
+  ],
+  "pageReturnPreservesImport": true,
+  "referenceToggleVerified": true,
+  "physicalTouch": "unverified",
+  "nativeDownloadCompletion": "not claimed",
+  "liveRiderActivity": "not supplied",
+  "landmarksVisuallyVerified": [
+    "Lock Tender\u2019s House",
+    "Buttercup Cottage Ruins"
+  ],
+  "finalBrowserErrors": []
+}

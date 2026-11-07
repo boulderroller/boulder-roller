@@ -1,0 +1,198 @@
+{
+  "exported": [
+    "id",
+    "canon_id",
+    "version",
+    "status",
+    "candidate_fingerprint",
+    "display_name",
+    "route_name",
+    "direction",
+    "centerline_polyline",
+    "canonical_profile",
+    "length_m",
+    "vert_m",
+    "avg_gradient_pct",
+    "max_gradient_pct",
+    "worthiness_score",
+    "confidence",
+    "dem_source",
+    "compiler_version",
+    "osm_way_refs",
+    "odbl_source",
+    "odbl_extract_at",
+    "provenance",
+    "low_confidence_flags",
+    "ratified_at",
+    "retired_at",
+    "supersedes_climb_id",
+    "record_continuity_policy",
+    "created_at",
+    "updated_at",
+    "centerline_geom",
+    "corridor_geom",
+    "gate_start_line",
+    "gate_end_line"
+  ],
+  "operational_private": [
+    "ratified_by"
+  ],
+  "provenance": {
+    "boundary_snap": {
+      "end": null,
+      "snap_window_m": null,
+      "start": null
+    },
+    "candidate_fingerprint": {
+      "algorithm": null,
+      "base_algorithm": null,
+      "base_value": null,
+      "coordinate_grid_degrees": null,
+      "exact_gate_end": {
+        "a_lat": null,
+        "a_lon": null,
+        "b_lat": null,
+        "b_lon": null
+      },
+      "exact_gate_start": {
+        "a_lat": null,
+        "a_lon": null,
+        "b_lat": null,
+        "b_lon": null
+      },
+      "geometry_samples": null,
+      "legacy_v2_value": null
+    },
+    "canonical_profile_hash": {
+      "algorithm": null,
+      "value": null
+    },
+    "capture_tolerance_revision": {
+      "candidate_fingerprint": null,
+      "evidence": "private",
+      "model": null,
+      "prior_geometry_policy": {
+        "corridor_half_width_m": null,
+        "gate_end_half_extent_m": null,
+        "gate_start_half_extent_m": null,
+        "source": null
+      },
+      "record_continuity_policy": null,
+      "registry": {
+        "blake3": null,
+        "source": null
+      },
+      "revised_geometry_policy": {
+        "corridor_half_width_m": null,
+        "gate_end_half_extent_m": null,
+        "gate_start_half_extent_m": null,
+        "source": null
+      },
+      "revision_id": null,
+      "unchanged_identity_fields": [
+        null
+      ]
+    },
+    "compile_method": null,
+    "corridor": {
+      "compiler_preview_geometry": null,
+      "h3_cover": null,
+      "half_width_m": null,
+      "publish_geometry": null
+    },
+    "directional_extraction": {
+      "algorithm": null,
+      "opposite_way_refs": [
+        null
+      ],
+      "orientation": null
+    },
+    "highway_tag": null,
+    "launch_ratification": {
+      "authority": "private",
+      "candidate_manifest_sha256": "private",
+      "canon_report_sha256": "private",
+      "decision_id": null,
+      "review_labels_sha256": "private"
+    },
+    "persistence_m": null,
+    "profile_spacing": {
+      "avg_m": null,
+      "max_m": null,
+      "target_m": null
+    },
+    "ratified_boundary": {
+      "algorithm": null,
+      "anchors": {
+        "end": {
+          "exact_gate": {
+            "a_lat": null,
+            "a_lon": null,
+            "b_lat": null,
+            "b_lon": null
+          },
+          "label": null,
+          "lat": null,
+          "lon": null,
+          "osm_node_id": null,
+          "resolved_offset_m": null
+        },
+        "start": {
+          "exact_gate": {
+            "a_lat": null,
+            "a_lon": null,
+            "b_lat": null,
+            "b_lon": null
+          },
+          "label": null,
+          "lat": null,
+          "lon": null,
+          "osm_node_id": null,
+          "resolved_offset_m": null
+        }
+      },
+      "decision_id": null,
+      "evidence": "private",
+      "ordered_osm_way_refs": [
+        null
+      ],
+      "replaces_candidate_fingerprint": null,
+      "reversed_way_refs": [
+        null
+      ],
+      "seam_elevation_deltas_m": [
+        null
+      ],
+      "seam_gaps_m": [
+        null
+      ]
+    },
+    "region": null,
+    "road_class": null,
+    "vertical_semantics": null,
+    "way_chain": {
+      "algorithm": null,
+      "edges": [
+        {
+          "elevation_seam_m": null,
+          "endpoint_gap_m": null,
+          "from_way": null,
+          "to_way": null,
+          "turn_angle_deg": null
+        }
+      ],
+      "endpoint_tolerance_m": null,
+      "max_abs_elevation_seam_m": null,
+      "max_turn_deg": {
+        "continuation": null,
+        "same_name": null
+      },
+      "osm_way_refs": [
+        null
+      ],
+      "road_names": [
+        null
+      ]
+    }
+  }
+}

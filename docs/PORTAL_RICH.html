@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #0a0908;
+      --shell: #1a1915;
+      --surface: #242220;
+      --raised: #2e2b28;
+      --edge: #3d3935;
+      --border: #4a4540;
+      
+      --glow: #fffbf0;
+      --bright: #e8e4d9;
+      --text: #b8b4a8;
+      --dim: #7a776d;
+      --mute: #4e4b44;
+      
+      --amber: #ffb020;
+      --amber-hot: #ffc848;
+      --amber-dim: #cc8800;
+      --amber-glow: rgba(255, 176, 32, 0.15);
+      
+      --up: #7dde86;
+      --down: #ff6b6b;
+      
+      --shadow-hard: 3px 3px 0 rgba(0,0,0,0.4);
+      --radius: 4px;
+      
+      --font: 'Inter', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--void);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body { min-height: 100vh; padding: 20px; }
+
+    .app {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1440px;
+      margin: 0 auto;
+      background: var(--shell);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-hard);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .app::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 200px;
+      background: radial-gradient(ellipse 60% 100% at 50% 0%, var(--amber-glow), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--edge);
+    }
+
+    .brand-orb {
+      width: 36px;
+      height: 36px;
+      background: var(--amber);
+      border-radius: 50%;
+      border: 2px solid var(--glow);
+      box-shadow: 0 0 16px var(--amber-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .brand-name { font-size: 14px; font-weight: 700; color: var(--glow); }
+    .brand-sub { font-size: 10px; font-weight: 600; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .nav-section { margin-bottom: 24px; }
+    .nav-label { font-size: 10px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; padding: 0 8px; margin-bottom: 8px; }
+    .nav-list { list-style: none; padding: 0; margin: 0; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius); color: var(--text); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+    .nav-item:hover { background: var(--raised); color: var(--bright); }
+    .nav-item.active { background: var(--amber-glow); color: var(--amber); border: 1px solid var(--amber-dim); }
+    .nav-icon { width: 18px; text-align: center; font-size: 14px; }
+    .nav-badge { margin-left: auto; background: var(--amber); color: var(--void); font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+
+    .sidebar-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--edge); }
+    .wallet-block { display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--raised); border: 1px solid var(--edge); border-radius: var(--radius); }
+    .wallet-dot { width: 8px; height: 8px; background: var(--up); border-radius: 50%; box-shadow: 0 0 6px var(--up); }
+    .wallet-addr { font-family: var(--mono); font-size: 11px; color: var(--bright); }
+    .wallet-bal { font-size: 10px; color: var(--dim); }
+
+    .main { padding: 24px; position: relative; z-index: 1; }
+
+    .main-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--edge); }
+    .main-title-block h1 { font-size: 28px; font-weight: 700; color: var(--glow); letter-spacing: -0.02em; margin: 0 0 4px; }
+    .main-title-block h1 span { color: var(--amber); }
+    .main-title-block p { font-size: 13px; color: var(--dim); margin: 0; }
+    .epoch-label { font-size: 10px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .epoch-val { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--amber); }
+
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--edge); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+    .stat-cell { background: var(--surface); padding: 20px; text-align: center; }
+    .stat-val { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--glow); line-height: 1; margin-bottom: 6px; }
+    .stat-val.amber { color: var(--amber); }
+    .stat-val.up { color: var(--up); }
+    .stat-label { font-size: 11px; font-weight: 500; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-full { grid-column: 1 / -1; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard); overflow: hidden; }
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 20px; border-bottom: 1px solid var(--edge); background: var(--raised); }
+    .card-kicker { font-size: 10px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .card-title { font-size: 15px; font-weight: 600; color: var(--glow); }
+    .card-tag { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 3px; background: var(--edge); color: var(--text); }
+    .card-tag.amber { background: var(--amber-glow); color: var(--amber); border: 1px solid var(--amber-dim); }
+    .card-body { padding: 20px; }
+
+    .beetle-hero { display: flex; gap: 24px; align-items: center; }
+    .beetle-shell { width: 100px; height: 100px; background: var(--raised); border: 3px solid var(--border); border-radius: 50% 50% 44% 44%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 -16px 32px -16px rgba(0,0,0,0.4), 0 0 24px var(--amber-glow); }
+    .beetle-rank { font-family: var(--mono); font-size: 44px; font-weight: 700; color: var(--amber); text-shadow: 0 0 20px var(--amber-dim); }
+    .beetle-boulder { position: absolute; bottom: -8px; right: -8px; width: 40px; height: 40px; background: var(--surface); border: 2px solid var(--border); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--shadow-hard); }
+    .boulder-val { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--amber); }
+    .boulder-unit { font-size: 7px; color: var(--dim); text-transform: uppercase; }
+    .beetle-info h2 { font-size: 20px; font-weight: 700; color: var(--glow); margin: 0 0 2px; }
+    .beetle-info p { font-size: 13px; color: var(--dim); font-style: italic; margin: 0 0 12px; }
+    .beetle-meta { display: flex; gap: 16px; }
+    .beetle-meta-item { display: flex; align-items: center; gap: 6px; }
+    .beetle-meta-val { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--bright); }
+    .beetle-meta-label { font-size: 11px; color: var(--dim); }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--edge); }
+    .pill { font-size: 11px; font-weight: 500; color: var(--dim); padding: 6px 10px; background: var(--raised); border: 1px solid var(--edge); border-radius: 3px; }
+    .pill span { color: var(--bright); font-weight: 600; }
+    .pill.amber { background: var(--amber-glow); border-color: var(--amber-dim); color: var(--amber); }
+
+    .map-container { height: 200px; background: var(--raised); border: 1px solid var(--edge); border-radius: var(--radius); position: relative; overflow: hidden; }
+    .map-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--edge) 1px, transparent 1px), linear-gradient(90deg, var(--edge) 1px, transparent 1px); background-size: 24px 24px; opacity: 0.5; }
+    .map-blob { position: absolute; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .map-blob.philly { width: 80px; height: 80px; top: 40%; left: 30%; background: radial-gradient(circle, var(--amber-glow), transparent 70%); border: 2px solid var(--amber); box-shadow: 0 0 24px var(--amber-dim); }
+    .map-blob.manyunk { width: 50px; height: 50px; top: 25%; left: 55%; background: radial-gradient(circle, rgba(125,222,134,0.15), transparent 70%); border: 2px solid var(--up); }
+    .map-blob.lemon { width: 40px; height: 40px; top: 60%; left: 65%; background: var(--edge); border: 2px dashed var(--dim); }
+    .map-label { font-size: 9px; font-weight: 600; color: var(--bright); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { font-size: 10px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--edge); }
+    th:last-child { text-align: right; }
+    td { padding: 14px 12px; border-bottom: 1px solid var(--edge); font-size: 13px; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--raised); }
+    td.key { font-weight: 600; color: var(--bright); }
+    .td-right { text-align: right; }
+    .earning { font-family: var(--mono); font-weight: 600; color: var(--up); }
+    .earning.none { color: var(--dim); }
+
+    .sparkline { display: flex; align-items: flex-end; gap: 2px; height: 20px; }
+    .spark-bar { width: 4px; background: var(--amber); border-radius: 1px; }
+    .spark-bar.dim { background: var(--dim); }
+
+    .status-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 8px; }
+    .status-dot.leader { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+    .status-dot.staked { background: var(--dim); }
+    .status-dot.open { background: transparent; border: 1px dashed var(--dim); }
+
+    .log { font-family: var(--mono); font-size: 12px; line-height: 2.2; }
+    .log-line { display: flex; align-items: center; gap: 10px; }
+    .log-dot { width: 6px; height: 6px; border-radius: 1px; flex-shrink: 0; }
+    .log-dot.sync { background: var(--up); }
+    .log-dot.earn { background: var(--amber); }
+    .log-dot.warn { background: var(--down); }
+    .log-dot.info { background: var(--dim); }
+    .log-text { color: var(--dim); }
+    .log-text b { color: var(--bright); font-weight: 500; }
+    .log-text .amber { color: var(--amber); }
+    .log-text .up { color: var(--up); }
+    .log-text .down { color: var(--down); }
+
+    .claim-list { display: flex; flex-direction: column; gap: 12px; }
+    .claim-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: var(--raised); border: 1px solid var(--edge); border-radius: var(--radius); }
+    .claim-item:hover { border-color: var(--border); }
+    .claim-name { font-size: 14px; font-weight: 600; color: var(--bright); margin-bottom: 2px; }
+    .claim-meta { font-size: 11px; color: var(--dim); }
+    .claim-val { font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--up); }
+
+    .btn { display: block; width: 100%; padding: 14px; margin-top: 16px; background: var(--amber); border: none; border-radius: var(--radius); font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--void); cursor: pointer; box-shadow: var(--shadow-hard); transition: all 0.15s; }
+    .btn:hover { background: var(--amber-hot); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.4); }
+
+    .activity-list { display: flex; flex-direction: column; }
+    .activity-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--edge); }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-action { font-size: 13px; color: var(--bright); margin-bottom: 2px; }
+    .activity-meta { font-size: 11px; color: var(--dim); }
+    .activity-val { font-family: var(--mono); font-size: 13px; font-weight: 600; }
+    .activity-val.up { color: var(--up); }
+    .activity-val.down { color: var(--down); }
+    .activity-val.flat { color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-orb">🪲</div>
+      <div>
+        <div class="brand-name">Dung Beetle</div>
+        <div class="brand-sub">Cycling Protocol</div>
+      </div>
+    </div>
+
+    <nav class="nav-section">
+      <div class="nav-label">Navigate</div>
+      <ul class="nav-list">
+        <li class="nav-item active"><span class="nav-icon">◉</span>Dashboard</li>
+        <li class="nav-item"><span class="nav-icon">⛰</span>Piles<span class="nav-badge">23</span></li>
+        <li class="nav-item"><span class="nav-icon">◇</span>Economy</li>
+        <li class="nav-item"><span class="nav-icon">♕</span>Leaderboard</li>
+      </ul>
+    </nav>
+
+    <nav class="nav-section">
+      <div class="nav-label">Profile</div>
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-icon">🪲</span>Beetle</li>
+        <li class="nav-item"><span class="nav-icon">⚙</span>Settings</li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="wallet-block">
+        <div class="wallet-dot"></div>
+        <div>
+          <div class="wallet-addr">8xK4...mN9p</div>
+          <div class="wallet-bal">Solana Mainnet</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="main-header">
+      <div class="main-title-block">
+        <h1>booka<span>_</span>shade</h1>
+        <p>S-Rank Roller · "The Alpine Assassin" · Philadelphia</p>
+      </div>
+      <div class="epoch-block">
+        <div class="epoch-label">Epoch 47 ends</div>
+        <div class="epoch-val">2d 14h</div>
+      </div>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-cell"><div class="stat-val amber">8,450</div><div class="stat-label">Boulder</div></div>
+      <div class="stat-cell"><div class="stat-val">847</div><div class="stat-label">Weekly TSS</div></div>
+      <div class="stat-cell"><div class="stat-val">1,847</div><div class="stat-label">CAL Balance</div></div>
+      <div class="stat-cell"><div class="stat-val up">+36.5</div><div class="stat-label">Unclaimed</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-head"><div><div class="card-kicker">Identity</div><div class="card-title">Your Beetle</div></div><div class="card-tag amber">S Rank</div></div>
+        <div class="card-body">
+          <div class="beetle-hero">
+            <div class="beetle-shell">
+              <span class="beetle-rank">S</span>
+              <div class="beetle-boulder"><span class="boulder-val">8.4K</span><span class="boulder-unit">DUNG</span></div>
+            </div>
+            <div class="beetle-info">
+              <h2>booka_shade</h2>
+              <p>"The Alpine Assassin"</p>
+              <div class="beetle-meta">
+                <div class="beetle-meta-item"><span class="beetle-meta-val">23</span><span class="beetle-meta-label">piles</span></div>
+                <div class="beetle-meta-item"><span class="beetle-meta-val">285w</span><span class="beetle-meta-label">FTP</span></div>
+                <div class="beetle-meta-item"><span class="beetle-meta-val">78</span><span class="beetle-meta-label">CTL</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pill-row">
+            <div class="pill">Career TSS · <span>74,320</span></div>
+            <div class="pill">Cities · <span>3</span></div>
+            <div class="pill amber">Coherence · <span>92</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-kicker">Territory</div><div class="card-title">Philadelphia Piles</div></div><div class="card-tag">Epoch 47</div></div>
+        <div class="card-body">
+          <div class="map-container">
+            <div class="map-grid"></div>
+            <div class="map-blob philly"><div class="map-label">Crit</div></div>
+            <div class="map-blob manyunk"><div class="map-label">Wall</div></div>
+            <div class="map-blob lemon"><div class="map-label">Lemon</div></div>
+          </div>
+          <div class="pill-row">
+            <div class="pill">Active piles · <span>3</span></div>
+            <div class="pill">Total pot · <span>1,240 DUNG</span></div>
+            <div class="pill">Your share · <span>7.8%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card grid-full">
+        <div class="card-head"><div><div class="card-kicker">Piles</div><div class="card-title">Your Stakes & Positions</div></div><div class="card-tag amber">3 Active</div></div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Pile</th><th>Stake</th><th>Epoch Pot</th><th>Your Share</th><th>Trend</th><th class="td-right">Earning</th></tr></thead>
+            <tbody>
+              <tr><td><span class="status-dot leader"></span><span class="key">PHILLY CRIT</span></td><td>847 DUNG</td><td>320 DUNG</td><td>18.2%</td><td><div class="sparkline"><div class="spark-bar dim" style="height:6px"></div><div class="spark-bar dim" style="height:10px"></div><div class="spark-bar" style="height:14px"></div><div class="spark-bar" style="height:16px"></div><div class="spark-bar" style="height:20px"></div></div></td><td class="td-right"><span class="earning">+18.4/d</span></td></tr>
+              <tr><td><span class="status-dot staked"></span><span class="key">MANAYUNK WALL</span></td><td>420 DUNG</td><td>210 DUNG</td><td>9.4%</td><td><div class="sparkline"><div class="spark-bar" style="height:12px"></div><div class="spark-bar" style="height:15px"></div><div class="spark-bar dim" style="height:10px"></div><div class="spark-bar" style="height:14px"></div><div class="spark-bar" style="height:18px"></div></div></td><td class="td-right"><span class="earning">+6.2/d</span></td></tr>
+              <tr><td><span class="status-dot staked"></span><span class="key">SOUTH HILL</span></td><td>120 DUNG</td><td>85 DUNG</td><td>4.1%</td><td><div class="sparkline"><div class="spark-bar dim" style="height:8px"></div><div class="spark-bar dim" style="height:8px"></div><div class="spark-bar dim" style="height:10px"></div><div class="spark-bar" style="height:12px"></div><div class="spark-bar" style="height:14px"></div></div></td><td class="td-right"><span class="earning">+3.3/d</span></td></tr>
+              <tr><td><span class="status-dot open"></span><span class="key">LEMON HILL</span></td><td>—</td><td>145 DUNG</td><td>—</td><td><div class="sparkline"><div class="spark-bar dim" style="height:10px"></div><div class="spark-bar dim" style="height:12px"></div><div class="spark-bar dim" style="height:14px"></div><div class="spark-bar dim" style="height:11px"></div><div class="spark-bar dim" style="height:13px"></div></div></td><td class="td-right"><span class="earning none">—</span></td></tr>
+            </tbody>
+          </table>
+          <div class="pill-row">
+            <div class="pill">Total staked · <span>1,387 DUNG</span></div>
+            <div class="pill">Avg APY (est.) · <span>14.2%</span></div>
+            <div class="pill">Leader on · <span>1 pile</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-kicker">System</div><div class="card-title">Roll Log</div></div><div class="card-tag">Live</div></div>
+        <div class="card-body">
+          <div class="log">
+            <div class="log-line"><div class="log-dot sync"></div><div class="log-text">Ride synced — <b>TSS 118</b>, crossed <b>9 piles</b></div></div>
+            <div class="log-line"><div class="log-dot earn"></div><div class="log-text">Boulder updated — <span class="amber">+118.0 DUNG</span></div></div>
+            <div class="log-line"><div class="log-dot warn"></div><div class="log-text"><span class="down">velodrome_king</span> challenging WALL</div></div>
+            <div class="log-line"><div class="log-dot info"></div><div class="log-text">Epoch distribution in <span class="amber">2d 14h</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-kicker">Payouts</div><div class="card-title">Claim Center</div></div><div class="card-tag amber">+36.5 DUNG</div></div>
+        <div class="card-body">
+          <div class="claim-list">
+            <div class="claim-item"><div><div class="claim-name">PHILLY CRIT</div><div class="claim-meta">Leader bonus + stake yield</div></div><div class="claim-val">+18.4</div></div>
+            <div class="claim-item"><div><div class="claim-name">MANAYUNK WALL</div><div class="claim-meta">Challenger stake yield</div></div><div class="claim-val">+6.2</div></div>
+            <div class="claim-item"><div><div class="claim-name">TSS Rewards</div><div class="claim-meta">This epoch earnings</div></div><div class="claim-val">+11.9</div></div>
+          </div>
+          <button class="btn">Claim All · 36.5 DUNG</button>
+        </div>
+      </div>
+
+      <div class="card grid-full">
+        <div class="card-head"><div><div class="card-kicker">Feed</div><div class="card-title">Recent Activity</div></div><div class="card-tag">Last 7 days</div></div>
+        <div class="card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div><div class="activity-action">Morning ride synced · 9 pile crossings</div><div class="activity-meta">2 hours ago</div></div><div class="activity-val up">+118.0</div></div>
+            <div class="activity-item"><div><div class="activity-action">Staked PHILLY CRIT · Now #1 position</div><div class="activity-meta">1 day ago</div></div><div class="activity-val flat">−420.0</div></div>
+            <div class="activity-item"><div><div class="activity-action">Defended PHILLY CRIT vs sprint_master</div><div class="activity-meta">2 days ago</div></div><div class="activity-val up">+25.0</div></div>
+            <div class="activity-item"><div><div class="activity-action">Lost RIDGE AVE · Dethroned by gravel_king</div><div class="activity-meta">3 days ago</div></div><div class="activity-val down">−45.0</div></div>
+            <div class="activity-item"><div><div class="activity-action">New PR on LEMON HILL · 1:58 (−4s)</div><div class="activity-meta">4 days ago</div></div><div class="activity-val up">+15.0</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

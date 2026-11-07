@@ -1,0 +1,20 @@
+# Generated project (xcodegen generate)
+BoulderRoller.xcodeproj/
+
+# Parser build artifacts (ios/scripts/build_parser.sh)
+Packages/WorkoutParse/Artifacts/
+Packages/WorkoutParse/Sources/WorkoutParse/Generated/
+
+# Xcode noise
+DerivedData/
+*.xcuserdatad/
+.DS_Store
+
+# Local, never-committed runtime configuration (invite codes, dev keys)
+Local.xcconfig
+
+# Release lane outputs and signing/upload credentials (bead odmi6.14).
+# Archives + exports are build products; the release config holds the
+# founder's team id and ASC API key references — secrets never in git.
+build/
+.release-config.env

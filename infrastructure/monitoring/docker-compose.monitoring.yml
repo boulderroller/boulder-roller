@@ -1,0 +1,135 @@
+version: "3.8"
+
+networks:
+  monitoring:
+    driver: bridge
+    enable_ipv6: true
+  # Connect to the boulder-net network where the API lives
+  boulder-net:
+    external: true
+    name: boulder-net
+
+# Every port below is published on loopback only. On 14 Oct 2026 all six
+# answered from the internet, including Prometheus with its lifecycle API on.
+# Prometheus scrapes the exporters over the compose networks by name; reach
+# Grafana with an SSH tunnel: ssh -L 3001:127.0.0.1:3001 root@<droplet>.
+services:
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      # The directory, not single files: a release replaces these files, and
+      # a single-file mount would keep serving the old copy to every reload.
+      - ./prometheus:/etc/prometheus/conf:ro
+      - ${BOULDER_API_METRICS_TOKEN_FILE:-/dev/null}:/etc/prometheus/secrets/boulder-api-metrics-token:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/conf/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.enable-lifecycle'
+    networks:
+      - monitoring
+      - boulder-net
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://${DROPLET_IP}:3001
+      # Supabase Postgres connection for blockchain ops dashboard
+      - SUPABASE_DB_HOST=${SUPABASE_DB_HOST:-db.qzkqjevawthyboymqrle.supabase.co}
+      - SUPABASE_DB_USER=${SUPABASE_DB_USER:-postgres}
+      - SUPABASE_DB_PASSWORD=${SUPABASE_DB_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+    networks:
+      - monitoring
+
+  node-exporter:
+    image: prom/node-exporter:v1.6.1
+    container_name: node-exporter
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9100:9100"
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - monitoring
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    container_name: cadvisor
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    devices:
+      - /dev/kmsg
+    networks:
+      - monitoring
+
+  # redis-exporter removed — Redis replaced by NATS KV for rate limiting (April 2026)
+
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:v0.15.0
+    container_name: postgres-exporter
+    restart: unless-stopped
+    environment:
+      - DATA_SOURCE_NAME=${POSTGRES_EXPORTER_DSN}
+      # Disable collectors incompatible with Supabase PG15+ (renamed columns)
+      - PG_EXPORTER_DISABLE_DEFAULT_METRICS=false
+      - PG_EXPORTER_DISABLE_SETTINGS_METRICS=false
+    command:
+      - '--no-collector.stat_bgwriter'  # PG15+ renamed checkpoints_timed column
+    ports:
+      - "127.0.0.1:9187:9187"
+    networks:
+      - monitoring
+
+  alertmanager:
+    image: prom/alertmanager:v0.26.0
+    container_name: alertmanager
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9093:9093"
+    volumes:
+      # A deployment can point at its own routing config and bot token, kept
+      # outside the repository, through this directory's .env file.
+      - ${ALERTMANAGER_CONFIG_FILE:-./prometheus/alertmanager.yml}:/etc/alertmanager/alertmanager.yml:ro
+      - ${ALERTMANAGER_TELEGRAM_TOKEN_FILE:-/dev/null}:/etc/alertmanager/secrets/telegram-bot-token:ro
+      - alertmanager_data:/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+    networks:
+      - monitoring
+
+volumes:
+  prometheus_data:
+  grafana_data:
+  alertmanager_data:

@@ -1,0 +1,4 @@
+
+> boulderroller@0.1.0 workshop:typecheck
+> tsc -p workshop/tsconfig.json --pretty false
+

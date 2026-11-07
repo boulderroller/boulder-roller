@@ -1,0 +1,36 @@
+import type { StyleSpecification } from 'maplibre-gl';
+import { nightLedgerMapStyle } from '../src/components/climb/climbMapStyle';
+
+/** The existing geographic recipe, with a light palette isolated to this candidate. */
+export function v3Ground(source: StyleSpecification): StyleSpecification {
+  const style = nightLedgerMapStyle(source);
+  const fills: Record<string, string> = {
+    'r-landuse-residential': '#e8e9e1', 'r-landuse-commercial': '#e4e3db',
+    'r-landuse-industrial': '#dddeda', 'r-landuse-school': '#e3e4d9',
+    'r-landuse-cemetery': '#d4dfcb', 'r-landuse-pitch': '#c6d7bb',
+    'r-landcover-farmland': '#e4e6cd', 'r-landcover-grass': '#d4dfc6',
+    'r-landcover-wood': '#becfac', 'r-landcover-wetland': '#c4d9cd',
+    'r-landcover-sand': '#e9e4ce', 'r-landcover-ice': '#f3f5ef',
+    'r-park': '#c5d5b7', 'r-building': '#d3d5cc',
+  };
+  return { ...style, layers: style.layers.map(layer => {
+    if (layer.type === 'background') return { ...layer, paint: { ...layer.paint, 'background-color': '#eceee4' } };
+    if (layer.type === 'fill') {
+      const color = fills[layer.id] ?? (/water/.test(layer.id) ? '#b6d3df' : '#e5e8dd');
+      return { ...layer, paint: { ...layer.paint, 'fill-color': color, 'fill-outline-color': layer.id === 'r-building' ? '#c6cbbf' : color } };
+    }
+    if (layer.type === 'hillshade') return { ...layer, paint: { ...layer.paint, 'hillshade-shadow-color': '#7d8d69', 'hillshade-highlight-color': '#fbfbec', 'hillshade-accent-color': '#aab68e' } };
+    if (layer.type === 'line') {
+      const id = layer.id;
+      const color = id === 'r-contour-index' ? '#9aa781' : id === 'r-contour' ? '#b3bda0' : /water/.test(id) ? '#94bacb' : /boundary/.test(id) ? '#b6bcaa' : /rail/.test(id) ? '#b1b6aa' : id === 'r-park-line' ? '#a8bf97' : /case/.test(id) ? '#cdd1c6' : /path|track/.test(id) ? '#aab79a' : /motorway|trunk|primary/.test(id) ? '#f6f3dd' : '#fbfcf7';
+      return { ...layer, paint: { ...layer.paint, 'line-color': color } };
+    }
+    if (layer.type === 'symbol') {
+      const sourceLayer = layer['source-layer'];
+      const color = /contour/.test(layer.id) ? '#778667' : sourceLayer === 'place' ? '#394a3f' : sourceLayer === 'water_name' || sourceLayer === 'waterway' ? '#527f94' : /park|peak/.test(layer.id) ? '#57734b' : '#697361';
+      return { ...layer, paint: { ...layer.paint, 'text-color': color, 'text-halo-color': '#f0f2e8', 'text-halo-width': 1.3 } };
+    }
+    if (layer.type === 'circle') return { ...layer, paint: { ...layer.paint, 'circle-color': '#718563', 'circle-stroke-color': '#f0f2e8' } };
+    return layer;
+  }) };
+}

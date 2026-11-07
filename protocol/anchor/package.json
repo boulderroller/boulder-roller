@@ -1,0 +1,39 @@
+{
+  "name": "boulderrollers-anchor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "anchor build",
+    "test": "NODE_OPTIONS='--loader ts-node/esm --no-warnings' mocha -t 1000000 ${ANCHOR_TEST_FILES:-tests/**/*.spec.ts}",
+    "preflight": "./scripts/preflight.sh",
+    "lint": "echo 'No lint step defined'"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.29.0",
+    "@metaplex-foundation/mpl-token-metadata": "^3.2.1",
+    "@noble/hashes": "^1.8.0",
+    "@solana/spl-token": "^0.4.0",
+    "@solana/web3.js": "^1.93.0",
+    "@sqds/multisig": "2.1.4",
+    "bn.js": "^5.2.1",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@solana/spl-stake-pool": "1.1.8",
+    "@types/bn.js": "^5.2.0",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.9.0",
+    "@types/uuid": "^9.0.5",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

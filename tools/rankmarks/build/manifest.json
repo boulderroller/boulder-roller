@@ -1,0 +1,865 @@
+{
+  "schema_version": 2,
+  "generator": "tools/rankmarks/bake.py",
+  "design_authority": {
+    "bead": "boulderroller-v2-dtgj1.1",
+    "source": "tools/rankmarks/paramset.py",
+    "reference": "docs/design/renderings/rankmarks/ladder_sheet.png",
+    "font": "tools/rankmarks/fonts/archivo-black.ttf"
+  },
+  "rank_range": {
+    "min": 4,
+    "max": 50,
+    "order": "descending"
+  },
+  "codex": {
+    "ratified": "2026-08-31",
+    "derivation": "tab state derives from rank alone; no charge steps",
+    "tiers": {
+      "clean": "50-45",
+      "one_tab": "44-36",
+      "two_tabs": "35-24",
+      "three_tabs": "23-12",
+      "flood": "11-4"
+    },
+    "rotation": "every 3 ranks, TL->TR->BR->BL",
+    "independence": "tab tier and band color are independent cycles; their interleave makes every rank unique",
+    "wash": "next band color; crimson washes in its own red"
+  },
+  "scales": {
+    "1x": 120,
+    "2x": 240,
+    "3x": 360
+  },
+  "detail_pixels": 1024,
+  "render": {
+    "engine": "CYCLES",
+    "samples": 128,
+    "denoise": true,
+    "alpha": true,
+    "ground_plane": false,
+    "vignette": false,
+    "glare": {
+      "type": "FOG_GLOW",
+      "threshold": 2.2,
+      "size": 6,
+      "mix": -0.55
+    },
+    "color_correction": {
+      "contrast": 1.07,
+      "gain": 1.02,
+      "lift": -0.005
+    }
+  },
+  "counts": {
+    "ranks": 47,
+    "scale_sprites": 141,
+    "details": 47,
+    "rank_assets": 188
+  },
+  "contact_sheet": {
+    "file": "contact_sheet.png",
+    "scale": "1x",
+    "columns": 7,
+    "background_hex": "#0B0A09",
+    "entries": 50,
+    "rank_range": {
+      "min": 1,
+      "max": 50,
+      "order": "descending"
+    }
+  },
+  "ranks": {
+    "50": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": null,
+      "files": {
+        "1x": "rank50@1x.png",
+        "2x": "rank50@2x.png",
+        "3x": "rank50@3x.png",
+        "detail": "rank50_detail.png"
+      }
+    },
+    "49": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": null,
+      "files": {
+        "1x": "rank49@1x.png",
+        "2x": "rank49@2x.png",
+        "3x": "rank49@3x.png",
+        "detail": "rank49_detail.png"
+      }
+    },
+    "48": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": null,
+      "files": {
+        "1x": "rank48@1x.png",
+        "2x": "rank48@2x.png",
+        "3x": "rank48@3x.png",
+        "detail": "rank48_detail.png"
+      }
+    },
+    "47": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": null,
+      "files": {
+        "1x": "rank47@1x.png",
+        "2x": "rank47@2x.png",
+        "3x": "rank47@3x.png",
+        "detail": "rank47_detail.png"
+      }
+    },
+    "46": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": null,
+      "files": {
+        "1x": "rank46@1x.png",
+        "2x": "rank46@2x.png",
+        "3x": "rank46@3x.png",
+        "detail": "rank46_detail.png"
+      }
+    },
+    "45": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": null,
+      "files": {
+        "1x": "rank45@1x.png",
+        "2x": "rank45@2x.png",
+        "3x": "rank45@3x.png",
+        "detail": "rank45_detail.png"
+      }
+    },
+    "44": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": [
+        "TL"
+      ],
+      "files": {
+        "1x": "rank44@1x.png",
+        "2x": "rank44@2x.png",
+        "3x": "rank44@3x.png",
+        "detail": "rank44_detail.png"
+      }
+    },
+    "43": {
+      "band": "iron",
+      "band_hex": "#6E6A63",
+      "hardness": 1.0,
+      "corner_hex": "#9C6234",
+      "tabs": [
+        "TL"
+      ],
+      "files": {
+        "1x": "rank43@1x.png",
+        "2x": "rank43@2x.png",
+        "3x": "rank43@3x.png",
+        "detail": "rank43_detail.png"
+      }
+    },
+    "42": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "TL"
+      ],
+      "files": {
+        "1x": "rank42@1x.png",
+        "2x": "rank42@2x.png",
+        "3x": "rank42@3x.png",
+        "detail": "rank42_detail.png"
+      }
+    },
+    "41": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "TR"
+      ],
+      "files": {
+        "1x": "rank41@1x.png",
+        "2x": "rank41@2x.png",
+        "3x": "rank41@3x.png",
+        "detail": "rank41_detail.png"
+      }
+    },
+    "40": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "TR"
+      ],
+      "files": {
+        "1x": "rank40@1x.png",
+        "2x": "rank40@2x.png",
+        "3x": "rank40@3x.png",
+        "detail": "rank40_detail.png"
+      }
+    },
+    "39": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "TR"
+      ],
+      "files": {
+        "1x": "rank39@1x.png",
+        "2x": "rank39@2x.png",
+        "3x": "rank39@3x.png",
+        "detail": "rank39_detail.png"
+      }
+    },
+    "38": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "BR"
+      ],
+      "files": {
+        "1x": "rank38@1x.png",
+        "2x": "rank38@2x.png",
+        "3x": "rank38@3x.png",
+        "detail": "rank38_detail.png"
+      }
+    },
+    "37": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "BR"
+      ],
+      "files": {
+        "1x": "rank37@1x.png",
+        "2x": "rank37@2x.png",
+        "3x": "rank37@3x.png",
+        "detail": "rank37_detail.png"
+      }
+    },
+    "36": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "BR"
+      ],
+      "files": {
+        "1x": "rank36@1x.png",
+        "2x": "rank36@2x.png",
+        "3x": "rank36@3x.png",
+        "detail": "rank36_detail.png"
+      }
+    },
+    "35": {
+      "band": "bronze",
+      "band_hex": "#9C6234",
+      "hardness": 0.85,
+      "corner_hex": "#447A4E",
+      "tabs": [
+        "TL",
+        "TR"
+      ],
+      "files": {
+        "1x": "rank35@1x.png",
+        "2x": "rank35@2x.png",
+        "3x": "rank35@3x.png",
+        "detail": "rank35_detail.png"
+      }
+    },
+    "34": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "TL",
+        "TR"
+      ],
+      "files": {
+        "1x": "rank34@1x.png",
+        "2x": "rank34@2x.png",
+        "3x": "rank34@3x.png",
+        "detail": "rank34_detail.png"
+      }
+    },
+    "33": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "TL",
+        "TR"
+      ],
+      "files": {
+        "1x": "rank33@1x.png",
+        "2x": "rank33@2x.png",
+        "3x": "rank33@3x.png",
+        "detail": "rank33_detail.png"
+      }
+    },
+    "32": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "TR",
+        "BR"
+      ],
+      "files": {
+        "1x": "rank32@1x.png",
+        "2x": "rank32@2x.png",
+        "3x": "rank32@3x.png",
+        "detail": "rank32_detail.png"
+      }
+    },
+    "31": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "TR",
+        "BR"
+      ],
+      "files": {
+        "1x": "rank31@1x.png",
+        "2x": "rank31@2x.png",
+        "3x": "rank31@3x.png",
+        "detail": "rank31_detail.png"
+      }
+    },
+    "30": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "TR",
+        "BR"
+      ],
+      "files": {
+        "1x": "rank30@1x.png",
+        "2x": "rank30@2x.png",
+        "3x": "rank30@3x.png",
+        "detail": "rank30_detail.png"
+      }
+    },
+    "29": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "BR",
+        "BL"
+      ],
+      "files": {
+        "1x": "rank29@1x.png",
+        "2x": "rank29@2x.png",
+        "3x": "rank29@3x.png",
+        "detail": "rank29_detail.png"
+      }
+    },
+    "28": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "BR",
+        "BL"
+      ],
+      "files": {
+        "1x": "rank28@1x.png",
+        "2x": "rank28@2x.png",
+        "3x": "rank28@3x.png",
+        "detail": "rank28_detail.png"
+      }
+    },
+    "27": {
+      "band": "green",
+      "band_hex": "#447A4E",
+      "hardness": 0.68,
+      "corner_hex": "#4F8BC9",
+      "tabs": [
+        "BR",
+        "BL"
+      ],
+      "files": {
+        "1x": "rank27@1x.png",
+        "2x": "rank27@2x.png",
+        "3x": "rank27@3x.png",
+        "detail": "rank27_detail.png"
+      }
+    },
+    "26": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "BL",
+        "TL"
+      ],
+      "files": {
+        "1x": "rank26@1x.png",
+        "2x": "rank26@2x.png",
+        "3x": "rank26@3x.png",
+        "detail": "rank26_detail.png"
+      }
+    },
+    "25": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "BL",
+        "TL"
+      ],
+      "files": {
+        "1x": "rank25@1x.png",
+        "2x": "rank25@2x.png",
+        "3x": "rank25@3x.png",
+        "detail": "rank25_detail.png"
+      }
+    },
+    "24": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "BL",
+        "TL"
+      ],
+      "files": {
+        "1x": "rank24@1x.png",
+        "2x": "rank24@2x.png",
+        "3x": "rank24@3x.png",
+        "detail": "rank24_detail.png"
+      }
+    },
+    "23": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "TL",
+        "TR",
+        "BR"
+      ],
+      "files": {
+        "1x": "rank23@1x.png",
+        "2x": "rank23@2x.png",
+        "3x": "rank23@3x.png",
+        "detail": "rank23_detail.png"
+      }
+    },
+    "22": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "TL",
+        "TR",
+        "BR"
+      ],
+      "files": {
+        "1x": "rank22@1x.png",
+        "2x": "rank22@2x.png",
+        "3x": "rank22@3x.png",
+        "detail": "rank22_detail.png"
+      }
+    },
+    "21": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "TL",
+        "TR",
+        "BR"
+      ],
+      "files": {
+        "1x": "rank21@1x.png",
+        "2x": "rank21@2x.png",
+        "3x": "rank21@3x.png",
+        "detail": "rank21_detail.png"
+      }
+    },
+    "20": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "TR",
+        "BR",
+        "BL"
+      ],
+      "files": {
+        "1x": "rank20@1x.png",
+        "2x": "rank20@2x.png",
+        "3x": "rank20@3x.png",
+        "detail": "rank20_detail.png"
+      }
+    },
+    "19": {
+      "band": "cobalt",
+      "band_hex": "#4F8BC9",
+      "hardness": 0.52,
+      "corner_hex": "#7743AB",
+      "tabs": [
+        "TR",
+        "BR",
+        "BL"
+      ],
+      "files": {
+        "1x": "rank19@1x.png",
+        "2x": "rank19@2x.png",
+        "3x": "rank19@3x.png",
+        "detail": "rank19_detail.png"
+      }
+    },
+    "18": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "TR",
+        "BR",
+        "BL"
+      ],
+      "files": {
+        "1x": "rank18@1x.png",
+        "2x": "rank18@2x.png",
+        "3x": "rank18@3x.png",
+        "detail": "rank18_detail.png"
+      }
+    },
+    "17": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "BR",
+        "BL",
+        "TL"
+      ],
+      "files": {
+        "1x": "rank17@1x.png",
+        "2x": "rank17@2x.png",
+        "3x": "rank17@3x.png",
+        "detail": "rank17_detail.png"
+      }
+    },
+    "16": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "BR",
+        "BL",
+        "TL"
+      ],
+      "files": {
+        "1x": "rank16@1x.png",
+        "2x": "rank16@2x.png",
+        "3x": "rank16@3x.png",
+        "detail": "rank16_detail.png"
+      }
+    },
+    "15": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "BR",
+        "BL",
+        "TL"
+      ],
+      "files": {
+        "1x": "rank15@1x.png",
+        "2x": "rank15@2x.png",
+        "3x": "rank15@3x.png",
+        "detail": "rank15_detail.png"
+      }
+    },
+    "14": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "BL",
+        "TL",
+        "TR"
+      ],
+      "files": {
+        "1x": "rank14@1x.png",
+        "2x": "rank14@2x.png",
+        "3x": "rank14@3x.png",
+        "detail": "rank14_detail.png"
+      }
+    },
+    "13": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "BL",
+        "TL",
+        "TR"
+      ],
+      "files": {
+        "1x": "rank13@1x.png",
+        "2x": "rank13@2x.png",
+        "3x": "rank13@3x.png",
+        "detail": "rank13_detail.png"
+      }
+    },
+    "12": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": [
+        "BL",
+        "TL",
+        "TR"
+      ],
+      "files": {
+        "1x": "rank12@1x.png",
+        "2x": "rank12@2x.png",
+        "3x": "rank12@3x.png",
+        "detail": "rank12_detail.png"
+      }
+    },
+    "11": {
+      "band": "plum",
+      "band_hex": "#7743AB",
+      "hardness": 0.36,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank11@1x.png",
+        "2x": "rank11@2x.png",
+        "3x": "rank11@3x.png",
+        "detail": "rank11_detail.png"
+      }
+    },
+    "10": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank10@1x.png",
+        "2x": "rank10@2x.png",
+        "3x": "rank10@3x.png",
+        "detail": "rank10_detail.png"
+      }
+    },
+    "9": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank09@1x.png",
+        "2x": "rank09@2x.png",
+        "3x": "rank09@3x.png",
+        "detail": "rank09_detail.png"
+      }
+    },
+    "8": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank08@1x.png",
+        "2x": "rank08@2x.png",
+        "3x": "rank08@3x.png",
+        "detail": "rank08_detail.png"
+      }
+    },
+    "7": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank07@1x.png",
+        "2x": "rank07@2x.png",
+        "3x": "rank07@3x.png",
+        "detail": "rank07_detail.png"
+      }
+    },
+    "6": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank06@1x.png",
+        "2x": "rank06@2x.png",
+        "3x": "rank06@3x.png",
+        "detail": "rank06_detail.png"
+      }
+    },
+    "5": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank05@1x.png",
+        "2x": "rank05@2x.png",
+        "3x": "rank05@3x.png",
+        "detail": "rank05_detail.png"
+      }
+    },
+    "4": {
+      "band": "crimson",
+      "band_hex": "#AC3F3A",
+      "hardness": 0.2,
+      "corner_hex": "#AC3F3A",
+      "tabs": "FULL",
+      "files": {
+        "1x": "rank04@1x.png",
+        "2x": "rank04@2x.png",
+        "3x": "rank04@3x.png",
+        "detail": "rank04_detail.png"
+      }
+    }
+  },
+  "podium": {
+    "design_authority": {
+      "bead": "boulderroller-v2-dtgj1.2",
+      "source": "tools/rankmarks/podium_night.py"
+    },
+    "rank_range": {
+      "min": 1,
+      "max": 3,
+      "order": "ascending"
+    },
+    "corner_charge": false,
+    "scales": {
+      "1x": 120,
+      "2x": 240,
+      "3x": 360
+    },
+    "detail_pixels": 1024,
+    "render": {
+      "engine": "CYCLES",
+      "samples": 128,
+      "denoise": true,
+      "alpha": true,
+      "ground_plane": false,
+      "vignette": false,
+      "glare": {
+        "type": "FOG_GLOW",
+        "threshold": 2.2,
+        "size": 6,
+        "mix": -0.55
+      },
+      "color_correction": {
+        "contrast": 1.07,
+        "gain": 1.02,
+        "lift": -0.005
+      }
+    },
+    "counts": {
+      "ranks": 3,
+      "scale_sprites": 9,
+      "details": 3,
+      "rank_assets": 12
+    },
+    "ranks": {
+      "1": {
+        "name": "crown",
+        "tile_hex": "#0B0A0C",
+        "reference": "docs/design/renderings/rankmarks/nt_crown.png",
+        "files": {
+          "1x": "rank01_crown@1x.png",
+          "2x": "rank01_crown@2x.png",
+          "3x": "rank01_crown@3x.png",
+          "detail": "rank01_crown_detail.png"
+        }
+      },
+      "2": {
+        "name": "laurel",
+        "tile_hex": "#0E120E",
+        "reference": "docs/design/renderings/rankmarks/nt_laurel.png",
+        "files": {
+          "1x": "rank02_laurel@1x.png",
+          "2x": "rank02_laurel@2x.png",
+          "3x": "rank02_laurel@3x.png",
+          "detail": "rank02_laurel_detail.png"
+        }
+      },
+      "3": {
+        "name": "cobble",
+        "tile_hex": "#121110",
+        "reference": "docs/design/renderings/rankmarks/nt_cobble.png",
+        "files": {
+          "1x": "rank03_cobble@1x.png",
+          "2x": "rank03_cobble@2x.png",
+          "3x": "rank03_cobble@3x.png",
+          "detail": "rank03_cobble_detail.png"
+        }
+      }
+    }
+  }
+}

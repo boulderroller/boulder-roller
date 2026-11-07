@@ -1,0 +1,37 @@
+api.boulderroller.org {
+	redir https://api.boulderroller.xyz{uri} permanent
+}
+
+api.boulderroller.xyz {
+	# The map ground's own assets (tools/basemap): PMTiles read with range requests,
+	# glyphs and the sprite. They live in the caddy_data volume under /data/www/basemap,
+	# under versioned names, so browsers and Cloudflare may keep a found file for a year;
+	# misses stay uncached. The root holds nothing else. CORS is `*` because Cloudflare
+	# keeps one cached copy per URL whatever the Origin; these are public files read
+	# without credentials.
+	handle /basemap/* {
+		header Access-Control-Allow-Origin "*"
+		header Access-Control-Expose-Headers "Content-Length, Content-Range, ETag"
+		header {
+			match status 200 206 304
+			Cache-Control "public, max-age=31536000, immutable"
+		}
+		@preflight method OPTIONS
+		handle @preflight {
+			header Access-Control-Allow-Methods "GET, HEAD, OPTIONS"
+			header Access-Control-Allow-Headers "Range, If-Match, If-None-Match"
+			header Access-Control-Max-Age "86400"
+			respond 204
+		}
+		root * /data/www
+		file_server
+	}
+
+	handle {
+		reverse_proxy api:8080
+	}
+}
+
+scan-api.boulderroller.xyz {
+	reverse_proxy indexer:3001
+}

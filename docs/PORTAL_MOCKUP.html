@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* GREY FOUNDATION */
+      --g950: #0A0A0C;
+      --g900: #111114;
+      --g850: #18181C;
+      --g800: #202026;
+      --g750: #28282F;
+      --g700: #313139;
+      --g600: #414149;
+      --g500: #56565F;
+      --g400: #76767F;
+      --g300: #9696A0;
+      --g200: #BBBBC4;
+      --g100: #E2E2E8;
+      --g50:  #F5F5F8;
+
+      /* SIGNALS */
+      --mint: #3DFFA3;
+      --violet: #A78BFA;
+      --coral: #FF6B8A;
+      --amber: #FBBF24;
+      --cyan: #22D3EE;
+
+      /* GRADIENTS */
+      --grad-brand: linear-gradient(135deg, var(--mint), var(--violet), var(--coral));
+      --grad-economy: linear-gradient(135deg, var(--violet), var(--coral));
+      --grad-fitness: linear-gradient(135deg, var(--mint), var(--cyan));
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--g950);
+      color: var(--g200);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ================================================
+       LAYOUT
+    ================================================ */
+
+    .app {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      min-height: 100vh;
+    }
+
+    @media (max-width: 900px) {
+      .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+    }
+
+    /* ================================================
+       SIDEBAR NAV
+    ================================================ */
+
+    .sidebar {
+      background: var(--g900);
+      border-right: 1px solid var(--g850);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        flex-direction: row;
+        height: auto;
+        padding: 12px 20px;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        border-right: none;
+        border-bottom: 1px solid var(--g850);
+      }
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--grad-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--g950);
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .logo { margin-bottom: 0; }
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: row;
+        flex: 0;
+      }
+    }
+
+    .nav-item {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--g500);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 18px;
+    }
+
+    .nav-item:hover {
+      background: var(--g850);
+      color: var(--g300);
+    }
+
+    .nav-item.active {
+      background: var(--g800);
+      color: var(--mint);
+    }
+
+    .nav-bottom {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-bottom { display: none; }
+    }
+
+    /* ================================================
+       MAIN CONTENT
+    ================================================ */
+
+    .main {
+      padding: 32px;
+      max-width: 1400px;
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        padding: 80px 20px 32px;
+      }
+    }
+
+    /* ================================================
+       HEADER
+    ================================================ */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .greeting {
+      font-size: 13px;
+      color: var(--g500);
+      margin-bottom: 4px;
+    }
+
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--g100);
+      letter-spacing: -0.02em;
+    }
+
+    .header-title span {
+      background: var(--grad-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .epoch-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: var(--g900);
+      border: 1px solid var(--g800);
+      border-radius: 100px;
+    }
+
+    .epoch-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--g500);
+    }
+
+    .epoch-time {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--amber);
+    }
+
+    .wallet-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--g850);
+      border: 1px solid var(--g700);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .wallet-btn:hover {
+      border-color: var(--g600);
+      background: var(--g800);
+    }
+
+    .wallet-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mint);
+    }
+
+    .wallet-addr {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--g300);
+    }
+
+    /* ================================================
+       HERO STATS ROW
+    ================================================ */
+
+    .hero-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1.2fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-row { grid-template-columns: 1fr; }
+    }
+
+    .hero-stat {
+      background: var(--g900);
+      border: 1px solid var(--g850);
+      border-radius: 20px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-stat::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .hero-stat.violet::before { background: var(--grad-economy); }
+    .hero-stat.mint::before { background: var(--grad-fitness); }
+    .hero-stat.coral::before { background: linear-gradient(90deg, var(--coral), transparent 80%); }
+    .hero-stat.amber::before { background: linear-gradient(90deg, var(--amber), transparent 80%); }
+
+    .hero-stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 12px;
+    }
+
+    .hero-stat-value {
+      font-family: var(--font-mono);
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .hero-stat.violet .hero-stat-value { color: var(--violet); }
+    .hero-stat.mint .hero-stat-value { color: var(--mint); }
+    .hero-stat.coral .hero-stat-value { color: var(--coral); }
+    .hero-stat.amber .hero-stat-value { color: var(--amber); }
+
+    .hero-stat-sub {
+      font-size: 12px;
+      color: var(--g500);
+    }
+
+    .hero-stat-sub strong {
+      color: var(--g300);
+    }
+
+    .hero-stat-spark {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 24px 16px;
+      gap: 4px;
+    }
+
+    .hero-spark {
+      flex: 1;
+      border-radius: 2px 2px 0 0;
+      opacity: 0.25;
+    }
+
+    .hero-stat.violet .hero-spark { background: var(--violet); }
+    .hero-stat.mint .hero-spark { background: var(--mint); }
+    .hero-stat.coral .hero-spark { background: var(--coral); }
+    .hero-stat.amber .hero-spark { background: var(--amber); }
+
+    /* BEETLE PREVIEW in hero */
+    .hero-beetle {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .beetle-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--g800);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .beetle-avatar::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50% 50% 45% 45%;
+      padding: 2px;
+      background: var(--grad-brand);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .beetle-avatar-letter {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 800;
+      background: var(--grad-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--grad-economy);
+      border: 2px solid var(--g900);
+    }
+
+    .beetle-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--g100);
+      margin-bottom: 2px;
+    }
+
+    .beetle-info p {
+      font-size: 11px;
+      color: var(--g500);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .beetle-rank {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--grad-brand);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--g950);
+    }
+
+    /* ================================================
+       MAIN GRID
+    ================================================ */
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+    }
+
+    @media (max-width: 1100px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================
+       PILES SECTION
+    ================================================ */
+
+    .section {
+      background: var(--g900);
+      border: 1px solid var(--g850);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--g850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--g400);
+    }
+
+    .section-action {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--violet);
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .section-action:hover {
+      color: var(--coral);
+    }
+
+    .piles-list {
+      padding: 12px;
+    }
+
+    .pile-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .pile-item:hover {
+      background: var(--g850);
+    }
+
+    .pile-rank {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .pile-rank.leader {
+      background: var(--grad-brand);
+      color: var(--g950);
+    }
+
+    .pile-rank.staked {
+      background: var(--g800);
+      border: 1px solid var(--violet);
+      color: var(--violet);
+    }
+
+    .pile-rank.available {
+      background: var(--g800);
+      color: var(--g500);
+    }
+
+    .pile-info h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--g100);
+      margin-bottom: 2px;
+    }
+
+    .pile-info p {
+      font-size: 11px;
+      color: var(--g500);
+    }
+
+    .pile-stats {
+      display: flex;
+      gap: 20px;
+    }
+
+    .pile-stat {
+      text-align: right;
+    }
+
+    .pile-stat-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .pile-stat-value.violet { color: var(--violet); }
+    .pile-stat-value.mint { color: var(--mint); }
+
+    .pile-stat-label {
+      font-size: 9px;
+      color: var(--g600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pile-arrow {
+      color: var(--g600);
+      font-size: 18px;
+    }
+
+    /* ================================================
+       SIDEBAR PANELS
+    ================================================ */
+
+    .sidebar-panels {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* CLAIM PANEL */
+    .claim-panel {
+      background: var(--g900);
+      border: 1px solid var(--g850);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .claim-header {
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.08), rgba(255, 107, 138, 0.08));
+      border-bottom: 1px solid var(--g850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .claim-header-left {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--g500);
+    }
+
+    .claim-header-value {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 800;
+      background: var(--grad-economy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .claim-list {
+      padding: 12px;
+    }
+
+    .claim-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      transition: background 0.15s;
+    }
+
+    .claim-item:hover {
+      background: var(--g850);
+    }
+
+    .claim-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--g800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .claim-info { flex: 1; }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--g200);
+      font-size: 13px;
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--g500);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-action {
+      padding: 16px;
+      border-top: 1px solid var(--g850);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-gradient {
+      background: var(--grad-economy);
+      color: #fff;
+    }
+
+    .btn-gradient:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    /* ACTIVITY FEED */
+    .feed-panel {
+      background: var(--g900);
+      border: 1px solid var(--g850);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .feed-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--g850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .feed-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--g500);
+    }
+
+    .feed-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mint);
+    }
+
+    .feed-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.9); }
+    }
+
+    .feed-list {
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--g850);
+      transition: background 0.15s;
+    }
+
+    .feed-item:last-child { border-bottom: none; }
+    .feed-item:hover { background: var(--g850); }
+
+    .feed-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .feed-icon.fitness { background: rgba(61, 255, 163, 0.12); }
+    .feed-icon.economy { background: rgba(167, 139, 250, 0.12); }
+    .feed-icon.battle { background: rgba(255, 107, 138, 0.12); }
+
+    .feed-content { flex: 1; }
+
+    .feed-action {
+      font-weight: 600;
+      color: var(--g200);
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .feed-meta {
+      font-size: 10px;
+      color: var(--g500);
+    }
+
+    .feed-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .feed-amount.positive { color: var(--mint); }
+    .feed-amount.neutral { color: var(--violet); }
+    .feed-amount.negative { color: var(--coral); }
+
+    /* ================================================
+       TERMINAL SECTION
+    ================================================ */
+
+    .terminal-section {
+      margin-top: 24px;
+      background: var(--g900);
+      border: 1px solid var(--g850);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .terminal-bar {
+      padding: 14px 20px;
+      background: var(--g850);
+      border-bottom: 1px solid var(--g800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: var(--mint); }
+    .terminal-dot:nth-child(2) { background: var(--violet); }
+    .terminal-dot:nth-child(3) { background: var(--coral); }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--g500);
+    }
+
+    .terminal-body {
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 2.2;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .t-prompt { font-weight: 600; }
+    .t-prompt.mint { color: var(--mint); }
+    .t-prompt.violet { color: var(--violet); }
+    .t-prompt.coral { color: var(--coral); }
+    .t-prompt.cyan { color: var(--cyan); }
+    .t-prompt.amber { color: var(--amber); }
+
+    .t-text { color: var(--g400); }
+    .t-val { font-weight: 600; }
+    .t-val.mint { color: var(--mint); }
+    .t-val.violet { color: var(--violet); }
+    .t-val.coral { color: var(--coral); }
+    .t-val.amber { color: var(--amber); }
+
+    .t-tag {
+      margin-left: auto;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .t-tag.ok { background: rgba(61, 255, 163, 0.12); color: var(--mint); }
+    .t-tag.pending { background: rgba(251, 191, 36, 0.12); color: var(--amber); }
+    .t-tag.alert { background: rgba(255, 107, 138, 0.12); color: var(--coral); }
+
+    /* ================================================
+       WAVEFORM SECTION
+    ================================================ */
+
+    .waveform-section {
+      margin-top: 24px;
+    }
+
+    .waveform-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .waveform-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--g500);
+    }
+
+    .waveform-legend {
+      display: flex;
+      gap: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--g400);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .legend-dot.mint { background: var(--mint); }
+    .legend-dot.violet { background: var(--violet); }
+
+    .waveform-container {
+      background: var(--g900);
+      border: 1px solid var(--g850);
+      border-radius: 16px;
+      padding: 24px;
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .wave-bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .wave-bar:hover {
+      filter: brightness(1.2);
+      transform: scaleY(1.05);
+      transform-origin: bottom;
+    }
+
+    .wave-bar.mint { background: linear-gradient(180deg, var(--mint), rgba(61, 255, 163, 0.3)); }
+    .wave-bar.violet { background: linear-gradient(180deg, var(--violet), rgba(167, 139, 250, 0.3)); }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--g850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--g600);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-link {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--g500);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-link:hover {
+      color: var(--g300);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <!-- SIDEBAR NAV -->
+    <nav class="sidebar">
+      <div class="logo">🪲</div>
+      <div class="nav">
+        <div class="nav-item active" title="Dashboard">🏠</div>
+        <div class="nav-item" title="Piles">⛰️</div>
+        <div class="nav-item" title="Economy">💎</div>
+        <div class="nav-item" title="Leaderboard">🏆</div>
+        <div class="nav-item" title="Profile">🪲</div>
+      </div>
+      <div class="nav-bottom">
+        <div class="nav-item" title="Settings">⚙️</div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- HEADER -->
+      <header class="header">
+        <div class="header-left">
+          <p class="greeting">Good morning</p>
+          <h1 class="header-title">booka_shade<span>.dung</span></h1>
+        </div>
+        <div class="header-right">
+          <div class="epoch-pill">
+            <span class="epoch-label">Epoch ends</span>
+            <span class="epoch-time">2d 14h 23m</span>
+          </div>
+          <div class="wallet-btn">
+            <div class="wallet-dot"></div>
+            <span class="wallet-addr">8xK4...mN9p</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO STATS -->
+      <div class="hero-row">
+        <div class="hero-stat violet">
+          <div class="hero-stat-label">Boulder</div>
+          <div class="hero-stat-value">8,450</div>
+          <div class="hero-stat-sub"><strong>+247</strong> this epoch</div>
+          <div class="hero-stat-spark">
+            <div class="hero-spark" style="height: 35%;"></div>
+            <div class="hero-spark" style="height: 48%;"></div>
+            <div class="hero-spark" style="height: 52%;"></div>
+            <div class="hero-spark" style="height: 61%;"></div>
+            <div class="hero-spark" style="height: 58%;"></div>
+            <div class="hero-spark" style="height: 72%;"></div>
+            <div class="hero-spark" style="height: 85%;"></div>
+            <div class="hero-spark" style="height: 78%;"></div>
+            <div class="hero-spark" style="height: 92%;"></div>
+            <div class="hero-spark" style="height: 88%;"></div>
+          </div>
+        </div>
+
+        <div class="hero-stat mint">
+          <div class="hero-stat-label">Weekly TSS</div>
+          <div class="hero-stat-value">847</div>
+          <div class="hero-stat-sub"><strong>CTL 78</strong> · ATL 42</div>
+          <div class="hero-stat-spark">
+            <div class="hero-spark" style="height: 25%;"></div>
+            <div class="hero-spark" style="height: 38%;"></div>
+            <div class="hero-spark" style="height: 45%;"></div>
+            <div class="hero-spark" style="height: 62%;"></div>
+            <div class="hero-spark" style="height: 78%;"></div>
+            <div class="hero-spark" style="height: 85%;"></div>
+            <div class="hero-spark" style="height: 92%;"></div>
+            <div class="hero-spark" style="height: 88%;"></div>
+            <div class="hero-spark" style="height: 95%;"></div>
+            <div class="hero-spark" style="height: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="hero-stat coral">
+          <div class="hero-stat-label">CAL Balance</div>
+          <div class="hero-stat-value">1,847</div>
+          <div class="hero-stat-sub"><strong>2,500</strong> daily cap</div>
+          <div class="hero-stat-spark">
+            <div class="hero-spark" style="height: 100%;"></div>
+            <div class="hero-spark" style="height: 95%;"></div>
+            <div class="hero-spark" style="height: 88%;"></div>
+            <div class="hero-spark" style="height: 82%;"></div>
+            <div class="hero-spark" style="height: 78%;"></div>
+            <div class="hero-spark" style="height: 74%;"></div>
+            <div class="hero-spark" style="height: 74%;"></div>
+            <div class="hero-spark" style="height: 74%;"></div>
+            <div class="hero-spark" style="height: 74%;"></div>
+            <div class="hero-spark" style="height: 74%;"></div>
+          </div>
+        </div>
+
+        <div class="hero-stat" style="display: flex; align-items: center; padding: 20px;">
+          <div class="hero-beetle">
+            <div class="beetle-avatar">
+              <span class="beetle-avatar-letter">S</span>
+              <div class="beetle-boulder"></div>
+            </div>
+            <div class="beetle-info">
+              <h3>booka_shade</h3>
+              <p>"The Alpine Assassin"</p>
+              <span class="beetle-rank">S RANK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="main-grid">
+        <div class="main-left">
+          <!-- PILES SECTION -->
+          <section class="section">
+            <div class="section-header">
+              <h2 class="section-title">Your Piles</h2>
+              <span class="section-action">View All →</span>
+            </div>
+            <div class="piles-list">
+              <div class="pile-item">
+                <div class="pile-rank leader">👑</div>
+                <div class="pile-info">
+                  <h4>PHILLY CRIT</h4>
+                  <p>Leader · 847 DUNG staked</p>
+                </div>
+                <div class="pile-stats">
+                  <div class="pile-stat">
+                    <div class="pile-stat-value violet">+18.4</div>
+                    <div class="pile-stat-label">Earning</div>
+                  </div>
+                  <div class="pile-stat">
+                    <div class="pile-stat-value mint">2:34</div>
+                    <div class="pile-stat-label">PR</div>
+                  </div>
+                </div>
+                <span class="pile-arrow">→</span>
+              </div>
+
+              <div class="pile-item">
+                <div class="pile-rank staked">2</div>
+                <div class="pile-info">
+                  <h4>MANAYUNK WALL</h4>
+                  <p>Challenger · 420 DUNG staked</p>
+                </div>
+                <div class="pile-stats">
+                  <div class="pile-stat">
+                    <div class="pile-stat-value violet">+6.2</div>
+                    <div class="pile-stat-label">Earning</div>
+                  </div>
+                  <div class="pile-stat">
+                    <div class="pile-stat-value mint">4:12</div>
+                    <div class="pile-stat-label">PR</div>
+                  </div>
+                </div>
+                <span class="pile-arrow">→</span>
+              </div>
+
+              <div class="pile-item">
+                <div class="pile-rank staked">🦢</div>
+                <div class="pile-info">
+                  <h4>SOUTH HILL</h4>
+                  <p>Swanny seat · Passive income</p>
+                </div>
+                <div class="pile-stats">
+                  <div class="pile-stat">
+                    <div class="pile-stat-value violet">+3.3</div>
+                    <div class="pile-stat-label">Earning</div>
+                  </div>
+                  <div class="pile-stat">
+                    <div class="pile-stat-value mint">—</div>
+                    <div class="pile-stat-label">PR</div>
+                  </div>
+                </div>
+                <span class="pile-arrow">→</span>
+              </div>
+
+              <div class="pile-item">
+                <div class="pile-rank available">+</div>
+                <div class="pile-info">
+                  <h4>LEMON HILL</h4>
+                  <p>Available · No stake</p>
+                </div>
+                <div class="pile-stats">
+                  <div class="pile-stat">
+                    <div class="pile-stat-value" style="color: var(--g500);">—</div>
+                    <div class="pile-stat-label">Earning</div>
+                  </div>
+                  <div class="pile-stat">
+                    <div class="pile-stat-value mint">1:58</div>
+                    <div class="pile-stat-label">PR</div>
+                  </div>
+                </div>
+                <span class="pile-arrow">→</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- TERMINAL -->
+          <section class="terminal-section">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+              </div>
+              <span class="terminal-title">roll@dung-beetle ~ system log</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-line">
+                <span class="t-prompt mint">◆</span>
+                <span class="t-text">ride synced · TSS <span class="t-val mint">118</span> · crossings <span class="t-val mint">9</span></span>
+                <span class="t-tag ok">SYNCED</span>
+              </div>
+              <div class="t-line">
+                <span class="t-prompt violet">◇</span>
+                <span class="t-text">boulder updated · earning <span class="t-val violet">+118.0 DUNG</span></span>
+                <span class="t-tag ok">OK</span>
+              </div>
+              <div class="t-line">
+                <span class="t-prompt coral">●</span>
+                <span class="t-text">MANAYUNK WALL challenged by <span class="t-val coral">velodrome_king</span></span>
+                <span class="t-tag alert">DEFEND</span>
+              </div>
+              <div class="t-line">
+                <span class="t-prompt amber">⏱</span>
+                <span class="t-text">epoch distribution in <span class="t-val amber">2d 14h</span></span>
+                <span class="t-tag pending">PENDING</span>
+              </div>
+              <div class="t-line">
+                <span class="t-prompt cyan">→</span>
+                <span class="t-text">system healthy · <span class="t-val" style="color: var(--g400);">all services nominal</span></span>
+              </div>
+            </div>
+          </section>
+
+          <!-- WAVEFORM -->
+          <section class="waveform-section">
+            <div class="waveform-header">
+              <span class="waveform-title">TSS vs DUNG (30d)</span>
+              <div class="waveform-legend">
+                <div class="legend-item"><div class="legend-dot mint"></div>TSS</div>
+                <div class="legend-item"><div class="legend-dot violet"></div>DUNG</div>
+              </div>
+            </div>
+            <div class="waveform-container">
+              <div class="wave-bar mint" style="height: 25%;"></div>
+              <div class="wave-bar violet" style="height: 22%;"></div>
+              <div class="wave-bar mint" style="height: 38%;"></div>
+              <div class="wave-bar violet" style="height: 35%;"></div>
+              <div class="wave-bar mint" style="height: 42%;"></div>
+              <div class="wave-bar violet" style="height: 40%;"></div>
+              <div class="wave-bar mint" style="height: 55%;"></div>
+              <div class="wave-bar violet" style="height: 52%;"></div>
+              <div class="wave-bar mint" style="height: 48%;"></div>
+              <div class="wave-bar violet" style="height: 45%;"></div>
+              <div class="wave-bar mint" style="height: 62%;"></div>
+              <div class="wave-bar violet" style="height: 58%;"></div>
+              <div class="wave-bar mint" style="height: 72%;"></div>
+              <div class="wave-bar violet" style="height: 68%;"></div>
+              <div class="wave-bar mint" style="height: 78%;"></div>
+              <div class="wave-bar violet" style="height: 75%;"></div>
+              <div class="wave-bar mint" style="height: 85%;"></div>
+              <div class="wave-bar violet" style="height: 82%;"></div>
+              <div class="wave-bar mint" style="height: 88%;"></div>
+              <div class="wave-bar violet" style="height: 85%;"></div>
+              <div class="wave-bar mint" style="height: 92%;"></div>
+              <div class="wave-bar violet" style="height: 88%;"></div>
+              <div class="wave-bar mint" style="height: 95%;"></div>
+              <div class="wave-bar violet" style="height: 92%;"></div>
+              <div class="wave-bar mint" style="height: 100%;"></div>
+              <div class="wave-bar violet" style="height: 95%;"></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- SIDEBAR PANELS -->
+        <div class="sidebar-panels">
+          <!-- CLAIM -->
+          <div class="claim-panel">
+            <div class="claim-header">
+              <div>
+                <div class="claim-header-left">Unclaimed Rewards</div>
+              </div>
+              <div class="claim-header-value">+36.5</div>
+            </div>
+            <div class="claim-list">
+              <div class="claim-item">
+                <div class="claim-icon">💎</div>
+                <div class="claim-info">
+                  <div class="claim-name">PHILLY CRIT</div>
+                  <div class="claim-detail">Leader bonus + stake yield</div>
+                </div>
+                <div class="claim-amount">+18.4</div>
+              </div>
+              <div class="claim-item">
+                <div class="claim-icon">⚔️</div>
+                <div class="claim-info">
+                  <div class="claim-name">MANAYUNK WALL</div>
+                  <div class="claim-detail">Challenger stake yield</div>
+                </div>
+                <div class="claim-amount">+6.2</div>
+              </div>
+              <div class="claim-item">
+                <div class="claim-icon">🦢</div>
+                <div class="claim-info">
+                  <div class="claim-name">SOUTH HILL</div>
+                  <div class="claim-detail">Swanny passive income</div>
+                </div>
+                <div class="claim-amount">+3.3</div>
+              </div>
+              <div class="claim-item">
+                <div class="claim-icon">🚴</div>
+                <div class="claim-info">
+                  <div class="claim-name">TSS Rewards</div>
+                  <div class="claim-detail">This epoch earnings</div>
+                </div>
+                <div class="claim-amount">+8.6</div>
+              </div>
+            </div>
+            <div class="claim-action">
+              <button class="btn btn-gradient">CLAIM ALL REWARDS</button>
+            </div>
+          </div>
+
+          <!-- ACTIVITY FEED -->
+          <div class="feed-panel">
+            <div class="feed-header">
+              <span class="feed-title">Activity</span>
+              <span class="feed-live">Live</span>
+            </div>
+            <div class="feed-list">
+              <div class="feed-item">
+                <div class="feed-icon fitness">🚴</div>
+                <div class="feed-content">
+                  <div class="feed-action">Morning ride synced</div>
+                  <div class="feed-meta">9 pile crossings · 2h ago</div>
+                </div>
+                <div class="feed-amount positive">+118.0</div>
+              </div>
+              <div class="feed-item">
+                <div class="feed-icon economy">💰</div>
+                <div class="feed-content">
+                  <div class="feed-action">Staked PHILLY CRIT</div>
+                  <div class="feed-meta">420 DUNG (6.2% pool) · 1d ago</div>
+                </div>
+                <div class="feed-amount neutral">−420.0</div>
+              </div>
+              <div class="feed-item">
+                <div class="feed-icon battle">⚔️</div>
+                <div class="feed-content">
+                  <div class="feed-action">Defended PHILLY CRIT</div>
+                  <div class="feed-meta">vs sprint_master · 2d ago</div>
+                </div>
+                <div class="feed-amount positive">+25.0</div>
+              </div>
+              <div class="feed-item">
+                <div class="feed-icon battle">💀</div>
+                <div class="feed-content">
+                  <div class="feed-action">Lost RIDGE AVE</div>
+                  <div class="feed-meta">Dethroned by gravel_king · 3d ago</div>
+                </div>
+                <div class="feed-amount negative">−45.0</div>
+              </div>
+              <div class="feed-item">
+                <div class="feed-icon fitness">🏆</div>
+                <div class="feed-content">
+                  <div class="feed-action">New PR: LEMON HILL</div>
+                  <div class="feed-meta">1:58 (−4s) · 4d ago</div>
+                </div>
+                <div class="feed-amount positive">+15.0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-left">DUNG BEETLE CYCLING · EPOCH 47 · DEVNET</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Docs</a>
+          <a href="#" class="footer-link">Discord</a>
+          <a href="#" class="footer-link">GitHub</a>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+</body>
+</html>

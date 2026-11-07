@@ -1,0 +1,137 @@
+/* Ratified receipt: the Settings sheet geometry on the shared ledger kit. */
+.receipt-room {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 36px 40px 56px;
+}
+.receipt-column {
+  width: 640px;
+  max-width: 100%;
+  margin: auto;
+}
+.receipt-column h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.receipt-back {
+  display: block;
+  font-size: 13px;
+  color: var(--soft) !important;
+  margin-bottom: 18px;
+}
+.receipt-back b {
+  color: var(--ink);
+}
+.receipt-sub {
+  font-size: 14px;
+  color: var(--soft);
+  margin-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+.receipt-column .room-eyebrow {
+  margin: 22px 0 8px;
+}
+.receipt-column .ledger-kv {
+  gap: 16px;
+  align-items: baseline;
+  min-height: 52px;
+}
+.receipt-column .ledger-kv > span {
+  font-size: 14px;
+  flex: none;
+}
+.receipt-column .ledger-kv > b {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.receipt-column .receipt-name {
+  font-family: var(--br-font-sans);
+  font-weight: 600;
+}
+.receipt-best {
+  color: #5592e2;
+  font-family: var(--br-font-sans);
+  font-weight: 600;
+}
+.receipt-doors {
+  margin-top: 28px;
+}
+.receipt-doors .room-door:first-child {
+  border-top: 0;
+}
+.week-shell .receipt-signature {
+  font-family: var(--mono);
+  font-size: 11px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  text-align: right;
+}
+.receipt-not-found {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  min-height: 52px;
+  color: var(--soft);
+}
+.receipt-not-found .observatory-search {
+  position: static;
+  inset: auto;
+  transform: none;
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--ink);
+  font-weight: 600;
+}
+.receipt-not-found .observatory-search i {
+  display: none;
+}
+.receipt-instructions {
+  max-width: 640px;
+  overflow: auto;
+  max-height: 80dvh;
+}
+.receipt-instructions .ledger-kv {
+  gap: 16px;
+}
+.receipt-instructions .ledger-kv b {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.receipt-log {
+  padding: 14px 20px;
+  font-family: var(--mono);
+  overflow-wrap: anywhere;
+  border-top: 1px solid var(--card);
+}
+@media (max-width: 700px) {
+  .receipt-room {
+    padding: 20px 16px 40px;
+  }
+  .week-shell .receipt-signature {
+    font-size: 15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .receipt-instructions {
+    width: calc(100vw - 32px);
+  }
+}
+.receipt-column .ledger-kv > span {
+  color: var(--soft);
+}
+.week-shell .receipt-signature {
+  font-size: 15px;
+}
+.week-shell .receipt-not-found .observatory-search{color:var(--ink);font-weight:600;font-size:15px;min-height:0;height:auto}
+.receipt-sub.mono-inline{font-family:var(--mono)}

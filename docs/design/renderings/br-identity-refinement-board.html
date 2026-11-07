@@ -1,0 +1,1165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boulder Roller Identity Refinement Board</title>
+    <style>
+      :root {
+        --bg: #f5f6ef;
+        --paper: #fffef8;
+        --wash: #eef2e7;
+        --ink: #121a14;
+        --muted: #647062;
+        --faint: #929c8d;
+        --border: rgba(18, 26, 20, 0.13);
+        --line: rgba(18, 26, 20, 0.075);
+        --route: #456f52;
+        --route-dark: #2f553b;
+        --terrain: #8aa07a;
+        --cal: #1f8caf;
+        --cal-soft: rgba(31, 140, 175, 0.1);
+        --gold: #a87124;
+        --gold-soft: rgba(168, 113, 36, 0.11);
+        --proof: #3c8257;
+        --proof-soft: rgba(60, 130, 87, 0.1);
+        --amber: #a86b22;
+        --amber-soft: rgba(168, 107, 34, 0.12);
+        --red: #a94442;
+        --red-soft: rgba(169, 68, 66, 0.1);
+        --shadow: 0 28px 80px rgba(18, 26, 20, 0.11);
+        --soft-shadow: 0 18px 50px rgba(18, 26, 20, 0.075);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+        background:
+          radial-gradient(circle at 18% 0%, rgba(138, 160, 122, 0.22), transparent 34%),
+          radial-gradient(circle at 100% 12%, rgba(31, 140, 175, 0.11), transparent 30%),
+          linear-gradient(90deg, rgba(18, 26, 20, 0.035) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(18, 26, 20, 0.028) 1px, transparent 1px),
+          var(--bg);
+        background-size: auto, auto, 30px 30px, 30px 30px, auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .mono {
+        font-family: Cousine, "SFMono-Regular", Consolas, monospace;
+      }
+
+      .board {
+        width: min(1500px, 100%);
+        margin: 0 auto;
+        padding: 34px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) 430px;
+        gap: 34px;
+        align-items: end;
+        min-height: 210px;
+        padding: 18px 0 34px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 940px;
+        font-size: clamp(42px, 6vw, 78px);
+        line-height: 0.94;
+        letter-spacing: -0.025em;
+      }
+
+      .hero p,
+      .note p {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .note {
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(255, 254, 248, 0.66);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .note h2 {
+        margin-bottom: 12px;
+        font-size: 25px;
+        line-height: 1.08;
+        letter-spacing: -0.012em;
+      }
+
+      .panel {
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        background: rgba(255, 254, 248, 0.86);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 254, 248, 0.74);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border: 1px solid rgba(18, 26, 20, 0.22);
+        border-radius: 10px;
+        background: var(--ink);
+        color: #fffef8;
+        font-size: 13px;
+        font-weight: 950;
+      }
+
+      .brand b {
+        display: block;
+        font-size: 15px;
+      }
+
+      .brand span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 1px;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .tabs span {
+        padding: 8px 11px;
+        border-radius: 9px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 780;
+      }
+
+      .tabs .active {
+        background: rgba(69, 111, 82, 0.11);
+        color: var(--ink);
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      button {
+        height: 34px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: #fffef8;
+        color: var(--ink);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .icon {
+        width: 34px;
+      }
+
+      .primary {
+        padding: 0 14px;
+        background: var(--ink);
+        color: #fffef8;
+        box-shadow: 2px 2px 0 rgba(18, 26, 20, 0.24);
+      }
+
+      .beauty-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .activity-title {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: start;
+        margin-bottom: 16px;
+      }
+
+      .rider-row {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+
+      .avatar {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(18, 26, 20, 0.13);
+        border-radius: 999px;
+        background:
+          linear-gradient(135deg, #edf3e7, #fffaf0);
+      }
+
+      .rider-row b {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .rider-row span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .headline {
+        margin-top: 9px;
+        max-width: 760px;
+        font-size: clamp(30px, 3vw, 44px);
+        line-height: 0.99;
+        letter-spacing: -0.018em;
+      }
+
+      .subline {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        height: 32px;
+        padding: 0 11px;
+        border-radius: 999px;
+        border: 1px solid rgba(60, 130, 87, 0.28);
+        background: var(--proof-soft);
+        color: #2f7048;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .chip::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--proof);
+      }
+
+      .map {
+        position: relative;
+        overflow: hidden;
+        min-height: 460px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background:
+          repeating-radial-gradient(ellipse at 62% 45%, rgba(138, 160, 122, 0.18) 0 1px, transparent 1px 19px),
+          linear-gradient(135deg, #edf4e8 0%, #fff9ef 58%, #e8f0df 100%);
+      }
+
+      .map::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(120deg, rgba(255, 254, 248, 0.5), transparent 45%),
+          linear-gradient(0deg, rgba(18, 26, 20, 0.04), transparent 34%);
+        pointer-events: none;
+      }
+
+      .map svg,
+      .mini-map svg,
+      .elevation svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-tag {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        z-index: 2;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: rgba(255, 254, 248, 0.84);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .stat-strip {
+        position: absolute;
+        z-index: 2;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .stat {
+        padding: 12px 12px 10px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 254, 248, 0.86);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 900;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .cal {
+        color: var(--cal);
+      }
+
+      .gold {
+        color: var(--gold);
+      }
+
+      .side {
+        display: grid;
+        gap: 14px;
+      }
+
+      .card {
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: #fffef8;
+      }
+
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 15px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .card-title {
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .card-meta {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .card-body {
+        padding: 15px;
+      }
+
+      .line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 11px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .line:last-child {
+        border-bottom: 0;
+      }
+
+      .line span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .line b {
+        font-size: 13px;
+      }
+
+      .mini-map {
+        position: relative;
+        height: 134px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background:
+          repeating-radial-gradient(ellipse at 42% 45%, rgba(138, 160, 122, 0.16) 0 1px, transparent 1px 14px),
+          linear-gradient(135deg, #eef5e9, #fff8ed);
+      }
+
+      .leader-row {
+        display: grid;
+        grid-template-columns: 30px 1fr auto;
+        gap: 9px;
+        align-items: center;
+        padding: 5px 0;
+        font-size: 12px;
+      }
+
+      .leader-row b {
+        color: var(--gold);
+      }
+
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .tile {
+        min-height: 70px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--wash);
+      }
+
+      .tile strong {
+        display: block;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .tile span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .climb-section {
+        margin-top: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: #fffef8;
+      }
+
+      .elevation {
+        position: relative;
+        height: 88px;
+        border-bottom: 1px solid var(--line);
+        background: #fffef8;
+      }
+
+      .climb-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 82px 82px 58px;
+        gap: 14px;
+        align-items: center;
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .climb-row:last-child {
+        border-bottom: 0;
+      }
+
+      .climb-row h3 {
+        font-size: 14px;
+        line-height: 1.15;
+      }
+
+      .climb-row p {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .right-metric {
+        text-align: right;
+      }
+
+      .right-metric b {
+        display: block;
+        font-size: 15px;
+      }
+
+      .right-metric span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .rank {
+        justify-self: end;
+        padding: 5px 8px;
+        border: 1px solid rgba(168, 113, 36, 0.32);
+        border-radius: 999px;
+        background: var(--gold-soft);
+        color: #794d14;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .section-label {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 44px 0 16px;
+      }
+
+      .section-label h2 {
+        font-size: 34px;
+        line-height: 1.03;
+        letter-spacing: -0.015em;
+      }
+
+      .section-label p {
+        max-width: 600px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .surface-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .surface {
+        min-height: 420px;
+        padding: 15px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(255, 254, 248, 0.84);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .surface h3 {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      .surface .subline {
+        margin-bottom: 12px;
+      }
+
+      .feed-card {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .feed-title {
+        margin-top: 8px;
+        font-size: 17px;
+        line-height: 1.08;
+        font-weight: 880;
+      }
+
+      .feed-map {
+        position: relative;
+        height: 118px;
+        margin-top: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background:
+          repeating-radial-gradient(ellipse at 55% 42%, rgba(138, 160, 122, 0.16) 0 1px, transparent 1px 13px),
+          linear-gradient(135deg, #edf4e8, #fff9ef);
+      }
+
+      .feed-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 10px;
+      }
+
+      .pill {
+        padding: 6px 8px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: #fffef8;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+      }
+
+      .stress-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .stress {
+        min-height: 210px;
+        padding: 15px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 254, 248, 0.84);
+      }
+
+      .stress .state {
+        display: inline-flex;
+        align-items: center;
+        height: 27px;
+        padding: 0 9px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .state.review {
+        background: var(--amber-soft);
+        color: #7e4f14;
+        border: 1px solid rgba(168, 107, 34, 0.32);
+      }
+
+      .state.fail {
+        background: var(--red-soft);
+        color: #843230;
+        border: 1px solid rgba(169, 68, 66, 0.32);
+      }
+
+      .state.empty {
+        background: rgba(18, 26, 20, 0.055);
+        color: var(--muted);
+        border: 1px solid var(--border);
+      }
+
+      .stress h3 {
+        margin: 16px 0 7px;
+        font-size: 18px;
+        line-height: 1.08;
+      }
+
+      .stress p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.38;
+      }
+
+      .stress .big {
+        margin-top: 18px;
+        font-size: 30px;
+        font-weight: 950;
+        line-height: 1;
+      }
+
+      .phone {
+        width: 380px;
+        overflow: hidden;
+        border: 8px solid var(--ink);
+        border-radius: 36px;
+        background: var(--ink);
+        box-shadow: 0 24px 70px rgba(18, 26, 20, 0.2);
+      }
+
+      .phone-screen {
+        min-height: 720px;
+        padding: 17px 14px 20px;
+        border-radius: 27px;
+        background: #fffef8;
+      }
+
+      .mobile-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .mobile-title {
+        font-size: 25px;
+        font-weight: 920;
+      }
+
+      .mobile-actions {
+        display: flex;
+        gap: 7px;
+      }
+
+      .mobile-actions span {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--muted);
+      }
+
+      .mobile-surface {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 24px;
+        align-items: start;
+        margin-top: 16px;
+      }
+
+      .principles {
+        display: grid;
+        gap: 10px;
+      }
+
+      .principles div {
+        padding: 13px 14px;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background: rgba(255, 254, 248, 0.84);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      @media (max-width: 1120px) {
+        .hero,
+        .beauty-grid,
+        .mobile-surface {
+          grid-template-columns: 1fr;
+        }
+
+        .surface-grid,
+        .stress-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .phone {
+          width: min(380px, 100%);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .board {
+          padding: 18px;
+        }
+
+        .tabs {
+          display: none;
+        }
+
+        .beauty-grid,
+        .panel-head {
+          padding: 14px;
+        }
+
+        .surface-grid,
+        .stress-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .climb-row {
+          grid-template-columns: minmax(0, 1fr) 76px;
+        }
+
+        .climb-row .right-metric:nth-of-type(2),
+        .rank {
+          display: none;
+        }
+
+        .section-label {
+          display: block;
+        }
+
+        .section-label p {
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="board">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">BR identity refinement pass</p>
+          <h1>Make the ride beautiful. Make the stakes inevitable.</h1>
+        </div>
+        <aside class="note">
+          <h2>Pass 2 target</h2>
+          <p>
+            Less dashboard, more athletic record. Economy and proof remain
+            visible, but the route, elevation, results, and rider meaning carry
+            the screen.
+          </p>
+        </aside>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div class="brand">
+            <div class="mark">BR</div>
+            <div><b>Boulder Roller</b><span>Activity record</span></div>
+          </div>
+          <div class="tabs">
+            <span class="active">Feed</span>
+            <span>Rides</span>
+            <span>Climbs</span>
+            <span>Portfolio</span>
+          </div>
+          <div class="actions">
+            <button class="icon">/</button>
+            <button class="icon">*</button>
+            <button class="primary">Import ride</button>
+          </div>
+        </div>
+
+        <div class="beauty-grid">
+          <div>
+            <div class="activity-title">
+              <div>
+                <div class="rider-row">
+                  <div class="avatar"></div>
+                  <div><b>Jordan Ellis</b><span>Today at 7:14 AM · Philadelphia</span></div>
+                </div>
+                <h2 class="headline">Manayunk morning ridge work</h2>
+                <p class="subline">31.8 mi · 2,940 ft · 4 climbs matched · 47 counted CAL</p>
+              </div>
+              <span class="chip">Record ready</span>
+            </div>
+
+            <div class="map">
+              <div class="map-tag">Route map</div>
+              <svg viewBox="0 0 840 500" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M68 412 C148 310 205 440 286 344 C375 236 350 111 470 116 C585 121 575 326 776 85" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="20" stroke-linecap="round" />
+                <path d="M68 412 C148 310 205 440 286 344 C375 236 350 111 470 116 C585 121 575 326 776 85" fill="none" stroke="#456f52" stroke-width="8" stroke-linecap="round" />
+                <path d="M236 386 C262 333 275 330 286 344" fill="none" stroke="#a87124" stroke-width="11" stroke-linecap="round" />
+                <path d="M455 116 C522 101 558 162 568 233" fill="none" stroke="#1f8caf" stroke-width="11" stroke-linecap="round" />
+                <circle cx="68" cy="412" r="10" fill="#121a14" />
+                <circle cx="776" cy="85" r="10" fill="#a87124" />
+              </svg>
+              <div class="stat-strip">
+                <div class="stat"><strong class="mono">31.8</strong><span>Miles</span></div>
+                <div class="stat"><strong class="mono">2,940</strong><span>Feet</span></div>
+                <div class="stat"><strong class="mono">1:42</strong><span>Moving</span></div>
+                <div class="stat"><strong class="mono cal">47</strong><span>Counted CAL</span></div>
+              </div>
+            </div>
+
+            <div class="climb-section">
+              <div class="card-head">
+                <div><div class="card-title">Climb matches</div><p class="subline">Result inspection below the elevation line</p></div>
+                <button>Show all matches</button>
+              </div>
+              <div class="elevation">
+                <svg viewBox="0 0 840 88" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 71 L84 65 L132 46 L205 58 L268 35 L350 50 L424 29 L508 44 L584 24 L666 38 L760 17 L840 28 L840 88 L0 88 Z" fill="rgba(69,111,82,.14)" />
+                  <path d="M0 71 L84 65 L132 46 L205 58 L268 35 L350 50 L424 29 L508 44 L584 24 L666 38 L760 17 L840 28" fill="none" stroke="#456f52" stroke-width="3" />
+                  <rect x="230" y="0" width="74" height="88" fill="rgba(168,113,36,.12)" />
+                  <rect x="548" y="0" width="78" height="88" fill="rgba(31,140,175,.12)" />
+                </svg>
+              </div>
+              <div class="climb-row">
+                <div><h3>Levering Street Wall</h3><p>0.42 mi · 9.8% avg · vault live</p></div>
+                <div class="right-metric mono"><b>3:44</b><span>Time</span></div>
+                <div class="right-metric mono"><b>1,180</b><span>VAM</span></div>
+                <div class="rank">#6</div>
+              </div>
+              <div class="climb-row">
+                <div><h3>Cynwyd Kick</h3><p>0.31 mi · 7.4% avg · record held</p></div>
+                <div class="right-metric mono"><b>2:18</b><span>Time</span></div>
+                <div class="right-metric mono"><b>934</b><span>VAM</span></div>
+                <div class="rank">#1</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="side">
+            <section class="card">
+              <div class="card-head"><div class="card-title">Ride record</div><span class="chip">Ready</span></div>
+              <div class="card-body">
+                <div class="line"><span>Status</span><b>Record ready</b></div>
+                <div class="line"><span>Counted CAL</span><b class="mono cal">47</b></div>
+                <div class="line"><span>Climb matches</span><b class="mono">4</b></div>
+                <div class="line"><span>File</span><b>FIT accepted</b></div>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><div class="card-title">Climb object</div><span class="card-meta">Manayunk</span></div>
+              <div class="card-body">
+                <h3>Levering Street Wall</h3>
+                <p class="subline">0.42 mi · 216 ft · 9.8% avg</p>
+                <div class="mini-map">
+                  <svg viewBox="0 0 320 138" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M35 108 C82 48 122 105 163 70 C205 34 222 72 284 30" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="14" stroke-linecap="round" />
+                    <path d="M35 108 C82 48 122 105 163 70 C205 34 222 72 284 30" fill="none" stroke="#456f52" stroke-width="7" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div style="margin-top: 10px">
+                  <div class="leader-row"><b>#1</b><span>Maya R.</span><span class="mono">3:21</span></div>
+                  <div class="leader-row"><b>#2</b><span>Corey L.</span><span class="mono">3:30</span></div>
+                  <div class="leader-row"><b>#6</b><span>Jordan E.</span><span class="mono">3:44</span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><div class="card-title">Vault position</div><span class="card-meta">On this climb</span></div>
+              <div class="card-body">
+                <div class="tiles">
+                  <div class="tile"><strong class="mono cal">1,240</strong><span>CAL held</span></div>
+                  <div class="tile"><strong class="mono gold">83</strong><span>Pending</span></div>
+                </div>
+                <p class="subline">This belongs to the climb object. It is not a generic wallet widget.</p>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-label">
+        <div>
+          <p class="eyebrow">Surface pass</p>
+          <h2>Separate the families before we code them.</h2>
+        </div>
+        <p>
+          Each surface keeps the same identity, but the emphasis changes: feed
+          is human, ride detail is a receipt, climb detail is place/result, and
+          portfolio is object-backed economy.
+        </p>
+      </section>
+
+      <section class="surface-grid">
+        <article class="surface">
+          <h3>Feed</h3>
+          <p class="subline">Rows are activities first.</p>
+          <div class="feed-card">
+            <div class="rider-row"><div class="avatar"></div><div><b>Maya Rivera</b><span>Climbed in Wissahickon</span></div></div>
+            <div class="feed-title">Held the wall by eight seconds</div>
+            <div class="feed-map">
+              <svg viewBox="0 0 300 118" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M26 88 C66 45 108 101 148 62 C188 23 207 84 270 30" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="12" stroke-linecap="round" />
+                <path d="M26 88 C66 45 108 101 148 62 C188 23 207 84 270 30" fill="none" stroke="#456f52" stroke-width="6" stroke-linecap="round" />
+                <path d="M144 65 C158 47 172 40 186 39" fill="none" stroke="#a87124" stroke-width="8" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="pills"><span class="pill">Record ready</span><span class="pill">Legend held</span></div>
+          </div>
+          <div class="feed-card">
+            <div class="rider-row"><div class="avatar"></div><div><b>Jordan Ellis</b><span>Morning ridge work</span></div></div>
+            <div class="feed-title">4 climbs matched · 47 counted CAL</div>
+            <div class="pills"><span class="pill">Saved</span><span class="pill">View record</span></div>
+          </div>
+        </article>
+
+        <article class="surface">
+          <h3>Ride Detail</h3>
+          <p class="subline">The ride is the receipt.</p>
+          <div class="stat"><strong class="mono">31.8</strong><span>Miles</span></div>
+          <div style="height: 12px"></div>
+          <div class="stat"><strong class="mono">2,940</strong><span>Feet</span></div>
+          <div style="height: 12px"></div>
+          <div class="card">
+            <div class="card-head"><div class="card-title">Record</div><span class="chip">Ready</span></div>
+            <div class="card-body">
+              <div class="line"><span>Status</span><b>Stamped</b></div>
+              <div class="line"><span>Waiting</span><b>Week close</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="surface">
+          <h3>Climb Detail</h3>
+          <p class="subline">Place, shape, result, then vault.</p>
+          <div class="mini-map">
+            <svg viewBox="0 0 320 138" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M35 108 C82 48 122 105 163 70 C205 34 222 72 284 30" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="14" stroke-linecap="round" />
+              <path d="M35 108 C82 48 122 105 163 70 C205 34 222 72 284 30" fill="none" stroke="#456f52" stroke-width="7" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="leader-row"><b>#1</b><span>Maya R.</span><span class="mono">3:21</span></div>
+          <div class="leader-row"><b>#2</b><span>Corey L.</span><span class="mono">3:30</span></div>
+          <div class="leader-row"><b>#6</b><span>Jordan E.</span><span class="mono">3:44</span></div>
+          <div class="pills"><span class="pill">Vault live</span><span class="pill">Add CAL</span></div>
+        </article>
+
+        <article class="surface">
+          <h3>Portfolio</h3>
+          <p class="subline">Positions belong to climbs.</p>
+          <div class="tiles">
+            <div class="tile"><strong class="mono cal">7,810</strong><span>CAL</span></div>
+            <div class="tile"><strong class="mono gold">312</strong><span>Pending</span></div>
+          </div>
+          <div style="height: 12px"></div>
+          <div class="line"><span>Levering Street Wall</span><b class="mono cal">1,240</b></div>
+          <div class="line"><span>Cynwyd Kick</span><b class="mono cal">860</b></div>
+          <div class="line"><span>Belmont Rise</span><b class="mono cal">410</b></div>
+        </article>
+      </section>
+
+      <section class="section-label">
+        <div>
+          <p class="eyebrow">Stress pass</p>
+          <h2>Ugly states should stay calm.</h2>
+        </div>
+        <p>
+          The system has to survive long names, no rewards, review states,
+          empty boards, and non-vault climbs without falling back into admin or
+          crypto language.
+        </p>
+      </section>
+
+      <section class="stress-grid">
+        <article class="stress">
+          <span class="state review">Needs review</span>
+          <h3>Ride saved, but not counted yet.</h3>
+          <p>Effort data needs a retry before CAL can count.</p>
+          <div class="big mono">0 <span style="font-size: 12px; color: var(--muted)">CAL</span></div>
+        </article>
+        <article class="stress">
+          <span class="state empty">No vault</span>
+          <h3>Climb result recorded.</h3>
+          <p>This climb has a leaderboard, but no live vault position yet.</p>
+          <div class="big mono">#14</div>
+        </article>
+        <article class="stress">
+          <span class="state fail">Not counted</span>
+          <h3>File did not produce a ride record.</h3>
+          <p>The route was saved locally. CAL and rankings were not changed.</p>
+          <div class="big mono">--</div>
+        </article>
+        <article class="stress">
+          <span class="state empty">Long name</span>
+          <h3>Northwestern Avenue Reverse Pitch Into Bells Mill Run</h3>
+          <p>Text wraps naturally. Result metrics keep their place.</p>
+          <div class="big mono">12:08</div>
+        </article>
+      </section>
+
+      <section class="section-label">
+        <div>
+          <p class="eyebrow">Mobile pass</p>
+          <h2>Human rows, compact consequences.</h2>
+        </div>
+        <p>
+          Mobile should stay fast and social. Economy appears in chips and
+          compact stats until the rider taps into a detail screen.
+        </p>
+      </section>
+
+      <section class="mobile-surface">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="mobile-row">
+              <div class="mobile-title">Feed</div>
+              <div class="mobile-actions"><span>/</span><span>*</span></div>
+            </div>
+            <div class="feed-card">
+              <div class="rider-row"><div class="avatar"></div><div><b>Maya Rivera</b><span>Climbed in Wissahickon</span></div></div>
+              <div class="feed-title">Held the wall by eight seconds</div>
+              <div class="feed-map" style="height: 150px">
+                <svg viewBox="0 0 340 150" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M30 110 C82 54 122 126 165 74 C205 29 229 100 310 34" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="14" stroke-linecap="round" />
+                  <path d="M30 110 C82 54 122 126 165 74 C205 29 229 100 310 34" fill="none" stroke="#456f52" stroke-width="7" stroke-linecap="round" />
+                  <path d="M151 82 C169 58 183 48 200 46" fill="none" stroke="#a87124" stroke-width="9" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="tiles" style="margin-top: 10px">
+                <div class="tile"><strong class="mono">3:21</strong><span>KOM</span></div>
+                <div class="tile"><strong class="mono">216</strong><span>Feet</span></div>
+              </div>
+              <div class="pills"><span class="pill">Record ready</span><span class="pill">Legend held</span></div>
+            </div>
+            <div class="feed-card">
+              <div class="rider-row"><div class="avatar"></div><div><b>Jordan Ellis</b><span>Morning ridge work</span></div></div>
+              <div class="feed-title">4 climbs matched · 47 counted CAL</div>
+              <div class="pills"><span class="pill">Saved</span><span class="pill">View record</span></div>
+            </div>
+          </div>
+        </div>
+        <aside class="note">
+          <h2>Implementation target</h2>
+          <p>
+            Tokens should make this feel possible in app code: warm neutral
+            base, route green, restrained CAL blue, restrained reward gold,
+            quiet status green, and no page-level crypto furniture.
+          </p>
+          <div class="principles">
+            <div>Default object: ride, climb, rider, route, result.</div>
+            <div>Default chrome: quiet border, not shadow theater.</div>
+            <div>Default proof: receipt marker, not main headline.</div>
+            <div>Default economy: attached to effort or climb position.</div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "BoulderRoller",
+    "slug": "boulderroller",
+    "scheme": "boulderroller",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0a0a"
+    },
+    "_comment": "app.config.ts is the source of truth for build config — see SOLANA_MOBILE_BUILD_NOTES.md §2.2. This file mirrors app.config.ts so a reviewer glancing here does not see drift. If you are editing build config, edit app.config.ts.",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.boulderroller.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "BoulderRoller uses your location to record cycling rides and detect climbs.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "BoulderRoller needs background location access to record your ride while the screen is off.",
+        "NSBluetoothAlwaysUsageDescription": "BoulderRoller connects to your power meter, heart rate strap, and cadence sensors over Bluetooth.",
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": ["boulderroller", "com.boulderroller.app"]
+          }
+        ],
+        "UIBackgroundModes": ["location", "bluetooth-central"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a0a0a"
+      },
+      "package": "com.boulderroller.app",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
+        "POST_NOTIFICATIONS",
+        "BLUETOOTH",
+        "BLUETOOTH_CONNECT",
+        "BLUETOOTH_SCAN"
+      ]
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
+  }
+}

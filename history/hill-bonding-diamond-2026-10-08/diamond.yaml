@@ -1,0 +1,277 @@
+# Hill bonding parameters. Every number in the design, the map, the docs and the program should come from here.
+# Version 0, 8 October 2026. Source of the decisions: history/explainer-hill-bonding-2026-10-06/DESIGN.md ("Settled with Tim").
+
+fee_on_yield: 0.10              # principle 7: BoulderRoller's only cut, on realized yield only
+fee_on_cash: 0.0                # sponsor cash and gifts pay no fee
+
+rider_split:                    # principle 3: shares of a hill's riders' pay each Settlement Week
+  every_rider_by_ascents: 0.65
+  top_ten: 0.25                 # split evenly ("flat curve") among the record seats that exist
+  local_legend: 0.10
+ascents_per_hill_per_day: 1
+rider_week_cap_x: 3             # a rider's week is capped at 3x the hill's median rider-week
+upload_window_days: 7           # a ride counts in the week it is uploaded, if ridden within 7 days
+
+line_sol:                       # one fixed bonding line per city, set at launch
+  philadelphia: 10
+live_fraction: 0.5              # a bonded hill is live while its stake is at least half the line
+bond_lock_weeks: 26             # the pledges that bond a hill
+notice_weeks: 4                 # after the bonding lock, and for unlocked later stake
+lock_options_weeks: [0, 13, 26, 52]
+season_weeks: 26                # also the limit before held money goes to the shared pool
+min_field_riders: 5             # distinct riders in the season before records, paid seats and DUNG switch on
+
+claim_share_of_riders: 0.20     # stage 2: a fifth of the riders' share, 18% of yield
+timer_weeks: 104                # claim weight and vote weight: amount x weeks left / 104
+capital_weight: 0.40            # outside capital in claims, and received DUNG in votes
+boost_work_window_weeks: 12
+
+dung_per_climb_tss: 0.001       # 1 DUNG per 1,000 climb-TSS on bonded hills, constant in every year (no caps or halvings for bonded-hill DUNG)
+dung_split:
+  riders: 0.50
+  backers: 0.50
+rider_dung_split:
+  top_ten: 0.55
+  every_rider_by_ascents: 0.35
+  local_legend: 0.10
+lock_weights:                   # backers' half of DUNG, by lock length in weeks
+  "0": 0.25
+  "13": 0.50
+  "26": 0.75
+  "52": 1.00
+founding_dung_multiplier: 2     # the one launch exception: founding backers, first season only
+claims_need_min_field: true     # stage 2 claims wait for the field; until then their share stays with every rider
+
+pool_cap_x: 2                   # stage 3: no hill takes more than 2x its share of the week's ascents
+pool_min_hills: 2
+
+# Markets and whales (8 Oct). "proposed" = waits for Tim. See DIAMOND.md "Markets and whales".
+cal_per_paid_tss: 1              # CAL minted per point of eligible paid training stress (unchanged)
+floor_counts: committed_weeks_only   # the published floor per CAL counts only committed claim yield (public unlock calendar)
+floor_return_rate: 0.05          # the return used to state "all CAL is worth under a fifth of the SOL behind hills"
+boost:                           # proposed, stage 1: sponsor cash with a window
+  min_weeks: 1
+  max_weeks: 13
+  irrevocable: true              # escrowed when posted; runs to the end of its window
+  split: rider_split             # 65/25/10 by verified ascents, caps and field as for any cash
+  fee: 0                         # principle 7: no fee on cash
+  earns_dung: false              # a title, never the say
+ladder:                          # proposed, stage 2: escrowed tranches that bond on CAL's averaged price
+  price_window_days: 7           # time-averaged price; depth check required
+  max_steps: 10
+  unwind_on_fall: false          # once bonded, ordinary backing: lock, notice, public calendar
+lock_options_weeks_proposed: [0, 13, 26, 52, 104, 208]   # longer optional commitments; DUNG lock weight stays capped at 1.0 (open)
+transparency_published:          # proposed where marked in DIAMOND.md
+  - floor_per_cal
+  - backing_per_cal
+  - committed_weeks_and_unlock_calendar
+  - staked_rider_cal
+  - largest_holder_shares_cal_dung_backing
+rider_app_sells_cal: false       # proposed: no CAL sold TO riders; riders selling earned CAL is separate (ratified 13 Oct)
+
+example_hill:                   # inputs only; every output is computed by the reference model
+  stake_sol: 1000
+  rewards_sol_per_week: 1.000
+  validator_commission: 0.05
+  sol_usd: 120.74
+  ascents_per_week: 117
+  climb_tss_per_ascent: 6
+
+stage1:
+  principal:
+    status: ratified
+    ratified: 2026-10-13
+    basis: deposit_sol_redemption_value
+    return_asset: deposited_token
+    losses: originating_lot
+    stale_exit: full_lot_in_kind_after_seven_stale_days
+    stale_campaign_tokens: zero_backing_excluded_cancel_or_convert
+  realized_yield:
+    status: ratified
+    ratified: 2026-10-13
+    recognition: transferred_surplus_units
+    payout: in_kind
+    below_basis_harvest: false
+  pilot_caps:
+    status: ratified
+    ratified: 2026-10-13
+    measurement: held_deposit_basis
+    per_token_lamports: 2000000000000
+    per_hill_lamports: 500000000000
+    total_lamports: 5000000000000
+    increase_delay_seconds: 604800
+  seasons:
+    status: ratified
+    ratified: 2026-10-13
+    weeks: 26
+    anchor: city_launch
+    week_start_weekday: 0       # Monday, Python datetime convention
+    week_start_hour_utc: 12
+  rider_week_cap:
+    status: ratified
+    ratified: 2026-10-13
+    multiplier: 3
+    population: positive_combined_entitlements
+    comparison: per_asset
+    excess: ascents_with_headroom_then_hold
+  boosts:
+    status: ratified
+    ratified: 2026-10-13
+    enabled: true
+    escrow_at_posting: true
+    irrevocable: true
+    min_weeks: 1
+    max_weeks: 13
+    fee: 0
+    earns_dung: false
+    split: rider_split
+  mechanics:
+    status: ratified
+    ratified: 2026-10-13
+    live_measurement: week_open
+    partial_bond_week: hold_yield
+    dung_partial_bond_week: unminted
+    prebond_earnings: segregate_units_at_bond
+    basis_rounding: ceil_lamport
+    partial_exits: proportional_units_owner_dust
+    deactivation_rewards: riders_until_return
+    founder_bonus: hill_first_full_bonded_season
+    fee_scope: module_asset_lifetime
+    cash_requires_live: false
+    held_age_weeks: 26
+    finalization_grace_seconds: 86400
+    boost_allocation: equal_hill_ride_week
+    boost_after_window: hold_for_pool
+    dung_decimals: 9
+    tss_decimals: 6
+
+# Reference-model inputs; numerical assumptions are NOT ratified or empirical estimates.
+# Tim ratified immediate earned-CAL sale and hardened ladder triggers on 13 Oct 2026.
+# Existing economy parameters above are unchanged. All scenario/behavior numbers live here.
+model:
+  schema_version: 1
+  seed: 20261008
+  epsilon: 0.00000001
+  output_digits: 6
+  tournament_workers: 4
+  progress_every: 32
+  days_per_week: 7
+  weeks_per_year: 52
+  top_ten_seats: 10
+  default:
+    hills: 10
+    riders: 100
+    weeks: 52
+    sol_usd: 120.74
+    gross_apr: 0.052
+    market_depth_usdc: 10000
+    regular_fraction: 0.8
+    speculator_intensity: 1
+    stage2: true
+    stage3: true
+    validator: false
+    boost_response_fraction: 0
+    immediate_cal_sale: true
+    hardened_ladder: true
+  scenarios:
+    legacy_hold_base_ladder:
+      immediate_cal_sale: false
+      hardened_ladder: false
+    legacy_hold:
+      immediate_cal_sale: false
+    legacy_base_ladder:
+      hardened_ladder: false
+  grid:
+    sol_usd: [60.37, 120.74]
+    gross_apr: [0.022, 0.052]
+    market_depth_usdc: [1000, 10000]
+    riders: [50, 300]
+    regular_fraction: [0.4, 0.8]
+    speculator_intensity: [0, 4]
+    stage2: [false, true]
+  scale_checks:
+    hills: [5, 20]
+    weeks: [26, 104]
+  market:
+    initial_cal_usdc: 0.01
+    swap_fee: 0.003
+    daily_trade_cost_usdc: 0
+    provenance_initial: historical_lp
+  riders:
+    regular_ascents_week: 2
+    crew_ascents_week: 7
+    visitor_ascents_week: 1
+    regular_sell_fraction: 0.15
+    regular_full_claim_sell_fraction: 0
+    visitor_sell_fraction: 1
+    crew_sell_fraction: 1
+    full_claim_cal: 250
+    crew_fraction: 0.1
+    release_price_multiple: 3
+    release_fraction: 0.5
+    cost_per_ascent_usdc: 0
+    cost_stress_per_ascent_usdc: 1
+    time_base_seconds: 300
+    time_spread_seconds: 120
+    crew_time_advantage_seconds: 80
+  funding:
+    community_sol_per_hill: 10
+    community_cal_bid_week_usdc: 5
+    community_claim_lock_weeks: 52
+    sponsor_cash_hill_week: 20
+    shared_gift_week_usdc: 50
+    validator_external_sol: 20000
+    validator_contribution_apr: 0.0025
+  whale:
+    stake_sol_per_hill: 100
+    cal_budget_usdc: 10000
+    long_lock_weeks: 104
+    claim_lock_weeks: 104
+    claim_buy_fraction: 0.5
+    crew_wage_per_ascent_usdc: 0
+    crew_wage_stress_per_ascent_usdc: 1
+    boost_usdc: 2000
+    boost_weeks: 8
+    boost_hill_count: 2
+    wash_roundtrip_week_usdc: 2000
+    ladder_sol_per_step: 100
+    ladder_prices_usdc: [0.012, 0.02, 0.03]
+    ladder_step_cap_sol: 100
+    ladder_min_depth_usdc: 500
+    ladder_fix_depth_usdc: 20000
+    ladder_fix_demand_riders: 5
+    ladder_fix_independent_price_ratio: 1.25
+  speculators:
+    momentum_bid_week_usdc: 150
+    late_bid_week_usdc: 600
+    positive_momentum_multiplier: 3
+    attention_bid_fraction: 0.25
+    maximum_signal: 2
+    exit_sell_fraction_week: 0.2
+    late_exit_sell_fraction_week: 0.05
+  phases:
+    accumulation_end: 0.25
+    markup_end: 0.5
+    distribution_end: 0.75
+  strategy_buy_fraction:
+    honest_long: 0.5
+    livermore_corner: 1
+    back_and_dump: 1
+    crew_ride: 0
+    boost_then_dump: 1
+    ladder_pump: 1
+    dung_accumulation: 0
+    wash_trading: 0
+  property_checks:
+    random_seeds: [1, 7, 19, 41, 103]
+    random_cases: 100
+    property_weeks: 26
+    small_riders: 50
+    small_hills: 5
+    unfunded_bid_usdc: 1000
+    unfunded_late_bid_usdc: 3000
+    donor_gift_usdc: 100
+    claim_bargain_usdc: 0.001
+    marked_rider_cal: 10000
+    attention_buy_usdc: 10000
+    boost_response_fraction: 0.25

@@ -1,0 +1,325 @@
+{
+  "model": "canon_finish_gate_decisions_v1",
+  "authority": "history/codex-briefs-2026-10-20/gate-rule.md",
+  "approved_by": "Tim",
+  "approved_on": "2026-10-20",
+  "approval_quote": "yes all 15",
+  "clearance_interpretation": {
+    "decided_by": "Claude",
+    "date": "2026-10-20",
+    "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-1.md",
+    "rule": "15 m before every applicable control; clearance takes precedence over the default 25-30 m junction setback"
+  },
+  "decisions": [
+    {
+      "candidate_fingerprint": "5161e8eda0ce68934cdd4d135a6f2a8c68501bf3853d6e249ba4e1440b383cda",
+      "display_name": "Black Rock Road",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.03017860873473,
+        "lon": -75.29833140362028,
+        "setback_from_junction_m": 32.14
+      },
+      "junction_node_id": 9813522381,
+      "registry_id": "b51920f8-4707-4984-890d-656c7078f36a",
+      "start_gate_revision": {
+        "revision_id": "d10-2026-10-20-black-rock-start-re-evidenced",
+        "scope": "start_gate_only",
+        "status": "active_re_evidenced",
+        "decided_by": "Claude",
+        "decided_on": "2026-10-20",
+        "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-2.md",
+        "policy_source": "docs/design/CANON_BUILD_DECISIONS.md#d10-revisions-and-identity",
+        "gate_start_wkt": "LINESTRING(-75.2933332 40.0329421, -75.2939464 40.0332081)",
+        "gate_start_half_extent_m": 30.0,
+        "predecessor_revision_id": "d10-2026-07-21-black-rock-road",
+        "evidence": {
+          "approved_at": "2026-07-21",
+          "approved_by": "Tim",
+          "policy_source": "docs/design/CANON_BUILD_DECISIONS.md#d10-capture-tolerance-policy-tim-2026-07-21",
+          "replay_source": "history/canon-tolerance-overrides-2026-07-21/README.md#candidate-specific-remediation"
+        },
+        "re_evidence": "Start anchor, centre and orientation are unchanged; July evidence still applies. The 20 October replay has one counting effort starting 29.3 m from the gate centre.",
+        "successor_end_half_extent_m": 25.0,
+        "record_continuity_policy": "new_record_board",
+        "unchanged_identity_fields": [
+          "start_anchor",
+          "gate_start_wkt"
+        ]
+      }
+    },
+    {
+      "candidate_fingerprint": "0b3903c31e6cfb8ff2c62393f793dfa04187eb16461f35dc5eafd7c92bcde9df",
+      "display_name": "Calumet Street / West Coulter Street",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.014374431910205,
+        "lon": -75.19207683402874,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 109820431,
+      "registry_id": "13ab82c7-063a-4178-b753-fa56a56ef4f6"
+    },
+    {
+      "candidate_fingerprint": "ab15f3a5915d384ba53505c09d31cd9a0a3c44dab55baf99b8a3162ef9c25064",
+      "display_name": "Centennial Road",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.02345272756255,
+        "lon": -75.25512252974858,
+        "setback_from_junction_m": 29.0
+      },
+      "junction_node_id": 5673550134,
+      "registry_id": "c73804d9-bc01-40fb-b510-4091c944f156",
+      "stop_evidence_amendment": {
+        "approved_by": "Tim",
+        "approved_on": "2026-10-20",
+        "approval_quote": "yes shift both back",
+        "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-3.md",
+        "requested_setback_m": 29.0,
+        "previous_approved_position": {
+          "lat": 40.0234460267485,
+          "lon": -75.25513589107968,
+          "setback_from_junction_m": 27.64
+        },
+        "source": {
+          "commit": "18a4fb39c8d087250ca4e7684a34b1660460bca4",
+          "path": "history/codex-reports-2026-10-20/stop-map/RESULTS.json",
+          "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d",
+          "evidence_class": "consented_single_rider_aggregate_stop_spot",
+          "position_precision_decimal_places": 5
+        },
+        "spot": {
+          "class": "mapped control",
+          "confidence": "medium",
+          "day_count": 6,
+          "direction": {
+            "along_osm_way": "backward",
+            "bearing_deg": 240
+          },
+          "matched_control": {
+            "kind": "stop",
+            "osm_node_id": 5673550132
+          },
+          "median_length_s": 10.0,
+          "osm_way_id": 12333811,
+          "position": {
+            "lat": 40.02338,
+            "lon": -75.25527
+          },
+          "position_spread_m": {
+            "iqr": 4.2,
+            "p90_minus_p10": 8.3
+          },
+          "reason": "applicable control within 40 m on the connected approach; cause is inferred",
+          "ride_count": 6,
+          "rider_count": 1,
+          "spot_id": "spot-0019",
+          "stop_count": 7
+        },
+        "clearance_note": "Apply the approved nominal setback and at least 15 m upstream clearance from the published aggregate; then M1 and the existing 0.5 m position binding. This is not a surveyed stop line."
+      }
+    },
+    {
+      "candidate_fingerprint": "717006225c672bdad7a25b153959f64007a52ab47ce81ff016be730755b77ccb",
+      "display_name": "Conshohocken State Road",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.058375653612075,
+        "lon": -75.30128155039029,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 111646278,
+      "registry_id": "9a9b1cb6-1eba-420b-ad88-04726980cc21"
+    },
+    {
+      "candidate_fingerprint": "d245703771852a36060d112fbc0e4be79e536c21832a51aae7a14ac856e89404",
+      "display_name": "Ellis Road",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 39.991816960179044,
+        "lon": -75.3272453182838,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 110187493,
+      "registry_id": "8254f8ea-be7a-4a73-b988-0f305407d0f6"
+    },
+    {
+      "candidate_fingerprint": "162607a27fdf9d52729c4d9e41543e6e79d56fb8d1836ac3ccf557db9777b8f0",
+      "display_name": "Falls Road / Conshohocken Avenue",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.00218874530661,
+        "lon": -75.21083363015407,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 109997899,
+      "registry_id": "27137dbc-5bbe-4b2a-9388-f39f14cfce2a"
+    },
+    {
+      "candidate_fingerprint": "45183af8f933b69198ce14f10b5ad114cdec826dd800c8344644b887d221362b",
+      "display_name": "Gay Street",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.02780788166711,
+        "lon": -75.22261738599789,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 109792544,
+      "registry_id": "98cf1c5e-138e-45aa-9350-fbf40fe77bd0"
+    },
+    {
+      "candidate_fingerprint": "289af8c222f75a7b2a029c61c4b75c36e6674f91eca08d5a82d25d0c31643b80",
+      "display_name": "Leverington Avenue",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.03547879974724,
+        "lon": -75.21765223657414,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 110149601,
+      "registry_id": "35fc7a81-3199-498c-9249-e24a8661c420"
+    },
+    {
+      "candidate_fingerprint": "e8ae6b133ffa8268d6022284ac275baff97073b5d3a541cb137255b65a7f98e6",
+      "display_name": "Midvale Avenue",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.01683181181363,
+        "lon": -75.18860803219401,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 109980205,
+      "registry_id": "372f52a5-1c88-4e49-97eb-f3887e68166f"
+    },
+    {
+      "candidate_fingerprint": "2a260047ed00fcc757867345844fc7b0655ad7a8e9a94a44e10aac6735f77dfe",
+      "display_name": "Port Royal Avenue",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.0573385961658,
+        "lon": -75.24170523508451,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 110443757,
+      "registry_id": "b6029653-5b11-4f55-98a8-8e33554caa98"
+    },
+    {
+      "candidate_fingerprint": "048fec31d6e62261c9bdde25487de3fd730a775a343cfddf9e5b80c860abd043",
+      "display_name": "Shurs Lane",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.02682502270547,
+        "lon": -75.20969552722147,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 110417901,
+      "registry_id": "cfd560e9-1f8d-4464-b192-2ad44de97ee2"
+    },
+    {
+      "candidate_fingerprint": "56aad7164f1372b9e67d40766c0a5174d72c74125ecbc85b86c770cf81e028e1",
+      "display_name": "West School House Lane",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.02026321940357,
+        "lon": -75.19265001253872,
+        "setback_from_junction_m": 32.89
+      },
+      "junction_node_id": 109980148,
+      "registry_id": "cfaea96b-d478-4d39-a47c-30e3e3bf6bc3",
+      "covering_note": {
+        "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-2.md",
+        "note": "Positions shown on the page were the reviewed positions; West School House showed 32.89 m before fix round 1 snapped its cut to the profile point 0.9 m upstream (rule M1). The founder was informed on 20 Oct 2026; this covers only the recorded M1 snap.",
+        "position": {
+          "lat": 40.020256985079634,
+          "lon": -75.19265677140923,
+          "setback_from_junction_m": 33.79101073504103
+        }
+      }
+    },
+    {
+      "candidate_fingerprint": "f39b5e3500a7542755bb82f55af3bd863c234468cbba46ea8f97337e9b88f0a0",
+      "display_name": "Wises Mill Road",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 40.05390761234485,
+        "lon": -75.23084522693883,
+        "setback_from_junction_m": 30.0
+      },
+      "junction_node_id": 109979615,
+      "registry_id": "43f15658-a824-438d-9925-e61c67ddabe9",
+      "stop_evidence_amendment": {
+        "approved_by": "Tim",
+        "approved_on": "2026-10-20",
+        "approval_quote": "yes shift both back",
+        "authority": "history/codex-briefs-2026-10-20/gate-rule-fix-3.md",
+        "requested_setback_m": 30.0,
+        "previous_approved_position": {
+          "lat": 40.05389179794209,
+          "lon": -75.23087378410072,
+          "setback_from_junction_m": 27
+        },
+        "source": {
+          "commit": "18a4fb39c8d087250ca4e7684a34b1660460bca4",
+          "path": "history/codex-reports-2026-10-20/stop-map/RESULTS.json",
+          "sha256": "88cc217994ab851b46aea27f3a7883aad02aa4098bb4f05d0c2a1c234f6c3c5d",
+          "evidence_class": "consented_single_rider_aggregate_stop_spot",
+          "position_precision_decimal_places": 5
+        },
+        "spot": {
+          "class": "likely unmapped control",
+          "confidence": "low",
+          "day_count": 6,
+          "direction": {
+            "along_osm_way": "backward",
+            "bearing_deg": 236
+          },
+          "matched_control": null,
+          "median_length_s": 24.0,
+          "osm_way_id": 1218053063,
+          "position": {
+            "lat": 40.05383,
+            "lon": -75.23099
+          },
+          "position_spread_m": {
+            "iqr": 4.1,
+            "p90_minus_p10": 8.0
+          },
+          "reason": "short pauses before a junction; map omission is unconfirmed",
+          "ride_count": 6,
+          "rider_count": 1,
+          "spot_id": "spot-0387",
+          "stop_count": 6
+        },
+        "clearance_note": "Apply the approved nominal setback and at least 15 m upstream clearance from the published aggregate; then M1 and the existing 0.5 m position binding. This is not a surveyed stop line."
+      }
+    },
+    {
+      "candidate_fingerprint": "9417ed5b90b2e4d228e67859a4ebe51d2b56db13cb6019b01060724eb32efcd2",
+      "display_name": "Wynnefield Avenue",
+      "unknown_direction_stop_node_ids": [],
+      "approved_position": {
+        "lat": 39.98986331520123,
+        "lon": -75.21906741792976,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 109855687,
+      "registry_id": "beb71d2e-d725-4034-91d0-04a06233639b"
+    },
+    {
+      "candidate_fingerprint": "c1b072c5dcb791b534b6ba287a71e605c2b5a42bffe63c94a697bccb653d6ce6",
+      "display_name": "Youngs Ford Road",
+      "unknown_direction_stop_node_ids": [
+        111663714
+      ],
+      "approved_position": {
+        "lat": 40.04458080086323,
+        "lon": -75.27957911275283,
+        "setback_from_junction_m": 27
+      },
+      "junction_node_id": 111663714,
+      "registry_id": "3312d952-a916-4425-af45-03f83994a640"
+    }
+  ],
+  "position_approval_authority": "history/codex-reports-2026-10-20/gate-rule/APPROVALS.json"
+}

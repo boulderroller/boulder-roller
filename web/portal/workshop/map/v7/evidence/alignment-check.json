@@ -1,0 +1,18 @@
+{
+  "red": {
+    "portrait": "broken image; no initials",
+    "focus": "rgb(85, 146, 226)"
+  },
+  "green": {
+    "focusColor": "rgb(115, 126, 88)",
+    "portraitImages": 0,
+    "portraitText": "ER"
+  },
+  "phone": {
+    "focusColor": "rgb(115, 126, 88)",
+    "focusText": "Open climb",
+    "height": 844,
+    "overflow": false,
+    "width": 390
+  }
+}

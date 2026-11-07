@@ -1,0 +1,126 @@
+{
+  "evidenceClass": "Local workshop with retained published climb geography; no deployed or physical-rider proof",
+  "capturedAt": "2026-09-13T17:32:30.568Z",
+  "scenarios": [
+    {
+      "id": "area",
+      "candidate": "map-v4",
+      "routes": "57",
+      "markers": "57"
+    },
+    {
+      "id": "valley-green",
+      "candidate": "map-v4",
+      "routes": "57",
+      "markers": "57"
+    },
+    {
+      "id": "bounds-only",
+      "candidate": "map-v4",
+      "routes": "0",
+      "markers": "57"
+    },
+    {
+      "id": "mixed-geography",
+      "candidate": "map-v4",
+      "routes": "1",
+      "markers": "57"
+    },
+    {
+      "id": "no-climbs",
+      "candidate": "map-v4",
+      "routes": "0",
+      "markers": "0"
+    },
+    {
+      "id": "wises",
+      "candidate": "map-v4",
+      "routes": "57",
+      "markers": "57"
+    }
+  ],
+  "viewers": [
+    {
+      "viewer": "visitor",
+      "rendered": "visitor",
+      "standingCount": 0
+    },
+    {
+      "viewer": "signed-out",
+      "rendered": "signed-out",
+      "standingCount": 0
+    },
+    {
+      "viewer": "rider",
+      "rendered": "rider",
+      "standingCount": 0
+    }
+  ],
+  "recovery": [
+    {
+      "state": "error",
+      "recovered": true
+    },
+    {
+      "state": "map-error",
+      "recovered": true
+    }
+  ],
+  "desktop": {
+    "width": 1440,
+    "height": 1000,
+    "overflow": false
+  },
+  "phone": {
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "input": "Keyboard and pointer checked. The in-app browser rejected Input.dispatchTouchEvent; no synthetic or physical touch claim."
+  },
+  "filters": {
+    "combinedMetrics": true,
+    "mapAndList": true,
+    "unchangedCamera": {
+      "before": "[-75.23117835,40.04929046011006]",
+      "after": "[-75.23117835,40.04929046011006]"
+    },
+    "noMatchesAndReset": true,
+    "unknownImportRejected": true
+  },
+  "selection": {
+    "wisesCamera": "[-75.23117835,40.04929046011006]",
+    "valleyCamera": "[-75.22074586074717,40.056226517877406]",
+    "zoomBefore": "14.103833234456625",
+    "zoomAfter": "14.103833234456625",
+    "returnCamera": "[-75.22074586074717,40.056226517877406]",
+    "browserBackCamera": "[-75.22074586074717,40.056226517877406]",
+    "phoneReturn": true,
+    "pointerSelection": true,
+    "pointerPanChangedCamera": true,
+    "escapeFocus": "Filter climbs",
+    "clearFocus": "Show climb list"
+  },
+  "continuity": {
+    "scenarioImportExport": true,
+    "boundsOnlyImportRoutes": 0,
+    "candidateV2V3Preserved": true,
+    "filterRestoredAfterCandidateSwitch": true,
+    "mapClimbMapPageReturn": true,
+    "freshSameOriginExploreResetsExcludingFilters": true
+  },
+  "cartography": {
+    "realExistingTerrainSources": true,
+    "zoomLevelsReviewed": [
+      13.8,
+      15.1,
+      17.09
+    ],
+    "scaleBarMetric": true,
+    "phoneLabelsFaceIntoViewport": true
+  },
+  "freshPageErrors": [],
+  "notes": [
+    "A development hot-refresh transition to memo triggered a transient component error; a fresh page load and final interaction pass have no error/warning logs.",
+    "Native download completion was not asserted; inspectable JSON export and reimport were exercised."
+  ]
+}

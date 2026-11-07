@@ -1,0 +1,705 @@
+{
+  "model": "canon_ratified_boundaries_v1",
+  "decisions": [
+    {
+      "decision_id": "midvale-henry",
+      "display_name": "Midvale Avenue",
+      "route_name": "Midvale Avenue",
+      "osm_way_refs": [
+        1174545376,
+        1248896233,
+        839773192,
+        12139850
+      ],
+      "start": {
+        "label": "Existing Midvale Avenue start",
+        "osm_node_id": null,
+        "lat": 40.0089093,
+        "lon": -75.1939563,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Midvale Avenue / Henry Avenue signal",
+        "osm_node_id": 109980205,
+        "lat": 40.0169848,
+        "lon": -75.1883619,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "3257747968b74cd8e777993ff453bf1fac733bd1c23b5cd79b6184d774a2926f",
+      "legacy_candidate_fingerprints": [
+        "160612a9d86dceb981c512c9d8cc7c39398b47802c6bf7f95be1194a6d7aeabd"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "conshohocken-state-woodmont-spring-mill",
+      "display_name": "Conshohocken State Road",
+      "route_name": "Conshohocken State Road",
+      "osm_way_refs": [
+        593187446,
+        593187445,
+        424834793,
+        593187442,
+        593187443,
+        263484633,
+        593187437,
+        593187435,
+        593187434,
+        593187433,
+        66466978,
+        593187432
+      ],
+      "start": {
+        "label": "Conshohocken State Road / Woodmont Road signal",
+        "osm_node_id": 111646492,
+        "lat": 40.0677928,
+        "lon": -75.3073492,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Conshohocken State Road / Spring Mill Road signal",
+        "osm_node_id": 111646278,
+        "lat": 40.0581684,
+        "lon": -75.301117,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "703a1c4d83150da675b25675d3905b8c00e337300b6661ab450a37f43db14c82",
+      "legacy_candidate_fingerprints": [
+        "3618841f9c93e6a4484709c77fd9895177782ed8bb9641d3aadeff6c8066e9f5"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "west-coulter-conrad",
+      "display_name": "Calumet Street / West Coulter Street",
+      "route_name": "Calumet Street / West Coulter Street",
+      "osm_way_refs": [
+        43132973,
+        43132976,
+        693934227,
+        12204809,
+        49890780
+      ],
+      "start": {
+        "label": "Existing Calumet Street start",
+        "osm_node_id": null,
+        "lat": 40.0097058,
+        "lon": -75.1959773,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "West Coulter route / Conrad Street signal",
+        "osm_node_id": 109820431,
+        "lat": 40.0141933,
+        "lon": -75.1918657,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "232e8abc4c101753478bc220926050875109b8e77141f77dca1c45641db611d1",
+      "legacy_candidate_fingerprints": [
+        "984c037de1c621e4de6e3c4ae04f544bb962410bba874f3bdd081afb8ccf2ee9"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "west-school-house-henry",
+      "display_name": "West School House Lane",
+      "route_name": "West School House Lane",
+      "osm_way_refs": [
+        686705750,
+        1350991409,
+        1350993038,
+        1350993039,
+        43224378
+      ],
+      "start": {
+        "label": "Existing West School House Lane start",
+        "osm_node_id": null,
+        "lat": 40.0131343,
+        "lon": -75.2020928,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "West School House Lane / Henry Avenue signal",
+        "osm_node_id": 109980148,
+        "lat": 40.0204908,
+        "lon": -75.1924033,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "fdc32ca9a29072a48937ef032dd0dcf56c56999bef97b573561fb0afb27e07c9",
+      "legacy_candidate_fingerprints": [
+        "ac6032ae675d7f33dcbf7624e3158ec4eef6cecd07f8656690bffb6fbb869edd"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "wises-mill-henry",
+      "display_name": "Wises Mill Road",
+      "route_name": "Wises Mill Road",
+      "osm_way_refs": [
+        679953215,
+        1218053062,
+        1358180453,
+        1218053063
+      ],
+      "start": {
+        "label": "Existing Wises Mill Road start",
+        "osm_node_id": null,
+        "lat": 40.0578131,
+        "lon": -75.2198235,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Wises Mill Road / Henry Avenue signal",
+        "osm_node_id": 109979615,
+        "lat": 40.0537565,
+        "lon": -75.231137,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "eb54f6a93f3b26b6f29ba8ed2dab7639ac03ac362e1a11504fe5680a685fae71",
+      "legacy_candidate_fingerprints": [
+        "b2c7c1a891008a14e336d5405498e7840eadabbd6bd25881ce90c450f6e2c0df"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "mary-waters-flat-rock-jefferson",
+      "display_name": "Mary Waters Ford Road",
+      "route_name": "Mary Waters Ford Road",
+      "osm_way_refs": [
+        49468210,
+        1337268772,
+        1337268771
+      ],
+      "start": {
+        "label": "Mary Waters Ford Road / Flat Rock Road curve",
+        "osm_node_id": 628518442,
+        "lat": 40.0307927,
+        "lon": -75.2399278,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Mary Waters Ford Road / Jefferson Street",
+        "osm_node_id": 111840878,
+        "lat": 40.0278213,
+        "lon": -75.2397521,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "7bd42a99af10cc0af4c1fa41438d5eadcb1df6167410c1eb8977933a7e9c47aa",
+      "legacy_candidate_fingerprints": [
+        "bf19ecf0f36a48792d6eee20be3d2d724467aa51107f083d5e753e1a62869e7d"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "valley-green-creek-bridge",
+      "display_name": "Valley Green Road",
+      "route_name": "Valley Green Road",
+      "osm_way_refs": [
+        23746735,
+        795606882,
+        1218664860,
+        12179763,
+        1202968969,
+        1196894649
+      ],
+      "start": {
+        "label": "Valley Green Road creek bridge midpoint",
+        "osm_node_id": null,
+        "lat": 40.0553717,
+        "lon": -75.2176998,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Existing Valley Green Road finish",
+        "osm_node_id": null,
+        "lat": 40.0611506,
+        "lon": -75.2082172,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "69e316f4fb9c08c04fe3b216a4f7742d18eaf1eaef30a138e8f3934917c9ada4",
+      "legacy_candidate_fingerprints": [
+        "c8de10cc2a2de8b7b958e850bf5f37fe3364e1442f38c4a41b5a476a79e5fb41"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "youngs-ford-lafayette-waverly",
+      "display_name": "Youngs Ford Road",
+      "route_name": "Youngs Ford Road",
+      "osm_way_refs": [
+        79282573,
+        79282574,
+        12321850,
+        12321872
+      ],
+      "start": {
+        "label": "Youngs Ford Road / Lafayette Road",
+        "osm_node_id": 111663507,
+        "lat": 40.059271,
+        "lon": -75.2740575,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Youngs Ford Road / Waverly Road",
+        "osm_node_id": 111663714,
+        "lat": 40.0443873,
+        "lon": -75.2793875,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "acfd6f360e2fbbc6eb8e2e30fd7d138e479315134a2220f96aaf26b9afd9693a",
+      "legacy_candidate_fingerprints": [
+        "cca58bfa9b57b00b7685cd89d0807d993d8c6cbeade1b177196bd3a58c6b10d7"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "flat-rock-hidden-river",
+      "display_name": "Flat Rock Road",
+      "route_name": "Flat Rock Road",
+      "osm_way_refs": [
+        12377463,
+        1337268774,
+        1441657804
+      ],
+      "start": {
+        "label": "Existing Flat Rock Road start",
+        "osm_node_id": null,
+        "lat": 40.0308852,
+        "lon": -75.2406167,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Flat Rock Road / Hidden River Road",
+        "osm_node_id": 112253990,
+        "lat": 40.0331448,
+        "lon": -75.2468304,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "6bf5afbe0259dcb633e96878b42f66d2b7a6834c96281028fdd59936dbb4d27e",
+      "legacy_candidate_fingerprints": [
+        "dab3e0b10ede1205ad35af63652d7a52b940d3808013f2ff730adad6e73f6040"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "andorra-park-church",
+      "display_name": "Andorra Road",
+      "route_name": "Andorra Road",
+      "osm_way_refs": [
+        156799353,
+        1339291016,
+        682823814
+      ],
+      "start": {
+        "label": "Existing Andorra Road start",
+        "osm_node_id": null,
+        "lat": 40.0836464,
+        "lon": -75.2329962,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Park Avenue turn onto Church Road",
+        "osm_node_id": 111557004,
+        "lat": 40.0827756,
+        "lon": -75.2510242,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "09127db04b0b978bb8c8085666a8b859ee97f88ad2902aed0f62f86503a76736",
+      "legacy_candidate_fingerprints": [
+        "f379afecf89def642f72823d2e576550054be98b6bbc193553a644eb0d0774d7"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "falls-road-first-curve",
+      "display_name": "Falls Road / Conshohocken Avenue",
+      "route_name": "Falls Road / Conshohocken Avenue",
+      "osm_way_refs": [
+        12148403,
+        1203287388,
+        12148420,
+        12149602
+      ],
+      "start": {
+        "label": "First curve off Falls Bridge",
+        "osm_node_id": 110113531,
+        "lat": 40.0072221,
+        "lon": -75.1990102,
+        "max_offset_m": 2.0,
+        "exact_gate": {
+          "a_lat": 40.0073808,
+          "a_lon": -75.199219,
+          "b_lat": 40.0070634,
+          "b_lon": -75.1988014
+        }
+      },
+      "end": {
+        "label": "Existing Conshohocken Avenue finish",
+        "osm_node_id": null,
+        "lat": 40.0021387,
+        "lon": -75.2111438,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "873a72d25f52ab3ce11a71b1689bb973210572a5ad811abd8b261bc66502a128",
+      "legacy_candidate_fingerprints": [
+        "880d39528707fc49cb7a2e8f78ee5bb2d976690ec6a1d11b3920f2b63af42b34"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-18",
+          "approved_by": "Tim",
+          "source": "history/CANON_PHASE1_BOUNDARY_DIFF_2026-07-06.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-19",
+          "resolved_by": "Codex",
+          "source": "workout-parse/resources/philly_ratified_boundary_osm_ways_v1.json"
+        },
+        "visual_approval": {
+          "approved_at": "2026-07-19",
+          "approved_by": "Tim",
+          "source": "history/canon-boundary-ratification-2026-07-18/falls-road-gate-review.png"
+        }
+      }
+    },
+    {
+      "decision_id": "conshohocken-state-approved-full-route",
+      "display_name": "Conshohocken State Road",
+      "route_name": "Conshohocken State Road",
+      "osm_way_refs": [
+        423971318
+      ],
+      "start": {
+        "label": "Approved Conshohocken State Road start",
+        "osm_node_id": 1495634351,
+        "lat": 40.0316212,
+        "lon": -75.2697678,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Approved Conshohocken State Road finish",
+        "osm_node_id": 5667775462,
+        "lat": 40.0377946,
+        "lon": -75.2783306,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "a36d85c200c9ec31af48fe5224537eeaf56468682947babd74c330d6fe183d5d",
+      "legacy_candidate_fingerprints": [
+        "55112c8ee3d7c1ad5e84a857aa8d91eac74cc4a55c937e90664f6d2001a7dc46"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-05T23:38:04.636581+00:00",
+          "approved_by": "Tim",
+          "source": "backend/tests/fixtures/canon_review_labels_2026-07-05.json"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-21",
+          "resolved_by": "Codex",
+          "source": "history/canon-legacy-boundary-restoration-2026-07-21/v01-approved-boundaries.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "port-royal-approved-full-route",
+      "display_name": "Port Royal Avenue",
+      "route_name": "Port Royal Avenue",
+      "osm_way_refs": [
+        688421782,
+        108593573,
+        1426407796
+      ],
+      "start": {
+        "label": "Approved Port Royal Avenue start",
+        "osm_node_id": 11001942645,
+        "lat": 40.048023,
+        "lon": -75.2540423,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Approved Port Royal Avenue finish",
+        "osm_node_id": 110443757,
+        "lat": 40.0575078,
+        "lon": -75.2414777,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "859a5b9efb2e48bc5d02727d762e9f4043972c13a8d612d4ea3d6bc60b1adbe1",
+      "legacy_candidate_fingerprints": [
+        "7145571fe31a69534ed2bf0fb4ac03866afc0c1d185c637ce32f2529943f8747"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-05T23:37:19.410338+00:00",
+          "approved_by": "Tim",
+          "source": "backend/tests/fixtures/canon_review_labels_2026-07-05.json"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-21",
+          "resolved_by": "Codex",
+          "source": "history/canon-legacy-boundary-restoration-2026-07-21/v01-approved-boundaries.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "rockland-approved-full-route",
+      "display_name": "Rockland Avenue",
+      "route_name": "Rockland Avenue",
+      "osm_way_refs": [
+        43293682
+      ],
+      "start": {
+        "label": "Approved Rockland Avenue start",
+        "osm_node_id": 543978934,
+        "lat": 40.0274446,
+        "lon": -75.2352021,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Approved Rockland Avenue finish",
+        "osm_node_id": 111872181,
+        "lat": 40.0269487,
+        "lon": -75.2374318,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "7bb2c4f8956e84ddaa9b02e97b6bbbb8ec66a312604f4a71f570de1a61d33c13",
+      "legacy_candidate_fingerprints": [
+        "af392156a21ce7388c4689cb62ce78f77b72a0a2761d260e9cdf3164e796fbab"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-05T23:35:01.457498+00:00",
+          "approved_by": "Tim",
+          "source": "backend/tests/fixtures/canon_review_labels_2026-07-05.json"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-21",
+          "resolved_by": "Codex",
+          "source": "history/canon-legacy-boundary-restoration-2026-07-21/v01-approved-boundaries.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "waverly-approved-full-route",
+      "display_name": "Waverly Road",
+      "route_name": "Waverly Road",
+      "osm_way_refs": [
+        12373553,
+        1352630700,
+        1352630701
+      ],
+      "start": {
+        "label": "Approved Waverly Road start",
+        "osm_node_id": 248557643,
+        "lat": 40.0578978,
+        "lon": -75.271256,
+        "max_offset_m": 2.0
+      },
+      "end": {
+        "label": "Approved Waverly Road finish",
+        "osm_node_id": 112062193,
+        "lat": 40.0499632,
+        "lon": -75.2733195,
+        "max_offset_m": 2.0
+      },
+      "replaces_candidate_fingerprint": "b014bdc0bd619442d50e7893cef3363829317d2923423080631e8880c1555c60",
+      "legacy_candidate_fingerprints": [
+        "bc6fb610615e777951c8111df96ff99204f738b86d05ea4f23a928ec351a07ab"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-07-05T23:27:33.475157+00:00",
+          "approved_by": "Tim",
+          "source": "backend/tests/fixtures/canon_review_labels_2026-07-05.json"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-07-21",
+          "resolved_by": "Codex",
+          "source": "history/canon-legacy-boundary-restoration-2026-07-21/v01-approved-boundaries.json"
+        },
+        "visual_approval": null
+      }
+    },
+    {
+      "decision_id": "lafayette-lump-crest",
+      "display_name": "Lafayette Road",
+      "route_name": "Lafayette Road",
+      "osm_way_refs": [
+        12370459,
+        12329089,
+        594346758,
+        12370452
+      ],
+      "start": {
+        "label": "Existing Lafayette Road start (unchanged)",
+        "osm_node_id": null,
+        "lat": 40.059305911481175,
+        "lon": -75.27409876839457,
+        "max_offset_m": 0.1,
+        "exact_gate": {
+          "a_lat": 40.0591552,
+          "a_lon": -75.2743164,
+          "b_lat": 40.0594566,
+          "b_lon": -75.2738812
+        }
+      },
+      "end": {
+        "label": "Lafayette Road lump crest, downhill edge of the flat top",
+        "osm_node_id": null,
+        "lat": 40.05129374835202,
+        "lon": -75.29571220380879,
+        "max_offset_m": 0.1
+      },
+      "replaces_candidate_fingerprint": "5082caadd5b7828ea5593ab29ba803fc6b6d2bb70065f6ff9f6aa6a15b60d638",
+      "legacy_candidate_fingerprints": [
+        "fa6f4fe69abc9a6039c248d9374194ad26233f070683fdbf459de26c93edff3b"
+      ],
+      "evidence": {
+        "requirement": {
+          "approved_at": "2026-10-21T00:13:00Z",
+          "approved_by": "Tim (founder)",
+          "source": "history/codex-briefs-2026-10-20/lafayette-crest.md"
+        },
+        "geometry_translation": {
+          "resolved_at": "2026-10-20",
+          "resolved_by": "Retained founder review evidence",
+          "source": "history/codex-briefs-2026-10-20/lafayette-crest.md; crest.json sha256:4738879be537e5430c1cb265b2454eb3d4364e61dbb1474e59407e0b7eac8226"
+        },
+        "visual_approval": {
+          "approved_at": "2026-10-21T00:13:00Z",
+          "approved_by": "Tim (founder)",
+          "source": "history/codex-briefs-2026-10-20/lafayette-crest.md"
+        }
+      },
+      "finish_decision": {
+        "type": "crest finish (founder-approved)",
+        "decision": "extend_crest",
+        "finish_at": "lump crest",
+        "finish_m_past_current": 715.53,
+        "reason": "The founder chose the natural top: bear left on Lafayette at Stony Lane and continue up the lump. The bend cuts off the climb and two corner-cutting efforts miss its line. The new line is 106.7 m before Conshohocken State Road with no nearby traffic control; D7.5 junction setbacks do not apply."
+      }
+    }
+  ]
+}

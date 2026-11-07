@@ -1,0 +1,106 @@
+{
+  "title": "10763959.gpx",
+  "annotated_at": "2026-03-18T13:36:32.581Z",
+  "climbs": [
+    {
+      "idx": 0,
+      "road_name": "Shawmont Avenue",
+      "vert_m": 88.9,
+      "detector_start": 709,
+      "detector_end": 817,
+      "annotated_start": 864,
+      "annotated_end": 948,
+      "skipped": false
+    },
+    {
+      "idx": 1,
+      "road_name": "Joshua Road",
+      "vert_m": 49.3,
+      "detector_start": 1191,
+      "detector_end": 1233,
+      "annotated_start": 1437,
+      "annotated_end": 1483,
+      "skipped": false
+    },
+    {
+      "idx": 2,
+      "road_name": "Highland Avenue",
+      "vert_m": 30.2,
+      "detector_start": 1494,
+      "detector_end": 1556,
+      "annotated_start": 1677,
+      "annotated_end": 1740,
+      "skipped": false
+    },
+    {
+      "idx": 3,
+      "road_name": "Limekiln Pike",
+      "vert_m": 30.6,
+      "detector_start": 1747,
+      "detector_end": 1788,
+      "annotated_start": 1884,
+      "annotated_end": 1944,
+      "skipped": false
+    },
+    {
+      "idx": 4,
+      "road_name": "Limekiln Pike",
+      "vert_m": 58.6,
+      "detector_start": 2039,
+      "detector_end": 2191,
+      "annotated_start": 2121,
+      "annotated_end": 2192,
+      "skipped": false
+    },
+    {
+      "idx": 5,
+      "road_name": "Willow Grove Avenue",
+      "vert_m": 8.9,
+      "detector_start": 2221,
+      "detector_end": 2228,
+      "annotated_start": null,
+      "annotated_end": null,
+      "skipped": true
+    },
+    {
+      "idx": 6,
+      "road_name": "Cresheim Road",
+      "vert_m": 23.6,
+      "detector_start": 2460,
+      "detector_end": 2490,
+      "annotated_start": 2458,
+      "annotated_end": 2473,
+      "skipped": false
+    },
+    {
+      "idx": 7,
+      "road_name": "Wissahickon Avenue",
+      "vert_m": 16,
+      "detector_start": 2570,
+      "detector_end": 2581,
+      "annotated_start": null,
+      "annotated_end": null,
+      "skipped": true
+    },
+    {
+      "idx": 8,
+      "road_name": "West Walnut Lane",
+      "vert_m": 49.1,
+      "detector_start": 2638,
+      "detector_end": 2695,
+      "annotated_start": null,
+      "annotated_end": null,
+      "skipped": true
+    },
+    {
+      "idx": 9,
+      "road_name": "Kelly Drive",
+      "vert_m": 9.2,
+      "detector_start": 3024,
+      "detector_end": 3030,
+      "annotated_start": null,
+      "annotated_end": null,
+      "skipped": true
+    }
+  ]
+}

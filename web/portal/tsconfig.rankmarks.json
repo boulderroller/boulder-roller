@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "src/vite-env.d.ts",
+    "src/assets/rankmarks/index.ts",
+    "src/components/rankmarks/RankMark.tsx"
+  ]
+}

@@ -1,0 +1,119 @@
+# =============================================================================
+# Docker build context exclusions (context is repo root)
+# =============================================================================
+
+# Git
+.git/
+.gitattributes
+
+# iOS apps (not needed for backend Docker build)
+client-ios/
+ios/
+
+# Frontend / protocol workspaces (not needed for backend Docker build)
+web/
+protocol/**
+!protocol/anchor/
+!protocol/anchor/idl/
+!protocol/anchor/idl/boulder_rollers.json
+tools/**
+!tools/stage1_reference/
+!tools/stage1_reference/__init__.py
+!tools/stage1_reference/keeper.py
+!tools/stage1_reference/arithmetic.py
+!tools/stage1_reference/merkle.py
+!tools/stage1_reference/config.py
+history/**
+!history/hill-bonding-diamond-2026-10-08/
+!history/hill-bonding-diamond-2026-10-08/diamond.yaml
+output/
+archive/
+tests/
+
+# Documentation and specs
+docs/
+*.pdf
+*.md
+!backend/README.md
+
+# Solana programs (separate deployment)
+.solana/
+
+# Bot (separate service)
+bot/
+
+# Infrastructure configs (not needed in image)
+infrastructure/
+
+# Assets
+assets/
+
+# Python artifacts (will be generated fresh)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+env/
+venv/
+.venv/
+backend/venv/
+
+# Environment files (secrets)
+.env
+.env.*
+!.env.example
+
+# IDE and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Rust build artifacts in workout-parse (will rebuild in Docker)
+workout-parse/target/
+workout-parse/data/
+workout-parse/.venv/
+workout-parse/.pytest_cache/
+
+# Claude/beads directories
+.beads/
+.claude/
+
+# Known backend-local junk from older droplet workflows
+backend/.claude/
+backend/.github/
+backend/assets/
+backend/backend/
+backend/bot/
+backend/client-ios/
+backend/*.pdf
+backend/PROJECT_BRIEF.md
+backend/outputs.json
+backend/poopy.html
+backend/docker-compose.yml
+backend/app/src/
+backend/app/package.json
+backend/app/package-lock.json
+backend/app/index.html
+backend/app/tsconfig.json
+backend/app/tsconfig.node.json
+backend/app/vite.config.ts
+backend/app/vercel.json
+backend/app/README.md
+backend/app/.gitignore
+backend/app/.npmrc
+backend/app/._*
+backend/app/routes/._*
+
+# Logs
+*.log
+*.pid

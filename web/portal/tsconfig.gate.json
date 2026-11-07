@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "src/vite-env.d.ts",
+    "src/lib/api.ts",
+    "src/lib/tokenAmounts.ts",
+    "src/lib/performance.ts",
+    "src/lib/sentry.ts",
+    "src/lib/solana.ts",
+    "src/lib/authTransaction.ts",
+    "src/lib/privySyncRecovery.ts",
+    "src/contexts/PrivyContext.tsx",
+    "src/contexts/WalletContext.tsx",
+    "src/contexts/AuthRuntimeContext.tsx",
+    "src/components/auth/AuthRuntimeProviders.tsx",
+    "src/components/auth/InviteModal.tsx",
+    "src/components/auth/SocialLoginRuntime.tsx",
+    "src/components/auth/WalletConnect.tsx",
+    "src/components/auth/WalletConnectFlow.tsx"
+  ]
+}

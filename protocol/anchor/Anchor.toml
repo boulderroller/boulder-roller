@@ -1,0 +1,55 @@
+[toolchain]
+anchor_version = "0.29.0"
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.devnet]
+boulder_rollers = "EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH"
+
+[programs.localnet]
+boulder_rollers = "EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[workspace]
+members = ["programs/boulder_rollers"]
+types = "./clients/typescript"
+
+[test]
+upgradeable = true
+
+[[test.validator.account]]
+address = "AZBtJszKNqY2wGhuDhr9vi4QDQLhrEXEQYSM385fSmDL"
+filename = "tests/fixtures/legacy_local_legend_424242.json"
+
+[[test.validator.account]]
+address = "4HZrp2ucr4v7HfAHEfA2RNrhwDqayrsf2QK2hcngGyet"
+filename = "tests/fixtures/lp_custody/vault.json"
+
+[[test.validator.account]]
+address = "2byacviL87wJ2ZYhc16aNrqCccjoPZoCuKVEq2LeLWud"
+filename = "tests/fixtures/lp_custody/vault_stake.json"
+
+[[test.validator.account]]
+address = "2VKAofvk5wK9s9bYZ2uG2XLKViU5WKVyidbbNAbZiq3k"
+filename = "tests/fixtures/lp_custody/vault_activation.json"
+
+[[test.validator.account]]
+address = "FYKXeh2LsGdpm1tpi6XVM6tBspoLY17gfwftHHGNVPbv"
+filename = "tests/fixtures/lp_custody/vault_lp_mint.json"
+
+[[test.validator.account]]
+address = "2KW2XRd9kwqet15Aha2oK3tYvd3nWbTFH1MBiRAv1BE1"
+filename = "tests/fixtures/lp_custody/wallet_lp_source.json"
+
+[[test.validator.account]]
+address = "HDomaLYNmQhmxinV4FUsoh1yjbNYnqVyHhty9gsNegDk"
+filename = "tests/fixtures/lp_custody/balance_lp_source.json"
+
+[scripts]
+preflight = "./scripts/preflight.sh"
+test = "npm test"

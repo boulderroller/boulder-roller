@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Curve Grey Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* CURVE-INSPIRED GREY SCALE
+         No pure black (#000) or pure white (#FFF)
+         A livable range of greys with slight cool undertone */
+      --grey-950: #101114;  /* Deepest — page bg */
+      --grey-900: #16181D;  /* Card bg */
+      --grey-850: #1C1E24;  /* Elevated surface */
+      --grey-800: #22252C;  /* Input bg */
+      --grey-750: #2A2D36;  /* Hover state */
+      --grey-700: #32363F;  /* Active state */
+      --grey-600: #444954;  /* Border strong */
+      --grey-500: #5C616E;  /* Border default */
+      --grey-400: #787E8C;  /* Text muted */
+      --grey-300: #9BA0AC;  /* Text secondary */
+      --grey-200: #C5C9D2;  /* Text primary */
+      --grey-100: #E8EAF0;  /* Text emphasis */
+      --grey-50:  #F4F5F7;  /* Highlight text */
+
+      /* SIGNAL COLORS — pop against grey */
+      --mint: #3DFFA3;
+      --violet: #A78BFA;
+      --coral: #FF6B8A;
+      --amber: #FBBF24;
+      --cyan: #22D3EE;
+
+      /* SEMANTIC */
+      --positive: var(--mint);
+      --negative: var(--coral);
+      --warning: var(--amber);
+      --info: var(--cyan);
+      --economy: var(--violet);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+
+    body {
+      background: var(--grey-950);
+      color: var(--grey-200);
+      min-height: 100vh;
+    }
+
+    /* ================================================
+       INTRO
+    ================================================ */
+
+    .intro {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 48px 40px;
+    }
+
+    .intro-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--grey-400);
+      margin-bottom: 16px;
+    }
+
+    .intro-title {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--grey-100);
+      margin-bottom: 16px;
+    }
+
+    .intro-title span {
+      color: var(--violet);
+    }
+
+    .intro-desc {
+      font-size: 16px;
+      color: var(--grey-400);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* ================================================
+       GREY SCALE DISPLAY
+    ================================================ */
+
+    .scale-section {
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      padding: 0 48px;
+    }
+
+    .scale-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 16px;
+    }
+
+    .scale-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+
+    .scale-chip {
+      flex: 1;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      transition: transform 0.15s;
+    }
+
+    .scale-chip:hover {
+      transform: scale(1.05);
+    }
+
+    .scale-chip span {
+      opacity: 0.7;
+    }
+
+    .signal-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .signal-chip {
+      flex: 1;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--grey-950);
+    }
+
+    /* ================================================
+       COMPONENT GRID
+    ================================================ */
+
+    .grid-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px 60px;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1100px) {
+      .component-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .component-grid { grid-template-columns: 1fr; }
+      .intro { padding: 40px 24px; }
+      .scale-section { padding: 0 24px; }
+      .grid-section { padding: 0 24px 40px; }
+    }
+
+    /* ================================================
+       CARD BASE
+    ================================================ */
+
+    .card {
+      background: var(--grey-900);
+      border: 1px solid var(--grey-800);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--grey-700);
+    }
+
+    /* ================================================
+       METRIC CARD
+    ================================================ */
+
+    .metric {
+      padding: 24px;
+      position: relative;
+    }
+
+    .metric-stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .metric-stripe.mint { background: linear-gradient(90deg, var(--mint), transparent 60%); }
+    .metric-stripe.violet { background: linear-gradient(90deg, var(--violet), transparent 60%); }
+    .metric-stripe.coral { background: linear-gradient(90deg, var(--coral), transparent 60%); }
+    .metric-stripe.amber { background: linear-gradient(90deg, var(--amber), transparent 60%); }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 10px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric-value.mint { color: var(--mint); }
+    .metric-value.violet { color: var(--violet); }
+    .metric-value.coral { color: var(--coral); }
+    .metric-value.amber { color: var(--amber); }
+
+    .metric-unit {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--grey-500);
+    }
+
+    .metric-spark {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 28px;
+      margin-top: 16px;
+    }
+
+    .spark {
+      flex: 1;
+      border-radius: 2px;
+      opacity: 0.5;
+      transition: opacity 0.15s;
+    }
+
+    .spark:hover { opacity: 0.8; }
+
+    .spark.mint { background: var(--mint); }
+    .spark.violet { background: var(--violet); }
+    .spark.coral { background: var(--coral); }
+    .spark.amber { background: var(--amber); }
+
+    /* ================================================
+       TERMINAL
+    ================================================ */
+
+    .terminal {
+      font-family: var(--font-mono);
+    }
+
+    .terminal-bar {
+      padding: 12px 16px;
+      background: var(--grey-850);
+      border-bottom: 1px solid var(--grey-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .terminal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: var(--mint); }
+    .terminal-dot:nth-child(2) { background: var(--violet); }
+    .terminal-dot:nth-child(3) { background: var(--coral); }
+
+    .terminal-title {
+      font-size: 11px;
+      color: var(--grey-400);
+    }
+
+    .terminal-body {
+      padding: 14px 16px;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .t-prompt {
+      font-weight: 600;
+    }
+
+    .t-prompt.mint { color: var(--mint); }
+    .t-prompt.violet { color: var(--violet); }
+    .t-prompt.coral { color: var(--coral); }
+    .t-prompt.cyan { color: var(--cyan); }
+
+    .t-text { color: var(--grey-400); }
+
+    .t-val { font-weight: 600; }
+    .t-val.mint { color: var(--mint); }
+    .t-val.violet { color: var(--violet); }
+
+    .t-tag {
+      margin-left: auto;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .t-tag.ok {
+      background: rgba(61, 255, 163, 0.12);
+      color: var(--mint);
+    }
+
+    .t-tag.pending {
+      background: rgba(251, 191, 36, 0.12);
+      color: var(--amber);
+    }
+
+    /* ================================================
+       BEETLE CARD
+    ================================================ */
+
+    .beetle-card {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .beetle-rank-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .beetle-visual {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+
+    .beetle-shell {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--grey-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .beetle-shell::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50% 50% 45% 45%;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--mint), var(--violet), var(--coral));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .beetle-rank-letter {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--mint), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.85; }
+    }
+
+    .beetle-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--grey-100);
+      margin-bottom: 2px;
+    }
+
+    .beetle-title {
+      font-size: 12px;
+      color: var(--grey-500);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .beetle-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--grey-800);
+    }
+
+    .beetle-stat-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .beetle-stat:nth-child(1) .beetle-stat-value { color: var(--violet); }
+    .beetle-stat:nth-child(2) .beetle-stat-value { color: var(--mint); }
+    .beetle-stat:nth-child(3) .beetle-stat-value { color: var(--coral); }
+
+    .beetle-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-600);
+      margin-top: 2px;
+    }
+
+    /* ================================================
+       CLAIM CARD
+    ================================================ */
+
+    .claim-header {
+      padding: 14px 18px;
+      background: var(--grey-850);
+      border-bottom: 1px solid var(--grey-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .claim-header-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    .claim-header-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-list {
+      padding: 8px;
+    }
+
+    .claim-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      transition: background 0.15s;
+    }
+
+    .claim-item:hover {
+      background: var(--grey-850);
+    }
+
+    .claim-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--grey-800);
+      border: 1px solid var(--grey-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .claim-info { flex: 1; }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--grey-200);
+      font-size: 13px;
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--grey-500);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-action {
+      padding: 12px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      color: #fff;
+    }
+
+    .btn-gradient:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--grey-600);
+      color: var(--grey-300);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--grey-500);
+      color: var(--grey-200);
+    }
+
+    /* ================================================
+       FEED
+    ================================================ */
+
+    .feed-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--grey-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .feed-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    .feed-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mint);
+    }
+
+    .feed-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--grey-850);
+      transition: background 0.15s;
+    }
+
+    .feed-item:last-child { border-bottom: none; }
+
+    .feed-item:hover { background: var(--grey-850); }
+
+    .feed-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--grey-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .feed-content { flex: 1; }
+
+    .feed-action-text {
+      font-weight: 600;
+      color: var(--grey-200);
+      font-size: 12px;
+    }
+
+    .feed-detail {
+      font-size: 10px;
+      color: var(--grey-500);
+    }
+
+    .feed-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .feed-amount.positive { color: var(--mint); }
+    .feed-amount.neutral { color: var(--violet); }
+    .feed-amount.negative { color: var(--coral); }
+
+    /* ================================================
+       INPUT GROUP
+    ================================================ */
+
+    .input-card {
+      padding: 20px;
+    }
+
+    .input-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .input {
+      flex: 1;
+      background: var(--grey-800);
+      border: 1px solid var(--grey-700);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--grey-100);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .input:focus {
+      border-color: var(--violet);
+    }
+
+    .input::placeholder {
+      color: var(--grey-600);
+    }
+
+    .input-suffix {
+      background: var(--grey-850);
+      border: 1px solid var(--grey-700);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--grey-400);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .input-suffix-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+    }
+
+    .input-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--grey-500);
+    }
+
+    .input-info-highlight {
+      color: var(--mint);
+      font-weight: 600;
+    }
+
+    /* ================================================
+       SUMMARY
+    ================================================ */
+
+    .summary-section {
+      max-width: 1400px;
+      margin: 40px auto 60px;
+      padding: 0 48px;
+    }
+
+    .summary {
+      background: var(--grey-900);
+      border: 1px solid var(--grey-800);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .summary h2 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 28px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+
+    @media (max-width: 800px) {
+      .summary-grid { grid-template-columns: 1fr; }
+      .summary-section { padding: 0 24px; }
+    }
+
+    .summary-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--grey-200);
+      margin-bottom: 8px;
+    }
+
+    .summary-item p {
+      font-size: 13px;
+      color: var(--grey-500);
+      line-height: 1.7;
+    }
+
+    .summary-item code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: var(--grey-850);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--grey-300);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="intro">
+    <div class="intro-tag">Curve Grey Study</div>
+    <h1 class="intro-title">Greyscale <span>Foundation</span></h1>
+    <p class="intro-desc">Embracing the Curve.fi philosophy — a full greyscale palette creates the foundation, signal colors pop when they need to. No pure black, no pure white. Just livable greys that feel professional and comfortable.</p>
+  </div>
+
+  <!-- GREY SCALE DISPLAY -->
+  <div class="scale-section">
+    <div class="scale-label">Grey Scale (950 → 50)</div>
+    <div class="scale-row">
+      <div class="scale-chip" style="background: var(--grey-950); color: var(--grey-400);"><span>950</span></div>
+      <div class="scale-chip" style="background: var(--grey-900); color: var(--grey-400);"><span>900</span></div>
+      <div class="scale-chip" style="background: var(--grey-850); color: var(--grey-400);"><span>850</span></div>
+      <div class="scale-chip" style="background: var(--grey-800); color: var(--grey-400);"><span>800</span></div>
+      <div class="scale-chip" style="background: var(--grey-750); color: var(--grey-400);"><span>750</span></div>
+      <div class="scale-chip" style="background: var(--grey-700); color: var(--grey-300);"><span>700</span></div>
+      <div class="scale-chip" style="background: var(--grey-600); color: var(--grey-300);"><span>600</span></div>
+      <div class="scale-chip" style="background: var(--grey-500); color: var(--grey-200);"><span>500</span></div>
+      <div class="scale-chip" style="background: var(--grey-400); color: var(--grey-950);"><span>400</span></div>
+      <div class="scale-chip" style="background: var(--grey-300); color: var(--grey-950);"><span>300</span></div>
+      <div class="scale-chip" style="background: var(--grey-200); color: var(--grey-950);"><span>200</span></div>
+      <div class="scale-chip" style="background: var(--grey-100); color: var(--grey-950);"><span>100</span></div>
+      <div class="scale-chip" style="background: var(--grey-50); color: var(--grey-950);"><span>50</span></div>
+    </div>
+    <div class="scale-label">Signal Colors</div>
+    <div class="signal-row">
+      <div class="signal-chip" style="background: var(--mint);">Mint</div>
+      <div class="signal-chip" style="background: var(--violet);">Violet</div>
+      <div class="signal-chip" style="background: var(--coral);">Coral</div>
+      <div class="signal-chip" style="background: var(--amber);">Amber</div>
+      <div class="signal-chip" style="background: var(--cyan);">Cyan</div>
+    </div>
+  </div>
+
+  <!-- COMPONENT GRID -->
+  <div class="grid-section">
+    <div class="component-grid">
+
+      <!-- Metric: Boulder -->
+      <div class="card metric">
+        <div class="metric-stripe violet"></div>
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value violet">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark violet" style="height: 45%;"></div>
+          <div class="spark violet" style="height: 62%;"></div>
+          <div class="spark violet" style="height: 58%;"></div>
+          <div class="spark violet" style="height: 71%;"></div>
+          <div class="spark violet" style="height: 85%;"></div>
+          <div class="spark violet" style="height: 78%;"></div>
+          <div class="spark violet" style="height: 92%;"></div>
+        </div>
+      </div>
+
+      <!-- Metric: TSS -->
+      <div class="card metric">
+        <div class="metric-stripe mint"></div>
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value mint">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark mint" style="height: 30%;"></div>
+          <div class="spark mint" style="height: 48%;"></div>
+          <div class="spark mint" style="height: 55%;"></div>
+          <div class="spark mint" style="height: 72%;"></div>
+          <div class="spark mint" style="height: 88%;"></div>
+          <div class="spark mint" style="height: 95%;"></div>
+          <div class="spark mint" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <!-- Metric: CAL -->
+      <div class="card metric">
+        <div class="metric-stripe coral"></div>
+        <div class="metric-label">CAL Balance</div>
+        <div class="metric-value coral">1,847</div>
+        <div class="metric-unit">of 2,500 daily cap</div>
+        <div class="metric-spark">
+          <div class="spark coral" style="height: 100%;"></div>
+          <div class="spark coral" style="height: 92%;"></div>
+          <div class="spark coral" style="height: 85%;"></div>
+          <div class="spark coral" style="height: 78%;"></div>
+          <div class="spark coral" style="height: 74%;"></div>
+          <div class="spark coral" style="height: 74%;"></div>
+          <div class="spark coral" style="height: 74%;"></div>
+        </div>
+      </div>
+
+      <!-- Terminal -->
+      <div class="card terminal">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="terminal-dots">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+          </div>
+          <div class="terminal-title">roll@dung-beetle</div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS: <span class="t-val mint">118</span> · crossings: <span class="t-val mint">9</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+            <span class="t-tag ok">OK</span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt cyan">→</span>
+            <span class="t-text">epoch distribution in 2d 14h</span>
+            <span class="t-tag pending">PENDING</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beetle Card -->
+      <div class="card beetle-card">
+        <div class="beetle-rank-badge">S RANK</div>
+        <div class="beetle-visual">
+          <div class="beetle-shell">
+            <span class="beetle-rank-letter">S</span>
+          </div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-name">booka_shade</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div class="beetle-stat">
+            <div class="beetle-stat-value">8,450</div>
+            <div class="beetle-stat-label">Boulder</div>
+          </div>
+          <div class="beetle-stat">
+            <div class="beetle-stat-value">23</div>
+            <div class="beetle-stat-label">Piles</div>
+          </div>
+          <div class="beetle-stat">
+            <div class="beetle-stat-value">285w</div>
+            <div class="beetle-stat-label">FTP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Claim Card -->
+      <div class="card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed Rewards</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-list">
+          <div class="claim-item">
+            <div class="claim-icon">💎</div>
+            <div class="claim-info">
+              <div class="claim-name">PHILLY CRIT</div>
+              <div class="claim-detail">Leader bonus + stake yield</div>
+            </div>
+            <div class="claim-amount">+18.4</div>
+          </div>
+          <div class="claim-item">
+            <div class="claim-icon">🦢</div>
+            <div class="claim-info">
+              <div class="claim-name">SOUTH HILL</div>
+              <div class="claim-detail">Swanny seat (passive)</div>
+            </div>
+            <div class="claim-amount">+3.3</div>
+          </div>
+        </div>
+        <div class="claim-action">
+          <button class="btn btn-gradient">CLAIM ALL</button>
+        </div>
+      </div>
+
+      <!-- Feed -->
+      <div class="card">
+        <div class="feed-header">
+          <span class="feed-title">Recent Activity</span>
+          <span class="feed-live">Live</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">🚴</div>
+          <div class="feed-content">
+            <div class="feed-action-text">TSS Reward</div>
+            <div class="feed-detail">9 pile crossings · 2h ago</div>
+          </div>
+          <div class="feed-amount positive">+118.0</div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">💰</div>
+          <div class="feed-content">
+            <div class="feed-action-text">Staked PHILLY CRIT</div>
+            <div class="feed-detail">420 DUNG (6.2% pool) · 1d ago</div>
+          </div>
+          <div class="feed-amount neutral">−120.0</div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">⚔️</div>
+          <div class="feed-content">
+            <div class="feed-action-text">Lost MANAYUNK WALL</div>
+            <div class="feed-detail">Dethroned by velodrome_king · 3d ago</div>
+          </div>
+          <div class="feed-amount negative">−45.0</div>
+        </div>
+      </div>
+
+      <!-- Input Card -->
+      <div class="card input-card">
+        <label class="input-label">Stake Amount</label>
+        <div class="input-group">
+          <input type="text" class="input" placeholder="0.00" />
+          <div class="input-suffix">
+            <div class="input-suffix-icon"></div>
+            DUNG
+          </div>
+        </div>
+        <div class="input-info">
+          <span>Available: <span class="input-info-highlight">8,450 DUNG</span></span>
+          <span>Max</span>
+        </div>
+        <div style="margin-top: 16px;">
+          <button class="btn btn-outline">STAKE</button>
+        </div>
+      </div>
+
+      <!-- Epoch Timer -->
+      <div class="card metric">
+        <div class="metric-stripe amber"></div>
+        <div class="metric-label">Epoch Ends</div>
+        <div class="metric-value amber">2d 14h</div>
+        <div class="metric-unit">until next distribution</div>
+        <div class="metric-spark">
+          <div class="spark amber" style="height: 15%;"></div>
+          <div class="spark amber" style="height: 25%;"></div>
+          <div class="spark amber" style="height: 38%;"></div>
+          <div class="spark amber" style="height: 52%;"></div>
+          <div class="spark amber" style="height: 68%;"></div>
+          <div class="spark amber" style="height: 82%;"></div>
+          <div class="spark amber" style="height: 95%;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-section">
+    <div class="summary">
+      <h2>Design Principles</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h3>Grey Scale Foundation</h3>
+          <p>13 carefully tuned greys from <code>--grey-950</code> (deepest) to <code>--grey-50</code> (lightest). No pure black or white. Slight cool undertone keeps it professional without being cold. The greys do the heavy lifting.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Signal Colors Pop</h3>
+          <p>Five signal colors (mint, violet, coral, amber, cyan) are reserved for data and actions. They're never used for decoration — only to convey meaning. Against the grey foundation, they have room to breathe and communicate.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Semantic Consistency</h3>
+          <p>Mint = fitness/positive. Violet = economy/tokens. Coral = energy/CAL/negative. Amber = time/warning. Cyan = system/info. Users learn these associations unconsciously. The grey lets the signals do their job.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Curve Philosophy</h3>
+          <p>Functional, no-nonsense, information-dense. The interface doesn't try to impress — it tries to inform. The grey scale creates hierarchy through subtle value shifts rather than competing colors. Professional tool energy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

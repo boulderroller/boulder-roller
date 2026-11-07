@@ -1,0 +1,27 @@
+example_only: true
+geographic_data:
+  scope: Only the geographic components identified by this metadata; independent rider observations and economic records are outside this declaration.
+  release_id: '{immutable_release_id}'
+  canon_id: '{canon_uuid}'
+  canon_version: '{protocol_canon_version_integer}'
+  geographic_revision_id: '{immutable_geographic_revision_id}'
+  license:
+    id: ODbL-1.0
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+  attribution:
+    text: © OpenStreetMap contributors
+    url: https://www.openstreetmap.org/copyright
+  source_offer: '{absolute_public_complete_release_url}'
+  manifest_url: '{absolute_public_immutable_manifest_url}'
+  notices_url: '{absolute_public_immutable_notices_url}'
+  sources:
+  - asset_id: '{admitted_asset_id}'
+    license_id: '{source_licence_id}'
+    license_url: '{source_licence_url}'
+    source_updated_at: '{verified_source_update_date_or_permitted_null}'
+    notices:
+    - id: '{notice_id}'
+      text: '{exact_resolved_notice}'
+      basis: '{Text_or_Guidance_or_Inference}'
+      requirement: '{mandatory_or_requested_or_recommended}'
+implementation_rule: Resolve all placeholders and use correct JSON types; example_only and implementation_rule are not production response fields. Keep existing API compatibility.

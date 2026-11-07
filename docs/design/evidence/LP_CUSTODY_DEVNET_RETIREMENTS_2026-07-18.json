@@ -1,0 +1,141 @@
+{
+  "schema": "boulderroller.lp-custody-retirements.v1",
+  "manifest_sha256": "a9ba7cd9114ada7b4a5c6ece4a50e571db0d9a463e5bdd32e93d97cf22ba4b4f",
+  "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+  "network": "devnet",
+  "genesis_hash": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "program_id": "HsPhhMukUKu641e9hDJUJJW4chvF5EXYzuG2xBwMrnst",
+  "retired_at": "2026-07-18T17:15:00Z",
+  "mutation": "none",
+  "transaction_signatures": [],
+  "authority_policy": "This ledger changes inventory classification only. It submits no transaction, grants no admin movement authority, and leaves rider signature requirements unchanged.",
+  "quarantine_policy": "Every listed VaultActivation is hash-pinned at seed_generation 1. Protocol economic writes require authoritative seed_generation 2 or later, so these pre-cohort fixtures cannot receive new economic history.",
+  "key_provenance": [
+    {
+      "vault_ids": [2, 3, 4, 5, 6],
+      "runner": "backend/scripts/smoke_full_stack.py",
+      "behavior": "The runner creates smoke_user with an in-memory random Keypair and never serializes the secret."
+    },
+    {
+      "vault_ids": [15],
+      "runner": "backend/scripts/prove_balance_devnet_e2e.py",
+      "behavior": "The default runner creates an in-memory random rider Keypair when no rider-keypair argument is supplied and never serializes the secret."
+    }
+  ],
+  "fixtures": [
+    {
+      "vault_id": 2,
+      "rider": "2CWEqVzBZnSN45Naye99SEy516rB4jSSoWzuW53Dgb3u",
+      "vault_stake": "D8PZMSapFBJ1kk5BWMRZo2hkLiHP5XRUy3PSMveGeKqk",
+      "vault_activation": "8iCs393qVc4oigjUAC9dpDDW4v6KmbWmwtDtf4Br8RRL",
+      "lp_mint": "De15VdKebJXgt939RJd85BPTnA1YsMVhJsuQNfJX1XNr",
+      "source_lp_account": "pUEKTzKpzk7sSrdNGVrJKoU2HvxQZH58p6unb3pCPUk",
+      "canonical_position": "9L513rB7VaoBFRYQCoVaEgRC1EZVC4BpWxM8N9iX88P5",
+      "amount_base_units": 100000000000000,
+      "rewards_earned": 0,
+      "economics_start_epoch": 120,
+      "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+      "account_sha256": {
+        "vault_stake": "e0cce94b04af540764577fb13c1bf24267fa123412b3cbe64a361927da040921",
+        "vault_activation": "8a04215b940593231352da5a822ced3d626698254e099c027ef8c495d1c97708",
+        "lp_mint": "52968b086b73b4f17d47651296684944545cbf146d9cf908a6878411af29820b",
+        "source_lp_account": "ee38781bf34afcd23b35b77d1629d7405217c7756ba84aa125b48a9857c725f2"
+      }
+    },
+    {
+      "vault_id": 3,
+      "rider": "C7jL3xSNsAye5StHBZsKuNd3atsQJNaAXnkUR9se3Gzt",
+      "vault_stake": "7cK9Hm6CHcN4TaAd8rb1P6XQfvXbJz1e95f4mZNdVDxt",
+      "vault_activation": "6BkSMEDCDwgWx4a2jf8aMZtsffpDt2YLGG7pf5R9KjV",
+      "lp_mint": "5GCNvHu5frd4KbtP5DhUQ5dUZnMAJXpP2QH5ZRsYXSkv",
+      "source_lp_account": "AfbRQ8VVgU6xmTURi8GBH9DvRqHAx8WoT5M22YkeQxoE",
+      "canonical_position": "Auvyk93hVEaTaNb4x3rxRtfmrWXwgDRGa5FjSH1Z1dq1",
+      "amount_base_units": 100000000000000,
+      "rewards_earned": 149811,
+      "economics_start_epoch": 120,
+      "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+      "account_sha256": {
+        "vault_stake": "978f6402d9c4ee5f06ff9a0d77535e2db6a6c170e192b252ea0a68a6ed3229c4",
+        "vault_activation": "d9fd6a437a32301af51286e7fac5fecfe07cab8538ba796d8ebb5c20c384ebad",
+        "lp_mint": "68cf0988170a9872ce5ca228fbf765793a3648c881fd61d7046f67e0701d955b",
+        "source_lp_account": "75b069b6a3c92f2a1e66f7856c464d67ed6e7d492d53056525d0360ca9ed97ee"
+      }
+    },
+    {
+      "vault_id": 4,
+      "rider": "8fi8VXVT1KJeeRLdaCh5LDm72hba76ox3Mee7jW2FY4L",
+      "vault_stake": "4oPdjcgZ9wFKgNc9b2LhbxDtvJuxDSPaEq9Ybtw6frS7",
+      "vault_activation": "8j5rGxTY2dygEvbKoXvurYSX3tZaMgvxEkpHuqBLyuGo",
+      "lp_mint": "8g43kAt5gWrFB5n1LRdmBxqyKLZhn7rwSbwrvENXKuB5",
+      "source_lp_account": "H9QZZiuyF19ZHVwKUjAhAWkM1YYGYHeVNkDgYPcXGXPp",
+      "canonical_position": "3SjDsBL5URHBTzF3nSRa8BC87BaH31kntD4vcRAE58Qe",
+      "amount_base_units": 100000000000000,
+      "rewards_earned": 0,
+      "economics_start_epoch": 120,
+      "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+      "account_sha256": {
+        "vault_stake": "d7cb2f18ae59676bcc84fed9f3cab381a5c8558e4b99f950263a900add0b7eeb",
+        "vault_activation": "7e63ad89f07209e72210b28800d62ab819e01c089415894c029d67ea79774615",
+        "lp_mint": "397fe4d45d08405d39b012e8eea79af9b051e23ab4921a3fc2b499f1901bce7c",
+        "source_lp_account": "8225cfa5f32b26eb4e7564587d9f20c8115fbb9f75386fb4c4eed38e52310edf"
+      }
+    },
+    {
+      "vault_id": 5,
+      "rider": "5qAU6BSdHaWAae88U31HNnTkzk1WkHKNN4tEJPftq4Zd",
+      "vault_stake": "5cUPAZcxhDBQvNg1dxVkZy2M3nPN8mn4skQTD4Q2J4St",
+      "vault_activation": "64JPvwcPyLrv8sEa1FEey3fbiGcdxcfJYGJ9uRGjWVbK",
+      "lp_mint": "DHpRojrdEbKHyWJJqNy3EuG82ksRmnxjUqQaYVmpkTiJ",
+      "source_lp_account": "9ffWh3i7Nhkbzzk9mmLz58e3Dvd9ir8krsw3a6wwpW63",
+      "canonical_position": "GnYgenuScFdXLKFsYCzeXjaC2bi2TRFcpGDHMSmbXN6C",
+      "amount_base_units": 100000000000000,
+      "rewards_earned": 149877,
+      "economics_start_epoch": 120,
+      "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+      "account_sha256": {
+        "vault_stake": "ffaf4b76bf48e55c2815afe89df261e735c4c93b03a6c1f698e6db41f7a59d1c",
+        "vault_activation": "2f8aaba60c84bd33ef131778ed6e7f9a4565e04cad785bfd3d930422d13ce9f1",
+        "lp_mint": "6b02a377d080b17b3678d0a18ef15de0b27501a9e072b6f4e8b5ae8a2f3508b4",
+        "source_lp_account": "e7d1808eeb26adb95a5e4d15b56df24109d3f007d61a01e4b8d7e4cda463ae32"
+      }
+    },
+    {
+      "vault_id": 6,
+      "rider": "9mLLguhcPAVsqX1bk6ZhSDpNcvFfZtcPbXfSF75eXMZe",
+      "vault_stake": "HybEwhcB5TVwpJFHkzyg7rA7Hbwnge8xgwLB9C4AWvpf",
+      "vault_activation": "FeMyB6PbVkrTXreVUFm4TcFcWkf7kbbaGv2THv1513qM",
+      "lp_mint": "CvHn6fADVyZNupubnsvagMcpBhxcqdvsq9FBYH8K7Hch",
+      "source_lp_account": "6wj4wEJ7enBs6nSSqaphZ8rCM2CsHyZzSyR7iRvsNzDz",
+      "canonical_position": "8B2g15X4VYsGWKthpF18QF2sZXhKmyjBECCh9VSTqTSZ",
+      "amount_base_units": 100000000000000,
+      "rewards_earned": 149877,
+      "economics_start_epoch": 120,
+      "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+      "account_sha256": {
+        "vault_stake": "d4cf1ad8f86ddc90b26d89ed12f996d927ac2ea302606eefb35d769bbf2d949d",
+        "vault_activation": "f5d89b33a677e3a826cfb35e680b2fac596ecabd17f1eb3d17d7813ff3d67f43",
+        "lp_mint": "db3d724a8b2d33effc8578580fba167bf7547053bd6570df0124af318557039e",
+        "source_lp_account": "adf5da12cb1ed4d0afe2d19520b2f1bc100ddbe6bfed15a5d8c35e7bb0f580b5"
+      }
+    },
+    {
+      "vault_id": 15,
+      "rider": "jPBYXEaVpGHGJ3SHkFZS6LB5R92MYTQpgvTDR9FGaWk",
+      "vault_stake": "5QjQcoRNgz1YwWemUbjwi7WEZGKMLbM12mNC6PM8eHrp",
+      "vault_activation": "HenNv4i43qxG4bdXtqeEeYVXLveJytKPUT1RZm1yo5fF",
+      "lp_mint": "EbLg2oQFdS37QQcfK744u4zExcDRYz2viQFbRrSpGAM7",
+      "source_lp_account": "D9n8kXHZkVZFHDftzyucJreQrp8pRpPPmqnu7r3GsJLG",
+      "canonical_position": "64XnRJBpAxcA6gDYtYeynu4MPCruMkACawC7FiDCuypo",
+      "amount_base_units": 100000000000,
+      "rewards_earned": 0,
+      "economics_start_epoch": 127,
+      "reason": "Pre-cohort Balance proof fixture whose default random in-memory rider key was not persisted.",
+      "account_sha256": {
+        "vault_stake": "3dc4b2c12105c4bf929654690b4844f2b2bffa2659fae80f456674e2992d4c23",
+        "vault_activation": "37e7707ab7ff1efcfa450cafaea0694975c37a69dcdf60d60a8ebc6990580302",
+        "lp_mint": "0b9d3b6bc1495f9f50ea69d5bbdfbee5607a797d561b79a4221ea987f1c53046",
+        "source_lp_account": "59bf897ebe1c8b2b435b522ea6bb0d4106e7e5c4dc015eebcb27792708948443"
+      }
+    }
+  ]
+}

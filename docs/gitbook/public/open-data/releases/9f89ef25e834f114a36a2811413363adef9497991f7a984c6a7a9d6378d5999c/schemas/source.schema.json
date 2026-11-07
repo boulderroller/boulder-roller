@@ -1,0 +1,150 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "admission": {
+      "type": "null"
+    },
+    "asset_id": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "content_sha256": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "kind": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "label": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "license_id": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "license_url": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "missing_reason": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "notices": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "basis": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "id": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "requirement": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "text": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "basis",
+          "requirement"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "provenance_status": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "source_updated_at": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "vertical_datum": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "asset_id",
+    "kind",
+    "label",
+    "provenance_status",
+    "content_sha256",
+    "source_updated_at",
+    "vertical_datum",
+    "missing_reason",
+    "license_id",
+    "license_url",
+    "admission",
+    "notices"
+  ],
+  "type": "object"
+}

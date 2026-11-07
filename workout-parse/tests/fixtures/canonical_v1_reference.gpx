@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="BoulderRoller Canonicalization Test">
+  <trk>
+    <name>canonical-v1-reference</name>
+    <trkseg>
+      <trkpt lat="40.123456" lon="-105.123456">
+        <ele>1600.0</ele>
+        <time>2020-01-01T00:00:00.000Z</time>
+        <extensions>
+          <hr>140</hr>
+          <cad>80</cad>
+          <power>200</power>
+        </extensions>
+      </trkpt>
+      <trkpt lat="40.123457" lon="-105.123457">
+        <ele>1600.5</ele>
+        <time>2020-01-01T00:00:00.700Z</time>
+        <extensions>
+          <hr>142</hr>
+          <cad>82</cad>
+          <power>210</power>
+        </extensions>
+      </trkpt>
+      <trkpt lat="40.123460" lon="-105.123460">
+        <ele>1601.0</ele>
+        <time>2020-01-01T00:00:01.400Z</time>
+        <extensions>
+          <hr>145</hr>
+          <cad>85</cad>
+          <power>220</power>
+        </extensions>
+      </trkpt>
+      <trkpt lat="40.123470" lon="-105.123470">
+        <ele>1599.5</ele>
+        <time>2020-01-01T00:00:03.000Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

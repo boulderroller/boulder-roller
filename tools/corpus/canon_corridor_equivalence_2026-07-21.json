@@ -1,0 +1,66 @@
+{
+  "authoritative_wkb_manifest": {
+    "line_model": "candidate_fingerprint_ascii_nul_raw_st_asewkb_bytes_lf_sorted_by_fingerprint",
+    "sha256": "d5c1d27838d7a1ff59676c123da7b9860ce4e9700477e536684797b0b03ad8ac"
+  },
+  "authority": {
+    "engine": {
+      "postgis_full_version": "POSTGIS=\"3.3.7 a0c7967\" [EXTENSION] PGSQL=\"170\" GEOS=\"3.12.1-CAPI-1.18.1\" PROJ=\"9.4.0\" LIBXML=\"2.12.6\" LIBJSON=\"0.17\" LIBPROTOBUF=\"1.4.1\" WAGYU=\"0.5.0 (Internal)\"",
+      "postgresql_server_version": "17.6"
+    },
+    "expression": "ST_Multi(ST_Buffer(ST_GeomFromText(centerline_wkt,4326)::geography,corridor_half_width_m)::geometry)",
+    "geometry_contract": "valid SRID 4326 MultiPolygon",
+    "valid_geometries": 57
+  },
+  "candidate_count": 57,
+  "canon_report_sha256": "de67892dc600affd97e0a5158f3a369ca29777b214ecce41be0e47060736bf0e",
+  "conclusion": "The local AEQD reconstruction is near-equivalent, not byte-identical, and classification-equivalent for this pinned replay.",
+  "generated_at": "2026-07-21T20:56:00Z",
+  "geometry_comparison": {
+    "hausdorff_m": {
+      "max": 0.221826,
+      "median": 0.140127,
+      "p95": 0.215425
+    },
+    "relative_area_difference_pct": {
+      "max": 0.049777,
+      "p95": 0.03296
+    },
+    "symmetric_difference_area_m2": {
+      "max": 109.476364,
+      "median": 29.083978,
+      "p95": 59.200455,
+      "sum": 1836.50054
+    }
+  },
+  "h3_tile_lists_local_vs_authoritative_geometry_identical": true,
+  "launch_reconstruction": {
+    "boundary_ratifications": 15,
+    "resolved_candidates": 57
+  },
+  "local_reconstruction": "per-candidate azimuthal-equidistant centerline buffer transformed back to EPSG:4326",
+  "model": "canon_corridor_equivalence_v1",
+  "reference_sensitivity": {
+    "authoritative_matches": 94,
+    "expected_passes": 98,
+    "local_matches": 94,
+    "mapped_identically": true,
+    "match_vector_identical": true,
+    "observed_patterns_each": 96,
+    "rejection_taxonomy_identical": true,
+    "templates": 11,
+    "timestamps_identical": true
+  },
+  "runtime": {
+    "detector_adapter_sha256": "346ec7f8ed753977cfed30e79d052593deff5379dbd8e7cc8f94b74f59a674f0",
+    "detector_implementation_sha256": "0221ef17d8ebcb589cc5d29749c7aaa131502203e89fc9af08567d7a38160830",
+    "native_parser_sha256": "9f2915020fe49af36880f09a132da81d92910d85824a9329b6b7eb65f7f1e31d",
+    "traversal_engine_sha256": "869b69c26f86d7d2229cd14b5d048e5dc24a5ca53113f18de4fbdd819ef05106"
+  },
+  "sample_membership_sensitivity": {
+    "affected_activity_candidate_pairs": 55,
+    "flipped_points": 55,
+    "pass_or_classification_changes": 0,
+    "tests": 73802172
+  }
+}

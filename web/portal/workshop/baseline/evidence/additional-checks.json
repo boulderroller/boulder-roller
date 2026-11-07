@@ -1,0 +1,74 @@
+[
+  {
+    "width": 1440,
+    "detail": "funding",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "detail": "withdrawal",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "detail": "audience",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "detail": "invalid-file",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "detail": "rider-results",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "detail": "power-curve",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "detail": "funding",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "detail": "withdrawal",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "detail": "audience",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "detail": "invalid-file",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "detail": "rider-results",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "detail": "power-curve",
+    "pass": true,
+    "errors": []
+  }
+]

@@ -1,0 +1,412 @@
+/* Analysis rules extracted without changing declarations or cascade order. */
+
+.ride-scrub-line {
+  stroke: var(--br-terrain);
+  stroke-width: 1;
+}
+.ride-analysis-keyboard {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.ride-analysis-keyboard:focus-visible {
+  width: calc(100% - 100px);
+  height: 22px;
+  left: 50px;
+  bottom: 0;
+  clip-path: none;
+}
+.ride-analysis-column {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+.ride-analysis-figure,
+.ride-metrics {
+  border-radius: 16px;
+  background: var(--br-paper-soft);
+  overflow: visible;
+}
+.ride-analysis-room {
+  max-width: 1160px;
+  margin: auto;
+  padding: 22px 40px 56px;
+}
+.ride-analysis-back {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 32px;
+  color: var(--br-ink-soft);
+  font-size: 13px;
+  line-height: var(--br-label-line-height);
+}
+.ride-analysis-back b {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--br-ink);
+}
+.ride-analysis-head {
+  margin-top: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--br-card);
+}
+.ride-analysis-head h1 {
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.ride-analysis-scope {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 14px;
+}
+.ride-analysis-scope .ride-words {
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.ride-analysis-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px !important;
+  padding-bottom: 18px;
+}
+.ride-analysis-stats dd {
+  font-size: 22px;
+}
+.ride-figure-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  min-height: 20px;
+}
+.ride-figure-line > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--br-ink-soft);
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-mono);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.ride-figure-line i {
+  width: 18px;
+  border-top: 2px solid var(--br-terrain);
+}
+.ride-instruments {
+  margin-top: 6px;
+  position: relative;
+}
+.ride-instruments svg,
+.ride-analysis-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-mono);
+  fill: var(--br-ink-soft);
+}
+.ride-instrument {
+  margin-bottom: 4px;
+  touch-action: pan-y;
+  cursor: crosshair;
+  user-select: none;
+}
+.ride-instrument-frame {
+  fill: none;
+  stroke: var(--br-ink-faint);
+  stroke-width: 0.75;
+}
+.ride-instrument-grid {
+  stroke: var(--br-ink-faint);
+  stroke-dasharray: 1 4;
+  stroke-width: 0.6;
+}
+.ride-instrument-tick,
+.ride-instrument-axis line {
+  stroke: var(--br-ink-soft);
+  stroke-width: 0.75;
+}
+.ride-instrument-label {
+  fill: var(--br-ink-soft);
+  letter-spacing: 0;
+}
+.ride-instrument-trace {
+  stroke: var(--br-ink-soft);
+  stroke-width: 1;
+  fill: none;
+}
+.ride-instrument-trace--power {
+  stroke: var(--br-ink);
+}
+.ride-threshold-line {
+  stroke: var(--br-ink-soft);
+  stroke-width: 0.7;
+  stroke-dasharray: 4 4;
+}
+.ride-threshold-label {
+  fill: var(--br-ink-soft);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+}
+.ride-readout-box {
+  fill: var(--br-paper);
+  stroke: var(--br-ink-faint);
+  stroke-width: 0.75;
+}
+.ride-instrument-readout {
+  fill: var(--br-ink);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+}
+.ride-scrub-distance {
+  height: 22px;
+  position: relative;
+}
+.ride-scrub-distance output {
+  position: absolute;
+  top: 1px;
+  transform: translateX(-50%);
+  padding: 0 8px;
+  border: 1px solid var(--br-terrain);
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-mono);
+  white-space: normal;
+}
+.ride-range-fill {
+  fill: var(--br-ink);
+  opacity: 0.08;
+}
+.ride-instrument-table {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.ride-analysis-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 40px;
+  margin-top: 34px;
+}
+.ride-analysis-figure {
+  padding: 14px 16px 12px;
+}
+.ride-analysis-table {
+  border-collapse: collapse;
+  width: 100%;
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-mono);
+  color: var(--br-ink);
+}
+.ride-analysis-table th {
+  padding: 4px 8px 6px;
+  text-align: left;
+  font-weight: 500;
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--br-ink-soft);
+  border-bottom: 1px solid var(--br-ink-faint);
+}
+.ride-analysis-table td {
+  padding: 5px 8px;
+  border-bottom: 1px dotted var(--br-card);
+  white-space: normal;
+}
+.ride-analysis-table tr:last-child td {
+  border-bottom: 0;
+}
+.ride-analysis-table td:not(:first-child),
+.ride-analysis-table th:not(:first-child) {
+  text-align: right;
+}
+.ride-curve-best {
+  stroke: var(--br-ink-soft);
+  fill: none;
+  stroke-dasharray: 4 4;
+}
+.ride-zone-bar {
+  width: 20%;
+  padding: 5px 4px !important;
+}
+.ride-zone-bar span {
+  display: block;
+  height: 9px;
+  min-width: 0;
+  border-radius: 1px;
+}
+.ride-analysis-threshold {
+  color: var(--br-ink-soft);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+}
+.ride-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+  padding: 6px 16px 10px;
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-mono);
+}
+.ride-metrics div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--br-card);
+}
+.ride-metrics dt {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--br-ink-soft);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  padding-top: 2px;
+}
+.ride-metrics dd {
+  font-weight: 600;
+  white-space: normal;
+}
+@media (max-width: 800px) and (min-width: 441px) {
+  .ride-analysis-columns {
+    gap: 24px;
+  }
+}
+@media (max-width: 440px) {
+  .ride-analysis-room {
+    padding: 14px 16px 44px;
+  }
+  .ride-analysis-back > span:last-child {
+    font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  }
+  .ride-analysis-scope {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .ride-analysis-scope .ride-words {
+    row-gap: 6px;
+  }
+  .ride-analysis-stats {
+    /* Preserve the shared room override that followed analysis before extraction. */
+    margin-top: 10px !important;
+    padding-bottom: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 12px;
+  }
+  .ride-analysis-stats dd {
+    font-size: 19px;
+  }
+  .ride-figure-line > span {
+    font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  }
+  .ride-analysis-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    margin-top: 26px;
+  }
+  .ride-analysis-columns > section,
+.ride-analysis-column {
+    width: 100%;
+  }
+  .ride-analysis-figure {
+    padding: 12px 10px 10px;
+  }
+  .ride-analysis-table {
+    margin-top: 10px;
+  }
+  .ride-analysis-table th,
+.ride-analysis-table td {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .ride-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+.ride-analysis-room .ride-instrument-fill {
+  fill: var(--climb-band-0);
+}
+.ride-analysis-room .ride-instrument-label-ground {
+  fill: var(--br-paper);
+}
+.ride-analysis-room .ride-scrub-dot {
+  fill: var(--br-terrain);
+  stroke: var(--br-paper);
+  stroke-width: 1.2;
+}
+.ride-analysis-room .ride-analysis-columns h2 {
+  color: var(--br-ink-soft);
+  font: 600 12px/16px var(--br-font-sans);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.ride-analysis-room .ride-analysis-columns .ride-words {
+  text-transform: none;
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+}
+.ride-analysis-room .ride-figure-line > span {
+  text-transform: none;
+}
+.ride-analysis-room .ride-analysis-log {
+  border-radius: 16px;
+  background: var(--br-paper-soft);
+  border-top: 0;
+}
+.ride-analysis-keyboard:focus-within {
+  position: static;
+  width: auto;
+  height: auto;
+  clip-path: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 0;
+}
+@media (max-width: 440px) {
+  .ride-instruments svg {
+    font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  }
+}
+.ride-room-page
+  .ride-analysis-room
+  :is(
+    .ride-figure-line > span,
+    .ride-analysis-columns h2,
+    .ride-analysis-columns .ride-words,
+    .ride-analysis-table th,
+    .ride-metrics dt
+  ) {
+  text-transform: none !important;
+}
+
+/* Let larger text wrap without sacrificing the numerical value. */
+.ride-metrics div { flex-wrap: wrap; }
+.ride-analysis-table th { overflow-wrap: normal; }
+.ride-analysis-stats > div { min-width: 0; }
+.ride-analysis-stats dd { overflow-wrap: anywhere; }
+
+/* Larger spacing may extend tick ink into the existing plot padding. */
+.ride-analysis-figure svg { overflow: visible; }
+
+/* Interactive number labels; the estimated series itself is unchanged. */
+.ride-estimate-readout {
+  text-align: right;
+  padding: 0 6px 5px 0;
+  color: var(--portal-public-ink);
+  font: var(--br-label-size)/var(--br-label-line-height) var(--br-font-mono);
+}
+.ride-analysis-threshold .estimated-value {
+  color: var(--portal-public-ink);
+}

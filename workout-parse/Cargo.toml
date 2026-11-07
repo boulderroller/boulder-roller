@@ -1,0 +1,98 @@
+[package]
+name = "workout-parse"
+version = "0.1.0"
+edition = "2021"
+authors = ["BoulderRoller Engineering"]
+description = "High-performance workout file parser with PyO3 bindings"
+license = "MIT"
+
+[lib]
+name = "workout_parse"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# PyO3 for Python bindings (optional; enabled by the default `python` feature)
+pyo3 = { version = "0.21", features = ["extension-module"], optional = true }
+numpy = { version = "0.21", optional = true }
+
+# UniFFI for Swift bindings (optional; enabled by the `swift` feature)
+uniffi = { version = "0.29", optional = true }
+
+# FIT file parsing
+fitparser = "0.7"
+
+# GPX/TCX parsing (XML)
+quick-xml = "0.31"
+
+# Date/time handling
+chrono = "0.4"
+
+# Compression
+flate2 = "1.0"
+zip = { version = "0.6", default-features = false, features = ["deflate"] }
+
+# Error handling
+thiserror = "1.0"
+
+# Climb signature generation
+sha2 = "0.10"
+md5 = "0.7"
+hex = "0.4"
+half = "2"
+blake3 = "1"
+
+# H3 hexagonal tiles
+h3o = "0.6"
+
+# OSM parsing (optional, for preprocessing)
+osmpbf = { version = "0.3", optional = true }
+tiff = { version = "0.9", optional = true }
+
+# CLI dependencies (optional, for preprocessing binary)
+clap = { version = "4", features = ["derive"], optional = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1" }
+
+[features]
+# `python` stays in the default set so `cargo build` / maturin behavior is
+# unchanged. Swift bindings are strictly opt-in and never co-exist with the
+# Python wheel build (`--no-default-features --features swift`).
+default = ["python"]
+python = ["dep:pyo3", "dep:numpy"]
+swift = ["dep:uniffi"]
+# Separate feature so the uniffi-bindgen CLI deps (clap et al.) never end up
+# in the iOS static library build.
+swift-cli = ["swift", "uniffi/cli"]
+osm = ["osmpbf", "clap", "tiff"]
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bin/uniffi_bindgen.rs"
+required-features = ["swift-cli"]
+
+[[bin]]
+name = "osm-preprocess"
+path = "src/bin/osm_preprocess.rs"
+required-features = ["osm"]
+
+[[bin]]
+name = "canon-compile"
+path = "src/bin/canon_compile.rs"
+required-features = ["osm"]
+
+[[bin]]
+name = "canon-export-profiles"
+path = "src/bin/canon_export_profiles.rs"
+required-features = ["osm"]
+
+[build-dependencies]
+pyo3-build-config = "0.21"
+
+[dev-dependencies]
+base64 = "0.22"
+proptest = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3

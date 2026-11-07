@@ -1,0 +1,18 @@
+{
+  "compiler_run_mode": "review_only",
+  "database_connections": 0,
+  "evidence_class": "local_existing_app_loopback_HTTP_GET",
+  "host": "127.0.0.1",
+  "lifespan": "off",
+  "limitation": "existing UI has endpoint markers, no exact gate lines or control/old-new overlay",
+  "map_profile_details_http_200": 32,
+  "pack_sha256": "29b48bceb9944226605723bca94b7e8ba3ea281987884c8afdaf681faf04bb4a",
+  "paired_candidates": 32,
+  "placement_approval": "APPROVALS.json (complete, including the Lafayette crest amendment; separate from local UI state)",
+  "port": 8783,
+  "provider_scans": 0,
+  "publish_ready_candidates": 0,
+  "retained_corridor_cell_counts_checked": 32,
+  "review_decisions_written": 0,
+  "review_page_http": 200
+}

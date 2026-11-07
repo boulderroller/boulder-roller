@@ -1,0 +1,22 @@
+{
+  "schema": "boulderroller.upload_init_handshake.v1",
+  "description": "Shared mobile/backend fixture for the upload init attestation boundary.",
+  "cases": [
+    {
+      "name": "canonical_stamped_gpx",
+      "source_path": "workout-parse/tests/fixtures/canonical_v1_reference.gpx",
+      "file_type": "gpx",
+      "file_hash": "a8cf643adf1417d3652469847aadb2514c7d98d47358ad074cc912480b486457",
+      "file_size": 1093,
+      "preliminary_ride_hash": "429a9a50c7fea255f284379e7e05b34c1fbb6fe64f90cd9415fb6a3232de33aa",
+      "parser_version": 1,
+      "expected_payload": {
+        "file_type": "gpx",
+        "file_hash": "a8cf643adf1417d3652469847aadb2514c7d98d47358ad074cc912480b486457",
+        "file_size": 1093,
+        "preliminary_ride_hash": "429a9a50c7fea255f284379e7e05b34c1fbb6fe64f90cd9415fb6a3232de33aa",
+        "parser_version": 1
+      }
+    }
+  ]
+}

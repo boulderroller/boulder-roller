@@ -1,0 +1,2159 @@
+{
+  "version": 1,
+  "project_ref": "qzkqjevawthyboymqrle",
+  "captured_read_only_on": "2026-08-25",
+  "catalog_state": "pre-152; fingerprint normalization excludes only the reviewed 152 additions and transitions listed here",
+  "expected_catalog_fingerprint": "3d9725c4885bd3a7968affae878e9d1fe5599f975c840b7dc8a1e995645bee2e",
+  "app_relations": [
+    {
+      "kind": "r",
+      "name": "achievements"
+    },
+    {
+      "kind": "r",
+      "name": "activities"
+    },
+    {
+      "kind": "r",
+      "name": "activity_streams"
+    },
+    {
+      "kind": "r",
+      "name": "activity_tile_samples"
+    },
+    {
+      "kind": "r",
+      "name": "admin_users"
+    },
+    {
+      "kind": "r",
+      "name": "arena_tiles"
+    },
+    {
+      "kind": "r",
+      "name": "arenas"
+    },
+    {
+      "kind": "r",
+      "name": "audit_log"
+    },
+    {
+      "kind": "r",
+      "name": "auth_identities"
+    },
+    {
+      "kind": "r",
+      "name": "auth_nonces"
+    },
+    {
+      "kind": "r",
+      "name": "auth_refresh_tokens"
+    },
+    {
+      "kind": "r",
+      "name": "background_job_locks"
+    },
+    {
+      "kind": "r",
+      "name": "beetle_card_level_history"
+    },
+    {
+      "kind": "r",
+      "name": "beetle_cards"
+    },
+    {
+      "kind": "r",
+      "name": "bot_links"
+    },
+    {
+      "kind": "r",
+      "name": "br_sql_migrations"
+    },
+    {
+      "kind": "r",
+      "name": "cal_allocation_batches"
+    },
+    {
+      "kind": "r",
+      "name": "cal_allocation_leaves"
+    },
+    {
+      "kind": "r",
+      "name": "cal_allocation_staging"
+    },
+    {
+      "kind": "r",
+      "name": "cal_daily_balances"
+    },
+    {
+      "kind": "r",
+      "name": "canon_climbs"
+    },
+    {
+      "kind": "r",
+      "name": "canon_corridor_cells"
+    },
+    {
+      "kind": "r",
+      "name": "canon_indexer_pending"
+    },
+    {
+      "kind": "r",
+      "name": "canon_indexer_quarantine"
+    },
+    {
+      "kind": "r",
+      "name": "canon_traversal_evidence"
+    },
+    {
+      "kind": "r",
+      "name": "canon_vault_activations"
+    },
+    {
+      "kind": "r",
+      "name": "claims"
+    },
+    {
+      "kind": "r",
+      "name": "climb_attestations"
+    },
+    {
+      "kind": "r",
+      "name": "climb_detection_profiles"
+    },
+    {
+      "kind": "r",
+      "name": "climb_reviews"
+    },
+    {
+      "kind": "r",
+      "name": "climb_vault"
+    },
+    {
+      "kind": "r",
+      "name": "comments"
+    },
+    {
+      "kind": "r",
+      "name": "daily_training_load"
+    },
+    {
+      "kind": "r",
+      "name": "deleted_wallets"
+    },
+    {
+      "kind": "r",
+      "name": "detection_profile_regions"
+    },
+    {
+      "kind": "r",
+      "name": "detector_configs"
+    },
+    {
+      "kind": "r",
+      "name": "distribution_receipts"
+    },
+    {
+      "kind": "r",
+      "name": "dung_burn_events"
+    },
+    {
+      "kind": "r",
+      "name": "dung_mint_events"
+    },
+    {
+      "kind": "r",
+      "name": "dung_supply_state"
+    },
+    {
+      "kind": "r",
+      "name": "economic_events"
+    },
+    {
+      "kind": "r",
+      "name": "emission_schedule"
+    },
+    {
+      "kind": "r",
+      "name": "epoch_distributions"
+    },
+    {
+      "kind": "r",
+      "name": "epoch_history"
+    },
+    {
+      "kind": "r",
+      "name": "epoch_leaderboard_snapshots"
+    },
+    {
+      "kind": "r",
+      "name": "epoch_state"
+    },
+    {
+      "kind": "r",
+      "name": "epochs"
+    },
+    {
+      "kind": "r",
+      "name": "fitness_metrics"
+    },
+    {
+      "kind": "r",
+      "name": "follows"
+    },
+    {
+      "kind": "r",
+      "name": "harvest_events"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_accounts"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_alloc_batches"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_beetle_cards"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_cal_mint_receipts"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_climb_completion_flows"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_climb_completion_receipts"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_climbs"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_completions"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_epoch_distributions"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_events"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_leaderboards"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_legends"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_program_config"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_ride_attestations"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_rider_souls"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_staker_allocations"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_stakes"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_supply"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_transactions"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_vault_activations"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_vault_counter"
+    },
+    {
+      "kind": "r",
+      "name": "indexed_vaults"
+    },
+    {
+      "kind": "r",
+      "name": "indexer_sync_state"
+    },
+    {
+      "kind": "r",
+      "name": "invite_code_usage"
+    },
+    {
+      "kind": "r",
+      "name": "invite_codes"
+    },
+    {
+      "kind": "r",
+      "name": "ios_diagnostics"
+    },
+    {
+      "kind": "r",
+      "name": "kudos"
+    },
+    {
+      "kind": "r",
+      "name": "leaderboard_disputes"
+    },
+    {
+      "kind": "r",
+      "name": "leaderboard_entries"
+    },
+    {
+      "kind": "r",
+      "name": "leaderboard_history"
+    },
+    {
+      "kind": "r",
+      "name": "leaderboard_sync_log"
+    },
+    {
+      "kind": "r",
+      "name": "local_legend_rollovers"
+    },
+    {
+      "kind": "r",
+      "name": "merkle_batches"
+    },
+    {
+      "kind": "r",
+      "name": "mint_events"
+    },
+    {
+      "kind": "r",
+      "name": "mobile_push_deliveries"
+    },
+    {
+      "kind": "r",
+      "name": "mobile_push_devices"
+    },
+    {
+      "kind": "r",
+      "name": "moderation_actions"
+    },
+    {
+      "kind": "r",
+      "name": "notification_preferences"
+    },
+    {
+      "kind": "r",
+      "name": "notifications"
+    },
+    {
+      "kind": "r",
+      "name": "patterns_climb"
+    },
+    {
+      "kind": "r",
+      "name": "patterns_exploration"
+    },
+    {
+      "kind": "r",
+      "name": "patterns_steady"
+    },
+    {
+      "kind": "r",
+      "name": "pipeline_versions"
+    },
+    {
+      "kind": "r",
+      "name": "points_config"
+    },
+    {
+      "kind": "r",
+      "name": "points_entitlement_config"
+    },
+    {
+      "kind": "r",
+      "name": "points_entitlement_tiers"
+    },
+    {
+      "kind": "r",
+      "name": "points_events"
+    },
+    {
+      "kind": "r",
+      "name": "privacy_zones"
+    },
+    {
+      "kind": "r",
+      "name": "proofs"
+    },
+    {
+      "kind": "r",
+      "name": "reconciliation_log"
+    },
+    {
+      "kind": "r",
+      "name": "replay_batches"
+    },
+    {
+      "kind": "r",
+      "name": "replay_ride_results"
+    },
+    {
+      "kind": "r",
+      "name": "reserved_usernames"
+    },
+    {
+      "kind": "r",
+      "name": "reward_ftp_authorities"
+    },
+    {
+      "kind": "r",
+      "name": "ride_climb_backfill_reviews"
+    },
+    {
+      "kind": "r",
+      "name": "ride_diffs"
+    },
+    {
+      "kind": "r",
+      "name": "ride_economic_completion_steps"
+    },
+    {
+      "kind": "r",
+      "name": "ride_economic_plan_audits"
+    },
+    {
+      "kind": "r",
+      "name": "ride_economic_plans"
+    },
+    {
+      "kind": "r",
+      "name": "ride_economic_review_resolutions"
+    },
+    {
+      "kind": "r",
+      "name": "ride_economic_reviews"
+    },
+    {
+      "kind": "r",
+      "name": "ride_media"
+    },
+    {
+      "kind": "r",
+      "name": "rides"
+    },
+    {
+      "kind": "r",
+      "name": "road_features"
+    },
+    {
+      "kind": "r",
+      "name": "scored_patterns"
+    },
+    {
+      "kind": "r",
+      "name": "segment_efforts"
+    },
+    {
+      "kind": "r",
+      "name": "segments"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_attempts"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_clock_contract"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_clock_program_lineage"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_jobs"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_lookup_table_generations"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_notification_outbox"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_planning_state"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_reconciliations"
+    },
+    {
+      "kind": "r",
+      "name": "settlement_week_runs"
+    },
+    {
+      "kind": "r",
+      "name": "social_reports"
+    },
+    {
+      "kind": "r",
+      "name": "strava_connections"
+    },
+    {
+      "kind": "r",
+      "name": "strava_imported_activities"
+    },
+    {
+      "kind": "r",
+      "name": "strava_webhook_subscriptions"
+    },
+    {
+      "kind": "r",
+      "name": "swanny_actions"
+    },
+    {
+      "kind": "r",
+      "name": "swanny_config"
+    },
+    {
+      "kind": "r",
+      "name": "swanny_earnings"
+    },
+    {
+      "kind": "r",
+      "name": "swanny_elections"
+    },
+    {
+      "kind": "r",
+      "name": "swanny_inactivity"
+    },
+    {
+      "kind": "r",
+      "name": "swanny_seats"
+    },
+    {
+      "kind": "r",
+      "name": "system_controls"
+    },
+    {
+      "kind": "r",
+      "name": "terrain_cell_history"
+    },
+    {
+      "kind": "r",
+      "name": "terrain_cells"
+    },
+    {
+      "kind": "r",
+      "name": "tge_conversions"
+    },
+    {
+      "kind": "r",
+      "name": "token_transactions"
+    },
+    {
+      "kind": "r",
+      "name": "tx_lifecycle"
+    },
+    {
+      "kind": "r",
+      "name": "user_profile_snapshots"
+    },
+    {
+      "kind": "r",
+      "name": "user_state"
+    },
+    {
+      "kind": "r",
+      "name": "users"
+    },
+    {
+      "kind": "r",
+      "name": "vault_backfill_jobs"
+    },
+    {
+      "kind": "r",
+      "name": "vault_cal_contributions"
+    },
+    {
+      "kind": "r",
+      "name": "vault_cal_pots"
+    },
+    {
+      "kind": "r",
+      "name": "vault_completions"
+    },
+    {
+      "kind": "r",
+      "name": "vault_creation_handoffs"
+    },
+    {
+      "kind": "r",
+      "name": "vault_distribution_config"
+    },
+    {
+      "kind": "r",
+      "name": "vault_distributions"
+    },
+    {
+      "kind": "r",
+      "name": "vault_dung_mints"
+    },
+    {
+      "kind": "r",
+      "name": "vault_leaderboards"
+    },
+    {
+      "kind": "r",
+      "name": "vault_shadow_usdc"
+    },
+    {
+      "kind": "r",
+      "name": "vault_stakes"
+    },
+    {
+      "kind": "r",
+      "name": "vesting_schedules"
+    },
+    {
+      "kind": "r",
+      "name": "waitlist"
+    },
+    {
+      "kind": "r",
+      "name": "wallet_points"
+    },
+    {
+      "kind": "r",
+      "name": "wallet_tile_history"
+    },
+    {
+      "kind": "S",
+      "name": "cal_allocation_batches_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "cal_allocation_leaves_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "cal_allocation_staging_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "climb_detection_profiles_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "detector_configs_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "economic_events_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "epoch_state_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "indexed_events_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "mobile_push_deliveries_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "pipeline_versions_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "points_entitlement_tiers_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "reconciliation_log_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "replay_ride_results_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "ride_diffs_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "ride_economic_completion_steps_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "ride_economic_plan_audits_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "ride_economic_reviews_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "road_features_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "terrain_cell_history_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "tx_lifecycle_id_seq"
+    },
+    {
+      "kind": "S",
+      "name": "user_profile_snapshots_id_seq"
+    },
+    {
+      "kind": "v",
+      "name": "beetle_card_leaderboard"
+    },
+    {
+      "kind": "v",
+      "name": "climb_leaderboards"
+    },
+    {
+      "kind": "v",
+      "name": "climb_vault_active"
+    },
+    {
+      "kind": "v",
+      "name": "confirmed_vault_completion_candidates"
+    },
+    {
+      "kind": "v",
+      "name": "deprecated_segment_to_pattern_mapping"
+    },
+    {
+      "kind": "v",
+      "name": "user_stats"
+    },
+    {
+      "kind": "v",
+      "name": "v_active_disputes"
+    },
+    {
+      "kind": "v",
+      "name": "v_cell_feedback_summary"
+    },
+    {
+      "kind": "v",
+      "name": "v_invalid_completions"
+    },
+    {
+      "kind": "v",
+      "name": "v_leaderboard_with_tenure"
+    },
+    {
+      "kind": "v",
+      "name": "v_vault_local_legends"
+    }
+  ],
+  "app_routines": [
+    {
+      "kind": "f",
+      "name": "acquire_background_job_lock",
+      "argument_types": "text, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "acquire_ride_economic_plan",
+      "argument_types": "uuid, uuid, integer"
+    },
+    {
+      "kind": "f",
+      "name": "add_cal_to_vault",
+      "argument_types": "character, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "add_points",
+      "argument_types": "text, numeric, text, text, text, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "admin_platform_kpis",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "advance_ride_economic_plan",
+      "argument_types": "uuid, uuid, text, text, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "append_economic_event",
+      "argument_types": "text, text, text, text, timestamp with time zone, integer, bigint, uuid, text, text, text, bigint, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "apply_halving",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "bind_ride_economic_plan_pipeline_version",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "bind_ride_reward_ftp",
+      "argument_types": "uuid, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "br_apply_vault_handoff_to_projection",
+      "argument_types": "bigint"
+    },
+    {
+      "kind": "f",
+      "name": "br_assign_distribution_settlement_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_assign_legend_settlement_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_assign_settlement_child_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_assign_settlement_job_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_assign_settlement_run_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_assign_vault_completion_settlement_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_attach_staged_vault_metadata",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_bind_vault_completion_evidence_version",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_bootstrap_settlement_planning",
+      "argument_types": "text, text, text, jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "br_claim_settlement_job",
+      "argument_types": "text, integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_claim_settlement_notification",
+      "argument_types": "text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "br_claim_settlement_preparation",
+      "argument_types": "text, integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_claim_settlement_reconciliation",
+      "argument_types": "text, integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_current_settlement_week_start",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_enforce_cal_tribute_plan_immutability",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_enforce_cal_tribute_step_immutability",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_enforce_completion_flow_immutability",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_fill_vault_handoff_metadata",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_finalize_vault_handoff_projection",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_finish_settlement_notification",
+      "argument_types": "uuid, uuid, boolean, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_finish_settlement_preparation",
+      "argument_types": "uuid, uuid, boolean, text, integer, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "br_finish_settlement_reconciliation",
+      "argument_types": "uuid, uuid, text, jsonb, text, text, text, text, boolean, text, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "br_get_or_plan_settlement_lookup_table",
+      "argument_types": "text, text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_guard_canon_traversal_evidence_immutable",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_guard_indexed_program_config_clock",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_guard_settlement_clock_contract_mutation",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_guard_settlement_clock_program_lineage_mutation",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_settlement_ambiguous",
+      "argument_types": "uuid, uuid, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_settlement_blocked",
+      "argument_types": "uuid, uuid, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_settlement_prepared",
+      "argument_types": "uuid, uuid, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_settlement_prepared",
+      "argument_types": "uuid, uuid, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_settlement_prepared_v0",
+      "argument_types": "uuid, uuid, text, integer, text, integer, text, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_settlement_submitted",
+      "argument_types": "uuid, uuid, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_mark_vault_handoff_projected",
+      "argument_types": "bigint, bigint"
+    },
+    {
+      "kind": "f",
+      "name": "br_materialize_settlement_week",
+      "argument_types": "text, text, text, text, text, jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "br_normalize_provider_import_source",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "br_parse_u64_text",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_parse_uint39_text",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_reap_stale_settlement_leases",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_record_settlement_lookup_table_ready",
+      "argument_types": "uuid, text, text, text, integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_refresh_distribution_dependents",
+      "argument_types": "numeric, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "br_refresh_ride_finalized_at",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "br_refresh_settlement_run",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "br_renew_settlement_lease",
+      "argument_types": "uuid, uuid, integer"
+    },
+    {
+      "kind": "f",
+      "name": "br_require_tribute_bound_review_resolution",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_require_v2_completion_step_transition",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_retry_repairable_settlement_jobs",
+      "argument_types": "integer"
+    },
+    {
+      "kind": "f",
+      "name": "br_return_settlement_to_preparation",
+      "argument_types": "uuid, uuid, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_rotate_settlement_lookup_table",
+      "argument_types": "uuid, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_set_settlement_precondition_intent",
+      "argument_types": "uuid, uuid, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_clock_contract_hash",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_clock_evidence_hash",
+      "argument_types": "bigint, text, numeric, text"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_clock_version_at",
+      "argument_types": "timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_clock_version_for_week",
+      "argument_types": "bigint"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_week",
+      "argument_types": "timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_week_end",
+      "argument_types": "bigint"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_week_finalization_time",
+      "argument_types": "bigint"
+    },
+    {
+      "kind": "f",
+      "name": "br_settlement_week_start",
+      "argument_types": "bigint"
+    },
+    {
+      "kind": "f",
+      "name": "br_sync_completion_flow_finalized_at",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_sync_epoch_distribution_finalized_at",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_sync_settlement_clock_contract",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "br_sync_vault_completion_finalized_at",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "calculate_distribution_with_fallback",
+      "argument_types": "integer, integer, integer, boolean"
+    },
+    {
+      "kind": "f",
+      "name": "calculate_lp_tokens",
+      "argument_types": "text, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "calculate_vault_time_bounds",
+      "argument_types": "integer, double precision"
+    },
+    {
+      "kind": "f",
+      "name": "can_flag_leaderboard",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "can_mint",
+      "argument_types": "numeric, text"
+    },
+    {
+      "kind": "f",
+      "name": "canonical_ledger_numeric",
+      "argument_types": "numeric"
+    },
+    {
+      "kind": "f",
+      "name": "check_invite_code",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "check_swanny_inactivity",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "checkpoint_ride_economic_retry",
+      "argument_types": "uuid, uuid, text, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "checkpoint_ride_economic_terminal_projection",
+      "argument_types": "uuid, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "claim_inactive_seat",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "claim_vault_slot_atomic",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "cleanup_old_epoch_snapshots",
+      "argument_types": "integer"
+    },
+    {
+      "kind": "f",
+      "name": "compare_snapshot_to_live",
+      "argument_types": "integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "complete_backfill_job",
+      "argument_types": "uuid, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "complete_ride_media_upload",
+      "argument_types": "uuid, uuid, integer"
+    },
+    {
+      "kind": "f",
+      "name": "confirm_canon_vault_activation",
+      "argument_types": "uuid, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "confirm_ride_economic_completion",
+      "argument_types": "uuid, uuid, integer, text, text, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "consume_invite_code",
+      "argument_types": "text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "convert_vault_cal_to_dung",
+      "argument_types": "character, integer"
+    },
+    {
+      "kind": "f",
+      "name": "count_global_earnings_leaderboard",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "count_global_kom_leaderboard",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "create_leaderboard_notification",
+      "argument_types": "text, text, text, text, integer, integer, text, numeric, integer"
+    },
+    {
+      "kind": "f",
+      "name": "create_payout_notifications",
+      "argument_types": "text, text, integer, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "deduct_cal",
+      "argument_types": "uuid, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "economic_event_hash_v2",
+      "argument_types": "text, text, text, numeric, numeric, timestamp with time zone, text"
+    },
+    {
+      "kind": "f",
+      "name": "elect_swanny",
+      "argument_types": "text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "enforce_plan_reward_ftp_snapshot",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "enforce_ride_provider_activity_identity",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "enforce_ride_reward_ftp_snapshot",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "enforce_vault_completion_chain_authority",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "enter_ride_economic_review",
+      "argument_types": "uuid, uuid, boolean, text, text, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "fail_backfill_job",
+      "argument_types": "uuid, text"
+    },
+    {
+      "kind": "f",
+      "name": "finalize_canon_vault_activation",
+      "argument_types": "text, text, bigint, text"
+    },
+    {
+      "kind": "f",
+      "name": "flag_leaderboard_entry",
+      "argument_types": "text, integer, text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "freeze_committed_canon_climb",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "freeze_committed_canon_corridor_cell",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "freeze_ride_economic_plan",
+      "argument_types": "jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "freeze_ride_economic_plan_unreviewed",
+      "argument_types": "jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "freeze_ride_economic_plan_unreviewed_v1",
+      "argument_types": "jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "freeze_ride_economic_plan_unreviewed_without_cal_tribute_policy",
+      "argument_types": "jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "freeze_ride_economic_plan_without_cal_tribute_policy",
+      "argument_types": "jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "freeze_ride_economic_plan_without_reward_ftp",
+      "argument_types": "jsonb, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "get_attempt_count",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_canon_climb_runtime_states",
+      "argument_types": "uuid[]"
+    },
+    {
+      "kind": "f",
+      "name": "get_canon_vault_preparation",
+      "argument_types": "uuid, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_canon_vault_release_candidate",
+      "argument_types": "bigint"
+    },
+    {
+      "kind": "f",
+      "name": "get_confirmed_local_legend_candidates",
+      "argument_types": "numeric, timestamp with time zone, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "get_current_epoch",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "get_current_epoch_for_history",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "get_detection_config_for_h3",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_emission_multiplier",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "get_epoch_leaderboard_snapshot",
+      "argument_types": "integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_epoch_snapshot_summary",
+      "argument_types": "integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_global_earnings_leaderboard",
+      "argument_types": "text, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_global_kom_leaderboard",
+      "argument_types": "text, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_leaderboard_motivation",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_leaderboard_pcts",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "get_leaderboard_snapshot",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_nearby_riders",
+      "argument_types": "text, text, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_points_per_dung",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "get_ready_vault_backfill_jobs",
+      "argument_types": "integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_ride_economic_plan",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "get_ride_economic_review",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "get_ride_processing_progress",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "get_tile_attribution",
+      "argument_types": "text[]"
+    },
+    {
+      "kind": "f",
+      "name": "get_user_global_earnings_rank",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_user_global_kom_rank",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_user_leaderboard_history",
+      "argument_types": "text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_user_leaderboard_positions",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_user_leaderboard_stats",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_user_ride_streak",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_completion_counts",
+      "argument_types": "text, timestamp with time zone, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_full_leaderboard",
+      "argument_types": "text, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_leaderboard_history",
+      "argument_types": "text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_position_with_context",
+      "argument_types": "text, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_swanny",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_total_riders",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_vault_user_rank",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "get_vaults_needing_sync",
+      "argument_types": "timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "get_wallet_entitlements",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "get_wallet_notifications",
+      "argument_types": "text, integer, boolean, text[]"
+    },
+    {
+      "kind": "f",
+      "name": "get_wallet_unread_count",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "increment_replay_progress",
+      "argument_types": "uuid, boolean"
+    },
+    {
+      "kind": "f",
+      "name": "increment_ride_reprocess",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "increment_vault_completions",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "is_personal_record",
+      "argument_types": "text, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "is_points_period_active",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "is_username_available",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "link_snapshot_to_distribution",
+      "argument_types": "integer, text, uuid"
+    },
+    {
+      "kind": "f",
+      "name": "mark_ride_economic_completion_projected",
+      "argument_types": "uuid, uuid, integer"
+    },
+    {
+      "kind": "f",
+      "name": "mark_ride_economic_review",
+      "argument_types": "uuid, uuid, text, text, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "mark_ride_economic_terminal_projected",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "mark_staging_allocated_atomic",
+      "argument_types": "bigint[], bigint"
+    },
+    {
+      "kind": "f",
+      "name": "mark_vault_synced",
+      "argument_types": "bigint, text"
+    },
+    {
+      "kind": "f",
+      "name": "mark_wallet_notifications_read",
+      "argument_types": "text, uuid[]"
+    },
+    {
+      "kind": "f",
+      "name": "points_wallet_balances_current",
+      "argument_types": "numeric, integer"
+    },
+    {
+      "kind": "f",
+      "name": "prevent_ledger_mutation",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "prevent_new_segments",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "prevent_pipeline_version_mutation",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "prevent_reward_ftp_authority_mutation",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "queue_vault_backfill",
+      "argument_types": "bigint, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "queue_vault_distribution",
+      "argument_types": "integer, character, integer, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "rebuild_all_vault_leaderboards",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "rebuild_vault_leaderboard",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "reconcile_confirmed_vault_completion",
+      "argument_types": "uuid, uuid, integer"
+    },
+    {
+      "kind": "f",
+      "name": "reconcile_waiting_vault_backfills",
+      "argument_types": "integer"
+    },
+    {
+      "kind": "f",
+      "name": "record_leaderboard_bump",
+      "argument_types": "text, text, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "record_leaderboard_entry",
+      "argument_types": "text, text, integer, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "record_mint",
+      "argument_types": "numeric, text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "record_swanny_action",
+      "argument_types": "uuid, text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "record_vault_completion_projection",
+      "argument_types": "text, text, text, integer, timestamp with time zone, boolean, text, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "record_vault_completion_with_best_time",
+      "argument_types": "text, text, text, integer, integer"
+    },
+    {
+      "kind": "f",
+      "name": "record_vault_completion_with_metadata",
+      "argument_types": "text, text, text, integer, integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "register_reward_ftp_authority",
+      "argument_types": "uuid, integer, text, jsonb, text, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "reject_ride_economic_audit_mutation",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "release_background_job_lock",
+      "argument_types": "text, text"
+    },
+    {
+      "kind": "f",
+      "name": "release_canon_vault_activation",
+      "argument_types": "uuid, text, boolean, bigint, bigint, text"
+    },
+    {
+      "kind": "f",
+      "name": "remove_leaderboard_entry",
+      "argument_types": "text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "require_committed_canon_successor",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "require_economic_event_pipeline_version",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "require_ride_economic_uint",
+      "argument_types": "jsonb, text, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "reserve_canon_vault_activation",
+      "argument_types": "uuid, text, text, text, text, text, text, bigint, text, text, text, bigint"
+    },
+    {
+      "kind": "f",
+      "name": "resolve_dispute",
+      "argument_types": "uuid, text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "resolve_ride_economic_review",
+      "argument_types": "uuid, bigint, uuid, uuid, text, text, text, jsonb, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "ride_economic_frozen_facts",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "ride_economic_known_finalized_evidence",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "ride_economic_prior_checkpoint",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "segments_search",
+      "argument_types": "double precision, double precision, double precision, double precision, text"
+    },
+    {
+      "kind": "f",
+      "name": "set_ride_media_cover",
+      "argument_types": "uuid, uuid"
+    },
+    {
+      "kind": "f",
+      "name": "snapshot_all_leaderboards_for_epoch",
+      "argument_types": "integer"
+    },
+    {
+      "kind": "f",
+      "name": "snapshot_vault_leaderboard",
+      "argument_types": "integer, text"
+    },
+    {
+      "kind": "f",
+      "name": "stage_confirmed_vault_creation",
+      "argument_types": "bigint, text, text, text, text, double precision, double precision, double precision, double precision, text, text, uuid, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "stake_cal_atomic",
+      "argument_types": "text, text, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "stake_cal_with_cap",
+      "argument_types": "text, text, numeric, numeric, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "stake_points",
+      "argument_types": "text, text, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "start_backfill_job",
+      "argument_types": "uuid"
+    },
+    {
+      "kind": "f",
+      "name": "sync_points_compat_from_ledger",
+      "argument_types": "uuid, text, numeric, text, numeric, text, text, jsonb, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "trg_calculate_vault_time_bounds",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "unstake_cal_atomic",
+      "argument_types": "text, text, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "update_dispute_updated_at",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_follow_counts",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_gps_location",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_leaderboard_earnings",
+      "argument_types": "text, integer, numeric, numeric"
+    },
+    {
+      "kind": "f",
+      "name": "update_leaderboard_tenure",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_privacy_zone_timestamp",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_ride_phase_status",
+      "argument_types": "uuid, integer, boolean, text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "update_updated_at",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_updated_at_column",
+      "argument_types": ""
+    },
+    {
+      "kind": "f",
+      "name": "update_vault_leaderboard",
+      "argument_types": "text, text, integer, integer, uuid, timestamp with time zone, text, uuid"
+    },
+    {
+      "kind": "f",
+      "name": "update_vault_leaderboard_with_notifications",
+      "argument_types": "text, text, integer, integer, uuid, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "update_vault_time_bounds",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "validate_climb_time",
+      "argument_types": "text, integer"
+    },
+    {
+      "kind": "f",
+      "name": "validate_invite_code",
+      "argument_types": "text, text, text, text"
+    },
+    {
+      "kind": "f",
+      "name": "validate_ride_economic_chain_evidence",
+      "argument_types": "uuid, jsonb"
+    },
+    {
+      "kind": "f",
+      "name": "validate_username",
+      "argument_types": "text"
+    },
+    {
+      "kind": "f",
+      "name": "wallet_balance_at",
+      "argument_types": "text, text, timestamp with time zone"
+    },
+    {
+      "kind": "f",
+      "name": "wallet_balance_current",
+      "argument_types": "text, text"
+    }
+  ],
+  "views_to_convert": [
+    "beetle_card_leaderboard",
+    "climb_leaderboards",
+    "climb_vault_active",
+    "deprecated_segment_to_pattern_mapping",
+    "user_stats",
+    "v_active_disputes",
+    "v_cell_feedback_summary",
+    "v_invalid_completions",
+    "v_leaderboard_with_tenure",
+    "v_vault_local_legends"
+  ],
+  "provider_relation_exceptions": [
+    {
+      "kind": "r",
+      "name": "spatial_ref_sys",
+      "owner": "supabase_admin"
+    },
+    {
+      "kind": "v",
+      "name": "geography_columns",
+      "owner": "supabase_admin"
+    },
+    {
+      "kind": "v",
+      "name": "geometry_columns",
+      "owner": "supabase_admin"
+    }
+  ],
+  "predecessor_152": {
+    "relations": [
+      {
+        "kind": "r",
+        "name": "deleted_account_tombstones"
+      },
+      {
+        "kind": "r",
+        "name": "deletion_requests"
+      }
+    ],
+    "routines": [
+      {
+        "kind": "f",
+        "name": "account_deletion_ride_write_fence_statement",
+        "argument_types": ""
+      },
+      {
+        "kind": "f",
+        "name": "account_deletion_write_fence",
+        "argument_types": ""
+      },
+      {
+        "kind": "f",
+        "name": "authorize_account_deletion_storage",
+        "argument_types": "uuid, uuid, jsonb"
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_assert_wallet_write_allowed",
+        "argument_types": "text"
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_db_blockers",
+        "argument_types": "uuid, text"
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_invite_usage_fence",
+        "argument_types": ""
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_personal_residue",
+        "argument_types": "uuid, text, text, uuid[], uuid"
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_storage_paths",
+        "argument_types": "uuid"
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_wallet_fingerprint",
+        "argument_types": "text"
+      },
+      {
+        "kind": "f",
+        "name": "br_account_deletion_write_fence_active",
+        "argument_types": ""
+      },
+      {
+        "kind": "f",
+        "name": "br_consume_auth_nonce",
+        "argument_types": "uuid, text, timestamp with time zone"
+      },
+      {
+        "kind": "f",
+        "name": "br_get_auth_account_authority",
+        "argument_types": "text"
+      },
+      {
+        "kind": "f",
+        "name": "br_get_or_create_active_user",
+        "argument_types": "uuid, text, text"
+      },
+      {
+        "kind": "f",
+        "name": "br_is_account_deleted",
+        "argument_types": "text"
+      },
+      {
+        "kind": "f",
+        "name": "br_issue_auth_nonce",
+        "argument_types": "uuid, text, text, timestamp with time zone, timestamp with time zone, text"
+      },
+      {
+        "kind": "f",
+        "name": "br_jsonb_replace_exact_string",
+        "argument_types": "jsonb, text, text"
+      },
+      {
+        "kind": "f",
+        "name": "br_lock_account_deletion_wallet",
+        "argument_types": "text"
+      },
+      {
+        "kind": "f",
+        "name": "br_user_account_lifecycle_fence",
+        "argument_types": ""
+      },
+      {
+        "kind": "f",
+        "name": "claim_account_deletion_request",
+        "argument_types": "uuid, uuid, integer"
+      },
+      {
+        "kind": "f",
+        "name": "create_account_deletion_request",
+        "argument_types": "uuid, uuid, text, boolean, text, jsonb, jsonb"
+      },
+      {
+        "kind": "f",
+        "name": "fail_account_deletion_dispatch",
+        "argument_types": "uuid"
+      },
+      {
+        "kind": "f",
+        "name": "fail_account_deletion_request",
+        "argument_types": "uuid, uuid, text"
+      },
+      {
+        "kind": "f",
+        "name": "finalize_account_anonymization",
+        "argument_types": "uuid, uuid, uuid"
+      },
+      {
+        "kind": "f",
+        "name": "list_recoverable_account_deletions",
+        "argument_types": "integer"
+      },
+      {
+        "kind": "f",
+        "name": "mark_account_deletion_blocked",
+        "argument_types": "uuid, jsonb, uuid"
+      },
+      {
+        "kind": "f",
+        "name": "mark_account_deletion_storage_removed",
+        "argument_types": "uuid, uuid, jsonb"
+      },
+      {
+        "kind": "f",
+        "name": "record_account_deletion_storage_receipt",
+        "argument_types": "uuid, uuid, text, text"
+      },
+      {
+        "kind": "f",
+        "name": "renew_account_deletion_lease",
+        "argument_types": "uuid, uuid, integer"
+      },
+      {
+        "kind": "f",
+        "name": "retry_account_deletion_request",
+        "argument_types": "uuid, jsonb"
+      },
+      {
+        "kind": "f",
+        "name": "support_account_deletion_request",
+        "argument_types": "uuid, jsonb, uuid"
+      }
+    ],
+    "excluded_new_columns": [
+      {
+        "relation": "users",
+        "name": "account_state"
+      },
+      {
+        "relation": "users",
+        "name": "account_deletion_locked_at"
+      },
+      {
+        "relation": "users",
+        "name": "anonymous_marker"
+      },
+      {
+        "relation": "users",
+        "name": "account_deleted_at"
+      },
+      {
+        "relation": "users",
+        "name": "account_deletion_request_id"
+      }
+    ],
+    "normalized_relation_security": [
+      "deleted_wallets"
+    ],
+    "normalized_routine_security": [
+      {
+        "kind": "f",
+        "name": "consume_invite_code",
+        "argument_types": "text, text, text, text"
+      }
+    ]
+  }
+}

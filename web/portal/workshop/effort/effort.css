@@ -1,0 +1,8 @@
+.effort-page .effort-columns{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;margin-top:20px;align-items:start}
+.effort-page .effort-primary,.effort-page .effort-secondary{display:grid;gap:28px;min-width:0}
+.effort-page .effort-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.effort-page .effort-history{order:2}
+.effort-page .effort-zones{order:1}
+.effort-page .effort-metrics{display:grid;gap:0}
+@media(max-width:1100px){.effort-page .effort-columns{grid-template-columns:minmax(0,1fr)}.effort-page .effort-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.effort-page .effort-history{order:1}.effort-page .effort-zones{order:2}.effort-page .effort-columns{gap:28px}.effort-page .effort-secondary{grid-template-columns:minmax(0,1fr)}}

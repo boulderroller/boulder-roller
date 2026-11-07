@@ -1,0 +1,121 @@
+{
+  "asset": "Selected B Wises homepage relief",
+  "blender_version": "4.3.2",
+  "source": {
+    "source": "USGS_13_n41w076_20221115.tif",
+    "bbox_lonlat": [
+      -75.248,
+      40.039,
+      -75.199,
+      40.074
+    ],
+    "grid_shape": [
+      379,
+      530
+    ],
+    "terrain_range_m": [
+      5.842855453491211,
+      132.1729278564453
+    ],
+    "native_spacing_m": [
+      7.889452770934297,
+      10.290000011070674
+    ],
+    "surface_smoothing_native_cells_sigma": 0,
+    "vertical_exaggeration": 1,
+    "contour_interval_m": 2,
+    "road_source": "In the bag retained real recording, August 28 2016: Wises sample times 6686 <= t <= 6921, 236 original GPS points",
+    "road_sample_count": 236,
+    "road_sample_time_range_s": [
+      6686,
+      6921
+    ],
+    "road_recorded_distance_bounds_m": [
+      49130.73,
+      50287.78
+    ],
+    "road_plan_endpoints_lonlat": [
+      [
+        -75.219554,
+        40.057577
+      ],
+      [
+        -75.23085,
+        40.053937
+      ]
+    ],
+    "recording_sha256": "309a48f315c75647f3282027beab8f1b5a4106a33050a538da1178ea113d0d8b",
+    "canonical_road_id_for_reference": "43f15658-a824-438d-9925-e61c67ddabe9",
+    "camera_geographic_bearing_deg": 273,
+    "camera_elevation_deg": 18,
+    "output_image": "wises-ridge-blender.png",
+    "render": "Blender 4.3.2 Cycles, 2200x1550, 32 samples, denoised; transparent where geometry absent",
+    "evidence_class": "Local rendering of native measured terrain and recorded historical Wises GPS interval, true 1x height; no current production claim",
+    "cosmetic_treatment": "Paper/olive lighting, smooth mesh normals only; small vertical drawing offsets separate contour and road strokes from the surface. Terrain vertices, recorded GPS plan geometry and contour levels are unmodified. GPS line is draped onto DEM; source ride altitude is not substituted for landscape elevation."
+  },
+  "source_assets": {
+    "wises-native-window.npz": {
+      "bytes": 687008,
+      "sha256": "8c42cda737400b462021a56c15abd2c2f2ed304b5d8fcc5e434ef0b19055f6ad"
+    },
+    "wises-contours-and-road.json.gz": {
+      "bytes": 2460283,
+      "sha256": "1061ffc50746156b6cf7d8191c772789ba4aaa5ab1701f2d9e863316b53085b7",
+      "uncompressed_bytes": 7073524,
+      "uncompressed_sha256": "60f96afd974ee74b6fcfd963e3894461d02cba0526139de2fbbb885bb1be894f"
+    },
+    "wises-recorded-gps.json": {
+      "bytes": 31289,
+      "sha256": "cc2b59a73369d6a33d561a149ae6ae807a05b9cf286b5d63629c15f4476d9fe7"
+    },
+    "wises-endpoint-meshes.json.gz": {
+      "bytes": 25453,
+      "sha256": "f6061e54b05ed28991228f8f2b6934f2aadfed11db34d40f2fa7a3f48e43ad38",
+      "uncompressed_bytes": 150462,
+      "uncompressed_sha256": "6d49586fbebd66fba93a8bc4e9ac4b2a888aa620b4973cad3c1fcb3b9d0a5607",
+      "purpose": "Exact selected endpoint glyph meshes, avoiding non-deterministic Blender primitive edge ordering. No terrain or GPS geometry is derived from this glyph file."
+    }
+  },
+  "geographic_plan_frame": {
+    "lon0": -75.2248,
+    "lat0": 40.056,
+    "east_meters_per_degree": "111320*cos(deg2rad(lat0))",
+    "north_meters_per_degree": 111132
+  },
+  "deterministic_variation_seed": 10052026,
+  "cycles_seed": 0,
+  "vertical_exaggeration": 1,
+  "contour_interval_m": 2,
+  "native_geometry_smoothing": false,
+  "material_geometry_bump_displacement_noise": false,
+  "selected_camera": {
+    "bearing_deg": 273,
+    "elevation_deg": 18,
+    "target_m": [
+      0,
+      0,
+      75
+    ],
+    "orthographic_scale_m": 1500
+  },
+  "selected_B_treatment": "Original scene + v2 seeded per-contour stroke/ink and color-only grain + grazing soft daylight/neutral upper color + quieter minor ink + annotation shadow suppression. No camera C change.",
+  "expected_final_fixed_fingerprints": {
+    "geometry_and_control_points": "2651a41608ad5cf03d6ad90cfa0096c9fbcf6c10019600c7320decf5baff2545",
+    "camera": "1aa8f6c1e655c5e41c59865fa2227a619ad83978fda488afe6316b9c875960bd",
+    "lights": "bfb1aabf7a563279eb478a5e05e29c02c183924e6638ce853a2c0932fa22a6f6",
+    "world": "94344082571583a88b4335d3fa51394337a68b08b2c416811cb5949303bfca5c",
+    "road_and_endpoints_including_materials_and_widths": "8de0613c6928b9f843f4354224dea0fd1feade0abe1e6272e7ff2ddac2a66a24",
+    "all_curve_widths_and_annotation_shadow_visibility": "4e8cedddd0dbee5c943c81b0ab3c6bac78864864c1d173a275dfa02fcee6b35e",
+    "all_object_ray_visibility": "0917cd069b5085ca85b88ccadc5137c85749c02d863f95015475f000d5b74ede",
+    "all_materials": "18a77d0326632ccf5d82dad9fbf42f5049b983473bea38d50b198afff4b42b96",
+    "fixed_color_and_render_treatment": "15318686737ea21a3b1af9f67ec90d6d61bef0cbc81d31cc7192ecc01da12f07"
+  },
+  "render_resolution": [
+    3080,
+    2170
+  ],
+  "render_samples": 64,
+  "output_color_mode": "RGBA",
+  "evidence_class": "Reproducible local historical-recording/measured-terrain source, not deployed or new rider evidence",
+  "serialization_cleanup": "Remove only four known zero-user startup/base materials omitted by selected serialized scene."
+}

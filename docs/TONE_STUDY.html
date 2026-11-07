@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Tone Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+
+    body {
+      background: #0D0D0F;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .study-intro {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 48px 40px;
+    }
+
+    .study-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #7C8AFF;
+      margin-bottom: 16px;
+    }
+
+    .study-title {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .study-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,0.5);
+      max-width: 700px;
+      line-height: 1.7;
+    }
+
+    .palette-section {
+      padding: 60px 48px;
+      margin-bottom: 20px;
+    }
+
+    .palette-header {
+      max-width: 1400px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .palette-info h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .palette-info p {
+      font-size: 15px;
+      opacity: 0.6;
+      max-width: 500px;
+    }
+
+    .palette-swatches {
+      display: flex;
+      gap: 8px;
+    }
+
+    .swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .component-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1100px) {
+      .component-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .component-grid { grid-template-columns: 1fr; }
+      .palette-section { padding: 40px 24px; }
+      .study-intro { padding: 40px 24px; }
+    }
+
+    /* PALETTE 1: SLATE GREY */
+    .slate {
+      --bg-1: #12141A;
+      --bg-2: #181B22;
+      --bg-3: #1E222B;
+      --bg-4: #252A35;
+      --text-100: #FFFFFF;
+      --text-90: rgba(255,255,255,0.92);
+      --text-70: rgba(255,255,255,0.70);
+      --text-50: rgba(255,255,255,0.50);
+      --text-30: rgba(255,255,255,0.30);
+      --text-08: rgba(255,255,255,0.08);
+      --mint: #3DFFA3;
+      --violet: #818CF8;
+      --coral: #FF7A8A;
+      --amber: #FBBF24;
+      background: var(--bg-1);
+      color: var(--text-90);
+    }
+
+    /* PALETTE 2: WARM CHARCOAL */
+    .warm {
+      --bg-1: #141312;
+      --bg-2: #1C1A18;
+      --bg-3: #24211E;
+      --bg-4: #2D2924;
+      --text-100: #FAF8F5;
+      --text-90: rgba(250,248,245,0.92);
+      --text-70: rgba(250,248,245,0.70);
+      --text-50: rgba(250,248,245,0.50);
+      --text-30: rgba(250,248,245,0.30);
+      --text-08: rgba(250,248,245,0.08);
+      --mint: #4AE6A0;
+      --violet: #A78BFA;
+      --coral: #FF8B94;
+      --amber: #F9C846;
+      background: var(--bg-1);
+      color: var(--text-90);
+    }
+
+    /* PALETTE 3: DEEP NAVY */
+    .navy {
+      --bg-1: #0C0E14;
+      --bg-2: #12151E;
+      --bg-3: #181C28;
+      --bg-4: #1F2433;
+      --text-100: #FFFFFF;
+      --text-90: rgba(255,255,255,0.92);
+      --text-70: rgba(255,255,255,0.70);
+      --text-50: rgba(255,255,255,0.50);
+      --text-30: rgba(255,255,255,0.30);
+      --text-08: rgba(255,255,255,0.08);
+      --mint: #34EEB4;
+      --violet: #7C8AFF;
+      --coral: #FF6B7A;
+      --amber: #FFD166;
+      background: var(--bg-1);
+      color: var(--text-90);
+    }
+
+    /* PALETTE 4: LIGHT MODE */
+    .light {
+      --bg-1: #F8F9FC;
+      --bg-2: #FFFFFF;
+      --bg-3: #F1F3F8;
+      --bg-4: #E8EBF2;
+      --text-100: #0F1218;
+      --text-90: rgba(15,18,24,0.92);
+      --text-70: rgba(15,18,24,0.70);
+      --text-50: rgba(15,18,24,0.50);
+      --text-30: rgba(15,18,24,0.30);
+      --text-08: rgba(15,18,24,0.06);
+      --mint: #00B868;
+      --violet: #6366F1;
+      --coral: #E5484D;
+      --amber: #D97706;
+      background: var(--bg-1);
+      color: var(--text-90);
+    }
+
+    .card {
+      background: var(--bg-2);
+      border: 1px solid var(--text-08);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .metric {
+      padding: 24px;
+      position: relative;
+    }
+
+    .metric::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .metric.mint::before { background: linear-gradient(90deg, var(--mint), transparent 70%); }
+    .metric.violet::before { background: linear-gradient(90deg, var(--violet), transparent 70%); }
+    .metric.coral::before { background: linear-gradient(90deg, var(--coral), transparent 70%); }
+    .metric.amber::before { background: linear-gradient(90deg, var(--amber), transparent 70%); }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-50);
+      margin-bottom: 10px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric.mint .metric-value { color: var(--mint); }
+    .metric.violet .metric-value { color: var(--violet); }
+    .metric.coral .metric-value { color: var(--coral); }
+    .metric.amber .metric-value { color: var(--amber); }
+
+    .metric-unit {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-50);
+    }
+
+    .metric-spark {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 28px;
+      margin-top: 14px;
+    }
+
+    .spark {
+      flex: 1;
+      border-radius: 2px;
+      opacity: 0.6;
+    }
+
+    .metric.mint .spark { background: var(--mint); }
+    .metric.violet .spark { background: var(--violet); }
+    .metric.coral .spark { background: var(--coral); }
+    .metric.amber .spark { background: var(--amber); }
+
+    .terminal { font-family: var(--font-mono); }
+
+    .terminal-bar {
+      padding: 12px 16px;
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--text-08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-70);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .terminal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: var(--mint); }
+    .terminal-dot:nth-child(2) { background: var(--violet); }
+    .terminal-dot:nth-child(3) { background: var(--coral); }
+
+    .terminal-body {
+      padding: 14px 16px;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 10px;
+    }
+
+    .t-prompt { font-weight: 600; }
+    .t-prompt.mint { color: var(--mint); }
+    .t-prompt.violet { color: var(--violet); }
+
+    .t-text { color: var(--text-70); }
+    .t-val { font-weight: 600; }
+    .t-val.mint { color: var(--mint); }
+    .t-val.violet { color: var(--violet); }
+
+    .t-tag {
+      margin-left: auto;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(61, 255, 163, 0.15);
+      color: var(--mint);
+    }
+
+    .beetle-card {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .beetle-rank {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .beetle-visual {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+
+    .beetle-shell {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--bg-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .beetle-shell::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50% 50% 45% 45%;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--mint), var(--violet), var(--coral));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .beetle-rank-letter {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--mint), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+    }
+
+    .beetle-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-100);
+      margin-bottom: 2px;
+    }
+
+    .beetle-title {
+      font-size: 12px;
+      color: var(--text-50);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .beetle-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--text-08);
+    }
+
+    .beetle-stat-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .beetle-stat:nth-child(1) .beetle-stat-value { color: var(--violet); }
+    .beetle-stat:nth-child(2) .beetle-stat-value { color: var(--mint); }
+    .beetle-stat:nth-child(3) .beetle-stat-value { color: var(--coral); }
+
+    .beetle-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-30);
+      margin-top: 2px;
+    }
+
+    .claim-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--text-08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .claim-header-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-50);
+    }
+
+    .claim-header-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-list { padding: 10px; }
+
+    .claim-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .claim-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .claim-info { flex: 1; }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--text-100);
+      font-size: 13px;
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--text-30);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-action { padding: 12px; }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .feed-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--text-08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .feed-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-50);
+    }
+
+    .feed-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mint);
+    }
+
+    .feed-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--text-08);
+    }
+
+    .feed-item:last-child { border-bottom: none; }
+
+    .feed-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .feed-content { flex: 1; }
+
+    .feed-action-text {
+      font-weight: 600;
+      color: var(--text-100);
+      font-size: 12px;
+    }
+
+    .feed-detail {
+      font-size: 10px;
+      color: var(--text-30);
+    }
+
+    .feed-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .feed-amount.positive { color: var(--mint); }
+    .feed-amount.neutral { color: var(--violet); }
+
+    .summary-section {
+      max-width: 1400px;
+      margin: 60px auto;
+      padding: 0 48px;
+    }
+
+    .summary {
+      background: #181B22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .summary h2 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7C8AFF;
+      margin-bottom: 28px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+
+    @media (max-width: 800px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    .summary-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .summary-item p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="study-intro">
+    <div class="study-tag">Tone Study</div>
+    <h1 class="study-title">Beyond Black</h1>
+    <p class="study-desc">Four background foundations — from cool slate to warm charcoal to deep navy to full light mode. Same intelligent components, different atmospheres. The grey you choose sets the emotional tone.</p>
+  </div>
+
+  <!-- SLATE GREY -->
+  <section class="palette-section slate">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Slate Grey</h2>
+        <p>Cool, professional, Hyperliquid-inspired. Blue undertone reads as technical and trustworthy. Best for: serious tools, trading interfaces.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #12141A;"></div>
+        <div class="swatch" style="background: #181B22;"></div>
+        <div class="swatch" style="background: #1E222B;"></div>
+        <div class="swatch" style="background: #252A35;"></div>
+      </div>
+    </div>
+    <div class="component-grid">
+      <div class="card metric violet">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 45%;"></div>
+          <div class="spark" style="height: 62%;"></div>
+          <div class="spark" style="height: 71%;"></div>
+          <div class="spark" style="height: 85%;"></div>
+          <div class="spark" style="height: 78%;"></div>
+          <div class="spark" style="height: 92%;"></div>
+        </div>
+      </div>
+      <div class="card metric mint">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 30%;"></div>
+          <div class="spark" style="height: 55%;"></div>
+          <div class="spark" style="height: 72%;"></div>
+          <div class="spark" style="height: 88%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+          <div class="spark" style="height: 100%;"></div>
+        </div>
+      </div>
+      <div class="card terminal">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="terminal-dots">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS: <span class="t-val mint">118</span> · crossings: <span class="t-val mint">9</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+      <div class="card beetle-card">
+        <div class="beetle-rank">S RANK</div>
+        <div class="beetle-visual">
+          <div class="beetle-shell"><span class="beetle-rank-letter">S</span></div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-name">booka_shade</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div class="beetle-stat"><div class="beetle-stat-value">8,450</div><div class="beetle-stat-label">Boulder</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">23</div><div class="beetle-stat-label">Piles</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">285w</div><div class="beetle-stat-label">FTP</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-list">
+          <div class="claim-item">
+            <div class="claim-icon">💎</div>
+            <div class="claim-info"><div class="claim-name">PHILLY CRIT</div><div class="claim-detail">Leader + stake</div></div>
+            <div class="claim-amount">+18.4</div>
+          </div>
+        </div>
+        <div class="claim-action"><button class="btn">CLAIM ALL</button></div>
+      </div>
+      <div class="card metric amber">
+        <div class="metric-label">Epoch Ends</div>
+        <div class="metric-value">2d 14h</div>
+        <div class="metric-unit">until distribution</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 15%;"></div>
+          <div class="spark" style="height: 38%;"></div>
+          <div class="spark" style="height: 52%;"></div>
+          <div class="spark" style="height: 68%;"></div>
+          <div class="spark" style="height: 82%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARM CHARCOAL -->
+  <section class="palette-section warm">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Warm Charcoal</h2>
+        <p>Slight brown/amber undertones. Comfortable, lived-in. Cream-tinted text is easier on eyes. Best for: longer sessions, community apps.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #141312;"></div>
+        <div class="swatch" style="background: #1C1A18;"></div>
+        <div class="swatch" style="background: #24211E;"></div>
+        <div class="swatch" style="background: #2D2924;"></div>
+      </div>
+    </div>
+    <div class="component-grid">
+      <div class="card metric violet">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 45%;"></div>
+          <div class="spark" style="height: 62%;"></div>
+          <div class="spark" style="height: 71%;"></div>
+          <div class="spark" style="height: 85%;"></div>
+          <div class="spark" style="height: 78%;"></div>
+          <div class="spark" style="height: 92%;"></div>
+        </div>
+      </div>
+      <div class="card metric mint">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 30%;"></div>
+          <div class="spark" style="height: 55%;"></div>
+          <div class="spark" style="height: 72%;"></div>
+          <div class="spark" style="height: 88%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+          <div class="spark" style="height: 100%;"></div>
+        </div>
+      </div>
+      <div class="card beetle-card">
+        <div class="beetle-rank">S RANK</div>
+        <div class="beetle-visual">
+          <div class="beetle-shell"><span class="beetle-rank-letter">S</span></div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-name">booka_shade</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div class="beetle-stat"><div class="beetle-stat-value">8,450</div><div class="beetle-stat-label">Boulder</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">23</div><div class="beetle-stat-label">Piles</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">285w</div><div class="beetle-stat-label">FTP</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="feed-header">
+          <span class="feed-title">Recent Activity</span>
+          <span class="feed-live">Live</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">🚴</div>
+          <div class="feed-content"><div class="feed-action-text">TSS Reward</div><div class="feed-detail">9 pile crossings</div></div>
+          <div class="feed-amount positive">+118.0</div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">💰</div>
+          <div class="feed-content"><div class="feed-action-text">Staked PHILLY CRIT</div><div class="feed-detail">420 DUNG</div></div>
+          <div class="feed-amount neutral">−120.0</div>
+        </div>
+      </div>
+      <div class="card terminal">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="terminal-dots">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS: <span class="t-val mint">118</span> · crossings: <span class="t-val mint">9</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+      <div class="card metric amber">
+        <div class="metric-label">Epoch Ends</div>
+        <div class="metric-value">2d 14h</div>
+        <div class="metric-unit">until distribution</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 15%;"></div>
+          <div class="spark" style="height: 38%;"></div>
+          <div class="spark" style="height: 52%;"></div>
+          <div class="spark" style="height: 68%;"></div>
+          <div class="spark" style="height: 82%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEEP NAVY -->
+  <section class="palette-section navy">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Deep Navy</h2>
+        <p>Rich blue-black. Premium, sophisticated. Colors pop beautifully. Best for: premium positioning, night use.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #0C0E14;"></div>
+        <div class="swatch" style="background: #12151E;"></div>
+        <div class="swatch" style="background: #181C28;"></div>
+        <div class="swatch" style="background: #1F2433;"></div>
+      </div>
+    </div>
+    <div class="component-grid">
+      <div class="card metric violet">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 45%;"></div>
+          <div class="spark" style="height: 62%;"></div>
+          <div class="spark" style="height: 71%;"></div>
+          <div class="spark" style="height: 85%;"></div>
+          <div class="spark" style="height: 78%;"></div>
+          <div class="spark" style="height: 92%;"></div>
+        </div>
+      </div>
+      <div class="card metric mint">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 30%;"></div>
+          <div class="spark" style="height: 55%;"></div>
+          <div class="spark" style="height: 72%;"></div>
+          <div class="spark" style="height: 88%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+          <div class="spark" style="height: 100%;"></div>
+        </div>
+      </div>
+      <div class="card metric coral">
+        <div class="metric-label">CAL Balance</div>
+        <div class="metric-value">1,847</div>
+        <div class="metric-unit">of 2,500 daily</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 100%;"></div>
+          <div class="spark" style="height: 92%;"></div>
+          <div class="spark" style="height: 85%;"></div>
+          <div class="spark" style="height: 78%;"></div>
+          <div class="spark" style="height: 74%;"></div>
+          <div class="spark" style="height: 74%;"></div>
+        </div>
+      </div>
+      <div class="card beetle-card">
+        <div class="beetle-rank">S RANK</div>
+        <div class="beetle-visual">
+          <div class="beetle-shell"><span class="beetle-rank-letter">S</span></div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-name">booka_shade</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div class="beetle-stat"><div class="beetle-stat-value">8,450</div><div class="beetle-stat-label">Boulder</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">23</div><div class="beetle-stat-label">Piles</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">285w</div><div class="beetle-stat-label">FTP</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-list">
+          <div class="claim-item">
+            <div class="claim-icon">💎</div>
+            <div class="claim-info"><div class="claim-name">PHILLY CRIT</div><div class="claim-detail">Leader + stake</div></div>
+            <div class="claim-amount">+18.4</div>
+          </div>
+        </div>
+        <div class="claim-action"><button class="btn">CLAIM ALL</button></div>
+      </div>
+      <div class="card terminal">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="terminal-dots">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS: <span class="t-val mint">118</span> · crossings: <span class="t-val mint">9</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHT MODE -->
+  <section class="palette-section light">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Light Mode</h2>
+        <p>Clean, airy, different energy entirely. Signal colors darken to maintain contrast. Best for: daytime use, mainstream appeal.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #F8F9FC; border-color: #E8EBF2;"></div>
+        <div class="swatch" style="background: #FFFFFF; border-color: #E8EBF2;"></div>
+        <div class="swatch" style="background: #F1F3F8; border-color: #E8EBF2;"></div>
+        <div class="swatch" style="background: #E8EBF2; border-color: #DDE1EB;"></div>
+      </div>
+    </div>
+    <div class="component-grid">
+      <div class="card metric violet">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 45%;"></div>
+          <div class="spark" style="height: 62%;"></div>
+          <div class="spark" style="height: 71%;"></div>
+          <div class="spark" style="height: 85%;"></div>
+          <div class="spark" style="height: 78%;"></div>
+          <div class="spark" style="height: 92%;"></div>
+        </div>
+      </div>
+      <div class="card metric mint">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 30%;"></div>
+          <div class="spark" style="height: 55%;"></div>
+          <div class="spark" style="height: 72%;"></div>
+          <div class="spark" style="height: 88%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+          <div class="spark" style="height: 100%;"></div>
+        </div>
+      </div>
+      <div class="card beetle-card">
+        <div class="beetle-rank">S RANK</div>
+        <div class="beetle-visual">
+          <div class="beetle-shell"><span class="beetle-rank-letter">S</span></div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-name">booka_shade</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div class="beetle-stat"><div class="beetle-stat-value">8,450</div><div class="beetle-stat-label">Boulder</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">23</div><div class="beetle-stat-label">Piles</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">285w</div><div class="beetle-stat-label">FTP</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="feed-header">
+          <span class="feed-title">Recent Activity</span>
+          <span class="feed-live">Live</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">🚴</div>
+          <div class="feed-content"><div class="feed-action-text">TSS Reward</div><div class="feed-detail">9 pile crossings</div></div>
+          <div class="feed-amount positive">+118.0</div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">💰</div>
+          <div class="feed-content"><div class="feed-action-text">Staked PHILLY CRIT</div><div class="feed-detail">420 DUNG</div></div>
+          <div class="feed-amount neutral">−120.0</div>
+        </div>
+      </div>
+      <div class="card terminal">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="terminal-dots">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS: <span class="t-val mint">118</span> · crossings: <span class="t-val mint">9</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+      <div class="card metric amber">
+        <div class="metric-label">Epoch Ends</div>
+        <div class="metric-value">2d 14h</div>
+        <div class="metric-unit">until distribution</div>
+        <div class="metric-spark">
+          <div class="spark" style="height: 15%;"></div>
+          <div class="spark" style="height: 38%;"></div>
+          <div class="spark" style="height: 52%;"></div>
+          <div class="spark" style="height: 68%;"></div>
+          <div class="spark" style="height: 82%;"></div>
+          <div class="spark" style="height: 95%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary-section">
+    <div class="summary">
+      <h2>Tone Comparison</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h3>Slate Grey (#12141A)</h3>
+          <p>Cool blue undertones. Professional, technical, trustworthy. The Hyperliquid/trading platform aesthetic. Feels like a serious tool. Good for power users.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Warm Charcoal (#141312)</h3>
+          <p>Slight brown/amber undertones. More comfortable, less clinical. Cream text (#FAF8F5) is easier on eyes for long sessions. Feels "lived-in".</p>
+        </div>
+        <div class="summary-item">
+          <h3>Deep Navy (#0C0E14)</h3>
+          <p>Rich blue-black with depth. Premium, sophisticated. Colors pop beautifully — especially mint and coral. Hints of night sky without being void.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Light Mode (#F8F9FC)</h3>
+          <p>Completely different energy. Clean, airy, mainstream. Signal colors darken to maintain contrast. Consider offering as toggle for daytime use.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

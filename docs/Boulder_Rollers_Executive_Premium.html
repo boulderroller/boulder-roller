@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Boulder Rollers — Proof of Physical Work</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Premium Palette: Earth, Stone, Precision */
+            --stone-50: #fafaf9;
+            --stone-100: #f5f5f4;
+            --stone-200: #e7e5e4;
+            --stone-300: #d6d3d1;
+            --stone-400: #a8a29e;
+            --stone-500: #78716c;
+            --stone-600: #57534e;
+            --stone-700: #44403c;
+            --stone-800: #292524;
+            --stone-900: #1c1917;
+
+            /* Signature Color: Heritage Terracotta */
+            --terra-primary: #c55a3a;
+            --terra-deep: #9d4429;
+            --terra-soft: #e8b4a0;
+            --terra-ghost: #f4e4de;
+
+            /* Accent: Oxidized Brass */
+            --brass-primary: #b89968;
+            --brass-deep: #8f7850;
+            --brass-bright: #d4bc8e;
+
+            /* Data Viz: Professional Palette */
+            --viz-blue: #3b7ea1;
+            --viz-green: #6b9b7f;
+            --viz-amber: #d4a574;
+            --viz-slate: #6b7280;
+
+            /* System */
+            --bg-primary: #ffffff;
+            --bg-secondary: var(--stone-50);
+            --bg-tertiary: var(--stone-100);
+
+            --text-primary: var(--stone-900);
+            --text-secondary: var(--stone-600);
+            --text-tertiary: var(--stone-400);
+
+            --border-subtle: var(--stone-200);
+            --border-medium: var(--stone-300);
+            --border-strong: var(--stone-400);
+
+            /* Typography */
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'Schibsted Grotesk', -apple-system, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            /* Spacing Scale */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 32px;
+            --space-7: 48px;
+            --space-8: 64px;
+            --space-9: 96px;
+
+            /* Elevation */
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Refined Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-weight: 400;
+            min-height: 100vh;
+        }
+
+        /* Layout */
+        .app {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1920px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--stone-900);
+            color: var(--stone-200);
+            display: flex;
+            flex-direction: column;
+            padding: var(--space-6) 0;
+            position: relative;
+            animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sidebar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 20%,
+                rgba(255, 255, 255, 0.1) 80%,
+                transparent 100%
+            );
+        }
+
+        .logo {
+            padding: 0 var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .logo-wordmark {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--stone-50);
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-tagline {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brass-bright);
+            font-family: var(--font-mono);
+        }
+
+        .nav {
+            flex: 1;
+            padding: 0 var(--space-4);
+        }
+
+        .nav-section {
+            margin-bottom: var(--space-7);
+        }
+
+        .nav-section-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--stone-500);
+            padding: 0 var(--space-4);
+            margin-bottom: var(--space-3);
+            font-family: var(--font-mono);
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-1);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-3) var(--space-4);
+            color: var(--stone-300);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--stone-50);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--stone-50);
+        }
+
+        .nav-link.active::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 16px;
+            background: var(--terra-primary);
+            border-radius: 0 1px 1px 0;
+        }
+
+        .nav-shortcut {
+            font-size: 12px;
+            font-family: var(--font-mono);
+            color: var(--stone-500);
+        }
+
+        .sidebar-footer {
+            padding: 0 var(--space-6);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: var(--space-5);
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
+            font-size: 13px;
+        }
+
+        .status-label {
+            color: var(--stone-400);
+        }
+
+        .status-value {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 2px 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            color: var(--stone-200);
+        }
+
+        .status-value.live {
+            color: var(--viz-green);
+            background: rgba(107, 155, 127, 0.15);
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            overflow-y: auto;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+        }
+
+        .topbar {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: var(--space-5) var(--space-7);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .topbar-title {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .topbar-greeting {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .topbar-headline {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .topbar-actions {
+            display: flex;
+            gap: var(--space-4);
+            align-items: center;
+        }
+
+        .stat-chip {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: var(--space-3) var(--space-4);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+        }
+
+        .stat-chip-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-tertiary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        .stat-chip-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            letter-spacing: -0.02em;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-medium);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .user-menu:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--terra-primary) 0%, var(--terra-deep) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 14px;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .user-grade {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        /* Content Area */
+        .content {
+            padding: var(--space-7);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: var(--space-6);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-5);
+        }
+
+        .card-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .card-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--terra-primary);
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .card-meta {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-family: var(--font-mono);
+        }
+
+        /* Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            padding: var(--space-5);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .metric:hover {
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+            font-family: var(--font-mono);
+            letter-spacing: -0.03em;
+        }
+
+        .metric-detail {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table thead {
+            border-bottom: 1px solid var(--border-medium);
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: var(--space-3) var(--space-4);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        .data-table td {
+            padding: var(--space-4);
+            font-size: 14px;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .data-table tbody tr {
+            transition: background 0.15s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-label {
+            font-weight: 600;
+            color: var(--terra-primary);
+            font-family: var(--font-mono);
+            font-size: 13px;
+        }
+
+        .table-mono {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Sparkline */
+        .sparkline {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 24px;
+        }
+
+        .sparkline-bar {
+            width: 4px;
+            background: var(--viz-blue);
+            border-radius: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .sparkline-bar:hover {
+            background: var(--terra-primary);
+        }
+
+        .sparkline-bar.muted {
+            background: var(--stone-300);
+        }
+
+        /* Activity Feed */
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .activity-item {
+            display: flex;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .activity-item:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--terra-ghost);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .activity-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .activity-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .activity-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        .activity-badge {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--brass-primary);
+            font-family: var(--font-mono);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: var(--space-5);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+        }
+
+        .progress-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-family: var(--font-mono);
+        }
+
+        .progress-value {
+            font-size: 13px;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--stone-200);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--terra-primary) 0%, var(--brass-primary) 100%);
+            border-radius: 4px;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background: var(--terra-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--terra-deep);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-strong);
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: var(--space-4);
+        }
+
+        /* Featured Card */
+        .featured-card {
+            background: linear-gradient(135deg, var(--stone-900) 0%, var(--stone-800) 100%);
+            color: var(--stone-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(197, 90, 58, 0.2) 0%,
+                transparent 60%
+            );
+            pointer-events: none;
+        }
+
+        .featured-number {
+            font-size: 72px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            line-height: 1;
+            color: var(--brass-bright);
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.04em;
+        }
+
+        .featured-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--stone-400);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        /* Map Visualization */
+        .map-viz {
+            width: 100%;
+            height: 280px;
+            background: var(--stone-900);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: var(--space-4);
+        }
+
+        .map-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--terra-primary);
+            background: radial-gradient(
+                ellipse at center,
+                rgba(197, 90, 58, 0.3) 0%,
+                rgba(197, 90, 58, 0.1) 50%,
+                transparent 70%
+            );
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-point:hover {
+            transform: scale(1.15);
+            border-color: var(--brass-bright);
+        }
+
+        .map-point:nth-child(2) { top: 35%; left: 25%; }
+        .map-point:nth-child(3) { top: 50%; left: 55%; width: 80px; height: 80px; }
+        .map-point:nth-child(4) { top: 65%; left: 72%; width: 50px; height: 50px; }
+
+        .map-label {
+            position: absolute;
+            top: 50%;
+            left: 110%;
+            transform: translateY(-50%);
+            background: var(--stone-800);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: var(--stone-200);
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .content {
+                padding: var(--space-5);
+            }
+
+            .topbar {
+                padding: var(--space-4) var(--space-5);
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading State */
+        .skeleton {
+            background: linear-gradient(
+                90deg,
+                var(--stone-200) 0%,
+                var(--stone-100) 50%,
+                var(--stone-200) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            border-radius: 4px;
+        }
+
+        /* Stagger Animations */
+        .metric:nth-child(1) { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards; }
+        .metric:nth-child(2) { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards; }
+        .metric:nth-child(3) { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards; }
+        .metric:nth-child(4) { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards; }
+
+        .card:nth-child(1) { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards; }
+        .card:nth-child(2) { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards; }
+        .card:nth-child(3) { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards; }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-wordmark">Boulder Rollers</div>
+                <div class="logo-tagline">Proof of Physical Work</div>
+            </div>
+
+            <nav class="nav">
+                <div class="nav-section">
+                    <div class="nav-section-label">Navigate</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <span>Dashboard</span>
+                                <span class="nav-shortcut">⌘1</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span>Segments</span>
+                                <span class="nav-shortcut">⌘2</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span>Activity</span>
+                                <span class="nav-shortcut">⌘3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span>Portfolio</span>
+                                <span class="nav-shortcut">⌘4</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Protocol</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span>Staking</span>
+                                <span class="nav-shortcut">⌘5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span>Governance</span>
+                                <span class="nav-shortcut">⌘6</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span>Analytics</span>
+                                <span class="nav-shortcut">⌘7</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-row">
+                    <span class="status-label">Network</span>
+                    <span class="status-value live">Solana</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Epoch</span>
+                    <span class="status-value">Week 12</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Version</span>
+                    <span class="status-value">1.0.3</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-title">
+                    <div class="topbar-greeting">Good morning</div>
+                    <div class="topbar-headline">Today's Performance</div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="stat-chip">
+                        <div class="stat-chip-label">DUNG Balance</div>
+                        <div class="stat-chip-value">12,340.8</div>
+                    </div>
+                    <div class="stat-chip">
+                        <div class="stat-chip-label">Daily Energy</div>
+                        <div class="stat-chip-value">1850/2500</div>
+                    </div>
+                    <div class="user-menu">
+                        <div class="user-avatar">BS</div>
+                        <div class="user-info">
+                            <div class="user-name">booka_shade</div>
+                            <div class="user-grade">Grade A · 3 cities</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-label">TSS Today</div>
+                        <div class="metric-value">118</div>
+                        <div class="metric-detail">2 rides · 3h 15m</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">DUNG Minted</div>
+                        <div class="metric-value">+118</div>
+                        <div class="metric-detail">1:1 ratio</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">CAL Spent</div>
+                        <div class="metric-value">900</div>
+                        <div class="metric-detail">9 crossings</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Segments</div>
+                        <div class="metric-value">12</div>
+                        <div class="metric-detail">3 tracked piles</div>
+                    </div>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="content-grid">
+                    <!-- Left Column -->
+                    <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+                        <!-- Activity Summary -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <div class="card-eyebrow">Today</div>
+                                    <div class="card-title">Segment Performance</div>
+                                </div>
+                                <div class="card-meta">Last sync: 3m ago</div>
+                            </div>
+
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Segment</th>
+                                        <th>Time</th>
+                                        <th>Rank</th>
+                                        <th>CAL</th>
+                                        <th>Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-label">COL DU BAS BOIS</td>
+                                        <td class="table-mono">8:21</td>
+                                        <td class="table-mono">#2 / 47</td>
+                                        <td class="table-mono">400</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar muted" style="height: 8px;"></div>
+                                                <div class="sparkline-bar muted" style="height: 12px;"></div>
+                                                <div class="sparkline-bar" style="height: 18px;"></div>
+                                                <div class="sparkline-bar" style="height: 20px;"></div>
+                                                <div class="sparkline-bar" style="height: 22px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">PHILLY CRIT CIRCUIT</td>
+                                        <td class="table-mono">4:03</td>
+                                        <td class="table-mono">#1 / 92</td>
+                                        <td class="table-mono">300</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar muted" style="height: 10px;"></div>
+                                                <div class="sparkline-bar" style="height: 14px;"></div>
+                                                <div class="sparkline-bar" style="height: 16px;"></div>
+                                                <div class="sparkline-bar muted" style="height: 12px;"></div>
+                                                <div class="sparkline-bar" style="height: 20px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">BACK ALLEY KICKER</td>
+                                        <td class="table-mono">1:19</td>
+                                        <td class="table-mono">#5 / 31</td>
+                                        <td class="table-mono">200</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar" style="height: 16px;"></div>
+                                                <div class="sparkline-bar" style="height: 18px;"></div>
+                                                <div class="sparkline-bar muted" style="height: 14px;"></div>
+                                                <div class="sparkline-bar" style="height: 20px;"></div>
+                                                <div class="sparkline-bar" style="height: 24px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Staking Portfolio -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <div class="card-eyebrow">Portfolio</div>
+                                    <div class="card-title">Active Stakes</div>
+                                </div>
+                            </div>
+
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Pile</th>
+                                        <th>Your Stake</th>
+                                        <th>Pool Size</th>
+                                        <th>Share</th>
+                                        <th>Est. Yield</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-label">COL DU BAS BOIS</td>
+                                        <td class="table-mono">420 DUNG</td>
+                                        <td class="table-mono">210.0</td>
+                                        <td class="table-mono">18.2%</td>
+                                        <td class="table-mono">+6.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">PHILLY CRIT</td>
+                                        <td class="table-mono">150 DUNG</td>
+                                        <td class="table-mono">320.0</td>
+                                        <td class="table-mono">9.4%</td>
+                                        <td class="table-mono">+12.4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; font-size: 13px;">
+                                <div style="color: var(--text-secondary);">Total Staked</div>
+                                <div style="font-weight: 700; font-family: var(--font-mono);">650 DUNG</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+                        <!-- Featured Stats -->
+                        <div class="card featured-card">
+                            <div class="card-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: var(--space-4);">
+                                <div class="card-title-group">
+                                    <div class="card-eyebrow" style="color: var(--brass-bright);">This Week</div>
+                                    <div class="card-title" style="color: var(--stone-50);">DUNG Earned</div>
+                                </div>
+                            </div>
+                            <div style="position: relative; z-index: 1;">
+                                <div class="featured-number">+147</div>
+                                <div class="featured-label">From 4 rides</div>
+                            </div>
+                        </div>
+
+                        <!-- Map Visualization -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <div class="card-eyebrow">Region</div>
+                                    <div class="card-title">Philadelphia</div>
+                                </div>
+                            </div>
+
+                            <div class="map-viz">
+                                <div class="map-grid"></div>
+                                <div class="map-point">
+                                    <div class="map-label">Hill Stack</div>
+                                </div>
+                                <div class="map-point">
+                                    <div class="map-label">Crit Circuit</div>
+                                </div>
+                                <div class="map-point">
+                                    <div class="map-label">Back Alley</div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-secondary); font-family: var(--font-mono);">
+                                <div>Total pot: <span style="color: var(--text-primary); font-weight: 600;">1,240 DUNG</span></div>
+                                <div>Your share: <span style="color: var(--text-primary); font-weight: 600;">7.8%</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Progress -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <div class="card-eyebrow">Energy</div>
+                                    <div class="card-title">Daily Limit</div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <div class="progress-label">CAL Remaining</div>
+                                    <div class="progress-value">1850 / 2500</div>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 74%;"></div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-full">Upload Ride</button>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <div class="card-eyebrow">Activity</div>
+                                    <div class="card-title">Recent Events</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">📈</div>
+                                    <div class="activity-content">
+                                        <div class="activity-title">Defended #1 on PHILLY CRIT</div>
+                                        <div class="activity-meta">2 hours ago</div>
+                                    </div>
+                                    <div class="activity-badge">+15</div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">🔒</div>
+                                    <div class="activity-content">
+                                        <div class="activity-title">Staked 120 DUNG</div>
+                                        <div class="activity-meta">5 hours ago</div>
+                                    </div>
+                                    <div class="activity-badge">+45</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

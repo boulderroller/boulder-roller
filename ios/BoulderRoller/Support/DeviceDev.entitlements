@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Direct-device dev builds sign without push: the local team profile
+	     carries no aps-environment, and the app treats push absence
+	     truthfully. TestFlight/release builds keep the real entitlements. -->
+</dict>
+</plist>

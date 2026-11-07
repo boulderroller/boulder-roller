@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-05-13T11:56:48.620Z",
+  "fixtureBoundary": "Screens are current portal code using API-contract fixture data from the route-shell test shape. UI is current; fixture values are not live or final product data.",
+  "unexpectedApiCalls": [],
+  "captures": [
+    {
+      "name": "FeedView",
+      "status": "current capture",
+      "source": "web/portal/src/components/feed/ActivityFeed.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/01-desktop-feedview.png"
+    },
+    {
+      "name": "FeedView item",
+      "status": "current isolated component capture",
+      "source": "web/portal/src/components/feed/ActivityFeedItem.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/02-desktop-feedview-item.png"
+    },
+    {
+      "name": "RideView",
+      "status": "current capture",
+      "source": "web/portal/src/pages/RideView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/03-desktop-rideview.png"
+    },
+    {
+      "name": "RideView expanded stats",
+      "status": "current capture",
+      "source": "web/portal/src/pages/RideView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/04-desktop-rideview-stats-expanded.png"
+    },
+    {
+      "name": "Climb table current expanded card",
+      "status": "current capture; this is not a separate popout",
+      "source": "web/portal/src/components/ride/ClimbsTable.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/05-desktop-climb-table-current.png"
+    },
+    {
+      "name": "RideView vault/economy side panel",
+      "status": "current capture",
+      "source": "web/portal/src/components/ride/VaultPanel.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/06-desktop-rideview-vault-panel.png"
+    },
+    {
+      "name": "ClimbView",
+      "status": "current capture",
+      "source": "web/portal/src/pages/ClimbView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/07-desktop-climbview.png"
+    },
+    {
+      "name": "ClimbView record/economy module",
+      "status": "current capture; compact module, not a popout",
+      "source": "web/portal/src/pages/ClimbView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/08-desktop-climbview-record-economy-module.png"
+    },
+    {
+      "name": "VaultView current economy reference",
+      "status": "current capture; reference only for unbuilt econ popout",
+      "source": "web/portal/src/pages/VaultView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/09-desktop-vaultview-economy-reference.png"
+    },
+    {
+      "name": "RiderView",
+      "status": "current capture",
+      "source": "web/portal/src/pages/Profile.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/10-desktop-riderview.png"
+    },
+    {
+      "name": "Mobile-width RideView",
+      "status": "responsive portal capture; not native app capture",
+      "source": "web/portal/src/pages/RideView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/11-responsive-mobile-rideview.png"
+    },
+    {
+      "name": "Mobile-width RideView expanded stats",
+      "status": "responsive portal capture; not native app capture",
+      "source": "web/portal/src/pages/RideView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/12-responsive-mobile-rideview-stats-expanded.png"
+    },
+    {
+      "name": "Mobile-width climb table current expanded card",
+      "status": "responsive portal capture; not native app capture",
+      "source": "web/portal/src/components/ride/ClimbsTable.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/13-responsive-mobile-climb-table-current.png"
+    },
+    {
+      "name": "Mobile-width climb economy current panel",
+      "status": "responsive portal capture; not native app capture",
+      "source": "web/portal/src/components/ride/VaultPanel.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/14-responsive-mobile-climb-econ-current.png"
+    },
+    {
+      "name": "Mobile-width ClimbView",
+      "status": "responsive portal capture; not native app capture",
+      "source": "web/portal/src/pages/ClimbView.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/15-responsive-mobile-climbview.png"
+    },
+    {
+      "name": "Mobile-width ProfileView",
+      "status": "responsive portal capture; not native app capture",
+      "source": "web/portal/src/pages/Profile.tsx",
+      "file": "docs/design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/16-responsive-mobile-profileview.png"
+    },
+    {
+      "name": "Native mobile requested views",
+      "status": "not captured",
+      "source": "mobile/src/screens/RideDetailScreen.tsx, mobile/src/screens/ClimbDetailScreen.tsx, mobile/src/screens/ProfileScreen.tsx",
+      "note": "The booted simulator is currently at the unauthenticated LoginScreen. Do not treat responsive portal captures as native app truth."
+    },
+    {
+      "name": "Desktop/mobile climb econ popout",
+      "status": "unbuilt gap",
+      "note": "No current popout exists. Use current ClimbView, RideView VaultPanel, and VaultView captures as constraints before proposing a primitive."
+    }
+  ]
+}

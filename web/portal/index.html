@@ -1,0 +1,46 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+      <title>Boulder Roller</title>
+      <meta name="description" content="Sign in to Boulder Roller to upload rides, review matched climbs, and see counted CAL and DUNG when it settles." />
+      <!-- PWA -->
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+      <meta name="theme-color" content="#0F0E0C" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+      <!-- Google Fonts: canonical Geist product families and ratified weights -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800;900&display=swap"
+      >
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800;900&display=swap"
+        media="print"
+        onload="this.media='all'"
+      >
+      <noscript>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800;900&display=swap"
+        >
+      </noscript>
+    </head>
+
+    <body>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+    </body>
+  </html>
+  

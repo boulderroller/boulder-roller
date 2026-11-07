@@ -1,0 +1,3486 @@
+{
+  "evidence": "offline synthetic riding, independently modeled allocation and claims",
+  "cases": {
+    "five": {
+      "case": "five",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "e43fa19b12e64edfacf4d04c53d4ec19b611a0e749571093b9e3d3fdbb3c1c75",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "568295fd613dd53f36b2877006c5f85c78724e510a970e13198b7f3342b3fa47",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "c1a2ef999fe77ecda1893ef0409d594eb265a5937c36c41da5f44a295f4c0f48",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "7749c0b3efb49876c7d3cae2d4c12e510e6ae958545ac39de9eed2552ff97acf",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "field-four": {
+      "case": "field-four",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "3a9dd2c3b23a178d61dd34d14cacbf84f731da44333e40f920ba6155d96676e5",
+        "field_count": 4,
+        "postbond_tss_micros": 4000000,
+        "top_count": 3,
+        "ascent_count": 4,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          0,
+          0
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": false,
+      "allocation": {
+        "potential": 0,
+        "riders": 0,
+        "backers": 0,
+        "unminted": 0
+      },
+      "minted": 0,
+      "roots": [
+        {
+          "root": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": []
+        },
+        {
+          "root": "254118b1328b58bed135367721b591c7bfc30b11e06278a9c87f35018b9485bb",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": []
+        }
+      ],
+      "closure": null
+    },
+    "zero-tss": {
+      "case": "zero-tss",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "908ad0143157f62d0199ce751ab13d6b43495728df7edb1e315edff0723159ab",
+        "field_count": 5,
+        "postbond_tss_micros": 0,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          0,
+          0
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 0,
+        "riders": 0,
+        "backers": 0,
+        "unminted": 0
+      },
+      "minted": 0,
+      "roots": [
+        {
+          "root": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": [],
+          "claimed_bitmap": ""
+        },
+        {
+          "root": "254118b1328b58bed135367721b591c7bfc30b11e06278a9c87f35018b9485bb",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": [],
+          "claimed_bitmap": ""
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "missing-legend": {
+      "case": "missing-legend",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "31973816bcc26cce306a2b1c3276eef37f0e7de1cf0692dcd2d23f204fdcd94d",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": false,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2250000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2250000,
+        "backers": 2500000,
+        "unminted": 250000
+      },
+      "minted": 4750000,
+      "roots": [
+        {
+          "root": "a0794f0471bab72fb8421e41e215ff69377cf1a13fa05b2c9cda704ed392b31b",
+          "total": "2250000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "35098b890798ffcd4b18c34e5922d5648545d5470f438567950b2cf26acbc0a3",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "47209798d684fd0c338c452b56aa7fc82bc7d9f10e7212c8af858fd4a781a0a8",
+                  "sum": "1266667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "47209798d684fd0c338c452b56aa7fc82bc7d9f10e7212c8af858fd4a781a0a8",
+                  "sum": "1266667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "cad0ef09033901a66167d1e9e72fe3c0779117b8b92c6d32373beb78d6d9fae9",
+                  "sum": "2075000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "no-board": {
+      "case": "no-board",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "a8aa68afd7261c954d99eac2cce10f0969bd160b05a2c543d0999ef132b4421c",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 0,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          1125000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 1125000,
+        "backers": 2500000,
+        "unminted": 1375000
+      },
+      "minted": 3625000,
+      "roots": [
+        {
+          "root": "a5ba8852c0591f867b3bf4be0362c6befdf73b8f68f41330dd5c3ddd089735c3",
+          "total": "1125000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "433c27b433266d155472469fec258ff0b4dd2e785dde294c4b98b3ffd752091c",
+                  "sum": "425000"
+                },
+                {
+                  "hash": "fc6323596dbe57946c51e668953e90923fb4039d212f403bf10b1987dbbe0b7f",
+                  "sum": "350000"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 425000,
+              "proof": [
+                {
+                  "hash": "798eac7cb78a8738375b6ace073466f2bf3db209e039a78d24752e0644385df4",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "fc6323596dbe57946c51e668953e90923fb4039d212f403bf10b1987dbbe0b7f",
+                  "sum": "350000"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "16bc86a208ac6b27ddf75a5c5000fb50d2e359e2110e3f5da51789ca396f385a",
+                  "sum": "600000"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "e5ae28908c2bbb992880d5eab662eb0e8c39789a93255fa54715bc7ee7b7539c",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "16bc86a208ac6b27ddf75a5c5000fb50d2e359e2110e3f5da51789ca396f385a",
+                  "sum": "600000"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "795a4e15b710629a22aed8dc78f0be55078ae29b442387e0ac95d358b9a8d58f",
+                  "sum": "950000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "zero-weight": {
+      "case": "zero-weight",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "90d9b221f7c82cff4b4a572c38f25459c94d20282d0f45a5726148dc6a0e6561",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          0
+        ]
+      },
+      "opening_weight_quarters": "0",
+      "owner_weights_quarters": {},
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 0,
+        "unminted": 2500000
+      },
+      "minted": 2500000,
+      "roots": [
+        {
+          "root": "568295fd613dd53f36b2877006c5f85c78724e510a970e13198b7f3342b3fa47",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "c1a2ef999fe77ecda1893ef0409d594eb265a5937c36c41da5f44a295f4c0f48",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "7749c0b3efb49876c7d3cae2d4c12e510e6ae958545ac39de9eed2552ff97acf",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "254118b1328b58bed135367721b591c7bfc30b11e06278a9c87f35018b9485bb",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": [],
+          "claimed_bitmap": ""
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "partial-week": {
+      "case": "partial-week",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        0,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 0,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "404ca6ac63cb8988020c31e9193493db925bbf579127cf38c4c70f715f9fe215",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "backing": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          0,
+          0
+        ]
+      },
+      "opening_weight_quarters": "0",
+      "owner_weights_quarters": {},
+      "admitted": false,
+      "allocation": {
+        "potential": 0,
+        "riders": 0,
+        "backers": 0,
+        "unminted": 0
+      },
+      "minted": 0,
+      "roots": [
+        {
+          "root": "c5e9f467246027cac2bf696bcd72dbaf7a6c246cf026410961ccdf2636745ee0",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": []
+        },
+        {
+          "root": "c7df2bb23b308734348f1e80346860e16c657a46c5401f1d16433a997c5dce88",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": []
+        }
+      ],
+      "closure": null
+    },
+    "founder-26": {
+      "case": "founder-26",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        26,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 26,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "a2784b242389b8716a78983ecbafed8d6ffd1d134942014e8584cf069be9fada",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            5000000000,
+            0,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            5000000000,
+            0,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "80000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "65000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "2364344e60f076badc2abfb95dee1b05246415206cbe5304ec3fda45dd4f2045",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "dfb238a0c5ac68184f12c54e69caaaaef5ed8601fea31df1b1a1474af06f0945",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "c4d63a349094a4470b8dd10ae5d2d36e7d4892cf39fb63e63b9d49bb66c2585a",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "90eb441fc282e916e2c559a33ffde8610dc944b3f7e8e89fa43e3a641f58dd80",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "6b615defdc7b11e8f69b7409e5ac29f584d448da396fd22c9e507a3dcc5d7c05",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "c4d63a349094a4470b8dd10ae5d2d36e7d4892cf39fb63e63b9d49bb66c2585a",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "90eb441fc282e916e2c559a33ffde8610dc944b3f7e8e89fa43e3a641f58dd80",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "7955ae96847ddf95388274012651adf0fe8613af2a0e89757ef73e0336cd3aa7",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "b33d2b60e17f48f22ce0faa3fcea8f2a0c95f729d7215562c07aa307d82931f0",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "90eb441fc282e916e2c559a33ffde8610dc944b3f7e8e89fa43e3a641f58dd80",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "87acc13202569bae358d6e41b690b2ea1a329bbfd28dd4626e4376a918ffed6f",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "b33d2b60e17f48f22ce0faa3fcea8f2a0c95f729d7215562c07aa307d82931f0",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "90eb441fc282e916e2c559a33ffde8610dc944b3f7e8e89fa43e3a641f58dd80",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "3e02d009488c48601ba7df2b2f710d9ea976217563757d35516eccb224134ed2",
+                  "sum": "0"
+                },
+                {
+                  "hash": "3e02d009488c48601ba7df2b2f710d9ea976217563757d35516eccb224134ed2",
+                  "sum": "0"
+                },
+                {
+                  "hash": "101aeabc675049757275dbb131ff3d190b828b8605a71b6d5860905cc47311ae",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "bf07d62465c917d8a0524190796be8f0be16e580e3676a44af2ceecb33501e88",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2031250,
+              "proof": [
+                {
+                  "hash": "94bb5bfb1b8bdbec434320a65a30da6289a66e57f836c2c97d5d076049406b36",
+                  "sum": "468750"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 468750,
+              "proof": [
+                {
+                  "hash": "9a64ecf4c75a1fb4371dd87b8a45da355241d43ff27f3bf07acca49dbf487be0",
+                  "sum": "2031250"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 27
+      }
+    },
+    "founder-27": {
+      "case": "founder-27",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        27,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 27,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "46f952e36e8a0f8f1888b70ca17661e5ef93f3f811de8b27e3e577438e77a2f1",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            10000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0,
+            0,
+            0
+          ],
+          "backing": [
+            10000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0,
+            0,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "20000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "15000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "5000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "fd73475149043393e117a073d2dd143deb2215c3f46d8c06af1c2582a1292848",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "0c4f1978dc84ede5733d359b816321ade67cf614e7c215a69be0f4d5a2dccd47",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "73f1e42deb0e6ea282acb65542be9ac53b7307c2d5982423ee65f7fb55969034",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "6dbd94773d6e0b8d1254d455391215a3b946faa4fed8633f4d2ebc8ebcd0a900",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "7cdbaf8468604c92615a010b17704b5c5d378b37ba23a0aed1a4cdeb80b88290",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "73f1e42deb0e6ea282acb65542be9ac53b7307c2d5982423ee65f7fb55969034",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "6dbd94773d6e0b8d1254d455391215a3b946faa4fed8633f4d2ebc8ebcd0a900",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "2e07acb8c52fd0ee16fc97a6084f295157862541c3bcfca17d46338b5742af02",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "8430d4b3569e290ae431c70e11cb8d0514361df4040d521c6f0dc55860b7c8da",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "6dbd94773d6e0b8d1254d455391215a3b946faa4fed8633f4d2ebc8ebcd0a900",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "d29eda759f61350ef1b87a357d667f66d9a6b49599adc5ecd5a318fc04262f1e",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "8430d4b3569e290ae431c70e11cb8d0514361df4040d521c6f0dc55860b7c8da",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "6dbd94773d6e0b8d1254d455391215a3b946faa4fed8633f4d2ebc8ebcd0a900",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "b23a5e50cb6ca99d46af6f1025bebdd90254cfe03897efb923daf0b3120b3f34",
+                  "sum": "0"
+                },
+                {
+                  "hash": "b23a5e50cb6ca99d46af6f1025bebdd90254cfe03897efb923daf0b3120b3f34",
+                  "sum": "0"
+                },
+                {
+                  "hash": "40ad1bfdc8178b9f20187c0fcf836be64eead7bbd56fa28177e6f8ced7a5fee0",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "42faab1f236dd0b67bd81c6f3ee71c30cf631b0fcec266884850e05084f5a8dc",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 1875000,
+              "proof": [
+                {
+                  "hash": "fa84e98c9e3e7958d9547278569c8460029bb02aa1606f8dd19539a0938297d8",
+                  "sum": "625000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 625000,
+              "proof": [
+                {
+                  "hash": "a0224f75fbaf78fbe13836ffdba357461f8a7ee9c547564bd593b2a2e413a38b",
+                  "sum": "1875000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 28
+      }
+    },
+    "lock-13": {
+      "case": "lock-13",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        13,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 13,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "e717f1ddd4aaf66739761284fbf29a6f42dd759bf116e4066abb07665e14f778",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "7843e1c789dafc8eef10f4b0753a5944d37d790ba82e4bc5245d569ed9f0c737",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "23eb16eeb772be15deeb657d66c1d14eb699f76afe844199c89ad7e7eec90912",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "4190b1277dc4524156a0305326cf537868c22ce2cadd3f79d543518a0eb2556a",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "9f6cc16568c251f745b4242f503ee6c8e2eb7992a36c21938b79b53e22671c0f",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "405a4ebe908024e5b89117fe70031fce027b791fde54ca41eec8a8b7a9658d66",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "4190b1277dc4524156a0305326cf537868c22ce2cadd3f79d543518a0eb2556a",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "9f6cc16568c251f745b4242f503ee6c8e2eb7992a36c21938b79b53e22671c0f",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "c9fe486d44bb28ed3d39d96200a0d640275334769f75d90cf5cf1179d37a5ac3",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "f4dce561afbd169d5374bf1f6a215b81accc8a9ca5fdc318b01fb604704a63d3",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "9f6cc16568c251f745b4242f503ee6c8e2eb7992a36c21938b79b53e22671c0f",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "b55fbce77f0c386ad85d82e2462776e02ebfe50fa94bbc4123bb0aff26b70851",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "f4dce561afbd169d5374bf1f6a215b81accc8a9ca5fdc318b01fb604704a63d3",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "9f6cc16568c251f745b4242f503ee6c8e2eb7992a36c21938b79b53e22671c0f",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "02758ae9a55346f57e0e1bfcdb756c238b4f2548d4763c3c306f4f98787b5709",
+                  "sum": "0"
+                },
+                {
+                  "hash": "02758ae9a55346f57e0e1bfcdb756c238b4f2548d4763c3c306f4f98787b5709",
+                  "sum": "0"
+                },
+                {
+                  "hash": "2c2b3b64876d9fdff66beca919405f786bff9c0b4e52046d300d333a5055c961",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "1f75223c81601c6d12877d8797fb1be4c28fb3f033295fed44236b2b5792faaa",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "35535d93a76db18da21837a18f6e0e7ceda6d4a29dddb3191a43370f19868b1f",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "d53348d7c5e38b9ef0171471e9fe34246b015cfda717fd42d43bcc939d3b14ab",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 14
+      }
+    },
+    "lock-expired": {
+      "case": "lock-expired",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        14,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 14,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "92dd51711e94d189819c8b80c3c4df3f124ad19191de9bd861238227cda6f663",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            5000000000,
+            0,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            5000000000,
+            0,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "80000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "65000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "9db6a3d2992d58f035d1a264034d80a24db952d0ad36ff40a71758487cb66210",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "9256c4caa62ced2493ad76dd8579b9034257ede5ae55735b5dd96d476d005f56",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "02e753249649ee1d3a8c407e43b5bf7828db8704d1add228c567a9c15be1ce19",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "b37fce2225753b3216f14e6516a34f615c07c91a35aa93133603c009dbc7b6a7",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "6952bf6c30e29c342fb32cd0b64213fb8d2da3a444a926f1ff2690050abd70b7",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "02e753249649ee1d3a8c407e43b5bf7828db8704d1add228c567a9c15be1ce19",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "b37fce2225753b3216f14e6516a34f615c07c91a35aa93133603c009dbc7b6a7",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "fa993868965dbf88afc9fd593e6c61e7642c0692585521b1bfd739bd377d0f0d",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "23daecb493ac70d818deecee7077c1fae9378c8a74c85fe175efb7b55393f07f",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "b37fce2225753b3216f14e6516a34f615c07c91a35aa93133603c009dbc7b6a7",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "0bacac2899928225ddbb6bec686f000da58d3e5824ce92b113bd69cf0d3e5dda",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "23daecb493ac70d818deecee7077c1fae9378c8a74c85fe175efb7b55393f07f",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "b37fce2225753b3216f14e6516a34f615c07c91a35aa93133603c009dbc7b6a7",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "056fe409e90152bb5b8c712d42cb468b932bdfc9a7b1da628b96e676a1238548",
+                  "sum": "0"
+                },
+                {
+                  "hash": "056fe409e90152bb5b8c712d42cb468b932bdfc9a7b1da628b96e676a1238548",
+                  "sum": "0"
+                },
+                {
+                  "hash": "84c20167dd34b142de939a7e51cb23ac425c1291541440671e9cdb632a6bde65",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "2af21b759329687e21c7c30ccf8c1dc5fab6d4e96c805ab2eea0e7d9236ae80b",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2031250,
+              "proof": [
+                {
+                  "hash": "6638cc73573e65c916f55e155550fb6f1cb2f4e3d9e9d585da7e536f5d16ce7c",
+                  "sum": "468750"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 468750,
+              "proof": [
+                {
+                  "hash": "c032fa9ef9a0091aa6d5d861d0c183e34696ad6742038a90bc70417500f3d5d5",
+                  "sum": "2031250"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 15
+      }
+    },
+    "loss": {
+      "case": "loss",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "3b8fd9ea178d44b5c4b33a1f38455b1e0d7614dec73eb2615b506e0926b8dd96",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            1666666666,
+            1666666666,
+            0,
+            0,
+            0,
+            3333333333,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "28333333328",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "23333333330",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "4999999998"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "568295fd613dd53f36b2877006c5f85c78724e510a970e13198b7f3342b3fa47",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "c1a2ef999fe77ecda1893ef0409d594eb265a5937c36c41da5f44a295f4c0f48",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "7749c0b3efb49876c7d3cae2d4c12e510e6ae958545ac39de9eed2552ff97acf",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "rounding-1": {
+      "case": "rounding-1",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "6b8156877bc4c4313889734f26ddc6875b0906a38084eb10daf53ff9de5ea604",
+        "field_count": 5,
+        "postbond_tss_micros": 1,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          0,
+          1
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 1,
+        "riders": 0,
+        "backers": 1,
+        "unminted": 0
+      },
+      "minted": 1,
+      "roots": [
+        {
+          "root": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": [],
+          "claimed_bitmap": ""
+        },
+        {
+          "root": "d75a8698bf4194e965e9eb67d4e0e84e2347f685f88136826d661ef34be1549d",
+          "total": "1",
+          "leaf_count": 1,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 1,
+              "proof": []
+            }
+          ],
+          "claimed_bitmap": "01"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "rounding-3": {
+      "case": "rounding-3",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "985c8695b1f69739144be5079c20fd511b9642dfd8f9e4cc82f786000c11c15c",
+        "field_count": 5,
+        "postbond_tss_micros": 3,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          1,
+          2
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 3,
+        "riders": 1,
+        "backers": 2,
+        "unminted": 0
+      },
+      "minted": 3,
+      "roots": [
+        {
+          "root": "0d74de046358483098661c72c5411f21349e97a90bc3424ff4a72f73989d78cc",
+          "total": "1",
+          "leaf_count": 1,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 1,
+              "proof": []
+            }
+          ],
+          "claimed_bitmap": "01"
+        },
+        {
+          "root": "859364aec5ea68bfc447dff376ca252fb18dbf115b1fa56f28d8601930adaa52",
+          "total": "2",
+          "leaf_count": 1,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2,
+              "proof": []
+            }
+          ],
+          "claimed_bitmap": "01"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "boundary-bond": {
+      "case": "boundary-bond",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201600,
+      "input": {
+        "source_snapshot": "e43fa19b12e64edfacf4d04c53d4ec19b611a0e749571093b9e3d3fdbb3c1c75",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "568295fd613dd53f36b2877006c5f85c78724e510a970e13198b7f3342b3fa47",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "c1a2ef999fe77ecda1893ef0409d594eb265a5937c36c41da5f44a295f4c0f48",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "7749c0b3efb49876c7d3cae2d4c12e510e6ae958545ac39de9eed2552ff97acf",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "late-prebond": {
+      "case": "late-prebond",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "be96816e2cb1aed791f2c1d71aea13322212ea1c21489a0bce4557a0d0ccd82d",
+        "field_count": 6,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2500000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2500000,
+        "backers": 2500000,
+        "unminted": 0
+      },
+      "minted": 5000000,
+      "roots": [
+        {
+          "root": "568295fd613dd53f36b2877006c5f85c78724e510a970e13198b7f3342b3fa47",
+          "total": "2500000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "c1a2ef999fe77ecda1893ef0409d594eb265a5937c36c41da5f44a295f4c0f48",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                },
+                {
+                  "hash": "7fdf39b3e47862ac939ff5ba03c9f460ba2132998dae3af5ab22d404a0c29797",
+                  "sum": "175000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "7749c0b3efb49876c7d3cae2d4c12e510e6ae958545ac39de9eed2552ff97acf",
+                  "sum": "2325000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "ceiling-minus-one": {
+      "case": "ceiling-minus-one",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "ad684465f340f387e871ddee0d1b0b38b30d28e401857036ccc93ab38f113edf",
+        "field_count": 5,
+        "postbond_tss_micros": 19999999999,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          9999999999,
+          10000000000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 19999999999,
+        "riders": 9999999999,
+        "backers": 10000000000,
+        "unminted": 0
+      },
+      "minted": 19999999999,
+      "roots": [
+        {
+          "root": "ebd804778b5f4fb07dda9338a05324a817a56c67ff19d76aaca95837d024a593",
+          "total": "9999999999",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2533333333,
+              "proof": [
+                {
+                  "hash": "e68e26b67b6e243dd5b751bd62e536dbd1e38dce37f9a675f48cd29ff7850b85",
+                  "sum": "3533333333"
+                },
+                {
+                  "hash": "8572bc0762f200564ee2eef238c30d73a5501b37a695915fb343f21b0d96fcf2",
+                  "sum": "3233333333"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 3533333333,
+              "proof": [
+                {
+                  "hash": "42133dfb3050d0add74bfed5d84b944c7df4e73ef98b25ec026fc66fbaf95148",
+                  "sum": "2533333333"
+                },
+                {
+                  "hash": "8572bc0762f200564ee2eef238c30d73a5501b37a695915fb343f21b0d96fcf2",
+                  "sum": "3233333333"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 2533333333,
+              "proof": [
+                {
+                  "hash": "25341f3297a967dbf699a2de164e574da429eb67908ffb7c87d7e17cd91f58bc",
+                  "sum": "700000000"
+                },
+                {
+                  "hash": "7b399792aeb3342dd29656715f4a140bdd0bcc3ca788cbb555351a99d67b126c",
+                  "sum": "6066666666"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 700000000,
+              "proof": [
+                {
+                  "hash": "76d9cea6d4f7a4f9e50d029ec0fdc4e25a937cc0a447769c49c8374773eda3e4",
+                  "sum": "2533333333"
+                },
+                {
+                  "hash": "7b399792aeb3342dd29656715f4a140bdd0bcc3ca788cbb555351a99d67b126c",
+                  "sum": "6066666666"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 700000000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "85cbf4728f249380399dbe6c3e0a92c70de10d4d68bab095b945252ccd57181c",
+                  "sum": "9299999999"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "7f806dcffa9d6eb2e6079d210cea62a8576b85ccd76cda85c1d54e83e90cf549",
+          "total": "10000000000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 8235294118,
+              "proof": [
+                {
+                  "hash": "95fccfc6e6b157c075142166f3627e0cf2711c695cd75d7423a98f42140ddbf2",
+                  "sum": "1764705882"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 1764705882,
+              "proof": [
+                {
+                  "hash": "6902f2f22a55747f61f23850d912ecf895aa956e60c7e74deb45af2008851127",
+                  "sum": "8235294118"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "ceiling": {
+      "case": "ceiling",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "972e92aee1125f1f272c9ed1fc899cc54d71ac0aa92080e83c288c292b214601",
+        "field_count": 5,
+        "postbond_tss_micros": 20000000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          10000000000,
+          10000000000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 20000000000,
+        "riders": 10000000000,
+        "backers": 10000000000,
+        "unminted": 0
+      },
+      "minted": 20000000000,
+      "roots": [
+        {
+          "root": "3b2be14727f044915bbe3fee18b81ece0bbfb2fa9776d560f506e31a623b02fe",
+          "total": "10000000000",
+          "leaf_count": 5,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2533333334,
+              "proof": [
+                {
+                  "hash": "e68e26b67b6e243dd5b751bd62e536dbd1e38dce37f9a675f48cd29ff7850b85",
+                  "sum": "3533333333"
+                },
+                {
+                  "hash": "8572bc0762f200564ee2eef238c30d73a5501b37a695915fb343f21b0d96fcf2",
+                  "sum": "3233333333"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 3533333333,
+              "proof": [
+                {
+                  "hash": "9e0a80c51ca13526b01b5625a1f5fb6ed39214343761822e1ad092853a68b694",
+                  "sum": "2533333334"
+                },
+                {
+                  "hash": "8572bc0762f200564ee2eef238c30d73a5501b37a695915fb343f21b0d96fcf2",
+                  "sum": "3233333333"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 2533333333,
+              "proof": [
+                {
+                  "hash": "25341f3297a967dbf699a2de164e574da429eb67908ffb7c87d7e17cd91f58bc",
+                  "sum": "700000000"
+                },
+                {
+                  "hash": "3afb2f83e8d50b1cef738f27b6949a52eb9cacb6434feab313f6d67d1c4f1d91",
+                  "sum": "6066666667"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 700000000,
+              "proof": [
+                {
+                  "hash": "76d9cea6d4f7a4f9e50d029ec0fdc4e25a937cc0a447769c49c8374773eda3e4",
+                  "sum": "2533333333"
+                },
+                {
+                  "hash": "3afb2f83e8d50b1cef738f27b6949a52eb9cacb6434feab313f6d67d1c4f1d91",
+                  "sum": "6066666667"
+                },
+                {
+                  "hash": "2db83c466e11c96ea8e3878ec65f75eff3b1fcaae35483c5b028145b2c5f6225",
+                  "sum": "700000000"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 700000000,
+              "proof": [
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+                  "sum": "0"
+                },
+                {
+                  "hash": "8b5b6ffd6eb0538cc5a5e99119f689e119ffdb73aa625ed1d26e710ceb49b6b1",
+                  "sum": "9300000000"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "1f"
+        },
+        {
+          "root": "7f806dcffa9d6eb2e6079d210cea62a8576b85ccd76cda85c1d54e83e90cf549",
+          "total": "10000000000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 8235294118,
+              "proof": [
+                {
+                  "hash": "95fccfc6e6b157c075142166f3627e0cf2711c695cd75d7423a98f42140ddbf2",
+                  "sum": "1764705882"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 1764705882,
+              "proof": [
+                {
+                  "hash": "6902f2f22a55747f61f23850d912ecf895aa956e60c7e74deb45af2008851127",
+                  "sum": "8235294118"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "unregistered-rider": {
+      "case": "unregistered-rider",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "e43fa19b12e64edfacf4d04c53d4ec19b611a0e749571093b9e3d3fdbb3c1c75",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          2325000,
+          2500000
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 2325000,
+        "backers": 2500000,
+        "unminted": 175000
+      },
+      "minted": 4825000,
+      "roots": [
+        {
+          "root": "7749c0b3efb49876c7d3cae2d4c12e510e6ae958545ac39de9eed2552ff97acf",
+          "total": "2325000",
+          "leaf_count": 4,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "c1a2ef999fe77ecda1893ef0409d594eb265a5937c36c41da5f44a295f4c0f48",
+                  "sum": "883333"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 883333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "7b1a5607512ad0897b9bc283d06036f6c365ce26dda958920be38345d1f48f5f",
+                  "sum": "808333"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "cf36e4eeb703027153e2856010957955114e4f3752cfdfbd99e0c46ea23fc12f",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "2e93befb35d082dda86f6d8edcd50fd5d744c960a9efd77ebe016202c36c7135",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "a775120463a14ad8f0c6d8c9e70b214abbec9edac1cec6056b527eb042a0d01c",
+                  "sum": "1516667"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "0f"
+        },
+        {
+          "root": "46b7830c841cea80d16f3966be55b26b1511384f0635d37bb1d9413c185bf233",
+          "total": "2500000",
+          "leaf_count": 2,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": [
+                {
+                  "hash": "ac12372cd6d59a811dd66f147a63c118af8c694ffe3bdc4032531f56f4fd3454",
+                  "sum": "441176"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+              "recipient": "36VASLSKLFD2KokjXG7V28veZvXEsyHRKefLonPaAKzv",
+              "amount": 441176,
+              "proof": [
+                {
+                  "hash": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+                  "sum": "2058824"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "03"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "unregistered-backer": {
+      "case": "unregistered-backer",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "e43fa19b12e64edfacf4d04c53d4ec19b611a0e749571093b9e3d3fdbb3c1c75",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          1616667,
+          2058824
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 1616667,
+        "backers": 2058824,
+        "unminted": 1324509
+      },
+      "minted": 3675491,
+      "roots": [
+        {
+          "root": "c72918f48242edd1e8513a945a193b2a6e992a19e792504e1b5bc20be972e971",
+          "total": "1616667",
+          "leaf_count": 4,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 633334,
+              "proof": [
+                {
+                  "hash": "a81c6b30b0e2575b730c4d7964487537d39818c9d3b030c58fd4aa929fb83b11",
+                  "sum": "633333"
+                },
+                {
+                  "hash": "dd759ef07a1d95c18d107bb9e9fc0dab2c7fbbade8bd0c77856c9748ac789cb9",
+                  "sum": "350000"
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "person": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+              "recipient": "3AQTaduKvYWFTu1ExZSQK1hQp5jSZ2yEt4KzsASAufKd",
+              "amount": 633333,
+              "proof": [
+                {
+                  "hash": "ef1eda3be79bc3f9f511b0e3cf0499065c9a344f556c40cd46553cd8edc5e424",
+                  "sum": "633334"
+                },
+                {
+                  "hash": "dd759ef07a1d95c18d107bb9e9fc0dab2c7fbbade8bd0c77856c9748ac789cb9",
+                  "sum": "350000"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "person": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+              "recipient": "3EKkiwNLWqoUbzFkPrmKbtUB4EweE6f4STzevYUmezeL",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "4d8a799ae69fde8bec7ece14348468c40f21bb4341fff903588a96a2544eb64e",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "4d762b4244f1a29a655513947e45f0a107b95251a48fb5708ca9fda61463f5b8",
+                  "sum": "1266667"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "person": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+              "recipient": "3JF3sEqM796hk5WFqA6EtmEwJQ9quALszsfJyvXNQKy3",
+              "amount": 175000,
+              "proof": [
+                {
+                  "hash": "dd6c2613b288dc82c3c015eefb9f0697ccf28fd293fcab55bb7abf3bc2f7306c",
+                  "sum": "175000"
+                },
+                {
+                  "hash": "4d762b4244f1a29a655513947e45f0a107b95251a48fb5708ca9fda61463f5b8",
+                  "sum": "1266667"
+                }
+              ]
+            }
+          ],
+          "claimed_bitmap": "0f"
+        },
+        {
+          "root": "17e343b92669e3cc3919a5217e96ede0ad0b0bd662b0ce976824cc2a7c5656af",
+          "total": "2058824",
+          "leaf_count": 1,
+          "leaves": [
+            {
+              "index": 0,
+              "person": "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+              "recipient": "32ZsJ2yJjwuoBiWE5xnZjG9tKmK3CubbmEzgkQLyQzgD",
+              "amount": 2058824,
+              "proof": []
+            }
+          ],
+          "claimed_bitmap": "01"
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    },
+    "unregistered-all": {
+      "case": "unregistered-all",
+      "context": [
+        "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        "8qbHbw2BbbTHBW1sbeqakYXVKRQM8Ne7pLK7m6CVfeR",
+        "CktRuQ2mttgRGkXJtyksdKHjUdc2C4TgDzyB98oEzy8",
+        1,
+        "GgBaCs3NCBuZN12kCJgAW63ydqohFkHEdfdEXBPzLHq"
+      ],
+      "week": 1,
+      "bonded_at": 1791201700,
+      "input": {
+        "source_snapshot": "e43fa19b12e64edfacf4d04c53d4ec19b611a0e749571093b9e3d3fdbb3c1c75",
+        "field_count": 5,
+        "postbond_tss_micros": 5000000,
+        "top_count": 3,
+        "ascent_count": 5,
+        "earned_legend": true,
+        "opening": {
+          "basis": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ],
+          "backing": [
+            0,
+            5000000000,
+            5000000000,
+            0,
+            0,
+            0,
+            10000000000,
+            0
+          ]
+        },
+        "payable_role_totals": [
+          0,
+          0
+        ]
+      },
+      "opening_weight_quarters": "85000000000",
+      "owner_weights_quarters": {
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5": "70000000000",
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn": "15000000000"
+      },
+      "admitted": true,
+      "allocation": {
+        "potential": 5000000,
+        "riders": 0,
+        "backers": 0,
+        "unminted": 5000000
+      },
+      "minted": 0,
+      "roots": [
+        {
+          "root": "897c8e4526c32d1b0a298fe6aca3dcd7385c8ae259c3dad3b9fea97a696ef782",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": [],
+          "claimed_bitmap": ""
+        },
+        {
+          "root": "254118b1328b58bed135367721b591c7bfc30b11e06278a9c87f35018b9485bb",
+          "total": "0",
+          "leaf_count": 0,
+          "leaves": [],
+          "claimed_bitmap": ""
+        }
+      ],
+      "closure": {
+        "mint_record_absent": true,
+        "lifetime_unchanged": true,
+        "republication_refused": true,
+        "next_week": 2
+      }
+    }
+  }
+}

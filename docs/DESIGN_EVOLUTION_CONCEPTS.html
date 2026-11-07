@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Design Evolution Concepts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      /* Keep the dark foundation */
+      --bg: #05060a;
+      --bg-elevated: #090c18;
+      --bg-card: rgba(10, 13, 26, 0.95);
+      
+      /* Evolved color system: Gold + Orange duality */
+      --gold: #f8d15a;
+      --gold-soft: rgba(248, 209, 90, 0.15);
+      --gold-glow: rgba(248, 209, 90, 0.4);
+      
+      /* ADD: International Orange for action/energy */
+      --orange: #FF4400;
+      --orange-soft: rgba(255, 68, 0, 0.15);
+      --orange-glow: rgba(255, 68, 0, 0.5);
+      
+      /* Teal for secondary accent (from original) */
+      --teal: #6de9b5;
+      --teal-soft: rgba(109, 233, 181, 0.15);
+      
+      --text: #f4f5ff;
+      --text-soft: #a6accc;
+      --text-muted: #6d7394;
+      
+      --border: rgba(255, 255, 255, 0.06);
+      --radius: 16px;
+      
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      --mono: "SF Mono", ui-monospace, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .concepts {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--text-soft);
+      margin-bottom: 48px;
+      font-size: 16px;
+    }
+
+    .concept-section {
+      margin-bottom: 80px;
+    }
+
+    .concept-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--orange);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .concept-desc {
+      color: var(--text-soft);
+      margin-bottom: 24px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       CONCEPT 1: THE BOULDER / ORB
+       Your signature visual element
+    ======================================== */
+    
+    .boulder-showcase {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .boulder {
+      position: relative;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at 30% 25%, #fffef2 0%, transparent 25%),
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.8) 0%, transparent 8%),
+        radial-gradient(circle at 70% 70%, rgba(0,0,0,0.4) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, var(--gold) 0%, #b98b00 60%, #6d5200 100%);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.3) inset,
+        0 4px 20px rgba(0,0,0,0.5),
+        0 0 40px var(--gold-glow);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .boulder.small { width: 32px; height: 32px; }
+    .boulder.medium { width: 64px; height: 64px; }
+    .boulder.large { width: 120px; height: 120px; }
+    .boulder.hero { width: 180px; height: 180px; }
+
+    /* Orange variant for action states */
+    .boulder.action {
+      background: 
+        radial-gradient(circle at 30% 25%, #fff 0%, transparent 20%),
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9) 0%, transparent 6%),
+        radial-gradient(circle at 70% 70%, rgba(0,0,0,0.4) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #FF6633 0%, var(--orange) 50%, #AA2200 100%);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.3) inset,
+        0 4px 20px rgba(0,0,0,0.5),
+        0 0 60px var(--orange-glow);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .boulder-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .boulder-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ========================================
+       CONCEPT 2: TOPOGRAPHIC TEXTURE
+       Subtle terrain feel for cycling app
+    ======================================== */
+
+    .topo-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 T100 50' stroke='rgba(255,255,255,0.03)' fill='none' stroke-width='1'/%3E%3Cpath d='M0 60 Q25 40 50 60 T100 60' stroke='rgba(255,255,255,0.025)' fill='none' stroke-width='1'/%3E%3Cpath d='M0 70 Q25 50 50 70 T100 70' stroke='rgba(255,255,255,0.02)' fill='none' stroke-width='1'/%3E%3Cpath d='M0 40 Q25 20 50 40 T100 40' stroke='rgba(255,255,255,0.025)' fill='none' stroke-width='1'/%3E%3Cpath d='M0 30 Q25 10 50 30 T100 30' stroke='rgba(255,255,255,0.02)' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 200px 100px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .topo-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topo-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .topo-card p {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    /* Elevation hint on side */
+    .topo-card::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(
+        to bottom,
+        var(--orange) 0%,
+        var(--gold) 50%,
+        var(--teal) 100%
+      );
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    /* ========================================
+       CONCEPT 3: DATA SPARKLINES
+       TrainingPeaks-level credibility
+    ======================================== */
+
+    .data-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    .data-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .data-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .data-value {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .data-unit {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-left: 4px;
+    }
+
+    .sparkline {
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .spark-bar {
+      flex: 1;
+      background: linear-gradient(to top, var(--orange), var(--gold));
+      border-radius: 2px 2px 0 0;
+      opacity: 0.8;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .spark-bar:hover {
+      opacity: 1;
+      transform: scaleY(1.1);
+      transform-origin: bottom;
+    }
+
+    .data-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    /* ========================================
+       CONCEPT 4: BEETLE CARD (THE HERO)
+       This should be unmistakably yours
+    ======================================== */
+
+    .beetle-card-hero {
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(248, 209, 90, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 68, 0, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0d1a 0%, #12162a 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(248, 209, 90, 0.2);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      max-width: 400px;
+    }
+
+    .beetle-card-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(248, 209, 90, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .beetle-rank {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), #b98b00);
+      color: #000;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px var(--gold-glow);
+    }
+
+    .beetle-avatar-container {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    /* Actual beetle shape hint */
+    .beetle-avatar-shell {
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse 80% 90% at 50% 45%, #2a2d3a 0%, #1a1d2a 100%);
+      border-radius: 50% 50% 45% 45%;
+      position: relative;
+      border: 2px solid rgba(248, 209, 90, 0.3);
+      box-shadow: 
+        0 0 30px rgba(248, 209, 90, 0.2),
+        inset 0 -20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Shell line */
+    .beetle-avatar-shell::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 50%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0.5;
+    }
+
+    /* Legs hint */
+    .beetle-avatar-shell::after {
+      content: '';
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    /* Boulder being rolled */
+    .beetle-boulder {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .beetle-name {
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .beetle-title {
+      color: var(--gold);
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .beetle-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+
+    .beetle-stat-value {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .beetle-stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .beetle-coherence {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .coherence-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .coherence-fill {
+      height: 100%;
+      width: 74%;
+      background: linear-gradient(90deg, var(--teal), var(--gold), var(--orange));
+      border-radius: 3px;
+    }
+
+    .coherence-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ========================================
+       CONCEPT 5: ACTION BUTTONS
+       Orange for primary actions
+    ======================================== */
+
+    .btn-showcase {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), #CC3300);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--orange-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px var(--orange-glow);
+    }
+
+    .btn-secondary {
+      background: var(--gold-soft);
+      color: var(--gold);
+      border: 1px solid rgba(248, 209, 90, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(248, 209, 90, 0.25);
+      border-color: var(--gold);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-soft);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    /* ========================================
+       CONCEPT 6: PILE MARKER EVOLUTION
+       Make map markers distinctive
+    ======================================== */
+
+    .marker-showcase {
+      display: flex;
+      gap: 32px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      padding: 40px;
+      background: rgba(0,0,0,0.3);
+      border-radius: var(--radius);
+    }
+
+    .pile-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .marker {
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .marker-body {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      position: relative;
+    }
+
+    .marker-body::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+
+    .marker.bronze .marker-body {
+      background: linear-gradient(135deg, #cd7f32, #8b4513);
+      box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4);
+    }
+    .marker.bronze .marker-body::after {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .marker.silver .marker-body {
+      background: linear-gradient(135deg, #c0c0c0, #808080);
+      box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
+    }
+    .marker.silver .marker-body::after {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .marker.gold .marker-body {
+      background: linear-gradient(135deg, var(--gold), #b98b00);
+      box-shadow: 0 4px 15px var(--gold-glow);
+    }
+    .marker.gold .marker-body::after {
+      background: rgba(255,255,255,0.5);
+    }
+
+    .marker.diamond .marker-body {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      box-shadow: 0 4px 20px rgba(96, 165, 250, 0.5);
+    }
+    .marker.diamond .marker-body::after {
+      background: rgba(255,255,255,0.6);
+    }
+
+    /* Your staked marker */
+    .marker.staked::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border: 2px solid var(--orange);
+      border-radius: 50%;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .marker-tier {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ========================================
+       LAYOUT
+    ======================================== */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .boulder-showcase { justify-content: center; }
+    }
+
+    /* ========================================
+       SUMMARY SECTION
+    ======================================== */
+
+    .summary {
+      background: linear-gradient(135deg, rgba(255, 68, 0, 0.1), rgba(248, 209, 90, 0.1));
+      border: 1px solid rgba(255, 68, 0, 0.2);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 60px;
+    }
+
+    .summary h2 {
+      color: var(--orange);
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .summary ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .summary li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .summary li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .summary li strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="concepts">
+    <h1>Design Evolution Concepts</h1>
+    <p class="subtitle">Keeping the glass aesthetic, adding distinctive identity</p>
+
+    <!-- CONCEPT 1: BOULDER -->
+    <section class="concept-section">
+      <div class="concept-title">01 — The Boulder</div>
+      <p class="concept-desc">
+        Your signature visual element. The glowing dung ball should appear everywhere — loading states, 
+        balance indicators, pile markers, achievement badges. It's tactile, memorable, and distinctly yours.
+      </p>
+      <div class="boulder-showcase">
+        <div class="boulder-item">
+          <div class="boulder small"></div>
+          <div class="boulder-label">Nav indicator</div>
+        </div>
+        <div class="boulder-item">
+          <div class="boulder medium"></div>
+          <div class="boulder-label">Card accent</div>
+        </div>
+        <div class="boulder-item">
+          <div class="boulder large"></div>
+          <div class="boulder-label">Profile badge</div>
+        </div>
+        <div class="boulder-item">
+          <div class="boulder hero"></div>
+          <div class="boulder-label">Hero element</div>
+        </div>
+        <div class="boulder-item">
+          <div class="boulder medium action"></div>
+          <div class="boulder-label">Action state (orange)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT 2: TOPO TEXTURE -->
+    <section class="concept-section">
+      <div class="concept-title">02 — Topographic Texture</div>
+      <p class="concept-desc">
+        Subtle contour lines in card backgrounds. Whispers "terrain" and "cycling" without being heavy-handed. 
+        The elevation gradient on the side hints at climb difficulty.
+      </p>
+      <div class="grid-2">
+        <div class="topo-card">
+          <div class="topo-card-content">
+            <h3>Alpine Crusher</h3>
+            <p>12.4 km • 847m elevation • Boulder, CO</p>
+          </div>
+        </div>
+        <div class="topo-card">
+          <div class="topo-card-content">
+            <h3>Coastal Sprint</h3>
+            <p>0.8 km • 12m elevation • San Diego, CA</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT 3: DATA VIZ -->
+    <section class="concept-section">
+      <div class="concept-title">03 — Data Density</div>
+      <p class="concept-desc">
+        Sparklines and mini-charts add TrainingPeaks-level credibility. The gradient bars use your 
+        orange→gold spectrum, making data feel branded.
+      </p>
+      <div class="data-row">
+        <div class="data-card">
+          <div class="data-header">
+            <span class="data-label">Weekly TSS</span>
+            <div>
+              <span class="data-value">847</span>
+              <span class="data-unit">pts</span>
+            </div>
+          </div>
+          <div class="sparkline">
+            <div class="spark-bar" style="height: 45%;"></div>
+            <div class="spark-bar" style="height: 62%;"></div>
+            <div class="spark-bar" style="height: 38%;"></div>
+            <div class="spark-bar" style="height: 71%;"></div>
+            <div class="spark-bar" style="height: 55%;"></div>
+            <div class="spark-bar" style="height: 88%;"></div>
+            <div class="spark-bar" style="height: 100%;"></div>
+          </div>
+        </div>
+        <div class="data-card">
+          <div class="data-header">
+            <span class="data-label">DUNG Earned</span>
+            <div>
+              <span class="data-value" style="color: var(--gold);">156</span>
+              <span class="data-unit">DUNG</span>
+            </div>
+          </div>
+          <div class="sparkline">
+            <div class="spark-bar" style="height: 30%;"></div>
+            <div class="spark-bar" style="height: 45%;"></div>
+            <div class="spark-bar" style="height: 52%;"></div>
+            <div class="spark-bar" style="height: 48%;"></div>
+            <div class="spark-bar" style="height: 65%;"></div>
+            <div class="spark-bar" style="height: 78%;"></div>
+            <div class="spark-bar" style="height: 85%;"></div>
+          </div>
+        </div>
+        <div class="data-card">
+          <div class="data-header">
+            <span class="data-label">CAL Balance</span>
+            <div>
+              <span class="data-value">1,847</span>
+              <span class="data-unit">/ 2,500</span>
+            </div>
+          </div>
+          <div class="sparkline">
+            <div class="spark-bar" style="height: 100%;"></div>
+            <div class="spark-bar" style="height: 92%;"></div>
+            <div class="spark-bar" style="height: 78%;"></div>
+            <div class="spark-bar" style="height: 65%;"></div>
+            <div class="spark-bar" style="height: 58%;"></div>
+            <div class="spark-bar" style="height: 74%;"></div>
+            <div class="spark-bar" style="height: 74%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT 4: BEETLE CARD -->
+    <section class="concept-section">
+      <div class="concept-title">04 — Beetle Card (The Hero)</div>
+      <p class="concept-desc">
+        This is your Milady moment. The beetle card should make someone stop scrolling and ask "what is that?"
+        The shell shape, the rolling boulder, the coherence bar — all distinctly Dung Beetle.
+      </p>
+      <div class="beetle-card-hero">
+        <div class="beetle-rank">S-RANK</div>
+        <div class="beetle-avatar-container">
+          <div class="beetle-avatar-shell"></div>
+          <div class="beetle-boulder">
+            <div class="boulder medium" style="animation-delay: -1s;"></div>
+          </div>
+        </div>
+        <div class="beetle-name">BEETLE #4821</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div>
+            <div class="beetle-stat-value">8,450</div>
+            <div class="beetle-stat-label">Boulder</div>
+          </div>
+          <div>
+            <div class="beetle-stat-value">23</div>
+            <div class="beetle-stat-label">Piles</div>
+          </div>
+          <div>
+            <div class="beetle-stat-value">285w</div>
+            <div class="beetle-stat-label">FTP</div>
+          </div>
+        </div>
+        <div class="beetle-coherence">
+          <div class="coherence-label">
+            <span>Coherence</span>
+            <span style="color: var(--gold);">74 / 100</span>
+          </div>
+          <div class="coherence-bar">
+            <div class="coherence-fill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT 5: BUTTONS -->
+    <section class="concept-section">
+      <div class="concept-title">05 — Action Hierarchy</div>
+      <p class="concept-desc">
+        Orange for primary actions (stake, claim, upload). Gold-tinted for secondary. 
+        Ghost for tertiary. Creates clear visual hierarchy and adds energy.
+      </p>
+      <div class="btn-showcase">
+        <button class="btn btn-primary">Stake DUNG</button>
+        <button class="btn btn-primary">Claim Rewards</button>
+        <button class="btn btn-secondary">View Pile</button>
+        <button class="btn btn-secondary">Manage</button>
+        <button class="btn btn-ghost">Cancel</button>
+        <button class="btn btn-ghost">Learn More</button>
+      </div>
+    </section>
+
+    <!-- CONCEPT 6: MARKERS -->
+    <section class="concept-section">
+      <div class="concept-title">06 — Pile Markers</div>
+      <p class="concept-desc">
+        Map markers that communicate tier at a glance. Your staked piles get a pulsing orange ring — 
+        instantly see what you own on the map.
+      </p>
+      <div class="marker-showcase">
+        <div class="pile-marker">
+          <div class="marker bronze">
+            <div class="marker-body"></div>
+          </div>
+          <div class="marker-tier">Bronze</div>
+        </div>
+        <div class="pile-marker">
+          <div class="marker silver">
+            <div class="marker-body"></div>
+          </div>
+          <div class="marker-tier">Silver</div>
+        </div>
+        <div class="pile-marker">
+          <div class="marker gold">
+            <div class="marker-body"></div>
+          </div>
+          <div class="marker-tier">Gold</div>
+        </div>
+        <div class="pile-marker">
+          <div class="marker diamond">
+            <div class="marker-body"></div>
+          </div>
+          <div class="marker-tier">Diamond</div>
+        </div>
+        <div class="pile-marker">
+          <div class="marker gold staked">
+            <div class="marker-body"></div>
+          </div>
+          <div class="marker-tier">Staked (yours)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      <h2>Summary: What Makes It Yours</h2>
+      <ul>
+        <li><strong>The Boulder</strong> — Glowing orb as signature element. Appears in nav, cards, loading, achievements.</li>
+        <li><strong>Topographic texture</strong> — Subtle contour lines whisper "terrain" in backgrounds.</li>
+        <li><strong>Orange + Gold duality</strong> — Gold for passive/earned, Orange for action/energy.</li>
+        <li><strong>Data sparklines</strong> — Mini charts everywhere. TrainingPeaks credibility.</li>
+        <li><strong>Beetle card as hero</strong> — Shell shape, rolling boulder, coherence bar. Unmistakably Dung Beetle.</li>
+        <li><strong>Pulsing stake indicators</strong> — See your ownership at a glance on the map.</li>
+        <li><strong>Keep the terminal</strong> — The Dojo/console section is genuinely great. Lean into it.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — 2027 Interface Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      /* 
+        2027: Post-glass, post-crypto-gold
+        Monochrome depth + selective luminance
+        The interface IS the data
+      */
+      
+      /* Void spectrum */
+      --void: #000000;
+      --void-1: #080808;
+      --void-2: #0F0F0F;
+      --void-3: #171717;
+      --void-4: #1F1F1F;
+      --void-5: #2A2A2A;
+      
+      /* The signal: One color, infinite gradations */
+      --signal: #FF3D00;
+      --signal-bright: #FF5722;
+      --signal-dim: #CC3100;
+      --signal-glow: rgba(255, 61, 0, 0.6);
+      --signal-wash: rgba(255, 61, 0, 0.08);
+      --signal-trace: rgba(255, 61, 0, 0.03);
+      
+      /* Text as light */
+      --light-100: #FFFFFF;
+      --light-80: rgba(255,255,255,0.8);
+      --light-60: rgba(255,255,255,0.6);
+      --light-40: rgba(255,255,255,0.4);
+      --light-20: rgba(255,255,255,0.2);
+      --light-10: rgba(255,255,255,0.1);
+      --light-05: rgba(255,255,255,0.05);
+      
+      /* Type */
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--void);
+      color: var(--light-80);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    body {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ================================================
+       ATMOSPHERIC LAYER — The environment
+    ================================================ */
+
+    .atmosphere {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .atmosphere::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(ellipse 800px 600px at 20% 10%, var(--signal-wash) 0%, transparent 50%),
+        radial-gradient(ellipse 600px 800px at 80% 90%, var(--signal-trace) 0%, transparent 50%);
+      animation: drift 30s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-5%, 5%) rotate(3deg); }
+    }
+
+    /* Noise texture */
+    .atmosphere::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      mix-blend-mode: overlay;
+    }
+
+    /* ================================================
+       CONTENT LAYER
+    ================================================ */
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 48px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* ================================================
+       TYPOGRAPHY SYSTEM — Computed precision
+    ================================================ */
+
+    .study-header {
+      margin-bottom: 80px;
+    }
+
+    .study-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .study-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--signal);
+    }
+
+    .study-title {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: var(--light-100);
+      margin-bottom: 24px;
+    }
+
+    .study-title span {
+      background: linear-gradient(135deg, var(--signal), var(--signal-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .study-desc {
+      font-size: 18px;
+      color: var(--light-40);
+      max-width: 500px;
+      font-weight: 400;
+    }
+
+    /* ================================================
+       SECTION SYSTEM
+    ================================================ */
+
+    .section {
+      margin-bottom: 120px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--light-05);
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--signal);
+      min-width: 32px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-60);
+    }
+
+    /* ================================================
+       THE MEMBRANE — Container system
+    ================================================ */
+
+    .membrane {
+      background: var(--void-2);
+      border: 1px solid var(--light-05);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .membrane::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--light-05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .membrane-glow {
+      box-shadow: 
+        0 0 0 1px var(--signal-wash),
+        0 0 80px var(--signal-wash);
+    }
+
+    /* ================================================
+       DATA RIVER — Live information flow
+    ================================================ */
+
+    .data-river {
+      display: flex;
+      overflow: hidden;
+      padding: 20px 0;
+      background: var(--void-1);
+      border-bottom: 1px solid var(--light-05);
+      position: relative;
+    }
+
+    .river-track {
+      display: flex;
+      gap: 64px;
+      animation: flow 40s linear infinite;
+      padding: 0 32px;
+    }
+
+    @keyframes flow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .river-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .river-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 12px var(--signal-glow);
+    }
+
+    .river-label {
+      color: var(--light-40);
+    }
+
+    .river-value {
+      color: var(--light-100);
+      font-weight: 600;
+    }
+
+    /* ================================================
+       COMPUTED GRID — The data surface
+    ================================================ */
+
+    .computed-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1px;
+      background: var(--light-05);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .cell {
+      background: var(--void-2);
+      padding: 32px;
+      position: relative;
+    }
+
+    .cell-2 { grid-column: span 2; }
+    .cell-3 { grid-column: span 3; }
+    .cell-4 { grid-column: span 4; }
+    .cell-6 { grid-column: span 6; }
+    .cell-8 { grid-column: span 8; }
+    .cell-12 { grid-column: span 12; }
+
+    .cell-highlight {
+      background: linear-gradient(135deg, var(--signal-wash), var(--void-2));
+    }
+
+    .cell-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-20);
+      margin-bottom: 8px;
+    }
+
+    .cell-value {
+      font-family: var(--font-mono);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--light-100);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .cell-value.signal {
+      color: var(--signal);
+      text-shadow: 0 0 40px var(--signal-glow);
+    }
+
+    .cell-unit {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--light-30);
+      margin-top: 8px;
+    }
+
+    /* ================================================
+       WAVEFORM — Data as texture
+    ================================================ */
+
+    .waveform {
+      height: 64px;
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      margin-top: 16px;
+    }
+
+    .wave-bar {
+      flex: 1;
+      background: linear-gradient(to top, var(--signal), var(--signal-dim));
+      border-radius: 1px;
+      opacity: 0.7;
+      transition: opacity 0.1s;
+    }
+
+    .wave-bar:hover {
+      opacity: 1;
+    }
+
+    /* Animated pulse version */
+    .waveform-live .wave-bar {
+      animation: pulse-bar 2s ease-in-out infinite;
+    }
+
+    .waveform-live .wave-bar:nth-child(odd) {
+      animation-delay: -0.5s;
+    }
+
+    @keyframes pulse-bar {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.9; }
+    }
+
+    /* ================================================
+       TERMINAL 2027 — The command surface
+    ================================================ */
+
+    .terminal-2027 {
+      background: var(--void-1);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--light-05);
+      font-family: var(--font-mono);
+    }
+
+    .terminal-bar {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--light-05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--light-40);
+    }
+
+    .status-live {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 12px var(--signal-glow);
+      animation: breathe 2s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.9); }
+    }
+
+    .terminal-meta {
+      font-size: 10px;
+      color: var(--light-20);
+    }
+
+    .terminal-surface {
+      padding: 24px;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 16px;
+      padding: 4px 0;
+      border-radius: 4px;
+      transition: background 0.1s;
+    }
+
+    .t-line:hover {
+      background: var(--light-05);
+    }
+
+    .t-time {
+      color: var(--light-20);
+      font-size: 10px;
+      min-width: 48px;
+      font-weight: 500;
+    }
+
+    .t-prompt {
+      color: var(--signal);
+      font-weight: 600;
+    }
+
+    .t-text {
+      color: var(--light-60);
+    }
+
+    .t-highlight {
+      color: var(--light-100);
+      font-weight: 500;
+    }
+
+    .t-signal {
+      color: var(--signal);
+    }
+
+    .t-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    .t-tag-ok {
+      background: rgba(0, 255, 136, 0.1);
+      color: #00FF88;
+    }
+
+    .t-tag-pending {
+      background: var(--signal-wash);
+      color: var(--signal);
+      animation: tag-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes tag-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 18px;
+      background: var(--signal);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* ================================================
+       IDENTITY SURFACE — The Beetle
+    ================================================ */
+
+    .identity-surface {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--light-05);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .identity-visual {
+      background: var(--void-2);
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .identity-visual::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--signal-wash) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .beetle-construct {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    /* Shell - geometric, computed feel */
+    .beetle-shell {
+      position: absolute;
+      inset: 20px;
+      border-radius: 50% 50% 45% 45%;
+      background: 
+        conic-gradient(from 180deg, var(--void-3), var(--void-4), var(--void-3));
+      border: 2px solid var(--signal);
+      box-shadow: 
+        0 0 60px var(--signal-wash),
+        inset 0 -30px 60px var(--void);
+    }
+
+    /* Center line */
+    .beetle-shell::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      width: 2px;
+      height: 60%;
+      background: linear-gradient(to bottom, var(--signal), transparent);
+      transform: translateX(-50%);
+    }
+
+    /* Data overlay */
+    .beetle-shell::after {
+      content: 'S';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-mono);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--signal);
+      text-shadow: 0 0 30px var(--signal-glow);
+    }
+
+    /* Orbital rings */
+    .beetle-orbit {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--light-10);
+      border-radius: 50%;
+      animation: orbit 20s linear infinite;
+    }
+
+    .beetle-orbit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background: var(--signal);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px var(--signal-glow);
+    }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .beetle-orbit:nth-child(2) {
+      inset: -10px;
+      animation-duration: 30s;
+      animation-direction: reverse;
+      border-style: dashed;
+    }
+
+    /* Boulder */
+    .beetle-boulder {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: 
+        radial-gradient(circle at 30% 30%, var(--light-20) 0%, transparent 40%),
+        radial-gradient(circle, var(--signal-bright) 0%, var(--signal) 40%, var(--signal-dim) 100%);
+      border-radius: 50%;
+      box-shadow: 
+        0 0 40px var(--signal-glow),
+        inset 0 0 20px rgba(0,0,0,0.3);
+      animation: boulder-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes boulder-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .identity-data {
+      background: var(--void-2);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .identity-id {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--signal);
+      margin-bottom: 8px;
+    }
+
+    .identity-name {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--light-100);
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .identity-title {
+      font-size: 14px;
+      color: var(--light-40);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+
+    .identity-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .identity-metric-value {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--light-100);
+    }
+
+    .identity-metric-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-30);
+      margin-top: 4px;
+    }
+
+    .coherence-bar {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-05);
+    }
+
+    .coherence-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .coherence-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-30);
+    }
+
+    .coherence-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--signal);
+    }
+
+    .coherence-track {
+      height: 4px;
+      background: var(--light-05);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .coherence-fill {
+      height: 100%;
+      width: 92%;
+      background: linear-gradient(90deg, var(--signal-dim), var(--signal), var(--signal-bright));
+      border-radius: 2px;
+      box-shadow: 0 0 20px var(--signal-glow);
+    }
+
+    /* ================================================
+       CLAIM SURFACE — Action area
+    ================================================ */
+
+    .claim-surface {
+      background: var(--void-2);
+      border: 1px solid var(--light-05);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .claim-header {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--light-05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .claim-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-40);
+    }
+
+    .claim-total {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--signal);
+      text-shadow: 0 0 30px var(--signal-glow);
+    }
+
+    .claim-list {
+      padding: 16px;
+    }
+
+    .claim-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      transition: background 0.15s;
+    }
+
+    .claim-item:hover {
+      background: var(--light-05);
+    }
+
+    .claim-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--signal-wash);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .claim-info {
+      flex: 1;
+    }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--light-100);
+      margin-bottom: 2px;
+    }
+
+    .claim-detail {
+      font-size: 12px;
+      color: var(--light-40);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--signal);
+    }
+
+    .claim-action {
+      padding: 24px 32px;
+      border-top: 1px solid var(--light-05);
+    }
+
+    .btn-claim {
+      width: 100%;
+      padding: 18px;
+      background: var(--signal);
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--void);
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-claim:hover {
+      background: var(--signal-bright);
+      box-shadow: 0 0 40px var(--signal-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-claim::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+    }
+
+    .btn-claim:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* ================================================
+       COORDINATE DISPLAY — Map indicator
+    ================================================ */
+
+    .coord-display {
+      background: var(--void-1);
+      border: 1px solid var(--light-05);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coord-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(var(--light-05) 1px, transparent 1px),
+        linear-gradient(90deg, var(--light-05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.5;
+    }
+
+    .coord-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .coord-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+    }
+
+    .coord-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-30);
+    }
+
+    .coord-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--signal);
+    }
+
+    .coord-value {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--light-100);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .coord-sub {
+      font-size: 13px;
+      color: var(--light-40);
+    }
+
+    /* Pulsing markers */
+    .coord-markers {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .coord-marker {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 20px var(--signal-glow);
+      animation: marker-pulse 2s ease-out infinite;
+    }
+
+    .coord-marker:nth-child(2) { animation-delay: 0.3s; }
+    .coord-marker:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes marker-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* ================================================
+       LAYOUT
+    ================================================ */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1200px) {
+      .computed-grid { grid-template-columns: repeat(6, 1fr); }
+      .cell-3 { grid-column: span 3; }
+      .cell-4 { grid-column: span 3; }
+      .identity-surface { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 800px) {
+      .content { padding: 24px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .computed-grid { grid-template-columns: 1fr; }
+      .cell-2, .cell-3, .cell-4, .cell-6, .cell-8 { grid-column: span 1; }
+    }
+
+    /* ================================================
+       SUMMARY
+    ================================================ */
+
+    .summary {
+      margin-top: 120px;
+      padding: 48px;
+      background: linear-gradient(135deg, var(--signal-wash), var(--void-2));
+      border: 1px solid var(--signal);
+      border-radius: 24px;
+    }
+
+    .summary h2 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 24px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .summary-item h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--light-100);
+      margin-bottom: 8px;
+    }
+
+    .summary-item p {
+      font-size: 13px;
+      color: var(--light-40);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="atmosphere"></div>
+
+  <div class="content">
+
+    <header class="study-header">
+      <div class="study-label">Interface Study 2027</div>
+      <h1 class="study-title">The <span>Signal</span><br>& The Void</h1>
+      <p class="study-desc">Monochrome depth. One accent color as information hierarchy. The interface is the data surface.</p>
+    </header>
+
+    <!-- DATA RIVER -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <span class="section-title">Data River — Ambient Information</span>
+      </div>
+      <div class="data-river">
+        <div class="river-track">
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">EPOCH</span>
+            <span class="river-value">47</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">BLOCK</span>
+            <span class="river-value">284,291,847</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">GLOBAL POT</span>
+            <span class="river-value">42,800 DUNG</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">ACTIVE BEETLES</span>
+            <span class="river-value">12,847</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">PILES</span>
+            <span class="river-value">45,231</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">DISTRIBUTION IN</span>
+            <span class="river-value">2d 14h 32m</span>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">EPOCH</span>
+            <span class="river-value">47</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">BLOCK</span>
+            <span class="river-value">284,291,847</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">GLOBAL POT</span>
+            <span class="river-value">42,800 DUNG</span>
+          </div>
+          <div class="river-item">
+            <div class="river-dot"></div>
+            <span class="river-label">ACTIVE BEETLES</span>
+            <span class="river-value">12,847</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPUTED GRID -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <span class="section-title">Computed Grid — Data Surface</span>
+      </div>
+      <div class="computed-grid">
+        <div class="cell cell-3 cell-highlight">
+          <div class="cell-label">Boulder</div>
+          <div class="cell-value signal">8,450</div>
+          <div class="cell-unit">DUNG</div>
+          <div class="waveform waveform-live">
+            <div class="wave-bar" style="height: 45%;"></div>
+            <div class="wave-bar" style="height: 62%;"></div>
+            <div class="wave-bar" style="height: 58%;"></div>
+            <div class="wave-bar" style="height: 71%;"></div>
+            <div class="wave-bar" style="height: 85%;"></div>
+            <div class="wave-bar" style="height: 78%;"></div>
+            <div class="wave-bar" style="height: 92%;"></div>
+            <div class="wave-bar" style="height: 88%;"></div>
+          </div>
+        </div>
+        <div class="cell cell-3">
+          <div class="cell-label">Weekly TSS</div>
+          <div class="cell-value">847</div>
+          <div class="cell-unit">stress score</div>
+          <div class="waveform">
+            <div class="wave-bar" style="height: 30%;"></div>
+            <div class="wave-bar" style="height: 45%;"></div>
+            <div class="wave-bar" style="height: 55%;"></div>
+            <div class="wave-bar" style="height: 48%;"></div>
+            <div class="wave-bar" style="height: 72%;"></div>
+            <div class="wave-bar" style="height: 88%;"></div>
+            <div class="wave-bar" style="height: 100%;"></div>
+            <div class="wave-bar" style="height: 95%;"></div>
+          </div>
+        </div>
+        <div class="cell cell-3">
+          <div class="cell-label">CAL Balance</div>
+          <div class="cell-value">1,847</div>
+          <div class="cell-unit">of 2,500</div>
+          <div class="waveform">
+            <div class="wave-bar" style="height: 100%;"></div>
+            <div class="wave-bar" style="height: 95%;"></div>
+            <div class="wave-bar" style="height: 88%;"></div>
+            <div class="wave-bar" style="height: 82%;"></div>
+            <div class="wave-bar" style="height: 78%;"></div>
+            <div class="wave-bar" style="height: 74%;"></div>
+            <div class="wave-bar" style="height: 74%;"></div>
+            <div class="wave-bar" style="height: 74%;"></div>
+          </div>
+        </div>
+        <div class="cell cell-3">
+          <div class="cell-label">Epoch Ends</div>
+          <div class="cell-value">2d 14h</div>
+          <div class="cell-unit">until distribution</div>
+          <div class="waveform">
+            <div class="wave-bar" style="height: 15%;"></div>
+            <div class="wave-bar" style="height: 22%;"></div>
+            <div class="wave-bar" style="height: 30%;"></div>
+            <div class="wave-bar" style="height: 40%;"></div>
+            <div class="wave-bar" style="height: 52%;"></div>
+            <div class="wave-bar" style="height: 65%;"></div>
+            <div class="wave-bar" style="height: 80%;"></div>
+            <div class="wave-bar" style="height: 95%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERMINAL 2027 -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <span class="section-title">Terminal — Command Surface</span>
+      </div>
+      <div class="terminal-2027">
+        <div class="terminal-bar">
+          <div class="terminal-status">
+            <div class="status-live"></div>
+            <span>roll@dung-beetle</span>
+          </div>
+          <div class="terminal-meta">mainnet-beta · slot 284,291,847</div>
+        </div>
+        <div class="terminal-surface">
+          <div class="t-line">
+            <span class="t-time">14:32:08</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">connecting indexer</span>
+            <span class="t-tag t-tag-ok">OK</span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:09</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">ingest <span class="t-highlight">2025-03-04-crit.fit</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:11</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">parsed <span class="t-highlight">847</span> points · <span class="t-highlight">1h 42m</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:11</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">crossings: <span class="t-highlight">9</span> · TSS: <span class="t-highlight">118</span> · <span class="t-signal">+118.0 DUNG</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:14</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">submit solana</span>
+            <span class="t-tag t-tag-pending">PENDING</span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:16</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">tx <span class="t-highlight">8fjK...Xa3</span></span>
+            <span class="t-tag t-tag-ok">CONFIRMED</span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:16</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text">new position <span class="t-signal">PHILLY CRIT</span>: <span class="t-signal">#1</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-time">14:32:17</span>
+            <span class="t-prompt">→</span>
+            <span class="t-text" style="color: var(--light-20);">_</span>
+            <span class="t-cursor"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDENTITY SURFACE -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <span class="section-title">Identity Surface — The Beetle</span>
+      </div>
+      <div class="identity-surface">
+        <div class="identity-visual">
+          <div class="beetle-construct">
+            <div class="beetle-orbit"></div>
+            <div class="beetle-orbit"></div>
+            <div class="beetle-shell"></div>
+            <div class="beetle-boulder"></div>
+          </div>
+        </div>
+        <div class="identity-data">
+          <div class="identity-id">BEETLE #4821</div>
+          <div class="identity-name">booka_shade</div>
+          <div class="identity-title">"The Alpine Assassin"</div>
+          <div class="identity-metrics">
+            <div>
+              <div class="identity-metric-value">8,450</div>
+              <div class="identity-metric-label">Boulder</div>
+            </div>
+            <div>
+              <div class="identity-metric-value">23</div>
+              <div class="identity-metric-label">Piles</div>
+            </div>
+            <div>
+              <div class="identity-metric-value">285w</div>
+              <div class="identity-metric-label">FTP</div>
+            </div>
+          </div>
+          <div class="coherence-bar">
+            <div class="coherence-header">
+              <span class="coherence-label">Coherence</span>
+              <span class="coherence-value">92 / 100</span>
+            </div>
+            <div class="coherence-track">
+              <div class="coherence-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLAIM + COORD -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <span class="section-title">Action Surfaces</span>
+      </div>
+      <div class="grid-2">
+        <div class="claim-surface">
+          <div class="claim-header">
+            <span class="claim-title">Unclaimed</span>
+            <span class="claim-total">+36.5 DUNG</span>
+          </div>
+          <div class="claim-list">
+            <div class="claim-item">
+              <div class="claim-icon">📍</div>
+              <div class="claim-info">
+                <div class="claim-name">COL DU BAS BOIS</div>
+                <div class="claim-detail">Leaderboard #2</div>
+              </div>
+              <div class="claim-amount">+14.8</div>
+            </div>
+            <div class="claim-item">
+              <div class="claim-icon">📍</div>
+              <div class="claim-info">
+                <div class="claim-name">PHILLY CRIT</div>
+                <div class="claim-detail">Leader + stake</div>
+              </div>
+              <div class="claim-amount">+18.4</div>
+            </div>
+            <div class="claim-item">
+              <div class="claim-icon">🦢</div>
+              <div class="claim-info">
+                <div class="claim-name">SOUTH HILL</div>
+                <div class="claim-detail">Swanny seat</div>
+              </div>
+              <div class="claim-amount">+3.3</div>
+            </div>
+          </div>
+          <div class="claim-action">
+            <button class="btn-claim">CLAIM ALL → 36.5 DUNG</button>
+          </div>
+        </div>
+
+        <div class="coord-display">
+          <div class="coord-grid"></div>
+          <div class="coord-content">
+            <div class="coord-header">
+              <span class="coord-label">Active Piles</span>
+              <span class="coord-live">
+                <div class="status-live" style="width: 6px; height: 6px;"></div>
+                LIVE
+              </span>
+            </div>
+            <div class="coord-value">39.9526° N</div>
+            <div class="coord-value">75.1652° W</div>
+            <div class="coord-sub">Philadelphia · 12 piles in range</div>
+            <div class="coord-markers">
+              <div class="coord-marker"></div>
+              <div class="coord-marker"></div>
+              <div class="coord-marker"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      <h2>Design Language 2027</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h3>The Void + The Signal</h3>
+          <p>Pure black as infinite depth. One accent color (#FF3D00) as information hierarchy. Everything else is opacity levels of white. No secondary colors competing for attention.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Atmosphere</h3>
+          <p>Subtle radial gradients that drift. Noise texture overlay. Creates depth without decoration. The interface breathes.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Data as Texture</h3>
+          <p>Waveforms and sparklines aren't decorative — they're the primary visual language. Every metric has shape. Information density is the aesthetic.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Typography</h3>
+          <p>Extreme scale contrast: 9px labels ↔ 42px values. Tight letter-spacing on small text. Negative tracking on large. Everything is monospace except headlines.</p>
+        </div>
+        <div class="summary-item">
+          <h3>Motion Language</h3>
+          <p>Breathing status indicators. Orbiting elements on identity. Flowing data river. Pulse animations on markers. Everything alive, nothing static.</p>
+        </div>
+        <div class="summary-item">
+          <h3>The Beetle</h3>
+          <p>Geometric shell with orbital rings. Rank letter as center glyph. Boulder with perpetual glow. Computed, not illustrated. The identity is data visualization.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-09-13T18:08:58.098432+00:00",
+  "url": "http://localhost:4324/",
+  "kind": "local-candidate-render-supplied-data",
+  "viewer": "rider",
+  "sequence": [
+    "map-v3",
+    "climb-v6",
+    "map-v3",
+    "climb-v6"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "sourceCheckpoints": {
+    "map": "2673c094d54deac52d672bc415e9cf4817f04d17",
+    "climb": "aaa7f71db2e6d673bf9dca30e8367f6966f911ff"
+  },
+  "pageErrors": []
+}

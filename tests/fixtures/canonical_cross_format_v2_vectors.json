@@ -1,0 +1,28 @@
+{
+  "schema": "boulderroller.canonical_cross_format.v1",
+  "parser_version": 2,
+  "description": "One representative three-sample ride represented as FIT, GPX, and TCX. Format-limited streams remain explicit in each golden JSON.",
+  "vectors": {
+    "fit": {
+      "source_path": "tests/fixtures/mobile_sensor_ride_fit_v1.base64",
+      "source_encoding": "base64",
+      "file_type": "fit",
+      "canonical_json": "{\"parser_version\":2,\"samples\":[{\"cadence_rpm\":85,\"dist_dm\":null,\"elev_dm\":100,\"hr_bpm\":140,\"lat_e6\":39950000,\"lon_e6\":-75160000,\"power_w\":200,\"sec_offset\":0,\"speed_cms\":500},{\"cadence_rpm\":88,\"dist_dm\":null,\"elev_dm\":200,\"hr_bpm\":145,\"lat_e6\":39950100,\"lon_e6\":-75159900,\"power_w\":220,\"sec_offset\":1,\"speed_cms\":600},{\"cadence_rpm\":90,\"dist_dm\":null,\"elev_dm\":300,\"hr_bpm\":150,\"lat_e6\":39950200,\"lon_e6\":-75159800,\"power_w\":240,\"sec_offset\":2,\"speed_cms\":700}],\"sport\":\"cycling\",\"started_at_ms\":1776340800000}",
+      "ride_hash": "b4cc74f0cd3373ab3766b305e1dc7e8a503435daf7453c0f4882921fc3c7bd78"
+    },
+    "gpx": {
+      "source_path": "workout-parse/tests/fixtures/canonical_cross_format_ride.gpx",
+      "source_encoding": "raw",
+      "file_type": "gpx",
+      "canonical_json": "{\"parser_version\":2,\"samples\":[{\"cadence_rpm\":85,\"dist_dm\":null,\"elev_dm\":100,\"hr_bpm\":140,\"lat_e6\":39950000,\"lon_e6\":-75160000,\"power_w\":200,\"sec_offset\":0,\"speed_cms\":null},{\"cadence_rpm\":88,\"dist_dm\":null,\"elev_dm\":200,\"hr_bpm\":145,\"lat_e6\":39950100,\"lon_e6\":-75159900,\"power_w\":220,\"sec_offset\":1,\"speed_cms\":null},{\"cadence_rpm\":90,\"dist_dm\":null,\"elev_dm\":300,\"hr_bpm\":150,\"lat_e6\":39950200,\"lon_e6\":-75159800,\"power_w\":240,\"sec_offset\":2,\"speed_cms\":null}],\"sport\":\"cycling\",\"started_at_ms\":1776340800000}",
+      "ride_hash": "2e56c55db37776cd80ecbe37c8f96d98d860b928cb066b2a0b8315801f81cbc0"
+    },
+    "tcx": {
+      "source_path": "workout-parse/tests/fixtures/canonical_cross_format_ride.tcx",
+      "source_encoding": "raw",
+      "file_type": "tcx",
+      "canonical_json": "{\"parser_version\":2,\"samples\":[{\"cadence_rpm\":85,\"dist_dm\":0,\"elev_dm\":100,\"hr_bpm\":140,\"lat_e6\":39950000,\"lon_e6\":-75160000,\"power_w\":200,\"sec_offset\":0,\"speed_cms\":null},{\"cadence_rpm\":88,\"dist_dm\":0,\"elev_dm\":200,\"hr_bpm\":145,\"lat_e6\":39950100,\"lon_e6\":-75159900,\"power_w\":220,\"sec_offset\":1,\"speed_cms\":null},{\"cadence_rpm\":90,\"dist_dm\":0,\"elev_dm\":300,\"hr_bpm\":150,\"lat_e6\":39950200,\"lon_e6\":-75159800,\"power_w\":240,\"sec_offset\":2,\"speed_cms\":null}],\"sport\":\"cycling\",\"started_at_ms\":1776340800000}",
+      "ride_hash": "5bf4f9f3810a0b570c69a900cf9db0469d08264519ad6ea127ed3af3e4f181d9"
+    }
+  }
+}

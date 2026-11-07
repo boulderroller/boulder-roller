@@ -1,0 +1,89 @@
+{
+  "model": "canon_capture_tolerance_overrides_v1",
+  "overrides": [
+    {
+      "revision_id": "d10-2026-07-21-black-rock-road",
+      "candidate_fingerprint": "5161e8eda0ce68934cdd4d135a6f2a8c68501bf3853d6e249ba4e1440b383cda",
+      "display_name": "Black Rock Road",
+      "gate_start_half_extent_m": 30.0,
+      "gate_end_half_extent_m": 35.0,
+      "corridor_half_width_m": 25.0,
+      "prior_geometry_policy": {
+        "gate_start_half_extent_m": 25.0,
+        "gate_end_half_extent_m": 25.0,
+        "corridor_half_width_m": 25.0,
+        "source": "canon-compile-v0.2.4 default D10 geometry"
+      },
+      "record_continuity_policy": "carry_forward_same_canon_id_and_record_board",
+      "evidence": {
+        "approved_at": "2026-07-21",
+        "approved_by": "Tim",
+        "policy_source": "docs/design/CANON_BUILD_DECISIONS.md#d10-capture-tolerance-policy-tim-2026-07-21",
+        "replay_source": "history/canon-tolerance-overrides-2026-07-21/README.md#candidate-specific-remediation"
+      }
+    },
+    {
+      "revision_id": "d10-2026-07-21-rose-glen-road",
+      "candidate_fingerprint": "ebc02b3e7a7390b39f985f54fa08713736d35f56e2945836794795202bb8a6f4",
+      "display_name": "Rose Glen Road",
+      "gate_start_half_extent_m": 40.0,
+      "gate_end_half_extent_m": 25.0,
+      "corridor_half_width_m": 25.0,
+      "prior_geometry_policy": {
+        "gate_start_half_extent_m": 25.0,
+        "gate_end_half_extent_m": 25.0,
+        "corridor_half_width_m": 25.0,
+        "source": "canon-compile-v0.2.4 default D10 geometry"
+      },
+      "record_continuity_policy": "carry_forward_same_canon_id_and_record_board",
+      "evidence": {
+        "approved_at": "2026-07-21",
+        "approved_by": "Tim",
+        "policy_source": "docs/design/CANON_BUILD_DECISIONS.md#d10-capture-tolerance-policy-tim-2026-07-21",
+        "replay_source": "history/canon-tolerance-overrides-2026-07-21/README.md#candidate-specific-remediation"
+      }
+    },
+    {
+      "revision_id": "d10-2026-07-21-sprague-road",
+      "candidate_fingerprint": "dd99c786dd0018f2d016a9f80d4baa0c87bcbbfc7b7099417e0c2abbf6abc7b1",
+      "display_name": "Sprague Road",
+      "gate_start_half_extent_m": 30.0,
+      "gate_end_half_extent_m": 25.0,
+      "corridor_half_width_m": 25.0,
+      "prior_geometry_policy": {
+        "gate_start_half_extent_m": 25.0,
+        "gate_end_half_extent_m": 25.0,
+        "corridor_half_width_m": 25.0,
+        "source": "canon-compile-v0.2.4 default D10 geometry"
+      },
+      "record_continuity_policy": "carry_forward_same_canon_id_and_record_board",
+      "evidence": {
+        "approved_at": "2026-07-21",
+        "approved_by": "Tim",
+        "policy_source": "docs/design/CANON_BUILD_DECISIONS.md#d10-capture-tolerance-policy-tim-2026-07-21",
+        "replay_source": "history/canon-tolerance-overrides-2026-07-21/README.md#candidate-specific-remediation"
+      }
+    },
+    {
+      "revision_id": "d10-2026-07-21-flat-rock-road",
+      "candidate_fingerprint": "e71a6a2c8a8ab8f8d2b6af30949c558019762ef37a90f79b355300e3de48b843",
+      "display_name": "Flat Rock Road",
+      "gate_start_half_extent_m": 25.0,
+      "gate_end_half_extent_m": 25.0,
+      "corridor_half_width_m": 30.0,
+      "prior_geometry_policy": {
+        "gate_start_half_extent_m": 25.0,
+        "gate_end_half_extent_m": 25.0,
+        "corridor_half_width_m": 25.0,
+        "source": "canon-compile-v0.2.4 default D10 geometry"
+      },
+      "record_continuity_policy": "carry_forward_same_canon_id_and_record_board",
+      "evidence": {
+        "approved_at": "2026-07-21",
+        "approved_by": "Tim",
+        "policy_source": "docs/design/CANON_BUILD_DECISIONS.md#d10-capture-tolerance-policy-tim-2026-07-21",
+        "replay_source": "history/canon-tolerance-overrides-2026-07-21/README.md#candidate-specific-remediation"
+      }
+    }
+  ]
+}

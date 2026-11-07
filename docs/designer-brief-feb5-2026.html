@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boulder Roller — Designer Sync | Feb 5, 2026</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --surface-2: #242424;
+      --border: #333;
+      --text: #e5e5e5;
+      --text-muted: #888;
+      --accent: #f97316;
+      --accent-dim: #c2410c;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+    }
+
+    .summary-box p {
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--surface);
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tr:hover td {
+      background: var(--surface);
+    }
+
+    code {
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      background: var(--surface-2);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    ul, ol {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    .status {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .status-done {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    .status-warn {
+      background: rgba(234, 179, 8, 0.15);
+      color: var(--yellow);
+    }
+
+    .status-todo {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .card h4 {
+      margin-top: 0;
+      color: var(--text);
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .discussion-point {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .discussion-point h4 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .discussion-point .question {
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    .commit-list {
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .commit-list code {
+      color: var(--accent);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 1rem;
+      }
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      margin-right: 0.25rem;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-card .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+
+    .stat-card.green .number { color: var(--green); }
+    .stat-card.yellow .number { color: var(--yellow); }
+    .stat-card.red .number { color: var(--red); }
+    .stat-card.accent .number { color: var(--accent); }
+
+    .priority {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .priority-high {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+
+    .priority-medium {
+      background: rgba(234, 179, 8, 0.15);
+      color: var(--yellow);
+    }
+
+    .priority-low {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    .stream-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .stream-header h3 {
+      margin: 0;
+    }
+
+    .ui-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-header h4 {
+      margin: 0;
+    }
+
+    .decision-type {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      margin-right: 0.5rem;
+    }
+
+    .type-strategy {
+      background: rgba(139, 92, 246, 0.15);
+      color: #a78bfa;
+    }
+
+    .type-ux {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    .type-product {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+    }
+
+    .type-privacy {
+      background: rgba(236, 72, 153, 0.15);
+      color: #f472b6;
+    }
+
+    .effort {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    .effort-small { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+    .effort-medium { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
+    .effort-large { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+
+    .work-type {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      background: var(--surface-2);
+      color: var(--text-muted);
+    }
+
+    .priority-table {
+      margin: 1.5rem 0;
+    }
+
+    .priority-table td:first-child {
+      font-weight: 700;
+      color: var(--accent);
+      width: 30px;
+      text-align: center;
+    }
+
+    .priority-section {
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(249, 115, 22, 0.05) 100%);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .priority-section h2 {
+      margin-top: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Boulder Roller <span class="badge">Designer Sync</span></h1>
+  <p>Feb 5, 2026</p>
+</header>
+
+<div class="summary-box">
+  <p><strong>TL;DR:</strong> 100+ improvements shipped since last sync. Main theme: <strong>removing crypto friction</strong> — making the app feel like a fitness tool, not a DeFi dashboard.</p>
+  <p style="margin-top: 0.75rem; color: var(--yellow);"><strong>Heads up:</strong> A lot of this work is backend/logic — the UI for many features is functional but needs design attention.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card accent">
+    <div class="number">100+</div>
+    <div class="label">Improvements shipped</div>
+  </div>
+  <div class="stat-card green">
+    <div class="number">8</div>
+    <div class="label">Work streams</div>
+  </div>
+  <div class="stat-card red">
+    <div class="number">5</div>
+    <div class="label">Need design</div>
+  </div>
+  <div class="stat-card yellow">
+    <div class="number">10</div>
+    <div class="label">Need polish</div>
+  </div>
+</div>
+
+<div class="priority-section">
+  <h2>🎯 Design Priorities — The Punch List</h2>
+  <p>Ranked by impact. This is what we need from you, in order.</p>
+
+  <table class="priority-table">
+    <thead>
+      <tr><th>#</th><th>Item</th><th>Type</th><th>Effort</th><th>Why It Matters</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Vault match moment</strong></td>
+        <td><span class="work-type">New design</span></td>
+        <td><span class="effort effort-medium">Medium</span></td>
+        <td>THE core product moment. User completes a climb, we tell them. Currently just a text list. Should feel like an achievement.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Upload progress flow</strong></td>
+        <td><span class="work-type">New design</span></td>
+        <td><span class="effort effort-medium">Medium</span></td>
+        <td>Users stare at a spinner for 5-15 seconds. Feels broken. Backend emits stages — need to visualize them.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Leaderboard component</strong></td>
+        <td><span class="work-type">New design</span></td>
+        <td><span class="effort effort-large">Large</span></td>
+        <td>Rich data (rank, trend, time, gap, earnings) but looks like a basic table. Needs competitive energy. Rank 1 should feel special.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Points balance placement</strong></td>
+        <td><span class="work-type">Decision</span></td>
+        <td><span class="effort effort-small">Small</span></td>
+        <td>Where does this live? Header? Dashboard? Profile? Need to decide before building more.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>BeetleCard review</strong></td>
+        <td><span class="work-type">Polish</span></td>
+        <td><span class="effort effort-medium">Medium</span></td>
+        <td>Identity component is built (Pokemon-card style, tiers, types). Needs design eye — is it good? What's off?</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Empty states</strong></td>
+        <td><span class="work-type">Polish</span></td>
+        <td><span class="effort effort-small">Small</span></td>
+        <td>Copy is written. Need illustration/layout. Quick wins: no rides, no vaults, Strava not connected.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Celebration banners</strong></td>
+        <td><span class="work-type">Polish</span></td>
+        <td><span class="effort effort-small">Small</span></td>
+        <td>KOM and Top 10 achievements show as text. Should feel special — confetti? Gold treatment?</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Toast/notification style</strong></td>
+        <td><span class="work-type">Polish</span></td>
+        <td><span class="effort effort-small">Small</span></td>
+        <td>Generic shadcn toasts. Quick brand win — add personality.</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>PR progression chart</strong></td>
+        <td><span class="work-type">New design</span></td>
+        <td><span class="effort effort-medium">Medium</span></td>
+        <td>Data exists. No chart built. Show "your times on this climb over time."</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Settings page polish</strong></td>
+        <td><span class="work-type">Polish</span></td>
+        <td><span class="effort effort-small">Small</span></td>
+        <td>Stable but boring. Low priority but easy win if time allows.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 1rem; padding: 0.75rem; background: var(--surface); border-radius: 6px;">
+    <strong>Effort key:</strong>
+    <span class="effort effort-small" style="margin-left: 0.5rem;">Small</span> = half day or less
+    <span class="effort effort-medium" style="margin-left: 0.5rem;">Medium</span> = 1-2 days
+    <span class="effort effort-large" style="margin-left: 0.5rem;">Large</span> = 3+ days
+  </div>
+</div>
+
+<h2>UI Gaps — What Needs Design</h2>
+
+<p>Many recent features are wired up on the backend but the UI is either placeholder, ugly, or missing entirely. Here's the honest breakdown:</p>
+
+<table>
+  <thead>
+    <tr><th>Feature</th><th>Backend</th><th>UI Status</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Upload progress stages</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-todo">Needs design</span></td>
+      <td>Backend emits stage events, frontend just shows spinner</td>
+    </tr>
+    <tr>
+      <td>Vault match celebration</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-todo">Needs design</span></td>
+      <td>We detect matches, but the "moment" is just a text list</td>
+    </tr>
+    <tr>
+      <td>Leaderboard rank trends</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Basic</span></td>
+      <td>Arrows exist but look default, no animation</td>
+    </tr>
+    <tr>
+      <td>PR progression chart</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-todo">Needs design</span></td>
+      <td>Data available, no chart component built</td>
+    </tr>
+    <tr>
+      <td>Celebration banners (KOM/Top 10)</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Basic</span></td>
+      <td>Shows text, needs to feel special</td>
+    </tr>
+    <tr>
+      <td>Nearby riders ("3 within 10 sec")</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-todo">Not built</span></td>
+      <td>API exists, no UI yet</td>
+    </tr>
+    <tr>
+      <td>Bump notifications</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Basic toast</span></td>
+      <td>Works but feels generic</td>
+    </tr>
+    <tr>
+      <td>Points balance display</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Unclear placement</span></td>
+      <td>Shows somewhere, but where should it live?</td>
+    </tr>
+    <tr>
+      <td>Privacy zones map</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-todo">Needs design</span></td>
+      <td>Component wired, but no map preview in settings</td>
+    </tr>
+    <tr>
+      <td>Strava activity picker</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Functional</span></td>
+      <td>Works, but list/selection UX is basic</td>
+    </tr>
+    <tr>
+      <td>Empty states</td>
+      <td><span class="status status-done">✓ Copy written</span></td>
+      <td><span class="status status-warn">Text only</span></td>
+      <td>Words are there, needs illustration/layout</td>
+    </tr>
+    <tr>
+      <td>Loading skeletons</td>
+      <td>N/A</td>
+      <td><span class="status status-warn">Generic</span></td>
+      <td>Using default shimmer, not branded</td>
+    </tr>
+    <tr>
+      <td>Success/error toasts</td>
+      <td>N/A</td>
+      <td><span class="status status-warn">Generic</span></td>
+      <td>Functional but no personality</td>
+    </tr>
+    <tr>
+      <td>Session expired modal</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Basic</span></td>
+      <td>Works, just needs polish</td>
+    </tr>
+    <tr>
+      <td>Vault creation success</td>
+      <td><span class="status status-done">✓ Done</span></td>
+      <td><span class="status status-warn">Basic modal</span></td>
+      <td>Should feel like an achievement</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="summary-box" style="border-left-color: var(--yellow); margin-top: 1.5rem;">
+  <p><strong>The pattern:</strong> We shipped fast to get logic working. Now we need a design pass to make these moments feel intentional, not placeholder.</p>
+</div>
+
+<h2>Major Work Streams</h2>
+
+<!-- STREAM 1 -->
+<div class="stream-header">
+  <h3>1. Language & Jargon Overhaul <span class="tag">Jan 20-26</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-done">✓ Complete</span></div>
+</div>
+
+<p><strong>The Problem:</strong> App was littered with crypto terms that alienated fitness users. "Harvest your DUNG," "stake CAL," "epoch distributions" — none of this means anything to a cyclist.</p>
+
+<p><strong>What We Did:</strong> Systematic pass through every user-facing component:</p>
+
+<table>
+  <thead>
+    <tr><th>Before</th><th>After</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>DUNG / CAL</td><td>Points / Rewards</td></tr>
+    <tr><td>Epoch</td><td>Week</td></tr>
+    <tr><td>Harvest</td><td>Claim</td></tr>
+    <tr><td>Stake</td><td>Back (a climb)</td></tr>
+    <tr><td>Mint</td><td>Create</td></tr>
+    <tr><td>POL / PROTOCOL</td><td>Platform fees</td></tr>
+    <tr><td>TGE</td><td>Launch</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Files touched:</strong> 20+ components — VaultView, Settings, Profile, Leaderboard, RideView, ClimbsTable, VaultPanel, PatternInspector</p>
+
+<p class="commit-list"><strong>Commits:</strong> <code>c2eb8f3</code> <code>a37bde9</code> <code>9844eb5</code> <code>969174d</code> <code>fcd27ad</code></p>
+
+<hr class="divider">
+
+<!-- STREAM 2 -->
+<div class="stream-header">
+  <h3>2. Login Flow Polish <span class="tag">Jan 27</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-warn">Needs polish</span></div>
+</div>
+
+<p><strong>The Problem:</strong> Auth was confusing. Invite code entry was a hidden 3-click easter egg. Modals weren't responsive. Session expiry was jarring.</p>
+
+<h4>Critical Fixes</h4>
+<ul>
+  <li>Added visible "Enter with Invite Code" button (was buried)</li>
+  <li>Made all auth modals responsive with max-width</li>
+  <li>Surface wallet creation loading state</li>
+</ul>
+
+<h4>High Priority</h4>
+<ul>
+  <li>Created <code>auth-errors.ts</code> with user-friendly messages</li>
+  <li>Deep-links preserved through auth flow</li>
+  <li>SessionExpiredModal for graceful expiry</li>
+  <li>SetupModal skip actually works now</li>
+</ul>
+
+<h4>Second Pass</h4>
+<ul>
+  <li>Multi-tab auth sync (login in one tab, others update)</li>
+  <li>Accessibility improvements</li>
+  <li>Better timeout handling</li>
+</ul>
+
+<p class="commit-list"><strong>Commits:</strong> <code>694731c</code> <code>82b8b29</code></p>
+
+<hr class="divider">
+
+<!-- STREAM 3 -->
+<div class="stream-header">
+  <h3>3. UX Gap Plan — 85+ Improvements <span class="tag">Jan 27</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-todo">Mixed — see cards</span></div>
+</div>
+
+<p><strong>The Problem:</strong> Comprehensive UX audit identified gaps across 12 work packages. Needed to ship fast.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <h4>Session & Auth</h4>
+      <span class="status status-warn">Basic</span>
+    </div>
+    <ul>
+      <li>Token refresh with retry</li>
+      <li>Offline vs auth failure detection</li>
+      <li>Session expired modal</li>
+      <li>Remember me preference</li>
+      <li>Logout confirmation</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4>Upload Flow</h4>
+      <span class="status status-todo">Needs design</span>
+    </div>
+    <ul>
+      <li>Upload cancellation</li>
+      <li>Frontend file validation</li>
+      <li>Retry button for failures</li>
+      <li>Parser errors surfaced</li>
+      <li>Duplicate detection</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4>Strava Integration</h4>
+      <span class="status status-warn">Functional</span>
+    </div>
+    <ul>
+      <li>Activity pagination</li>
+      <li>Batch size limits (max 10)</li>
+      <li>Per-activity error details</li>
+      <li>Disconnect confirmation</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4>Vault Creation</h4>
+      <span class="status status-warn">Basic modal</span>
+    </div>
+    <ul>
+      <li>Link to existing on duplicate</li>
+      <li>Retry after on-chain failure</li>
+      <li>Success modal with vault ID</li>
+      <li>"Share this climb" CTA</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4>Leaderboard</h4>
+      <span class="status status-todo">Needs design</span>
+    </div>
+    <ul>
+      <li>Rank trend indicators (↑↓)</li>
+      <li>Personal effort history</li>
+      <li>PR progression chart</li>
+      <li>Celebration banners</li>
+    </ul>
+  </div>
+</div>
+
+<p class="commit-list"><strong>Commit:</strong> <code>482c49f</code></p>
+
+<hr class="divider">
+
+<!-- STREAM 4 -->
+<div class="stream-header">
+  <h3>4. Vault Leaderboard System <span class="tag">Jan 21-27</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-todo">Needs design</span></div>
+</div>
+
+<p><strong>The Problem:</strong> Leaderboards were basic. No history, no validation, no notifications when you get bumped.</p>
+
+<table>
+  <thead>
+    <tr><th>Feature</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Full leaderboard view</td><td>Pagination for all positions (not just top 10)</td></tr>
+    <tr><td>History tracking</td><td>Entry, exit, bump, earnings events logged</td></tr>
+    <tr><td>Time validation</td><td>Distance and VAM-based bounds check</td></tr>
+    <tr><td>Tiebreaker logic</td><td>Earlier submission wins on equal times</td></tr>
+    <tr><td>Notifications</td><td>Alerts for rank changes and bumps</td></tr>
+    <tr><td>Nearby riders</td><td>"3 riders within 10 seconds of your time"</td></tr>
+    <tr><td>Vault backfill</td><td>Retroactively match old rides to new vaults</td></tr>
+  </tbody>
+</table>
+
+<p class="commit-list"><strong>Commits:</strong> <code>198643b</code> <code>b5f0572</code> <code>35998b3</code></p>
+
+<hr class="divider">
+
+<!-- STREAM 5 -->
+<div class="stream-header">
+  <h3>5. Ride Processing Feedback <span class="tag">Feb 2</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-todo">Needs design</span></div>
+</div>
+
+<p><strong>The Problem:</strong> Upload felt like a black box. User clicks upload, waits, gets result. No sense of progress.</p>
+
+<p><strong>What We Did:</strong> Added processing stage indicators, caching layer, better error surfacing. 18 files touched across backend and frontend.</p>
+
+<p class="commit-list"><strong>Commit:</strong> <code>61774fa</code></p>
+
+<hr class="divider">
+
+<!-- STREAM 6 -->
+<div class="stream-header">
+  <h3>6. Settings Page Stabilization <span class="tag">Jan 28 - Feb 2</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-warn">Functional</span></div>
+</div>
+
+<p><strong>The Problem:</strong> Settings was crashing — infinite loops, API errors, schema mismatches.</p>
+
+<table>
+  <thead>
+    <tr><th>Date</th><th>Fix</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Jan 28</td><td>Remove useBlocker (required data router)</td></tr>
+    <tr><td>Jan 29</td><td>Fix infinite loop in tab deep linking</td></tr>
+    <tr><td>Feb 1</td><td>Fix API errors (schema mismatch)</td></tr>
+    <tr><td>Feb 2</td><td>Add camelCase aliases to schema</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Also added:</strong> Privacy Zones component, FTP input validation</p>
+
+<hr class="divider">
+
+<!-- STREAM 7 -->
+<div class="stream-header">
+  <h3>7. VaultView — User Effort History <span class="tag">Feb 2</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-warn">Basic</span></div>
+</div>
+
+<p><strong>The Problem:</strong> VaultView showed vault stats but not YOUR history on that climb.</p>
+
+<p><strong>Now shows:</strong> Your attempts, your best time, your rank (if on leaderboard), points earned from this vault.</p>
+
+<p class="commit-list"><strong>Commit:</strong> <code>3c6fe8c</code></p>
+
+<hr class="divider">
+
+<!-- STREAM 8 -->
+<div class="stream-header">
+  <h3>8. Mobile Navigation Fix <span class="tag">Jan 15</span></h3>
+  <div class="ui-indicator">UI: <span class="status status-done">✓ Complete</span></div>
+</div>
+
+<p><strong>The Problem:</strong> Mobile nav had scroll issues — content clipped, overflow broken.</p>
+
+<p><strong>Fix:</strong> Reset inset styles, enable proper overflow, fix scroll behavior.</p>
+
+<p class="commit-list"><strong>Commits:</strong> <code>10309da</code> <code>22da821</code></p>
+
+<h2>Background Context (Dec - Jan)</h2>
+
+<p>Older work that's relevant — some of this you may have seen, but worth having in one place.</p>
+
+<div class="card" style="border-left: 3px solid #a78bfa;">
+  <div class="card-header">
+    <h4>Design System Migration Plan</h4>
+    <span class="status status-warn">Draft — not started</span>
+  </div>
+  <p style="margin-top: 0.75rem;">Full doc exists at <code>docs/design/DESIGN_SYSTEM_MIGRATION.md</code>. Key points:</p>
+  <ul>
+    <li><strong>58 UI components</strong> currently in codebase, 7 already custom</li>
+    <li><strong>Problem:</strong> "shadcn is recognizable. Every indie SaaS looks like this now."</li>
+    <li><strong>Strategy:</strong> Parallel evolution — don't rewrite, evolve while shipping</li>
+    <li><strong>Phase 1:</strong> Brand audit, design tokens spec, key screen mockups (designer-led)</li>
+    <li><strong>Waiting on:</strong> Designer to kick off Phase 1</li>
+  </ul>
+  <p style="margin-bottom: 0; color: var(--yellow);"><strong>Question:</strong> Is this the right framework? Should we discuss priorities?</p>
+</div>
+
+<div class="card" style="border-left: 3px solid var(--green);">
+  <div class="card-header">
+    <h4>Conceptual UX Decisions</h4>
+    <span class="status status-done">✓ Implemented</span>
+  </div>
+  <p style="margin-top: 0.75rem;">Major UX philosophy baked into the product (Jan 19):</p>
+
+  <table style="margin-top: 0.5rem;">
+    <thead>
+      <tr><th>Concept</th><th>What It Means</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Anonymous names</strong></td>
+        <td>BitMEX-style pseudonyms from wallet hash. "Sovereign Covenant" not "0x3f8a..."</td>
+      </tr>
+      <tr>
+        <td><strong>Anti-gamification</strong></td>
+        <td>Opacity over transparency. Users see position, not mechanics. No "you're 47 points from Tier 2!"</td>
+      </tr>
+      <tr>
+        <td><strong>Privacy zones</strong></td>
+        <td>Strava-style GPS fuzzing. 5 zones per user, 200-1600m radius. Already wired.</td>
+      </tr>
+      <tr>
+        <td><strong>Inline state machines</strong></td>
+        <td>Subtext status updates instead of modal spam. idle → input → confirm → processing → success</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card" style="border-left: 3px solid var(--accent);">
+  <div class="card-header">
+    <h4>BeetleCard Visual System</h4>
+    <span class="status status-warn">Designed — needs polish</span>
+  </div>
+  <p style="margin-top: 0.75rem;">Pokémon-card style identity component. Already built, but could use design review:</p>
+
+  <table style="margin-top: 0.5rem;">
+    <thead>
+      <tr><th>Element</th><th>Current State</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tier names</strong></td>
+        <td>Larva → Pupa → Teneral → Imago → Callow → Forager → Sentinel → Monarch → Transcendent</td>
+      </tr>
+      <tr>
+        <td><strong>Visual progression</strong></td>
+        <td>Basic → Foil → Holographic → Prismatic</td>
+      </tr>
+      <tr>
+        <td><strong>Type archetypes</strong></td>
+        <td>Scarabaeus (Climb), Dynastes (Steady), Goliathus (Explorer)</td>
+      </tr>
+      <tr>
+        <td><strong>Component</strong></td>
+        <td><code>components/beetle/BeetleCardDisplay.tsx</code> — 392 lines</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-bottom: 0; color: var(--text-muted);">This is the "profile picture" of Boulder Roller. Worth a dedicated review?</p>
+</div>
+
+<div class="card" style="border-left: 3px solid var(--border);">
+  <div class="card-header">
+    <h4>Reference Designs</h4>
+    <span class="status status-warn">Exists — unused?</span>
+  </div>
+  <p style="margin-top: 0.75rem;">Found in <code>docs/design/</code>:</p>
+  <ul>
+    <li><code>Boulderrollercopy-main/</code> — original designs?</li>
+    <li><code>Portalalpha-main/</code> — alpha portal mockups?</li>
+    <li><code>WEB_PORTAL_WIRING_SPEC.md</code> — how UI maps to API</li>
+  </ul>
+  <p style="margin-bottom: 0; color: var(--text-muted);">Are these still relevant or outdated?</p>
+</div>
+
+<h2>Direction Decisions</h2>
+
+<table>
+  <thead>
+    <tr><th>Decision</th><th>Type</th><th>Date</th><th>Context</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Points period = indefinite</strong></td><td><span class="decision-type type-strategy">Strategy</span></td><td>Jan 20</td><td>No public countdown. Hyperliquid-style stealth launch.</td></tr>
+    <tr><td><strong>Strava = manual import</strong></td><td><span class="decision-type type-product">Product</span></td><td>Jan 15</td><td>No auto-sync. User controls data, avoids rate limits.</td></tr>
+    <tr><td><strong>Local Legend model</strong></td><td><span class="decision-type type-product">Product</span></td><td>Jan 18</td><td>1 seat per vault, elected by completions, no lock required.</td></tr>
+    <tr><td><strong>Fitness-first language</strong></td><td><span class="decision-type type-ux">UX</span></td><td>Jan 20</td><td>Systematic removal of crypto jargon.</td></tr>
+    <tr><td><strong>Creator = first Soigneur</strong></td><td><span class="decision-type type-product">Product</span></td><td>Jan 22</td><td>Vault creator gets Local Legend seat for first 8 weeks.</td></tr>
+    <tr><td><strong>Staker unlock curve</strong></td><td><span class="decision-type type-strategy">Strategy</span></td><td>Jan 22</td><td>First staker only gets 1% of pool. Rewards network growth.</td></tr>
+    <tr><td><strong>Privacy zones</strong></td><td><span class="decision-type type-privacy">Privacy</span></td><td>Jan 25</td><td>Users can define GPS-fuzzy areas (home, work).</td></tr>
+    <tr><td><strong>Anonymous display names</strong></td><td><span class="decision-type type-privacy">Privacy</span></td><td>Jan 25</td><td>Generated names by default, not wallet addresses.</td></tr>
+  </tbody>
+</table>
+
+<h2>Current State</h2>
+
+<table>
+  <thead>
+    <tr><th>Area</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Staging API</td><td><span class="status status-done">✓ Healthy</span> <code>[STAGING_IP]:8080</code></td></tr>
+    <tr><td>Auth</td><td><span class="status status-done">✓ Working</span> Privy (social + wallet)</td></tr>
+    <tr><td>Invite codes</td><td><span class="status status-done">✓ Active</span> alpha-code-1, alpha-code-2, alpha-code-3, alpha-code-4</td></tr>
+    <tr><td>Ride upload</td><td><span class="status status-done">✓ Working</span> FIT/GPX/TCX parsing, vault matching</td></tr>
+    <tr><td>Vault creation</td><td><span class="status status-done">✓ Working</span> Gated by lifetime points</td></tr>
+    <tr><td>Leaderboards</td><td><span class="status status-done">✓ Full system</span> History, notifications</td></tr>
+    <tr><td>Points</td><td><span class="status status-done">✓ Earning</span> But not prominent in UI</td></tr>
+    <tr><td>Mobile</td><td><span class="status status-warn">⚠ Needs testing</span> Functional but untested recently</td></tr>
+    <tr><td>Settings</td><td><span class="status status-warn">⚠ Plain</span> Stable but visually basic</td></tr>
+  </tbody>
+</table>
+
+<h2>Discussion Points</h2>
+
+<div class="discussion-point">
+  <h4>1. Upload Progress Visualization <span class="priority priority-high">High priority</span></h4>
+  <p>User uploads a file. Backend does: parse → validate → project to tiles → detect climbs → match vaults → award points.</p>
+  <p><strong>Current:</strong> Single spinner, then result.<br>
+  <strong>Desired:</strong> Staged progress indicator. Each step visualized.</p>
+  <p class="question">Question: Horizontal stepper? Vertical list? Animation style?</p>
+</div>
+
+<div class="discussion-point">
+  <h4>2. Vault Match Moment <span class="priority priority-high">High priority</span></h4>
+  <p>User uploads ride. We detect they crossed 3 known climbs. This is THE key moment.</p>
+  <p><strong>Current:</strong> Text list of matched vaults.<br>
+  <strong>Desired:</strong> Celebratory but not cheesy. "You completed Box Hill. Earned 47 points."</p>
+  <p class="question">Question: Modal? Inline expansion? Card stack?</p>
+</div>
+
+<div class="discussion-point">
+  <h4>3. Points Balance Placement <span class="priority priority-medium">Medium</span></h4>
+  <p>Users earn points. Where do they see this?</p>
+  <p><strong>Options:</strong> Header (always visible), Dashboard hero stat, Profile only, Dedicated "Earnings" tab</p>
+  <p class="question">Question: How prominent? Pre-token so don't overhype, but users need feedback loop.</p>
+</div>
+
+<div class="discussion-point">
+  <h4>4. Leaderboard Visual Design <span class="priority priority-high">High priority</span></h4>
+  <p>Now a rich component: rank, trend arrows, time, gap to next, attempt count, earnings.</p>
+  <p><strong>Current:</strong> Functional table.<br>
+  <strong>Desired:</strong> Feels competitive. Rank 1 should feel special.</p>
+  <p class="question">Reference: Strava segment leaderboards, but with earnings column.</p>
+</div>
+
+<div class="discussion-point">
+  <h4>5. Settings Polish Pass <span class="priority priority-low">Low priority</span></h4>
+  <p>Tabs: Profile, Privacy, Connections, Sessions. Stable but boring.</p>
+  <p><strong>Quick wins:</strong> Better section headers, input consistency, privacy zones map preview, connected accounts visual state.</p>
+</div>
+
+<div class="discussion-point">
+  <h4>6. Empty States Audit <span class="priority priority-medium">Medium</span></h4>
+  <p>We added empty state copy in UX gap work. Need visual pass.</p>
+  <p><strong>Key states:</strong> No rides yet, no vaults staked, no leaderboard positions, Strava not connected.</p>
+</div>
+
+<h2>Appendix: Commit Log</h2>
+
+<pre><code>61774fa Improve ride processing feedback and caching
+3c6fe8c Wire VaultView user effort history to real API
+59d737e Add camelCase aliases to UserProfileUpdate schema
+e980446 Fix Settings page API errors
+20d001a Fix Settings infinite loop in tab deep linking
+f8c84a3 Fix Settings page crash
+bb047f3 Implement backend items for UX gap plan
+482c49f Implement UX gap plan: 85+ improvements
+82b8b29 Polish login flow UX round 2
+694731c Polish login flow UX with 12 fixes
+198643b Implement comprehensive vault leaderboard system
+c5f63bd Implement protocol-level climb detection tuning
+64cbeb4 Implement dual-path vault matching
+82b20e1 Add unified protocol mode switch
+b5d8318 Fix Privy auth integration
+c2eb8f3 Replace CAL/DUNG labels with pts/rewards
+a37bde9 Replace epoch terminology with week
+9844eb5 Polish vault creation and staking components
+969174d Polish Settings: remove crypto jargon
+9252f66 Polish VaultView: simplify crypto/DeFi language
+a2120be Wire PrivacyZones component into Settings
+4f2b900 Conceptual refinement: anonymous names, privacy zones
+10309da Fix mobile navigation scroll behavior
+22da821 Fix mobile scrolling</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+** ARCHIVE SUCCEEDED **
+
+dSYMs preserved: /Users/gabetemp/BoulderRoller-dSYMs/0.1.0-2126-415f4f8d
+BoulderRoller.app.dSYM
+PrivySDK.framework.dSYM
+
+Archive ready (UNSIGNED): /Users/gabetemp/curahee/BoulderRoller-worktrees/ios-slice-one/ios/build/BoulderRoller.xcarchive
+This archive compiles and carries symbols but cannot install on
+devices or upload to TestFlight. Unlock: founder's Apple Developer
+team in ios/.release-config.env (DEVELOPMENT_TEAM=...).
+EXIT:0

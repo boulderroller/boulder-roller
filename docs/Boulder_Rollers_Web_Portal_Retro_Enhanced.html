@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Boulder Rollers / DUNG Beetle Cycling — Web Portal (Retro Enhanced)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Enhanced Elemental / Rhythmical Palette */
+            --bg: #0f0b0b;
+            --bg-elevated: #1a1616;
+            --bg-card: #241e1e;
+            --bg-soft: #332b2b;
+            --bg-ultra-soft: #3d3333;
+
+            /* Enhanced Accents with Gradients */
+            --accent: #D9381E;
+            --accent-soft: rgba(217, 56, 30, 0.15);
+            --accent-medium: rgba(217, 56, 30, 0.35);
+            --accent-strong: #FF4D30;
+            --accent-glow: rgba(217, 56, 30, 0.6);
+            --accent-alt: #C5A059;
+            --accent-alt-soft: rgba(197, 160, 89, 0.2);
+            --accent-alt-glow: rgba(197, 160, 89, 0.5);
+
+            --danger: #FF4D30;
+            --success: #C5A059;
+
+            /* Enhanced Text Colors */
+            --text: #F2F0E9;
+            --text-soft: #B0A8A0;
+            --text-softer: #807870;
+            --text-dim: #665f59;
+
+            /* Enhanced Borders */
+            --border-subtle: #403535;
+            --border-medium: #524444;
+            --border-strong: #594a4a;
+            --border-accent: rgba(217, 56, 30, 0.4);
+
+            /* Enhanced Shadows */
+            --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.7);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.6);
+            --shadow-sharp: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            --shadow-glow-accent: 0 0 20px rgba(217, 56, 30, 0.3);
+            --shadow-glow-gold: 0 0 20px rgba(197, 160, 89, 0.3);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+            /* Enhanced Radius */
+            --radius-sm: 3px;
+            --radius-md: 6px;
+            --radius-lg: 10px;
+            --radius-xl: 16px;
+
+            /* Fonts */
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 32px;
+            --space-7: 40px;
+            --space-8: 48px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(ellipse at top, #1a1111, #080808);
+            color: var(--text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            padding: var(--space-5);
+            justify-content: center;
+            align-items: flex-start;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .app-shell {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            width: 100%;
+            max-width: 1500px;
+            min-height: 850px;
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg) 100%);
+            border: 2px solid var(--border-strong);
+            box-shadow: var(--shadow-soft), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        /* Enhanced Scanline effect */
+        .app-shell::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.05) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.05) 3px
+            );
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.4;
+        }
+
+        /* Ambient glow overlay */
+        .app-shell::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse, var(--accent-soft) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: relative;
+            z-index: 10;
+            border-right: 2px solid var(--border-strong);
+            background: linear-gradient(180deg, var(--bg) 0%, #0a0808 100%);
+            padding: var(--space-6) var(--space-4);
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-7);
+            padding: var(--space-3);
+            padding-bottom: var(--space-5);
+            border-bottom: 2px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .sidebar-header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+        }
+
+        .logo-orb {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 100%);
+            border: 3px solid var(--accent-alt);
+            box-shadow:
+                0 0 20px var(--accent-glow),
+                inset 0 2px 8px rgba(255, 255, 255, 0.2),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .logo-orb::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 10px;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .logo-title {
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 10px rgba(242, 240, 233, 0.3);
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: var(--accent-strong);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .sidebar-section {
+            margin-bottom: var(--space-6);
+        }
+
+        .sidebar-section-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--accent-alt);
+            margin: 0 var(--space-2) var(--space-3);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 8px var(--accent-alt-glow);
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 3px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-3);
+            text-decoration: none;
+            color: var(--text-soft);
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-soft);
+            color: var(--text);
+            border-color: var(--border-subtle);
+            transform: translateX(2px);
+        }
+
+        .nav-link-active {
+            background: linear-gradient(90deg, var(--bg-soft) 0%, var(--bg-ultra-soft) 100%);
+            color: var(--accent-strong);
+            border-color: var(--border-accent);
+            box-shadow:
+                inset 3px 0 0 var(--accent),
+                0 0 15px var(--accent-soft);
+        }
+
+        .nav-link-active .nav-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-alt);
+            display: inline-block;
+            margin-right: var(--space-2);
+            border-radius: 1px;
+            box-shadow: 0 0 10px var(--accent-alt-glow);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            border-top: 2px solid var(--border-subtle);
+            padding-top: var(--space-5);
+            font-size: 11px;
+            color: var(--text-softer);
+            font-family: var(--font-mono);
+        }
+
+        .sidebar-footer-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-3);
+            align-items: center;
+        }
+
+        .status-pill {
+            font-size: 9px;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            background: #000;
+            border: 1px solid var(--border-subtle);
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.05em;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .status-pill.ok {
+            color: var(--success);
+            border-color: rgba(197, 160, 89, 0.4);
+            box-shadow:
+                inset 0 1px 2px rgba(0, 0, 0, 0.5),
+                0 0 10px var(--accent-alt-soft);
+        }
+
+        .status-pill.warn {
+            color: var(--accent-strong);
+            border-color: var(--border-accent);
+            box-shadow:
+                inset 0 1px 2px rgba(0, 0, 0, 0.5),
+                0 0 10px var(--accent-soft);
+        }
+
+        /* Main Content */
+        .main {
+            position: relative;
+            z-index: 10;
+            padding: var(--space-6) var(--space-7);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            background: linear-gradient(180deg, #1a1616 0%, #0f0b0b 100%);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-5);
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-5);
+            border-bottom: 2px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .topbar::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+        }
+
+        .topbar-left {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .topbar-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .topbar-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .topbar-subtitle {
+            font-size: 14px;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+
+        .token-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 8px 14px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+            border: 1px solid var(--border-medium);
+            font-size: 12px;
+            border-radius: var(--radius-md);
+            box-shadow:
+                inset 0 1px 3px rgba(0, 0, 0, 0.5),
+                0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .token-chip:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                inset 0 1px 3px rgba(0, 0, 0, 0.5),
+                0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .token-chip span.label {
+            text-transform: uppercase;
+            color: var(--text-softer);
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+        }
+
+        .token-chip span.value {
+            font-family: var(--font-mono);
+            color: var(--accent-alt);
+            font-weight: 600;
+            text-shadow: 0 0 8px var(--accent-alt-glow);
+        }
+
+        .user-pill {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: 6px 14px 6px 6px;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border-medium);
+            font-size: 12px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .user-pill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 100%);
+            border: 2px solid var(--accent-alt);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: var(--text);
+            text-shadow: 0 0 8px rgba(242, 240, 233, 0.2);
+        }
+
+        .user-tagline {
+            font-size: 10px;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .layout-main {
+            display: grid;
+            grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.4fr);
+            gap: var(--space-6);
+            align-items: flex-start;
+        }
+
+        @media (max-width: 1200px) {
+            .app-shell {
+                grid-template-columns: 240px minmax(0, 1fr);
+            }
+
+            .layout-main {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .app-shell {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                padding: var(--space-5);
+            }
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+
+        .card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #1f1919 100%);
+            border: 1px solid var(--border-medium);
+            padding: var(--space-6);
+            font-size: 13px;
+            color: var(--text-soft);
+            box-shadow:
+                var(--shadow-medium),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.03),
+                transparent
+            );
+            transition: left 0.5s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-strong);
+            box-shadow:
+                var(--shadow-soft),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-5);
+            padding-bottom: var(--space-4);
+            border-bottom: 2px dashed var(--border-subtle);
+        }
+
+        .card-kicker {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .card-title {
+            font-size: 16px;
+            color: var(--text);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-meta {
+            font-size: 11px;
+            color: var(--text-softer);
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-soft);
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-inset);
+        }
+
+        .card-tag-accent {
+            color: var(--accent-strong);
+            border-color: var(--border-accent);
+            background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(0, 0, 0, 0.5) 100%);
+            box-shadow:
+                var(--shadow-inset),
+                0 0 10px var(--accent-soft);
+        }
+
+        .columns-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-5);
+        }
+
+        .metric-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg) 100%);
+            padding: var(--space-4);
+            border: 1px solid var(--border-medium);
+            min-width: 120px;
+            box-shadow:
+                inset 0 1px 3px rgba(255, 255, 255, 0.05),
+                0 2px 8px rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .metric:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                inset 0 1px 3px rgba(255, 255, 255, 0.05),
+                0 4px 12px rgba(0, 0, 0, 0.3);
+            border-color: var(--border-strong);
+        }
+
+        .metric-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-softer);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-value {
+            font-family: var(--font-mono);
+            font-size: 18px;
+            color: var(--accent-alt);
+            font-weight: 700;
+            text-shadow: 0 0 12px var(--accent-alt-glow);
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 12px;
+            margin-top: var(--space-4);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-elevated) 100%);
+        }
+
+        th,
+        td {
+            padding: var(--space-3) var(--space-4);
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        tbody tr {
+            transition: background 0.15s ease;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-elevated);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-softer);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            border-bottom: 2px solid var(--border-medium);
+        }
+
+        td {
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        td.key {
+            font-family: var(--font-mono);
+            color: var(--accent-strong);
+            font-weight: 600;
+            font-size: 11px;
+            text-shadow: 0 0 8px var(--accent-soft);
+        }
+
+        .sparkline {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 18px;
+        }
+
+        .sparkline-bar {
+            width: 4px;
+            background: linear-gradient(180deg, var(--accent-strong) 0%, var(--accent) 100%);
+            border-radius: 1px;
+            box-shadow: 0 0 6px var(--accent-glow);
+            transition: all 0.2s ease;
+        }
+
+        .sparkline-bar:hover {
+            background: var(--accent-alt);
+            box-shadow: 0 0 10px var(--accent-alt-glow);
+        }
+
+        .sparkline-bar.dim {
+            background: linear-gradient(180deg, var(--border-strong) 0%, var(--border-subtle) 100%);
+            box-shadow: none;
+        }
+
+        .claim-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            border: 1px solid var(--border-medium);
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg) 100%);
+            margin-bottom: var(--space-3);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .claim-row:hover {
+            border-color: var(--border-strong);
+            transform: translateX(2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .claim-row-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .claim-row-sub {
+            font-size: 11px;
+            color: var(--text-softer);
+            font-weight: 500;
+        }
+
+        .claim-amount {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--accent-alt);
+            font-weight: 700;
+            text-shadow: 0 0 12px var(--accent-alt-glow);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-5);
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--border-medium);
+            color: var(--text);
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            box-shadow:
+                0 4px 0 rgba(0, 0, 0, 0.6),
+                0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 0 rgba(0, 0, 0, 0.6),
+                0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 2px 0 rgba(0, 0, 0, 0.6),
+                0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 100%);
+            color: #000;
+            border-color: var(--accent-alt);
+            font-weight: 800;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            box-shadow:
+                0 4px 0 rgba(0, 0, 0, 0.6),
+                0 6px 16px var(--accent-glow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow:
+                0 6px 0 rgba(0, 0, 0, 0.6),
+                0 8px 20px var(--accent-glow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:active {
+            box-shadow:
+                0 2px 0 rgba(0, 0, 0, 0.6),
+                0 3px 8px var(--accent-glow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: var(--space-4);
+        }
+
+        .map-shell {
+            border: 2px solid var(--border-medium);
+            background: radial-gradient(ellipse at center, #0a0a0a 0%, #050505 100%);
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 30px rgba(0, 0, 0, 0.9),
+                0 2px 8px rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-md);
+        }
+
+        .map-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border-subtle) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+
+        .map-blob {
+            position: absolute;
+            border: 2px solid var(--accent);
+            background: radial-gradient(ellipse at center, var(--accent-medium) 0%, var(--accent-soft) 100%);
+            box-shadow:
+                0 0 20px var(--accent-glow),
+                inset 0 0 15px var(--accent-soft);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .map-blob:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 0 30px var(--accent-glow),
+                inset 0 0 20px var(--accent-soft);
+        }
+
+        .map-blob.hill {
+            width: 70px;
+            height: 70px;
+            top: 52%;
+            left: 22%;
+            border-radius: 50%;
+        }
+
+        .map-blob.crit {
+            width: 52px;
+            height: 52px;
+            top: 30%;
+            left: 55%;
+            border-radius: 50%;
+        }
+
+        .map-blob.alley {
+            width: 42px;
+            height: 42px;
+            top: 62%;
+            left: 70%;
+            border-radius: 50%;
+        }
+
+        .map-label {
+            position: absolute;
+            transform: translate(14px, -50%);
+            font-size: 10px;
+            background: linear-gradient(135deg, #000 0%, #0a0a0a 100%);
+            padding: 4px 8px;
+            border: 1px solid var(--accent);
+            color: var(--accent-strong);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            box-shadow:
+                0 0 10px var(--accent-glow),
+                0 2px 4px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+        }
+
+        .beetle-card {
+            display: grid;
+            grid-template-columns: 90px minmax(0, 1fr);
+            gap: var(--space-5);
+            align-items: center;
+        }
+
+        .beetle-avatar {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-elevated) 100%);
+            border: 3px solid var(--accent);
+            position: relative;
+            box-shadow:
+                0 0 20px var(--accent-glow),
+                inset 0 2px 8px rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .beetle-avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow:
+                0 0 30px var(--accent-glow),
+                inset 0 2px 8px rgba(255, 255, 255, 0.08);
+        }
+
+        .beetle-meta-title {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .beetle-meta-sub {
+            font-size: 12px;
+            color: var(--text-soft);
+            margin-bottom: var(--space-2);
+        }
+
+        .pill-row-soft {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+
+        .pill-soft {
+            font-size: 10px;
+            padding: 5px 10px;
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-soft);
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.03em;
+            box-shadow: var(--shadow-inset);
+            transition: all 0.2s ease;
+        }
+
+        .pill-soft:hover {
+            border-color: var(--border-medium);
+            transform: translateY(-1px);
+        }
+
+        .pill-soft span {
+            color: var(--accent-alt);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--accent-alt-glow);
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 4px 8px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-soft);
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-accent {
+            color: var(--accent-strong);
+            border-color: var(--border-accent);
+            background: var(--accent-soft);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .columns-2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .metric-row {
+                gap: var(--space-3);
+            }
+
+            .metric {
+                min-width: 100px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topbar-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-shell">
+        <!-- Sidebar navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-orb"></div>
+                <div class="logo-text">
+                    <div class="logo-title">Boulder Rollers</div>
+                    <div class="logo-sub">Dung Beetle Cycling</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-label">Main</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-active">
+                            <span class="label"><span class="nav-dot"></span> Dashboard</span>
+                            <span class="key">⌘1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Piles map</span>
+                            <span class="key">⌘2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Beetle &amp; wardrobe</span>
+                            <span class="key">⌘3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Ride history</span>
+                            <span class="key">⌘4</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-label">Protocol</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Staking &amp; vaults</span>
+                            <span class="key">⌘5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Swanny seats</span>
+                            <span class="key">⌘6</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Seasons &amp; events</span>
+                            <span class="key">⌘7</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-label">System</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Settings</span>
+                            <span class="key">⌘,</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="label">Docs &amp; spec</span>
+                            <span class="key">?</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-row">
+                    <span>Solana status</span>
+                    <span class="status-pill ok">Healthy</span>
+                </div>
+                <div class="sidebar-footer-row">
+                    <span>Epoch</span>
+                    <span class="status-pill">Week 12 · 2025</span>
+                </div>
+                <div class="sidebar-footer-row">
+                    <span>Version</span>
+                    <span class="status-pill warn">V1 · Alpha</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="topbar-eyebrow">Dashboard</div>
+                    <div class="topbar-title-row">
+                        <div class="topbar-title">Today's Roll</div>
+                        <div class="topbar-subtitle">Your training, piles, and beetle at a glance.</div>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="token-chip">
+                        <span class="label">DUNG</span>
+                        <span class="value">12,340.8</span>
+                    </div>
+                    <div class="token-chip">
+                        <span class="label">CAL · today</span>
+                        <span class="value">1,600 / 2,500</span>
+                    </div>
+                    <div class="user-pill">
+                        <div class="user-avatar"></div>
+                        <div>
+                            <div class="user-name">booka_shade</div>
+                            <div class="user-tagline">S-grade beetle · 3 cities</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Two-column main layout -->
+            <div class="layout-main">
+                <!-- Left column -->
+                <section class="col">
+                    <!-- Card: Today / ride summary -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Today</div>
+                                <div class="card-title">Roll summary</div>
+                            </div>
+                            <div class="card-meta">Last sync · 3 min ago</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="metric-row">
+                                <div class="metric">
+                                    <div class="metric-label">TSS · today</div>
+                                    <div class="metric-value">118</div>
+                                    <div class="metric-sub">2 rides · 3:15 h</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">DUNG minted</div>
+                                    <div class="metric-value">+118.0</div>
+                                    <div class="metric-sub">1:1 vs TSS</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">CAL spent</div>
+                                    <div class="metric-value">900</div>
+                                    <div class="metric-sub">9 counted crossings</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Pile touch count</div>
+                                    <div class="metric-value">12</div>
+                                    <div class="metric-sub">3 tracked piles</div>
+                                </div>
+                            </div>
+                            <div class="columns-2">
+                                <div>
+                                    <div class="card-kicker">Segments touched</div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Pile</th>
+                                                <th>Best time</th>
+                                                <th>Rank</th>
+                                                <th>CAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="key">COL DU BAS BOIS</td>
+                                                <td>8:21</td>
+                                                <td>#2 / 47</td>
+                                                <td>400</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">PHILLY CRIT CIRCUIT</td>
+                                                <td>4:03</td>
+                                                <td>#1 / 92</td>
+                                                <td>300</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">BACK ALLEY KICKER</td>
+                                                <td>1:19</td>
+                                                <td>#5 / 31</td>
+                                                <td>200</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                    <div class="card-kicker">Projected pile rewards</div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Pile</th>
+                                                <th>Est. Payout</th>
+                                                <th>Slice</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="key">CRIT CIRCUIT</td>
+                                                <td>+12.4 DUNG</td>
+                                                <td>Leaderboard</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">COL DU BAS BOIS</td>
+                                                <td>+6.8 DUNG</td>
+                                                <td>Leaderboard</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="key">PHILLY HILL STACK</td>
+                                                <td>+3.1 DUNG</td>
+                                                <td>Staker</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pill-row-soft">
+                                        <span class="pill-soft"><span>+22.3</span>&nbsp; est. from piles today</span>
+                                        <span class="pill-soft">Epoch ends in · 2d 14h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Piles you care about -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Piles</div>
+                                <div class="card-title">Piles you care about</div>
+                            </div>
+                            <div class="card-tag card-tag-accent">Stake &amp; yield</div>
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Pile</th>
+                                        <th>Your stake</th>
+                                        <th>Epoch pot</th>
+                                        <th>Est. share</th>
+                                        <th>Crossings</th>
+                                        <th>Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="key">COL DU BAS BOIS</td>
+                                        <td>420 DUNG</td>
+                                        <td>210.0 DUNG</td>
+                                        <td>18.2%</td>
+                                        <td>5 / 25</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar dim" style="height: 6px;"></div>
+                                                <div class="sparkline-bar dim" style="height: 9px;"></div>
+                                                <div class="sparkline-bar" style="height: 14px;"></div>
+                                                <div class="sparkline-bar" style="height: 16px;"></div>
+                                                <div class="sparkline-bar" style="height: 18px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">PHILLY CRIT CIRCUIT</td>
+                                        <td>150 DUNG</td>
+                                        <td>320.0 DUNG</td>
+                                        <td>9.4%</td>
+                                        <td>3 / 25</td>
+                                        <td>
+                                            <div class="sparkline">
+                                                <div class="sparkline-bar dim" style="height: 5px;"></div>
+                                                <div class="sparkline-bar" style="height: 11px;"></div>
+                                                <div class="sparkline-bar" style="height: 13px;"></div>
+                                                <div class="sparkline-bar dim" style="height: 9px;"></div>
+                                                <div class="sparkline-bar" style="height: 15px;"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pill-row-soft">
+                                <span class="pill-soft">Total staked · <span>650</span> DUNG</span>
+                                <span class="pill-soft">Avg pile APY (est.) · 14.2%</span>
+                                <span class="pill-soft">Active piles · 3 / 12</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Activity feed -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Feed</div>
+                                <div class="card-title">Recent roll events</div>
+                            </div>
+                            <div class="card-tag">Log</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">You defended #1 on PHILLY CRIT CIRCUIT</div>
+                                    <div class="claim-row-sub">+4.3 DUNG projected leaderboard slice · 2h ago</div>
+                                </div>
+                                <div class="badge badge-accent">Piles</div>
+                            </div>
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">Staked 120 DUNG into COL DU BAS BOIS</div>
+                                    <div class="claim-row-sub">Stake now 420 DUNG · lock ends next epoch</div>
+                                </div>
+                                <div class="badge">Stake</div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Right column -->
+                <section class="col">
+                    <!-- Card: Map + featured pile -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Map</div>
+                                <div class="card-title">Philly piles · Epoch 12</div>
+                            </div>
+                            <div class="card-tag card-tag-accent">Featured: CRIT CIRCUIT</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="map-shell">
+                                <div class="map-grid"></div>
+                                <div class="map-blob hill">
+                                    <div class="map-label">Hill stack</div>
+                                </div>
+                                <div class="map-blob crit">
+                                    <div class="map-label">Crit circuit</div>
+                                </div>
+                                <div class="map-blob alley">
+                                    <div class="map-label">Back alley</div>
+                                </div>
+                            </div>
+                            <div class="pill-row-soft">
+                                <span class="pill-soft">Total pot · <span>1,240.0</span> DUNG</span>
+                                <span class="pill-soft">Your projected share · <span>7.8%</span></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Claim center -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Payouts</div>
+                                <div class="card-title">Claim center</div>
+                            </div>
+                            <div class="card-tag card-tag-accent">Unclaimed · 36.5 DUNG</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">COL DU BAS BOIS</div>
+                                    <div class="claim-row-sub">Leaderboard · #2 this epoch</div>
+                                </div>
+                                <div class="claim-amount">+14.8</div>
+                            </div>
+                            <div class="claim-row">
+                                <div>
+                                    <div class="claim-row-title">PHILLY CRIT CIRCUIT</div>
+                                    <div class="claim-row-sub">Leaderboard + staker share</div>
+                                </div>
+                                <div class="claim-amount">+18.4</div>
+                            </div>
+                            <button class="btn btn-primary btn-full">Claim all · 36.5 DUNG</button>
+                        </div>
+                    </article>
+
+                    <!-- Card: Beetle & wardrobe -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap">
+                                <div class="card-kicker">Beetle</div>
+                                <div class="card-title">booka_shade · S-grade shell</div>
+                            </div>
+                            <div class="card-tag">Identity</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="beetle-card">
+                                <div class="beetle-avatar"></div>
+                                <div>
+                                    <div class="beetle-meta-title">Gilded Alley Roller</div>
+                                    <div class="beetle-meta-sub">Coherence score · 92 / 100</div>
+                                    <div class="pill-row-soft">
+                                        <span class="pill-soft">Career TSS · <span>74,320</span></span>
+                                        <span class="pill-soft">Cities rolled · <span>3</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

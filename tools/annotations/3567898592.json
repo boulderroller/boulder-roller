@@ -1,0 +1,27 @@
+{
+  "title": "3567898592.fit.gz",
+  "annotated_at": "2026-03-18T13:44:23.780Z",
+  "notes": "Port Royal repeats. Both annotated. Same downsample index bug may apply \u2014 detector indices look like originals but annotated may be chart-space.",
+  "climbs": [
+    {
+      "idx": 0,
+      "road_name": "Port Royal Avenue",
+      "vert_m": 101,
+      "detector_start": 1896,
+      "detector_end": 2343,
+      "annotated_start": 2183,
+      "annotated_end": 2246,
+      "skipped": false
+    },
+    {
+      "idx": 1,
+      "road_name": "Port Royal Avenue",
+      "vert_m": 80.2,
+      "detector_start": 3520,
+      "detector_end": 4448,
+      "annotated_start": 3547,
+      "annotated_end": 3736,
+      "skipped": false
+    }
+  ]
+}

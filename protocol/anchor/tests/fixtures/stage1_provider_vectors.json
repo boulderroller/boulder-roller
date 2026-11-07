@@ -1,0 +1,98 @@
+{
+  "evidence": "Read-only mainnet snapshots; LOCAL simulated admission transitions",
+  "slot": 456636487,
+  "captured_at_utc": "2026-10-14T00:17:05.906142+00:00",
+  "epoch": 1057,
+  "providers": [
+    {
+      "name": "jitoSOL",
+      "numerator": "10650132353883915",
+      "denominator": "8153209489021421",
+      "one_token_basis": "1306250302",
+      "same_epoch_drift_rate": [
+        "10650132353883915",
+        "8153209489021421"
+      ],
+      "next_epoch_drift_rate": [
+        "10650132353896260",
+        "8153209489021421"
+      ],
+      "numeric_revisions": 2
+    },
+    {
+      "name": "mSOL",
+      "numerator": "2254985557764365",
+      "denominator": "1596971612132375",
+      "one_token_basis": "1412038599",
+      "same_epoch_drift_rate": [
+        "450997111552873",
+        "319394322426475"
+      ],
+      "next_epoch_drift_rate": [
+        "450997111555342",
+        "319394322426475"
+      ],
+      "numeric_revisions": 2
+    },
+    {
+      "name": "JupSOL",
+      "numerator": "5194388907066853",
+      "denominator": "4277554095630348",
+      "one_token_basis": "1214336229",
+      "same_epoch_drift_rate": [
+        "399568377466681",
+        "329042622740796"
+      ],
+      "next_epoch_drift_rate": [
+        "2597194453539599",
+        "2138777047815174"
+      ],
+      "numeric_revisions": 2
+    }
+  ],
+  "grace": {
+    "epoch": 1058,
+    "lagging": [
+      "jitoSOL",
+      "JupSOL"
+    ],
+    "fresh": [
+      "mSOL"
+    ],
+    "backing_before_trigger": "0",
+    "seven_sol_bonds": false,
+    "founding_count": 3,
+    "frozen_quotes": {
+      "jitoSOL": [
+        "10650132353883915",
+        "8153209489021421"
+      ],
+      "JupSOL": [
+        "399568377466681",
+        "329042622740796"
+      ]
+    },
+    "expired_founding_count": 1
+  },
+  "skipped_refresh_grace": {
+    "epoch": 1059,
+    "last_admitted_pool_epoch": 1057,
+    "provider_update_epoch": 1058,
+    "backing_before_trigger": "0",
+    "frozen_quotes": {
+      "jitoSOL": [
+        "21300264707767830",
+        "8153209489021421"
+      ],
+      "JupSOL": [
+        "399568377466681",
+        "164521311370398"
+      ]
+    },
+    "founding_count": 3,
+    "prebond_units": {
+      "jitoSOL": "1531100124",
+      "JupSOL": "41174757"
+    }
+  }
+}

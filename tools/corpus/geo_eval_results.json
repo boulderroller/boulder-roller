@@ -1,0 +1,176 @@
+{
+  "reference": {
+    "sepa_holdout_baseline": {
+      "P": 0.759,
+      "R": 0.796,
+      "F1": 0.777,
+      "rides": 131
+    }
+  },
+  "config": {
+    "algorithm": "canonical_v2",
+    "min_climb_vert_m": 25.0,
+    "min_climb_grade_pct": 2.0,
+    "min_detect_vert_m": 20.0,
+    "overlap_threshold": 0.3,
+    "frequency_map_policy": "SEPA only",
+    "frequency_map_tiles": 247
+  },
+  "results": [
+    {
+      "geography": "SEPA",
+      "rides_scored": 451,
+      "errors": 0,
+      "total_matched": 2195,
+      "total_missed": 515,
+      "total_extras": 740,
+      "precision": 0.7479,
+      "recall": 0.81,
+      "f1": 0.7777,
+      "elapsed_s": 295.2,
+      "bucket_stats": {
+        "Small(25-50)": {
+          "matched": 1203,
+          "total": 1626
+        },
+        "Med(50-100)": {
+          "matched": 876,
+          "total": 915
+        },
+        "Large(100-250)": {
+          "matched": 116,
+          "total": 169
+        },
+        "Major(250+)": {
+          "matched": 0,
+          "total": 0
+        }
+      },
+      "f1_delta_vs_sepa": 0.0
+    },
+    {
+      "geography": "LA/Malibu",
+      "rides_scored": 73,
+      "errors": 0,
+      "total_matched": 398,
+      "total_missed": 136,
+      "total_extras": 116,
+      "precision": 0.7743,
+      "recall": 0.7453,
+      "f1": 0.7595,
+      "elapsed_s": 209.1,
+      "bucket_stats": {
+        "Small(25-50)": {
+          "matched": 80,
+          "total": 114
+        },
+        "Med(50-100)": {
+          "matched": 128,
+          "total": 213
+        },
+        "Large(100-250)": {
+          "matched": 83,
+          "total": 95
+        },
+        "Major(250+)": {
+          "matched": 107,
+          "total": 112
+        }
+      },
+      "f1_delta_vs_sepa": -0.0181
+    },
+    {
+      "geography": "Tucson",
+      "rides_scored": 17,
+      "errors": 0,
+      "total_matched": 65,
+      "total_missed": 18,
+      "total_extras": 24,
+      "precision": 0.7303,
+      "recall": 0.7831,
+      "f1": 0.7558,
+      "elapsed_s": 119.9,
+      "bucket_stats": {
+        "Small(25-50)": {
+          "matched": 19,
+          "total": 28
+        },
+        "Med(50-100)": {
+          "matched": 14,
+          "total": 21
+        },
+        "Large(100-250)": {
+          "matched": 21,
+          "total": 23
+        },
+        "Major(250+)": {
+          "matched": 11,
+          "total": 11
+        }
+      },
+      "f1_delta_vs_sepa": -0.0219
+    },
+    {
+      "geography": "Vermont/NH",
+      "rides_scored": 17,
+      "errors": 0,
+      "total_matched": 101,
+      "total_missed": 14,
+      "total_extras": 32,
+      "precision": 0.7594,
+      "recall": 0.8783,
+      "f1": 0.8145,
+      "elapsed_s": 38.6,
+      "bucket_stats": {
+        "Small(25-50)": {
+          "matched": 34,
+          "total": 44
+        },
+        "Med(50-100)": {
+          "matched": 19,
+          "total": 20
+        },
+        "Large(100-250)": {
+          "matched": 29,
+          "total": 32
+        },
+        "Major(250+)": {
+          "matched": 19,
+          "total": 19
+        }
+      },
+      "f1_delta_vs_sepa": 0.0368
+    },
+    {
+      "geography": "Virginia",
+      "rides_scored": 4,
+      "errors": 0,
+      "total_matched": 23,
+      "total_missed": 14,
+      "total_extras": 11,
+      "precision": 0.6765,
+      "recall": 0.6216,
+      "f1": 0.6479,
+      "elapsed_s": 6.4,
+      "bucket_stats": {
+        "Small(25-50)": {
+          "matched": 20,
+          "total": 34
+        },
+        "Med(50-100)": {
+          "matched": 0,
+          "total": 0
+        },
+        "Large(100-250)": {
+          "matched": 1,
+          "total": 1
+        },
+        "Major(250+)": {
+          "matched": 2,
+          "total": 2
+        }
+      },
+      "f1_delta_vs_sepa": -0.1298
+    }
+  ]
+}

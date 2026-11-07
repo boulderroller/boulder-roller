@@ -1,0 +1,7 @@
+numpy==2.0.2
+shapely==2.0.4
+pyproj==3.7.2
+ijson==3.4.0
+matplotlib==3.10.7
+rasterio==1.4.3
+pytest==9.0.3

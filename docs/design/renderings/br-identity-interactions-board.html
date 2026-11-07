@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boulder Roller Interaction Renderings</title>
+    <style>
+      :root {
+        --bg: #f3f5ee;
+        --paper: #fffdf6;
+        --wash: #edf2e7;
+        --ink: #121a14;
+        --muted: #647062;
+        --faint: #8e9889;
+        --border: rgba(18, 26, 20, 0.13);
+        --line: rgba(18, 26, 20, 0.075);
+        --route: #456f52;
+        --route-dark: #2f553b;
+        --terrain: #8ba17a;
+        --cal: #1f8caf;
+        --cal-soft: rgba(31, 140, 175, 0.1);
+        --gold: #a87124;
+        --gold-soft: rgba(168, 113, 36, 0.11);
+        --proof: #3c8257;
+        --proof-soft: rgba(60, 130, 87, 0.1);
+        --amber: #a86b22;
+        --amber-soft: rgba(168, 107, 34, 0.12);
+        --red: #a94442;
+        --red-soft: rgba(169, 68, 66, 0.1);
+        --shadow: 0 28px 80px rgba(18, 26, 20, 0.11);
+        --soft-shadow: 0 18px 50px rgba(18, 26, 20, 0.075);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(139, 161, 122, 0.24), transparent 32%),
+          radial-gradient(circle at 100% 8%, rgba(31, 140, 175, 0.12), transparent 30%),
+          linear-gradient(90deg, rgba(18, 26, 20, 0.034) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(18, 26, 20, 0.027) 1px, transparent 1px),
+          var(--bg);
+        background-size: auto, auto, 30px 30px, 30px 30px, auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .mono {
+        font-family: Cousine, "SFMono-Regular", Consolas, monospace;
+      }
+
+      .board {
+        width: min(1500px, 100%);
+        margin: 0 auto;
+        padding: 34px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) 410px;
+        gap: 34px;
+        align-items: end;
+        padding: 18px 0 36px;
+      }
+
+      .eyebrow {
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 980px;
+        font-size: clamp(42px, 6vw, 78px);
+        line-height: 0.94;
+        letter-spacing: -0.025em;
+      }
+
+      .note,
+      .card,
+      .screen {
+        border: 1px solid var(--border);
+        background: rgba(255, 253, 246, 0.86);
+      }
+
+      .note {
+        padding: 22px;
+        border-radius: 18px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .note h2 {
+        margin-bottom: 12px;
+        font-size: 24px;
+        line-height: 1.08;
+      }
+
+      .note p,
+      .section-intro p,
+      .subline {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .section-intro {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin: 46px 0 16px;
+      }
+
+      .section-intro h2 {
+        max-width: 760px;
+        font-size: 34px;
+        line-height: 1.02;
+        letter-spacing: -0.016em;
+      }
+
+      .section-intro p {
+        max-width: 560px;
+      }
+
+      .screen {
+        overflow: hidden;
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 15px 18px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 253, 246, 0.78);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--ink);
+        color: var(--paper);
+        font-size: 13px;
+        font-weight: 950;
+      }
+
+      .brand b {
+        display: block;
+        font-size: 15px;
+      }
+
+      .brand span {
+        display: block;
+        margin-top: 1px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .nav span {
+        padding: 8px 11px;
+        border-radius: 9px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 780;
+      }
+
+      .nav .active {
+        background: rgba(69, 111, 82, 0.11);
+        color: var(--ink);
+      }
+
+      button,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 34px;
+        padding: 0 12px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .primary {
+        background: var(--ink);
+        color: var(--paper);
+        box-shadow: 2px 2px 0 rgba(18, 26, 20, 0.24);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 384px;
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .map-panel,
+      .mini-map,
+      .explorer-map {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background:
+          repeating-radial-gradient(ellipse at 55% 45%, rgba(139, 161, 122, 0.17) 0 1px, transparent 1px 18px),
+          linear-gradient(135deg, #edf4e8 0%, #fff9ef 58%, #e8f0df 100%);
+      }
+
+      .map-panel {
+        min-height: 360px;
+        border-radius: 18px;
+      }
+
+      .map-panel svg,
+      .mini-map svg,
+      .elevation svg,
+      .explorer-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-tag {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        z-index: 2;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: rgba(255, 253, 246, 0.86);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .stat-strip {
+        position: absolute;
+        z-index: 2;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .stat,
+      .tile {
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 253, 246, 0.88);
+      }
+
+      .stat strong,
+      .tile strong {
+        display: block;
+        font-size: 24px;
+        line-height: 1;
+        font-weight: 920;
+      }
+
+      .stat span,
+      .tile span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .cal {
+        color: var(--cal);
+      }
+
+      .gold {
+        color: var(--gold);
+      }
+
+      .card {
+        overflow: hidden;
+        border-radius: 16px;
+      }
+
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 15px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .card-title {
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .card-meta {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .card-body {
+        padding: 15px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid rgba(60, 130, 87, 0.28);
+        border-radius: 999px;
+        background: var(--proof-soft);
+        color: #2f7048;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .chip::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--proof);
+      }
+
+      .line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .line:last-child {
+        border-bottom: 0;
+      }
+
+      .line span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .line b {
+        font-size: 13px;
+      }
+
+      .ride-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: start;
+        margin-bottom: 16px;
+      }
+
+      .rider-row {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+
+      .avatar {
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: linear-gradient(135deg, #edf3e7, #fffaf0);
+      }
+
+      .rider-row b {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .rider-row span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .headline {
+        margin-top: 9px;
+        max-width: 720px;
+        font-size: clamp(30px, 3vw, 43px);
+        line-height: 0.99;
+        letter-spacing: -0.018em;
+      }
+
+      .climb-table {
+        overflow: hidden;
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--paper);
+      }
+
+      .elevation {
+        position: relative;
+        height: 88px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .climb-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 82px 82px 64px;
+        gap: 14px;
+        align-items: center;
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .climb-row:last-child {
+        border-bottom: 0;
+      }
+
+      .climb-row.selected {
+        background: rgba(69, 111, 82, 0.075);
+      }
+
+      .climb-row h3 {
+        font-size: 14px;
+        line-height: 1.15;
+      }
+
+      .climb-row p {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .right-metric {
+        text-align: right;
+      }
+
+      .right-metric b {
+        display: block;
+        font-size: 15px;
+      }
+
+      .right-metric span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .rank {
+        justify-self: end;
+        padding: 5px 8px;
+        border: 1px solid rgba(168, 113, 36, 0.32);
+        border-radius: 999px;
+        background: var(--gold-soft);
+        color: #794d14;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .popout {
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .popout::before {
+        content: "";
+        position: absolute;
+        top: 115px;
+        left: -18px;
+        width: 18px;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .mini-map {
+        height: 148px;
+        border-radius: 13px;
+      }
+
+      .tab-row {
+        display: flex;
+        gap: 6px;
+        padding: 8px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--wash);
+      }
+
+      .tab-row span {
+        flex: 1;
+        padding: 7px 8px;
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-align: center;
+      }
+
+      .tab-row .active {
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: 0 1px 0 rgba(18, 26, 20, 0.08);
+      }
+
+      .compare {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .compare .tile strong {
+        font-size: 19px;
+      }
+
+      .explorer {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr) 330px;
+        gap: 0;
+        min-height: 680px;
+      }
+
+      .rail {
+        padding: 18px;
+        border-right: 1px solid var(--border);
+        background: rgba(255, 253, 246, 0.82);
+      }
+
+      .rail h3 {
+        margin-bottom: 8px;
+        font-size: 24px;
+        line-height: 1.05;
+      }
+
+      .filter {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--paper);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .explorer-map {
+        min-height: 680px;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .map-marker {
+        position: absolute;
+        z-index: 3;
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 2px solid var(--paper);
+        border-radius: 999px;
+        background: var(--route-dark);
+        color: var(--paper);
+        font-size: 12px;
+        font-weight: 950;
+        box-shadow: 0 10px 24px rgba(18, 26, 20, 0.18);
+      }
+
+      .marker-a {
+        left: 36%;
+        top: 42%;
+      }
+
+      .marker-b {
+        left: 58%;
+        top: 31%;
+        background: var(--gold);
+      }
+
+      .marker-c {
+        left: 68%;
+        top: 58%;
+        background: var(--cal);
+      }
+
+      .object-list {
+        padding: 18px;
+        border-left: 1px solid var(--border);
+        background: rgba(255, 253, 246, 0.82);
+      }
+
+      .object-card {
+        padding: 13px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--paper);
+        margin-bottom: 10px;
+      }
+
+      .object-card h3 {
+        font-size: 15px;
+      }
+
+      .object-card p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .object-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .object-hero {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--paper);
+      }
+
+      .object-hero h2 {
+        max-width: 680px;
+        margin-top: 10px;
+        font-size: clamp(32px, 4vw, 56px);
+        line-height: 0.96;
+        letter-spacing: -0.023em;
+      }
+
+      .object-modules {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 0;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 30px 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .timeline-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background: var(--proof);
+        box-shadow: 0 0 0 5px var(--proof-soft);
+      }
+
+      .timeline-item h3 {
+        font-size: 14px;
+      }
+
+      .timeline-item p {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .hash {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .record-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 380px;
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .phone {
+        width: 390px;
+        overflow: hidden;
+        border: 8px solid var(--ink);
+        border-radius: 36px;
+        background: var(--ink);
+        box-shadow: 0 24px 70px rgba(18, 26, 20, 0.2);
+      }
+
+      .phone-screen {
+        min-height: 720px;
+        padding: 17px 14px 20px;
+        border-radius: 27px;
+        background: var(--paper);
+      }
+
+      .mobile-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .mobile-title {
+        font-size: 25px;
+        font-weight: 920;
+      }
+
+      .bottom-sheet {
+        margin-top: 12px;
+        padding: 14px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--paper);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .grabber {
+        width: 42px;
+        height: 4px;
+        margin: 0 auto 14px;
+        border-radius: 999px;
+        background: rgba(18, 26, 20, 0.16);
+      }
+
+      @media (max-width: 1120px) {
+        .hero,
+        .layout,
+        .object-grid,
+        .record-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .explorer {
+          grid-template-columns: 1fr;
+        }
+
+        .rail,
+        .object-list {
+          border: 0;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .explorer-map {
+          min-height: 520px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .board {
+          padding: 18px;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .section-intro {
+          display: block;
+        }
+
+        .section-intro p {
+          margin-top: 10px;
+        }
+
+        .stat-strip,
+        .compare,
+        .object-modules {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .climb-row {
+          grid-template-columns: minmax(0, 1fr) 76px;
+        }
+
+        .climb-row .right-metric:nth-of-type(2),
+        .rank {
+          display: none;
+        }
+
+        .phone {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="board">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">BR interaction and novel page pass</p>
+          <h1>Let riders inspect the climb without leaving the ride.</h1>
+        </div>
+        <aside class="note">
+          <h2>Pass 3 target</h2>
+          <p>
+            Explore interaction grammar before implementation: climb-table
+            popouts, map-led browsing, climb/vault pages, and technical record
+            pages that stay legible without contaminating the core app.
+          </p>
+        </aside>
+      </section>
+
+      <section class="screen">
+        <div class="topbar">
+          <div class="brand"><div class="mark">BR</div><div><b>Boulder Roller</b><span>Ride detail</span></div></div>
+          <nav class="nav"><span>Feed</span><span class="active">Ride</span><span>Climbs</span><span>Portfolio</span></nav>
+          <div><button class="primary">Import ride</button></div>
+        </div>
+        <div class="layout">
+          <div>
+            <div class="ride-head">
+              <div>
+                <div class="rider-row"><div class="avatar"></div><div><b>Jordan Ellis</b><span>Today at 7:14 AM · Philadelphia</span></div></div>
+                <h2 class="headline">Manayunk morning ridge work</h2>
+                <p class="subline">31.8 mi · 2,940 ft · 4 climbs matched · 47 counted CAL</p>
+              </div>
+              <span class="chip">Record ready</span>
+            </div>
+
+            <div class="map-panel">
+              <div class="map-tag">Route and selected climb</div>
+              <svg viewBox="0 0 900 430" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M60 350 C160 255 210 380 300 305 C398 223 370 104 500 112 C620 120 615 285 820 80" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="19" stroke-linecap="round" />
+                <path d="M60 350 C160 255 210 380 300 305 C398 223 370 104 500 112 C620 120 615 285 820 80" fill="none" stroke="#456f52" stroke-width="8" stroke-linecap="round" />
+                <path d="M250 335 C273 300 289 292 300 305" fill="none" stroke="#a87124" stroke-width="12" stroke-linecap="round" />
+                <path d="M486 112 C552 99 590 158 602 224" fill="none" stroke="#1f8caf" stroke-width="12" stroke-linecap="round" />
+                <circle cx="60" cy="350" r="10" fill="#121a14" />
+                <circle cx="820" cy="80" r="10" fill="#a87124" />
+              </svg>
+              <div class="stat-strip">
+                <div class="stat"><strong class="mono">31.8</strong><span>Miles</span></div>
+                <div class="stat"><strong class="mono">2,940</strong><span>Feet</span></div>
+                <div class="stat"><strong class="mono">1:42</strong><span>Moving</span></div>
+                <div class="stat"><strong class="mono cal">47</strong><span>Counted CAL</span></div>
+              </div>
+            </div>
+
+            <div class="climb-table">
+              <div class="card-head"><div><div class="card-title">Climb matches</div><p class="subline">Inspected row opens a persistent inspector</p></div><button>Show all matches</button></div>
+              <div class="elevation">
+                <svg viewBox="0 0 900 88" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 71 L84 65 L132 46 L205 58 L268 35 L350 50 L424 29 L508 44 L584 24 L666 38 L760 17 L900 28 L900 88 L0 88 Z" fill="rgba(69,111,82,.14)" />
+                  <path d="M0 71 L84 65 L132 46 L205 58 L268 35 L350 50 L424 29 L508 44 L584 24 L666 38 L760 17 L900 28" fill="none" stroke="#456f52" stroke-width="3" />
+                  <rect x="230" y="0" width="74" height="88" fill="rgba(168,113,36,.12)" />
+                  <rect x="548" y="0" width="78" height="88" fill="rgba(31,140,175,.12)" />
+                </svg>
+              </div>
+              <div class="climb-row selected">
+                <div><h3>Levering Street Wall</h3><p>0.42 mi · 9.8% avg · vault live</p></div>
+                <div class="right-metric mono"><b>3:44</b><span>Time</span></div>
+                <div class="right-metric mono"><b>1,180</b><span>VAM</span></div>
+                <div class="rank">#6</div>
+              </div>
+              <div class="climb-row">
+                <div><h3>Cynwyd Kick</h3><p>0.31 mi · 7.4% avg · record held</p></div>
+                <div class="right-metric mono"><b>2:18</b><span>Time</span></div>
+                <div class="right-metric mono"><b>934</b><span>VAM</span></div>
+                <div class="rank">#1</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="popout">
+            <section class="card">
+              <div class="card-head"><div><div class="card-title">Climb inspector</div><p class="subline">Levering Street Wall</p></div><span class="chip">Inspecting</span></div>
+              <div class="card-body">
+                <div class="tab-row"><span class="active">Effort</span><span>Line</span><span>Leaderboard</span><span>Vault</span></div>
+                <div style="height: 12px"></div>
+                <div class="mini-map">
+                  <svg viewBox="0 0 360 150" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M38 115 C92 50 133 113 180 72 C222 34 247 78 318 28" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="15" stroke-linecap="round" />
+                    <path d="M38 115 C92 50 133 113 180 72 C222 34 247 78 318 28" fill="none" stroke="#456f52" stroke-width="7" stroke-linecap="round" />
+                    <path d="M152 86 C171 60 184 52 200 50" fill="none" stroke="#a87124" stroke-width="10" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div style="height: 12px"></div>
+                <div class="compare">
+                  <div class="tile"><strong class="mono">3:44</strong><span>This ride</span></div>
+                  <div class="tile"><strong class="mono">3:31</strong><span>Your best</span></div>
+                  <div class="tile"><strong class="mono gold">3:21</strong><span>KOM</span></div>
+                </div>
+              </div>
+            </section>
+            <section class="card">
+              <div class="card-head"><div class="card-title">Vault position</div><span class="card-meta">On this climb</span></div>
+              <div class="card-body">
+                <div class="line"><span>Counted CAL</span><b class="mono cal">18</b></div>
+                <div class="line"><span>Held CAL</span><b class="mono cal">1,240</b></div>
+                <div class="line"><span>Pending payout</span><b class="mono gold">83</b></div>
+                <div style="height: 10px"></div>
+                <button class="primary">View climb</button>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-intro">
+        <div>
+          <p class="eyebrow">Map-led explorer</p>
+          <h2>A novel page can be map-first without becoming decorative.</h2>
+        </div>
+        <p>
+          This is the non-feed discovery surface: browse climb objects by place,
+          filter by live vaults and local rivalry, then inspect real map shape
+          and results.
+        </p>
+      </section>
+
+      <section class="screen explorer">
+        <aside class="rail">
+          <p class="eyebrow">Climb Explorer</p>
+          <h3>Philadelphia climbs</h3>
+          <p class="subline">Map-first browsing for places that count.</p>
+          <div class="filter"><span>Vault status</span><b>Live</b></div>
+          <div class="filter"><span>Gradient</span><b>7%+</b></div>
+          <div class="filter"><span>Recent activity</span><b>This week</b></div>
+          <div class="filter"><span>My relation</span><b>Top 20</b></div>
+        </aside>
+        <div class="explorer-map">
+          <div class="map-tag">Topo object map</div>
+          <svg viewBox="0 0 760 680" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M72 560 C160 430 210 520 308 396 C410 268 395 122 536 124 C646 126 618 346 720 188" fill="none" stroke="rgba(18,26,20,.14)" stroke-width="18" stroke-linecap="round" />
+            <path d="M72 560 C160 430 210 520 308 396 C410 268 395 122 536 124 C646 126 618 346 720 188" fill="none" stroke="#456f52" stroke-width="8" stroke-linecap="round" />
+            <path d="M120 180 C234 125 290 260 408 188 C530 112 610 260 690 92" fill="none" stroke="rgba(69,111,82,.35)" stroke-width="5" stroke-linecap="round" />
+          </svg>
+          <div class="map-marker marker-a">6</div>
+          <div class="map-marker marker-b">1</div>
+          <div class="map-marker marker-c">V</div>
+        </div>
+        <aside class="object-list">
+          <div class="object-card">
+            <h3>Levering Street Wall</h3>
+            <p>0.42 mi · 9.8% · vault live</p>
+            <div class="line"><span>KOM</span><b class="mono">3:21</b></div>
+          </div>
+          <div class="object-card">
+            <h3>Cynwyd Kick</h3>
+            <p>0.31 mi · 7.4% · record held</p>
+            <div class="line"><span>Your rank</span><b>#1</b></div>
+          </div>
+          <div class="object-card">
+            <h3>Belmont Rise</h3>
+            <p>0.88 mi · 5.2% · no vault</p>
+            <div class="line"><span>Leaderboard</span><b>128</b></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-intro">
+        <div>
+          <p class="eyebrow">Object pages</p>
+          <h2>Climb and vault can share a single object spine.</h2>
+        </div>
+        <p>
+          The page starts with place and result. Vault economics becomes one
+          module in the same object, not a separate product personality.
+        </p>
+      </section>
+
+      <section class="screen">
+        <div class="topbar">
+          <div class="brand"><div class="mark">BR</div><div><b>Levering Street Wall</b><span>Climb object</span></div></div>
+          <nav class="nav"><span class="active">Overview</span><span>Leaderboard</span><span>Vault</span><span>Record</span></nav>
+          <button class="primary">Add CAL</button>
+        </div>
+        <div class="object-grid">
+          <div class="object-hero">
+            <span class="chip">Vault live</span>
+            <h2>Levering Street Wall</h2>
+            <p class="subline">Manayunk · 0.42 mi · 216 ft · 9.8% avg · 312 completions</p>
+            <div style="height: 14px"></div>
+            <div class="map-panel" style="min-height: 310px">
+              <div class="map-tag">Climb shape</div>
+              <svg viewBox="0 0 780 310" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M58 238 C172 76 250 236 356 142 C466 48 525 150 710 62" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="22" stroke-linecap="round" />
+                <path d="M58 238 C172 76 250 236 356 142 C466 48 525 150 710 62" fill="none" stroke="#456f52" stroke-width="9" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="object-modules">
+              <div class="tile"><strong class="mono">3:21</strong><span>KOM</span></div>
+              <div class="tile"><strong class="mono">216</strong><span>Feet</span></div>
+              <div class="tile"><strong class="mono cal">1,240</strong><span>Your CAL</span></div>
+              <div class="tile"><strong class="mono gold">83</strong><span>Pending</span></div>
+            </div>
+          </div>
+          <aside class="popout">
+            <section class="card">
+              <div class="card-head"><div class="card-title">Leaderboard</div><span class="card-meta">All time</span></div>
+              <div class="card-body">
+                <div class="line"><span>#1 Maya Rivera</span><b class="mono">3:21</b></div>
+                <div class="line"><span>#2 Corey Lee</span><b class="mono">3:30</b></div>
+                <div class="line"><span>#6 Jordan Ellis</span><b class="mono">3:44</b></div>
+              </div>
+            </section>
+            <section class="card">
+              <div class="card-head"><div class="card-title">Legend</div><span class="card-meta">Current term</span></div>
+              <div class="card-body">
+                <div class="rider-row"><div class="avatar"></div><div><b>Maya Rivera</b><span>5 completions this term</span></div></div>
+                <div style="height: 12px"></div>
+                <div class="line"><span>Term ends</span><b>6 days</b></div>
+              </div>
+            </section>
+            <section class="card">
+              <div class="card-head"><div class="card-title">Settlement</div><span class="card-meta">This week</span></div>
+              <div class="card-body">
+                <div class="line"><span>Vault CAL</span><b class="mono cal">18,440</b></div>
+                <div class="line"><span>Pending payout</span><b class="mono gold">1,860</b></div>
+                <div class="line"><span>Status</span><b>Counting</b></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-intro">
+        <div>
+          <p class="eyebrow">Action and state vocabulary</p>
+          <h2>The mocks need product words, not placeholder controls.</h2>
+        </div>
+        <p>
+          This packet excludes BoulderScan. The app packet should decide the
+          rider-facing words for records, vault positions, and climb actions
+          before implementation starts.
+        </p>
+      </section>
+
+      <section class="screen">
+        <div class="topbar">
+          <div class="brand"><div class="mark">BR</div><div><b>Boulder Roller</b><span>Vocabulary pass</span></div></div>
+          <nav class="nav"><span class="active">Actions</span><span>States</span><span>Vault</span><span>Records</span></nav>
+          <button class="primary">Import ride</button>
+        </div>
+        <div class="record-grid">
+          <div class="card">
+            <div class="card-head"><div><div class="card-title">Action labels</div><p class="subline">Prefer verbs a rider understands in context.</p></div><span class="chip">Use these</span></div>
+            <div class="card-body">
+              <div class="line"><span>Upload</span><b>Import ride</b></div>
+              <div class="line"><span>View all</span><b>Show all matches</b></div>
+              <div class="line"><span>Open climb</span><b>View climb</b></div>
+              <div class="line"><span>Deposit CAL</span><b>Add CAL</b></div>
+              <div class="line"><span>Copy link</span><b>Share record</b></div>
+              <div class="line"><span>Stop ride</span><b>End ride</b></div>
+            </div>
+          </div>
+          <aside class="popout">
+            <section class="card">
+              <div class="card-head"><div class="card-title">Record states</div><span class="card-meta">App-facing</span></div>
+              <div class="card-body">
+                <div class="line"><span>Live ride</span><b>Recording</b></div>
+                <div class="line"><span>After save</span><b>Building record</b></div>
+                <div class="line"><span>Ready</span><b>Record ready</b></div>
+                <div class="line"><span>Review</span><b>Needs review</b></div>
+                <div class="line"><span>No credit</span><b>Not counted</b></div>
+              </div>
+            </section>
+            <section class="card">
+              <div class="card-head"><div class="card-title">Vault words</div><span class="card-meta">Object-backed</span></div>
+              <div class="card-body">
+                <div class="line"><span>Your position</span><b>Held CAL</b></div>
+                <div class="line"><span>Attached</span><b>On this climb</b></div>
+                <div class="line"><span>Projected CAL</span><b>Estimated CAL</b></div>
+                <div class="line"><span>Not final</span><b>Not counted yet</b></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-intro">
+        <div>
+          <p class="eyebrow">Mobile interaction</p>
+          <h2>On mobile, the climb inspector becomes a bottom sheet.</h2>
+        </div>
+        <p>
+          Same hierarchy as desktop, different posture: rider taps a climb row,
+          gets result context and vault consequence without losing the ride.
+        </p>
+      </section>
+
+      <section class="layout" style="padding: 0">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="mobile-row"><div class="mobile-title">Ride</div><span class="chip">Ready</span></div>
+            <div class="map-panel" style="min-height: 220px">
+              <div class="map-tag">Route</div>
+              <svg viewBox="0 0 360 220" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M32 170 C78 112 110 196 160 126 C207 60 230 100 328 40" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="15" stroke-linecap="round" />
+                <path d="M32 170 C78 112 110 196 160 126 C207 60 230 100 328 40" fill="none" stroke="#456f52" stroke-width="7" stroke-linecap="round" />
+                <path d="M134 162 C149 136 158 128 172 126" fill="none" stroke="#a87124" stroke-width="9" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="climb-table">
+              <div class="climb-row selected"><div><h3>Levering Street Wall</h3><p>0.42 mi · vault live</p></div><div class="right-metric mono"><b>3:44</b><span>Time</span></div></div>
+              <div class="climb-row"><div><h3>Cynwyd Kick</h3><p>0.31 mi · record held</p></div><div class="right-metric mono"><b>2:18</b><span>Time</span></div></div>
+            </div>
+            <div class="bottom-sheet">
+              <div class="grabber"></div>
+              <h3>Levering Street Wall</h3>
+              <p class="subline">Your ride: 3:44 · #6 all time</p>
+              <div style="height: 12px"></div>
+              <div class="compare">
+                <div class="tile"><strong class="mono">3:44</strong><span>This</span></div>
+                <div class="tile"><strong class="mono gold">3:21</strong><span>KOM</span></div>
+                <div class="tile"><strong class="mono cal">18</strong><span>CAL</span></div>
+              </div>
+              <div style="height: 12px"></div>
+              <button class="primary" style="width: 100%">View climb</button>
+            </div>
+          </div>
+        </div>
+        <aside class="note">
+          <h2>Implementation notes</h2>
+          <p>
+            The popout/bottom sheet should be a reusable inspector pattern. It
+            keeps the rider in context and gives BR a distinctive interaction
+            without inventing unsupported data.
+          </p>
+          <div style="height: 14px"></div>
+          <div class="line"><span>Desktop</span><b>Side inspector</b></div>
+          <div class="line"><span>Mobile</span><b>Bottom sheet</b></div>
+          <div class="line"><span>Core object</span><b>Climb</b></div>
+          <div class="line"><span>Economy</span><b>On this climb</b></div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "captured_at_utc": "2026-10-14T00:20:14.116377+00:00",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "getMultipleAccounts",
+    "params": [
+      [
+        "SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy",
+        "MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD",
+        "SPMBzsVUuoHA4Jm6KunbsotaahvVikZs1JyTW6iJvbn",
+        "FMAWbzuxsgbgndArunedwxXPA6sweaVUGGgadCpSxau2"
+      ],
+      {
+        "encoding": "base64",
+        "commitment": "finalized"
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "result": {
+      "context": {
+        "apiVersion": "4.3.0",
+        "slot": 456637361
+      },
+      "value": [
+        {
+          "data": [
+            "AgAAAMycX43n4SCSmKum8wpo7i+bnBwt/dPJe1JGXP6NSmNK",
+            "base64"
+          ],
+          "executable": true,
+          "lamports": 153141440,
+          "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+          "rentEpoch": 18446744073709551615,
+          "space": 36
+        },
+        {
+          "data": [
+            "AgAAADJQKNh1vTLv8bCRxj3bG45epF6oEAwQLIGGj0FOrxk+",
+            "base64"
+          ],
+          "executable": true,
+          "lamports": 64141464,
+          "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+          "rentEpoch": 18446744073709551615,
+          "space": 36
+        },
+        {
+          "data": [
+            "AgAAAPvdwZmDdHHdgqDqieLtG64VfkslxBJnsb5J4eLcgIoE",
+            "base64"
+          ],
+          "executable": true,
+          "lamports": 1141440,
+          "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+          "rentEpoch": 18446744073709551615,
+          "space": 36
+        },
+        {
+          "data": [
+            "AQAAAIDVIgAAAAAAxngNdxTPBkMOkXkWBYY4YcdkKJjH1PCrBsaFt4XiP8DGeA13FM8GQw6ReRYFhjhhx2QomMfU8KsGxoW3heI/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+            "base64"
+          ],
+          "executable": false,
+          "lamports": 90113312679,
+          "owner": "Stake11111111111111111111111111111111111111",
+          "rentEpoch": 18446744073709551615,
+          "space": 200
+        }
+      ]
+    },
+    "id": 2
+  }
+}

@@ -1,0 +1,610 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: urn:br:elevation-asset:1
+title: Boulder Roller elevation-asset admission record
+$comment: 'Inference: proposed contract, not a legal opinion encoded as a licence allowlist. Structural validation and the cross-record rules in source-policy.yaml both apply.'
+type: object
+additionalProperties: false
+properties:
+  schema_version:
+    const: br-elevation-asset-1
+  asset_id:
+    type: string
+    minLength: 1
+  provider:
+    type: string
+    minLength: 1
+  distributor:
+    type: string
+    minLength: 1
+  product_id:
+    type: string
+    minLength: 1
+  product_edition:
+    type: string
+    minLength: 1
+  catalogue_uri:
+    type: string
+    minLength: 1
+    format: uri
+  acquired_from_uri:
+    type: string
+    minLength: 1
+    format: uri
+  content_sha256: &id002
+    type: string
+    minLength: 1
+    pattern: ^[0-9a-f]{64}$
+  byte_length:
+    type: integer
+    minimum: 1
+  acquired_at:
+    type: string
+    minLength: 1
+    format: date-time
+  source_updated_at: &id001
+    type:
+    - string
+    - 'null'
+    format: date
+  publication_date: *id001
+  acquisition_period:
+    type: object
+    additionalProperties: false
+    properties:
+      start: *id001
+      end: *id001
+    required:
+    - start
+    - end
+  coverage:
+    type: object
+    additionalProperties: false
+    properties:
+      bbox_wgs84:
+        type: array
+        items:
+          type: number
+        minItems: 4
+        maxItems: 4
+      footprint_uri:
+        type: string
+        minLength: 1
+        format: uri
+      footprint_sha256: *id002
+      region_ids:
+        type: array
+        items:
+          type: string
+          minLength: 1
+        minItems: 1
+        uniqueItems: true
+    required:
+    - bbox_wgs84
+    - footprint_uri
+    - footprint_sha256
+    - region_ids
+  licence:
+    type: object
+    additionalProperties: false
+    properties:
+      id:
+        type: string
+        minLength: 1
+      version:
+        type: string
+        minLength: 1
+      uri:
+        type: string
+        minLength: 1
+        format: uri
+      text_sha256: *id002
+      basis:
+        enum:
+        - public_domain
+        - standard_licence
+        - bespoke_permission
+      evidence:
+        type: array
+        items:
+          $ref: '#/$defs/evidence'
+        minItems: 1
+      rights:
+        $ref: '#/$defs/rights'
+      content_rights_separate:
+        type: boolean
+    required:
+    - id
+    - version
+    - uri
+    - text_sha256
+    - basis
+    - evidence
+    - rights
+    - content_rights_separate
+  odbl_integration:
+    type: object
+    additionalProperties: false
+    properties:
+      route:
+        enum:
+        - public_domain
+        - reviewed_licence
+        - reviewed_separate_contents
+        - explicit_permission
+        - unresolved
+      review:
+        $ref: '#/$defs/review'
+    required:
+    - route
+    - review
+  notices:
+    type: array
+    items:
+      $ref: '#/$defs/notice'
+  notice_bundle_sha256: *id002
+  pass_through_required:
+    type: boolean
+  pass_through_satisfied:
+    type: boolean
+  pass_through_evidence_uri:
+    type:
+    - string
+    - 'null'
+    format: uri
+  no_endorsement_required:
+    type: boolean
+  no_effective_technological_restrictions_required:
+    type: boolean
+  raw_export_included:
+    type: boolean
+  upstream_asset_ids:
+    type: array
+    items:
+      type: string
+      minLength: 1
+    uniqueItems: true
+  upstream_closure_complete:
+    type: boolean
+  upstream_closure_evidence_uri:
+    type: string
+    minLength: 1
+    format: uri
+  allowed_uses:
+    type: array
+    items:
+      enum:
+      - display_terrain
+      - discovery
+      - canonical_profile
+      - verification
+    uniqueItems: true
+  processing:
+    type: object
+    additionalProperties: false
+    properties:
+      surface_model:
+        enum:
+        - DTM
+        - DSM
+        - hybrid
+        - unknown
+      file_format:
+        type: string
+        minLength: 1
+      horizontal_crs:
+        type: string
+        minLength: 1
+      vertical_datum:
+        type: string
+        minLength: 1
+      vertical_unit:
+        enum:
+        - metre
+      resolution_x:
+        type: number
+        exclusiveMinimum: 0
+      resolution_y:
+        type: number
+        exclusiveMinimum: 0
+      resolution_unit:
+        enum:
+        - metre
+        - degree
+      pixel_registration:
+        enum:
+        - PixelIsArea
+        - PixelIsPoint
+        - not_applicable
+        - unknown
+      nodata_value:
+        type:
+        - number
+        - string
+        - 'null'
+      interpolation:
+        type: string
+        minLength: 1
+      transformation_record_uri:
+        type: string
+        minLength: 1
+        format: uri
+      per_sample_receipts_supported:
+        type: boolean
+      quality_review:
+        $ref: '#/$defs/review'
+    required:
+    - surface_model
+    - file_format
+    - horizontal_crs
+    - vertical_datum
+    - vertical_unit
+    - resolution_x
+    - resolution_y
+    - resolution_unit
+    - pixel_registration
+    - nodata_value
+    - interpolation
+    - transformation_record_uri
+    - per_sample_receipts_supported
+    - quality_review
+  admission:
+    type: object
+    additionalProperties: false
+    properties:
+      state:
+        enum:
+        - quarantined
+        - admitted
+        - rejected
+        - suspended
+      policy_version:
+        type: string
+        minLength: 1
+      policy_sha256: *id002
+      reviewed_by:
+        type:
+        - string
+        - 'null'
+      reviewed_at: &id003
+        type:
+        - string
+        - 'null'
+        format: date-time
+      decision_record_uri:
+        type:
+        - string
+        - 'null'
+        format: uri
+      reason_codes:
+        type: array
+        items:
+          type: string
+          minLength: 1
+    required:
+    - state
+    - policy_version
+    - policy_sha256
+    - reviewed_by
+    - reviewed_at
+    - decision_record_uri
+    - reason_codes
+required:
+- schema_version
+- asset_id
+- provider
+- distributor
+- product_id
+- product_edition
+- catalogue_uri
+- acquired_from_uri
+- content_sha256
+- byte_length
+- acquired_at
+- source_updated_at
+- publication_date
+- acquisition_period
+- coverage
+- licence
+- odbl_integration
+- notices
+- notice_bundle_sha256
+- pass_through_required
+- pass_through_satisfied
+- pass_through_evidence_uri
+- no_endorsement_required
+- no_effective_technological_restrictions_required
+- raw_export_included
+- upstream_asset_ids
+- upstream_closure_complete
+- upstream_closure_evidence_uri
+- allowed_uses
+- processing
+- admission
+$defs:
+  rights:
+    type: object
+    additionalProperties: false
+    properties:
+      reproduce:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+      adapt:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+      commercial_use:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+      public_display:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+      redistribute_derived_values:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+      downstream_commercial_reuse:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+      redistribute_raw_asset:
+        enum:
+        - allowed
+        - forbidden
+        - unknown
+    required:
+    - reproduce
+    - adapt
+    - commercial_use
+    - public_display
+    - redistribute_derived_values
+    - downstream_commercial_reuse
+    - redistribute_raw_asset
+  evidence:
+    type: object
+    additionalProperties: false
+    properties:
+      kind:
+        enum:
+        - licence
+        - provider_notice
+        - permission
+        - terms
+        - review
+        - technical_metadata
+      uri:
+        type: string
+        minLength: 1
+        format: uri
+      sha256: *id002
+      captured_at:
+        type: string
+        minLength: 1
+        format: date-time
+    required:
+    - kind
+    - uri
+    - sha256
+    - captured_at
+  notice:
+    type: object
+    additionalProperties: false
+    properties:
+      id:
+        type: string
+        minLength: 1
+      text:
+        type: string
+        minLength: 1
+      basis:
+        enum:
+        - Text
+        - Guidance
+        - Inference
+      source_uri:
+        type: string
+        minLength: 1
+        format: uri
+      status:
+        enum:
+        - mandatory
+        - requested
+        - recommended
+      placement:
+        type: array
+        items:
+          enum:
+          - interactive_associated
+          - static_embedded
+          - data_metadata
+          - legal_notice
+        minItems: 1
+        uniqueItems: true
+    required:
+    - id
+    - text
+    - basis
+    - source_uri
+    - status
+    - placement
+  review:
+    type: object
+    additionalProperties: false
+    properties:
+      state:
+        enum:
+        - pending
+        - approved
+        - rejected
+      reviewed_by:
+        type:
+        - string
+        - 'null'
+      reviewed_at: *id003
+      decision_record_uri:
+        type:
+        - string
+        - 'null'
+        format: uri
+      rationale:
+        type: string
+        minLength: 1
+    required:
+    - state
+    - reviewed_by
+    - reviewed_at
+    - decision_record_uri
+    - rationale
+allOf:
+- if:
+    properties:
+      admission:
+        properties:
+          state:
+            const: admitted
+  then:
+    properties:
+      allowed_uses:
+        minItems: 1
+      licence:
+        properties:
+          rights:
+            properties:
+              reproduce:
+                const: allowed
+              adapt:
+                const: allowed
+              commercial_use:
+                const: allowed
+              public_display:
+                const: allowed
+              redistribute_derived_values:
+                const: allowed
+              downstream_commercial_reuse:
+                const: allowed
+      odbl_integration:
+        properties:
+          route:
+            not:
+              const: unresolved
+          review:
+            properties:
+              state:
+                const: approved
+              reviewed_by:
+                type: string
+                minLength: 1
+              reviewed_at:
+                type: string
+                minLength: 1
+                format: date-time
+              decision_record_uri:
+                type: string
+                minLength: 1
+                format: uri
+      upstream_closure_complete:
+        const: true
+      admission:
+        properties:
+          reviewed_by:
+            type: string
+            minLength: 1
+          reviewed_at:
+            type: string
+            minLength: 1
+            format: date-time
+          decision_record_uri:
+            type: string
+            minLength: 1
+            format: uri
+- if:
+    properties:
+      licence:
+        properties:
+          id:
+            const: etalab-2.0
+      admission:
+        properties:
+          state:
+            const: admitted
+  then:
+    properties:
+      source_updated_at:
+        type: string
+        format: date
+- if:
+    properties:
+      pass_through_required:
+        const: true
+      admission:
+        properties:
+          state:
+            const: admitted
+  then:
+    properties:
+      pass_through_satisfied:
+        const: true
+      pass_through_evidence_uri:
+        type: string
+        minLength: 1
+        format: uri
+- if:
+    properties:
+      raw_export_included:
+        const: true
+      admission:
+        properties:
+          state:
+            const: admitted
+  then:
+    properties:
+      licence:
+        properties:
+          rights:
+            properties:
+              redistribute_raw_asset:
+                const: allowed
+- if:
+    properties:
+      allowed_uses:
+        contains:
+          const: canonical_profile
+      admission:
+        properties:
+          state:
+            const: admitted
+  then:
+    properties:
+      processing:
+        properties:
+          surface_model:
+            not:
+              const: unknown
+          pixel_registration:
+            not:
+              const: unknown
+          per_sample_receipts_supported:
+            const: true
+          quality_review:
+            properties:
+              state:
+                const: approved
+              reviewed_by:
+                type: string
+                minLength: 1
+              reviewed_at:
+                type: string
+                minLength: 1
+                format: date-time
+              decision_record_uri:
+                type: string
+                minLength: 1
+                format: uri

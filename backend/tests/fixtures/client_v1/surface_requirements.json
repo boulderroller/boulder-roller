@@ -1,0 +1,74 @@
+{
+  "schema": "boulderroller.client_surface_requirements.v1",
+  "contract_version": "client.v1",
+  "design_boundary": "functional_requirements_only",
+  "copy_boundary": {
+    "normal_rider_surfaces_prefer": ["Ride", "Status", "Verification", "Leaderboard", "Climb", "Vault economy"],
+    "normal_rider_surfaces_avoid_primary_labels": ["RideAttestation", "attestation"],
+    "technical_witness_surfaces_may_use": ["RideAttestation", "PDA", "tx", "commitment"]
+  },
+  "surfaces": [
+    {
+      "id": "mobile.record",
+      "client": "mobile",
+      "files": [
+        "mobile/src/screens/RecordScreen.tsx",
+        "mobile/src/services/database.ts",
+        "mobile/src/services/crashRecovery.ts",
+        "mobile/src/services/gpsRecording.ts",
+        "mobile/src/services/uploadQueue.ts"
+      ],
+      "truth_layers": ["projected", "proof"],
+      "requires": ["parser_version", "preliminary_ride_hash", "had_crash_recovery", "createUploadEntry"]
+    },
+    {
+      "id": "mobile.post_ride",
+      "client": "mobile",
+      "files": ["mobile/src/screens/PostRideScreen.tsx"],
+      "truth_layers": ["projected", "proof", "onchain"],
+      "requires": ["proof state", "Ride hash", "Commitment", "Finalized", "CAL Earned"]
+    },
+    {
+      "id": "mobile.ride_detail",
+      "client": "mobile",
+      "files": ["mobile/src/screens/RideDetailScreen.tsx"],
+      "truth_layers": ["projected", "proof", "onchain"],
+      "requires": ["offline always works", "proof state", "Ride hash", "Commitment", "Finalized", "CAL Earned"]
+    },
+    {
+      "id": "mobile.climbs",
+      "client": "mobile",
+      "files": ["mobile/src/screens/ClimbsScreen.tsx", "mobile/src/lib/api.ts"],
+      "truth_layers": ["projected", "onchain"],
+      "requires": ["ClimbSummary", "VaultEconomy", "RecordBoard", "LocalLegendStatus"]
+    },
+    {
+      "id": "portal.ride_view",
+      "client": "portal",
+      "files": ["web/portal/src/pages/RideView.tsx", "web/portal/src/pages/RideViewCore.tsx"],
+      "truth_layers": ["projected", "proof", "onchain"],
+      "requires": ["useRideStatus", "Verification", "Status", "RideAttestation", "Ride hash", "Commitment", "Week"]
+    },
+    {
+      "id": "portal.climb_view",
+      "client": "portal",
+      "files": ["web/portal/src/pages/ClimbView.tsx", "web/portal/src/components/climb/ClimbLeaderboard.tsx", "web/portal/src/components/climb/ClimbLegend.tsx"],
+      "truth_layers": ["projected", "onchain"],
+      "requires": ["Climb", "Leaderboard", "Vault", "Legend", "climb-record-board", "entry.rank", "entry.timeS", "powerKind: entry.powerKind", "avgPowerW: entry.avgPowerW", "estimatedPowerW: entry.estimatedPowerW", "wPerKg: entry.wPerKg", "rideId: entry.rideId", "noVaultBoardQuery.data?.source", "noVaultBoardQuery.data?.earlierVersionId", "From rides", "Leaderboard from rides · this version only", "Local Legend", "legend.completionsCount"]
+    },
+    {
+      "id": "portal.vault_view",
+      "client": "portal",
+      "files": ["web/portal/src/pages/VaultView.tsx"],
+      "truth_layers": ["projected", "onchain"],
+      "requires": ["getVaultDistributionHistory(vaultId)", "DUNG history", "history.data.distributions.map", "Week of", "dist.distributedAt", "dist.totalAmountBaseUnits", "dist.localLegendAmountBaseUnits", "Your position", "stake?.calStakedBaseUnits", "rewards.totalPendingBaseUnits"]
+    },
+    {
+      "id": "scan.climb_witness",
+      "client": "scan",
+      "files": ["web/scan/src/pages/VaultPage.tsx"],
+      "truth_layers": ["projected", "proof", "onchain", "compatibility"],
+      "requires": ["Completions", "Ride attested", "Registration", "Climb account", "Vault account", "Leaderboard", "Settlements", "Local Legend"]
+    }
+  ]
+}

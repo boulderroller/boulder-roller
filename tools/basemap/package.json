@@ -1,0 +1,13 @@
+{
+  "name": "boulderroller-basemap-tools",
+  "private": true,
+  "type": "module",
+  "description": "Builds the self-hosted map ground assets: glyphs and sprite for the pinned Voyager style.",
+  "scripts": {
+    "glyphs": "node build-glyphs.mjs",
+    "sprite": "python3 -I build-sprite.py"
+  },
+  "dependencies": {
+    "fontnik": "0.7.7"
+  }
+}

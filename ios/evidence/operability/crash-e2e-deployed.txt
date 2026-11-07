@@ -1,0 +1,44 @@
+Crash pipeline end-to-end — DEPLOYED evidence class
+====================================================
+Date: 2026-08-12. Backend commit 5548f204 live on production
+(api.boulderroller.xyz /status version verified). Migration 151 applied:
+to_regclass confirms ios_diagnostics, mobile_push_devices,
+mobile_push_deliveries all exist in the production DB.
+
+Flow exercised (real pipeline, honestly-labeled synthetic diagnostic — the
+simulator never receives true MetricKit deliveries, which is exactly why
+the DEBUG forced path exists):
+
+1. App (iOS 26.3 simulator, iPhone 17) launched with
+   -BRDebugForceCrashDiagnostic while SIGNED OUT
+   -> envelope enqueued to the persisted queue; uploader correctly held
+      (ios_diagnostics count stayed 0 — no unauthenticated uploads).
+2. Process terminated, relaunched with the flag (second envelope), DEV
+   sign-in (SIWS test rider) on the production API.
+3. Sign-in drain uploaded BOTH queued envelopes in one authenticated batch
+   -> proves queue persistence across process kill AND the auth gate.
+
+Production DB rows (in-container asyncpg over DATABASE_URL):
+
+{'id': UUID('b470aaea-5ddb-4e9f-a1ea-6dbddda03566'),
+ 'wallet': 'HJTPYN43sqptTFsNVsM1eyR1UFiyu2tcWKuwGWDcXZyP',   # dev test rider
+ 'device_id': 'f994aee7-1074-4f91-b651-41a8540faf8f',
+ 'diagnostic_type': 'debug_forced_test',
+ 'app_version': '0.1.0', 'build_number': '1',
+ 'os_version': 'Version 26.3.1 (Build 23D8133)', 'device_model': 'arm64',
+ 'payload_bytes': 538,
+ 'received_at': 2026-08-12 06:24:19 UTC,
+ 'payload_simulated_flag': True,
+ 'payload_note': 'DEBUG forced test diagnostic - synthetic payload through the real queue, uploade...'}
+(+ one sibling row from the first, signed-out launch — same batch)
+
+Fail-closed checks against the DEPLOYED endpoints:
+  unauth POST /mobile/diagnostics  -> 401
+  unauth POST /mobile/push/devices -> 401
+
+Test-account hygiene: rows live in the ops-only ios_diagnostics table —
+no rider-visible or permanent product surface is touched; the envelopes
+are labeled synthetic at type and payload level.
+
+Honestly gated (physical device): a real MetricKit crash delivery —
+requires a crash on hardware and MetricKit's next-launch delivery window.

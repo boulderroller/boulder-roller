@@ -1,0 +1,16 @@
+{
+  "programId": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+  "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+  "programdataAddress": "Fy3YMJCvwbAXUgUM5b91ucUVA3jYzwWLHL3MwBqKsh8n",
+  "authority": "none",
+  "lastDeploySlot": 302582236,
+  "dataLen": 1470416,
+  "lamports": 10236299440,
+  "sourceRpc": "https://api.mainnet-beta.solana.com",
+  "capturedAt": "2026-10-14T16:27:13.907437+00:00",
+  "binarySha256": "dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c",
+  "configDumpSha256": "1c07729f8d86111c8099fbadf436f7cea702f16ad24ccbca9cb6c1458d3eb203",
+  "configAddress": "BSTq9w3kZwNwpBXJEvTZz2G9ZTNyKBvoSeXMvwb4cNZr",
+  "sdk": "@sqds/multisig@2.1.4",
+  "evidence": "Read-only mainnet capture; execution tests use localnet with generated test keys."
+}

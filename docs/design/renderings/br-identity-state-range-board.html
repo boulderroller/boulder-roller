@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boulder Roller State Range Renderings</title>
+    <style>
+      :root {
+        --bg: #f3f5ee;
+        --paper: #fffdf6;
+        --wash: #edf2e7;
+        --ink: #121a14;
+        --muted: #647062;
+        --border: rgba(18, 26, 20, 0.13);
+        --line: rgba(18, 26, 20, 0.075);
+        --route: #456f52;
+        --cal: #1f8caf;
+        --gold: #a87124;
+        --proof: #3c8257;
+        --amber: #a86b22;
+        --red: #a94442;
+        --shadow: 0 28px 80px rgba(18, 26, 20, 0.11);
+        --soft-shadow: 0 18px 50px rgba(18, 26, 20, 0.075);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(139, 161, 122, 0.24), transparent 32%),
+          radial-gradient(circle at 100% 8%, rgba(31, 140, 175, 0.12), transparent 30%),
+          linear-gradient(90deg, rgba(18, 26, 20, 0.034) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(18, 26, 20, 0.027) 1px, transparent 1px),
+          var(--bg);
+        background-size: auto, auto, 30px 30px, 30px 30px, auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .mono {
+        font-family: Cousine, "SFMono-Regular", Consolas, monospace;
+      }
+
+      .board {
+        width: min(1480px, 100%);
+        margin: 0 auto;
+        padding: 34px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) 420px;
+        gap: 34px;
+        align-items: end;
+        padding: 18px 0 36px;
+      }
+
+      .eyebrow {
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 980px;
+        font-size: clamp(42px, 6vw, 76px);
+        line-height: 0.94;
+        letter-spacing: -0.025em;
+      }
+
+      .note,
+      .card,
+      .phone-screen {
+        border: 1px solid var(--border);
+        background: rgba(255, 253, 246, 0.88);
+      }
+
+      .note {
+        padding: 22px;
+        border-radius: 18px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .note h2 {
+        margin-bottom: 12px;
+        font-size: 24px;
+        line-height: 1.08;
+      }
+
+      .note p,
+      .subline {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 410px minmax(0, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .phone {
+        overflow: hidden;
+        border: 8px solid var(--ink);
+        border-radius: 36px;
+        background: var(--ink);
+        box-shadow: 0 24px 70px rgba(18, 26, 20, 0.2);
+      }
+
+      .phone-screen {
+        min-height: 760px;
+        padding: 16px 14px 20px;
+        border-radius: 27px;
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .title {
+        font-size: 25px;
+        font-weight: 920;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 28px;
+        padding: 0 10px;
+        border: 1px solid rgba(60, 130, 87, 0.28);
+        border-radius: 999px;
+        background: rgba(60, 130, 87, 0.1);
+        color: #2f7048;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .chip::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--proof);
+      }
+
+      .map,
+      .mini-map {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background:
+          repeating-radial-gradient(ellipse at 55% 45%, rgba(139, 161, 122, 0.17) 0 1px, transparent 1px 18px),
+          linear-gradient(135deg, #edf4e8 0%, #fff9ef 58%, #e8f0df 100%);
+      }
+
+      .map {
+        min-height: 300px;
+      }
+
+      .map svg,
+      .mini-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-tag {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        z-index: 2;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: rgba(255, 253, 246, 0.86);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .live-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+        margin-top: 10px;
+      }
+
+      .stat,
+      .tile {
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 253, 246, 0.88);
+      }
+
+      .stat strong,
+      .tile strong {
+        display: block;
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 920;
+      }
+
+      .stat span,
+      .tile span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .cal {
+        color: var(--cal);
+      }
+
+      .gold {
+        color: var(--gold);
+      }
+
+      .record-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 48px;
+        margin-top: 12px;
+        border: 1px solid rgba(169, 68, 66, 0.35);
+        border-radius: 14px;
+        background: #111913;
+        color: #fffdf6;
+        font-size: 14px;
+        font-weight: 900;
+        box-shadow: 2px 2px 0 rgba(18, 26, 20, 0.24);
+      }
+
+      .section {
+        margin-bottom: 22px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 14px;
+      }
+
+      .section-head h2 {
+        font-size: 34px;
+        line-height: 1.03;
+        letter-spacing: -0.015em;
+      }
+
+      .card {
+        overflow: hidden;
+        border-radius: 18px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 15px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .card-title {
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .card-body {
+        padding: 15px;
+      }
+
+      .timeline {
+        display: grid;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 26px 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .step:last-child {
+        border-bottom: 0;
+      }
+
+      .dot {
+        width: 13px;
+        height: 13px;
+        border-radius: 999px;
+        background: var(--proof);
+        box-shadow: 0 0 0 5px rgba(60, 130, 87, 0.1);
+      }
+
+      .dot.wait {
+        background: var(--amber);
+        box-shadow: 0 0 0 5px rgba(168, 107, 34, 0.12);
+      }
+
+      .step h3 {
+        font-size: 14px;
+      }
+
+      .step p {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .line:last-child {
+        border-bottom: 0;
+      }
+
+      .line span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .line b {
+        font-size: 13px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 16px;
+      }
+
+      .comment {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .avatar {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: linear-gradient(135deg, #edf3e7, #fffaf0);
+      }
+
+      .comment h3 {
+        font-size: 14px;
+      }
+
+      .comment p {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .dark-wrap {
+        padding: 20px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 0 0, rgba(31, 140, 175, 0.16), transparent 30%),
+          #111812;
+        color: #f4f1e7;
+        box-shadow: var(--shadow);
+      }
+
+      .dark-wrap .card,
+      .dark-wrap .stat,
+      .dark-wrap .tile,
+      .dark-wrap .phone-screen {
+        border-color: rgba(244, 241, 231, 0.14);
+        background: rgba(25, 34, 26, 0.86);
+      }
+
+      .dark-wrap .subline,
+      .dark-wrap .line span,
+      .dark-wrap .stat span,
+      .dark-wrap .tile span {
+        color: #a9b4a5;
+      }
+
+      .dark-wrap .map {
+        border-color: rgba(244, 241, 231, 0.14);
+        background:
+          repeating-radial-gradient(ellipse at 55% 45%, rgba(139, 161, 122, 0.18) 0 1px, transparent 1px 18px),
+          linear-gradient(135deg, #1b251b 0%, #272516 58%, #172018 100%);
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .grid,
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        .phone {
+          width: min(410px, 100%);
+        }
+      }
+
+      @media (max-width: 560px) {
+        .board {
+          padding: 18px;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head p {
+          margin-top: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="board">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">BR state range pass</p>
+          <h1>The system also has to move, wait, talk, and go dark.</h1>
+        </div>
+        <aside class="note">
+          <h2>Pass 4 target</h2>
+          <p>
+            Fill the missing range: live recording, post-ride processing, social
+            comments, and a dark variant that keeps the athletic-first identity.
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="top"><div class="title">Recording</div><span class="chip">Live</span></div>
+            <div class="map">
+              <div class="map-tag">Route now</div>
+              <svg viewBox="0 0 360 300" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M34 238 C96 166 122 252 178 160 C226 82 249 126 328 54" fill="none" stroke="rgba(18,26,20,.16)" stroke-width="15" stroke-linecap="round" />
+                <path d="M34 238 C96 166 122 252 178 160 C226 82 249 126 328 54" fill="none" stroke="#456f52" stroke-width="7" stroke-linecap="round" />
+                <path d="M154 194 C171 165 181 154 196 150" fill="none" stroke="#a87124" stroke-width="9" stroke-linecap="round" />
+                <circle cx="206" cy="140" r="10" fill="#121a14" />
+              </svg>
+            </div>
+            <div class="live-stats">
+              <div class="stat"><strong class="mono">18.7</strong><span>MPH</span></div>
+              <div class="stat"><strong class="mono">462</strong><span>Feet left</span></div>
+              <div class="stat"><strong class="mono">2:14</strong><span>On climb</span></div>
+              <div class="stat"><strong class="mono cal">+12</strong><span>Estimated CAL</span></div>
+            </div>
+            <div class="card" style="margin-top: 12px">
+              <div class="card-head"><div class="card-title">Ahead</div><span class="subline">0.18 mi</span></div>
+              <div class="card-body">
+                <div class="line"><span>Levering Street Wall</span><b>9.8%</b></div>
+                <div class="line"><span>Your best</span><b class="mono">3:31</b></div>
+              </div>
+            </div>
+            <button class="record-button">End ride</button>
+          </div>
+        </div>
+
+        <div>
+          <section class="section">
+            <div class="section-head">
+              <div><p class="eyebrow">Live cockpit</p><h2>Recording is still athletic, not token-first.</h2></div>
+              <p class="subline">Estimated CAL can exist, but speed, climb, route, and safety context lead.</p>
+            </div>
+            <div class="two-col">
+              <div class="card">
+                <div class="card-head"><div class="card-title">Building ride record</div><span class="chip">Reading file</span></div>
+                <div class="card-body">
+                  <div class="timeline">
+                    <div class="step"><div class="dot"></div><div><h3>Ride saved</h3><p>Local route and effort file are safe.</p></div><b>Done</b></div>
+                    <div class="step"><div class="dot"></div><div><h3>Reading ride file</h3><p>Stats, pauses, and source quality are being checked.</p></div><b>Now</b></div>
+                    <div class="step"><div class="dot wait"></div><div><h3>Matching climbs</h3><p>Potential climb results will appear here.</p></div><b>Next</b></div>
+                    <div class="step"><div class="dot wait"></div><div><h3>Building ride record</h3><p>Counted CAL waits for effort data.</p></div><b>Waiting</b></div>
+                  </div>
+                </div>
+              </div>
+              <aside class="card">
+                <div class="card-head"><div class="card-title">Outcome preview</div><span class="subline">Not counted yet</span></div>
+                <div class="card-body">
+                  <div class="line"><span>Distance</span><b class="mono">31.8 mi</b></div>
+                  <div class="line"><span>Climb candidates</span><b>4</b></div>
+                  <div class="line"><span>Counted CAL</span><b>Waiting</b></div>
+                </div>
+              </aside>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <div><p class="eyebrow">Human layer</p><h2>Comments should feel like cyclists, not infrastructure logs.</h2></div>
+              <p class="subline">Social texture is quiet and specific. It does not need cyberpunk chrome.</p>
+            </div>
+            <div class="two-col">
+              <div class="card">
+                <div class="card-head"><div class="card-title">Comments</div><span class="subline">3</span></div>
+                <div class="card-body">
+                  <div class="comment"><div class="avatar"></div><div><h3>Maya Rivera</h3><p>That Levering split was spicy. You took the steep bit cleaner than last week.</p></div></div>
+                  <div class="comment"><div class="avatar"></div><div><h3>Corey Lee</h3><p>Nice line through the bridge. I still have you on the first ramp.</p></div></div>
+                  <div class="comment"><div class="avatar"></div><div><h3>Jordan Ellis</h3><p>Felt better after the turn. Going back for it tomorrow.</p></div></div>
+                </div>
+              </div>
+              <aside class="card">
+                <div class="card-head"><div class="card-title">Activity pulse</div><span class="subline">Ride-level</span></div>
+                <div class="card-body">
+                  <div class="line"><span>Kudos</span><b class="mono">18</b></div>
+                  <div class="line"><span>Comments</span><b class="mono">3</b></div>
+                  <div class="line"><span>Climb watchers</span><b class="mono">7</b></div>
+                </div>
+              </aside>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" style="margin-top: 34px">
+        <div class="section-head">
+          <div><p class="eyebrow">Dark range</p><h2>Dark mode should be serious, not nightclub crypto.</h2></div>
+          <p class="subline">The same structure works in dark: warm black, terrain green, restrained CAL blue, and proof as quiet trust.</p>
+        </div>
+        <div class="dark-wrap">
+          <div class="two-col">
+            <div>
+              <div class="top"><div><div class="title">Manayunk morning ridge work</div><p class="subline">31.8 mi · 2,940 ft · 4 climbs matched</p></div><span class="chip">Record ready</span></div>
+              <div class="map">
+                <div class="map-tag">Route map</div>
+                <svg viewBox="0 0 760 320" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M52 260 C138 190 184 292 264 225 C350 150 326 72 438 78 C548 84 520 210 704 64" fill="none" stroke="rgba(244,241,231,.18)" stroke-width="18" stroke-linecap="round" />
+                  <path d="M52 260 C138 190 184 292 264 225 C350 150 326 72 438 78 C548 84 520 210 704 64" fill="none" stroke="#79a783" stroke-width="8" stroke-linecap="round" />
+                  <path d="M220 239 C242 206 253 200 264 225" fill="none" stroke="#b98534" stroke-width="11" stroke-linecap="round" />
+                  <path d="M424 79 C478 70 507 118 520 160" fill="none" stroke="#2aa3c7" stroke-width="11" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <aside>
+              <div class="card">
+                <div class="card-head"><div class="card-title">Ride record</div><span class="chip">Ready</span></div>
+                <div class="card-body">
+                  <div class="line"><span>Status</span><b>Record ready</b></div>
+                  <div class="line"><span>Counted CAL</span><b class="mono cal">47</b></div>
+                  <div class="line"><span>Climb matches</span><b>4</b></div>
+                  <div class="line"><span>File</span><b>FIT accepted</b></div>
+                </div>
+              </div>
+              <div class="live-stats">
+                <div class="stat"><strong class="mono">3:44</strong><span>Inspected climb</span></div>
+                <div class="stat"><strong class="mono gold">#6</strong><span>Rank</span></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

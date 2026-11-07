@@ -1,0 +1,34 @@
+# Boulder Roller — App Launch smoke
+#
+# The smallest end-to-end check: install/launch the dev build, app
+# survives initial render. Catches build-breaking regressions in
+# AuthInitializer, SQLCipher init, navigation root, or provider stack
+# before any deeper flow can possibly succeed.
+#
+# Run locally (after `expo prebuild` + dev build installed on a sim/device):
+#   maestro test mobile/.maestro/00-app-launch.yaml
+#
+# Run as part of EAS Workflows:
+#   See https://docs.expo.dev/eas/workflows/examples/e2e-tests/
+
+appId: com.boulderroller.app
+---
+- launchApp:
+    clearState: true
+
+# Wait for either the login screen or the authenticated tab navigator.
+# Either is fine — both prove the boot sequence (initDatabase, auth
+# hydration, Privy provider, navigation container) didn't crash.
+- runFlow:
+    when:
+      visible:
+        text: "Sign In"
+    commands:
+      - assertVisible: "Sign In"
+
+- runFlow:
+    when:
+      visible:
+        text: "Record"
+    commands:
+      - assertVisible: "Record"

@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wises source map capture</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:#f4f4f1}#capture-frame{position:relative;overflow:hidden}#map{position:absolute;left:0;top:0;transform-origin:0 0}</style></head>
+<body><div id="capture-frame"><div id="map"></div></div>
+<script id="map-projection-metadata" type="application/json">{"ready":false}</script>
+<script type="module" src="./map-capture.ts"></script></body></html>

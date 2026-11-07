@@ -1,0 +1,16 @@
+{
+  "performanceScoreMin": 97,
+  "metrics": {
+    "first-contentful-paint": { "max": 1800 },
+    "largest-contentful-paint": { "max": 2200 },
+    "total-blocking-time": { "max": 120 },
+    "cumulative-layout-shift": { "max": 0.05 },
+    "interactive": { "max": 2500 },
+    "speed-index": { "max": 2200 },
+    "interaction-to-next-paint": { "max": 250, "optional": true }
+  },
+  "diagnostics": {
+    "total-byte-weight": { "max": 220000, "unit": "bytes" },
+    "mainthread-work-breakdown": { "max": 900, "unit": "ms" }
+  }
+}

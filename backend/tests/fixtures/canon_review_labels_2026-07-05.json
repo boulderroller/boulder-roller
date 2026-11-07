@@ -1,0 +1,2356 @@
+{
+ "model": "canon_review_labels_v1",
+ "source": "climb_lab_review_state_v1",
+ "exported_at": "2026-07-06",
+ "reviewed_by": "tim",
+ "scope_note": "Manayunk/Wissahickon launch windows, batches 1+2 (137 candidates); needs_work notes are boundary ground truth",
+ "labels": [
+  {
+   "candidate_id": "canon-003efe9fe0cc8e95",
+   "candidate_fingerprint": "003efe9fe0cc8e95f8ec6b5e33d63bc0fb60c79fdf1db21eb559a1d160a26cf1",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Germantown Avenue",
+   "gain_m": 46.08,
+   "distance_m": 2707.76,
+   "avg_grade_pct": 1.702,
+   "max_gradient_pct": 5.741,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:46:03.676147+00:00"
+  },
+  {
+   "candidate_id": "canon-0090178b1e1110fe",
+   "candidate_fingerprint": "0090178b1e1110fed234212d94e68495feb3ad1db82034938fc8daa0c7390477",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North 31st Street",
+   "gain_m": 13.14,
+   "distance_m": 1719.8,
+   "avg_grade_pct": 0.764,
+   "max_gradient_pct": 39.894,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:46:39.404264+00:00"
+  },
+  {
+   "candidate_id": "canon-01d803f927368c65",
+   "candidate_fingerprint": "01d803f927368c65ba623e890ccd47fe6bb6c50faac4467e4da98760fe3f78c7",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Righter Street",
+   "gain_m": 24.69,
+   "distance_m": 254.54,
+   "avg_grade_pct": 9.701,
+   "max_gradient_pct": 13.452,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:28:34.043917+00:00"
+  },
+  {
+   "candidate_id": "canon-01da81fd8027d0e5",
+   "candidate_fingerprint": "01da81fd8027d0e5a0bbec02cdf7a9895b9c22cf44da3c4c769d8fe411842580",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Pechin Street",
+   "gain_m": 21.09,
+   "distance_m": 258.96,
+   "avg_grade_pct": 8.146,
+   "max_gradient_pct": 12.5,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:27.269852+00:00"
+  },
+  {
+   "candidate_id": "canon-021d05b6f16f77de",
+   "candidate_fingerprint": "021d05b6f16f77de55cb407c91f266d9276a6627525c16d2127db5976ccdea6c",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Church Street",
+   "gain_m": 29.56,
+   "distance_m": 216.3,
+   "avg_grade_pct": 13.666,
+   "max_gradient_pct": 25.958,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:32:43.081241+00:00"
+  },
+  {
+   "candidate_id": "canon-07c352e41a3e9f3e",
+   "candidate_fingerprint": "07c352e41a3e9f3e359cbc530e924d4241c883ee29c156e405e0a3ffe5812b73",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Henry Avenue",
+   "gain_m": 30.11,
+   "distance_m": 311.24,
+   "avg_grade_pct": 9.674,
+   "max_gradient_pct": 33.504,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:32:01.524261+00:00"
+  },
+  {
+   "candidate_id": "canon-08178449ffff4318",
+   "candidate_fingerprint": "08178449ffff4318b83e798f750f59bd2801fd958e6b8fc59af4abf07eda201c",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Merion Square Road",
+   "gain_m": 54.94,
+   "distance_m": 1287.49,
+   "avg_grade_pct": 4.267,
+   "max_gradient_pct": 16.184,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:44:45.680116+00:00"
+  },
+  {
+   "candidate_id": "canon-0bbc4752c47ca52b",
+   "candidate_fingerprint": "0bbc4752c47ca52b30d4c35c5ff603870eb18b4a4a6c97d1da282086dd4c4ced",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Bullock Avenue",
+   "gain_m": 30.67,
+   "distance_m": 381.04,
+   "avg_grade_pct": 8.048,
+   "max_gradient_pct": 20.688,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:31:55.619991+00:00"
+  },
+  {
+   "candidate_id": "canon-0e2abb5c47bb4583",
+   "candidate_fingerprint": "0e2abb5c47bb4583820538cc4c07d08aeaa70a5bd906caedb0485feb914bc2f9",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Morton Street",
+   "gain_m": 49.01,
+   "distance_m": 1762.21,
+   "avg_grade_pct": 2.781,
+   "max_gradient_pct": 10.309,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:43:02.964876+00:00"
+  },
+  {
+   "candidate_id": "canon-0e8ee14b86c83681",
+   "candidate_fingerprint": "0e8ee14b86c83681af58aa80c5bee032149aea47e07480b564f75fd7baac04c4",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Cynwyd Heritage Trail",
+   "gain_m": 56.52,
+   "distance_m": 2712.85,
+   "avg_grade_pct": 2.083,
+   "max_gradient_pct": 29.819,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:41:50.443451+00:00"
+  },
+  {
+   "candidate_id": "canon-14b862c1f517a351",
+   "candidate_fingerprint": "14b862c1f517a351b73d4d67c24397e592cb1dbe38b4dea230de851573f85cab",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "West Johnson Street / East Johnson Street",
+   "gain_m": 44.4,
+   "distance_m": 1445.87,
+   "avg_grade_pct": 3.071,
+   "max_gradient_pct": 36.14,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:54.661940+00:00"
+  },
+  {
+   "candidate_id": "canon-15bcbf05bfc9768d",
+   "candidate_fingerprint": "15bcbf05bfc9768daa1c5160ada3ab6fab3fe335e34788ccafa08208db2f6143",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North Spring Mill Road",
+   "gain_m": 54.83,
+   "distance_m": 648.67,
+   "avg_grade_pct": 8.453,
+   "max_gradient_pct": 20.706,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:30:36.997484+00:00"
+  },
+  {
+   "candidate_id": "canon-160612a9d86dceb9",
+   "candidate_fingerprint": "160612a9d86dceb981c512c9d8cc7c39398b47802c6bf7f95be1194a6d7aeabd",
+   "decision": "needs_work",
+   "note": "this should end at henry",
+   "display_name": "Midvale Avenue",
+   "gain_m": 67.84,
+   "distance_m": 1714.95,
+   "avg_grade_pct": 3.956,
+   "max_gradient_pct": 11.554,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:41:25.740624+00:00"
+  },
+  {
+   "candidate_id": "canon-1932d8eeb335f394",
+   "candidate_fingerprint": "1932d8eeb335f394c50c281f4e2c3306a677e4d27c59a1479680163d92e03bce",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Greenwood Avenue",
+   "gain_m": 48.0,
+   "distance_m": 2075.7,
+   "avg_grade_pct": 2.313,
+   "max_gradient_pct": 12.992,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:43:55.559247+00:00"
+  },
+  {
+   "candidate_id": "canon-1b2281fc14282228",
+   "candidate_fingerprint": "1b2281fc142822283c7e30ec364a703f3bba97cc0847a8cfc661d41eb5033507",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North 32nd Street",
+   "gain_m": 11.84,
+   "distance_m": 1699.79,
+   "avg_grade_pct": 0.697,
+   "max_gradient_pct": 31.524,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:49:11.640408+00:00"
+  },
+  {
+   "candidate_id": "canon-1bbadcdefe7331ea",
+   "candidate_fingerprint": "1bbadcdefe7331ead7b6ba03364d4303c70a7e267c39f7323252e79b721d8398",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Bowman Street",
+   "gain_m": 28.91,
+   "distance_m": 523.89,
+   "avg_grade_pct": 5.518,
+   "max_gradient_pct": 10.115,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:38:50.249324+00:00"
+  },
+  {
+   "candidate_id": "canon-1c6801afa5ccdaa8",
+   "candidate_fingerprint": "1c6801afa5ccdaa82b1cab5bb5e2be9a8d394b3e2c8080d7e49487902822013c",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Cinnaminson Street",
+   "gain_m": 27.05,
+   "distance_m": 198.78,
+   "avg_grade_pct": 13.606,
+   "max_gradient_pct": 34.023,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:33:46.246091+00:00"
+  },
+  {
+   "candidate_id": "canon-1d0fe5f96ba79e86",
+   "candidate_fingerprint": "1d0fe5f96ba79e860fa9bb4245ff25d04ba5fc91090bd9bc818223122539da0c",
+   "decision": "needs_work",
+   "note": "start this at umbria probably right",
+   "display_name": "Parker Avenue",
+   "gain_m": 21.7,
+   "distance_m": 260.94,
+   "avg_grade_pct": 8.314,
+   "max_gradient_pct": 11.456,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:57:24.460396+00:00"
+  },
+  {
+   "candidate_id": "canon-1de680b68c8841b9",
+   "candidate_fingerprint": "1de680b68c8841b9427e5b259c418d62bdd9690a30654dced062b4a6b5fb782d",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Old Gulph Road",
+   "gain_m": 61.55,
+   "distance_m": 937.16,
+   "avg_grade_pct": 6.568,
+   "max_gradient_pct": 24.883,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:47.186862+00:00"
+  },
+  {
+   "candidate_id": "canon-20653f88682f4a00",
+   "candidate_fingerprint": "20653f88682f4a002bc194be11b33bc5fec4fb3f34e3c80b210a5a23f4d4ddae",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "West 10th Avenue",
+   "gain_m": 41.93,
+   "distance_m": 830.89,
+   "avg_grade_pct": 5.046,
+   "max_gradient_pct": 10.348,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:24.427079+00:00"
+  },
+  {
+   "candidate_id": "canon-21270f6c8286a494",
+   "candidate_fingerprint": "21270f6c8286a494ce984a1046f563cf2083b77009a88da91acbb1f7c5491d05",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Stony Lane",
+   "gain_m": 21.26,
+   "distance_m": 223.78,
+   "avg_grade_pct": 9.502,
+   "max_gradient_pct": 23.077,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:21.727068+00:00"
+  },
+  {
+   "candidate_id": "canon-218b4bd723a237d2",
+   "candidate_fingerprint": "218b4bd723a237d260d9db6ba8e4886d6c8458dc4973c78c374eac814d44d0fe",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Biddlewoods Road",
+   "gain_m": 21.63,
+   "distance_m": 261.18,
+   "avg_grade_pct": 8.282,
+   "max_gradient_pct": 11.468,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:30:11.352468+00:00"
+  },
+  {
+   "candidate_id": "canon-22b70c2fffbc982f",
+   "candidate_fingerprint": "22b70c2fffbc982f41f66146599aeba8354a4038b109967b2865ffe6db29c7bc",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "West Salaignac Street",
+   "gain_m": 34.41,
+   "distance_m": 396.26,
+   "avg_grade_pct": 8.684,
+   "max_gradient_pct": 13.721,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:27:23.026592+00:00"
+  },
+  {
+   "candidate_id": "canon-242721197e98b9b0",
+   "candidate_fingerprint": "242721197e98b9b0acf050ce6039d7f353fede47466601550a4d91a3c6b30984",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Sylvan Lane",
+   "gain_m": 23.19,
+   "distance_m": 266.1,
+   "avg_grade_pct": 8.716,
+   "max_gradient_pct": 13.696,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:34:28.994362+00:00"
+  },
+  {
+   "candidate_id": "canon-265cfcfa0fb3213e",
+   "candidate_fingerprint": "265cfcfa0fb3213edbe3a55d05d7f3546373db97fb2ea33c6c865f6f6e3a0602",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Manor Road",
+   "gain_m": 84.58,
+   "distance_m": 2492.72,
+   "avg_grade_pct": 3.393,
+   "max_gradient_pct": 41.263,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:38:01.145145+00:00"
+  },
+  {
+   "candidate_id": "canon-27921d9d554b85bd",
+   "candidate_fingerprint": "27921d9d554b85bd68ed3cb75b9930e11f5bd9466510186914f6e173fdb840b6",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Conshohocken State Road",
+   "gain_m": 66.67,
+   "distance_m": 1158.51,
+   "avg_grade_pct": 5.755,
+   "max_gradient_pct": 14.932,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:14.488680+00:00"
+  },
+  {
+   "candidate_id": "canon-279a69d24907bc89",
+   "candidate_fingerprint": "279a69d24907bc8974f4249040ff3335e4e42bb3fb8331d81aa3387c18a3c218",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Barren Hill Road",
+   "gain_m": 81.98,
+   "distance_m": 2597.11,
+   "avg_grade_pct": 3.157,
+   "max_gradient_pct": 16.206,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:40:49.539944+00:00"
+  },
+  {
+   "candidate_id": "canon-299006c86a71f0a0",
+   "candidate_fingerprint": "299006c86a71f0a0454efb9ad971a4380821b17e507a50a5155db3a1d3100f9e",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Old Gulph Road / Williamson Road / Youngs Ford Road",
+   "gain_m": 72.92,
+   "distance_m": 2098.35,
+   "avg_grade_pct": 3.475,
+   "max_gradient_pct": 18.37,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:41:08.659655+00:00"
+  },
+  {
+   "candidate_id": "canon-2aa5f06f4d244a0f",
+   "candidate_fingerprint": "2aa5f06f4d244a0fd3e87d6760c7bd63be662307f8031e3e132abd90f0e60eba",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Old Line Road",
+   "gain_m": 24.26,
+   "distance_m": 265.74,
+   "avg_grade_pct": 9.13,
+   "max_gradient_pct": 17.702,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:34:18.083618+00:00"
+  },
+  {
+   "candidate_id": "canon-2fda05fb841c1ac3",
+   "candidate_fingerprint": "2fda05fb841c1ac37e7a1d673519f5c9bc3dc66a9fc8d5af84dca1c53099b16e",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Kelly Drive / Strawberry Mansion Bridge Drive / Reservoir Drive",
+   "gain_m": 28.45,
+   "distance_m": 1785.77,
+   "avg_grade_pct": 1.593,
+   "max_gradient_pct": 21.221,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:48:39.124681+00:00"
+  },
+  {
+   "candidate_id": "canon-3140e51127e69604",
+   "candidate_fingerprint": "3140e51127e6960430575ed7e85be0f885118a349cda0455401e4b673cfb5dbd",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Marilyn Drive",
+   "gain_m": 20.59,
+   "distance_m": 410.73,
+   "avg_grade_pct": 5.014,
+   "max_gradient_pct": 10.258,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:41:27.676856+00:00"
+  },
+  {
+   "candidate_id": "canon-35344326f9db0e52",
+   "candidate_fingerprint": "35344326f9db0e524fe5dbeb5c5c61923696f3f14361a96965a268e8d52b15e0",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Station Avenue / East North Lane",
+   "gain_m": 48.1,
+   "distance_m": 1377.83,
+   "avg_grade_pct": 3.491,
+   "max_gradient_pct": 10.719,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:49:02.952490+00:00"
+  },
+  {
+   "candidate_id": "canon-3618841f9c93e6a4",
+   "candidate_fingerprint": "3618841f9c93e6a4484709c77fd9895177782ed8bb9641d3aadeff6c8066e9f5",
+   "decision": "needs_work",
+   "note": "this needs to begin back near the woodmont light and end at spring mill rd light",
+   "display_name": "Conshohocken State Road",
+   "gain_m": 20.6,
+   "distance_m": 260.65,
+   "avg_grade_pct": 7.902,
+   "max_gradient_pct": 10.163,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T00:00:00.651591+00:00"
+  },
+  {
+   "candidate_id": "canon-3af8cf2fbe96cb6d",
+   "candidate_fingerprint": "3af8cf2fbe96cb6db922aa17e41146ee5e42a6f822f8f200d23119d6feacfa44",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Mansion Street",
+   "gain_m": 20.08,
+   "distance_m": 225.38,
+   "avg_grade_pct": 8.908,
+   "max_gradient_pct": 14.358,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:57.065011+00:00"
+  },
+  {
+   "candidate_id": "canon-3cf2670875dc0654",
+   "candidate_fingerprint": "3cf2670875dc0654b6d1307d405448b91d3d7d08118f292f563dededab5418f1",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Serpentine Lane",
+   "gain_m": 22.0,
+   "distance_m": 170.5,
+   "avg_grade_pct": 12.905,
+   "max_gradient_pct": 23.767,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:35:36.418115+00:00"
+  },
+  {
+   "candidate_id": "canon-40abe54531323235",
+   "candidate_fingerprint": "40abe54531323235ac7109f44df9bd867612e00eefe5624e87a5cfe4ed815fe5",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Manayunk Avenue",
+   "gain_m": 33.1,
+   "distance_m": 577.38,
+   "avg_grade_pct": 5.733,
+   "max_gradient_pct": 73.373,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:44:53.036680+00:00"
+  },
+  {
+   "candidate_id": "canon-4191452c48f05d5e",
+   "candidate_fingerprint": "4191452c48f05d5e670efe75768d79ed6f7f7b2d904c688f44efe1046d76f234",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Terrace Street",
+   "gain_m": 20.81,
+   "distance_m": 247.63,
+   "avg_grade_pct": 8.402,
+   "max_gradient_pct": 12.297,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:31.729592+00:00"
+  },
+  {
+   "candidate_id": "canon-42915313322fec9e",
+   "candidate_fingerprint": "42915313322fec9e10c3d2c1e09bc93d2eeee3833eb5c76653fb4b7b78d58637",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "East 6th Avenue",
+   "gain_m": 34.03,
+   "distance_m": 483.23,
+   "avg_grade_pct": 7.043,
+   "max_gradient_pct": 10.121,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:40.241998+00:00"
+  },
+  {
+   "candidate_id": "canon-4351a5e4f016dd15",
+   "candidate_fingerprint": "4351a5e4f016dd15f7be6f587df317f4a5629ad57b3b23a9457236d68ef7394a",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Kelly Drive",
+   "gain_m": 14.48,
+   "distance_m": 472.99,
+   "avg_grade_pct": 3.062,
+   "max_gradient_pct": 103.223,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:45.988159+00:00"
+  },
+  {
+   "candidate_id": "canon-44104fe888a158eb",
+   "candidate_fingerprint": "44104fe888a158ebc736671e804e2d1fdd391a2fd1a7a5358ebc426b68ec758f",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Hollow Cove",
+   "gain_m": 24.45,
+   "distance_m": 222.33,
+   "avg_grade_pct": 10.997,
+   "max_gradient_pct": 27.025,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:34:08.282935+00:00"
+  },
+  {
+   "candidate_id": "canon-44fd96e29057c607",
+   "candidate_fingerprint": "44fd96e29057c6072fd626dd92d2cb81afd0394e7e0b033be578df3796172ae4",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Harvard Road",
+   "gain_m": 23.11,
+   "distance_m": 235.07,
+   "avg_grade_pct": 9.831,
+   "max_gradient_pct": 12.502,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:29:50.409996+00:00"
+  },
+  {
+   "candidate_id": "canon-45cce7f975578a7d",
+   "candidate_fingerprint": "45cce7f975578a7d07e460d1f19f1bbf053c1edfb584e2746dce74b448b3b780",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Rose Glen Road",
+   "gain_m": 86.59,
+   "distance_m": 1623.37,
+   "avg_grade_pct": 5.334,
+   "max_gradient_pct": 31.89,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:28.965599+00:00"
+  },
+  {
+   "candidate_id": "canon-4698d2a41a0d7f8f",
+   "candidate_fingerprint": "4698d2a41a0d7f8ffdb7461709fcc8dd41f1df804828cdc1af3071ab42da4dce",
+   "decision": "needs_work",
+   "note": "this should start down at the bottom of hollow rd",
+   "display_name": "Hagys Ford Road North / Hagys Ford Road",
+   "gain_m": 65.23,
+   "distance_m": 1497.56,
+   "avg_grade_pct": 4.356,
+   "max_gradient_pct": 13.462,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:17.522739+00:00"
+  },
+  {
+   "candidate_id": "canon-47bed4f058a4ab7e",
+   "candidate_fingerprint": "47bed4f058a4ab7e5a5c1c32eeb1b336a7d07d0a8a53868af1bbd221c0b2f583",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Ellis Road",
+   "gain_m": 49.72,
+   "distance_m": 1644.02,
+   "avg_grade_pct": 3.025,
+   "max_gradient_pct": 17.389,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:44:41.273191+00:00"
+  },
+  {
+   "candidate_id": "canon-4c1458718c5f8b35",
+   "candidate_fingerprint": "4c1458718c5f8b35b29cd41fe81d14153bd74a946bd7f2fa4fb22be29b2e6343",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North 20th Street / Limekiln Pike",
+   "gain_m": 60.78,
+   "distance_m": 4314.28,
+   "avg_grade_pct": 1.409,
+   "max_gradient_pct": 13.051,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:41.190326+00:00"
+  },
+  {
+   "candidate_id": "canon-4fd24af7cf2f78d1",
+   "candidate_fingerprint": "4fd24af7cf2f78d185eb712ced0b04ea7a21b90272df866ee68d4f20dfe74093",
+   "decision": "needs_work",
+   "note": "this one is tricky because there is a cutout that ppl ride thru to connect to the rest of the climb on rene rd. also it should start at the intersection with rte 23",
+   "display_name": "Spring Garden Lane",
+   "gain_m": 21.92,
+   "distance_m": 242.54,
+   "avg_grade_pct": 9.038,
+   "max_gradient_pct": 13.402,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:59:07.161790+00:00"
+  },
+  {
+   "candidate_id": "canon-5035e12b32d18ca7",
+   "candidate_fingerprint": "5035e12b32d18ca75fab3fc4d095d2951d9e0a4995bf71b5d9978372a1461f8f",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Livezey Lane",
+   "gain_m": 30.06,
+   "distance_m": 371.03,
+   "avg_grade_pct": 8.102,
+   "max_gradient_pct": 17.975,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:32:10.750968+00:00"
+  },
+  {
+   "candidate_id": "canon-536f1f91e0bab890",
+   "candidate_fingerprint": "536f1f91e0bab890867dc5135e4bed61569fdd1efe4a6de6596ef4cd3c5eee8d",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Old Forest Road",
+   "gain_m": 21.88,
+   "distance_m": 210.51,
+   "avg_grade_pct": 10.392,
+   "max_gradient_pct": 15.725,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:41:02.313356+00:00"
+  },
+  {
+   "candidate_id": "canon-5448ba50fc24853c",
+   "candidate_fingerprint": "5448ba50fc24853cf4b6c3d62c7b0f50ea1feb1717ccc7afeecc9fcc3237afda",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Rector Street / Churchview Street",
+   "gain_m": 30.04,
+   "distance_m": 334.75,
+   "avg_grade_pct": 8.974,
+   "max_gradient_pct": 22.266,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:58:13.209504+00:00"
+  },
+  {
+   "candidate_id": "canon-55112c8ee3d7c1ad",
+   "candidate_fingerprint": "55112c8ee3d7c1ad5e84a857aa8d91eac74cc4a55c937e90664f6d2001a7dc46",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Conshohocken State Road",
+   "gain_m": 80.92,
+   "distance_m": 1023.52,
+   "avg_grade_pct": 7.906,
+   "max_gradient_pct": 34.75,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:38:04.636581+00:00"
+  },
+  {
+   "candidate_id": "canon-58138410ed1aea74",
+   "candidate_fingerprint": "58138410ed1aea74dc09924734d8538f497827094a8de96d56e6c8f8568d4bef",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Green Lane",
+   "gain_m": 23.78,
+   "distance_m": 252.59,
+   "avg_grade_pct": 9.414,
+   "max_gradient_pct": 11.743,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:29:20.092647+00:00"
+  },
+  {
+   "candidate_id": "canon-595357866895fab9",
+   "candidate_fingerprint": "595357866895fab961d949dca439928f3dd9b2d4013e5bb0d4e8af8f2a7df429",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Righters Mill Road",
+   "gain_m": 76.66,
+   "distance_m": 862.39,
+   "avg_grade_pct": 8.889,
+   "max_gradient_pct": 43.067,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:28:14.522237+00:00"
+  },
+  {
+   "candidate_id": "canon-5d7f5e83091e278f",
+   "candidate_fingerprint": "5d7f5e83091e278f871f0c354f09463b16a7e69c535e9fac93c6e3a6a5705793",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Greaves Lane",
+   "gain_m": 22.32,
+   "distance_m": 214.75,
+   "avg_grade_pct": 10.393,
+   "max_gradient_pct": 31.695,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:35:20.473340+00:00"
+  },
+  {
+   "candidate_id": "canon-5f4b5276af11ff3e",
+   "candidate_fingerprint": "5f4b5276af11ff3eb4f16731374a964f9614a69b7d5641f74334c848e22e2d30",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North 52nd Street / Maple Avenue",
+   "gain_m": 28.94,
+   "distance_m": 1893.45,
+   "avg_grade_pct": 1.528,
+   "max_gradient_pct": 9.407,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:50:41.754690+00:00"
+  },
+  {
+   "candidate_id": "canon-64f5abf9926b2674",
+   "candidate_fingerprint": "64f5abf9926b2674d5d19702f5c1d7e862102443e16fc62eea6bb07cdd114da1",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Magnolia Street",
+   "gain_m": 23.29,
+   "distance_m": 462.14,
+   "avg_grade_pct": 5.041,
+   "max_gradient_pct": 9.201,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:40:24.925821+00:00"
+  },
+  {
+   "candidate_id": "canon-654344fd8a7f5050",
+   "candidate_fingerprint": "654344fd8a7f50505361728e62f06c77fc688cbf9cefd68d85f35aaaef294ca1",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Potts Lane",
+   "gain_m": 28.53,
+   "distance_m": 412.88,
+   "avg_grade_pct": 6.91,
+   "max_gradient_pct": 10.033,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:38:53.820724+00:00"
+  },
+  {
+   "candidate_id": "canon-6995a8596de18562",
+   "candidate_fingerprint": "6995a8596de18562ca58558273ed524fc628b8d5b46110f723bce5173fbda76b",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Shurs Lane",
+   "gain_m": 67.87,
+   "distance_m": 890.45,
+   "avg_grade_pct": 7.622,
+   "max_gradient_pct": 16.85,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:36.553289+00:00"
+  },
+  {
+   "candidate_id": "canon-69e5d91cd246bded",
+   "candidate_fingerprint": "69e5d91cd246bdeda300fc696bb6a4919a57f810fedb5368088b809e0ac66bac",
+   "decision": "approve",
+   "note": null,
+   "display_name": "McClenaghan Mill Road",
+   "gain_m": 52.85,
+   "distance_m": 1188.2,
+   "avg_grade_pct": 4.448,
+   "max_gradient_pct": 18.991,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:01.291981+00:00"
+  },
+  {
+   "candidate_id": "canon-6a27077cb5436041",
+   "candidate_fingerprint": "6a27077cb5436041824eeaab9c78711e3f8182f75ae299f60ab06c3d6d2e49a6",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Silverwood Street",
+   "gain_m": 28.49,
+   "distance_m": 304.67,
+   "avg_grade_pct": 9.35,
+   "max_gradient_pct": 11.601,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:33:03.924314+00:00"
+  },
+  {
+   "candidate_id": "canon-6c5eb2e73b21538e",
+   "candidate_fingerprint": "6c5eb2e73b21538e2829615f20712277800fed0de12a2c6de3d6d20b495ee483",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Sprague Road",
+   "gain_m": 69.71,
+   "distance_m": 886.21,
+   "avg_grade_pct": 7.866,
+   "max_gradient_pct": 24.416,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:41:42.008834+00:00"
+  },
+  {
+   "candidate_id": "canon-6dd0103e9954953a",
+   "candidate_fingerprint": "6dd0103e9954953a0de43ccc9e659853c59e79a5ff5f41a1523f6fa8dd120c0b",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Cresson Street",
+   "gain_m": 13.92,
+   "distance_m": 583.99,
+   "avg_grade_pct": 2.384,
+   "max_gradient_pct": 86.21,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:54.462889+00:00"
+  },
+  {
+   "candidate_id": "canon-6dd9042b200cf96b",
+   "candidate_fingerprint": "6dd9042b200cf96bb85fc9f39b7dcdf21d743c709529969d207105935967a8a3",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Ripka Street",
+   "gain_m": 20.59,
+   "distance_m": 216.61,
+   "avg_grade_pct": 9.506,
+   "max_gradient_pct": 15.337,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:36.495647+00:00"
+  },
+  {
+   "candidate_id": "canon-6eb7db3300849099",
+   "candidate_fingerprint": "6eb7db33008490993b64264feb44b44487c7f4d40bf2a611c300af98ab3b2f2f",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Cotton Street",
+   "gain_m": 21.89,
+   "distance_m": 190.47,
+   "avg_grade_pct": 11.493,
+   "max_gradient_pct": 19.441,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:12.086934+00:00"
+  },
+  {
+   "candidate_id": "canon-7145571fe31a6953",
+   "candidate_fingerprint": "7145571fe31a69534ed2bf0fb4ac03866afc0c1d185c637ce32f2529943f8747",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Port Royal Avenue",
+   "gain_m": 93.07,
+   "distance_m": 1530.43,
+   "avg_grade_pct": 6.081,
+   "max_gradient_pct": 27.188,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:19.410338+00:00"
+  },
+  {
+   "candidate_id": "canon-76b183549f84c996",
+   "candidate_fingerprint": "76b183549f84c996b00629aa4cfc4f680ffe000b250edabaa848cc163016601f",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Hillside Avenue",
+   "gain_m": 28.85,
+   "distance_m": 181.78,
+   "avg_grade_pct": 15.871,
+   "max_gradient_pct": 23.571,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:32:52.915852+00:00"
+  },
+  {
+   "candidate_id": "canon-794844097b53a512",
+   "candidate_fingerprint": "794844097b53a512b1bc11ed7c091f9a6647b0ff504c35803546edbb52e2491f",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Centennial Road",
+   "gain_m": 67.99,
+   "distance_m": 1639.79,
+   "avg_grade_pct": 4.146,
+   "max_gradient_pct": 19.474,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:41:31.952786+00:00"
+  },
+  {
+   "candidate_id": "canon-7af1a916969cc399",
+   "candidate_fingerprint": "7af1a916969cc399cd23f42fd1df98c67bddf11a0a7fc613e1aadd48bed3740d",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Leverington Avenue",
+   "gain_m": 70.24,
+   "distance_m": 1206.32,
+   "avg_grade_pct": 5.823,
+   "max_gradient_pct": 14.005,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:36:49.911445+00:00"
+  },
+  {
+   "candidate_id": "canon-8000092cb57a14e2",
+   "candidate_fingerprint": "8000092cb57a14e23fcdbca7b92415b3b50cc01056070d7ff6d0f658e3050d7e",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Cathedral Road",
+   "gain_m": 49.12,
+   "distance_m": 1641.68,
+   "avg_grade_pct": 2.992,
+   "max_gradient_pct": 16.47,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:59.682710+00:00"
+  },
+  {
+   "candidate_id": "canon-8141ce78836e31f5",
+   "candidate_fingerprint": "8141ce78836e31f5bfeadfde8a2d135ceedd64e00bd3e0f017d7495d22da1f46",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Baynton Street",
+   "gain_m": 25.54,
+   "distance_m": 1005.14,
+   "avg_grade_pct": 2.541,
+   "max_gradient_pct": 56.176,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:59.089869+00:00"
+  },
+  {
+   "candidate_id": "canon-84bcbd7ae9765da8",
+   "candidate_fingerprint": "84bcbd7ae9765da86a3e12aba4148865d3682e3e5cae51a2b196ddae53962695",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Bryn Tyddyn Drive",
+   "gain_m": 67.51,
+   "distance_m": 651.5,
+   "avg_grade_pct": 10.362,
+   "max_gradient_pct": 29.885,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:00.706447+00:00"
+  },
+  {
+   "candidate_id": "canon-8700b3ca5e452c17",
+   "candidate_fingerprint": "8700b3ca5e452c173da4a4f00ba6302a561fedaddbf4b109f006812ad4738aaf",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Fairmont Road",
+   "gain_m": 22.89,
+   "distance_m": 235.29,
+   "avg_grade_pct": 9.73,
+   "max_gradient_pct": 13.628,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:34:56.132991+00:00"
+  },
+  {
+   "candidate_id": "canon-880d39528707fc49",
+   "candidate_fingerprint": "880d39528707fc49cb7a2e8f78ee5bb2d976690ec6a1d11b3920f2b63af42b34",
+   "decision": "needs_work",
+   "note": "this can start at the bottom of falls rd",
+   "display_name": "Falls Road / Conshohocken Avenue",
+   "gain_m": 39.39,
+   "distance_m": 1392.19,
+   "avg_grade_pct": 2.83,
+   "max_gradient_pct": 11.138,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:49:32.582175+00:00"
+  },
+  {
+   "candidate_id": "canon-890cefb60f8c5802",
+   "candidate_fingerprint": "890cefb60f8c580288d4d817bd1441901a134b42fd7d0fc58b2286c917b93333",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Paoli Avenue",
+   "gain_m": 54.26,
+   "distance_m": 944.23,
+   "avg_grade_pct": 5.746,
+   "max_gradient_pct": 21.926,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:50.194965+00:00"
+  },
+  {
+   "candidate_id": "canon-89f735afe68c6c56",
+   "candidate_fingerprint": "89f735afe68c6c5657b99e698633e0ce970ac656ca1560b962e9da74bf4bea09",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Soapstone Road",
+   "gain_m": 36.97,
+   "distance_m": 411.84,
+   "avg_grade_pct": 8.976,
+   "max_gradient_pct": 23.08,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:31:10.981697+00:00"
+  },
+  {
+   "candidate_id": "canon-8bd065ad3f513c89",
+   "candidate_fingerprint": "8bd065ad3f513c8916b713aaa422cd6c35384c022d41fb9f1ba56062d18053a4",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Keiffer Street",
+   "gain_m": 26.56,
+   "distance_m": 375.14,
+   "avg_grade_pct": 7.079,
+   "max_gradient_pct": 9.392,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:39:01.202036+00:00"
+  },
+  {
+   "candidate_id": "canon-94aa4aeaaa0eb19b",
+   "candidate_fingerprint": "94aa4aeaaa0eb19b9ded74fe210730f3b4d0cb3851bf75129752bdd774ab8ceb",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "West Walnut Lane",
+   "gain_m": 35.19,
+   "distance_m": 542.03,
+   "avg_grade_pct": 6.493,
+   "max_gradient_pct": 61.002,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:46:45.006027+00:00"
+  },
+  {
+   "candidate_id": "canon-969f87f3d590832e",
+   "candidate_fingerprint": "969f87f3d590832e864a047d8a8a0bb6008bb4ce1107730dd2154a4e1597da8f",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Forbidden Drive / Thomas Road",
+   "gain_m": 41.42,
+   "distance_m": 4028.61,
+   "avg_grade_pct": 1.028,
+   "max_gradient_pct": 17.738,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:11.741010+00:00"
+  },
+  {
+   "candidate_id": "canon-984c037de1c621e4",
+   "candidate_fingerprint": "984c037de1c621e4de6e3c4ae04f544bb962410bba874f3bdd081afb8ccf2ee9",
+   "decision": "needs_work",
+   "note": "this could end at conrad probably",
+   "display_name": "Calumet Street / West Coulter Street",
+   "gain_m": 67.88,
+   "distance_m": 1733.47,
+   "avg_grade_pct": 3.916,
+   "max_gradient_pct": 48.206,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:40:15.404812+00:00"
+  },
+  {
+   "candidate_id": "canon-9d72baea48dbeded",
+   "candidate_fingerprint": "9d72baea48dbeded9d68e07871e8ea84a0d9d45f36bc9e2cf1ccf688001eb158",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Domino Lane",
+   "gain_m": 31.59,
+   "distance_m": 496.19,
+   "avg_grade_pct": 6.367,
+   "max_gradient_pct": 11.953,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:37:57.881850+00:00"
+  },
+  {
+   "candidate_id": "canon-9ddc28aa3cb148ab",
+   "candidate_fingerprint": "9ddc28aa3cb148abb69442bd806d8f3a50dbd85641f73a09b3e20a63993e4588",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Washington Lane",
+   "gain_m": 34.59,
+   "distance_m": 506.83,
+   "avg_grade_pct": 6.824,
+   "max_gradient_pct": 52.838,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:15.190512+00:00"
+  },
+  {
+   "candidate_id": "canon-9e1360dceb543ae9",
+   "candidate_fingerprint": "9e1360dceb543ae9b63c42445d157f18e1c28149e90db208fc8ca2d194dccdf5",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Krams Avenue",
+   "gain_m": 30.6,
+   "distance_m": 793.32,
+   "avg_grade_pct": 3.857,
+   "max_gradient_pct": 48.424,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:54.343090+00:00"
+  },
+  {
+   "candidate_id": "canon-9ebf0264c077a059",
+   "candidate_fingerprint": "9ebf0264c077a059e049fcdd8cac5ae3f8e7fbd3040e7c10fc2ebf045bcc4727",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Drexel Road / Merion Road",
+   "gain_m": 36.9,
+   "distance_m": 2253.69,
+   "avg_grade_pct": 1.637,
+   "max_gradient_pct": 14.731,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:34.323878+00:00"
+  },
+  {
+   "candidate_id": "canon-9f34c3ecdccc3fd7",
+   "candidate_fingerprint": "9f34c3ecdccc3fd7ec9b0cc1e52dae2c09bc8933286ce03e2d1a46f829548c74",
+   "decision": "approve",
+   "note": null,
+   "display_name": "West Bells Mill Road",
+   "gain_m": 50.88,
+   "distance_m": 529.44,
+   "avg_grade_pct": 9.61,
+   "max_gradient_pct": 23.469,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:30:41.589857+00:00"
+  },
+  {
+   "candidate_id": "canon-a164537f39fc71d1",
+   "candidate_fingerprint": "a164537f39fc71d1a23ae358b08790ebbb32f86799caa00b94f3375b9e29cf41",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Rene Road",
+   "gain_m": 26.52,
+   "distance_m": 372.73,
+   "avg_grade_pct": 7.115,
+   "max_gradient_pct": 15.154,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:59:21.554072+00:00"
+  },
+  {
+   "candidate_id": "canon-a234db159b2f16aa",
+   "candidate_fingerprint": "a234db159b2f16aa2a6e478d9b5fe54413cef32f2287bccb87459e0d2e02c795",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Gay Street",
+   "gain_m": 23.24,
+   "distance_m": 220.39,
+   "avg_grade_pct": 10.544,
+   "max_gradient_pct": 13.953,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:29:36.754108+00:00"
+  },
+  {
+   "candidate_id": "canon-a52ef714b9a87e12",
+   "candidate_fingerprint": "a52ef714b9a87e129507159f120ded4dc353234523cfd4825f61ccbd344cc059",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "McCallum Street",
+   "gain_m": 41.14,
+   "distance_m": 429.66,
+   "avg_grade_pct": 9.574,
+   "max_gradient_pct": 44.691,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:44.073039+00:00"
+  },
+  {
+   "candidate_id": "canon-a5328e90bebaec92",
+   "candidate_fingerprint": "a5328e90bebaec926341e276fba8b08a3b0bbc8feea48e184e09111dc6f153d3",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Levering Street / Lyceum Avenue",
+   "gain_m": 59.4,
+   "distance_m": 546.66,
+   "avg_grade_pct": 10.866,
+   "max_gradient_pct": 21.154,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:30:25.939775+00:00"
+  },
+  {
+   "candidate_id": "canon-a7ffae8dc94e9854",
+   "candidate_fingerprint": "a7ffae8dc94e9854a0ada3fe1b849c537d74fb70d7ad27ca73b481d5fe2ec3cd",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North Washington Avenue",
+   "gain_m": 23.76,
+   "distance_m": 236.95,
+   "avg_grade_pct": 10.028,
+   "max_gradient_pct": 23.47,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:34:24.579704+00:00"
+  },
+  {
+   "candidate_id": "canon-a92172072c6a3413",
+   "candidate_fingerprint": "a92172072c6a3413e11e3fa67394e3353d7e9160fbecbfd0697858b6860fe173",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Kitchens Lane",
+   "gain_m": 44.16,
+   "distance_m": 506.64,
+   "avg_grade_pct": 8.715,
+   "max_gradient_pct": 27.175,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:30:52.962271+00:00"
+  },
+  {
+   "candidate_id": "canon-a99efed4c22a1a3f",
+   "candidate_fingerprint": "a99efed4c22a1a3f86f2f94c7d44c21e5c892b80cfdca8fb6aea600a7c3eedcb",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Falls Road / Neill Drive",
+   "gain_m": 49.79,
+   "distance_m": 1019.91,
+   "avg_grade_pct": 4.882,
+   "max_gradient_pct": 16.738,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:21.779674+00:00"
+  },
+  {
+   "candidate_id": "canon-aa9c75a504294c52",
+   "candidate_fingerprint": "aa9c75a504294c529395211df38bb5a37b99c606c2859c2ccde7605137fb2d39",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Morris Avenue",
+   "gain_m": 47.64,
+   "distance_m": 1958.51,
+   "avg_grade_pct": 2.433,
+   "max_gradient_pct": 13.376,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:43:36.687049+00:00"
+  },
+  {
+   "candidate_id": "canon-ac5d8972aff7b903",
+   "candidate_fingerprint": "ac5d8972aff7b9030c9cc45b66f67845dfe884b6a81bdec71c7783c707da358d",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Williams Avenue / Queen Street",
+   "gain_m": 32.53,
+   "distance_m": 2781.25,
+   "avg_grade_pct": 1.169,
+   "max_gradient_pct": 5.603,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:48:43.786831+00:00"
+  },
+  {
+   "candidate_id": "canon-ac6032ae675d7f33",
+   "candidate_fingerprint": "ac6032ae675d7f33dcbf7624e3158ec4eef6cecd07f8656690bffb6fbb869edd",
+   "decision": "needs_work",
+   "note": "this should end at henry",
+   "display_name": "West School House Lane",
+   "gain_m": 62.66,
+   "distance_m": 1639.92,
+   "avg_grade_pct": 3.821,
+   "max_gradient_pct": 18.99,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:41:44.456823+00:00"
+  },
+  {
+   "candidate_id": "canon-ad1fb2b60d0f639c",
+   "candidate_fingerprint": "ad1fb2b60d0f639c064ef1ecc333d6adad5805eb6b4db70b4f7a8622e1126d46",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Montgomery Avenue",
+   "gain_m": 73.11,
+   "distance_m": 1636.53,
+   "avg_grade_pct": 4.467,
+   "max_gradient_pct": 29.277,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:40:26.134512+00:00"
+  },
+  {
+   "candidate_id": "canon-af392156a21ce738",
+   "candidate_fingerprint": "af392156a21ce7388c4689cb62ce78f77b72a0a2761d260e9cdf3164e796fbab",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Rockland Avenue",
+   "gain_m": 22.62,
+   "distance_m": 197.87,
+   "avg_grade_pct": 11.431,
+   "max_gradient_pct": 25.833,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:35:01.457498+00:00"
+  },
+  {
+   "candidate_id": "canon-afa16e9780e2c636",
+   "candidate_fingerprint": "afa16e9780e2c636132f782fbab93db746046c24484069ba66cec14c0f5d610e",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Greenland Drive / Chamounix Drive",
+   "gain_m": 25.06,
+   "distance_m": 1574.37,
+   "avg_grade_pct": 1.592,
+   "max_gradient_pct": 37.261,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:46:49.861058+00:00"
+  },
+  {
+   "candidate_id": "canon-b23f82c2aa51f8fe",
+   "candidate_fingerprint": "b23f82c2aa51f8fe4f7162439a2d7591c2fd25577bbfe49bb4d4e4a1ec608839",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Whitemarsh Avenue",
+   "gain_m": 21.88,
+   "distance_m": 351.14,
+   "avg_grade_pct": 6.231,
+   "max_gradient_pct": 12.235,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:40:43.920860+00:00"
+  },
+  {
+   "candidate_id": "canon-b2c7c1a891008a14",
+   "candidate_fingerprint": "b2c7c1a891008a14e336d5405498e7840eadabbd6bd25881ce90c450f6e2c0df",
+   "decision": "needs_work",
+   "note": "this should continue to henry ave",
+   "display_name": "Wises Mill Road",
+   "gain_m": 57.41,
+   "distance_m": 955.68,
+   "avg_grade_pct": 6.008,
+   "max_gradient_pct": 26.931,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:36.890635+00:00"
+  },
+  {
+   "candidate_id": "canon-b398e673eb876980",
+   "candidate_fingerprint": "b398e673eb87698048a0c65123f24a1930dc9d477262b9f0baa3bd448c81ad22",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Dupont Street",
+   "gain_m": 22.69,
+   "distance_m": 370.28,
+   "avg_grade_pct": 6.128,
+   "max_gradient_pct": 12.079,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:40:33.392471+00:00"
+  },
+  {
+   "candidate_id": "canon-b4a5e8097af40993",
+   "candidate_fingerprint": "b4a5e8097af40993ae0bd7c8655de113c5611a6da77082200b0ddfd390c290c3",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Dehaven Avenue",
+   "gain_m": 32.77,
+   "distance_m": 211.43,
+   "avg_grade_pct": 15.501,
+   "max_gradient_pct": 23.616,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:31:21.626638+00:00"
+  },
+  {
+   "candidate_id": "canon-b670dc809f8e643b",
+   "candidate_fingerprint": "b670dc809f8e643be4b159777b5b331af87094162eb6bc95648761efc0c2fe4c",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Jefferson Street / North Woodbine Avenue",
+   "gain_m": 87.36,
+   "distance_m": 2031.31,
+   "avg_grade_pct": 4.301,
+   "max_gradient_pct": 27.888,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:37:36.039661+00:00"
+  },
+  {
+   "candidate_id": "canon-b8b1ba7821917943",
+   "candidate_fingerprint": "b8b1ba7821917943e06717f0c8a9a5a1a3af1583e3e84cf990af23746618fcf1",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Mill Creek Road",
+   "gain_m": 47.43,
+   "distance_m": 1620.69,
+   "avg_grade_pct": 2.927,
+   "max_gradient_pct": 24.255,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:26.512375+00:00"
+  },
+  {
+   "candidate_id": "canon-b8f2fbf46d51944b",
+   "candidate_fingerprint": "b8f2fbf46d51944b58957ac33f5c2b007a10d7537b79d249b4eddb93ca48c77e",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Greenland Drive / Woodford Drive",
+   "gain_m": 37.62,
+   "distance_m": 688.89,
+   "avg_grade_pct": 5.461,
+   "max_gradient_pct": 82.395,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:42:31.908595+00:00"
+  },
+  {
+   "candidate_id": "canon-ba07f7836f5992d4",
+   "candidate_fingerprint": "ba07f7836f5992d4a43a841c3d504bdbbe02955e2d033b48f06685887c677fcf",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Fairview Avenue",
+   "gain_m": 28.05,
+   "distance_m": 204.14,
+   "avg_grade_pct": 13.739,
+   "max_gradient_pct": 23.55,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:33:19.270480+00:00"
+  },
+  {
+   "candidate_id": "canon-bc6fb610615e7779",
+   "candidate_fingerprint": "bc6fb610615e777951c8111df96ff99204f738b86d05ea4f23a928ec351a07ab",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Waverly Road",
+   "gain_m": 83.44,
+   "distance_m": 1012.39,
+   "avg_grade_pct": 8.241,
+   "max_gradient_pct": 20.195,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:27:33.475157+00:00"
+  },
+  {
+   "candidate_id": "canon-bf19ecf0f36a4879",
+   "candidate_fingerprint": "bf19ecf0f36a48792d6eee20be3d2d724467aa51107f083d5e753e1a62869e7d",
+   "decision": "needs_work",
+   "note": "should start at the curve at the bottom where it meets flatrock and end at eiter jefferson or ashland",
+   "display_name": "Mary Waters Ford Road",
+   "gain_m": 26.94,
+   "distance_m": 267.37,
+   "avg_grade_pct": 10.074,
+   "max_gradient_pct": 13.484,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:56:58.802969+00:00"
+  },
+  {
+   "candidate_id": "canon-bf5e56199c2cdef5",
+   "candidate_fingerprint": "bf5e56199c2cdef5b37c4bc052afdc85308bdf9538ea4c2d78a833fedfaa2aac",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Wynnefield Avenue",
+   "gain_m": 23.79,
+   "distance_m": 386.33,
+   "avg_grade_pct": 6.159,
+   "max_gradient_pct": 8.356,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:39:59.858296+00:00"
+  },
+  {
+   "candidate_id": "canon-c1ec5bb0d5b9c101",
+   "candidate_fingerprint": "c1ec5bb0d5b9c1016246ab6f503442def59c7eaad9c48985d32ef3466556e3c7",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Grays Lane",
+   "gain_m": 57.91,
+   "distance_m": 1332.41,
+   "avg_grade_pct": 4.347,
+   "max_gradient_pct": 18.143,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:44:20.249212+00:00"
+  },
+  {
+   "candidate_id": "canon-c648f3d4bd87a4f2",
+   "candidate_fingerprint": "c648f3d4bd87a4f24699da1f8183adc90b01aafd6d757c4b13be200da8e5e188",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Hagner Street",
+   "gain_m": 25.38,
+   "distance_m": 418.08,
+   "avg_grade_pct": 6.071,
+   "max_gradient_pct": 8.689,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:39:44.512108+00:00"
+  },
+  {
+   "candidate_id": "canon-c64bbf1444d0500a",
+   "candidate_fingerprint": "c64bbf1444d0500a121b3e4111cd7f0094558cda0dc47d19eb89d106d61fa6ee",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Gypsy Lane",
+   "gain_m": 34.91,
+   "distance_m": 337.46,
+   "avg_grade_pct": 10.344,
+   "max_gradient_pct": 13.928,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:27:12.727432+00:00"
+  },
+  {
+   "candidate_id": "canon-c80efed9691295c7",
+   "candidate_fingerprint": "c80efed9691295c74334700a5c24f4ec7594935b4ed41c0394aabc7181ca27e1",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Highland Avenue",
+   "gain_m": 28.72,
+   "distance_m": 343.63,
+   "avg_grade_pct": 8.358,
+   "max_gradient_pct": 24.179,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:32:57.569614+00:00"
+  },
+  {
+   "candidate_id": "canon-c84715d0b4f4c49e",
+   "candidate_fingerprint": "c84715d0b4f4c49e3fe61a348a34135cdf791b6e31f3daceeb412f7f36ee6104",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Parkside Avenue North",
+   "gain_m": 24.53,
+   "distance_m": 467.9,
+   "avg_grade_pct": 5.244,
+   "max_gradient_pct": 8.513,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:39:50.744804+00:00"
+  },
+  {
+   "candidate_id": "canon-c8de10cc2a2de8b7",
+   "candidate_fingerprint": "c8de10cc2a2de8b7b958e850bf5f37fe3364e1442f38c4a41b5a476a79e5fb41",
+   "decision": "needs_work",
+   "note": "this should start on the bridge over the creek",
+   "display_name": "Valley Green Road",
+   "gain_m": 53.81,
+   "distance_m": 1010.0,
+   "avg_grade_pct": 5.328,
+   "max_gradient_pct": 26.46,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:46:33.765774+00:00"
+  },
+  {
+   "candidate_id": "canon-cad891a15fe27cfc",
+   "candidate_fingerprint": "cad891a15fe27cfceab513f3ce3ffbdc7a256fe06c0abc9f1fe241a51fe55c07",
+   "decision": "approve",
+   "note": "this should start either at the bottom at nixon st or where shawmont meets minerva and it should end",
+   "display_name": "Shawmont Avenue",
+   "gain_m": 48.15,
+   "distance_m": 721.17,
+   "avg_grade_pct": 6.677,
+   "max_gradient_pct": 21.464,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:50:17.570178+00:00"
+  },
+  {
+   "candidate_id": "canon-cca58bfa9b57b00b",
+   "candidate_fingerprint": "cca58bfa9b57b00b7685cd89d0807d993d8c6cbeade1b177196bd3a58c6b10d7",
+   "decision": "needs_work",
+   "note": "this should start at the turn off lafayette and finish at the waverly intersection. ust so were not sending riders thru a stop sign for 5m of road length...",
+   "display_name": "Youngs Ford Road",
+   "gain_m": 92.74,
+   "distance_m": 1943.98,
+   "avg_grade_pct": 4.771,
+   "max_gradient_pct": 20.401,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:39:22.910939+00:00"
+  },
+  {
+   "candidate_id": "canon-d0172d5d047cee2a",
+   "candidate_fingerprint": "d0172d5d047cee2a26d65ad63913153fd5b0b99225a65fcd9cb6501e40f19803",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "West Chestnut Hill Avenue",
+   "gain_m": 26.39,
+   "distance_m": 524.82,
+   "avg_grade_pct": 5.028,
+   "max_gradient_pct": 9.537,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:39:36.887346+00:00"
+  },
+  {
+   "candidate_id": "canon-d2d4225216c0d308",
+   "candidate_fingerprint": "d2d4225216c0d3089e1a58ef177658102d54e85dd489779d2001969e651cae52",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Stoke Road",
+   "gain_m": 23.75,
+   "distance_m": 370.61,
+   "avg_grade_pct": 6.408,
+   "max_gradient_pct": 15.877,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:40:05.415569+00:00"
+  },
+  {
+   "candidate_id": "canon-d4fb75ee7f147b56",
+   "candidate_fingerprint": "d4fb75ee7f147b56eb711a3efcafd919ec6994019c00cfb00e5331df65995ee6",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "East 12th Avenue",
+   "gain_m": 26.81,
+   "distance_m": 531.65,
+   "avg_grade_pct": 5.043,
+   "max_gradient_pct": 11.665,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:38:56.998167+00:00"
+  },
+  {
+   "candidate_id": "canon-d795d07993810311",
+   "candidate_fingerprint": "d795d0799381031100d5f46ddfd6aea6ee6559704a5fe7ffb8aca1741154b056",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Conarroe Street",
+   "gain_m": 21.93,
+   "distance_m": 227.69,
+   "avg_grade_pct": 9.633,
+   "max_gradient_pct": 15.77,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:35:45.139618+00:00"
+  },
+  {
+   "candidate_id": "canon-dab3e0b10ede1205",
+   "candidate_fingerprint": "dab3e0b10ede1205ad35af63652d7a52b940d3808013f2ff730adad6e73f6040",
+   "decision": "needs_work",
+   "note": "this should contniue to hidden river intersection",
+   "display_name": "Flat Rock Road",
+   "gain_m": 62.26,
+   "distance_m": 617.46,
+   "avg_grade_pct": 10.084,
+   "max_gradient_pct": 17.315,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:57:54.747887+00:00"
+  },
+  {
+   "candidate_id": "canon-db4e33aa6b5a2256",
+   "candidate_fingerprint": "db4e33aa6b5a2256a3327bdcd7dd5ff1dbda3e2f8b7d5ef5e1251a1b001d5ab0",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Carson Street",
+   "gain_m": 20.74,
+   "distance_m": 266.95,
+   "avg_grade_pct": 7.77,
+   "max_gradient_pct": 12.702,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:41:10.194774+00:00"
+  },
+  {
+   "candidate_id": "canon-e188e60b7f3f23b8",
+   "candidate_fingerprint": "e188e60b7f3f23b8a771e967a3565abe56c71ed0821a2ade16a065df88b69428",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Hawthorne Lane",
+   "gain_m": 26.01,
+   "distance_m": 421.45,
+   "avg_grade_pct": 6.171,
+   "max_gradient_pct": 9.067,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:39:40.688201+00:00"
+  },
+  {
+   "candidate_id": "canon-e33ac186d3314ee7",
+   "candidate_fingerprint": "e33ac186d3314ee7eff383e9ac66e4a5b9dfc40dfd54fa911cbd14faa357011a",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North 54th Street",
+   "gain_m": 30.62,
+   "distance_m": 1755.06,
+   "avg_grade_pct": 1.745,
+   "max_gradient_pct": 8.179,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:49:07.064941+00:00"
+  },
+  {
+   "candidate_id": "canon-e7e34aa4f741c83c",
+   "candidate_fingerprint": "e7e34aa4f741c83c25a91c359344bb29cf17b9ccd03b6f86d5a4cf89179bcdff",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Merion Avenue",
+   "gain_m": 22.49,
+   "distance_m": 225.1,
+   "avg_grade_pct": 9.993,
+   "max_gradient_pct": 16.035,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:40:37.712571+00:00"
+  },
+  {
+   "candidate_id": "canon-ea8cb4140e9dfb84",
+   "candidate_fingerprint": "ea8cb4140e9dfb845f675af4ff8389cd42ae5e16254945dbf162a99ae919d698",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Schuylkill River Trail",
+   "gain_m": 11.86,
+   "distance_m": 4979.21,
+   "avg_grade_pct": 0.238,
+   "max_gradient_pct": 48.899,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:47:04.197367+00:00"
+  },
+  {
+   "candidate_id": "canon-ee44c1688fd336e2",
+   "candidate_fingerprint": "ee44c1688fd336e20e1eede35f7c8d93c17358d276a9239438d57998e6af4c30",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Cheltenham Avenue",
+   "gain_m": 46.81,
+   "distance_m": 1604.87,
+   "avg_grade_pct": 2.917,
+   "max_gradient_pct": 12.144,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:45:17.595482+00:00"
+  },
+  {
+   "candidate_id": "canon-ee936697e984a9f6",
+   "candidate_fingerprint": "ee936697e984a9f632d4394c1ea9f8645f51cac883fa88aa64e70975678f9847",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Hamilton Drive",
+   "gain_m": 22.24,
+   "distance_m": 258.46,
+   "avg_grade_pct": 8.606,
+   "max_gradient_pct": 20.532,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:35:32.439386+00:00"
+  },
+  {
+   "candidate_id": "canon-f379afecf89def64",
+   "candidate_fingerprint": "f379afecf89def642f72823d2e576550054be98b6bbc193553a644eb0d0774d7",
+   "decision": "needs_work",
+   "note": "this should take a right at the end to church rd",
+   "display_name": "Andorra Road",
+   "gain_m": 41.34,
+   "distance_m": 1561.6,
+   "avg_grade_pct": 2.647,
+   "max_gradient_pct": 11.575,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:48:23.432801+00:00"
+  },
+  {
+   "candidate_id": "canon-f46368e7dcd98b4c",
+   "candidate_fingerprint": "f46368e7dcd98b4c52a0ca5d635646b8fe613792453f5de56ee7ea6d5331e178",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Hermitage Street",
+   "gain_m": 31.31,
+   "distance_m": 302.98,
+   "avg_grade_pct": 10.334,
+   "max_gradient_pct": 14.431,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:31:29.241802+00:00"
+  },
+  {
+   "candidate_id": "canon-f4fa3145404ccf09",
+   "candidate_fingerprint": "f4fa3145404ccf095ef4ed2c76095eca7b0fd0d3a59e25ec939ad4b927318f9c",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Monk Road",
+   "gain_m": 49.55,
+   "distance_m": 897.85,
+   "avg_grade_pct": 5.519,
+   "max_gradient_pct": 20.429,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:50:37.798134+00:00"
+  },
+  {
+   "candidate_id": "canon-f6c4be34000747fb",
+   "candidate_fingerprint": "f6c4be34000747fbb529b449edc0e0e988c6bde4da7fda29f1de4933dec8d25a",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "North 29th Street / Chalmers Avenue",
+   "gain_m": 13.64,
+   "distance_m": 1987.72,
+   "avg_grade_pct": 0.686,
+   "max_gradient_pct": 36.031,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:49:09.494202+00:00"
+  },
+  {
+   "candidate_id": "canon-f70229a2b246dc1b",
+   "candidate_fingerprint": "f70229a2b246dc1b3569b921c1c07a33bcec86ba4ef9e5684584f65692a0a38a",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Hagys Mill Road",
+   "gain_m": 74.68,
+   "distance_m": 855.25,
+   "avg_grade_pct": 8.732,
+   "max_gradient_pct": 29.836,
+   "confidence": "needs_review",
+   "low_confidence_flags": [
+    "profile_spacing_exceeds_15m",
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:29:03.532300+00:00"
+  },
+  {
+   "candidate_id": "canon-f7b0e5c1a81a3e3a",
+   "candidate_fingerprint": "f7b0e5c1a81a3e3a1dbb2a6acd0c9a275252a4e4f40cdd4f3dd4f43517d85f8d",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Stanton Street",
+   "gain_m": 23.19,
+   "distance_m": 289.43,
+   "avg_grade_pct": 8.012,
+   "max_gradient_pct": 17.174,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:34:52.477424+00:00"
+  },
+  {
+   "candidate_id": "canon-f8b5759fd4d3b699",
+   "candidate_fingerprint": "f8b5759fd4d3b69911629386d739282a399d6f37eb1a39fff5171d63d91d3f7e",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Green Lane",
+   "gain_m": 72.21,
+   "distance_m": 823.97,
+   "avg_grade_pct": 8.763,
+   "max_gradient_pct": 21.334,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:29:56.202204+00:00"
+  },
+  {
+   "candidate_id": "canon-f900cfb8fdb96b47",
+   "candidate_fingerprint": "f900cfb8fdb96b473bd4c6cd4133a2069cd89b431f94571b270f9296714bf334",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Black Rock Road",
+   "gain_m": 30.86,
+   "distance_m": 576.69,
+   "avg_grade_pct": 5.351,
+   "max_gradient_pct": 10.775,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:38:23.459056+00:00"
+  },
+  {
+   "candidate_id": "canon-fa6f4fe69abc9a60",
+   "candidate_fingerprint": "fa6f4fe69abc9a6039c248d9374194ad26233f070683fdbf459de26c93edff3b",
+   "decision": "approve",
+   "note": null,
+   "display_name": "Lafayette Road",
+   "gain_m": 74.28,
+   "distance_m": 1528.87,
+   "avg_grade_pct": 4.858,
+   "max_gradient_pct": 24.944,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-06T14:40:36.632719+00:00"
+  },
+  {
+   "candidate_id": "canon-fffbd544569d581a",
+   "candidate_fingerprint": "fffbd544569d581a685f97db6958e6e6378b94f4a1231fc800637baf19dea27c",
+   "decision": "suppress",
+   "note": null,
+   "display_name": "Riverview Road",
+   "gain_m": 29.53,
+   "distance_m": 365.27,
+   "avg_grade_pct": 8.086,
+   "max_gradient_pct": 12.726,
+   "confidence": "medium",
+   "low_confidence_flags": [
+    "topographic_isolation_not_scored_v0"
+   ],
+   "compiler_version": "canon-compile-v0.1.0",
+   "updated_at": "2026-07-05T23:32:47.579391+00:00"
+  }
+ ]
+}

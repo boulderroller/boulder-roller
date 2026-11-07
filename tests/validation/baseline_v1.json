@@ -1,0 +1,3743 @@
+{
+  "version": 1,
+  "generated_at": "2026-02-24T23:28:13.738770+00:00",
+  "detector": "v1_momentum",
+  "weight_kg": 75.0,
+  "terrain_modes": [
+    "auto",
+    "flat",
+    "rolling",
+    "hilly",
+    "mountainous",
+    "urban_hills"
+  ],
+  "files": [
+    {
+      "file": "Afternoon_Ride (1).fit",
+      "meta": {
+        "samples": 4229,
+        "duration_s": 4547,
+        "sport": "string(\"cycling\")",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": 5.0,
+        "elev_max_m": 15.0,
+        "elev_gain_naive_m": 266.0
+      },
+      "expected_climb_count": 0,
+      "detections": {
+        "auto": {
+          "count": 0,
+          "climbs": []
+        },
+        "flat": {
+          "count": 0,
+          "climbs": []
+        },
+        "rolling": {
+          "count": 0,
+          "climbs": []
+        },
+        "hilly": {
+          "count": 0,
+          "climbs": []
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 0,
+          "climbs": []
+        }
+      },
+      "summary": {
+        "expected": 0,
+        "auto_detected": 0,
+        "terrain_hint_detected": 0,
+        "hilly_default_detected": 0,
+        "auto_gap": 0,
+        "notes": []
+      }
+    },
+    {
+      "file": "Afternoon_Ride.fit",
+      "meta": {
+        "samples": 7610,
+        "duration_s": 7878,
+        "sport": "string(\"cycling\")",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": -8.0,
+        "elev_max_m": 31.0,
+        "elev_gain_naive_m": 541.0
+      },
+      "expected_climb_count": 5,
+      "detections": {
+        "auto": {
+          "count": 5,
+          "climbs": [
+            {
+              "vert_m": 28.4,
+              "time_s": 94,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 789.0,
+              "vam": 1088.0,
+              "start_offset_s": 780,
+              "end_offset_s": 874,
+              "signature_hex": "2f4c725965e4951bd74e0042887aa40d9a4d078cde6ed2525b8024c456e03d9841e333334066763f44452b540000005e436e5662acb86d5539b69cf9dbca92d2",
+              "avg_power_w": 419.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.4,
+              "time_s": 89,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 756.0,
+              "vam": 1027.0,
+              "start_offset_s": 1265,
+              "end_offset_s": 1354,
+              "signature_hex": "dbdfd56a6e2877e62e27fa0d442012a0fa3a2064d88ec453bb7fa0f59cbd40ad41cb33334056f014443d13f40000005926a3b3c2a9217d99e6e39d7a1c4d410f",
+              "avg_power_w": 461.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.4,
+              "time_s": 153,
+              "avg_gradient_pct": 2.1,
+              "distance_m": 1345.0,
+              "vam": 668.0,
+              "start_offset_s": 3852,
+              "end_offset_s": 4005,
+              "signature_hex": "39c703964ff1372e8930d8d1057320c5f1702a0c8fe7a92fcd892c398e0c888841e333334002610f44a8200400000099fb01fe2b8fbec8db7e238c23ce9418d9",
+              "avg_power_w": 389.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 27.4,
+              "time_s": 121,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 912.0,
+              "vam": 815.0,
+              "start_offset_s": 4953,
+              "end_offset_s": 5074,
+              "signature_hex": "3686701221d48d616e0d87b48a82eacf8516c269c8c9a4d92a174785ce68ba3d41db333340324a784463f12d00000079c23c0d865d7df01daaccd03123fcaae1",
+              "avg_power_w": 261.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.8,
+              "time_s": 89,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 750.0,
+              "vam": 1044.0,
+              "start_offset_s": 5257,
+              "end_offset_s": 5346,
+              "signature_hex": "f7c8c1b1d177c3e60bb0203f2e96d7b4b046a0f3d850160a5ccd9eaef68f13d241ce6666405c4435443b68cf0000005997990f163758c5755bc95791294fb1e4",
+              "avg_power_w": 346.3,
+              "avg_hr": null
+            }
+          ]
+        },
+        "flat": {
+          "count": 13,
+          "climbs": [
+            {
+              "vert_m": 15.2,
+              "time_s": 123,
+              "avg_gradient_pct": 2.4,
+              "distance_m": 638.0,
+              "vam": 445.0,
+              "start_offset_s": 86,
+              "end_offset_s": 209,
+              "signature_hex": "be57923a1c207059ff0837e199e887cd417acd87a2fa04a8a13f72385bfb22244173333340027b84441f688b0000007b2786adc4834aef7cba476d214d9f53f1",
+              "avg_power_w": 181.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 29.4,
+              "time_s": 120,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 979.0,
+              "vam": 882.0,
+              "start_offset_s": 755,
+              "end_offset_s": 875,
+              "signature_hex": "c54148da1ffb9a9feda8c9d265d30e1e9cf46f6b605f4373fd232a90b84e543b41eb3333404032214474c0190000007897931a1b09b6e6b0d2e7b7a43ef753c0",
+              "avg_power_w": 378.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.4,
+              "time_s": 89,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 756.0,
+              "vam": 1027.0,
+              "start_offset_s": 1265,
+              "end_offset_s": 1354,
+              "signature_hex": "dbdfd56a6e2877e62e27fa0d442012a0fa3a2064d88ec453bb7fa0f59cbd40ad41cb33334056f014443d13f40000005926a3b3c2a9217d99e6e39d7a1c4d410f",
+              "avg_power_w": 461.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 23.0,
+              "time_s": 80,
+              "avg_gradient_pct": 3.3,
+              "distance_m": 695.0,
+              "vam": 1035.0,
+              "start_offset_s": 1765,
+              "end_offset_s": 1845,
+              "signature_hex": "b4e89aedd7c64fd18eb80e34c733481302a103d1a6cbabc956c1f939bb28279a41b800004053ba40442dceeb00000050194b26e8a0b6bb44c11ac63790555433",
+              "avg_power_w": 464.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.6,
+              "time_s": 88,
+              "avg_gradient_pct": 3.2,
+              "distance_m": 760.0,
+              "vam": 1006.0,
+              "start_offset_s": 2260,
+              "end_offset_s": 2348,
+              "signature_hex": "f5cb281beb75275e03f9aca96517d5b762a2fb0d8fa8b5dc1b793a037d6ec0ca41c4cccd404f18c5443e0e5c00000058908b73d5e0c84006e15321b2a15e1f5a",
+              "avg_power_w": 469.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.4,
+              "time_s": 71,
+              "avg_gradient_pct": 3.8,
+              "distance_m": 635.0,
+              "vam": 1237.0,
+              "start_offset_s": 2841,
+              "end_offset_s": 2912,
+              "signature_hex": "940670bfa4983a37f097c67f45c750867efbb47d9d4f7ecd26de0865cd562da441c3333340760f8c441ea8f7000000470f737198d512940f9a0712f42e334147",
+              "avg_power_w": 466.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 23.6,
+              "time_s": 86,
+              "avg_gradient_pct": 3.3,
+              "distance_m": 707.0,
+              "vam": 988.0,
+              "start_offset_s": 3328,
+              "end_offset_s": 3414,
+              "signature_hex": "6f00edd281c65889dba13718f9aca75bb0841df0bf990c1ecdc31683ca284d6e41bccccd4055c44c4430a41f00000056233d75947c4296b523d18bf08c68aa01",
+              "avg_power_w": 439.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.4,
+              "time_s": 153,
+              "avg_gradient_pct": 2.1,
+              "distance_m": 1345.0,
+              "vam": 668.0,
+              "start_offset_s": 3852,
+              "end_offset_s": 4005,
+              "signature_hex": "39c703964ff1372e8930d8d1057320c5f1702a0c8fe7a92fcd892c398e0c888841e333334002610f44a8200400000099fb01fe2b8fbec8db7e238c23ce9418d9",
+              "avg_power_w": 389.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.2,
+              "time_s": 75,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 705.0,
+              "vam": 1210.0,
+              "start_offset_s": 4396,
+              "end_offset_s": 4471,
+              "signature_hex": "cbf7896d7ff17cd4f4bb1a73b53d463650bfeee81f0d1e16440832d9fed533ab41c9999a4064e3d84430278c0000004bd290913e0b1cf2b3c1c75d2211b74421",
+              "avg_power_w": 466.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.4,
+              "time_s": 68,
+              "avg_gradient_pct": 4.2,
+              "distance_m": 607.0,
+              "vam": 1345.0,
+              "start_offset_s": 4946,
+              "end_offset_s": 5014,
+              "signature_hex": "a808baca40c0c319cf4338baeca77c250f18d71fc3cc3099b9d03f42cb3cd2a241cb33334085ccb64417de6d0000004415f2e7384fb357544a8788328a084966",
+              "avg_power_w": 406.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.8,
+              "time_s": 89,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 750.0,
+              "vam": 1044.0,
+              "start_offset_s": 5257,
+              "end_offset_s": 5346,
+              "signature_hex": "f7c8c1b1d177c3e60bb0203f2e96d7b4b046a0f3d850160a5ccd9eaef68f13d241ce6666405c4435443b68cf0000005997990f163758c5755bc95791294fb1e4",
+              "avg_power_w": 346.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.6,
+              "time_s": 84,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 694.0,
+              "vam": 1097.0,
+              "start_offset_s": 5600,
+              "end_offset_s": 5684,
+              "signature_hex": "f5197aa30943d86211e8e98267b8dc368b368e909af00f485c207c62955a881041cccccd406bf1d6442d999b000000545df24dfaf27210d952636f32f53b21f3",
+              "avg_power_w": 387.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 19.8,
+              "time_s": 354,
+              "avg_gradient_pct": 1.0,
+              "distance_m": 2039.0,
+              "vam": 201.0,
+              "start_offset_s": 7347,
+              "end_offset_s": 7701,
+              "signature_hex": "18d81fff2c30a58cad5f6a3a30d56488aedaabd78bbd126a9eed3b774044b515419e66663f6983c544fee337000001627754fd1ca0447b796dc3340206d14484",
+              "avg_power_w": 168.8,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 5,
+          "climbs": [
+            {
+              "vert_m": 28.4,
+              "time_s": 94,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 789.0,
+              "vam": 1088.0,
+              "start_offset_s": 780,
+              "end_offset_s": 874,
+              "signature_hex": "2f4c725965e4951bd74e0042887aa40d9a4d078cde6ed2525b8024c456e03d9841e333334066763f44452b540000005e436e5662acb86d5539b69cf9dbca92d2",
+              "avg_power_w": 419.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.4,
+              "time_s": 89,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 756.0,
+              "vam": 1027.0,
+              "start_offset_s": 1265,
+              "end_offset_s": 1354,
+              "signature_hex": "dbdfd56a6e2877e62e27fa0d442012a0fa3a2064d88ec453bb7fa0f59cbd40ad41cb33334056f014443d13f40000005926a3b3c2a9217d99e6e39d7a1c4d410f",
+              "avg_power_w": 461.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.4,
+              "time_s": 153,
+              "avg_gradient_pct": 2.1,
+              "distance_m": 1345.0,
+              "vam": 668.0,
+              "start_offset_s": 3852,
+              "end_offset_s": 4005,
+              "signature_hex": "39c703964ff1372e8930d8d1057320c5f1702a0c8fe7a92fcd892c398e0c888841e333334002610f44a8200400000099fb01fe2b8fbec8db7e238c23ce9418d9",
+              "avg_power_w": 389.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 27.4,
+              "time_s": 121,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 912.0,
+              "vam": 815.0,
+              "start_offset_s": 4953,
+              "end_offset_s": 5074,
+              "signature_hex": "3686701221d48d616e0d87b48a82eacf8516c269c8c9a4d92a174785ce68ba3d41db333340324a784463f12d00000079c23c0d865d7df01daaccd03123fcaae1",
+              "avg_power_w": 261.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.8,
+              "time_s": 89,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 750.0,
+              "vam": 1044.0,
+              "start_offset_s": 5257,
+              "end_offset_s": 5346,
+              "signature_hex": "f7c8c1b1d177c3e60bb0203f2e96d7b4b046a0f3d850160a5ccd9eaef68f13d241ce6666405c4435443b68cf0000005997990f163758c5755bc95791294fb1e4",
+              "avg_power_w": 346.3,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 0,
+          "climbs": []
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 10,
+          "climbs": [
+            {
+              "vert_m": 28.7,
+              "time_s": 94,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 789.0,
+              "vam": 1098.0,
+              "start_offset_s": 780,
+              "end_offset_s": 874,
+              "signature_hex": "5ab7463fd92e29ec2bdfa6cea1b7b356d890bdc505d4b0f5ebe6a390c0e791f641e555554068a03844452b540000005e3a5170ee30e701216fecdc1d22c2075c",
+              "avg_power_w": 419.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.3,
+              "time_s": 85,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 717.0,
+              "vam": 1031.0,
+              "start_offset_s": 1265,
+              "end_offset_s": 1350,
+              "signature_hex": "b30854f0c680a4722d04e27355ad4804574fb78f2cb520793dc6dbb780c365c941c2aaab40590f6f44335dd0000000554a46522205eb4332fffd6d6863eef21d",
+              "avg_power_w": 463.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.7,
+              "time_s": 87,
+              "avg_gradient_pct": 3.3,
+              "distance_m": 757.0,
+              "vam": 1021.0,
+              "start_offset_s": 2261,
+              "end_offset_s": 2348,
+              "signature_hex": "fb5d8c1752ffd12a23b0060667588a46fa6fc74646d4dacbf9674914353f2a6f41c555554050960e443d35dc0000005773b9fc6a637c446e9e0346036ba39fbc",
+              "avg_power_w": 469.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.3,
+              "time_s": 70,
+              "avg_gradient_pct": 3.9,
+              "distance_m": 625.0,
+              "vam": 1251.0,
+              "start_offset_s": 2841,
+              "end_offset_s": 2911,
+              "signature_hex": "18f772fd5f5eab3340eca750a3386c26fda3d9cbf412e014d0b8e999a8aba90841c2aaab4079425b441c323900000046d0b283cbdce8059bd72d660965586104",
+              "avg_power_w": 467.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 23.3,
+              "time_s": 84,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 694.0,
+              "vam": 1000.0,
+              "start_offset_s": 3329,
+              "end_offset_s": 3413,
+              "signature_hex": "2f6ea116d0b4500ec35d3d18aa7d7cf9fd1144fce0743d677e3564c359f625c241baaaab40573d84442d731600000054a2f1027beedc2633cb54d317af3f718a",
+              "avg_power_w": 439.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.3,
+              "time_s": 152,
+              "avg_gradient_pct": 2.1,
+              "distance_m": 1333.0,
+              "vam": 671.0,
+              "start_offset_s": 3852,
+              "end_offset_s": 4004,
+              "signature_hex": "0371f40d24e2fa7508a9277012740cb56093d819c85e3c1b524f3d6b9be804f341e2aaab400338ad44a6a3b6000000981f2fb58e173313549dc301271998a5f7",
+              "avg_power_w": 393.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.0,
+              "time_s": 74,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 694.0,
+              "vam": 1216.0,
+              "start_offset_s": 4396,
+              "end_offset_s": 4470,
+              "signature_hex": "30e53fb796f9929a20e634be03191f70e5c28529d4d0123d6c0f1af64a9cc97541c80000406680a7442d88ac0000004a035584eb918b88c253f03c74d86303c4",
+              "avg_power_w": 466.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.3,
+              "time_s": 60,
+              "avg_gradient_pct": 4.6,
+              "distance_m": 528.0,
+              "vam": 1460.0,
+              "start_offset_s": 4953,
+              "end_offset_s": 5013,
+              "signature_hex": "5886a922f5b7fd399080879d97cf81544a64e7ed3ba77a18b69637d0f2806a9d41c2aaab40935f604404176f0000003c4717d975c82318b8492d96c020bd0bea",
+              "avg_power_w": 395.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 26.0,
+              "time_s": 88,
+              "avg_gradient_pct": 3.5,
+              "distance_m": 746.0,
+              "vam": 1064.0,
+              "start_offset_s": 5258,
+              "end_offset_s": 5346,
+              "signature_hex": "a9e17cce85bddd7003673381fce877a0fb2f32d145e5fb7afe216934f875fc8241d00000405f2032443a71230000005811701c66fa2acad1d2c6273dc798a88e",
+              "avg_power_w": 347.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 24.7,
+              "time_s": 71,
+              "avg_gradient_pct": 4.3,
+              "distance_m": 567.0,
+              "vam": 1251.0,
+              "start_offset_s": 5612,
+              "end_offset_s": 5683,
+              "signature_hex": "8d27905c4363dd1e9d5f2a660775ac760ced1bf03710ad23e9233bd409c9b13441c55555408b1a44440ddc990000004739afaf748929d30abdd3e0cd90841867",
+              "avg_power_w": 359.7,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 5,
+        "auto_detected": 5,
+        "terrain_hint_detected": 5,
+        "hilly_default_detected": 0,
+        "auto_gap": 0,
+        "notes": []
+      }
+    },
+    {
+      "file": "05_07_2015_Philadelphia_Pennsylvania.fit",
+      "meta": {
+        "samples": 7369,
+        "duration_s": 9514,
+        "sport": "cycling",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": -16.0,
+        "elev_max_m": 91.0,
+        "elev_gain_naive_m": 669.0
+      },
+      "expected_climb_count": 3,
+      "detections": {
+        "auto": {
+          "count": 0,
+          "climbs": []
+        },
+        "flat": {
+          "count": 9,
+          "climbs": [
+            {
+              "vert_m": 62.8,
+              "time_s": 421,
+              "avg_gradient_pct": 1.7,
+              "distance_m": 3598.0,
+              "vam": 537.0,
+              "start_offset_s": 1985,
+              "end_offset_s": 2406,
+              "signature_hex": "98c06b6d3ae38dd562b9530530b2a48dd224faa1da0ffe07255aa45b6ceca2e8427b33333fdb29c54560daf5000001a518f127620c0c87083dd02fd65005ba80",
+              "avg_power_w": 317.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.6,
+              "time_s": 268,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1721.0,
+              "vam": 572.0,
+              "start_offset_s": 2493,
+              "end_offset_s": 2761,
+              "signature_hex": "677b69c8cbc39c4f8d74d917f0134753ee29e54205da3ad45284ddaf0966a15d422a6666401e678344d725480000010c730f1fb6156b44f08e64aca9b7db1c2e",
+              "avg_power_w": 328.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 45.6,
+              "time_s": 216,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1757.0,
+              "vam": 760.0,
+              "start_offset_s": 3042,
+              "end_offset_s": 3258,
+              "signature_hex": "f9d1e6402527d57d45eb2c6bcd83df9d7577b73d93a2d765c9a1da4ec0d5978542366666402622da44db9436000000d80b5c8cc9dc143253ec5cf56a93e116dd",
+              "avg_power_w": 281.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 80.6,
+              "time_s": 207,
+              "avg_gradient_pct": 5.2,
+              "distance_m": 1545.0,
+              "vam": 1402.0,
+              "start_offset_s": 3707,
+              "end_offset_s": 3914,
+              "signature_hex": "091f8491bdaecd4710c1b9e2dddbf80695d7f655af7d6ae2384b7e3ff178279442a1333340a6f65b44c118f3000000cf2b12fd80a3886416f4cf11fd14860db2",
+              "avg_power_w": 418.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 85.6,
+              "time_s": 307,
+              "avg_gradient_pct": 4.5,
+              "distance_m": 1908.0,
+              "vam": 1004.0,
+              "start_offset_s": 4115,
+              "end_offset_s": 4422,
+              "signature_hex": "85f028242c35f6a10b923db79b44c75b5da7ed0a6d781fa4ff8c71a6327fe34742ab3333408f8ffc44ee80a4000001332118b68f5a133742b6f4c45d11db4f1b",
+              "avg_power_w": 321.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 55.6,
+              "time_s": 158,
+              "avg_gradient_pct": 7.8,
+              "distance_m": 711.0,
+              "vam": 1267.0,
+              "start_offset_s": 4862,
+              "end_offset_s": 5020,
+              "signature_hex": "0718ad443cba81d927966b439a808b1a1e8cb045ece4b7582a4e30983f310f12425e666640fa64d54431a3df0000009ec9b983d4be5110654803c660f4168f95",
+              "avg_power_w": 326.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 22.0,
+              "time_s": 69,
+              "avg_gradient_pct": 5.1,
+              "distance_m": 434.0,
+              "vam": 1148.0,
+              "start_offset_s": 5043,
+              "end_offset_s": 5112,
+              "signature_hex": "1db77f67f29fcf36e66f8ae0521325fd9013f356c9485d1f2417a5cfaf0c945a41b0000040a265a043d8c0b8000000454aecdb5de5aa3c8d6dd1de7d83038f1c",
+              "avg_power_w": 317.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 66.4,
+              "time_s": 233,
+              "avg_gradient_pct": 4.2,
+              "distance_m": 1590.0,
+              "vam": 1026.0,
+              "start_offset_s": 5170,
+              "end_offset_s": 5403,
+              "signature_hex": "0894a8da0b01a0ec6d111ffa33441f52f642f52356ca64c2b813b438729580814284cccd4085a97944c6b5ce000000e9271eaf51e69418b5e5709270323bcae1",
+              "avg_power_w": 319.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 60.8,
+              "time_s": 370,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 2638.0,
+              "vam": 592.0,
+              "start_offset_s": 6148,
+              "end_offset_s": 6518,
+              "signature_hex": "a060c9e6e15cf8f932ac9b9df1bceea31d80951949673eca11f0fd50a56dad25427333334013801d4524e18000000172965b34d54ffe02ea184f0db20a84e143",
+              "avg_power_w": 210.6,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 8,
+          "climbs": [
+            {
+              "vert_m": 62.8,
+              "time_s": 421,
+              "avg_gradient_pct": 1.7,
+              "distance_m": 3598.0,
+              "vam": 537.0,
+              "start_offset_s": 1985,
+              "end_offset_s": 2406,
+              "signature_hex": "98c06b6d3ae38dd562b9530530b2a48dd224faa1da0ffe07255aa45b6ceca2e8427b33333fdb29c54560daf5000001a518f127620c0c87083dd02fd65005ba80",
+              "avg_power_w": 317.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.6,
+              "time_s": 268,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1721.0,
+              "vam": 572.0,
+              "start_offset_s": 2493,
+              "end_offset_s": 2761,
+              "signature_hex": "677b69c8cbc39c4f8d74d917f0134753ee29e54205da3ad45284ddaf0966a15d422a6666401e678344d725480000010c730f1fb6156b44f08e64aca9b7db1c2e",
+              "avg_power_w": 328.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 45.2,
+              "time_s": 214,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1740.0,
+              "vam": 760.0,
+              "start_offset_s": 3043,
+              "end_offset_s": 3257,
+              "signature_hex": "788a5e16293ef05ef8c58f96e31c9713e7c4dd576a802a8b2611c558a51a77454234cccd402647ca44d976c7000000d66b698fa11945b8b026e6ec7fdcbf2da5",
+              "avg_power_w": 280.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 80.4,
+              "time_s": 206,
+              "avg_gradient_pct": 5.2,
+              "distance_m": 1536.0,
+              "vam": 1405.0,
+              "start_offset_s": 3708,
+              "end_offset_s": 3914,
+              "signature_hex": "16c34fadeaa3ba0c5760356d93f1dcf7e0f21a88a89495216f47d0080978b7dc42a0cccd40a7847244bffae7000000ce65fbf63c060d261c29ac1657640b83f0",
+              "avg_power_w": 418.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 85.4,
+              "time_s": 306,
+              "avg_gradient_pct": 4.5,
+              "distance_m": 1898.0,
+              "vam": 1005.0,
+              "start_offset_s": 4116,
+              "end_offset_s": 4422,
+              "signature_hex": "9a251d14cb5fcc4965bfebecf3857f9e58c5369a5de3648547134284d9cb76e542aacccd408ff6e844ed47df000001324a27d99519183cbcbd88b8b6077feb53",
+              "avg_power_w": 321.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 55.4,
+              "time_s": 157,
+              "avg_gradient_pct": 7.9,
+              "distance_m": 703.0,
+              "vam": 1270.0,
+              "start_offset_s": 4862,
+              "end_offset_s": 5019,
+              "signature_hex": "d1d0aa7aa5bd6767ab6e06f8e0bf313e707675e0e7b1919c1eb85124f397a5c2425d999a40fc47da442fad670000009df455b5b616a375c998cdec29e022ab50",
+              "avg_power_w": 326.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 66.2,
+              "time_s": 232,
+              "avg_gradient_pct": 4.2,
+              "distance_m": 1586.0,
+              "vam": 1027.0,
+              "start_offset_s": 5170,
+              "end_offset_s": 5402,
+              "signature_hex": "bf7d8ef0a04495281ded855a25f975693b2f3cb5f00b4e20f2fc50618967618342846666408592c944c63e3b000000e8b38feabec9fe4fb8c7f46a75ea4b4b2c",
+              "avg_power_w": 320.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 60.8,
+              "time_s": 370,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 2638.0,
+              "vam": 592.0,
+              "start_offset_s": 6148,
+              "end_offset_s": 6518,
+              "signature_hex": "a060c9e6e15cf8f932ac9b9df1bceea31d80951949673eca11f0fd50a56dad25427333334013801d4524e18000000172965b34d54ffe02ea184f0db20a84e143",
+              "avg_power_w": 210.6,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 6,
+          "climbs": [
+            {
+              "vert_m": 62.6,
+              "time_s": 420,
+              "avg_gradient_pct": 1.7,
+              "distance_m": 3595.0,
+              "vam": 537.0,
+              "start_offset_s": 1985,
+              "end_offset_s": 2405,
+              "signature_hex": "e097abe9e19fdb4ae25cb81d41a8bc7df54be617ef456b387b57147e5b915291427a66663fda9b3b4560b234000001a452ffcc98539f8addcefd92880f3d38da",
+              "avg_power_w": 317.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 80.0,
+              "time_s": 205,
+              "avg_gradient_pct": 5.2,
+              "distance_m": 1526.0,
+              "vam": 1405.0,
+              "start_offset_s": 3709,
+              "end_offset_s": 3914,
+              "signature_hex": "93519fd4ac5cda9d747cc3996a24cedd629a4ded299a8f2c93988eba8280d6a842a0000040a7b94e44beca30000000cd3fad6786616a74b3e5372e84b883eecf",
+              "avg_power_w": 419.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 84.4,
+              "time_s": 303,
+              "avg_gradient_pct": 4.5,
+              "distance_m": 1871.0,
+              "vam": 1003.0,
+              "start_offset_s": 4118,
+              "end_offset_s": 4421,
+              "signature_hex": "a6225eabbb571cb358c0ed553899826448391a6f6755aaeff389747a0fadfe1342a8cccd4090585844e9e24a0000012fdf330de0700b45c2fe0242b89b06025a",
+              "avg_power_w": 320.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 54.8,
+              "time_s": 155,
+              "avg_gradient_pct": 8.0,
+              "distance_m": 689.0,
+              "vam": 1273.0,
+              "start_offset_s": 4863,
+              "end_offset_s": 5018,
+              "signature_hex": "f98fd33beb04537da9ff2c17823f6863c074b139d0c4c8bf5a4afb06f0d84aa3425b333340fe6e7b442c4e400000009b5538a183102e91d6620c8d199290ad73",
+              "avg_power_w": 327.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 65.8,
+              "time_s": 231,
+              "avg_gradient_pct": 4.2,
+              "distance_m": 1579.0,
+              "vam": 1025.0,
+              "start_offset_s": 5171,
+              "end_offset_s": 5402,
+              "signature_hex": "4a8b662cc8e4b7108bf7eb1edac570ea4b6a7e69f7fef4e9984ac402d3522e2e4283999a4085588944c561a9000000e759e130575796e2fd42b2ae66ec7f81a5",
+              "avg_power_w": 320.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 60.4,
+              "time_s": 368,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 2628.0,
+              "vam": 591.0,
+              "start_offset_s": 6149,
+              "end_offset_s": 6517,
+              "signature_hex": "617579af7093658d4b859777be5ee7700bdb3235a79cde58b06f5d814fb1d1a64271999a40131d43452439de00000170c4df00624e6bad1ef885e67775c89457",
+              "avg_power_w": 210.7,
+              "avg_hr": null
+            }
+          ]
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 9,
+          "climbs": [
+            {
+              "vert_m": 63.0,
+              "time_s": 420,
+              "avg_gradient_pct": 1.8,
+              "distance_m": 3595.0,
+              "vam": 540.0,
+              "start_offset_s": 1985,
+              "end_offset_s": 2405,
+              "signature_hex": "d7fa5ff0a82165389ec3e7a2355f74675fe264a41ccb192db97fdd059d8a8a3a427c00003fdb8e494560b234000001a44624d0d00a3b5525c54ed24451c5252d",
+              "avg_power_w": 317.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.3,
+              "time_s": 266,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1708.0,
+              "vam": 573.0,
+              "start_offset_s": 2494,
+              "end_offset_s": 2760,
+              "signature_hex": "96bdfc289c8ca9641ca062599b61b1eb1c33f95f1ffb9d48bb7cff6a0bff94b342295555401e98d144d58a0a0000010a82902a76b2573038b5ffe8bedb1fdf4c",
+              "avg_power_w": 328.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 45.3,
+              "time_s": 214,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1740.0,
+              "vam": 763.0,
+              "start_offset_s": 3043,
+              "end_offset_s": 3257,
+              "signature_hex": "e46cba987e164e3ea99fef66060110120b0364eaa6e4c384c63e5c4ca476b481423555554026c55b44d976c7000000d6f0c012fb6d78fded9ae648551859782e",
+              "avg_power_w": 280.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 80.7,
+              "time_s": 206,
+              "avg_gradient_pct": 5.3,
+              "distance_m": 1536.0,
+              "vam": 1410.0,
+              "start_offset_s": 3708,
+              "end_offset_s": 3914,
+              "signature_hex": "447b7ac03c32e0b39e1d004dde8a3b867785ca09c84330b8aef26984ad2a726342a1555540a812af44bffae7000000ce3f5e3832e06c779d4ad1b6cf554cb80a",
+              "avg_power_w": 418.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 85.3,
+              "time_s": 305,
+              "avg_gradient_pct": 4.5,
+              "distance_m": 1891.0,
+              "vam": 1007.0,
+              "start_offset_s": 4116,
+              "end_offset_s": 4421,
+              "signature_hex": "4f096221ac21b4e1e3defee5604f27a16f5f62f1beb4b46fe7ec5982a781efa742aaaaab409064b144ec642f00000131ea3b96456ea5570abc55179169fb4e45",
+              "avg_power_w": 321.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 55.3,
+              "time_s": 156,
+              "avg_gradient_pct": 7.9,
+              "distance_m": 697.0,
+              "vam": 1277.0,
+              "start_offset_s": 4863,
+              "end_offset_s": 5019,
+              "signature_hex": "11274b5707467a5230a561b1cefb381c26bb1d30c784da907c9f72e5d83c650d425d555540fe1255442e3aa60000009c41d2d4c4c16ede74ef88b03c591ddb87",
+              "avg_power_w": 326.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 22.0,
+              "time_s": 69,
+              "avg_gradient_pct": 5.1,
+              "distance_m": 434.0,
+              "vam": 1148.0,
+              "start_offset_s": 5043,
+              "end_offset_s": 5112,
+              "signature_hex": "3f940200b04f7db40beeda79e17f5d254e97ddd2f0623f29a08338d161013c8741b0000040a265a043d8c0b800000045cb8d03c03c733d33bc0108147656379e",
+              "avg_power_w": 317.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 66.3,
+              "time_s": 232,
+              "avg_gradient_pct": 4.2,
+              "distance_m": 1586.0,
+              "vam": 1029.0,
+              "start_offset_s": 5170,
+              "end_offset_s": 5402,
+              "signature_hex": "5267c23a9b2dbd09d72a623076611aad2e8b07d75b237a483753a72954ba00594284aaab4085d7a844c63e3b000000e816cb9e603d4019bf738e8d1f2fc56c2e",
+              "avg_power_w": 320.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 60.7,
+              "time_s": 368,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 2628.0,
+              "vam": 593.0,
+              "start_offset_s": 6149,
+              "end_offset_s": 6517,
+              "signature_hex": "4599cdc208529da681ec11ddfe70f585d1848fde020f8c375d0b3e4928933f204272aaab4013c389452439de0000017032fb273f88de14448abc04e7a21902c5",
+              "avg_power_w": 210.7,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 3,
+        "auto_detected": 0,
+        "terrain_hint_detected": 6,
+        "hilly_default_detected": 6,
+        "auto_gap": 3,
+        "notes": [
+          "CRITICAL: terrain=auto finds 0 climbs despite known climbs \u2014 discrete classification gap",
+          "auto misses 3 expected climb(s)"
+        ]
+      }
+    },
+    {
+      "file": "in_the_bag_.fit",
+      "meta": {
+        "samples": 16082,
+        "duration_s": 18727,
+        "sport": "cycling",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": 0.0,
+        "elev_max_m": 163.0,
+        "elev_gain_naive_m": 1021.0
+      },
+      "expected_climb_count": 5,
+      "detections": {
+        "auto": {
+          "count": 0,
+          "climbs": []
+        },
+        "flat": {
+          "count": 18,
+          "climbs": [
+            {
+              "vert_m": 33.6,
+              "time_s": 405,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 2850.0,
+              "vam": 299.0,
+              "start_offset_s": 464,
+              "end_offset_s": 869,
+              "signature_hex": "5261a59a68083ef2d0beb2fdc49df98a6081596e9934e9d6dbab34eb3f889562420666663f96e2c7453225de000001955253a657ae8815e8ef1f400963918e1b",
+              "avg_power_w": 219.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 37.6,
+              "time_s": 282,
+              "avg_gradient_pct": 1.8,
+              "distance_m": 2063.0,
+              "vam": 480.0,
+              "start_offset_s": 951,
+              "end_offset_s": 1233,
+              "signature_hex": "cb3f8303713199ce87ac417f8b583d095c2546fc47d7d6948523b776961647d3421666663fe942414500f49a0000011a5d27bb179af1070601bf0bbe96d02eba",
+              "avg_power_w": 264.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 16.6,
+              "time_s": 75,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 533.0,
+              "vam": 797.0,
+              "start_offset_s": 1302,
+              "end_offset_s": 1377,
+              "signature_hex": "977a449d409b0a21d7bbd68e5df2c64c672e6cb8aa2a7a61f43b8607fe74f1a44184cccd404739bb440550f60000004beec83e03cc903747a6958e082269edb3",
+              "avg_power_w": 270.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 38.6,
+              "time_s": 588,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 3162.0,
+              "vam": 236.0,
+              "start_offset_s": 1768,
+              "end_offset_s": 2356,
+              "signature_hex": "ae92384172a73d306b202577d06a78a7d4447b783acb3cd0b88578b8249e737f421a66663f9c3ea64545a3800000024cb2cc4dcbf12f735c78e971bda42525d0",
+              "avg_power_w": 138.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 44.8,
+              "time_s": 351,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1630.0,
+              "vam": 459.0,
+              "start_offset_s": 2435,
+              "end_offset_s": 2786,
+              "signature_hex": "e22d10f419e90a2cfc67ebe3d048d54df34001d3564c02a48b3cc2d23834372642333333402fe03244cbc7bc0000015f42d665df53c772ff18c430136f03160d",
+              "avg_power_w": 169.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 58.4,
+              "time_s": 290,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1593.0,
+              "vam": 725.0,
+              "start_offset_s": 5779,
+              "end_offset_s": 6069,
+              "signature_hex": "551e689eacae1656905ded2271c83897b71a8ed68ac4b568a292e0db2b810fc84269999a406a8ee644c72ed700000122fafc7fd30398615caaf398dd7750a506",
+              "avg_power_w": 260.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 79.6,
+              "time_s": 376,
+              "avg_gradient_pct": 4.7,
+              "distance_m": 1704.0,
+              "vam": 762.0,
+              "start_offset_s": 6727,
+              "end_offset_s": 7103,
+              "signature_hex": "3605d36bee8e488de39d8ad747dd5e78789e275cac412de06b17c724dc61578c429f33334095833344d4f573000001788b0e5bd05667337d75734e023e167b84",
+              "avg_power_w": 295.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 29.8,
+              "time_s": 168,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1183.0,
+              "vam": 639.0,
+              "start_offset_s": 7255,
+              "end_offset_s": 7423,
+              "signature_hex": "eb04138806f8e533995cbd583655f15e253846d6c85fb25fa1ab98674c8cb6e641ee66664021319a4493e584000000a8dafb2d8686ab433dcfe2d72b9a377fe7",
+              "avg_power_w": 265.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 70.8,
+              "time_s": 274,
+              "avg_gradient_pct": 5.3,
+              "distance_m": 1338.0,
+              "vam": 930.0,
+              "start_offset_s": 12224,
+              "end_offset_s": 12498,
+              "signature_hex": "23f8f9b5a3c95808837d954c12bdeec1122bca13459fb31f0547a1b39bad35e6428d999a40a946bb44a74cea000001121dfef2b9c385b66c26520eeaf34a236c",
+              "avg_power_w": 265.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.6,
+              "time_s": 208,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1177.0,
+              "vam": 547.0,
+              "start_offset_s": 12557,
+              "end_offset_s": 12765,
+              "signature_hex": "5ab576833e181b7b5a678d8bcfc4a075bfdb767abe9df9b27d9de6647533efb641fccccd402be47b44931194000000d0405eae1339906d114ba337136c70fc61",
+              "avg_power_w": 226.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 43.6,
+              "time_s": 232,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1726.0,
+              "vam": 677.0,
+              "start_offset_s": 12902,
+              "end_offset_s": 13134,
+              "signature_hex": "9973b3e9658637fdf7281de9ad50cf3be80948ab9162e259e9cd872947257240422e66664021a9fc44d7c193000000e89e27cd8f59498b28dc5f0d3b5c0f2918",
+              "avg_power_w": 270.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.4,
+              "time_s": 217,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1645.0,
+              "vam": 703.0,
+              "start_offset_s": 13374,
+              "end_offset_s": 13591,
+              "signature_hex": "03d960e03871027ef97651f8a94475c71e9dff38394e48bc463274144d9328b54229999a4024f98144cd9b7d000000d9c536eeb76e758e7515d34d5274e54ecc",
+              "avg_power_w": 294.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.6,
+              "time_s": 229,
+              "avg_gradient_pct": 1.6,
+              "distance_m": 1874.0,
+              "vam": 481.0,
+              "start_offset_s": 13652,
+              "end_offset_s": 13881,
+              "signature_hex": "5402bfd1bbab78426388a7a2b197daa43d51548338a25c8c541326f7345a452441f4cccd3fd102d944ea3ef4000000e531a14dd214cb1e382d03f2ac99681057",
+              "avg_power_w": 255.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.4,
+              "time_s": 87,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 799.0,
+              "vam": 1175.0,
+              "start_offset_s": 13918,
+              "end_offset_s": 14005,
+              "signature_hex": "0ed3df047a76462f853f033bd3d14ce0f124e3e558ee8bd839212afeaefa94dc41e3333340636e654447cbf200000057b46e3308a76f8fa7fdc268b781299b10",
+              "avg_power_w": 474.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 32.8,
+              "time_s": 125,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 878.0,
+              "vam": 945.0,
+              "start_offset_s": 14428,
+              "end_offset_s": 14553,
+              "signature_hex": "90a0eb2db5b9e7abd3a9babf46fa1db5888aec61cd8edb6c6e0b55f280c959b442033333406f34ff445b643d0000007de4db269a52afc6365d51e111c7e3738a",
+              "avg_power_w": 338.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 54.4,
+              "time_s": 160,
+              "avg_gradient_pct": 7.4,
+              "distance_m": 736.0,
+              "vam": 1224.0,
+              "start_offset_s": 15107,
+              "end_offset_s": 15267,
+              "signature_hex": "b110abdb7a2825cdb74ca6d1b2e3a0fab42545fb1cda5038edb9630d4fc8ba364259999a40ec742744380d8d000000a09a7a8b794ee60cb9c6ee0b4c65676964",
+              "avg_power_w": 325.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.8,
+              "time_s": 144,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1116.0,
+              "vam": 1020.0,
+              "start_offset_s": 15297,
+              "end_offset_s": 15441,
+              "signature_hex": "e5b57f15956b4da59bcd0e3a21f529506f7ce7276fa0744b90363aeb344e94d542233333406a08ce448b7779000000900049f975988793c14c1e4ddf744e6f9f",
+              "avg_power_w": 360.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.6,
+              "time_s": 221,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1582.0,
+              "vam": 498.0,
+              "start_offset_s": 15878,
+              "end_offset_s": 16099,
+              "signature_hex": "8cedfca8e75c3a14810449f839a23107aae31e3cd4d84b8c388e7241335985ef41f4cccd3ff79b7344c5bb86000000ddf2d5ef00f53962078840175c78b18a76",
+              "avg_power_w": 229.5,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 17,
+          "climbs": [
+            {
+              "vert_m": 33.4,
+              "time_s": 404,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 2842.0,
+              "vam": 298.0,
+              "start_offset_s": 464,
+              "end_offset_s": 868,
+              "signature_hex": "cdf583317c09f0a6e059835a0ddb24e69b4726339bd1e498b441bcc4401d4f554205999a3f966cd14531a14600000194d6b5a734631de8cfbd6bc53122677905",
+              "avg_power_w": 219.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 37.4,
+              "time_s": 281,
+              "avg_gradient_pct": 1.8,
+              "distance_m": 2055.0,
+              "vam": 479.0,
+              "start_offset_s": 952,
+              "end_offset_s": 1233,
+              "signature_hex": "100127481478a029467a693103619858190f27ca0d6f593f8ccf36a609e1c0024215999a3fe8f1924500716e00000119f9d4e265bf53f6e9882800c3261aef76",
+              "avg_power_w": 264.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 38.2,
+              "time_s": 586,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 3147.0,
+              "vam": 235.0,
+              "start_offset_s": 1769,
+              "end_offset_s": 2355,
+              "signature_hex": "140234f04c1a8fd6db7c1ff31057f93e23d59aae68d8a238b3b8ed1f063886854218cccd3f9b64864544a9bf0000024a67612c7b0b559387221b417dd8a87515",
+              "avg_power_w": 138.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 44.8,
+              "time_s": 351,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1630.0,
+              "vam": 459.0,
+              "start_offset_s": 2435,
+              "end_offset_s": 2786,
+              "signature_hex": "e22d10f419e90a2cfc67ebe3d048d54df34001d3564c02a48b3cc2d23834372642333333402fe03244cbc7bc0000015f42d665df53c772ff18c430136f03160d",
+              "avg_power_w": 169.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 58.4,
+              "time_s": 290,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1593.0,
+              "vam": 725.0,
+              "start_offset_s": 5779,
+              "end_offset_s": 6069,
+              "signature_hex": "551e689eacae1656905ded2271c83897b71a8ed68ac4b568a292e0db2b810fc84269999a406a8ee644c72ed700000122fafc7fd30398615caaf398dd7750a506",
+              "avg_power_w": 260.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 79.6,
+              "time_s": 376,
+              "avg_gradient_pct": 4.7,
+              "distance_m": 1704.0,
+              "vam": 762.0,
+              "start_offset_s": 6727,
+              "end_offset_s": 7103,
+              "signature_hex": "3605d36bee8e488de39d8ad747dd5e78789e275cac412de06b17c724dc61578c429f33334095833344d4f573000001788b0e5bd05667337d75734e023e167b84",
+              "avg_power_w": 295.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 29.6,
+              "time_s": 167,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1178.0,
+              "vam": 638.0,
+              "start_offset_s": 7256,
+              "end_offset_s": 7423,
+              "signature_hex": "3f4b09937caa376bbe7cf9dfd0ff8c37cf12c59537911731e988ed608699541341eccccd4020d4f444933c09000000a76c2595b2fddba24e3bec8e611f989d90",
+              "avg_power_w": 265.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 70.8,
+              "time_s": 274,
+              "avg_gradient_pct": 5.3,
+              "distance_m": 1338.0,
+              "vam": 930.0,
+              "start_offset_s": 12224,
+              "end_offset_s": 12498,
+              "signature_hex": "23f8f9b5a3c95808837d954c12bdeec1122bca13459fb31f0547a1b39bad35e6428d999a40a946bb44a74cea000001121dfef2b9c385b66c26520eeaf34a236c",
+              "avg_power_w": 265.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.4,
+              "time_s": 207,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1168.0,
+              "vam": 546.0,
+              "start_offset_s": 12558,
+              "end_offset_s": 12765,
+              "signature_hex": "07c2e50b9d6db2a95a2f0b05035448466d2473c49f8989b03dad0fa45db437c541fb3333402c0ad4449202b7000000cfb13ffef480e4092a7e9480b19ce17a3a",
+              "avg_power_w": 226.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 43.2,
+              "time_s": 230,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1709.0,
+              "vam": 676.0,
+              "start_offset_s": 12903,
+              "end_offset_s": 13133,
+              "signature_hex": "435948b7de667e41273c9c2e401febe06cf4c91595596db0773aed8798fd7705422ccccd4021be6344d5abe0000000e6ad9f0273c0fddf199f352b22cf9dd8ac",
+              "avg_power_w": 270.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.6,
+              "time_s": 302,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 2251.0,
+              "vam": 627.0,
+              "start_offset_s": 13289,
+              "end_offset_s": 13591,
+              "signature_hex": "60e9280138dd46352aeeb53446acc4ea1c0dad1cf21d3cd15ed458fd5d08328742526666400fdda7450cafc70000012eeda1b420bda24b15649001d9abbd4f04",
+              "avg_power_w": 280.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.4,
+              "time_s": 228,
+              "avg_gradient_pct": 1.6,
+              "distance_m": 1865.0,
+              "vam": 480.0,
+              "start_offset_s": 13652,
+              "end_offset_s": 13880,
+              "signature_hex": "0d7f3f254ef87c3197d9349d6200ca966e536a5ed9098b03d0771beeb3d3115741f333333fd0a0f844e92430000000e4c00fc7c1417821cbb6d874a3ccc0c126",
+              "avg_power_w": 256.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.4,
+              "time_s": 87,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 799.0,
+              "vam": 1175.0,
+              "start_offset_s": 13918,
+              "end_offset_s": 14005,
+              "signature_hex": "0ed3df047a76462f853f033bd3d14ce0f124e3e558ee8bd839212afeaefa94dc41e3333340636e654447cbf200000057b46e3308a76f8fa7fdc268b781299b10",
+              "avg_power_w": 474.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 32.6,
+              "time_s": 124,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 873.0,
+              "vam": 946.0,
+              "start_offset_s": 14429,
+              "end_offset_s": 14553,
+              "signature_hex": "5541dd3ae63a4c26d626a36b18f7af09b55b197e381ae224e59083be9890d1d442026666406efa89445a431e0000007c06479eb742c9e970b31d2118075ae47b",
+              "avg_power_w": 338.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 54.2,
+              "time_s": 159,
+              "avg_gradient_pct": 7.4,
+              "distance_m": 728.0,
+              "vam": 1227.0,
+              "start_offset_s": 15107,
+              "end_offset_s": 15266,
+              "signature_hex": "8ad8f9ae0aed451ff16cecc18bb6ce86f5b85927b3a64608149f18ad96ad85f64258cccd40ee440e4435fb4b0000009fc160042550f688a63a2eeed2d0d08855",
+              "avg_power_w": 326.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.6,
+              "time_s": 143,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1110.0,
+              "vam": 1022.0,
+              "start_offset_s": 15297,
+              "end_offset_s": 15440,
+              "signature_hex": "895b36e9496d1ac201d4266578d7828bb0545cc18742925ee5e94c51013b170042226666406a0698448ac9c30000008fa50ec3d9ab4c8441b513d1fbd95929cc",
+              "avg_power_w": 363.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.6,
+              "time_s": 221,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1582.0,
+              "vam": 498.0,
+              "start_offset_s": 15878,
+              "end_offset_s": 16099,
+              "signature_hex": "8cedfca8e75c3a14810449f839a23107aae31e3cd4d84b8c388e7241335985ef41f4cccd3ff79b7344c5bb86000000ddf2d5ef00f53962078840175c78b18a76",
+              "avg_power_w": 229.5,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 5,
+          "climbs": [
+            {
+              "vert_m": 57.2,
+              "time_s": 286,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1565.0,
+              "vam": 720.0,
+              "start_offset_s": 5780,
+              "end_offset_s": 6066,
+              "signature_hex": "8bc973818c9738523f99212726a624f315f25b7e9f1a8be7a57e7592b1804ae64264cccd4069e73444c3a2f40000011e2e40b2a5b9dc4190ff41a9e0ca4ce4aa",
+              "avg_power_w": 262.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 79.0,
+              "time_s": 374,
+              "avg_gradient_pct": 4.7,
+              "distance_m": 1691.0,
+              "vam": 760.0,
+              "start_offset_s": 6728,
+              "end_offset_s": 7102,
+              "signature_hex": "04587437139d6e1d9d98ce25ffce43f2a30c40d1b706590c4e6602530bab7415429e00004095768244d36c76000001760b715c1c37422c0df1d1f6efd7388c7f",
+              "avg_power_w": 296.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 70.2,
+              "time_s": 272,
+              "avg_gradient_pct": 5.3,
+              "distance_m": 1326.0,
+              "vam": 929.0,
+              "start_offset_s": 12225,
+              "end_offset_s": 12497,
+              "signature_hex": "309e3cd8f39ee9fd73a2472313766258d3a2faa4dd99c782d1e128cd77bac336428c666640a95a6944a5ceaf00000110cdb3d13f4072b0b2695f9670634a77c5",
+              "avg_power_w": 265.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.2,
+              "time_s": 300,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 2239.0,
+              "vam": 626.0,
+              "start_offset_s": 13290,
+              "end_offset_s": 13590,
+              "signature_hex": "cb38ced6d8498343d775604b6e462cad1f3867d22892d3b8f88668cbc8ee75c64250cccd400f7b09450bf3010000012c3908ccc7f685c27e436c7ae962439893",
+              "avg_power_w": 280.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 95.2,
+              "time_s": 332,
+              "avg_gradient_pct": 4.5,
+              "distance_m": 2127.0,
+              "vam": 1032.0,
+              "start_offset_s": 15107,
+              "end_offset_s": 15439,
+              "signature_hex": "0ac71ebc4724fc1ff505a5396666de6092a04288405efc05d5b922312f1c635842be6666408c3b504504ec420000014cc7f513587b13386d1e593f866d0fbcd3",
+              "avg_power_w": 333.9,
+              "avg_hr": null
+            }
+          ]
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 17,
+          "climbs": [
+            {
+              "vert_m": 33.3,
+              "time_s": 403,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 2833.0,
+              "vam": 298.0,
+              "start_offset_s": 465,
+              "end_offset_s": 868,
+              "signature_hex": "767e28c992a34b14acb9e3359fbc89d20751e38060dd14b03ebe49e58d0d18ea420555553f969e6f45310c1c00000193a3249fcb1d6d3a80ec8744c0858040a3",
+              "avg_power_w": 219.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 37.3,
+              "time_s": 280,
+              "avg_gradient_pct": 1.8,
+              "distance_m": 2047.0,
+              "vam": 480.0,
+              "start_offset_s": 952,
+              "end_offset_s": 1232,
+              "signature_hex": "b2ecb7383ccd9722137d120179d6be991ce53f7da2aca32bc4532e6a369fbbf7421555553fe97b1644ffd69b000001182ac3d2c67d2ec049a7ea0b57e63bdaad",
+              "avg_power_w": 265.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 38.3,
+              "time_s": 586,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 3147.0,
+              "vam": 235.0,
+              "start_offset_s": 1769,
+              "end_offset_s": 2355,
+              "signature_hex": "9fd9ff214c5a8d7261b1d50703d06354f4b0ec5d9c8f6d61ffa339092c8d4541421955553f9bef604544a9bf0000024a07747f4850a6250989e8835d0ca5512e",
+              "avg_power_w": 138.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 44.7,
+              "time_s": 349,
+              "avg_gradient_pct": 2.8,
+              "distance_m": 1623.0,
+              "vam": 461.0,
+              "start_offset_s": 2436,
+              "end_offset_s": 2785,
+              "signature_hex": "bdca5e5263deaf351e21c62ce00a25d00ebb8b7d6e5b1b48193bc72622fb2bec4232aaab4030259744cadc6f0000015d1e64327a526ef13fa7559859f0cb4dee",
+              "avg_power_w": 170.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 58.3,
+              "time_s": 289,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1588.0,
+              "vam": 727.0,
+              "start_offset_s": 5780,
+              "end_offset_s": 6069,
+              "signature_hex": "f00d459cfb8757e26ffa564a476179600edc58d1cbb4b1e4d0b394509dd6bce042695555406b13dd44c6841900000121013f88dd6c8cd0ca207d94db4bc74ae4",
+              "avg_power_w": 260.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 79.7,
+              "time_s": 375,
+              "avg_gradient_pct": 4.7,
+              "distance_m": 1699.0,
+              "vam": 765.0,
+              "start_offset_s": 6728,
+              "end_offset_s": 7103,
+              "signature_hex": "edd0a9837f15e3280ad47eca9d995097d4c3ea60f36bbb105d95bd09430817fd429f55554096070144d467dc00000177b73ac84d92284d9741ccf038f4b8b8e2",
+              "avg_power_w": 295.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 29.7,
+              "time_s": 166,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1170.0,
+              "vam": 643.0,
+              "start_offset_s": 7256,
+              "end_offset_s": 7422,
+              "signature_hex": "7daf9c6b946b951e77bc80691c03737998f77cbafb2c20c76ed7f880a3d5b94341ed555540223f0d44924798000000a68098d93a7def0a059f492164ffde8575",
+              "avg_power_w": 265.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 70.7,
+              "time_s": 272,
+              "avg_gradient_pct": 5.3,
+              "distance_m": 1326.0,
+              "vam": 935.0,
+              "start_offset_s": 12225,
+              "end_offset_s": 12497,
+              "signature_hex": "900de94735a3aba8466786040504283eaf30e58193cba3189f181ecec19c08a0428d555540aa7a9e44a5ceaf000001103af4c2572db0ef16e896894147816f4c",
+              "avg_power_w": 265.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.3,
+              "time_s": 206,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1160.0,
+              "vam": 548.0,
+              "start_offset_s": 12558,
+              "end_offset_s": 12764,
+              "signature_hex": "a3afb5329edf7585bbebb83fc8b50b09fca92c6c3b1dfc24078fc13320da918c41faaaab402cdd8f449101be000000cec0f480a183186d7264e2ffad2bd4cee2",
+              "avg_power_w": 226.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 43.3,
+              "time_s": 230,
+              "avg_gradient_pct": 2.5,
+              "distance_m": 1709.0,
+              "vam": 678.0,
+              "start_offset_s": 12903,
+              "end_offset_s": 13133,
+              "signature_hex": "a565a0cd2113bca9315221edb9718f5c0ac642b35ba5127e03488d9df358f346422d555540223e2f44d5abe0000000e629b48c71c1adcb82151f176658fdb6af",
+              "avg_power_w": 270.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.0,
+              "time_s": 215,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1630.0,
+              "vam": 703.0,
+              "start_offset_s": 13375,
+              "end_offset_s": 13590,
+              "signature_hex": "38fb386bf77a80355a14616cf42e8305b1a3c4dd687690ae0ab750c74ca6ee7f422800004024eaea44cbbcf2000000d79a4841f94b7fb18187b8f78686c56810",
+              "avg_power_w": 294.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.7,
+              "time_s": 228,
+              "avg_gradient_pct": 1.6,
+              "distance_m": 1865.0,
+              "vam": 484.0,
+              "start_offset_s": 13652,
+              "end_offset_s": 13880,
+              "signature_hex": "bf3b5c0681ba26de4547de3a471ab900ffc6628ce6ac26b7e4da72895417990341f555553fd2757844e92430000000e408aff9b1d853b3ca211d9d9c8ecddb9d",
+              "avg_power_w": 256.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.0,
+              "time_s": 85,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 780.0,
+              "vam": 1186.0,
+              "start_offset_s": 13919,
+              "end_offset_s": 14004,
+              "signature_hex": "a29ad2a8ae22a178e64099d3cefdfab0e9041c201262380ac461abe144872a4b41e0000040659b3344431ddc00000055d6ea3a2e2a92de4aa7724c1a066c7ed1",
+              "avg_power_w": 474.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 32.7,
+              "time_s": 123,
+              "avg_gradient_pct": 3.8,
+              "distance_m": 866.0,
+              "vam": 956.0,
+              "start_offset_s": 14429,
+              "end_offset_s": 14552,
+              "signature_hex": "0d5cdb22ed7fa57286cc5d067ffaf5c52016a8b1bee74ff92d73cc21c49842664202aaab407187bb445865e70000007b93b8a5a983cb81140414d07b532eda28",
+              "avg_power_w": 340.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 54.3,
+              "time_s": 159,
+              "avg_gradient_pct": 7.5,
+              "distance_m": 728.0,
+              "vam": 1230.0,
+              "start_offset_s": 15107,
+              "end_offset_s": 15266,
+              "signature_hex": "47cfa308a13574fce522aa3656122e0504fc6b29edc5c44ca82d7ba655030dd24259555540eeda1b4435fb4b0000009f02d327ada7c50708ae6baef7bf1906e8",
+              "avg_power_w": 326.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.3,
+              "time_s": 141,
+              "avg_gradient_pct": 3.7,
+              "distance_m": 1099.0,
+              "vam": 1030.0,
+              "start_offset_s": 15298,
+              "end_offset_s": 15439,
+              "signature_hex": "9e4f0cec5a4fbf6100cfe900b4fbae99b90f7618008d5641393ea639f7451c8642215555406ae23844895f7b0000008dbd61a799fc09ff44f9d48300037edb25",
+              "avg_power_w": 365.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.3,
+              "time_s": 219,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1566.0,
+              "vam": 499.0,
+              "start_offset_s": 15879,
+              "end_offset_s": 16098,
+              "signature_hex": "acf85287f839063bf118570f0499b7c6cbd42529bf2220598f086059f1e2458e41f2aaab3ff7e64944c3c739000000db4c6840a4bf2c665d85e763977f989009",
+              "avg_power_w": 229.8,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 5,
+        "auto_detected": 0,
+        "terrain_hint_detected": 17,
+        "hilly_default_detected": 5,
+        "auto_gap": 5,
+        "notes": [
+          "CRITICAL: terrain=auto finds 0 climbs despite known climbs \u2014 discrete classification gap",
+          "auto misses 5 expected climb(s)"
+        ]
+      }
+    },
+    {
+      "file": "Lunch_Ride.fit",
+      "meta": {
+        "samples": 13106,
+        "duration_s": 15634,
+        "sport": "cycling",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": -30.0,
+        "elev_max_m": 107.0,
+        "elev_gain_naive_m": 947.0
+      },
+      "expected_climb_count": 2,
+      "detections": {
+        "auto": {
+          "count": 0,
+          "climbs": []
+        },
+        "flat": {
+          "count": 18,
+          "climbs": [
+            {
+              "vert_m": 39.8,
+              "time_s": 238,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 1177.0,
+              "vam": 602.0,
+              "start_offset_s": 1654,
+              "end_offset_s": 1892,
+              "signature_hex": "17b2b4bc16f1a240532c8a24cc09006de4e80d3a6935594784f49b5e2f2251b7421f333340585cb044932926000000ee1fee094a1c351ec4235fdbdce873da47",
+              "avg_power_w": 192.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.0,
+              "time_s": 302,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 1242.0,
+              "vam": 465.0,
+              "start_offset_s": 2066,
+              "end_offset_s": 2368,
+              "signature_hex": "5c1e45a3d71180c9eb26cba228978cc09174df6a1f4776390df0dbdb7417d0eb421c00004048e89f449b4b600000012eb13089119a933ac70485530704e2c592",
+              "avg_power_w": 201.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 47.6,
+              "time_s": 310,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1817.0,
+              "vam": 553.0,
+              "start_offset_s": 2519,
+              "end_offset_s": 2829,
+              "signature_hex": "169788f49f1c1ff103d1133d93669bc54fea25b792a31917dd4849acce2a7746423e666640279e1e44e32f0800000136711f8dbe432ec6d3369ba469b76fa2c2",
+              "avg_power_w": 183.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 44.6,
+              "time_s": 296,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1724.0,
+              "vam": 542.0,
+              "start_offset_s": 3146,
+              "end_offset_s": 3442,
+              "signature_hex": "a9947ce55e2fcf2b6d3f7445765d06e7d3d47e100aa91ac7ac603111d9c60c8a42326666402593d044d77d04000001288871a531145843f9eac9279e8fd9bca5",
+              "avg_power_w": 204.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.6,
+              "time_s": 477,
+              "avg_gradient_pct": 1.3,
+              "distance_m": 2997.0,
+              "vam": 299.0,
+              "start_offset_s": 3513,
+              "end_offset_s": 3990,
+              "signature_hex": "f584e459243b499ee723d6744410e1f3a6769d2b9af7a1cf9cff88cbaa0e2775421e66663fa09d27453b480d000001dd492427e58085b110a8a46456eb61076c",
+              "avg_power_w": 189.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.6,
+              "time_s": 222,
+              "avg_gradient_pct": 3.5,
+              "distance_m": 1144.0,
+              "vam": 642.0,
+              "start_offset_s": 4540,
+              "end_offset_s": 4762,
+              "signature_hex": "a1ac25bc0740c98ab1b15c88eadb2c12e8f1b110bd5e286ffe9778c8fac429e2421e6666405d7cea448f0859000000dee4125634e085c8ec03c2a061bf9531a0",
+              "avg_power_w": 212.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 65.8,
+              "time_s": 383,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 2212.0,
+              "vam": 618.0,
+              "start_offset_s": 5002,
+              "end_offset_s": 5385,
+              "signature_hex": "841608c866fc7ff1c87dda2035aad3f5f7e32922b6a9129d1548add653ab9a874283999a403e59ed450a454b0000017f3d6301a2fd5b82f4b85c794714944c4a",
+              "avg_power_w": 214.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 20.8,
+              "time_s": 94,
+              "avg_gradient_pct": 5.2,
+              "distance_m": 398.0,
+              "vam": 797.0,
+              "start_offset_s": 5863,
+              "end_offset_s": 5957,
+              "signature_hex": "80c8620f1d4c98fb874592a27cf17e681cdc486fdd037debb85cba9342b7722e41a6666640a749d343c6f01b0000005eed1d3d55c7cbf3118f8011beccf276c5",
+              "avg_power_w": 212.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 35.6,
+              "time_s": 209,
+              "avg_gradient_pct": 2.9,
+              "distance_m": 1212.0,
+              "vam": 613.0,
+              "start_offset_s": 6070,
+              "end_offset_s": 6279,
+              "signature_hex": "6b2f5aff9e5c8e307dd646f70b6b5df8a9fea7ecad8cf1eeb3c7c92539ebc4fd420e6666403bfb1244978140000000d136df5585815694b3accc0b5ba28eaa99",
+              "avg_power_w": 215.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.4,
+              "time_s": 232,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1504.0,
+              "vam": 627.0,
+              "start_offset_s": 6408,
+              "end_offset_s": 6640,
+              "signature_hex": "2a42a237941135b3a96cf829582a36536310b258090a77bf45147252649d2bc24221999a402be29944bc0854000000e84965dcecebe47dc6375196fdd74a158f",
+              "avg_power_w": 225.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 46.6,
+              "time_s": 201,
+              "avg_gradient_pct": 4.6,
+              "distance_m": 1017.0,
+              "vam": 835.0,
+              "start_offset_s": 7425,
+              "end_offset_s": 7626,
+              "signature_hex": "519bc8d739f254620adee405f109ef15b2a428db4e4837546130c9616ef39b0b423a66664092b1bd447e224b000000c9215fdd40980b3acdce00fafb20f7be89",
+              "avg_power_w": 232.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.6,
+              "time_s": 146,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 819.0,
+              "vam": 533.0,
+              "start_offset_s": 7699,
+              "end_offset_s": 7845,
+              "signature_hex": "335aa497135074b14437f3a8e1216000cb6ec156a73e202044bf7e2e6614a85f41accccd4028d4a6444cb3c100000092f385847c6966763125991075dcfd1025",
+              "avg_power_w": 214.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 20.6,
+              "time_s": 94,
+              "avg_gradient_pct": 4.7,
+              "distance_m": 436.0,
+              "vam": 789.0,
+              "start_offset_s": 8178,
+              "end_offset_s": 8272,
+              "signature_hex": "90dbdfdd0830f73de58b69c867f31b2b9c4f11c848cb1e7d3302c41ba82e035341a4cccd4097155543da28630000005ebc62280afab95ed079f127fb2f92fdb4",
+              "avg_power_w": 226.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 49.4,
+              "time_s": 240,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 1586.0,
+              "vam": 741.0,
+              "start_offset_s": 8497,
+              "end_offset_s": 8737,
+              "signature_hex": "41a6763943f8f4abc97a64a51eb3eb7a262876e6f41d128623983feadec2e22a4245999a404754a744c64375000000f04530a09626a053efd1757323e07dac29",
+              "avg_power_w": 241.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.6,
+              "time_s": 106,
+              "avg_gradient_pct": 3.8,
+              "distance_m": 570.0,
+              "vam": 734.0,
+              "start_offset_s": 11208,
+              "end_offset_s": 11314,
+              "signature_hex": "94ef6f7741d921f7dd2b3818be9c1f29e568d64b934f8bd04dfe6b98d82f644641accccd40725e8b440e97a20000006a6ed7f25935d7ca0e5163a70b9be20d1c",
+              "avg_power_w": 217.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 27.8,
+              "time_s": 182,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 1184.0,
+              "vam": 550.0,
+              "start_offset_s": 11457,
+              "end_offset_s": 11639,
+              "signature_hex": "00d52e00de88b376a58650fa83fb45685d6454cbba994067dccacfbfeca982d641de6666401640d844940448000000b61e970f6eef62dfe2a15825597bbb7cef",
+              "avg_power_w": 213.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.6,
+              "time_s": 208,
+              "avg_gradient_pct": 6.8,
+              "distance_m": 770.0,
+              "vam": 910.0,
+              "start_offset_s": 12210,
+              "end_offset_s": 12418,
+              "signature_hex": "b5285ec01c70babfabd630974a759051582f44f691011895e3656dc9097c334d4252666640da9ff0444079d5000000d053f7b36158b519ec4b48a7adf5d0815b",
+              "avg_power_w": 249.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.4,
+              "time_s": 209,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 1169.0,
+              "vam": 730.0,
+              "start_offset_s": 12445,
+              "end_offset_s": 12654,
+              "signature_hex": "c1a827d7ea115e72e3d223549dd68e12d577117577b65dc3152f3ffcdb60d7f94229999a40681d744492226a000000d1934fff18e17182267b6044b789b99432",
+              "avg_power_w": 229.4,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 14,
+          "climbs": [
+            {
+              "vert_m": 39.8,
+              "time_s": 237,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 1176.0,
+              "vam": 605.0,
+              "start_offset_s": 1655,
+              "end_offset_s": 1892,
+              "signature_hex": "9386636ad553e948938f22b6397527ffed44028e87c085052f123496644b67a6421f33334058aa934492f43f000000edddc02619876895ec01118b567a2f279e",
+              "avg_power_w": 192.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.0,
+              "time_s": 302,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 1242.0,
+              "vam": 465.0,
+              "start_offset_s": 2066,
+              "end_offset_s": 2368,
+              "signature_hex": "5c1e45a3d71180c9eb26cba228978cc09174df6a1f4776390df0dbdb7417d0eb421c00004048e89f449b4b600000012eb13089119a933ac70485530704e2c592",
+              "avg_power_w": 201.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 47.2,
+              "time_s": 308,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1804.0,
+              "vam": 552.0,
+              "start_offset_s": 2520,
+              "end_offset_s": 2828,
+              "signature_hex": "a006e9afe3ef8d2fb1845d8aa317f6f67be5d3284826147bdb4421b06ced702f423ccccd4027791944e1781900000134b9e791711d3b11b5aa83a71f4a7410ed",
+              "avg_power_w": 183.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 44.6,
+              "time_s": 296,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1724.0,
+              "vam": 542.0,
+              "start_offset_s": 3146,
+              "end_offset_s": 3442,
+              "signature_hex": "a9947ce55e2fcf2b6d3f7445765d06e7d3d47e100aa91ac7ac603111d9c60c8a42326666402593d044d77d04000001288871a531145843f9eac9279e8fd9bca5",
+              "avg_power_w": 204.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.6,
+              "time_s": 477,
+              "avg_gradient_pct": 1.3,
+              "distance_m": 2997.0,
+              "vam": 299.0,
+              "start_offset_s": 3513,
+              "end_offset_s": 3990,
+              "signature_hex": "f584e459243b499ee723d6744410e1f3a6769d2b9af7a1cf9cff88cbaa0e2775421e66663fa09d27453b480d000001dd492427e58085b110a8a46456eb61076c",
+              "avg_power_w": 189.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.4,
+              "time_s": 221,
+              "avg_gradient_pct": 3.5,
+              "distance_m": 1137.0,
+              "vam": 642.0,
+              "start_offset_s": 4540,
+              "end_offset_s": 4761,
+              "signature_hex": "ab38e504d0d8dcd6000f6cdfaa51392d056fae9499489be4527e7049fd0351b6421d999a405dba20448e2822000000dd12dc1017077c4ff8dba350c61dd61118",
+              "avg_power_w": 213.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 65.8,
+              "time_s": 383,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 2212.0,
+              "vam": 618.0,
+              "start_offset_s": 5002,
+              "end_offset_s": 5385,
+              "signature_hex": "841608c866fc7ff1c87dda2035aad3f5f7e32922b6a9129d1548add653ab9a874283999a403e59ed450a454b0000017f3d6301a2fd5b82f4b85c794714944c4a",
+              "avg_power_w": 214.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 35.4,
+              "time_s": 208,
+              "avg_gradient_pct": 2.9,
+              "distance_m": 1203.0,
+              "vam": 613.0,
+              "start_offset_s": 6070,
+              "end_offset_s": 6278,
+              "signature_hex": "53212eba733b6ebc71e32205f958414ecc1f2d644c7f1da1b7f2a56742d05546420d999a403c5dd34496585f000000d068306888ddf394efee9b59c5ab8f2682",
+              "avg_power_w": 215.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.4,
+              "time_s": 232,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1504.0,
+              "vam": 627.0,
+              "start_offset_s": 6408,
+              "end_offset_s": 6640,
+              "signature_hex": "2a42a237941135b3a96cf829582a36536310b258090a77bf45147252649d2bc24221999a402be29944bc0854000000e84965dcecebe47dc6375196fdd74a158f",
+              "avg_power_w": 225.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 46.4,
+              "time_s": 200,
+              "avg_gradient_pct": 4.6,
+              "distance_m": 1009.0,
+              "vam": 835.0,
+              "start_offset_s": 7425,
+              "end_offset_s": 7625,
+              "signature_hex": "09dbd4a6a48fe9aabb40cb85029cd9e43baee70fc0f94835b45c03af1cfb36fc4239999a40932d44447c36b1000000c8e2ce9756cb258da4b8a09fe58e6d62ab",
+              "avg_power_w": 232.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 49.2,
+              "time_s": 239,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 1578.0,
+              "vam": 741.0,
+              "start_offset_s": 8498,
+              "end_offset_s": 8737,
+              "signature_hex": "8ef1d1d3d6a2af3f40d9df1c976eb1c778465972746308420fd9a8b752e8bf2e4244cccd404785ae44c54574000000ef6a6f7f39dda0cc0a7298089dfc99d64f",
+              "avg_power_w": 241.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 27.4,
+              "time_s": 180,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 1171.0,
+              "vam": 548.0,
+              "start_offset_s": 11458,
+              "end_offset_s": 11638,
+              "signature_hex": "24193e3ee04b3b6ade45ac513a35ea2d47513a94a84ba0d4f199c1ac2163366541db33334015c04544926053000000b4179a73da1551648d8438879bb192057c",
+              "avg_power_w": 214.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.4,
+              "time_s": 207,
+              "avg_gradient_pct": 6.9,
+              "distance_m": 759.0,
+              "vam": 911.0,
+              "start_offset_s": 12210,
+              "end_offset_s": 12417,
+              "signature_hex": "d76015a8d95cc86aa6dde2163e9b1a088b8ac25a73bd4ea430dc99fbbb0db6014251999a40dcd28b443dd5f6000000cf87ec07f13b8318348b43987c2e14ec1d",
+              "avg_power_w": 249.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.4,
+              "time_s": 209,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 1169.0,
+              "vam": 730.0,
+              "start_offset_s": 12445,
+              "end_offset_s": 12654,
+              "signature_hex": "c1a827d7ea115e72e3d223549dd68e12d577117577b65dc3152f3ffcdb60d7f94229999a40681d744492226a000000d1934fff18e17182267b6044b789b99432",
+              "avg_power_w": 229.4,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 65.4,
+              "time_s": 381,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 2202.0,
+              "vam": 618.0,
+              "start_offset_s": 5003,
+              "end_offset_s": 5384,
+              "signature_hex": "0e93def407f3e4d08e15b42672bfbf2c28afc252e313b9b5088777c243dd88744282cccd403e181545099db70000017de8d2398a4760d5d752f0dcc1f107788c",
+              "avg_power_w": 214.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 51.8,
+              "time_s": 205,
+              "avg_gradient_pct": 6.9,
+              "distance_m": 746.0,
+              "vam": 910.0,
+              "start_offset_s": 12211,
+              "end_offset_s": 12416,
+              "signature_hex": "01c4b6a523c9eea088af302388d47c3215a12824d55cde6fac743b54fb6a6209424f333340de1889443a960c000000cd190a285e5b016e50236711a35c4b6cdb",
+              "avg_power_w": 250.6,
+              "avg_hr": null
+            }
+          ]
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 18,
+          "climbs": [
+            {
+              "vert_m": 40.0,
+              "time_s": 237,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 1176.0,
+              "vam": 608.0,
+              "start_offset_s": 1655,
+              "end_offset_s": 1892,
+              "signature_hex": "8434ecf1f92561a0147ef9cb47f2685cae47c92f585a31f1f0436cf966317eb2422000004059c14d4492f43f000000edfeb733030f52f047b2e710b5829bd7d9",
+              "avg_power_w": 192.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.0,
+              "time_s": 300,
+              "avg_gradient_pct": 3.2,
+              "distance_m": 1235.0,
+              "vam": 468.0,
+              "start_offset_s": 2067,
+              "end_offset_s": 2367,
+              "signature_hex": "78203a12896d198564b8d9bef4fb49573d2f00f60d06282c950c0b27b39023b9421c0000404a0b9b449a6bb90000012c1c639dddfb8a0d823b73b280e08d2041",
+              "avg_power_w": 201.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 47.3,
+              "time_s": 308,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1804.0,
+              "vam": 553.0,
+              "start_offset_s": 2520,
+              "end_offset_s": 2828,
+              "signature_hex": "b676536dd7b4fa08074abfbef5c46b5f00f872986707c25dbbc422ed9e8e138a423d55554027f23544e1781900000134ae309e5edc31f92c3037e1bc5b4ae180",
+              "avg_power_w": 183.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 44.7,
+              "time_s": 295,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 1717.0,
+              "vam": 545.0,
+              "start_offset_s": 3147,
+              "end_offset_s": 3442,
+              "signature_hex": "8e68ba41d7e8b4a75bf44604b2b69cd7c3dd21290fc1c194425be04fac5326aa4232aaab40267df244d69ffe00000127e3e71b6e84fa101f29db01ceeb8ab59d",
+              "avg_power_w": 204.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.3,
+              "time_s": 475,
+              "avg_gradient_pct": 1.3,
+              "distance_m": 2983.0,
+              "vam": 298.0,
+              "start_offset_s": 3514,
+              "end_offset_s": 3989,
+              "signature_hex": "6b6003d26d0d2cdacace8cc98e707ff0ab0a41742f666b861d1217b8f58a7230421d55553fa0319f453a70d8000001db99055f28f81adb9a548d3b2258ec3918",
+              "avg_power_w": 189.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 39.3,
+              "time_s": 220,
+              "avg_gradient_pct": 3.5,
+              "distance_m": 1131.0,
+              "vam": 644.0,
+              "start_offset_s": 4541,
+              "end_offset_s": 4761,
+              "signature_hex": "24fb25f589a9926efd9dcc7e03d9e3aac7edb28475363dc951bcf4564c8292aa421d5555405e95ff448d5e5f000000dc5d248e332f5e39500263a9d988abf91d",
+              "avg_power_w": 213.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 65.7,
+              "time_s": 381,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 2202.0,
+              "vam": 620.0,
+              "start_offset_s": 5003,
+              "end_offset_s": 5384,
+              "signature_hex": "18ab145ee810b9e5c8cbdeb4c616c5bd609314b3ded2a17937709a357d2c159742835555403ede8345099db70000017ddc66a9621934267c72fbdbf67012e370",
+              "avg_power_w": 214.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 20.7,
+              "time_s": 92,
+              "avg_gradient_pct": 5.3,
+              "distance_m": 387.0,
+              "vam": 809.0,
+              "start_offset_s": 5864,
+              "end_offset_s": 5956,
+              "signature_hex": "21fee1bb5e46c9ea8f4d324df7ef7de95180f2a7fe05aa72b96f6e3d0810c5ee41a5555540aabe7643c1a98a0000005ce0d71b33f34009049105e94423dd70b9",
+              "avg_power_w": 213.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 35.3,
+              "time_s": 207,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 1196.0,
+              "vam": 614.0,
+              "start_offset_s": 6071,
+              "end_offset_s": 6278,
+              "signature_hex": "6636938b5996da7b164f460e0c8f839d90be45a6bb8773935cc2cbd9544bc20c420d5555403d25d444957137000000cfe134cd97d0f37a9a40610f5d712e7941",
+              "avg_power_w": 215.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.0,
+              "time_s": 230,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1489.0,
+              "vam": 626.0,
+              "start_offset_s": 6409,
+              "end_offset_s": 6639,
+              "signature_hex": "9b88028202e33fee6988938d9ce3bcb03793eaa18c010ce86ec906c6c218e78c42200000402be52f44ba28ef000000e6797fc73445601532bebab53b4f44083d",
+              "avg_power_w": 225.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 46.7,
+              "time_s": 200,
+              "avg_gradient_pct": 4.6,
+              "distance_m": 1009.0,
+              "vam": 840.0,
+              "start_offset_s": 7425,
+              "end_offset_s": 7625,
+              "signature_hex": "ce123bcaa1d3289c49e3d6cff3b4975f11b5df888ca8c06c33e81683c42f9697423aaaab409405cd447c36b1000000c83a7e491b1b13c0dfdd1ae480e41a3afa",
+              "avg_power_w": 232.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.3,
+              "time_s": 144,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 801.0,
+              "vam": 533.0,
+              "start_offset_s": 7700,
+              "end_offset_s": 7844,
+              "signature_hex": "3b6b8faff3d17bf3146685af377cdbbc20bc4462ffd18b171444d16253a7de4441aaaaab402a81964448303000000090d88f103fd0efce99b714e4d006a31ba3",
+              "avg_power_w": 214.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 20.7,
+              "time_s": 93,
+              "avg_gradient_pct": 4.8,
+              "distance_m": 429.0,
+              "vam": 800.0,
+              "start_offset_s": 8179,
+              "end_offset_s": 8272,
+              "signature_hex": "88bc1c9a29103c45df18a00e65253a629151bdca80665fde8701c6ce3615dc0841a55555409a0a8643d6a94b0000005df755a4702ef73dfd884cfd3b7c6a4e3c",
+              "avg_power_w": 227.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 49.3,
+              "time_s": 239,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 1578.0,
+              "vam": 743.0,
+              "start_offset_s": 8498,
+              "end_offset_s": 8737,
+              "signature_hex": "2a6ced884002ff4f01a835d65f4e47d61291f0099d2ed155da04b6e1a437f4ce424555554048101a44c54574000000ef14ec4ee9a1076b62dcd664e28a4b65b5",
+              "avg_power_w": 241.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.3,
+              "time_s": 104,
+              "avg_gradient_pct": 3.8,
+              "distance_m": 556.0,
+              "vam": 738.0,
+              "start_offset_s": 11209,
+              "end_offset_s": 11313,
+              "signature_hex": "77d13937b1d95e13fb5fca7272f29730f04622acb16a3f7e03e68e0d9ecaf29f41aaaaab40757db9440b0a80000000689e4c964bdcf62cddc529a0d7b7984a30",
+              "avg_power_w": 217.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 27.7,
+              "time_s": 180,
+              "avg_gradient_pct": 2.4,
+              "distance_m": 1171.0,
+              "vam": 553.0,
+              "start_offset_s": 11458,
+              "end_offset_s": 11638,
+              "signature_hex": "ce0ef4cd4c237cf328b6a4ecc918526fe4e8c452565a7460420ba8a58f06157a41dd55554017356044926053000000b4421e77bd0acc013e7b94c643023b0c2a",
+              "avg_power_w": 214.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.7,
+              "time_s": 207,
+              "avg_gradient_pct": 6.9,
+              "distance_m": 759.0,
+              "vam": 916.0,
+              "start_offset_s": 12210,
+              "end_offset_s": 12417,
+              "signature_hex": "876add3c7afccea96ee8c9dd93703b1b3285563eaeb5ddd083660ea8d0731f464252aaab40ddf23b443dd5f6000000cf9e35e8cd13c00dfe74eae7fa85e5661e",
+              "avg_power_w": 249.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 42.3,
+              "time_s": 208,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 1161.0,
+              "vam": 733.0,
+              "start_offset_s": 12445,
+              "end_offset_s": 12653,
+              "signature_hex": "ceacecaaebaa8f304488e2b13a01bf6ae2e1ad03910cf56836d9feb4942375d242295555406967ff449118f7000000d0caff4f76c6456abf9e614db66df0414b",
+              "avg_power_w": 229.6,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 2,
+        "auto_detected": 0,
+        "terrain_hint_detected": 2,
+        "hilly_default_detected": 2,
+        "auto_gap": 2,
+        "notes": [
+          "CRITICAL: terrain=auto finds 0 climbs despite known climbs \u2014 discrete classification gap",
+          "auto misses 2 expected climb(s)"
+        ]
+      }
+    },
+    {
+      "file": "Morning_Ride (1).fit",
+      "meta": {
+        "samples": 24285,
+        "duration_s": 31708,
+        "sport": "string(\"cycling\")",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": 705.0,
+        "elev_max_m": 1638.0,
+        "elev_gain_naive_m": 1967.0
+      },
+      "expected_climb_count": 3,
+      "detections": {
+        "auto": {
+          "count": 3,
+          "climbs": [
+            {
+              "vert_m": 119.0,
+              "time_s": 688,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 5864.0,
+              "vam": 623.0,
+              "start_offset_s": 5657,
+              "end_offset_s": 6345,
+              "signature_hex": "cfbde11eff3c9443c3f59ce8c15808eb64b0077f01603746071b24173d1e651942ee00003ffd35f245b73f20000002b05ef26ee9b6243cb3f7f85a123b06e146",
+              "avg_power_w": 284.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 222.0,
+              "time_s": 1349,
+              "avg_gradient_pct": 2.2,
+              "distance_m": 10222.0,
+              "vam": 592.0,
+              "start_offset_s": 9606,
+              "end_offset_s": 10955,
+              "signature_hex": "0026e9ee2b539a36ff748a93646cedaa81d490ac2b9b2d32220b8437c7f65067435e0000400afee8461fb79700000545cd505a585f69df1074b2a4eef0738ba2",
+              "avg_power_w": 235.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 514.0,
+              "time_s": 1863,
+              "avg_gradient_pct": 6.3,
+              "distance_m": 8210.0,
+              "vam": 993.0,
+              "start_offset_s": 11174,
+              "end_offset_s": 13037,
+              "signature_hex": "395fafa805635bdc510085eff8550bdc52e765abb9e23b247d285e036a3d21fd4400800040c858e1460046ff00000747cb483e8f790fe856baa4882206fca433",
+              "avg_power_w": 293.2,
+              "avg_hr": null
+            }
+          ]
+        },
+        "flat": {
+          "count": 13,
+          "climbs": [
+            {
+              "vert_m": 16.0,
+              "time_s": 323,
+              "avg_gradient_pct": 0.7,
+              "distance_m": 2223.0,
+              "vam": 178.0,
+              "start_offset_s": 3052,
+              "end_offset_s": 3375,
+              "signature_hex": "41c77d862031d8beba7c325e97491334af2d7dfa95fe3e8ba122b0abb6dba329418000003f213945450aeff800000143bc3fd4621fd7a087192e1999e2c805bc",
+              "avg_power_w": 149.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 106.4,
+              "time_s": 616,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 5266.0,
+              "vam": 622.0,
+              "start_offset_s": 5745,
+              "end_offset_s": 6361,
+              "signature_hex": "392b3053e1d09500e3f9f740a3cbf4713935fcfa9b6ea19beef41dde9feb72a742d4cccd40001aa145a48dc400000268eee010c1a82fb8336c4035fef2245d61",
+              "avg_power_w": 279.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 36.4,
+              "time_s": 74,
+              "avg_gradient_pct": 5.6,
+              "distance_m": 649.0,
+              "vam": 1771.0,
+              "start_offset_s": 7004,
+              "end_offset_s": 7078,
+              "signature_hex": "58a1f354d51bc9af2994a1dc50c9dcf425c3972f90241413a1768949dd5d3fcd4211999a40b356ff44225f910000004a33fd6a7de2296e3b0353a659e27b5e7d",
+              "avg_power_w": 538.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 246.4,
+              "time_s": 1545,
+              "avg_gradient_pct": 2.1,
+              "distance_m": 11620.0,
+              "vam": 574.0,
+              "start_offset_s": 9497,
+              "end_offset_s": 11042,
+              "signature_hex": "7f1c4ce3283cd4dc6385b1d6bd29a187a1ff96b173c38ea50af65f7d162867fe437666664007b5fc46358ffd00000609ffa224e27fca157b3a8f644e9dcaf236",
+              "avg_power_w": 229.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 16.8,
+              "time_s": 90,
+              "avg_gradient_pct": 3.4,
+              "distance_m": 487.0,
+              "vam": 672.0,
+              "start_offset_s": 17159,
+              "end_offset_s": 17249,
+              "signature_hex": "ac0e80886d2d22a4721856c28b7594319b48d74f39e86bfe500aa9007d5f773541866666405c943143f3b8ec0000005a79b30f048bed669d132b3926339cc174",
+              "avg_power_w": 230.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 177.8,
+              "time_s": 1060,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 7861.0,
+              "vam": 604.0,
+              "start_offset_s": 17282,
+              "end_offset_s": 18342,
+              "signature_hex": "a3473f21e1f08096e5ac56a29eb69e29d7af677bc380c78431620006786bc8344331cccd400feed345f5ab87000004244ed55f66ebdac05669eeb6c73cd983b0",
+              "avg_power_w": 266.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.6,
+              "time_s": 219,
+              "avg_gradient_pct": 1.4,
+              "distance_m": 1985.0,
+              "vam": 470.0,
+              "start_offset_s": 18380,
+              "end_offset_s": 18599,
+              "signature_hex": "fc4edbd5c9023333d12f8d6f5250746768785235d689cadbef5ea37588a2b9ef41e4cccd3fb4971744f81353000000dbf4ab24338fe73364bf1bd749595e75fd",
+              "avg_power_w": 235.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 15.0,
+              "time_s": 249,
+              "avg_gradient_pct": 0.9,
+              "distance_m": 1727.0,
+              "vam": 217.0,
+              "start_offset_s": 24375,
+              "end_offset_s": 24624,
+              "signature_hex": "80a285e58545ea17e56e16a87fce25059c8292dc4a833614355975afa5703985417000003f5e51d244d7e7c7000000f9ba8ce79f085e30b04eca449a46cf0f47",
+              "avg_power_w": 166.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 19.2,
+              "time_s": 330,
+              "avg_gradient_pct": 0.6,
+              "distance_m": 3040.0,
+              "vam": 209.0,
+              "start_offset_s": 27084,
+              "end_offset_s": 27414,
+              "signature_hex": "33485fe1c4dbbe7983313cea2636032642a70f2d58f34bfd5688a9e2a4bfd00b4199999a3ef5dc7d453e069e0000014afae1882fdb2f65497d54a27ddae96acc",
+              "avg_power_w": 207.7,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 15.8,
+              "time_s": 321,
+              "avg_gradient_pct": 0.5,
+              "distance_m": 2985.0,
+              "vam": 177.0,
+              "start_offset_s": 27952,
+              "end_offset_s": 28273,
+              "signature_hex": "732b04154b1caaadf4a10b64d2233088f6dc9d4b700f5858a468afef6ca92a24417ccccd3ee5e08b453a88d10000014157557a21612b94f16e6d57b1c11564e5",
+              "avg_power_w": 214.1,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.4,
+              "time_s": 730,
+              "avg_gradient_pct": 0.8,
+              "distance_m": 6280.0,
+              "vam": 258.0,
+              "start_offset_s": 28746,
+              "end_offset_s": 29476,
+              "signature_hex": "ee22c00f8d6ae70ff3aa7cad9f1ffa9cba5206d46daa4f8bb4196405baa705844251999a3f413d0245c43c00000002daf9f087f4870530e6611cd72c3004df8e",
+              "avg_power_w": 206.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 15.2,
+              "time_s": 165,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 1235.0,
+              "vam": 332.0,
+              "start_offset_s": 29897,
+              "end_offset_s": 30062,
+              "signature_hex": "03c3f7fe5da4e0a0702144bfbf531025c87ca21c6bd9c898eb6629fd83326344417333333f9d9229449a57db000000a5f3bd545986d25a87ff3e0e3ace14a89c",
+              "avg_power_w": 188.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 15.2,
+              "time_s": 174,
+              "avg_gradient_pct": 1.6,
+              "distance_m": 971.0,
+              "vam": 314.0,
+              "start_offset_s": 30216,
+              "end_offset_s": 30390,
+              "signature_hex": "bdba076a09dc8bf6bc766f3b170f249f87832b806695e86f037c3258c2daebd4417333333fb8874c4472c7ea000000ae9e6a22c778b370d1e01e108bc2b1fa69",
+              "avg_power_w": 192.6,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 36.2,
+              "time_s": 73,
+              "avg_gradient_pct": 5.6,
+              "distance_m": 642.0,
+              "vam": 1785.0,
+              "start_offset_s": 7004,
+              "end_offset_s": 7077,
+              "signature_hex": "a637ea09e91b2eff2849a0c84e5898b3342517facf3039baf7641d71a57e3b6c4210cccd40b4933944206062000000490969fcd2530f73195debd2b74cba7ac0",
+              "avg_power_w": 538.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.2,
+              "time_s": 182,
+              "avg_gradient_pct": 2.2,
+              "distance_m": 1149.0,
+              "vam": 498.0,
+              "start_offset_s": 7242,
+              "end_offset_s": 7424,
+              "signature_hex": "94b40764c90a2122be613aefb506c6eabe4c88caf106f01fdfc37876de73230441c9999a3fec244c448fa47c000000b65ae030c21af8f5250ee6c58b38ac61f2",
+              "avg_power_w": 207.0,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 4,
+          "climbs": [
+            {
+              "vert_m": 317.0,
+              "time_s": 1935,
+              "avg_gradient_pct": 1.7,
+              "distance_m": 18574.0,
+              "vam": 590.0,
+              "start_offset_s": 4412,
+              "end_offset_s": 6347,
+              "signature_hex": "7c2edd752a67b3cb7535353fa115669855dc47a1049cb043f2ae192d28483752439e80003fd701e146911c800000078f70e465e1692f9c6dfc8c1f8337903ca4",
+              "avg_power_w": 274.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 230.0,
+              "time_s": 1387,
+              "avg_gradient_pct": 2.2,
+              "distance_m": 10490.0,
+              "vam": 597.0,
+              "start_offset_s": 9603,
+              "end_offset_s": 10990,
+              "signature_hex": "8b81db8368cb1adc6158bade85f75909aba107202d373d2a760a5755dbb68e9943660000400c52ee4623e80d0000056bf971edbba55a0e758ea708f8d46cd588",
+              "avg_power_w": 235.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 514.4,
+              "time_s": 1864,
+              "avg_gradient_pct": 6.3,
+              "distance_m": 8215.0,
+              "vam": 993.0,
+              "start_offset_s": 11173,
+              "end_offset_s": 13037,
+              "signature_hex": "8e566d2bac628645766baa9f5f1ef9e5bce4d3d0988325126c33fe70ee2e72054400999a40c861d446005ad100000748cd7bde10b06d73082c142c98f30eca5e",
+              "avg_power_w": 293.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 177.6,
+              "time_s": 1059,
+              "avg_gradient_pct": 2.3,
+              "distance_m": 7855.0,
+              "vam": 604.0,
+              "start_offset_s": 17283,
+              "end_offset_s": 18342,
+              "signature_hex": "e2828eeea96724e5e9aa2d5b4e1a43c47828999b6e7cfb9f71166216be8567d94331999a400fe41645f576b2000004238f576d68020755dd9d9dec7ba48c8aaf",
+              "avg_power_w": 266.1,
+              "avg_hr": null
+            }
+          ]
+        },
+        "mountainous": {
+          "count": 3,
+          "climbs": [
+            {
+              "vert_m": 119.0,
+              "time_s": 688,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 5864.0,
+              "vam": 623.0,
+              "start_offset_s": 5657,
+              "end_offset_s": 6345,
+              "signature_hex": "cfbde11eff3c9443c3f59ce8c15808eb64b0077f01603746071b24173d1e651942ee00003ffd35f245b73f20000002b05ef26ee9b6243cb3f7f85a123b06e146",
+              "avg_power_w": 284.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 222.0,
+              "time_s": 1349,
+              "avg_gradient_pct": 2.2,
+              "distance_m": 10222.0,
+              "vam": 592.0,
+              "start_offset_s": 9606,
+              "end_offset_s": 10955,
+              "signature_hex": "0026e9ee2b539a36ff748a93646cedaa81d490ac2b9b2d32220b8437c7f65067435e0000400afee8461fb79700000545cd505a585f69df1074b2a4eef0738ba2",
+              "avg_power_w": 235.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 514.0,
+              "time_s": 1863,
+              "avg_gradient_pct": 6.3,
+              "distance_m": 8210.0,
+              "vam": 993.0,
+              "start_offset_s": 11174,
+              "end_offset_s": 13037,
+              "signature_hex": "395fafa805635bdc510085eff8550bdc52e765abb9e23b247d285e036a3d21fd4400800040c858e1460046ff00000747cb483e8f790fe856baa4882206fca433",
+              "avg_power_w": 293.2,
+              "avg_hr": null
+            }
+          ]
+        },
+        "urban_hills": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 36.0,
+              "time_s": 72,
+              "avg_gradient_pct": 5.7,
+              "distance_m": 632.0,
+              "vam": 1800.0,
+              "start_offset_s": 7005,
+              "end_offset_s": 7077,
+              "signature_hex": "de60318837f782db54a43b98432cea03c98ec60847f9ac3f4c9850c2d3bbb6514210000040b64130441e054a00000048db56ade2e5d22b317bb268bef2d816e9",
+              "avg_power_w": 541.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.3,
+              "time_s": 179,
+              "avg_gradient_pct": 1.6,
+              "distance_m": 1579.0,
+              "vam": 509.0,
+              "start_offset_s": 18377,
+              "end_offset_s": 18556,
+              "signature_hex": "c04dad20f7ce3e0e6a6d7480bdc2ebea087db8458ca1a6f40ecb054cf6491e6041caaaab3fcd51db44c56a69000000b3cd845a99c468da168fa1130c0129bd09",
+              "avg_power_w": 243.6,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 3,
+        "auto_detected": 3,
+        "terrain_hint_detected": 3,
+        "hilly_default_detected": 4,
+        "auto_gap": 0,
+        "notes": []
+      }
+    },
+    {
+      "file": "Morning_Ride.fit",
+      "meta": {
+        "samples": 18910,
+        "duration_s": 25582,
+        "sport": "string(\"cycling\")",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": true,
+        "has_hr": false,
+        "elev_min_m": -70.0,
+        "elev_max_m": 117.0,
+        "elev_gain_naive_m": 1633.0
+      },
+      "expected_climb_count": 1,
+      "detections": {
+        "auto": {
+          "count": 0,
+          "climbs": []
+        },
+        "flat": {
+          "count": 25,
+          "climbs": [
+            {
+              "vert_m": 19.6,
+              "time_s": 68,
+              "avg_gradient_pct": 7.2,
+              "distance_m": 273.0,
+              "vam": 1038.0,
+              "start_offset_s": 1938,
+              "end_offset_s": 2006,
+              "signature_hex": "26dcf03daecfce1119fc86593d353ec00f21d8dd56c0479a8e15cca5889c8558419ccccd40e5a15c4388913d0000004488d52e735e92a3862360ea91ce6bbf1c",
+              "avg_power_w": 241.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 26.4,
+              "time_s": 154,
+              "avg_gradient_pct": 2.8,
+              "distance_m": 934.0,
+              "vam": 617.0,
+              "start_offset_s": 2657,
+              "end_offset_s": 2811,
+              "signature_hex": "13c7ccffcc4542aa79b7d5a6d44b91192736d1633005764ec2bb4d1f8749d3b841d333334034e8ac44697cdc0000009aa4027ea5eed83ec1dcd6d5fd6e5a9d37",
+              "avg_power_w": 214.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.2,
+              "time_s": 233,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1136.0,
+              "vam": 482.0,
+              "start_offset_s": 3118,
+              "end_offset_s": 3351,
+              "signature_hex": "d26c78c66c525f5fd57f81a8ea1098739034eb8b835c994cfa946ab37920cdd641f9999a402c5eaf448e052b000000e994017f72788adb51cc106666177dafc8",
+              "avg_power_w": 220.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 46.6,
+              "time_s": 204,
+              "avg_gradient_pct": 5.4,
+              "distance_m": 861.0,
+              "vam": 822.0,
+              "start_offset_s": 3552,
+              "end_offset_s": 3756,
+              "signature_hex": "876fe38c83511f5961445d9cebf8778fe4855dcb3ce6be707c327170afc6032b423a666640a97ca944573ce1000000cc011a305d0853ea775d7994270b66e576",
+              "avg_power_w": 251.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 15.2,
+              "time_s": 159,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 1267.0,
+              "vam": 344.0,
+              "start_offset_s": 3929,
+              "end_offset_s": 4088,
+              "signature_hex": "15e2fe7b928e22ebba75ed2d246a82a59693434abe5b21b0f8091e9899d0d7f1417333333f8f80f6449e52ca0000009f35ed107a42c598cd90eaad418fa29452",
+              "avg_power_w": 206.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 15.4,
+              "time_s": 99,
+              "avg_gradient_pct": 3.8,
+              "distance_m": 401.0,
+              "vam": 560.0,
+              "start_offset_s": 5144,
+              "end_offset_s": 5243,
+              "signature_hex": "59b067cf210f536f792a59d1932b831ac4623aa8acf650bcc91046be13956013417666664075cf2b43c87b0c00000063ad5833e76bf7f151ed7b4ebda862849a",
+              "avg_power_w": 260.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 34.2,
+              "time_s": 226,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 1750.0,
+              "vam": 545.0,
+              "start_offset_s": 5286,
+              "end_offset_s": 5512,
+              "signature_hex": "f64ff31d7f3a5d50f08e1a06ad6cff3f9ea40697b15a18f3f8d895efdf4aeedf4208cccd3ff2cfb944dac546000000e294b466ac84651bd4c9af2221cbe83f21",
+              "avg_power_w": 231.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 17.2,
+              "time_s": 114,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 637.0,
+              "vam": 543.0,
+              "start_offset_s": 5841,
+              "end_offset_s": 5955,
+              "signature_hex": "5f94363c8514193261167b81e1ea0d1087a9c70d8ff3e0aaf2865495ada0168c4189999a402cb17e441f5b8e00000072d370863542fd0e2c9ba2ed82185545fa",
+              "avg_power_w": 220.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 22.6,
+              "time_s": 161,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 1143.0,
+              "vam": 505.0,
+              "start_offset_s": 6460,
+              "end_offset_s": 6621,
+              "signature_hex": "c134b6b8d628a465c440621a7116fb28e88e8081ccc6db1d79ee5c52ee215c1541b4cccd3ffcfffd448eecc8000000a1a4970d15052430606f4cfdcc1af60031",
+              "avg_power_w": 250.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 19.4,
+              "time_s": 116,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 976.0,
+              "vam": 602.0,
+              "start_offset_s": 7141,
+              "end_offset_s": 7257,
+              "signature_hex": "f6ff36482d6845c1e5a7e1db45d3acb145144de8b82b0a83de37a8b76b773f48419b33333ffe5635447415fa000000744b05f21ff87121490c557842492c70a4",
+              "avg_power_w": 244.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 36.4,
+              "time_s": 192,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1334.0,
+              "vam": 683.0,
+              "start_offset_s": 7290,
+              "end_offset_s": 7482,
+              "signature_hex": "85df8bbb9d26b7079cc45d62f69b55000d935ddc67e343bb6dd8ce37732c6c064211999a402e92ef44a6ce5c000000c01f0286de65d26a2ba79fd605bace9a2c",
+              "avg_power_w": 246.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 32.8,
+              "time_s": 130,
+              "avg_gradient_pct": 5.6,
+              "distance_m": 585.0,
+              "vam": 908.0,
+              "start_offset_s": 8441,
+              "end_offset_s": 8571,
+              "signature_hex": "c097ff9931c4f600782fcae4ec03f0e56c440f3870927df5504ab7b0b0533ee74203333340b3811f44122e2700000082122c9d430a469bce0f77aa2e419d5f4f",
+              "avg_power_w": 218.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 18.8,
+              "time_s": 85,
+              "avg_gradient_pct": 6.5,
+              "distance_m": 291.0,
+              "vam": 796.0,
+              "start_offset_s": 9658,
+              "end_offset_s": 9743,
+              "signature_hex": "c344ed6ba25116f4918099be3d09e325131d1913e5fa21a8cb08d55a625e12404196666640cf0ab7439148de00000055ae0bf5dff74f72ae2de415fdfe3ce90b",
+              "avg_power_w": 193.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 48.8,
+              "time_s": 394,
+              "avg_gradient_pct": 6.6,
+              "distance_m": 734.0,
+              "vam": 446.0,
+              "start_offset_s": 9798,
+              "end_offset_s": 10192,
+              "signature_hex": "6b5757f51ae8554815b8f42f00d06b8ffd451cfdf1673b91490c69436fd96f234243333340d4a90b443794420000018a0f82ddaca66c1c94bc14f6095ffc79d4",
+              "avg_power_w": 268.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 43.4,
+              "time_s": 223,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1600.0,
+              "vam": 701.0,
+              "start_offset_s": 10489,
+              "end_offset_s": 10712,
+              "signature_hex": "e7a1a6f85d98617cf7e44f1b3d180a06fa8cf526eb941a83816413b43339c014422d999a402d905144c80ab2000000df4cd481c279cd539872822359c6cd1d67",
+              "avg_power_w": 230.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.6,
+              "time_s": 89,
+              "avg_gradient_pct": 7.1,
+              "distance_m": 442.0,
+              "vam": 1278.0,
+              "start_offset_s": 11019,
+              "end_offset_s": 11108,
+              "signature_hex": "715e0633f07ea12052a4a02058d51da85f2841a54d10d1834d388f09329ae6f741fccccd40e489df43dd3b580000005941471fd447328c45213b7db82c90259d",
+              "avg_power_w": 242.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.8,
+              "time_s": 131,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 973.0,
+              "vam": 709.0,
+              "start_offset_s": 15418,
+              "end_offset_s": 15549,
+              "signature_hex": "7d89739c1a665db21e015a8cc4deea7e99f5bd5199846736bfed01960077149641ce666640231e344473426f00000083e399c193b37bcc959e5fb49b86e34794",
+              "avg_power_w": 246.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 55.4,
+              "time_s": 293,
+              "avg_gradient_pct": 2.9,
+              "distance_m": 1891.0,
+              "vam": 681.0,
+              "start_offset_s": 15589,
+              "end_offset_s": 15882,
+              "signature_hex": "19ebf6311947bef2334bb917ef9d642641cf9b3cc5a12b547b02c7369b79794b425d999a4038267844ec5429000001255c524efcbdf599ec76b8635a46f522df",
+              "avg_power_w": 233.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 19.0,
+              "time_s": 151,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 612.0,
+              "vam": 453.0,
+              "start_offset_s": 16736,
+              "end_offset_s": 16887,
+              "signature_hex": "45d7fc99d750dfb54939764e9fd23f88d4c20e8072b183771500882d3a444e3241980000403c43614418fa3200000097e0e28c328fdc837686c7646461b0935e",
+              "avg_power_w": 238.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.4,
+              "time_s": 316,
+              "avg_gradient_pct": 0.8,
+              "distance_m": 2552.0,
+              "vam": 244.0,
+              "start_offset_s": 16919,
+              "end_offset_s": 17235,
+              "signature_hex": "ce39bb6b2f54b0e349b39262ec9068330ba04a2dd55eca209b51945b79ebfaba41ab33333f4caa0f451f7b0e0000013ce669cfeb3a85c63667abe63c51e84f90",
+              "avg_power_w": 238.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 17.6,
+              "time_s": 231,
+              "avg_gradient_pct": 0.8,
+              "distance_m": 2195.0,
+              "vam": 274.0,
+              "start_offset_s": 17368,
+              "end_offset_s": 17599,
+              "signature_hex": "42056ea5709d78b898484711a58974b1af6bee732013755813630c0341ca771b418ccccd3f3f3bbc450936ee000000e752eae85b8b21a4e4ac232741a9936dd0",
+              "avg_power_w": 208.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 41.2,
+              "time_s": 406,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 3405.0,
+              "vam": 365.0,
+              "start_offset_s": 18523,
+              "end_offset_s": 18929,
+              "signature_hex": "444f79d8f92a7234f52211948747cef923ac7b9979f3ade75c3ea665d80feb0c4224cccd3f97dd934554d1e30000019603e953805ebcb8be2851df2ec5803d91",
+              "avg_power_w": 248.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 16.4,
+              "time_s": 287,
+              "avg_gradient_pct": 0.6,
+              "distance_m": 2913.0,
+              "vam": 206.0,
+              "start_offset_s": 19623,
+              "end_offset_s": 19910,
+              "signature_hex": "2ca6cab803f9a940dee71f4b2a7617f7083f94b3dd8dc369e72a07683acaddd7418333333f1026644536085c0000011f89e593a41c3c1cf85d8a3bc43aa78c6d",
+              "avg_power_w": 231.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 83.0,
+              "time_s": 403,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 3192.0,
+              "vam": 741.0,
+              "start_offset_s": 20124,
+              "end_offset_s": 20527,
+              "signature_hex": "0cec3aa411d73d69d54e0f7593a5702b6ca9fcca3b3ed355d168e71a4957ab1f42a6000040266f0745477a940000019334593809f5956eef764e6b2eb148e9fe",
+              "avg_power_w": 234.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.4,
+              "time_s": 86,
+              "avg_gradient_pct": 3.5,
+              "distance_m": 613.0,
+              "vam": 896.0,
+              "start_offset_s": 22174,
+              "end_offset_s": 22260,
+              "signature_hex": "aace9ba6925f6fdb9cd7c57660362eccfdcf382d5df23a618d43b316ba69228d41ab3333405f5bf944194baf00000056cd7867b309f92bf026023ed2b514362c",
+              "avg_power_w": 242.5,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 17,
+          "climbs": [
+            {
+              "vert_m": 25.6,
+              "time_s": 126,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 720.0,
+              "vam": 731.0,
+              "start_offset_s": 2684,
+              "end_offset_s": 2810,
+              "signature_hex": "b35c310383dbae4aa1e204f61fcf0a072376d6f4fd866a8eab6349f9f00213fd41cccccd406376fe443412620000007e9ce09238b0e59c4eafa1bfbfd506dcff",
+              "avg_power_w": 224.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.8,
+              "time_s": 231,
+              "avg_gradient_pct": 2.8,
+              "distance_m": 1115.0,
+              "vam": 480.0,
+              "start_offset_s": 3119,
+              "end_offset_s": 3350,
+              "signature_hex": "dd5bbb4b577ada2082438d52bfb28a5f78490955b0cd11fe6d821ec677490af841f66666402d6570448b5584000000e77852d203fcb1374ac1430c2e3a6c093d",
+              "avg_power_w": 220.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 46.2,
+              "time_s": 202,
+              "avg_gradient_pct": 5.5,
+              "distance_m": 847.0,
+              "vam": 823.0,
+              "start_offset_s": 3553,
+              "end_offset_s": 3755,
+              "signature_hex": "ab717298300199f1f384d0f7ca1028ca0c12992c360b395fee5e87383173d4a34238cccd40aadad44453a447000000ca4be00d7f63a8839b2edfe0e4d05dffb1",
+              "avg_power_w": 252.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 28.2,
+              "time_s": 239,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1465.0,
+              "vam": 425.0,
+              "start_offset_s": 5003,
+              "end_offset_s": 5242,
+              "signature_hex": "1c33873b22f82a6a01c46782e7cd69839e21fffd9877a02ea1d3c7ca825c49f641e1999a3fe4f39044b7187a000000efffc91b3b876b0164f262f9c70fc771a7",
+              "avg_power_w": 206.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 34.2,
+              "time_s": 226,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 1750.0,
+              "vam": 545.0,
+              "start_offset_s": 5286,
+              "end_offset_s": 5512,
+              "signature_hex": "f64ff31d7f3a5d50f08e1a06ad6cff3f9ea40697b15a18f3f8d895efdf4aeedf4208cccd3ff2cfb944dac546000000e294b466ac84651bd4c9af2221cbe83f21",
+              "avg_power_w": 231.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 36.2,
+              "time_s": 191,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1328.0,
+              "vam": 682.0,
+              "start_offset_s": 7291,
+              "end_offset_s": 7482,
+              "signature_hex": "f3bbdd9e85d70570a250769dbb1c4d0d9d2bfb8d0a685fefd1508b11bbce47c64210cccd402e6e1744a606c6000000bfe5265734d1ea04e0876b405699cefaf6",
+              "avg_power_w": 246.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 32.4,
+              "time_s": 128,
+              "avg_gradient_pct": 5.7,
+              "distance_m": 572.0,
+              "vam": 911.0,
+              "start_offset_s": 8442,
+              "end_offset_s": 8570,
+              "signature_hex": "3ce38be5fc974c3a1d513e7a69d78728343feaced3bcef730275925b346641024201999a40b53d4e440f03e400000080bbea77968af0815949653a31fb462776",
+              "avg_power_w": 218.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 48.4,
+              "time_s": 392,
+              "avg_gradient_pct": 6.7,
+              "distance_m": 721.0,
+              "vam": 444.0,
+              "start_offset_s": 9799,
+              "end_offset_s": 10191,
+              "signature_hex": "65d16dc40831bcc117abf81afe8525139a8200165ea88fdf7a60190ed93168274241999a40d6d38944343d170000018818063eabe0d666f0e4c5d22712a70962",
+              "avg_power_w": 270.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 41.4,
+              "time_s": 208,
+              "avg_gradient_pct": 2.9,
+              "distance_m": 1446.0,
+              "vam": 717.0,
+              "start_offset_s": 10503,
+              "end_offset_s": 10711,
+              "signature_hex": "bae39e36e3ec911389629f9ff07b77eb17493f8b81eed7ae31e5ab07f2d20a894225999a403730f344b4cb72000000d0d46a408ad3e51451fc32e78b078f985a",
+              "avg_power_w": 229.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.2,
+              "time_s": 87,
+              "avg_gradient_pct": 7.3,
+              "distance_m": 428.0,
+              "vam": 1291.0,
+              "start_offset_s": 11020,
+              "end_offset_s": 11107,
+              "signature_hex": "e79582addbf9976145bdf3f447a0fd0c60eaffc09d0ace408293e01f2b2b105641f9999a40e97f1043d5cb2300000057bcc6dd8eb5430df4f879e6dd13d054c3",
+              "avg_power_w": 245.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.4,
+              "time_s": 129,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 959.0,
+              "vam": 709.0,
+              "start_offset_s": 15419,
+              "end_offset_s": 15548,
+              "signature_hex": "43eba5bd868478c98f58884d124b58faaed8b60e3381a79ad173f1c334809a9941cb33334022d7c2446fbd8c000000814dae4d5d359d43cbab1da3c1d6ee1c55",
+              "avg_power_w": 245.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 52.2,
+              "time_s": 274,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 1736.0,
+              "vam": 686.0,
+              "start_offset_s": 15607,
+              "end_offset_s": 15881,
+              "signature_hex": "f443d1c4791a3cdf88bd901f0826ffebb5109f456d4801d47a7ab9946abc5c4c4250cccd403cc96644d8f6e50000011278745f961ffbc30bcaef096c646efdad",
+              "avg_power_w": 233.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 38.2,
+              "time_s": 443,
+              "avg_gradient_pct": 1.3,
+              "distance_m": 3009.0,
+              "vam": 310.0,
+              "start_offset_s": 16791,
+              "end_offset_s": 17234,
+              "signature_hex": "d3a6d8c9579846522f4c591389a2b1f8763ea47102171ab6340bdcb9404f06a94218cccd3f95bf14453c0d20000001bbb316ebd3125e047df605787c74bceed0",
+              "avg_power_w": 236.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.0,
+              "time_s": 398,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 3339.0,
+              "vam": 362.0,
+              "start_offset_s": 18531,
+              "end_offset_s": 18929,
+              "signature_hex": "9c89775cb1104c969f40e9d186536d993f9a788d4c31012e8c53513087f633df422000003f964a0b4550aa100000018ec8ded592f548172d1911fec434ce6547",
+              "avg_power_w": 248.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 78.2,
+              "time_s": 347,
+              "avg_gradient_pct": 2.9,
+              "distance_m": 2743.0,
+              "vam": 811.0,
+              "start_offset_s": 20133,
+              "end_offset_s": 20480,
+              "signature_hex": "0aaa6d74d145e47943e662846c8c1da78168547ddf393c63175bc9e9d07bbd6e429c666640367bff452b69750000015baa542d637c81dd7bcee2284159c23d64",
+              "avg_power_w": 234.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 35.0,
+              "time_s": 262,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1862.0,
+              "vam": 481.0,
+              "start_offset_s": 23385,
+              "end_offset_s": 23647,
+              "signature_hex": "9e2c74b1fe14c21d4e209396ce92bfd0fd3b003f09f18ca121f5aff1e5cbec31420c00003ff0a31744e8b73200000106140117969de55a1dec043d0fc5a2fae4",
+              "avg_power_w": 232.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 29.4,
+              "time_s": 222,
+              "avg_gradient_pct": 1.6,
+              "distance_m": 1813.0,
+              "vam": 477.0,
+              "start_offset_s": 25329,
+              "end_offset_s": 25551,
+              "signature_hex": "472e1a4185eb5453e1f432e05dd78b535b6013bb00970d4445b7ef4eff0b02a141eb33333fc70b1b44e2af2c000000de4f2232a00c789e5f852e69b5dc42b590",
+              "avg_power_w": 232.9,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 1,
+          "climbs": [
+            {
+              "vert_m": 83.8,
+              "time_s": 541,
+              "avg_gradient_pct": 2.6,
+              "distance_m": 3245.0,
+              "vam": 558.0,
+              "start_offset_s": 20167,
+              "end_offset_s": 20708,
+              "signature_hex": "37e294a0c15dbdd4f0b8e3317acfbe723423adf53977d794e504e1ba32b7caeb42a7999a4020ea97454ad69a0000021dfdb9af362ffe472de677a7a6823aee0b",
+              "avg_power_w": 232.8,
+              "avg_hr": null
+            }
+          ]
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 20,
+          "climbs": [
+            {
+              "vert_m": 25.7,
+              "time_s": 125,
+              "avg_gradient_pct": 3.6,
+              "distance_m": 717.0,
+              "vam": 739.0,
+              "start_offset_s": 2685,
+              "end_offset_s": 2810,
+              "signature_hex": "1ca12554fcf15a8d5e25d09fbe6f83b9032a208692e0fb60102d9a79731a0ea641cd555540652da3443330e10000007d7f51ac3448f385a6b10fc65a1ccdfaf7",
+              "avg_power_w": 224.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.7,
+              "time_s": 231,
+              "avg_gradient_pct": 2.8,
+              "distance_m": 1115.0,
+              "vam": 494.0,
+              "start_offset_s": 3119,
+              "end_offset_s": 3350,
+              "signature_hex": "12a3d43c3c1772ded17ccd10e155ec342c53d6f942e2816d76540ccc969b142041fd5555402e296a448b5584000000e7af7c908cba849a4f21a761e28b4714ae",
+              "avg_power_w": 220.8,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 46.3,
+              "time_s": 202,
+              "avg_gradient_pct": 5.5,
+              "distance_m": 847.0,
+              "vam": 826.0,
+              "start_offset_s": 3553,
+              "end_offset_s": 3755,
+              "signature_hex": "81bac295fa1ac491146fb8f17205658bd819c982f1a48fb6f044e9f72030f9594239555540ab5bda4453a447000000cae6affdc79b0ac04ab5ea8af3cd189bbc",
+              "avg_power_w": 252.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 34.0,
+              "time_s": 225,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1744.0,
+              "vam": 544.0,
+              "start_offset_s": 5287,
+              "end_offset_s": 5512,
+              "signature_hex": "d953c989f8207ffe29a681c3f407240e6e9a58d35705463682f31f3c174ebe6a420800003ff235ec44d9fdf9000000e1aded71954dfd05c14189bc309eae0b71",
+              "avg_power_w": 230.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.7,
+              "time_s": 154,
+              "avg_gradient_pct": 2.0,
+              "distance_m": 1093.0,
+              "vam": 506.0,
+              "start_offset_s": 6466,
+              "end_offset_s": 6620,
+              "signature_hex": "6c4a2754db02fde41d7036d596163ab2da8c8893d1f5502a70edd9d155d9dea041ad55553ffdd0664488953b0000009a3e43f7c5f909264127767b40c7227727",
+              "avg_power_w": 254.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 36.3,
+              "time_s": 191,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 1328.0,
+              "vam": 685.0,
+              "start_offset_s": 7291,
+              "end_offset_s": 7482,
+              "signature_hex": "91943a9a937eb06ebf1e8dd90949b2c5d38c42f9a64c0b273fcf8fda6cc5691a42115555402f129044a606c6000000bf5c880f7e7f8e100d5046add1ffc6d3f3",
+              "avg_power_w": 246.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 32.7,
+              "time_s": 128,
+              "avg_gradient_pct": 5.7,
+              "distance_m": 572.0,
+              "vam": 919.0,
+              "start_offset_s": 8442,
+              "end_offset_s": 8570,
+              "signature_hex": "a1693ab14b0d8f7e669b52286261a53695e4a99171314f63a52ef6add7ee125f4202aaab40b6bb2d440f03e4000000806e06aa8182830a31993c27094e23fda4",
+              "avg_power_w": 218.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 48.3,
+              "time_s": 391,
+              "avg_gradient_pct": 6.8,
+              "distance_m": 715.0,
+              "vam": 445.0,
+              "start_offset_s": 9799,
+              "end_offset_s": 10190,
+              "signature_hex": "75153313c17941242ee86caf4c990b4eec8697200fb8581db487988af1ca75244241555540d841674432cd06000001876b6070d4688f02200f0292418fe68959",
+              "avg_power_w": 271.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 41.3,
+              "time_s": 207,
+              "avg_gradient_pct": 2.9,
+              "distance_m": 1438.0,
+              "vam": 719.0,
+              "start_offset_s": 10504,
+              "end_offset_s": 10711,
+              "signature_hex": "524ab8d163f01ee69a5280acf4e0db6244a13dc3b2a659645716a85e8e1bacd5422555554038058144b3b06c000000cf4d03db86b7db6f76b17448ac3b02e5bb",
+              "avg_power_w": 229.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.3,
+              "time_s": 87,
+              "avg_gradient_pct": 7.3,
+              "distance_m": 428.0,
+              "vam": 1297.0,
+              "start_offset_s": 11020,
+              "end_offset_s": 11107,
+              "signature_hex": "2ad508e98de3086e5cdff10d8c1aa9dad3f924474c287fde061c8ee42d4bf0e041faaaab40ea7e8343d5cb2300000057b426cb343c2e8250225321da3da62ded",
+              "avg_power_w": 245.3,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 25.7,
+              "time_s": 129,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 959.0,
+              "vam": 716.0,
+              "start_offset_s": 15419,
+              "end_offset_s": 15548,
+              "signature_hex": "c0b502e0545c2e55252e5d3f96d679edade739a777941e71ce08d3bb482863b141cd555540249f5c446fbd8c00000081c7f09a450db37ad7fb0b3bfeaa3d03eb",
+              "avg_power_w": 245.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 53.3,
+              "time_s": 280,
+              "avg_gradient_pct": 3.0,
+              "distance_m": 1783.0,
+              "vam": 686.0,
+              "start_offset_s": 15601,
+              "end_offset_s": 15881,
+              "signature_hex": "5b0cb9997bbeb3d734890b7a0dbcdb4fa3b2edd31b7a60722094c90baa540c2e42555555403bdabc44dede1b00000118592267bb1597771ef61343d0f8ae9953",
+              "avg_power_w": 233.4,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.0,
+              "time_s": 314,
+              "avg_gradient_pct": 0.8,
+              "distance_m": 2534.0,
+              "vam": 241.0,
+              "start_offset_s": 16920,
+              "end_offset_s": 17234,
+              "signature_hex": "5693f90c0050090155d5568936b1ebdb289f8917eeed026792b15ebf52c2703841a800003f4a0be3451e61230000013a49f7d5622d0ad4cd932b798ec42f1fd1",
+              "avg_power_w": 238.9,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 40.3,
+              "time_s": 398,
+              "avg_gradient_pct": 1.2,
+              "distance_m": 3339.0,
+              "vam": 365.0,
+              "start_offset_s": 18530,
+              "end_offset_s": 18928,
+              "signature_hex": "7985fb097b76787edd0526806c698727d56c42d3ae2f119bef8a3680335997d1422155553f96c53e4550b4ac0000018e8a69d7d2bf6c12fbdc7a4db5bc9963fc",
+              "avg_power_w": 248.6,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 81.3,
+              "time_s": 382,
+              "avg_gradient_pct": 2.7,
+              "distance_m": 3025.0,
+              "vam": 766.0,
+              "start_offset_s": 20133,
+              "end_offset_s": 20515,
+              "signature_hex": "2b1eb8ef898aa9e02e76b5223539795de6f35723e2d7445e2935122dd955361d42a2aaab402c1970453d09bf0000017e2f89004cc268f44e424f0bbc86146a40",
+              "avg_power_w": 234.2,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.7,
+              "time_s": 86,
+              "avg_gradient_pct": 3.5,
+              "distance_m": 613.0,
+              "vam": 907.0,
+              "start_offset_s": 22174,
+              "end_offset_s": 22260,
+              "signature_hex": "b1e28e456e7c8c69654edd263d7ebe7f682c815bcc49ed63836873ad73c57bc341ad55554062247f44194baf000000561cdf4221645374bdce91b5845ee4daae",
+              "avg_power_w": 242.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 21.3,
+              "time_s": 96,
+              "avg_gradient_pct": 3.1,
+              "distance_m": 687.0,
+              "vam": 800.0,
+              "start_offset_s": 22871,
+              "end_offset_s": 22967,
+              "signature_hex": "cbf510b63e091c6fced9b59abf021a128dfff123dcecd7b669bbf9a55f6f0a5f41aaaaab4046aa24442bd05900000060ffe18424640f064a79cfd3de2888037e",
+              "avg_power_w": 271.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 35.0,
+              "time_s": 260,
+              "avg_gradient_pct": 1.9,
+              "distance_m": 1856.0,
+              "vam": 485.0,
+              "start_offset_s": 23386,
+              "end_offset_s": 23646,
+              "signature_hex": "15bdd7356edfd584df0089562ea5aee3dc42a0984eef03f3d3ffd56519dba1d6420c00003ff16ca544e7f4e9000001047974b2d0b424932c7d01b0eb1998b982",
+              "avg_power_w": 232.5,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 31.3,
+              "time_s": 330,
+              "avg_gradient_pct": 1.3,
+              "distance_m": 2466.0,
+              "vam": 342.0,
+              "start_offset_s": 24899,
+              "end_offset_s": 25229,
+              "signature_hex": "b52d46c4d7594caf84bbb5037c96946866306e85503f56e4df2b15efbec0635441faaaab3f9bb36e451a24460000014aa2a88b68814e6c7b62b5eecc817ee65d",
+              "avg_power_w": 189.0,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 30.0,
+              "time_s": 222,
+              "avg_gradient_pct": 1.7,
+              "distance_m": 1813.0,
+              "vam": 486.0,
+              "start_offset_s": 25329,
+              "end_offset_s": 25551,
+              "signature_hex": "42673aaaa9c959469871a3273fb422cb5748588e7f60e310f29ffd8fbf8bb9b641f000003fc7fc0744e2af2c000000de96bc94042eac75dce4ee4f8aba68b0fe",
+              "avg_power_w": 232.9,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 1,
+        "auto_detected": 0,
+        "terrain_hint_detected": 1,
+        "hilly_default_detected": 1,
+        "auto_gap": 1,
+        "notes": [
+          "CRITICAL: terrain=auto finds 0 climbs despite known climbs \u2014 discrete classification gap",
+          "auto misses 1 expected climb(s)"
+        ]
+      }
+    },
+    {
+      "file": "t_h_e_w_a_l_l.fit",
+      "meta": {
+        "samples": 467,
+        "duration_s": 2189,
+        "sport": "string(\"cycling\")",
+        "has_gps": true,
+        "has_elevation": true,
+        "has_power": false,
+        "has_hr": false,
+        "elev_min_m": -37.0,
+        "elev_max_m": 66.0,
+        "elev_gain_naive_m": 213.0
+      },
+      "expected_climb_count": 2,
+      "detections": {
+        "auto": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 80.8,
+              "time_s": 397,
+              "avg_gradient_pct": 4.6,
+              "distance_m": 1763.0,
+              "vam": 733.0,
+              "start_offset_s": 1400,
+              "end_offset_s": 1797,
+              "signature_hex": "3e7388e852a87c135622715546b84b5591cb536a88b48c9f1a09791df867082342a1999a4081f58f44dc60780000018d5474c07362abd4d5d5228f844e21acca",
+              "avg_power_w": null,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 58.7,
+              "time_s": 113,
+              "avg_gradient_pct": 11.2,
+              "distance_m": 525.0,
+              "vam": 1869.0,
+              "start_offset_s": 2076,
+              "end_offset_s": 2189,
+              "signature_hex": "95e879b62dd74bf19173968866d540ca25b3953fc18e2b3d634a95323e80887c426aaaab4132dac044033492000000715b8fced96fa22054a9e67d9ec38ae82c",
+              "avg_power_w": null,
+              "avg_hr": null
+            }
+          ]
+        },
+        "flat": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 81.6,
+              "time_s": 403,
+              "avg_gradient_pct": 4.5,
+              "distance_m": 1808.0,
+              "vam": 729.0,
+              "start_offset_s": 1394,
+              "end_offset_s": 1797,
+              "signature_hex": "18cb8f194ff9587d07899bf0135fda1b4cfc5a1aa64fb2ebf56713b6a7414ed642a3333340802a0744e1f5cf000001938ec3697e7d1796a850454842cfc93689",
+              "avg_power_w": null,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 59.5,
+              "time_s": 114,
+              "avg_gradient_pct": 11.2,
+              "distance_m": 533.0,
+              "vam": 1878.0,
+              "start_offset_s": 2075,
+              "end_offset_s": 2189,
+              "signature_hex": "6bfe3f8e6776aeed420ad7d6428e3184058627d4b5118578275053990275bf56426dddde4132835a44053fb60000007249e70f530f994851f9591bf014759172",
+              "avg_power_w": null,
+              "avg_hr": null
+            }
+          ]
+        },
+        "rolling": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 80.8,
+              "time_s": 397,
+              "avg_gradient_pct": 4.6,
+              "distance_m": 1763.0,
+              "vam": 733.0,
+              "start_offset_s": 1400,
+              "end_offset_s": 1797,
+              "signature_hex": "3e7388e852a87c135622715546b84b5591cb536a88b48c9f1a09791df867082342a1999a4081f58f44dc60780000018d5474c07362abd4d5d5228f844e21acca",
+              "avg_power_w": null,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 58.7,
+              "time_s": 113,
+              "avg_gradient_pct": 11.2,
+              "distance_m": 525.0,
+              "vam": 1869.0,
+              "start_offset_s": 2076,
+              "end_offset_s": 2189,
+              "signature_hex": "95e879b62dd74bf19173968866d540ca25b3953fc18e2b3d634a95323e80887c426aaaab4132dac044033492000000715b8fced96fa22054a9e67d9ec38ae82c",
+              "avg_power_w": null,
+              "avg_hr": null
+            }
+          ]
+        },
+        "hilly": {
+          "count": 1,
+          "climbs": [
+            {
+              "vert_m": 74.0,
+              "time_s": 318,
+              "avg_gradient_pct": 6.1,
+              "distance_m": 1212.0,
+              "vam": 838.0,
+              "start_offset_s": 1479,
+              "end_offset_s": 1797,
+              "signature_hex": "05a92e2c6ff95b43ab3e736f76f9c0816959da99c8a050ae4e4de021d4a012544294000040b38cba44977d760000013e4c5b2d6524f8c46fda42148f18af1383",
+              "avg_power_w": null,
+              "avg_hr": null
+            }
+          ]
+        },
+        "mountainous": {
+          "count": 0,
+          "climbs": []
+        },
+        "urban_hills": {
+          "count": 2,
+          "climbs": [
+            {
+              "vert_m": 86.7,
+              "time_s": 399,
+              "avg_gradient_pct": 4.9,
+              "distance_m": 1771.0,
+              "vam": 782.0,
+              "start_offset_s": 1400,
+              "end_offset_s": 1799,
+              "signature_hex": "1acc29363acf6d97876631199d121e89602f67f13b3a838b76056f85e79b4b8142ad55554087822b44dd636c0000018f246d3aec03e338df5183586873f9e921",
+              "avg_power_w": null,
+              "avg_hr": null
+            },
+            {
+              "vert_m": 59.0,
+              "time_s": 113,
+              "avg_gradient_pct": 11.2,
+              "distance_m": 525.0,
+              "vam": 1880.0,
+              "start_offset_s": 2076,
+              "end_offset_s": 2189,
+              "signature_hex": "754229b9835659ab9cc527e946fdede396799f00a4504069b0fe4ad3dcc79bd6426c00004133dee74403349200000071a09d6e22d68ba945fa242a58b03645e9",
+              "avg_power_w": null,
+              "avg_hr": null
+            }
+          ]
+        }
+      },
+      "summary": {
+        "expected": 2,
+        "auto_detected": 2,
+        "terrain_hint_detected": 2,
+        "hilly_default_detected": 1,
+        "auto_gap": 0,
+        "notes": []
+      }
+    }
+  ],
+  "global_summary": {
+    "total_files": 8,
+    "total_expected_climbs": 21,
+    "total_auto_detected": 10,
+    "total_hilly_detected": 19,
+    "auto_recall": 0.476,
+    "hilly_recall": 0.905
+  }
+}

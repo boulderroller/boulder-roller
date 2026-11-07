@@ -1,0 +1,14 @@
+{
+  "name": "boulder-roller-docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "VITE_EXTRA_EXTENSIONS=jsonl vitepress dev",
+    "build": "VITE_EXTRA_EXTENSIONS=jsonl vitepress build",
+    "preview": "VITE_EXTRA_EXTENSIONS=jsonl vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0"
+  }
+}

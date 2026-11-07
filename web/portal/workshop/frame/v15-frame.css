@@ -1,0 +1,9 @@
+/* Only the shared frame's additions to Climb V15. */
+.v15-frame .c15-sidebar{height:calc(100vh - 34px);height:calc(100dvh - 34px);overflow:hidden}
+.v15-frame .v15-main-nav{flex:1;min-height:0;overflow:auto}
+.v15-frame .c15-sidebar .v15-rail-foot{flex:none;padding:8px 12px;border-top:1px solid var(--c15-rule)}
+.v15-frame .v15-rail-foot .c15-nav-item{color:var(--c15-ink-3)}
+.v15-frame button.c15-nav-sub{width:100%;text-align:left}
+.v15-frame .c15-nav-sub-name,.v15-frame .c15-nav-sub-place{line-height:20px}
+.v15-frame .v15-topbar-action{display:flex;align-items:center;gap:8px;margin-left:auto}
+.v15-frame .c15-sheet{padding:var(--c15-seam);gap:var(--c15-seam)}

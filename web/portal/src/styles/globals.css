@@ -1,0 +1,326 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --br-paper: #0F0E0C;
+  --br-paper-soft: #1B1A17;
+  --br-card: #2A2825;
+  --br-ink: #F1EEE8;
+  --br-ink-soft: #9A9488;
+  --br-ink-muted: #6A6660;
+  --br-ink-faint: #4E4B46;
+  --br-line: #4E4B46;
+  --br-terrain: #5592E2;
+  --br-cal: #5592E2;
+  --br-dung: #F1EEE8;
+  --br-gold: #E8C15A;
+  --br-font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --br-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --br-label-size: 12px;
+  --br-label-line-height: 16px;
+  --background: var(--br-paper);
+  --foreground: var(--br-ink);
+  --card: var(--br-card);
+  --card-foreground: var(--br-ink);
+  --popover: var(--br-paper-soft);
+  --popover-foreground: var(--br-ink);
+  --primary: var(--br-cal);
+  --primary-foreground: var(--br-paper);
+  --secondary: var(--br-paper-soft);
+  --secondary-foreground: var(--br-ink);
+  --muted: var(--br-card);
+  --muted-foreground: var(--br-ink-soft);
+  --accent: var(--br-cal);
+  --accent-foreground: var(--br-paper);
+  --destructive: #b84d4a;
+  --destructive-foreground: var(--br-ink);
+  --border: var(--br-line);
+  --input: var(--br-card);
+  --input-background: var(--br-card);
+  --switch-background: var(--br-ink-faint);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--br-cal);
+  --chart-1: var(--br-cal);
+  --chart-2: var(--br-ink-soft);
+  --chart-3: var(--br-cal);
+  --chart-4: var(--br-ink-muted);
+  --chart-5: var(--br-ink-faint);
+  --radius: 0.5rem;
+  --sidebar: var(--br-paper-soft);
+  --sidebar-foreground: var(--br-ink);
+  --sidebar-primary: var(--br-cal);
+  --sidebar-primary-foreground: var(--br-paper);
+  --sidebar-accent: color-mix(in oklab, var(--br-cal) 12%, transparent);
+  --sidebar-accent-foreground: var(--br-ink);
+  --sidebar-border: var(--br-line);
+  --sidebar-ring: var(--br-cal);
+}
+
+.dark {
+  --background: var(--br-paper);
+  --foreground: var(--br-ink);
+  --card: var(--br-card);
+  --card-foreground: var(--br-ink);
+  --popover: var(--br-paper-soft);
+  --popover-foreground: var(--br-ink);
+  --primary: var(--br-cal);
+  --primary-foreground: var(--br-paper);
+  --secondary: var(--br-paper-soft);
+  --secondary-foreground: var(--br-ink);
+  --muted: var(--br-card);
+  --muted-foreground: var(--br-ink-soft);
+  --accent: var(--br-cal);
+  --accent-foreground: var(--br-paper);
+  --destructive: #b84d4a;
+  --destructive-foreground: var(--br-ink);
+  --border: var(--br-line);
+  --input: var(--br-card);
+  --ring: var(--br-cal);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: var(--br-cal);
+  --chart-2: var(--br-ink-soft);
+  --chart-3: var(--br-cal);
+  --chart-4: var(--br-ink-muted);
+  --chart-5: var(--br-ink-faint);
+  --sidebar: var(--br-paper-soft);
+  --sidebar-foreground: var(--br-ink);
+  --sidebar-primary: var(--br-cal);
+  --sidebar-primary-foreground: var(--br-paper);
+  --sidebar-accent: color-mix(in oklab, var(--br-cal) 12%, transparent);
+  --sidebar-accent-foreground: var(--br-ink);
+  --sidebar-border: var(--br-line);
+  --sidebar-ring: var(--br-cal);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-anchor: auto; /* Prevent scroll jumps when content loads */
+  }
+
+  /* Animation utilities */
+
+  .dung-glow {
+    display: inline-block;
+  }
+
+  /* ============================================
+     STRAVA-STYLE SCROLLING SYSTEM
+     iOS bounce effect + smooth scrolling
+     ============================================ */
+
+  .scroll-bounce {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    overscroll-behavior-y: contain; /* Prevent scroll chaining */
+  }
+
+  /* Smooth scroll for all scrollable containers */
+  .scroll-bounce,
+  [class*="overflow-y-auto"] {
+    scroll-behavior: smooth;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* ============================================
+   BOULDER ROLLER TYPOGRAPHY SYSTEM
+   Ratified Geist product UI with Geist Mono data columns.
+   ============================================ */
+
+/* Keep the supported bold utility on the zero-tracking product scale. */
+.font-bold {
+  letter-spacing: 0;
+}
+
+/* Boulder Roller Animations */
+
+/* ============================================
+   BR INTERACTION SYSTEM
+   ============================================ */
+
+/* Radius follows the paper/ink contract: 6-8px for controls and cards. */
+* {
+  --radius: 0.5rem;
+}
+
+/* Focus rings: visible without decorative glow. */
+*:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: var(--background);
+  border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--muted-foreground) 42%, transparent);
+  border: 2px solid var(--background); /* Creates a 'padding' look */
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* BeetleButton: Brutalist press physics */
+.beetle-button:not(:disabled):hover {
+  filter: var(--beetle-button-hover-filter) !important;
+}
+
+.beetle-button:not(:disabled):active {
+  box-shadow: var(--beetle-button-active-shadow) !important;
+  transform: var(--beetle-button-active-transform) !important;
+  filter: var(--beetle-button-active-filter) !important;
+  transition-duration: var(--t-state) !important; /* Faster press */
+}
+
+.beetle-button:disabled {
+  transform: translateY(0) !important;
+}
+
+/* BeetleInput: Focus rings + hover acknowledgment */
+input:not(:disabled):hover,
+textarea:not(:disabled):hover,
+select:not(:disabled):hover {
+  border-color: var(--accent) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: none !important; /* No soft glow */
+  border-width: 2px !important;
+}
+
+/* High contrast focus for keyboard navigation (WCAG 2.1) */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

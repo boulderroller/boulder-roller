@@ -1,0 +1,46 @@
+name: Portal CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/portal/**'
+      - '.github/workflows/portal-ci.yml'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'web/portal/**'
+      - '.github/workflows/portal-ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.event.pull_request.draft || false }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  release:
+    # Drafts skip CI; Codex runs the full suites locally each round.
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web/portal
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/portal/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run mandatory release gate
+        run: npm run perf:release

@@ -1,0 +1,49 @@
+{
+  "title": "5682409188.fit.gz",
+  "annotated_at": "2026-03-18T13:39:40.917Z",
+  "notes": "Climb #2 (Bryn Mawr 81.4m) should be SPLIT into Rock Hill Road + Bryn Mawr Avenue. User annotated Rock Hill portion only. #1 MLK Drive is false positive.",
+  "climbs": [
+    {
+      "idx": 0,
+      "road_name": "Martin Luther King Junior Drive",
+      "vert_m": 42.2,
+      "detector_start": 1068,
+      "detector_end": 1182,
+      "annotated_start": null,
+      "annotated_end": null,
+      "skipped": true
+    },
+    {
+      "idx": 1,
+      "road_name": "Neill Drive",
+      "vert_m": 56,
+      "detector_start": 7127,
+      "detector_end": 7427,
+      "annotated_start": 8612,
+      "annotated_end": 8653,
+      "skipped": false
+    },
+    {
+      "idx": 2,
+      "road_name": "Bryn Mawr Avenue",
+      "vert_m": 81.4,
+      "detector_start": 8186,
+      "detector_end": 8784,
+      "annotated_start": 8803,
+      "annotated_end": 9118,
+      "skipped": false,
+      "should_split": true,
+      "split_note": "Annotated as Rock Hill Road only. Bryn Mawr Avenue portion is a separate climb after the split at Conshohocken State Rd."
+    },
+    {
+      "idx": 3,
+      "road_name": "Mill Creek Road",
+      "vert_m": 45.6,
+      "detector_start": 9132,
+      "detector_end": 9362,
+      "annotated_start": 9275,
+      "annotated_end": 9319,
+      "skipped": false
+    }
+  ]
+}

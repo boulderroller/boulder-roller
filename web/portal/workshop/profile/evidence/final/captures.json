@@ -1,0 +1,156 @@
+[
+  {
+    "scenario": "owner",
+    "file": "owner-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1430,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:23.245Z"
+  },
+  {
+    "scenario": "public",
+    "file": "public-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1430,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:24.355Z"
+  },
+  {
+    "scenario": "private",
+    "file": "private-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1440,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": true,
+    "empty": false,
+    "time": "2026-09-13T21:42:25.171Z"
+  },
+  {
+    "scenario": "empty",
+    "file": "empty-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1440,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": true,
+    "time": "2026-09-13T21:42:25.979Z"
+  },
+  {
+    "scenario": "loading",
+    "file": "loading-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1440,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:26.788Z"
+  },
+  {
+    "scenario": "error",
+    "file": "error-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1440,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:27.599Z"
+  },
+  {
+    "scenario": "stale",
+    "file": "stale-1440x1000.png",
+    "height": 1000,
+    "scrollWidth": 1430,
+    "width": 1440,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:28.513Z"
+  },
+  {
+    "scenario": "owner",
+    "file": "owner-390x844.png",
+    "height": 844,
+    "scrollWidth": 380,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:29.221Z"
+  },
+  {
+    "scenario": "public",
+    "file": "public-390x844.png",
+    "height": 844,
+    "scrollWidth": 380,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:30.028Z"
+  },
+  {
+    "scenario": "private",
+    "file": "private-390x844.png",
+    "height": 844,
+    "scrollWidth": 390,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": true,
+    "empty": false,
+    "time": "2026-09-13T21:42:30.733Z"
+  },
+  {
+    "scenario": "empty",
+    "file": "empty-390x844.png",
+    "height": 844,
+    "scrollWidth": 380,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": true,
+    "time": "2026-09-13T21:42:31.481Z"
+  },
+  {
+    "scenario": "loading",
+    "file": "loading-390x844.png",
+    "height": 844,
+    "scrollWidth": 390,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:32.182Z"
+  },
+  {
+    "scenario": "error",
+    "file": "error-390x844.png",
+    "height": 844,
+    "scrollWidth": 390,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:32.840Z"
+  },
+  {
+    "scenario": "stale",
+    "file": "stale-390x844.png",
+    "height": 844,
+    "scrollWidth": 380,
+    "width": 390,
+    "kind": "local supplied-data candidate",
+    "privateBoundary": false,
+    "empty": false,
+    "time": "2026-09-13T21:42:33.560Z"
+  }
+]

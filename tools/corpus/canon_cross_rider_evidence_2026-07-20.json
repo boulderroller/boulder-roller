@@ -1,0 +1,117 @@
+{
+  "model": "canon_cross_rider_evidence_v2",
+  "generated_at": "2026-07-21T00:07:24Z",
+  "privacy_mode": "aggregate_counts_and_content_digests_no_rider_or_ride_ids",
+  "source": {
+    "project_ref": "qzkqjevawthyboymqrle",
+    "storage_bucket": "ride-uploads",
+    "raw_uploads": 177,
+    "source_riders": 29,
+    "source_bytes": 67244165,
+    "file_types": {
+      "fit": 14,
+      "gpx": 151,
+      "tcx": 12
+    }
+  },
+  "source_manifest": {
+    "line_model": "raw_byte_sha256_tab_lower_file_type_tab_byte_count_sorted_with_duplicates_final_newline",
+    "candidate_corridor_manifest_line_model": "decision_id_tab_launch_authority_tab_candidate_fingerprint_tab_sha256_of_postgis_st_asbinary_corridor_sorted_utf8_final_newline",
+    "candidate_corridor_manifest_sha256": "5e7126aecdb00d83d87a00db42b1e4eaddff659933dcfe4e9bf63500e0ce3452",
+    "all_objects_sha256": "b714f82e043c58599ad248f00c7f01b92c6ed4f42983ec8306bbe9260cf83f68",
+    "all_objects": 177,
+    "all_unique_content_hashes": 175,
+    "corridor_hit_objects_sha256": "eb55ee6675979019dc63934d736f28943eea784247fed4188a4be8c41ba7cee0",
+    "corridor_hit_objects": 43,
+    "corridor_hit_unique_content_hashes": 41,
+    "corridor_hit_bytes": 22849912,
+    "eligible_objects_multiset_sha256": "193908d0431da71ae13446d1b28e2fffe030c57cc21e8b3f1be63b507f78ecc8",
+    "eligible_unique_objects_sha256": "0b548239b5dbdcca173686bd8a36dfe7847bce0779e6b39cf9c126f7a71df93f",
+    "eligible_objects": 18,
+    "eligible_unique_content_hashes": 16,
+    "accepted_objects_multiset_sha256": "c75e74066c0b0c5b4607fbb912db9e98fdb212bcd181d09dd2c6055084a1a04b",
+    "accepted_unique_objects_sha256": "2f78d8d907a0a90a787482b06a0a3a957d816d77db83aef57442d31fcaf990eb",
+    "accepted_objects": 17,
+    "accepted_unique_content_hashes": 15,
+    "eligible_attempt_line_model": "decision_id_tab_raw_byte_sha256_tab_start_s_tab_finish_s_tab_accepted_tab_rejection_sorted_final_newline",
+    "eligible_pair_line_model": "decision_id_tab_lexically_ordered_raw_sha_colon_start_fixed_9dp_colon_finish_fixed_9dp_attempts_tab_agreement_bit_sorted_utf8_final_newline",
+    "eligible_attempts_sha256": "4e2d3111a72ec98d2437b3c603537c3837d57664226a28be289aa0042e9a5e1d",
+    "eligible_unique_sources_sha256": "0b548239b5dbdcca173686bd8a36dfe7847bce0779e6b39cf9c126f7a71df93f",
+    "eligible_pair_manifest_sha256": "f2a4cf64a086e62b36ba5846ac66dfc093f2deedf6f2621977966671be47f76a"
+  },
+  "canon_report_sha256": "9b195178701eb9f01e890faf9a30f55f31d3e55a0f78fba9340edf9e3440c0c7",
+  "corridor_authority": "postgis_geography_buffer_v1",
+  "replay_runtime": {
+    "worktree_head": "c07a2d1b4b7e26b41d749aa452be34a01f8598a9",
+    "parser_package_version": "0.1.0",
+    "parser_contract_version": 5,
+    "native_parser_sha256": "9f2915020fe49af36880f09a132da81d92910d85824a9329b6b7eb65f7f1e31d",
+    "parser_init_sha256": "fccce6af7dc6ef239204de5105a360d394e3bdd4019ffce6ac4db291bcb7e78b",
+    "parser_adapter_sha256": "67736a2634112e04c7a0cc884909b7e815cebbc3fdca5e32e7894b124ac35dd7",
+    "traversal_engine_sha256": "869b69c26f86d7d2229cd14b5d048e5dc24a5ca53113f18de4fbdd819ef05106",
+    "execution_model": "one_clean_subprocess_per_ride",
+    "candidate_selection": "53 reviewed launch candidates: 40 exact-lineage approvals, 11 boundary-registry candidates, and 2 locked validated carries",
+    "sample_contract": "relative_time_lat_lon_power_hr_preserve_source_index_and_malformed_rows"
+  },
+  "geographic_census": {
+    "launch_candidates": 53,
+    "corridor_intersecting_candidates": 41,
+    "corridor_intersecting_candidate_rider_pairs": 78,
+    "corridor_intersecting_rides": 43,
+    "corridor_intersecting_riders": 3,
+    "corridor_file_types": {
+      "fit": 9,
+      "gpx": 34
+    }
+  },
+  "replay": {
+    "parseable_source_rides": 173,
+    "parser_errors": 4,
+    "parser_error_taxonomy": {
+      "gpx_no_trackpoints": 3,
+      "fit_timestamp_regression": 1
+    },
+    "accepted_passes": 21,
+    "accepted_rides": 17,
+    "accepted_distinct_riders": 2,
+    "accepted_candidates": 7,
+    "rejections": {
+      "malformed_sample": 7821,
+      "partial_traversal": 96,
+      "reverse_direction": 138,
+      "u_turn": 16
+    }
+  },
+  "same_canon_cross_rider_agreement": {
+    "definition": "distinct-rider, distinct-byte-source pairs independently eligible on the same candidate before D11 outcome",
+    "eligibility": "raw trace crosses the candidate start gate then finish gate in canon direction with at least one valid timed GPS sample strictly between; no corridor-coverage, monotonicity, rejection, or acceptance result enters eligibility",
+    "eligible_attempts": 22,
+    "eligible_rides": 18,
+    "eligible_distinct_riders": 2,
+    "eligible_unique_sources": 16,
+    "eligible_candidates": 7,
+    "same_rider_pairs_excluded": 33,
+    "raw_cross_rider_pairs": 5,
+    "exact_duplicate_cross_rider_pairs_excluded": 2,
+    "pairs": 3,
+    "agreements": 3,
+    "value": 1.0,
+    "supported_candidates": 1,
+    "supported_candidate_decision_ids": [
+      "canon-f900cfb8fdb96b47"
+    ],
+    "finding": "Three independent Black Rock Road cross-rider pairs were eligible before D11 outcome, and both rides in every pair resolved to the same canon candidate."
+  },
+  "dogfood_negative_control": {
+    "rides": 11,
+    "riders": 1,
+    "corridor_hits": 0,
+    "attempts": 0,
+    "accepted_passes": 0
+  },
+  "limitations": [
+    "Cross-rider agreement is measured on three independent pairs from one supported candidate; it does not establish multi-candidate cross-rider coverage.",
+    "Four of 177 source objects fail parsing: three GPX files with no trackpoints and one FIT timestamp regression.",
+    "The eleven agent dogfood rides are outside Philadelphia and serve only as negative controls."
+  ]
+}

@@ -1,0 +1,10 @@
+/* ODbL attribution remains readable without hover; long notices use a native panel. */
+.geography-credit { font-size: var(--br-label-size); line-height: var(--br-label-line-height); padding: 8px 0; overflow-wrap: anywhere; }
+.geography-credit a { color: inherit; text-decoration: underline; }
+.map-source-notices { position: static; font-size: var(--br-label-size); line-height: var(--br-label-line-height); }
+.map-source-notices summary { cursor: pointer; }
+.map-source-notices > div { position: absolute; z-index: 30; right: 0; bottom: 100%; width: min(300px, 75vw); max-height: 60vh; overflow: auto; padding: 12px; background: var(--br-card); color: var(--br-ink); border: 1px solid var(--br-border); }
+.map-source-notices > div a { display: block; margin: 8px 0; }
+.climb-map-attribution { flex-wrap: wrap; max-width: 100%; }
+
+.map-credit-row { display: flex; position: relative; flex-wrap: wrap; gap: 8px; max-width: 100%; }

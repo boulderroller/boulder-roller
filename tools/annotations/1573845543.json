@@ -1,0 +1,77 @@
+{
+  "title": "1573845543.fit.gz",
+  "annotated_at": "2026-03-18T13:50:55.068Z",
+  "notes": "Chamounix race repeats. All 7 laps annotated. Corrected annotation.",
+  "climbs": [
+    {
+      "idx": 0,
+      "road_name": "Martin Luther King Junior Drive",
+      "vert_m": 47.8,
+      "detector_start": 532,
+      "detector_end": 892,
+      "annotated_start": 666,
+      "annotated_end": 698,
+      "skipped": false
+    },
+    {
+      "idx": 1,
+      "road_name": "Greenland Drive",
+      "vert_m": 47.6,
+      "detector_start": 1617,
+      "detector_end": 1811,
+      "annotated_start": 865,
+      "annotated_end": 899,
+      "skipped": false
+    },
+    {
+      "idx": 2,
+      "road_name": "Greenland Drive",
+      "vert_m": 51.4,
+      "detector_start": 2547,
+      "detector_end": 2762,
+      "annotated_start": 1738,
+      "annotated_end": 1772,
+      "skipped": false
+    },
+    {
+      "idx": 3,
+      "road_name": "Greenland Drive",
+      "vert_m": 47.8,
+      "detector_start": 3474,
+      "detector_end": 3661,
+      "annotated_start": 2617,
+      "annotated_end": 2649,
+      "skipped": false
+    },
+    {
+      "idx": 4,
+      "road_name": "Greenland Drive",
+      "vert_m": 50.5,
+      "detector_start": 4383,
+      "detector_end": 4575,
+      "annotated_start": 3473,
+      "annotated_end": 3505,
+      "skipped": false
+    },
+    {
+      "idx": 5,
+      "road_name": "Greenland Drive",
+      "vert_m": 49.0,
+      "detector_start": 5318,
+      "detector_end": 5490,
+      "annotated_start": 3677,
+      "annotated_end": 4376,
+      "skipped": false
+    },
+    {
+      "idx": 6,
+      "road_name": "Greenland Drive",
+      "vert_m": 50.8,
+      "detector_start": 6249,
+      "detector_end": 6429,
+      "annotated_start": 4545,
+      "annotated_end": 4580,
+      "skipped": false
+    }
+  ]
+}

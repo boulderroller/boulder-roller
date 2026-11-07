@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boulder Rollers – Wallet Signer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #0b0c0f; color: #f4f6fb; }
+    .card { max-width: 720px; margin: 0 auto; padding: 24px; background: #151821; border: 1px solid #242836; border-radius: 12px; }
+    button { cursor: pointer; border: none; border-radius: 8px; padding: 10px 16px; font-weight: 600; }
+    .primary { background: #7dd3fc; color: #0b0c0f; }
+    .secondary { background: #1f2737; color: #f4f6fb; }
+    textarea { width: 100%; min-height: 160px; padding: 12px; border-radius: 10px; border: 1px solid #242836; background: #0f121a; color: #e8ecf7; font-family: monospace; }
+    code, pre { background: #0f121a; padding: 8px; border-radius: 8px; display: block; overflow-x: auto; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    .muted { color: #94a3b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Wallet Signer (Phantom/Solflare)</h2>
+    <p class="muted">Paste the message from the Telegram bot, connect your wallet, and sign. Paste the returned signature back into the bot.</p>
+
+    <div class="row">
+      <button id="connect" class="primary">Connect Wallet</button>
+      <button id="sign" class="secondary">Sign Message</button>
+    </div>
+    <p id="wallet" class="muted">Not connected.</p>
+
+    <label for="message" class="muted">Message to sign:</label>
+    <textarea id="message" placeholder="Paste message from bot here"></textarea>
+
+    <h4>Signature (base58)</h4>
+    <pre id="signature">--</pre>
+    <div id="error" class="muted"></div>
+  </div>
+
+  <script>
+    // Minimal base58 encoder (Bitcoin alphabet), avoids external deps
+    const ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+    function encodeBase58(bytes) {
+      if (!bytes || !bytes.length) return "";
+      let digits = [0];
+      for (const byte of bytes) {
+        let carry = byte;
+        for (let i = 0; i < digits.length; ++i) {
+          const x = (digits[i] << 8) + carry;
+          digits[i] = x % 58;
+          carry = (x / 58) | 0;
+        }
+        while (carry) {
+          digits.push(carry % 58);
+          carry = (carry / 58) | 0;
+        }
+      }
+      // leading zeros
+      for (const byte of bytes) {
+        if (byte === 0) digits.push(0);
+        else break;
+      }
+      return digits.reverse().map((d) => ALPHABET[d]).join("");
+    }
+    const connectBtn = document.getElementById("connect");
+    const signBtn = document.getElementById("sign");
+    const walletLabel = document.getElementById("wallet");
+    const msgInput = document.getElementById("message");
+    const sigOutput = document.getElementById("signature");
+    const errBox = document.getElementById("error");
+
+    const provider = window.solana;
+
+    function setError(msg) {
+      errBox.textContent = msg || "";
+    }
+
+    async function connect() {
+      setError("");
+      if (!provider) {
+        setError("No wallet detected. Install Phantom or a Solana wallet.");
+        return;
+      }
+      const res = await provider.connect();
+      walletLabel.textContent = `Connected: ${res.publicKey.toString()}`;
+    }
+
+    async function sign() {
+      setError("");
+      sigOutput.textContent = "--";
+      if (!provider || !provider.publicKey) {
+        setError("Connect your wallet first.");
+        return;
+      }
+      const message = msgInput.value.trim();
+      if (!message) {
+        setError("Paste the message from the bot first.");
+        return;
+      }
+      const encoded = new TextEncoder().encode(message);
+      try {
+        const signed = await provider.signMessage(encoded, "utf8");
+        const signatureB58 = encodeBase58(new Uint8Array(signed.signature));
+        sigOutput.textContent = signatureB58;
+      } catch (err) {
+        setError(err.message || String(err));
+      }
+    }
+
+    connectBtn.addEventListener("click", () => connect().catch(err => setError(err.message || String(err))));
+    signBtn.addEventListener("click", () => sign().catch(err => setError(err.message || String(err))));
+  </script>
+</body>
+</html>

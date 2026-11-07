@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "br-discord-steward",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "discord-steward.boulderroller.xyz",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "DISCORD_APPLICATION_ID": "1507403735708471469",
+    "DISCORD_PUBLIC_KEY": "d282862d17a284ebd459962904fdf7600c0eeab7b58caf5ff461eeac0ac9c7bf",
+    "DISCORD_GUILD_ID": "1507382542247133357",
+    "STAFF_TRIAGE_CHANNEL_ID": "1507383996944748685",
+    "BD_INTAKE_CHANNEL_ID": "1507384135361105980",
+    "FEEDBACK_INTAKE_CHANNEL_ID": "1507383996944748685",
+    "SUPPORT_INTAKE_CHANNEL_ID": "1507383996944748685",
+    "RIDE_INTAKE_CHANNEL_ID": "1507384135361105980",
+    "STAFF_ROLE_IDS": "1507388684339515503,1507388792959406252"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "boulderroller-discord-steward",
+      "database_id": "2ca832fa-00f5-4ba8-af3b-aa8cc9fe4359"
+    }
+  ]
+}

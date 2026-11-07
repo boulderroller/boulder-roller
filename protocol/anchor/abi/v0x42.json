@@ -1,0 +1,5544 @@
+{
+  "accounts": [
+    {
+      "name": "BeetleCard",
+      "type": {
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "cardType",
+            "type": {
+              "defined": "CardType"
+            }
+          },
+          {
+            "name": "scopeId",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "score",
+            "type": "u64"
+          },
+          {
+            "name": "level",
+            "type": "u8"
+          },
+          {
+            "name": "patternsScored",
+            "type": "u32"
+          },
+          {
+            "name": "lastUpdated",
+            "type": "i64"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "CalMintReceipt",
+      "type": {
+        "fields": [
+          {
+            "name": "rideAttestation",
+            "type": "publicKey"
+          },
+          {
+            "name": "rider",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "ClimbCompletionReceipt",
+      "type": {
+        "fields": [
+          {
+            "name": "rideAttestation",
+            "type": "publicKey"
+          },
+          {
+            "name": "vault",
+            "type": "publicKey"
+          },
+          {
+            "name": "completionEvidenceHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "ClimbCompletionReceiptV2",
+      "type": {
+        "fields": [
+          {
+            "name": "rideAttestation",
+            "type": "publicKey"
+          },
+          {
+            "name": "vault",
+            "type": "publicKey"
+          },
+          {
+            "name": "evidenceVersion",
+            "type": "u8"
+          },
+          {
+            "name": "calTributed",
+            "type": "u64"
+          },
+          {
+            "name": "completionEvidenceHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "DungMintState",
+      "type": {
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "maxSupply",
+            "type": "u64"
+          },
+          {
+            "name": "totalMinted",
+            "type": "u64"
+          },
+          {
+            "name": "totalBurned",
+            "type": "u64"
+          },
+          {
+            "name": "communityMinted",
+            "type": "u64"
+          },
+          {
+            "name": "treasuryMinted",
+            "type": "u64"
+          },
+          {
+            "name": "teamMinted",
+            "type": "u64"
+          },
+          {
+            "name": "investorMinted",
+            "type": "u64"
+          },
+          {
+            "name": "polMinted",
+            "type": "u64"
+          },
+          {
+            "name": "currentEmissionRateBps",
+            "type": "u64"
+          },
+          {
+            "name": "lastHalvingEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "communityReserved",
+            "type": "u64"
+          },
+          {
+            "name": "reservationPolicyVersion",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "LocalLegend",
+      "type": {
+        "fields": [
+          {
+            "name": "vaultId",
+            "type": "u64"
+          },
+          {
+            "name": "holder",
+            "type": "publicKey"
+          },
+          {
+            "name": "electionPeriod",
+            "type": "u64"
+          },
+          {
+            "name": "termStartEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "termEndEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "completionsAtElection",
+            "type": "u32"
+          },
+          {
+            "name": "runnerUp",
+            "type": "publicKey"
+          },
+          {
+            "name": "runnerUpCompletions",
+            "type": "u32"
+          },
+          {
+            "name": "totalEarned",
+            "type": "u64"
+          },
+          {
+            "name": "isActive",
+            "type": "bool"
+          },
+          {
+            "name": "isBootstrap",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "ProgramConfig",
+      "type": {
+        "fields": [
+          {
+            "name": "adminAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "backendAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "programVersion",
+            "type": "u8"
+          },
+          {
+            "name": "initialized",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "calMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "dungMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "calMintAuthBump",
+            "type": "u8"
+          },
+          {
+            "name": "dungMintAuthBump",
+            "type": "u8"
+          },
+          {
+            "name": "polTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "treasuryTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultCreationDung",
+            "type": "u64"
+          },
+          {
+            "name": "vaultCreationCal",
+            "type": "u64"
+          },
+          {
+            "name": "harvestFeeBps",
+            "type": "u64"
+          },
+          {
+            "name": "minterRightsEpochs",
+            "type": "u64"
+          },
+          {
+            "name": "localLegendTermEpochs",
+            "type": "u64"
+          },
+          {
+            "name": "epochsPerHalving",
+            "type": "u64"
+          },
+          {
+            "name": "usdcMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "usdcTreasuryTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultCreationUsdc",
+            "type": "u64"
+          },
+          {
+            "name": "settlementClockV2StartsAt",
+            "type": "i64"
+          },
+          {
+            "name": "settlementClockVersion",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "RideAttestation",
+      "type": {
+        "fields": [
+          {
+            "name": "rider",
+            "type": "publicKey"
+          },
+          {
+            "name": "rideHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "attestationCommitment",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "parserVersion",
+            "type": "u32"
+          },
+          {
+            "name": "sourceKind",
+            "type": "u8"
+          },
+          {
+            "name": "completedAt",
+            "type": "i64"
+          },
+          {
+            "name": "startedAt",
+            "type": "i64"
+          },
+          {
+            "name": "totalTss",
+            "type": "u32"
+          },
+          {
+            "name": "totalDistanceM",
+            "type": "u32"
+          },
+          {
+            "name": "totalVertM",
+            "type": "u32"
+          },
+          {
+            "name": "calEarned",
+            "type": "u64"
+          },
+          {
+            "name": "climbsCrossed",
+            "type": "u16"
+          },
+          {
+            "name": "attester",
+            "type": "publicKey"
+          },
+          {
+            "name": "settledAt",
+            "type": "i64"
+          },
+          {
+            "name": "settledSlot",
+            "type": "u64"
+          },
+          {
+            "name": "economicEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "finalized",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "RideTributeBudget",
+      "type": {
+        "fields": [
+          {
+            "name": "rideAttestation",
+            "type": "publicKey"
+          },
+          {
+            "name": "calBudget",
+            "type": "u64"
+          },
+          {
+            "name": "totalCalTributed",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "RiderBalance",
+      "type": {
+        "fields": [
+          {
+            "name": "rider",
+            "type": "publicKey"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": "RiderBalanceStatus"
+            }
+          },
+          {
+            "name": "activeAuthorityModel",
+            "type": {
+              "defined": "BalanceAuthorityModel"
+            }
+          },
+          {
+            "name": "policyHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "delegateAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "lastAuthorityRotationAt",
+            "type": "i64"
+          },
+          {
+            "name": "revokedAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "RiderSoul",
+      "type": {
+        "fields": [
+          {
+            "name": "rider",
+            "type": "publicKey"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "totalRides",
+            "type": "u64"
+          },
+          {
+            "name": "totalTss",
+            "type": "u64"
+          },
+          {
+            "name": "totalDistanceM",
+            "type": "u64"
+          },
+          {
+            "name": "totalVertM",
+            "type": "u64"
+          },
+          {
+            "name": "totalCalEarned",
+            "type": "u64"
+          },
+          {
+            "name": "archetype",
+            "type": "u8"
+          },
+          {
+            "name": "bioScore",
+            "type": "u64"
+          },
+          {
+            "name": "climbCard",
+            "type": {
+              "option": "publicKey"
+            }
+          },
+          {
+            "name": "steadyCard",
+            "type": {
+              "option": "publicKey"
+            }
+          },
+          {
+            "name": "explorerCard",
+            "type": {
+              "option": "publicKey"
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "UserState",
+      "type": {
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "legacyCalSnapshot",
+            "type": "u64"
+          },
+          {
+            "name": "legacyCalEarnedToday",
+            "type": "u64"
+          },
+          {
+            "name": "legacyLastCalMint",
+            "type": "i64"
+          },
+          {
+            "name": "totalRides",
+            "type": "u64"
+          },
+          {
+            "name": "totalTss",
+            "type": "u64"
+          },
+          {
+            "name": "bioScore",
+            "type": "u16"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "Vault",
+      "type": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "signature",
+            "type": {
+              "array": [
+                "u8",
+                64
+              ]
+            }
+          },
+          {
+            "name": "signatureHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "minter",
+            "type": "publicKey"
+          },
+          {
+            "name": "mintEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "rightsExpiresEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "komHolder",
+            "type": "publicKey"
+          },
+          {
+            "name": "komTimeS",
+            "type": "u32"
+          },
+          {
+            "name": "komSetEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "name",
+            "type": {
+              "array": [
+                "u8",
+                64
+              ]
+            }
+          },
+          {
+            "name": "avatarIpfs",
+            "type": {
+              "array": [
+                "u8",
+                46
+              ]
+            }
+          },
+          {
+            "name": "slogan",
+            "type": {
+              "array": [
+                "u8",
+                128
+              ]
+            }
+          },
+          {
+            "name": "calTributeAccumulated",
+            "type": "u64"
+          },
+          {
+            "name": "calTributeAccumulatedNext",
+            "type": "u64"
+          },
+          {
+            "name": "totalCalBurned",
+            "type": "u64"
+          },
+          {
+            "name": "totalDungEmitted",
+            "type": "u64"
+          },
+          {
+            "name": "totalCompletions",
+            "type": "u64"
+          },
+          {
+            "name": "totalCalStaked",
+            "type": "u64"
+          },
+          {
+            "name": "stakerCount",
+            "type": "u32"
+          },
+          {
+            "name": "rewardPerTokenStored",
+            "type": "u64"
+          },
+          {
+            "name": "lastUpdateTime",
+            "type": "i64"
+          },
+          {
+            "name": "rewardRate",
+            "type": "u64"
+          },
+          {
+            "name": "pendingRewards",
+            "type": "u64"
+          },
+          {
+            "name": "pendingRewardsNextWeek",
+            "type": "u64"
+          },
+          {
+            "name": "openSettlementWeek",
+            "type": "u64"
+          },
+          {
+            "name": "carryRecordRoyalty",
+            "type": "u64"
+          },
+          {
+            "name": "carryStakers",
+            "type": "u64"
+          },
+          {
+            "name": "carryLocalLegend",
+            "type": "u64"
+          },
+          {
+            "name": "carryPol",
+            "type": "u64"
+          },
+          {
+            "name": "carryTreasury",
+            "type": "u64"
+          },
+          {
+            "name": "totalStaked",
+            "type": "u64"
+          },
+          {
+            "name": "lastDistributionEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "vertM",
+            "type": "u32"
+          },
+          {
+            "name": "distanceM",
+            "type": "u32"
+          },
+          {
+            "name": "avgGradientPct",
+            "type": "u16"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VaultActivation",
+      "type": {
+        "fields": [
+          {
+            "name": "vaultId",
+            "type": "u64"
+          },
+          {
+            "name": "isActive",
+            "type": "bool"
+          },
+          {
+            "name": "seedCompletionsWritten",
+            "type": "u32"
+          },
+          {
+            "name": "leaderboardSeeded",
+            "type": "bool"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "activatedAt",
+            "type": "i64"
+          },
+          {
+            "name": "lastSeedAt",
+            "type": "i64"
+          },
+          {
+            "name": "seedGeneration",
+            "type": "u32"
+          },
+          {
+            "name": "seedCutoffAt",
+            "type": "i64"
+          },
+          {
+            "name": "economicsStartEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "matchedUsers",
+            "type": "u32"
+          },
+          {
+            "name": "matchedCompletions",
+            "type": "u32"
+          },
+          {
+            "name": "evidenceHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VaultCompletion",
+      "type": {
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultId",
+            "type": "u64"
+          },
+          {
+            "name": "completions",
+            "type": "u32"
+          },
+          {
+            "name": "bestTimeS",
+            "type": "u32"
+          },
+          {
+            "name": "lastCompletedAt",
+            "type": "i64"
+          },
+          {
+            "name": "totalCalTributed",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VaultCounter",
+      "type": {
+        "fields": [
+          {
+            "name": "count",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VaultLeaderboard",
+      "type": {
+        "fields": [
+          {
+            "name": "vaultId",
+            "type": "u64"
+          },
+          {
+            "name": "entries",
+            "type": {
+              "vec": {
+                "defined": "LeaderEntry"
+              }
+            }
+          },
+          {
+            "name": "lastUpdated",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VaultStake",
+      "type": {
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultId",
+            "type": "u64"
+          },
+          {
+            "name": "calStaked",
+            "type": "u64"
+          },
+          {
+            "name": "lpTokens",
+            "type": "u64"
+          },
+          {
+            "name": "stakedAt",
+            "type": "i64"
+          },
+          {
+            "name": "pendingEffectiveWeekPlusOne",
+            "type": "u64"
+          },
+          {
+            "name": "effectiveLpTokens",
+            "type": "u64"
+          },
+          {
+            "name": "rewardsEarned",
+            "type": "u64"
+          },
+          {
+            "name": "pendingLpTokens",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "AlreadyMintedToday"
+    },
+    {
+      "code": 6001,
+      "name": "InsufficientCal"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidName"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidDistance"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidElevation"
+    },
+    {
+      "code": 6005,
+      "name": "MinimumStakeRequired"
+    },
+    {
+      "code": 6006,
+      "name": "AlreadyDistributed"
+    },
+    {
+      "code": 6007,
+      "name": "EpochNotEnded"
+    },
+    {
+      "code": 6008,
+      "name": "SettlementWeekNotFinalizable"
+    },
+    {
+      "code": 6009,
+      "name": "RideOutsideSettlementWindow"
+    },
+    {
+      "code": 6010,
+      "name": "SettlementWeekOutOfSync"
+    },
+    {
+      "code": 6011,
+      "name": "SeatOccupied"
+    },
+    {
+      "code": 6012,
+      "name": "ElectionTooSoon"
+    },
+    {
+      "code": 6013,
+      "name": "Overflow"
+    },
+    {
+      "code": 6014,
+      "name": "Underflow"
+    },
+    {
+      "code": 6015,
+      "name": "DivisionByZero"
+    },
+    {
+      "code": 6016,
+      "name": "InvalidScope"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidScore"
+    },
+    {
+      "code": 6018,
+      "name": "CardAlreadyExists"
+    },
+    {
+      "code": 6019,
+      "name": "UnauthorizedAuthority"
+    },
+    {
+      "code": 6020,
+      "name": "InvalidCompletionTime"
+    },
+    {
+      "code": 6021,
+      "name": "InvalidEvidenceHash"
+    },
+    {
+      "code": 6022,
+      "name": "InvalidRideTimestamps"
+    },
+    {
+      "code": 6023,
+      "name": "InvalidRideAttestation"
+    },
+    {
+      "code": 6024,
+      "name": "AttestationAmountMismatch"
+    },
+    {
+      "code": 6025,
+      "name": "InsufficientTribute"
+    },
+    {
+      "code": 6026,
+      "name": "InvalidMetadata"
+    },
+    {
+      "code": 6027,
+      "name": "SupplyCapExceeded"
+    },
+    {
+      "code": 6028,
+      "name": "AllocationCapExceeded"
+    },
+    {
+      "code": 6029,
+      "name": "HalvingTooSoon"
+    },
+    {
+      "code": 6030,
+      "name": "InvalidDistributionConfig"
+    },
+    {
+      "code": 6031,
+      "name": "InvalidProtocolParameters"
+    },
+    {
+      "code": 6032,
+      "name": "InvalidProgramConfigLayout"
+    },
+    {
+      "code": 6033,
+      "name": "SettlementClockNotConfigured"
+    },
+    {
+      "code": 6034,
+      "name": "InvalidSettlementClockCutover"
+    },
+    {
+      "code": 6035,
+      "name": "SettlementClockAlreadyConfigured"
+    },
+    {
+      "code": 6036,
+      "name": "MissingProtocolTreasury"
+    },
+    {
+      "code": 6037,
+      "name": "SupplyCapReached"
+    },
+    {
+      "code": 6038,
+      "name": "InvalidDungMintStateLayout"
+    },
+    {
+      "code": 6039,
+      "name": "DungMintAccountingMismatch"
+    },
+    {
+      "code": 6040,
+      "name": "CommunityReservationMismatch"
+    },
+    {
+      "code": 6041,
+      "name": "InsufficientCommunityReservation"
+    },
+    {
+      "code": 6042,
+      "name": "VaultStakeCountMismatch"
+    },
+    {
+      "code": 6043,
+      "name": "DuplicateVaultStake"
+    },
+    {
+      "code": 6044,
+      "name": "InvalidAmount"
+    },
+    {
+      "code": 6045,
+      "name": "MaxLevelReached"
+    },
+    {
+      "code": 6046,
+      "name": "InsufficientDungForUpgrade"
+    },
+    {
+      "code": 6047,
+      "name": "NoRewardsToHarvest"
+    },
+    {
+      "code": 6048,
+      "name": "InsufficientScoreForUpgrade"
+    },
+    {
+      "code": 6049,
+      "name": "EliteGateNotMet"
+    },
+    {
+      "code": 6050,
+      "name": "InvalidBatchSize"
+    },
+    {
+      "code": 6051,
+      "name": "InvalidTreeDepth"
+    },
+    {
+      "code": 6052,
+      "name": "InvalidMerkleProof"
+    },
+    {
+      "code": 6053,
+      "name": "BatchNotFound"
+    },
+    {
+      "code": 6054,
+      "name": "NotOwner"
+    },
+    {
+      "code": 6055,
+      "name": "UnauthorizedAdmin"
+    },
+    {
+      "code": 6056,
+      "name": "UnauthorizedBackend"
+    },
+    {
+      "code": 6057,
+      "name": "AlreadyInitialized"
+    },
+    {
+      "code": 6058,
+      "name": "NotInitialized"
+    },
+    {
+      "code": 6059,
+      "name": "MintsAlreadyConfigured"
+    },
+    {
+      "code": 6060,
+      "name": "MintsNotConfigured"
+    },
+    {
+      "code": 6061,
+      "name": "UsdcNotConfigured"
+    },
+    {
+      "code": 6062,
+      "name": "UnauthorizedSubmitter"
+    },
+    {
+      "code": 6063,
+      "name": "InvalidMint"
+    },
+    {
+      "code": 6064,
+      "name": "EscrowNotInitialized"
+    },
+    {
+      "code": 6065,
+      "name": "InvalidTokenAccountOwner"
+    },
+    {
+      "code": 6066,
+      "name": "InvalidEpoch"
+    },
+    {
+      "code": 6067,
+      "name": "VaultAlreadyActive"
+    },
+    {
+      "code": 6068,
+      "name": "InvalidActivationSeed"
+    },
+    {
+      "code": 6069,
+      "name": "VaultNotActive"
+    },
+    {
+      "code": 6070,
+      "name": "InvalidVault"
+    },
+    {
+      "code": 6071,
+      "name": "VaultNotPristine"
+    },
+    {
+      "code": 6072,
+      "name": "EpochAlreadyDistributed"
+    },
+    {
+      "code": 6073,
+      "name": "InvalidTokenAccount"
+    },
+    {
+      "code": 6074,
+      "name": "InvalidStakeAccount"
+    },
+    {
+      "code": 6075,
+      "name": "StakeSnapshotQueueFull"
+    },
+    {
+      "code": 6076,
+      "name": "InvalidRiderBalance"
+    },
+    {
+      "code": 6077,
+      "name": "InvalidBalanceStatus"
+    },
+    {
+      "code": 6078,
+      "name": "InvalidProgramAccount"
+    },
+    {
+      "code": 6079,
+      "name": "InvalidProgramData"
+    },
+    {
+      "code": 6080,
+      "name": "AutomaticEmissionSchedule"
+    },
+    {
+      "code": 6081,
+      "name": "UnreservedProtocolCarry"
+    },
+    {
+      "code": 6082,
+      "name": "VaultCountMismatch"
+    },
+    {
+      "code": 6083,
+      "name": "DuplicateVault"
+    },
+    {
+      "code": 6084,
+      "name": "DuplicateMigrationAccount"
+    },
+    {
+      "code": 6085,
+      "name": "InvalidMigrationInventory"
+    },
+    {
+      "code": 6086,
+      "name": "DungReservationPolicyNotMigrated"
+    },
+    {
+      "code": 6087,
+      "name": "DungMintAuthorityMismatch"
+    },
+    {
+      "code": 6088,
+      "name": "InvalidDungMintStateBump"
+    },
+    {
+      "code": 6089,
+      "name": "LegacyEmissionHistoryAmbiguous"
+    },
+    {
+      "code": 6090,
+      "name": "RideTributeBudgetExceeded"
+    },
+    {
+      "code": 6091,
+      "name": "InvalidRideTributeBudget"
+    },
+    {
+      "code": 6092,
+      "name": "LocalLegendTermInFuture"
+    },
+    {
+      "code": 6093,
+      "name": "LocalLegendTermOutOfSequence"
+    },
+    {
+      "code": 6094,
+      "name": "LegacyCompletionEvidenceDisabled"
+    },
+    {
+      "code": 6095,
+      "name": "CompletionEvidenceMismatch"
+    },
+    {
+      "code": 6096,
+      "name": "DungBurnAccountingMismatch"
+    },
+    {
+      "code": 6097,
+      "name": "StaleProgramVersion"
+    },
+    {
+      "code": 6098,
+      "name": "RegressiveProgramVersion"
+    },
+    {
+      "code": 6099,
+      "name": "SkippedProgramVersion"
+    },
+    {
+      "code": 6100,
+      "name": "UnsupportedProgramVersion"
+    },
+    {
+      "code": 6101,
+      "name": "InvalidLocalLegendLayout"
+    },
+    {
+      "code": 6102,
+      "name": "LocalLegendVaultMismatch"
+    },
+    {
+      "code": 6103,
+      "name": "InvalidLocalLegendBump"
+    }
+  ],
+  "events": [
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "owner",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "cardType",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "scopeId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "BeetleCardCreated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "owner",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "cardType",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "scopeId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "score",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "level",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "patternsScored",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "createdAt",
+          "type": "i64"
+        },
+        {
+          "index": false,
+          "name": "lastUpdated",
+          "type": "i64"
+        }
+      ],
+      "name": "BeetleCardStats"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "owner",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "cardType",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "scopeId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "oldLevel",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "newLevel",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "dungBurned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "BeetleCardUpgraded"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "owner",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "cardType",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "scopeId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "deltaScore",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "newScore",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "newLevel",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "leveledUp",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "BeetleScoreIncremented"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "owner",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "cardType",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "currentLevel",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "upgradeCost",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "canUpgrade",
+          "type": "bool"
+        }
+      ],
+      "name": "BeetleUpgradeCost"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "rider",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "rideAttestation",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "CalCredited"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "staker",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "lpMinted",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "CalStaked"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "staker",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "calReturned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "lpBurned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "CalUnstaked"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "rideAttestation",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "rider",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timeS",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "calTributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "isNewKom",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "completedAt",
+          "type": "i64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ClimbCompleted"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "evidenceVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "rideAttestation",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "rider",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timeS",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "calTributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "isNewKom",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "completedAt",
+          "type": "i64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ClimbCompletedV2"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "rideAttestation",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "creditedSettlementWeek",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "calTributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ClimbCompletionFlowAssigned"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "evidenceVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "rideAttestation",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "creditedSettlementWeek",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "calTributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ClimbCompletionFlowAssignedV2"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "actor",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "burnKind",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "totalProtocolBurned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "DungBurned"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "authority",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "oldSize",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "newSize",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "communityReserved",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "reservationPolicyVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "vaultStakeCount",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "vaultCount",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "DungMintStateMigrated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "allocation",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "recipient",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "totalMinted",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "DungMinted"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "settlementWeek",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "emissionRateBps",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "scheduledEmission",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "admittedBaseEmission",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "terminal",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "EmissionCapApplied"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "epoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "totalDistributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "leaderboardDistributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "stakerDistributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "localLegendDistributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "polDistributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "protocolDistributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "stakerCount",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "unlockPct",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "lockedStakerAmount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "EpochRewardsDistributed"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "newRateBps",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "epoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "HalvingApplied"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "previousHolder",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "electionPeriod",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "termStartEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "termEndEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "LocalLegendDormant"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "winner",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "winnerCompletions",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "runnerUp",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "runnerUpCompletions",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "electionPeriod",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "termStartEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "termEndEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "isBootstrap",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "LocalLegendElected"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "authority",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "oldSize",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "newSize",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "isBootstrap",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "migrated",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "LocalLegendMigrated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "holder",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "LocalLegendResigned"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "calMint",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "dungMint",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "calMintAuthBump",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "dungMintAuthBump",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "MintsConfigured"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "admin",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "backend",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ProgramConfigInitialized"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "admin",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "newSize",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ProgramConfigMigrated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "admin",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "backend",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ProgramConfigUpdated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "admin",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "previousVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "currentVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ProgramVersionAdvanced"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultCreationDung",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "vaultCreationCal",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "harvestFeeBps",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "minterRightsEpochs",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "localLegendTermEpochs",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "epochsPerHalving",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "ProtocolParametersUpdated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "staker",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "dungEarned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "harvestFee",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "dungReceived",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "RewardsHarvested"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "rider",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "rideHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "parserVersion",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "economicEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "calEarned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "completedAt",
+          "type": "i64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "RideAttestationRecorded"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "epoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "staker",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "lpTokens",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "eligibleFromEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "StakerAllocation"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "settlementWeek",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "policyVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "currentLockedReallocated",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "legacyCarryReallocated",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "StakerRemainderPolicyApplied"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "polTokenAccount",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "treasuryTokenAccount",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "TreasuryAccountsConfigured"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "user",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "calReturned",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "feeAmount",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "UnstakeWithFee"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "usdcMint",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "usdcTreasuryTokenAccount",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "vaultCreationUsdc",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "UsdcPaymentConfigured"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "seedGeneration",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "seedCutoffAt",
+          "type": "i64"
+        },
+        {
+          "index": false,
+          "name": "activatedAt",
+          "type": "i64"
+        },
+        {
+          "index": false,
+          "name": "economicsStartEpoch",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "matchedUsers",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "matchedCompletions",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "evidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "seedCompletionsWritten",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "leaderboardSeeded",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "VaultActivated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "user",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timeS",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "calTributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "isNewKom",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "VaultCompleted"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "evidenceVersion",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "user",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timeS",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "calTributed",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "isNewKom",
+          "type": "bool"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "VaultCompletedV2"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "id",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "minter",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "signatureHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "index": false,
+          "name": "vertM",
+          "type": "u32"
+        },
+        {
+          "index": false,
+          "name": "paymentMethod",
+          "type": "u8"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "VaultCreated"
+    },
+    {
+      "fields": [
+        {
+          "index": false,
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "index": false,
+          "name": "updatedBy",
+          "type": "publicKey"
+        },
+        {
+          "index": false,
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ],
+      "name": "VaultMetadataUpdated"
+    }
+  ],
+  "instructions": [
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "name": "totalCompletions",
+          "type": "u64"
+        },
+        {
+          "name": "komHolder",
+          "type": "publicKey"
+        },
+        {
+          "name": "komTimeS",
+          "type": "u32"
+        },
+        {
+          "name": "komRecordedAt",
+          "type": "i64"
+        },
+        {
+          "name": "seedGeneration",
+          "type": "u32"
+        },
+        {
+          "name": "seedCutoffAt",
+          "type": "i64"
+        },
+        {
+          "name": "matchedUsers",
+          "type": "u32"
+        },
+        {
+          "name": "matchedCompletions",
+          "type": "u32"
+        },
+        {
+          "name": "evidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "name": "adminActivateVault"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultId",
+          "type": "u64"
+        }
+      ],
+      "name": "adminBackfillVaultActivation"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCounter"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "sponsorAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "creator"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "signature",
+          "type": {
+            "array": [
+              "u8",
+              64
+            ]
+          }
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "vertM",
+          "type": "u32"
+        },
+        {
+          "name": "distanceM",
+          "type": "u32"
+        },
+        {
+          "name": "avgGradientPct",
+          "type": "u16"
+        },
+        {
+          "name": "calDeposited",
+          "type": "u64"
+        }
+      ],
+      "name": "adminCreateVault"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "userState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "recipient"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "admin"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [],
+      "name": "adminInitializeUser"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "settlementWeek",
+          "type": "u64"
+        }
+      ],
+      "name": "adminOverrideOpenSettlementWeek"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "eligibleFromEpoch",
+          "type": "u64"
+        }
+      ],
+      "name": "adminOverrideStakeEligibility"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLeaderboard"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "entries",
+          "type": {
+            "vec": {
+              "defined": "LeaderEntry"
+            }
+          }
+        }
+      ],
+      "name": "adminReplaceVaultLeaderboard"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "settlementWeek",
+          "type": "u64"
+        },
+        {
+          "name": "pendingRewards",
+          "type": "u64"
+        }
+      ],
+      "name": "adminSeedPendingRewards"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "totalCompletions",
+          "type": "u64"
+        },
+        {
+          "name": "bestTimeS",
+          "type": "u32"
+        },
+        {
+          "name": "bestTimeHolder",
+          "type": "publicKey"
+        }
+      ],
+      "name": "adminSeedVaultCompletionSummary"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "admin"
+        }
+      ],
+      "args": [
+        {
+          "name": "expectedCurrentVersion",
+          "type": "u8"
+        },
+        {
+          "name": "newVersion",
+          "type": "u8"
+        }
+      ],
+      "name": "advanceProgramVersion"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [],
+      "name": "applyHalving"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "staker"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "stakerDungAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "protocolTreasury"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "dungMintAuth"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [],
+      "name": "collectStakeRewardsFor"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "admin"
+        }
+      ],
+      "args": [
+        {
+          "name": "calMint",
+          "type": "publicKey"
+        },
+        {
+          "name": "dungMint",
+          "type": "publicKey"
+        }
+      ],
+      "name": "configureMints"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "admin"
+        }
+      ],
+      "args": [
+        {
+          "name": "polTokenAccount",
+          "type": "publicKey"
+        },
+        {
+          "name": "treasuryTokenAccount",
+          "type": "publicKey"
+        }
+      ],
+      "name": "configureTreasuryAccounts"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "admin"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "usdcMint"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "usdcTreasuryTokenAccount"
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultCreationUsdc",
+          "type": "u64"
+        }
+      ],
+      "name": "configureUsdcPayment"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCounter"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "sponsorAuthority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "creator"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "creatorDungAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "signature",
+          "type": {
+            "array": [
+              "u8",
+              64
+            ]
+          }
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "vertM",
+          "type": "u32"
+        },
+        {
+          "name": "distanceM",
+          "type": "u32"
+        },
+        {
+          "name": "avgGradientPct",
+          "type": "u16"
+        }
+      ],
+      "name": "createVault"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCounter"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "sponsorAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalanceAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceCalAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceUsdcAccount"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultId",
+          "type": "u64"
+        },
+        {
+          "name": "rider",
+          "type": "publicKey"
+        },
+        {
+          "name": "signature",
+          "type": {
+            "array": [
+              "u8",
+              64
+            ]
+          }
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "vertM",
+          "type": "u32"
+        },
+        {
+          "name": "distanceM",
+          "type": "u32"
+        },
+        {
+          "name": "avgGradientPct",
+          "type": "u16"
+        }
+      ],
+      "name": "createVaultFromBalanceCalUsdc"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCounter"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "sponsorAuthority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "creator"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "creatorCalAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "calMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "creatorUsdcAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "protocolUsdcAccount"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "usdcMint"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "signature",
+          "type": {
+            "array": [
+              "u8",
+              64
+            ]
+          }
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "vertM",
+          "type": "u32"
+        },
+        {
+          "name": "distanceM",
+          "type": "u32"
+        },
+        {
+          "name": "avgGradientPct",
+          "type": "u16"
+        }
+      ],
+      "name": "createVaultWithUsdc"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rideAttestation"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "calMintReceipt"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "calMint"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "calMintAuth"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "destination"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "name": "creditCal"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "termStartEpoch",
+          "type": "u64"
+        }
+      ],
+      "name": "deactivateLocalLegend"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalanceAuthority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "sponsorAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceCalAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCalEscrow"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLpMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceLpAccount"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "name": "depositCalFromBalance"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultLeaderboard"
+        },
+        {
+          "isMut": false,
+          "isOptional": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "polAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "protocolTreasury"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "backendAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "dungMintAuth"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "settlementWeek",
+          "type": "u64"
+        },
+        {
+          "name": "config",
+          "type": {
+            "defined": "DistributionConfig"
+          }
+        }
+      ],
+      "name": "distributeEpochRewards"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "winner"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "winnerCompletions",
+          "type": "u32"
+        },
+        {
+          "name": "runnerUp",
+          "type": "publicKey"
+        },
+        {
+          "name": "runnerUpCompletions",
+          "type": "u32"
+        },
+        {
+          "name": "termStartEpoch",
+          "type": "u64"
+        }
+      ],
+      "name": "electLocalLegend"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "beetleCard"
+        }
+      ],
+      "args": [],
+      "name": "getBeetleCardStats"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "beetleCard"
+        }
+      ],
+      "args": [],
+      "name": "getUpgradeCost"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "staker"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "stakerDungAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "protocolTreasury"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "dungMintAuth"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [],
+      "name": "harvestRewards"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "beetleCard"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "scoringAuthority"
+        }
+      ],
+      "args": [
+        {
+          "name": "deltaScore",
+          "type": "u64"
+        }
+      ],
+      "name": "incrementBeetleScore"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "beetleCard"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "owner"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "cardType",
+          "type": {
+            "defined": "CardType"
+          }
+        },
+        {
+          "name": "scopeId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "name": "initializeBeetleCard"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [],
+      "name": "initializeDungMintState"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "program"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programData"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "admin"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "backendAuthority",
+          "type": "publicKey"
+        }
+      ],
+      "name": "initializeProgramConfig"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [],
+      "name": "initializeRiderBalance"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalanceAuthority"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceToken"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "mint"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rent"
+        }
+      ],
+      "args": [],
+      "name": "initializeRiderBalanceToken"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "userState"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [],
+      "name": "initializeUser"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCalEscrow"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "calMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rent"
+        }
+      ],
+      "args": [],
+      "name": "initializeVaultCalEscrow"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCounter"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [],
+      "name": "initializeVaultCounter"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLpMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rent"
+        }
+      ],
+      "args": [],
+      "name": "initializeVaultLpMint"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultCounter"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "expectedVaultStakeCount",
+          "type": "u32"
+        },
+        {
+          "name": "expectedVaultCount",
+          "type": "u32"
+        },
+        {
+          "name": "expectedCommunityReserved",
+          "type": "u64"
+        }
+      ],
+      "name": "migrateDungMintState"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultId",
+          "type": "u64"
+        }
+      ],
+      "name": "migrateLocalLegend"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "admin"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "settlementClockV2StartsAt",
+          "type": "i64"
+        }
+      ],
+      "name": "migrateProgramConfig"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "admin"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "settlementClockV2StartsAt",
+          "type": "i64"
+        }
+      ],
+      "name": "migrateProgramConfigV3"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rideAttestation"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "climbCompletionReceipt"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCompletion"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLeaderboard"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "completionTimeS",
+          "type": "u32"
+        },
+        {
+          "name": "calTribute",
+          "type": "u64"
+        },
+        {
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "name": "recordClimbCompletion"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rideAttestation"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "climbCompletionReceipt"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCompletion"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLeaderboard"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "completionTimeS",
+          "type": "u32"
+        },
+        {
+          "name": "calTribute",
+          "type": "u64"
+        },
+        {
+          "name": "completionEvidenceHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "name": "recordClimbCompletionV2"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "rideAttestation"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderSoul"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "payer"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "rideHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "attestationCommitment",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "parserVersion",
+          "type": "u32"
+        },
+        {
+          "name": "sourceKind",
+          "type": "u8"
+        },
+        {
+          "name": "completedAt",
+          "type": "i64"
+        },
+        {
+          "name": "startedAt",
+          "type": "i64"
+        },
+        {
+          "name": "totalTss",
+          "type": "u32"
+        },
+        {
+          "name": "totalDistanceM",
+          "type": "u32"
+        },
+        {
+          "name": "totalVertM",
+          "type": "u32"
+        },
+        {
+          "name": "calEarned",
+          "type": "u64"
+        },
+        {
+          "name": "climbsCrossed",
+          "type": "u16"
+        }
+      ],
+      "name": "recordRide"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCompletion"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLeaderboard"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "user"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "authority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "completionTimeS",
+          "type": "u32"
+        },
+        {
+          "name": "calTribute",
+          "type": "u64"
+        },
+        {
+          "name": "completedAt",
+          "type": "i64"
+        },
+        {
+          "name": "attestationHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "name": "recordVaultCompletion"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "localLegend"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "legendHolder"
+        }
+      ],
+      "args": [],
+      "name": "resignLocalLegend"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "admin"
+        }
+      ],
+      "args": [
+        {
+          "name": "status",
+          "type": {
+            "defined": "RiderBalanceStatus"
+          }
+        }
+      ],
+      "name": "setRiderBalanceStatus"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "sponsorAuthority"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "staker"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "stakerCalAta"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCalEscrow"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLpMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "stakerLpAccount"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "name": "stakeCalInVault"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "staker"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "stakerCalAta"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCalEscrow"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "calMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLpMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "stakerLpAccount"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "lpAmount",
+          "type": "u64"
+        }
+      ],
+      "name": "unstakeCalFromVault"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "adminAuthority"
+        }
+      ],
+      "args": [
+        {
+          "name": "newAdmin",
+          "type": {
+            "option": "publicKey"
+          }
+        },
+        {
+          "name": "newBackend",
+          "type": {
+            "option": "publicKey"
+          }
+        }
+      ],
+      "name": "updateProgramConfig"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "adminAuthority"
+        }
+      ],
+      "args": [
+        {
+          "name": "parameters",
+          "type": {
+            "defined": "ProtocolParameters"
+          }
+        }
+      ],
+      "name": "updateProtocolParameters"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "authority"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "avatarIpfs",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "slogan",
+          "type": {
+            "option": "string"
+          }
+        }
+      ],
+      "name": "updateVaultMetadata"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "beetleCard"
+        },
+        {
+          "isMut": true,
+          "isSigner": true,
+          "name": "owner"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "backendAuthority"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "ownerDungAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "dungMintState"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [],
+      "name": "upgradeBeetleCard"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rideAttestation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rideTributeBudget"
+        }
+      ],
+      "args": [],
+      "name": "verifyRideTributeBudget"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vault"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultStake"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "vaultActivation"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalanceAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceCalAccount"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultCalEscrow"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "calMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "vaultLpMint"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceLpAccount"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "lpAmount",
+          "type": "u64"
+        }
+      ],
+      "name": "withdrawCalToBalance"
+    },
+    {
+      "accounts": [
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalance"
+        },
+        {
+          "isMut": false,
+          "isSigner": true,
+          "name": "rider"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "riderBalanceAuthority"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "programConfig"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderBalanceSource"
+        },
+        {
+          "isMut": true,
+          "isSigner": false,
+          "name": "riderWalletDestination"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "mint"
+        },
+        {
+          "isMut": false,
+          "isSigner": false,
+          "name": "tokenProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "name": "withdrawToWallet"
+    }
+  ],
+  "name": "boulder_rollers",
+  "types": [
+    {
+      "name": "BalanceAuthorityModel",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "AppBalance"
+          },
+          {
+            "name": "Policy"
+          },
+          {
+            "name": "Delegate"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CardType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Climb"
+          },
+          {
+            "name": "Steady"
+          },
+          {
+            "name": "Explorer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DistributionConfig",
+      "type": {
+        "fields": [
+          {
+            "name": "leaderboardShareBps",
+            "type": "u64"
+          },
+          {
+            "name": "stakerShareBps",
+            "type": "u64"
+          },
+          {
+            "name": "localLegendShareBps",
+            "type": "u64"
+          },
+          {
+            "name": "polShareBps",
+            "type": "u64"
+          },
+          {
+            "name": "protocolFeeBps",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "LeaderEntry",
+      "type": {
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "timeS",
+            "type": "u32"
+          },
+          {
+            "name": "recordedAt",
+            "type": "i64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "ProtocolParameters",
+      "type": {
+        "fields": [
+          {
+            "name": "vaultCreationDung",
+            "type": "u64"
+          },
+          {
+            "name": "vaultCreationCal",
+            "type": "u64"
+          },
+          {
+            "name": "harvestFeeBps",
+            "type": "u64"
+          },
+          {
+            "name": "minterRightsEpochs",
+            "type": "u64"
+          },
+          {
+            "name": "localLegendTermEpochs",
+            "type": "u64"
+          },
+          {
+            "name": "epochsPerHalving",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "RiderBalanceStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Locked"
+          },
+          {
+            "name": "Recovering"
+          },
+          {
+            "name": "Revoked"
+          }
+        ]
+      }
+    }
+  ]
+}

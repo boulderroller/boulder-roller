@@ -1,0 +1,465 @@
+name: Solana CI
+
+# Both path lists name every file these jobs read; keep them the same.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'protocol/anchor/**'
+      - 'tools/stage1_reference/**'
+      - 'protocol/program-version.json'
+      - 'protocol/scripts/check_program_version.py'
+      - 'backend/app/generated_program_version.py'
+      - 'backend/app/program_compatibility.py'
+      - 'backend/app/solana_direct.py'
+      - 'backend/sql/169_stage1_program_version_window.sql'
+      - 'backend/sql/170_stage1_keeper.sql'
+      - 'backend/sql/171_stage1_indexer.sql'
+      - 'backend/idl/boulder_rollers.json'
+      - 'indexer/src/generated-program-version.ts'
+      - 'mobile/src/generated/boulderRollersProgramVersion.ts'
+      - 'mobile/src/generated/boulderRollersIdl.ts'
+      - 'mobile/scripts/gen-chain-types.mjs'
+      - 'indexer/**'
+      - 'web/portal/public/idl/boulder_rollers.json'
+      - '.github/workflows/solana-ci.yml'
+      # The Stage 1 oracle's hill-bonding constants, and a fixture the
+      # indexer tests load
+      - 'history/hill-bonding-diamond-2026-10-08/diamond.yaml'
+      - 'history/boulderscan-census-2026-09-06/build/lnq0e.3/live-supply.json'
+      # Migrations the service cutover rehearsal applies
+      - 'backend/supabase/migrations/20260306_080_indexer_tables.sql'
+      - 'backend/supabase/migrations/20260307_081_numeric_token_columns.sql'
+      - 'backend/supabase/migrations/20260415_091_v4a_settlement_indexer_alignment.sql'
+      - 'backend/supabase/migrations/20260420_098_drop_legacy_program_config_allocation_fields.sql'
+      - 'backend/supabase/migrations/20260420_099_program_config_protocol_parameters.sql'
+      - 'backend/supabase/migrations/20260714_126_settlement_clock_v2.sql'
+      - 'backend/supabase/migrations/20260714_127_dung_reservation_observability.sql'
+      - 'backend/supabase/migrations/20260716_140_dung_circulating_supply_authority.sql'
+      # The three alignment gates, their pytest setup and every file they
+      # open by name. The address gate also scans every tracked text file for
+      # retired addresses; listing those would mean running on every change,
+      # and Backend CI runs that gate too.
+      - 'backend/pytest.ini'
+      - 'backend/tests/truths/__init__.py'
+      - 'backend/tests/truths/alignment/__init__.py'
+      - 'backend/tests/truths/alignment/_alignment_helpers.py'
+      - 'backend/tests/truths/alignment/test_program_version_upgrade_gate.py'
+      - 'backend/tests/truths/alignment/test_program_config_compact_gate.py'
+      - 'backend/tests/truths/alignment/test_devnet_address_coherence_gate.py'
+      - 'backend/app/routes/vaults.py'
+      - 'backend/app/solana_env.py'
+      - 'mobile/src/constants/config.ts'
+      - 'mobile/src/lib/programVersion.ts'
+      - 'web/portal/src/lib/solana.ts'
+      - 'web/portal/.env.production'
+      - 'web/scan/.env.production'
+      - 'tools/dashboard/config.py'
+      - 'docker-compose.yml'
+      - '.env.example'
+      - 'CLAUDE.md'
+      - 'docs/CI_CD_SECRETS_GUIDE.md'
+      - 'docs/CLIENT_SIDE_BUILDING.md'
+      - 'docs/DEVNET_TEST_DATA.md'
+      - 'docs/FRESHEST_SPEC.md'
+      - 'docs/INTEGRATION_REGISTRY.md'
+      - 'docs/INTEGRATION_TEST_PLAN.md'
+      - 'docs/PORTAL_PROTOCOL_VALIDATION_REPORT.md'
+      - 'docs/SOLANA_PROGRAMS_GUIDE.md'
+      - 'docs/security/ANCHOR_SECURITY.md'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'protocol/anchor/**'
+      - 'tools/stage1_reference/**'
+      - 'protocol/program-version.json'
+      - 'protocol/scripts/check_program_version.py'
+      - 'backend/app/generated_program_version.py'
+      - 'backend/app/program_compatibility.py'
+      - 'backend/app/solana_direct.py'
+      - 'backend/sql/169_stage1_program_version_window.sql'
+      - 'backend/sql/170_stage1_keeper.sql'
+      - 'backend/sql/171_stage1_indexer.sql'
+      - 'backend/idl/boulder_rollers.json'
+      - 'indexer/src/generated-program-version.ts'
+      - 'mobile/src/generated/boulderRollersProgramVersion.ts'
+      - 'mobile/src/generated/boulderRollersIdl.ts'
+      - 'mobile/scripts/gen-chain-types.mjs'
+      - 'indexer/**'
+      - 'web/portal/public/idl/boulder_rollers.json'
+      - '.github/workflows/solana-ci.yml'
+      # The Stage 1 oracle's hill-bonding constants, and a fixture the
+      # indexer tests load
+      - 'history/hill-bonding-diamond-2026-10-08/diamond.yaml'
+      - 'history/boulderscan-census-2026-09-06/build/lnq0e.3/live-supply.json'
+      # Migrations the service cutover rehearsal applies
+      - 'backend/supabase/migrations/20260306_080_indexer_tables.sql'
+      - 'backend/supabase/migrations/20260307_081_numeric_token_columns.sql'
+      - 'backend/supabase/migrations/20260415_091_v4a_settlement_indexer_alignment.sql'
+      - 'backend/supabase/migrations/20260420_098_drop_legacy_program_config_allocation_fields.sql'
+      - 'backend/supabase/migrations/20260420_099_program_config_protocol_parameters.sql'
+      - 'backend/supabase/migrations/20260714_126_settlement_clock_v2.sql'
+      - 'backend/supabase/migrations/20260714_127_dung_reservation_observability.sql'
+      - 'backend/supabase/migrations/20260716_140_dung_circulating_supply_authority.sql'
+      # The three alignment gates, their pytest setup and every file they
+      # open by name. The address gate also scans every tracked text file for
+      # retired addresses; listing those would mean running on every change,
+      # and Backend CI runs that gate too.
+      - 'backend/pytest.ini'
+      - 'backend/tests/truths/__init__.py'
+      - 'backend/tests/truths/alignment/__init__.py'
+      - 'backend/tests/truths/alignment/_alignment_helpers.py'
+      - 'backend/tests/truths/alignment/test_program_version_upgrade_gate.py'
+      - 'backend/tests/truths/alignment/test_program_config_compact_gate.py'
+      - 'backend/tests/truths/alignment/test_devnet_address_coherence_gate.py'
+      - 'backend/app/routes/vaults.py'
+      - 'backend/app/solana_env.py'
+      - 'mobile/src/constants/config.ts'
+      - 'mobile/src/lib/programVersion.ts'
+      - 'web/portal/src/lib/solana.ts'
+      - 'web/portal/.env.production'
+      - 'web/scan/.env.production'
+      - 'tools/dashboard/config.py'
+      - 'docker-compose.yml'
+      - '.env.example'
+      - 'CLAUDE.md'
+      - 'docs/CI_CD_SECRETS_GUIDE.md'
+      - 'docs/CLIENT_SIDE_BUILDING.md'
+      - 'docs/DEVNET_TEST_DATA.md'
+      - 'docs/FRESHEST_SPEC.md'
+      - 'docs/INTEGRATION_REGISTRY.md'
+      - 'docs/INTEGRATION_TEST_PLAN.md'
+      - 'docs/PORTAL_PROTOCOL_VALIDATION_REPORT.md'
+      - 'docs/SOLANA_PROGRAMS_GUIDE.md'
+      - 'docs/security/ANCHOR_SECURITY.md'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.event.pull_request.draft || false }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    defaults:
+      run:
+        working-directory: protocol/anchor
+    env:
+      RUSTUP_TOOLCHAIN: stable
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Enforce ProgramConfig ABI version
+        working-directory: .
+        env:
+          PROGRAM_VERSION_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
+          PROGRAM_VERSION_FALLBACK_REF: origin/${{ github.event.repository.default_branch }}
+          PROGRAM_VERSION_EVENT_NAME: ${{ github.event_name }}
+          PROGRAM_VERSION_REF_NAME: ${{ github.ref_name }}
+          PROGRAM_VERSION_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          base_ref="$PROGRAM_VERSION_BASE_REF"
+          # Stacked, unreleased slices share one patch above the release branch.
+          # Check the combined ABI against main even when a PR targets a slice.
+          if [[ "$PROGRAM_VERSION_EVENT_NAME" == "pull_request" ]] \
+            || [[ "$PROGRAM_VERSION_REF_NAME" != "$PROGRAM_VERSION_DEFAULT_BRANCH" ]]; then
+            base_ref="$PROGRAM_VERSION_FALLBACK_REF"
+          fi
+          if [[ -z "$base_ref" ]] \
+            || [[ "$base_ref" =~ ^0+$ ]] \
+            || ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
+            base_ref="$PROGRAM_VERSION_FALLBACK_REF"
+          fi
+          git cat-file -e "$base_ref^{commit}" 2>/dev/null \
+            || { echo "Program-version base ref is unavailable: $base_ref" >&2; exit 1; }
+          args=()
+          args+=(--base-ref "$base_ref")
+          python3 protocol/scripts/check_program_version.py "${args[@]}"
+
+      - name: Set up Rust stable for Anchor tests
+        # The action's @stable branch is rebuilt from master, orphaning its old
+        # commits, so pin master's commit and name the toolchain instead.
+        uses: dtolnay/rust-toolchain@e2a55d2ffb04f378e9626c28d38b36d230d1e12f # v1
+        with:
+          toolchain: stable
+
+      - name: Pin rustup toolchain
+        run: |
+          rustup default stable
+          rustup override set stable
+          rustc --version
+          cargo --version
+          rustup toolchain list
+
+      - name: Install native deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libudev-dev pkg-config
+
+      - name: Cache Cargo
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: |
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: ${{ runner.os }}-cargo-0.29.0-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-0.29.0-
+
+      - name: Install Anchor CLI (avm 0.29.0)
+        run: |
+          export PATH="$HOME/.cargo/bin:$PATH"
+          rustup toolchain install 1.76.0 --profile minimal
+          RUSTUP_TOOLCHAIN=1.76.0 cargo install --git https://github.com/coral-xyz/anchor avm --tag v0.29.0 --locked --force
+          RUSTUP_TOOLCHAIN=1.76.0 ~/.cargo/bin/avm install 0.29.0
+          ~/.cargo/bin/avm use 0.29.0
+          rustup default stable
+          rustup override set stable
+          echo "$HOME/.avm/bin" >> $GITHUB_PATH
+          rustc --version
+          anchor --version
+
+      - name: Install pinned local validator and SBF compiler
+        run: |
+          mkdir -p "$RUNNER_TEMP/stage1-agave"
+          curl --retry 3 -fLsS 'https://github.com/anza-xyz/agave/releases/download/v2.1.21/solana-release-x86_64-unknown-linux-gnu.tar.bz2' -o "$RUNNER_TEMP/agave.tar.bz2"
+          printf '%s  %s\n' '5da3359e296f1e6c13522b874317cb4cfe33e73301a9dc60b1e1435cc133b397' "$RUNNER_TEMP/agave.tar.bz2" | sha256sum --check --strict
+          tar -xjf "$RUNNER_TEMP/agave.tar.bz2" -C "$RUNNER_TEMP/stage1-agave"
+          echo "$RUNNER_TEMP/stage1-agave/solana-release/bin" >> "$GITHUB_PATH"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Generate CI keypair
+        run: |
+          mkdir -p .anchor
+          solana-keygen new --no-bip39-passphrase --silent --outfile .anchor/ci-wallet.json
+
+      - name: Build all release variants and run native suites
+        run: |
+          export ANCHOR_WALLET="$PWD/.anchor/ci-wallet.json"
+          cargo build-sbf --manifest-path programs/boulder_rollers/Cargo.toml
+          mkdir -p target/idl target/types
+          anchor idl build --out target/idl/boulder_rollers.json --out-ts target/types/boulder_rollers.ts
+          python3 scripts/build-stage1-devnet.py
+          python3 scripts/build-stage1-localnet.py
+          python3 scripts/build-stage1-initial.py
+          python3 scripts/build-stage1-initial.py --previous-version
+          python3 scripts/build-stage1-initial.py --legacy-version
+          cargo test -p boulder_rollers
+          cargo test -p boulder_rollers --features stage1-devnet
+          cargo test -p boulder_rollers --features stage1-localnet
+          python3 -m unittest discover -s tests -p '*_test.py'
+          npx tsc --noEmit
+          python3 scripts/check-release-artifacts.py
+          node ../../mobile/scripts/gen-chain-types.mjs --check
+
+      - name: Oracle, indexer and backend alignment
+        working-directory: .
+        run: |
+          python3 -m venv "$RUNNER_TEMP/stage1-venv"
+          "$RUNNER_TEMP/stage1-venv/bin/pip" install -r tools/stage1_reference/requirements.txt
+          "$RUNNER_TEMP/stage1-venv/bin/python" -m pytest tools/stage1_reference -q
+          for vector in custody provider claim sponsor dung; do
+            "$RUNNER_TEMP/stage1-venv/bin/python" -m "tools.stage1_reference.${vector}_vectors" --check
+          done
+          "$RUNNER_TEMP/stage1-venv/bin/python" -m pytest --confcutdir=backend/tests/truths/alignment backend/tests/truths/alignment/test_program_version_upgrade_gate.py backend/tests/truths/alignment/test_program_config_compact_gate.py backend/tests/truths/alignment/test_devnet_address_coherence_gate.py -q
+          npm --prefix indexer ci
+          npm --prefix indexer test
+
+      - name: Preserve the compiled Anchor CLI for parallel jobs
+        run: |
+          mkdir -p .anchor/ci-tools
+          cp "$HOME/.avm/bin/anchor-0.29.0" .anchor/ci-tools/anchor
+          .anchor/ci-tools/anchor --version
+          (cd .anchor/ci-tools && sha256sum anchor > anchor.sha256)
+
+      - name: Upload exact binaries and runtime IDLs
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: stage1-release
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 3
+          path: |
+            protocol/anchor/target/deploy/boulder_rollers.so
+            protocol/anchor/target/idl/boulder_rollers.json
+            protocol/anchor/.anchor/stage1-devnet/deploy/boulder_rollers.so
+            protocol/anchor/.anchor/stage1-devnet/idl/boulder_rollers.json
+            protocol/anchor/.anchor/stage1-localnet/target/deploy/boulder_rollers.so
+            protocol/anchor/.anchor/stage1-localnet/target/idl/boulder_rollers.json
+            protocol/anchor/.anchor/stage1-initial/deploy/boulder_rollers.so
+            protocol/anchor/.anchor/stage1-previous/deploy/boulder_rollers.so
+            protocol/anchor/.anchor/stage1-legacy/deploy/boulder_rollers.so
+            protocol/anchor/.anchor/ci-tools/anchor
+            protocol/anchor/.anchor/ci-tools/anchor.sha256
+
+  test:
+    needs: build
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ matrix.timeout }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {group: custody, timeout: 45}
+          - {group: providers, timeout: 45}
+          - {group: claims, timeout: 40}
+          - {group: sponsor, timeout: 45}
+          - {group: dung, timeout: 40}
+          - {group: governance, timeout: 75}
+          - {group: legacy, timeout: 45}
+          - {group: services, timeout: 30}
+    name: ${{ matrix.group }}
+    defaults:
+      run:
+        working-directory: protocol/anchor
+    env:
+      RUSTUP_TOOLCHAIN: stable
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Enforce ProgramConfig ABI version
+        working-directory: .
+        env:
+          PROGRAM_VERSION_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
+          PROGRAM_VERSION_FALLBACK_REF: origin/${{ github.event.repository.default_branch }}
+          PROGRAM_VERSION_EVENT_NAME: ${{ github.event_name }}
+          PROGRAM_VERSION_REF_NAME: ${{ github.ref_name }}
+          PROGRAM_VERSION_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          base_ref="$PROGRAM_VERSION_BASE_REF"
+          # Stacked, unreleased slices share one patch above the release branch.
+          # Check the combined ABI against main even when a PR targets a slice.
+          if [[ "$PROGRAM_VERSION_EVENT_NAME" == "pull_request" ]] \
+            || [[ "$PROGRAM_VERSION_REF_NAME" != "$PROGRAM_VERSION_DEFAULT_BRANCH" ]]; then
+            base_ref="$PROGRAM_VERSION_FALLBACK_REF"
+          fi
+          if [[ -z "$base_ref" ]] \
+            || [[ "$base_ref" =~ ^0+$ ]] \
+            || ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
+            base_ref="$PROGRAM_VERSION_FALLBACK_REF"
+          fi
+          git cat-file -e "$base_ref^{commit}" 2>/dev/null \
+            || { echo "Program-version base ref is unavailable: $base_ref" >&2; exit 1; }
+          args=()
+          args+=(--base-ref "$base_ref")
+          python3 protocol/scripts/check_program_version.py "${args[@]}"
+
+      - name: Set up Rust stable for Anchor tests
+        # The action's @stable branch is rebuilt from master, orphaning its old
+        # commits, so pin master's commit and name the toolchain instead.
+        uses: dtolnay/rust-toolchain@e2a55d2ffb04f378e9626c28d38b36d230d1e12f # v1
+        with:
+          toolchain: stable
+
+      - name: Pin rustup toolchain
+        run: |
+          rustup default stable
+          rustup override set stable
+          rustc --version
+          cargo --version
+          rustup toolchain list
+
+      - name: Install native deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libudev-dev pkg-config
+
+      - name: Install pinned local validator and SBF compiler
+        run: |
+          mkdir -p "$RUNNER_TEMP/stage1-agave"
+          curl --retry 3 -fLsS 'https://github.com/anza-xyz/agave/releases/download/v2.1.21/solana-release-x86_64-unknown-linux-gnu.tar.bz2' -o "$RUNNER_TEMP/agave.tar.bz2"
+          printf '%s  %s\n' '5da3359e296f1e6c13522b874317cb4cfe33e73301a9dc60b1e1435cc133b397' "$RUNNER_TEMP/agave.tar.bz2" | sha256sum --check --strict
+          tar -xjf "$RUNNER_TEMP/agave.tar.bz2" -C "$RUNNER_TEMP/stage1-agave"
+          echo "$RUNNER_TEMP/stage1-agave/solana-release/bin" >> "$GITHUB_PATH"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Generate CI keypair
+        run: |
+          mkdir -p .anchor
+          solana-keygen new --no-bip39-passphrase --silent --outfile .anchor/ci-wallet.json
+
+      - name: Download the composed release
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: stage1-release
+          path: protocol/anchor
+
+      - name: Use the Anchor CLI compiled by the build job
+        run: |
+          (cd .anchor/ci-tools && sha256sum --check --strict anchor.sha256)
+          chmod +x .anchor/ci-tools/anchor
+          echo "$PWD/.anchor/ci-tools" >> "$GITHUB_PATH"
+          .anchor/ci-tools/anchor --version
+
+      - name: Prepare pinned local test programs and oracle
+        if: matrix.group != 'services'
+        run: |
+          curl --retry 3 -fLsS 'https://github.com/solana-program/stake-pool/releases/download/program%40v2.1.0/spl-stake-pool.so' -o "$RUNNER_TEMP/spl-stake-pool.so"
+          printf '%s  %s\n' 'ec2dfefaa70d560754a0000f39bd2cabc192b895d36205b3c428f601b6e1d7e1' "$RUNNER_TEMP/spl-stake-pool.so" | sha256sum --check --strict
+          python3 -m venv "$RUNNER_TEMP/stage1-oracle"
+          "$RUNNER_TEMP/stage1-oracle/bin/pip" install -r ../../tools/stage1_reference/requirements.txt
+          echo "STAGE1_ORACLE_PYTHON=$RUNNER_TEMP/stage1-oracle/bin/python" >> "$GITHUB_ENV"
+
+      - name: Fetch immutable Squads program for local governance tests
+        if: matrix.group == 'governance'
+        run: |
+          solana program dump --url https://api.mainnet-beta.solana.com SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf "$RUNNER_TEMP/squads-v4.so"
+          printf '%s  %s\n' 'dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c' "$RUNNER_TEMP/squads-v4.so" | sha256sum --check --strict
+
+      - name: Run isolated local-validator suite
+        if: matrix.group != 'services'
+        env:
+          STAGE1_CI_GROUP: ${{ matrix.group }}
+        run: |
+          python3 scripts/run-stage1-ci-group.py --group "$STAGE1_CI_GROUP" \
+            --wallet "$PWD/.anchor/ci-wallet.json" --pool-program "$RUNNER_TEMP/spl-stake-pool.so" \
+            --squads-program "$RUNNER_TEMP/squads-v4.so"
+
+      - name: Install PostgreSQL for the real service cutover
+        if: matrix.group == 'services'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql
+          npm --prefix ../../indexer ci
+
+      - name: Rehearse service-first cutover and persistent downgrade refusal
+        if: matrix.group == 'services'
+        run: |
+          python3 scripts/test-stage1-services.py \
+            --wallet "$PWD/.anchor/ci-wallet.json" \
+            --legacy-program "$PWD/.anchor/stage1-legacy/deploy/boulder_rollers.so" \
+            --previous-program "$PWD/.anchor/stage1-previous/deploy/boulder_rollers.so" \
+            --program "$PWD/.anchor/stage1-devnet/deploy/boulder_rollers.so" \
+            --report "$RUNNER_TEMP/stage1-service-cutover.json"
+
+      - name: Preserve service cutover evidence
+        if: always() && matrix.group == 'services'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: stage1-service-cutover
+          path: ${{ runner.temp }}/stage1-service-cutover.*
+          if-no-files-found: error
+          retention-days: 7

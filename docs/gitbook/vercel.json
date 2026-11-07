@@ -1,0 +1,329 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".vitepress/dist",
+  "installCommand": "npm install",
+  "framework": null,
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/protocol/what-is-boulder-roller",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/what-is-boulder-roller.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/how-it-works",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/how-it-works.html",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/the-sisyphean-ethos",
+      "destination": "/climbs/leaderboards",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/the-sisyphean-ethos.html",
+      "destination": "/climbs/leaderboards",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/climb-roles",
+      "destination": "/climbs/leaderboards",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/climb-roles.html",
+      "destination": "/climbs/leaderboards",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/patterns",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/patterns.html",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/climbs-and-vaults",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/climbs-and-vaults.html",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/proof-of-effort",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/proof-of-effort.html",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/verification",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/verification.html",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/tokens",
+      "destination": "/rides/cal",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/tokens.html",
+      "destination": "/rides/cal",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/cal-and-dung",
+      "destination": "/rides/cal",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/cal-and-dung.html",
+      "destination": "/rides/cal",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/prerequisites",
+      "destination": "/getting-started/account",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/prerequisites.html",
+      "destination": "/getting-started/account",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/set-up",
+      "destination": "/getting-started/account",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/set-up.html",
+      "destination": "/getting-started/account",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/your-first-roll",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/your-first-roll.html",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/first-ride",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/first-ride.html",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/reference/tokenomics",
+      "destination": "/dung/distribution",
+      "permanent": true
+    },
+    {
+      "source": "/reference/tokenomics.html",
+      "destination": "/dung/distribution",
+      "permanent": true
+    },
+    {
+      "source": "/reference/dung-distribution",
+      "destination": "/dung/distribution",
+      "permanent": true
+    },
+    {
+      "source": "/reference/dung-distribution.html",
+      "destination": "/dung/distribution",
+      "permanent": true
+    },
+    {
+      "source": "/reference/api",
+      "destination": "/reference/boulderscan",
+      "permanent": true
+    },
+    {
+      "source": "/reference/api.html",
+      "destination": "/reference/boulderscan",
+      "permanent": true
+    },
+    {
+      "source": "/reference/architecture",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/reference/architecture.html",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/support/common-issues",
+      "permanent": true
+    },
+    {
+      "source": "/support.html",
+      "destination": "/support/common-issues",
+      "permanent": true
+    },
+    {
+      "source": "/concepts",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/protocol",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started",
+      "destination": "/getting-started/access",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/",
+      "destination": "/getting-started/access",
+      "permanent": true
+    },
+    {
+      "source": "/reference",
+      "destination": "/reference/faq",
+      "permanent": true
+    },
+    {
+      "source": "/reference/",
+      "destination": "/reference/faq",
+      "permanent": true
+    },
+    {
+      "source": "/README",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/README/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/rides",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/rides/",
+      "destination": "/rides/processing",
+      "permanent": true
+    },
+    {
+      "source": "/climbs",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/climbs/",
+      "destination": "/climbs/climbs",
+      "permanent": true
+    },
+    {
+      "source": "/dung",
+      "destination": "/dung/settlement-weeks",
+      "permanent": true
+    },
+    {
+      "source": "/dung/",
+      "destination": "/dung/settlement-weeks",
+      "permanent": true
+    },
+    {
+      "source": "/climbs/founder",
+      "destination": "/climbs/vaults",
+      "permanent": true
+    },
+    {
+      "source": "/climbs/founder.html",
+      "destination": "/climbs/vaults",
+      "permanent": true
+    },
+    {
+      "source": "/reference/boulderscan",
+      "destination": "/rides/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/reference/boulderscan.html",
+      "destination": "/rides/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/strava",
+      "destination": "/getting-started/upload",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/strava.html",
+      "destination": "/getting-started/upload",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/open-data/releases/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/open-data/latest.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}

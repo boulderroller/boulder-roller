@@ -1,0 +1,242 @@
+{
+  "evidenceClass": "Local production build using retained historical GPS and measured USGS terrain; not deployment or current rider evidence",
+  "ride": {
+    "path": "web/portal/workshop/data/in-the-bag.json",
+    "sha256": "c5409de794aa7510d3278f93683ec851bfcb50741d857fb0b1db607d1ac6a825"
+  },
+  "climb": {
+    "id": "43f15658",
+    "name": "Wises Mill Road",
+    "timeBoundsSeconds": [
+      6686.0,
+      6921.0
+    ]
+  },
+  "terrain": {
+    "source": "USGS_13_n41w076_20221115.tif",
+    "masterSha256": "69415757dabb6fd94daa9c96b72c527c9701d65c61fad199297fc0e5bb36e886",
+    "verticalExaggeration": 1,
+    "contourIntervalMeters": 2,
+    "geometryNoise": false,
+    "avif": {
+      "quality": 90,
+      "subsampling": "4:4:4",
+      "range": "full"
+    },
+    "webp": {
+      "quality": 96,
+      "method": 6
+    }
+  },
+  "profile": {
+    "sampleCount": 16082,
+    "distanceKm": 128.72117,
+    "gapThresholdSeconds": 30,
+    "gapCount": 8
+  },
+  "map": {
+    "source": "CARTO Voyager with workshop v12Ground styling; exact recorded GPS and endpoint overlay",
+    "exports": "Native exact-camera captures with source-derived SVG overlays; desktop608x161, phone680x276. Static retained historical GPS; linked visible credit in adjacent figure caption.",
+    "attribution": [
+      "https://carto.com/attribution/",
+      "https://www.openstreetmap.org/copyright"
+    ]
+  },
+  "inputs": [
+    {
+      "path": "terrain-source/wises-native-window.npz",
+      "sha256": "8c42cda737400b462021a56c15abd2c2f2ed304b5d8fcc5e434ef0b19055f6ad"
+    },
+    {
+      "path": "terrain-source/wises-contours-and-road.json.gz",
+      "sha256": "1061ffc50746156b6cf7d8191c772789ba4aaa5ab1701f2d9e863316b53085b7",
+      "uncompressedSha256": "60f96afd974ee74b6fcfd963e3894461d02cba0526139de2fbbb885bb1be894f"
+    },
+    {
+      "path": "terrain-source/wises-recorded-gps.json",
+      "sha256": "cc2b59a73369d6a33d561a149ae6ae807a05b9cf286b5d63629c15f4476d9fe7"
+    },
+    {
+      "path": "terrain-source/wises-endpoint-meshes.json.gz",
+      "sha256": "f6061e54b05ed28991228f8f2b6934f2aadfed11db34d40f2fa7a3f48e43ad38",
+      "uncompressedSha256": "6d49586fbebd66fba93a8bc4e9ac4b2a888aa620b4973cad3c1fcb3b9d0a5607"
+    },
+    {
+      "path": "terrain-source/climbMapStyle.ts.txt",
+      "sha256": "456e27aa6c0e450282581ec7722640bf1c427edd08149d549d00cc0a25114c45"
+    },
+    {
+      "path": "terrain-source/map-style.ts.txt",
+      "sha256": "a6d02812e79b58d27c8b5b6e61f6a45c7cf95e7ce3edf5d8860b95978207b3a2"
+    },
+    {
+      "path": "terrain-source/mapGroundPalette.ts.txt",
+      "sha256": "5c7395b33911cbd581e7707eddbd50c2da23fe98bf666004d0215e48b01f0dde"
+    },
+    {
+      "path": "terrain-source/v3Ground.ts.txt",
+      "sha256": "b9eabf5f93c86af9eba77f304a09843580d715c2ab98810584b9d1de78749417"
+    },
+    {
+      "path": "terrain-source/inspection/generate_projections.py",
+      "sha256": "c727c5caee33d5da972fbf5958a81901a1f7f6ee06b97ac0b371f91473e0abe5"
+    },
+    {
+      "path": "terrain-source/inspection/map-capture-frames.json",
+      "sha256": "71d7d9ffaa679bc38e4abafc7e5eded2e61c3dee358af3d822afdb656342276d"
+    },
+    {
+      "path": "terrain-source/inspection/map-capture.html.txt",
+      "sha256": "7cb99387b156980cbd46fd2c45ed571e1e752cd20f7bc654d845ec88a9ec23ef"
+    },
+    {
+      "path": "terrain-source/inspection/map-desktop.png",
+      "sha256": "f8786ebdfaa4c3214f4c5fba5b3e4e31f6cc74db8ff73bd8e3c25b1d8cf365ff"
+    },
+    {
+      "path": "terrain-source/inspection/map-mobile.png",
+      "sha256": "8f93d00c999bae5e6a14f3b039ae971e6ce149e4aa8887244e06dad36a6c79d3"
+    },
+    {
+      "path": "terrain-source/inspection/mapDesktop.json",
+      "sha256": "2127650a20b91999deb6edfe3b237e0b7f1038729cadc29e8db54b0fe266c65f"
+    },
+    {
+      "path": "terrain-source/inspection/mapMobile.json",
+      "sha256": "65466e4244fb5e6534c54962150c9af65e2e159f71c62707bd25d2d8a4925ab0"
+    },
+    {
+      "path": "terrain-source/inspection/package_delivery.py",
+      "sha256": "b2ef28ecc7e25d0210fac5a1fd68bbf976db99de448114ee64f128eb2cda73e8"
+    },
+    {
+      "path": "terrain-source/inspection/source-projections.json",
+      "sha256": "6bb5c8c6ea0d0be2dc9063c53f2ae9f93a9e1a38f530600553c220ad4e7d17aa"
+    },
+    {
+      "path": "terrain-source/inspection/wises-interaction.json",
+      "sha256": "7537cd7149c0e08a5a783632fa7fc7efd5f24cfb05e5403d4755627b6756d62c"
+    },
+    {
+      "path": "terrain-source/font-provenance.json",
+      "sha256": "2972474393baa1eac08e16af03662c8d624784918b29ed4bc21fa05284b99f27"
+    },
+    {
+      "path": "src/app/fonts/Geist-Variable.woff2",
+      "sha256": "a369fcf5628ea2aa4e1b9e2ec6a5b3624e365bda588e1f0f2f12b564f728fbb8"
+    },
+    {
+      "path": "src/app/fonts/VARIABLE-OFL.txt",
+      "sha256": "c683bfbcc7e087f5d37a54ef628f10387c451a83ddc459b151403a164ac46c90"
+    },
+    {
+      "path": "terrain-source/export_profiles.py",
+      "sha256": "f5b3c469d9f14929f8db59198ea690fd7ae5bfb4505f11cab0ede992354ae486"
+    },
+    {
+      "path": "terrain-source/inspection/map-capture.ts.txt",
+      "sha256": "178c8960bb90fbc74181fb74e1c2203e033d0ac9876c94775fccfdd2b5c5aa37"
+    },
+    {
+      "path": "terrain-source/inspection/authoring-dependencies.json",
+      "sha256": "65aff465eb3f912b9999fc0463b70cd2ed616d1f853f1c5eb26ebf267e5852c6"
+    }
+  ],
+  "assets": [
+    {
+      "url": "/terrain/ride-elevation-mobile.webp",
+      "kind": "profile",
+      "width": 800,
+      "height": 250,
+      "bytes": 13676,
+      "sha256": "afc507852b502b246e0dcbdf3bd82f719b3f9daa90de913ada1576156e68c84a",
+      "budgetBytes": 20000
+    },
+    {
+      "url": "/terrain/ride-elevation.webp",
+      "kind": "profile",
+      "width": 1500,
+      "height": 240,
+      "bytes": 17626,
+      "sha256": "0b4a961a998a4640bc1f5aa1a52647bf4d6683c1432a8fe01f9621fdf41dae64",
+      "budgetBytes": 20000
+    },
+    {
+      "url": "/terrain/wises-69415757-1584.avif",
+      "kind": "terrain",
+      "width": 1584,
+      "height": 1116,
+      "bytes": 269787,
+      "sha256": "462ca921a8b152886ec6c9329f62224b7ae18bf888b1c4ec978ab311c5be0ca7",
+      "budgetBytes": 300000
+    },
+    {
+      "url": "/terrain/wises-69415757-1584.webp",
+      "kind": "terrain",
+      "width": 1584,
+      "height": 1116,
+      "bytes": 322376,
+      "sha256": "e103fe59ab63a492619dafec663adb1c56f4ce289f40a2958659fe79f9750623",
+      "budgetBytes": 350000
+    },
+    {
+      "url": "/terrain/wises-69415757-3080.avif",
+      "kind": "terrain",
+      "width": 3080,
+      "height": 2170,
+      "bytes": 724932,
+      "sha256": "448f8ac6da69db0242111415f09a5f03ed0bedb1fb3cf4b34576eb088ed78039",
+      "budgetBytes": 760000
+    },
+    {
+      "url": "/terrain/wises-69415757-3080.webp",
+      "kind": "terrain",
+      "width": 3080,
+      "height": 2170,
+      "bytes": 898350,
+      "sha256": "97b8bab68e9761ae51a11be6bd28080754fc1512e9ba1c7d63fa0d5e48ec5f4e",
+      "budgetBytes": 950000
+    },
+    {
+      "url": "/terrain/wises-69415757-968.avif",
+      "kind": "terrain",
+      "width": 968,
+      "height": 682,
+      "bytes": 116216,
+      "sha256": "8135448336ade4afefcf7d093a19eadbab673d6538dc489c99217438a54e7fd8",
+      "budgetBytes": 125000
+    },
+    {
+      "url": "/terrain/wises-69415757-968.webp",
+      "kind": "terrain",
+      "width": 968,
+      "height": 682,
+      "bytes": 134504,
+      "sha256": "551ce562addc139b44034b78a0a4b93129948d16ed1fed7b2be10295acc29167",
+      "budgetBytes": 145000
+    },
+    {
+      "url": "/terrain/wises-map-desktop.webp",
+      "kind": "map",
+      "width": 608,
+      "height": 161,
+      "bytes": 65994,
+      "sha256": "eccb2565d3cece9c6a9aa25f7ab8bf7d9c1e91971b9d0c2e789da45976589779",
+      "budgetBytes": 180000
+    },
+    {
+      "url": "/terrain/wises-map-mobile.webp",
+      "kind": "map",
+      "width": 680,
+      "height": 276,
+      "bytes": 114560,
+      "sha256": "bb675611a4960462b2bd6baaf8bb400fe10a31d41721f4b57e25439851a0cb77",
+      "budgetBytes": 180000
+    }
+  ],
+  "inspection": {
+    "clientModelSha256": "3cb21d1ee701ad44ac217cb9d914ea365617f55cb334333e1f448b6f42bf3102",
+    "samples": 236,
+    "projection": "Frozen Blender camera, exact MapLibre Mercator cameras, and full-ride profile raster axes; no inferred samples."
+  }
+}

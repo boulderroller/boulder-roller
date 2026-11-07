@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- APNs environment (bead odmi6.8). Meaningful only once the app is
+	     signed with the founder's team: provisioning maps this to sandbox
+	     (development) or production APNs. Simulator builds and unsigned
+	     archives carry it inertly. Release/TestFlight signing flips the
+	     effective environment to production automatically. -->
+	<key>aps-environment</key>
+	<string>development</string>
+	<!-- Sign in with Apple (found missing 2026-08-18 — the Privy Apple flow
+	     fails without it). The App ID must carry the capability; Xcode's
+	     automatic signing registers it when an account is available. -->
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
+</dict>
+</plist>

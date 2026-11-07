@@ -1,0 +1,56 @@
+{
+  "render_completed": true,
+  "all_selected_scene_fingerprints_exact_match": true,
+  "original_png_sha256": "69415757dabb6fd94daa9c96b72c527c9701d65c61fad199297fc0e5bb36e886",
+  "rebuilt_png_sha256": "9e849d8296c266426f2a2bc70c0428b732aa676102463d1df862197492760a98",
+  "png_byte_identical": false,
+  "decoded_rgba_pixel_identical": true,
+  "rgb_mae_8bit": 0.0,
+  "rgb_rmse_8bit": 0.0,
+  "rgb_max_error_8bit": 0,
+  "alpha_max_error_8bit": 0,
+  "changed_pixels": 0,
+  "source_package_bytes_excluding_validation": 3232648,
+  "validation_runtime": "Blender4.3.2, same local machine, rebuilt from packaged source; no saved scene input",
+  "evidence_class": "Local guarded rebuild, not deployed evidence",
+  "png_container_differences": [
+    {
+      "type": "tEXt",
+      "keyword": "File",
+      "master_bytes": 130,
+      "rebuilt_bytes": 160
+    },
+    {
+      "type": "tEXt",
+      "keyword": "Date",
+      "master_bytes": 24,
+      "rebuilt_bytes": 24
+    },
+    {
+      "type": "tEXt",
+      "keyword": "RenderTime",
+      "master_bytes": 19,
+      "rebuilt_bytes": 19
+    },
+    {
+      "type": "tEXt",
+      "keyword": "cycles.ViewLayer.total_time",
+      "master_bytes": 36,
+      "rebuilt_bytes": 36
+    },
+    {
+      "type": "tEXt",
+      "keyword": "cycles.ViewLayer.render_time",
+      "master_bytes": 37,
+      "rebuilt_bytes": 37
+    },
+    {
+      "type": "tEXt",
+      "keyword": "cycles.ViewLayer.synchronization_time",
+      "master_bytes": 46,
+      "rebuilt_bytes": 46
+    }
+  ],
+  "png_image_data_chunks_identical": true,
+  "png_chunk_counts_equal": true
+}

@@ -1,0 +1,432 @@
+/*
+ * Search sheet (Tim-ratified 2026-09-03, board "Guide and Search" on the
+ * Night Ledger Rooms canvas).
+ *
+ * A field, scope words, rows. Results group by kind under All; each row is
+ * glyph · title / subtitle · one trailing value. Recent is rows, not chips.
+ * Desktop: a 640px sheet hung under the header. Mobile: the drawer, full
+ * height, with Search / Done in its bar. Loads after the guide room.
+ */
+
+[data-slot="dialog-content"].portal-responsive-modal__dialog-content:has(.portal-sheet) {
+  top: 84px;
+  width: min(calc(100vw - 32px), 640px);
+  max-height: calc(100vh - 108px);
+  translate: -50% 0;
+  transform: none;
+  background: var(--portal-public-paper-soft);
+  border-color: var(--portal-surface-paper);
+  border-radius: 16px;
+  outline: none;
+}
+
+/* Each sheet owns its close word; the extra corner close and drawer handle
+   are not part of the sheet's bar. */
+[data-slot="dialog-content"].portal-responsive-modal__dialog-content:has(.portal-sheet) > [data-slot="dialog-close"] {
+  display: none;
+}
+
+[data-slot="drawer-content"].portal-responsive-modal__drawer-content:has(.portal-sheet) > :first-child {
+  display: none;
+}
+
+[data-slot="drawer-content"].portal-responsive-modal__drawer-content:has(.portal-sheet) {
+  height: calc(100dvh - 24px);
+  max-height: calc(100dvh - 24px);
+  background: var(--portal-public-paper-soft);
+  outline: none;
+}
+
+.portal-sheet__done:focus-visible {
+  outline: 2px solid var(--portal-public-ink-soft);
+  outline-offset: 4px;
+}
+
+[data-slot="dialog-content"].portal-responsive-modal__dialog-content > [data-slot="dialog-header"].portal-sheet__bar,
+[data-slot="drawer-content"].portal-responsive-modal__drawer-content > [data-slot="drawer-header"].portal-sheet__bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 16px 0 20px;
+  border-bottom: 1px solid var(--portal-surface-paper);
+  text-align: left;
+}
+
+.search-sheet__bar-title,
+.portal-sheet__bar-title {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--portal-public-ink);
+}
+
+.search-sheet__done,
+.portal-sheet__done {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+}
+
+[data-slot="dialog-content"].portal-responsive-modal__dialog-content > [data-slot="responsive-modal-body"].portal-sheet,
+[data-slot="drawer-content"].portal-responsive-modal__drawer-content > [data-slot="responsive-modal-body"].portal-sheet {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+}
+
+[data-slot="dialog-content"].portal-responsive-modal__dialog-content > [data-slot="dialog-header"].search-sheet__bar {
+  display: none;
+}
+
+/* ---- the field ------------------------------------------------------- */
+
+.search-sheet__field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 20px;
+  color: var(--portal-public-ink-soft);
+}
+
+.search-sheet__field .search-modal-input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  font-family: var(--br-font-sans);
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--portal-public-ink);
+}
+
+.search-sheet__field .search-modal-input::placeholder {
+  color: var(--portal-public-ink-muted);
+}
+
+.search-sheet__clear {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -6px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--portal-public-ink-muted);
+  cursor: pointer;
+}
+
+.search-sheet__clear:hover {
+  color: var(--portal-public-ink);
+}
+
+/* ---- scope words ----------------------------------------------------- */
+
+.search-sheet__words {
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--portal-surface-paper);
+  overflow: hidden;
+}
+
+.search-sheet .search-modal-category {
+  margin: 0;
+  padding: 13px 0 11px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--portal-public-ink-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-sheet .search-modal-category--active {
+  color: var(--portal-public-ink);
+  border-bottom-color: var(--portal-public-ink);
+}
+
+/* ---- rows ------------------------------------------------------------ */
+
+.search-sheet__list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.search-sheet__group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 6px;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+}
+
+/* Gray words: See All and Clear are navigation, not commits. */
+.search-sheet__word {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+}
+
+.search-sheet__word:hover {
+  color: var(--portal-public-ink);
+}
+
+.search-sheet .search-modal-result {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 52px;
+  margin: 0;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-sheet__group-head + .search-modal-result,
+.search-sheet__group--flat > .search-modal-result:first-child {
+  border-top: 0;
+}
+
+.search-sheet .search-modal-result:hover,
+.search-sheet .search-modal-result:focus-visible {
+  background: color-mix(in oklab, var(--portal-surface-paper) 55%, transparent);
+  outline: none;
+}
+
+.search-modal-result__avatar {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--portal-public-line);
+  background: var(--portal-surface-paper);
+  object-fit: cover;
+  font-family: var(--br-font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+}
+
+.search-modal-result__glyph {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  color: var(--portal-public-ink-muted);
+}
+
+.search-modal-result__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.search-modal-result__title {
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-modal-result__sub {
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-modal-result__value {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  white-space: nowrap;
+}
+
+/* ---- recent ---------------------------------------------------------- */
+
+.search-sheet__recent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  border-top: 1px solid var(--portal-surface-paper);
+}
+
+.search-sheet__group-head + .search-sheet__recent {
+  border-top: 0;
+}
+
+.search-sheet__recent-query {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--portal-public-ink-soft);
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-sheet__recent-query > svg {
+  justify-self: center;
+  color: var(--portal-public-ink-muted);
+}
+
+.search-sheet__recent-query:hover {
+  color: var(--portal-public-ink);
+}
+
+.search-sheet__recent-remove {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--portal-public-ink-faint);
+  cursor: pointer;
+}
+
+.search-sheet__recent-remove:hover {
+  color: var(--portal-public-ink-soft);
+}
+
+/* ---- states and the map row ------------------------------------------ */
+
+.search-sheet__state {
+  padding: 28px 20px;
+  font-family: var(--br-font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--portal-public-ink-muted);
+}
+
+.search-sheet__map {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 28px auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 52px;
+  margin: 12px 0 0;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+  color: var(--portal-public-ink-soft);
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-sheet__map > svg:first-child {
+  justify-self: center;
+}
+
+.search-sheet__map:hover {
+  background: color-mix(in oklab, var(--portal-surface-paper) 55%, transparent);
+}
+
+.search-sheet__map-word {
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+}
+
+.search-sheet__map-query {
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-sheet__map-chevron {
+  color: var(--portal-public-ink-faint);
+}
+
+@media (max-width: 767px) {
+  .search-sheet__field {
+    min-height: 52px;
+  }
+
+  .search-sheet__words {
+    gap: 18px;
+  }
+}

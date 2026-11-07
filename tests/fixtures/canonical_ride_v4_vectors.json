@@ -1,0 +1,32 @@
+{
+  "schema": "boulderroller.canonical_ride_vectors.v1",
+  "parser_version": 4,
+  "unsupported_parser_version": 999,
+  "vectors": {
+    "rust_sample_activity": {
+      "description": "Current V4 vector; canonical source and metrics semantics match V3 while provenance also binds authoritative geographic v2 climb output.",
+      "activity": {
+        "time_ms": [1000, 1200, 2500, 4000],
+        "lat_e7": [123456789, 123456799, null, 123456700],
+        "lon_e7": [-987654321, -987654300, null, -987654222],
+        "elevation_m": [10.0, 10.14, 11.0, 9.99],
+        "pwr_w": [100, 101, null, 250],
+        "hr_bpm": [null, 120, 140, 141],
+        "cadence_rpm": [80, 82, 84, null],
+        "speed_mps": [5.12, 5.5, 6.0, 0.0],
+        "dist_m": [0.0, 1.49, 20.0, 45.05],
+        "sport": "  CyCling\ud83d\udeb5 ",
+        "started_at_ms": 1000
+      },
+      "canonical_json": "{\"parser_version\":4,\"samples\":[{\"cadence_rpm\":81,\"dist_dm\":15,\"elev_dm\":101,\"hr_bpm\":120,\"lat_e6\":12345680,\"lon_e6\":-98765430,\"power_w\":101,\"sec_offset\":0,\"speed_cms\":531},{\"cadence_rpm\":84,\"dist_dm\":200,\"elev_dm\":110,\"hr_bpm\":140,\"lat_e6\":null,\"lon_e6\":null,\"power_w\":null,\"sec_offset\":1,\"speed_cms\":600},{\"cadence_rpm\":null,\"dist_dm\":null,\"elev_dm\":null,\"hr_bpm\":null,\"lat_e6\":null,\"lon_e6\":null,\"power_w\":null,\"sec_offset\":2,\"speed_cms\":null},{\"cadence_rpm\":null,\"dist_dm\":450,\"elev_dm\":100,\"hr_bpm\":141,\"lat_e6\":12345670,\"lon_e6\":-98765422,\"power_w\":250,\"sec_offset\":3,\"speed_cms\":0}],\"sport\":\"cycling\",\"started_at_ms\":1000}",
+      "ride_hash": "80a4190c9817eb9cd73cc8abcc8de151355d53a3dfb29487a60d7f192d4f7387"
+    },
+    "reference_gpx_file": {
+      "description": "Current V4 raw-source vector; V1-V3 source interpretations remain replayable and unchanged.",
+      "source_path": "workout-parse/tests/fixtures/canonical_v1_reference.gpx",
+      "file_type": "gpx",
+      "canonical_json": "{\"parser_version\":4,\"samples\":[{\"cadence_rpm\":81,\"dist_dm\":null,\"elev_dm\":16005,\"hr_bpm\":141,\"lat_e6\":40123457,\"lon_e6\":-105123457,\"power_w\":205,\"sec_offset\":0,\"speed_cms\":null},{\"cadence_rpm\":85,\"dist_dm\":null,\"elev_dm\":16010,\"hr_bpm\":145,\"lat_e6\":40123460,\"lon_e6\":-105123460,\"power_w\":220,\"sec_offset\":1,\"speed_cms\":null},{\"cadence_rpm\":null,\"dist_dm\":null,\"elev_dm\":null,\"hr_bpm\":null,\"lat_e6\":null,\"lon_e6\":null,\"power_w\":null,\"sec_offset\":2,\"speed_cms\":null},{\"cadence_rpm\":null,\"dist_dm\":null,\"elev_dm\":15995,\"hr_bpm\":null,\"lat_e6\":40123470,\"lon_e6\":-105123470,\"power_w\":null,\"sec_offset\":3,\"speed_cms\":null}],\"sport\":\"cycling\",\"started_at_ms\":1577836800000}",
+      "ride_hash": "8c9ec4fba817ad09c45f1e56e5e8917bc4656c673c39062901da14c524b4af00"
+    }
+  }
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WISSAHICKON 100 Urban-Repeat Policy Review</title>
+<style>
+  body { margin: 0; background: #111827; color: #e5e7eb; font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 28px; }
+  h1, h2 { margin: 0 0 12px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 18px; margin-top: 28px; }
+  p { color: #cbd5e1; line-height: 1.55; }
+  .meta, .decision, .grid, table { border: 1px solid #334155; background: #172033; }
+  .meta, .decision { padding: 16px; margin: 16px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: #334155; }
+  .stat { background: #172033; padding: 14px; }
+  .value { font-size: 24px; font-weight: 800; }
+  .label { color: #94a3b8; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border-bottom: 1px solid #334155; padding: 10px; text-align: left; vertical-align: top; font-size: 13px; }
+  th { color: #cbd5e1; background: #1e293b; text-transform: uppercase; letter-spacing: .05em; font-size: 11px; }
+  tr.product-visible td:first-child { color: #86efac; font-weight: 800; }
+  tr.benchmark-only td:first-child { color: #facc15; font-weight: 800; }
+  code { background: #0f172a; border: 1px solid #334155; padding: 2px 5px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>WISSAHICKON 100 Urban-Repeat Policy Review</h1>
+  <p class="meta">
+    Activity <code>3523251381</code> · WISSAHICKON 100 ·
+    source run <code>canonical_v2_20260429_210311_85714d</code>
+  </p>
+  <div class="grid">
+    <div class="stat"><div class="value">22</div><div class="label">Matched</div></div>
+    <div class="stat"><div class="value">25</div><div class="label">Missed</div></div>
+    <div class="stat"><div class="value">9</div><div class="label">Extras</div></div>
+    <div class="stat"><div class="value">5</div><div class="label">Product-visible refs</div></div>
+    <div class="stat"><div class="value">5</div><div class="label">Benchmark-only refs</div></div>
+  </div>
+
+  <section class="decision">
+    <h2>Policy Call</h2>
+    <p>
+      This ride is not a generic detector failure. It is an urban-repeat benchmark case:
+      steep 25-44m punch climbs can be product-visible under explicit urban-punch rules,
+      while shallow/moderate repeated 25-36m Strava labels should remain benchmark-only
+      and should not tune broad canonical_v2 thresholds.
+    </p>
+    <p>
+      Broad holdout scoring should classify this activity as <code>urban_repeat_policy_review</code>.
+      Detector changes should target the product-visible misses only. Benchmark-only misses:
+      24. Product-visible misses: 1.
+    </p>
+  </section>
+
+  <h2>Reference Segment Policy</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Policy</th><th>Segment</th><th>Raw repeats</th><th>Matched</th><th>Missed</th>
+        <th>Vert</th><th>Grade</th><th>Distance</th><th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="product-visible">
+          <td>product-visible</td>
+          <td>Climbing Meadows Trail</td>
+          <td>7</td>
+          <td>7</td>
+          <td>0</td>
+          <td>74.4m</td>
+          <td>5.5%</td>
+          <td>1347.8m</td>
+          <td>74m sustained trail climb; keep as core climb truth.</td>
+        </tr>
+        
+
+        <tr class="product-visible">
+          <td>product-visible</td>
+          <td>Hortter climb</td>
+          <td>5</td>
+          <td>4</td>
+          <td>1</td>
+          <td>43.6m</td>
+          <td>12.0%</td>
+          <td>349.0m</td>
+          <td>44m at 12% named climb; visible as an urban punch climb.</td>
+        </tr>
+        
+
+        <tr class="product-visible">
+          <td>product-visible</td>
+          <td>Monster TT</td>
+          <td>8</td>
+          <td>1</td>
+          <td>0</td>
+          <td>42.2m</td>
+          <td>16.3%</td>
+          <td>259.6m</td>
+          <td>42m at 16% wall-style effort; visible as an urban punch climb.</td>
+        </tr>
+        
+
+        <tr class="product-visible">
+          <td>product-visible</td>
+          <td>hortter short</td>
+          <td>8</td>
+          <td>1</td>
+          <td>0</td>
+          <td>27.0m</td>
+          <td>13.8%</td>
+          <td>196.3m</td>
+          <td>27m at 14% short steep repeat; visible only under urban-punch rules.</td>
+        </tr>
+        
+
+        <tr class="product-visible">
+          <td>product-visible</td>
+          <td>Switchback Climb to the Indian </td>
+          <td>8</td>
+          <td>0</td>
+          <td>0</td>
+          <td>25.6m</td>
+          <td>14.4%</td>
+          <td>177.9m</td>
+          <td>26m at 14% short steep repeat; visible only under urban-punch rules.</td>
+        </tr>
+        
+
+        <tr class="benchmark-only">
+          <td>benchmark-only</td>
+          <td>Full Gorgas Climb</td>
+          <td>7</td>
+          <td>0</td>
+          <td>7</td>
+          <td>36.3m</td>
+          <td>6.8%</td>
+          <td>522.5m</td>
+          <td>36m repeat segment; useful for review, too small to tune broad detector thresholds.</td>
+        </tr>
+        
+
+        <tr class="benchmark-only">
+          <td>benchmark-only</td>
+          <td>Hortter on up</td>
+          <td>7</td>
+          <td>2</td>
+          <td>0</td>
+          <td>33.8m</td>
+          <td>4.6%</td>
+          <td>728.0m</td>
+          <td>34m moderate repeat; local benchmark, not global product-shape truth.</td>
+        </tr>
+        
+
+        <tr class="benchmark-only">
+          <td>benchmark-only</td>
+          <td>Henry Ave.</td>
+          <td>8</td>
+          <td>1</td>
+          <td>7</td>
+          <td>30.0m</td>
+          <td>5.3%</td>
+          <td>538.8m</td>
+          <td>30m road repeat; local benchmark, not global product-shape truth.</td>
+        </tr>
+        
+
+        <tr class="benchmark-only">
+          <td>benchmark-only</td>
+          <td>Hammer to the Gravel </td>
+          <td>8</td>
+          <td>3</td>
+          <td>5</td>
+          <td>29.8m</td>
+          <td>3.7%</td>
+          <td>565.5m</td>
+          <td>30m moderate repeat; local benchmark, not global product-shape truth.</td>
+        </tr>
+        
+
+        <tr class="benchmark-only">
+          <td>benchmark-only</td>
+          <td>Double Climb</td>
+          <td>8</td>
+          <td>3</td>
+          <td>5</td>
+          <td>25.8m</td>
+          <td>3.4%</td>
+          <td>607.8m</td>
+          <td>26m shallow repeat; local benchmark, not global product-shape truth.</td>
+        </tr>
+        </tbody>
+  </table>
+
+  <h2>Extra Detection Review</h2>
+  <p>Extras in this ride are mostly nearby 24-55m urban-hill detections. Treat them as local-review candidates, not automatic false positives.</p>
+  <table>
+    <thead>
+      <tr><th>Start s</th><th>Vert</th><th>Grade</th><th>Distance</th><th>Mode</th><th>Policy note</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>1193</td>
+          <td>24.0m</td>
+          <td>9.2%</td>
+          <td>261.8m</td>
+          <td>canonical_v2:persistence</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>1518</td>
+          <td>40.0m</td>
+          <td>7.6%</td>
+          <td>527.4m</td>
+          <td>canonical_v2:momentum:urban_hills</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>6674</td>
+          <td>40.1m</td>
+          <td>7.3%</td>
+          <td>548.6m</td>
+          <td>canonical_v2:momentum:urban_hills</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>11827</td>
+          <td>54.4m</td>
+          <td>5.5%</td>
+          <td>995.2m</td>
+          <td>canonical_v2:momentum:hilly</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>17253</td>
+          <td>51.9m</td>
+          <td>5.4%</td>
+          <td>954.3m</td>
+          <td>canonical_v2:momentum:hilly</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>22279</td>
+          <td>24.7m</td>
+          <td>10.8%</td>
+          <td>228.0m</td>
+          <td>canonical_v2:persistence</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>22619</td>
+          <td>53.5m</td>
+          <td>5.9%</td>
+          <td>901.8m</td>
+          <td>canonical_v2:momentum:hilly</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>28275</td>
+          <td>54.2m</td>
+          <td>5.5%</td>
+          <td>977.1m</td>
+          <td>canonical_v2:momentum:hilly</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        
+
+        <tr>
+          <td>40098</td>
+          <td>54.8m</td>
+          <td>5.6%</td>
+          <td>980.2m</td>
+          <td>canonical_v2:momentum:hilly</td>
+          <td>Nearby urban-hill candidate; review as possible local benchmark, not automatic false positive.</td>
+        </tr>
+        </tbody>
+  </table>
+</main>
+</body>
+</html>

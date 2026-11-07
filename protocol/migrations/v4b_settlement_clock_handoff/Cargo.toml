@@ -1,0 +1,20 @@
+[package]
+name = "v4b_settlement_clock_handoff"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+blake3 = "=1.8.2"
+solana-program = "=1.18.26"
+zeroize_derive = "=1.4.2"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1

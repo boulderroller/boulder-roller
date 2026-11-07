@@ -1,0 +1,847 @@
+{
+  "evidence_sha256": "74db00d57fec3ee34628a3b8dc52d4dc0321b7bd545dfe268f8b050f0366837b",
+  "finalized_slot_end": 477191698,
+  "finalized_slot_start": 477191642,
+  "generated_at": "2026-07-18T17:22:18.352150+00:00",
+  "genesis_hash": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "network": "devnet",
+  "positions": [
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 0,
+      "canonical_observation": null,
+      "canonical_position": "4845hfLA4LYfVp9GPyE5SHq2WuYhA48P8vrxAvmUFsep",
+      "decision": "no_position",
+      "legacy_balance_account": "9R2hDPBGQSfaRUVEmcBGUCg1XKrMeu5TxQrNsNyssk7h",
+      "legacy_balance_authority": "Gd57ANAz2pNkgmJET7SUaXQs8dMhQWYABYFJHc7PkqFW",
+      "legacy_wallet_ata": "FQvrXM6pwv7hZjUmiGAHe3aeiF9YmHX3tqs4toDVdV5T",
+      "lp_mint": "EfqVL5vSDeChtyAGV8iAihN2ARMuEaGTdi1ihq15stWP",
+      "reasons": [],
+      "recorded_lp_tokens": 0,
+      "rider": "AEGnuNYUu8zBaBFDPAmSCbvdRRJfeRCYMzARG28zeEsH",
+      "vault_activation_observation": {
+        "account_sha256": "81675538c2398352eb88d797ab2452632f715b72ae13a5614577f3a86bf24a6d",
+        "address": "3151KSDPSDYc2A882gDqLfGtU5mrgJcc2A4s95VE3kzo",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 1
+      },
+      "vault_id": 1,
+      "vault_stake": "DFrFLTRU3RiqfFz8GuqePD6JUyABYSRgPqZYBdbBrGbG",
+      "vault_stake_observation": {
+        "account_sha256": "46152508519ff578352f4009461fb6d6729f60e2a2b3a5096d1f9f8463b6db17",
+        "cal_staked": 0,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [
+        {
+          "account_sha256": "ee38781bf34afcd23b35b77d1629d7405217c7756ba84aa125b48a9857c725f2",
+          "address": "pUEKTzKpzk7sSrdNGVrJKoU2HvxQZH58p6unb3pCPUk",
+          "amount_base_units": 100000000000000,
+          "authority": "2CWEqVzBZnSN45Naye99SEy516rB4jSSoWzuW53Dgb3u",
+          "mint": "De15VdKebJXgt939RJd85BPTnA1YsMVhJsuQNfJX1XNr",
+          "state": "initialized"
+        }
+      ],
+      "attributable_total": 100000000000000,
+      "canonical_observation": null,
+      "canonical_position": "9L513rB7VaoBFRYQCoVaEgRC1EZVC4BpWxM8N9iX88P5",
+      "decision": "retired_fixture",
+      "legacy_balance_account": "4Gcm5jcUm69sGBJZxJ8gYWtT3fdeVUskr8XubCjJZ5JQ",
+      "legacy_balance_authority": "8nFxY1Vyb5puqAwKpkjidqzQiZW3841eAgDKNMKF19MB",
+      "legacy_wallet_ata": "pUEKTzKpzk7sSrdNGVrJKoU2HvxQZH58p6unb3pCPUk",
+      "lp_mint": "De15VdKebJXgt939RJd85BPTnA1YsMVhJsuQNfJX1XNr",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000000,
+      "retirement": {
+        "account_state_mutated": false,
+        "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+        "retired_at": "2026-07-18T17:15:00Z",
+        "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+        "transaction_signatures": []
+      },
+      "rider": "2CWEqVzBZnSN45Naye99SEy516rB4jSSoWzuW53Dgb3u",
+      "vault_activation_observation": {
+        "account_sha256": "8a04215b940593231352da5a822ced3d626698254e099c027ef8c495d1c97708",
+        "address": "8iCs393qVc4oigjUAC9dpDDW4v6KmbWmwtDtf4Br8RRL",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 2
+      },
+      "vault_id": 2,
+      "vault_stake": "D8PZMSapFBJ1kk5BWMRZo2hkLiHP5XRUy3PSMveGeKqk",
+      "vault_stake_observation": {
+        "account_sha256": "e0cce94b04af540764577fb13c1bf24267fa123412b3cbe64a361927da040921",
+        "cal_staked": 100000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [
+        {
+          "account_sha256": "75b069b6a3c92f2a1e66f7856c464d67ed6e7d492d53056525d0360ca9ed97ee",
+          "address": "AfbRQ8VVgU6xmTURi8GBH9DvRqHAx8WoT5M22YkeQxoE",
+          "amount_base_units": 100000000000000,
+          "authority": "C7jL3xSNsAye5StHBZsKuNd3atsQJNaAXnkUR9se3Gzt",
+          "mint": "5GCNvHu5frd4KbtP5DhUQ5dUZnMAJXpP2QH5ZRsYXSkv",
+          "state": "initialized"
+        }
+      ],
+      "attributable_total": 100000000000000,
+      "canonical_observation": null,
+      "canonical_position": "Auvyk93hVEaTaNb4x3rxRtfmrWXwgDRGa5FjSH1Z1dq1",
+      "decision": "retired_fixture",
+      "legacy_balance_account": "Gqd57e9iJfDcZDmb6AUjoUZETQGQTK7vbT3ktJM55URa",
+      "legacy_balance_authority": "BmoUYeWyxaZwE5c5yLXqS6BYfh3wT7PYpRKbEKHHPDJV",
+      "legacy_wallet_ata": "AfbRQ8VVgU6xmTURi8GBH9DvRqHAx8WoT5M22YkeQxoE",
+      "lp_mint": "5GCNvHu5frd4KbtP5DhUQ5dUZnMAJXpP2QH5ZRsYXSkv",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000000,
+      "retirement": {
+        "account_state_mutated": false,
+        "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+        "retired_at": "2026-07-18T17:15:00Z",
+        "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+        "transaction_signatures": []
+      },
+      "rider": "C7jL3xSNsAye5StHBZsKuNd3atsQJNaAXnkUR9se3Gzt",
+      "vault_activation_observation": {
+        "account_sha256": "d9fd6a437a32301af51286e7fac5fecfe07cab8538ba796d8ebb5c20c384ebad",
+        "address": "6BkSMEDCDwgWx4a2jf8aMZtsffpDt2YLGG7pf5R9KjV",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 3
+      },
+      "vault_id": 3,
+      "vault_stake": "7cK9Hm6CHcN4TaAd8rb1P6XQfvXbJz1e95f4mZNdVDxt",
+      "vault_stake_observation": {
+        "account_sha256": "978f6402d9c4ee5f06ff9a0d77535e2db6a6c170e192b252ea0a68a6ed3229c4",
+        "cal_staked": 100000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 149811,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [
+        {
+          "account_sha256": "8225cfa5f32b26eb4e7564587d9f20c8115fbb9f75386fb4c4eed38e52310edf",
+          "address": "H9QZZiuyF19ZHVwKUjAhAWkM1YYGYHeVNkDgYPcXGXPp",
+          "amount_base_units": 100000000000000,
+          "authority": "8fi8VXVT1KJeeRLdaCh5LDm72hba76ox3Mee7jW2FY4L",
+          "mint": "8g43kAt5gWrFB5n1LRdmBxqyKLZhn7rwSbwrvENXKuB5",
+          "state": "initialized"
+        }
+      ],
+      "attributable_total": 100000000000000,
+      "canonical_observation": null,
+      "canonical_position": "3SjDsBL5URHBTzF3nSRa8BC87BaH31kntD4vcRAE58Qe",
+      "decision": "retired_fixture",
+      "legacy_balance_account": "Hm9sCMZqRYzJmFxt6vYEHT1KPeUSoPj2hk8LW8r4xVUU",
+      "legacy_balance_authority": "SPhG1jJg42RsqZnjgPo1FFF6mPH3jFHfoqW7RzpUeYd",
+      "legacy_wallet_ata": "H9QZZiuyF19ZHVwKUjAhAWkM1YYGYHeVNkDgYPcXGXPp",
+      "lp_mint": "8g43kAt5gWrFB5n1LRdmBxqyKLZhn7rwSbwrvENXKuB5",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000000,
+      "retirement": {
+        "account_state_mutated": false,
+        "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+        "retired_at": "2026-07-18T17:15:00Z",
+        "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+        "transaction_signatures": []
+      },
+      "rider": "8fi8VXVT1KJeeRLdaCh5LDm72hba76ox3Mee7jW2FY4L",
+      "vault_activation_observation": {
+        "account_sha256": "7e63ad89f07209e72210b28800d62ab819e01c089415894c029d67ea79774615",
+        "address": "8j5rGxTY2dygEvbKoXvurYSX3tZaMgvxEkpHuqBLyuGo",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 4
+      },
+      "vault_id": 4,
+      "vault_stake": "4oPdjcgZ9wFKgNc9b2LhbxDtvJuxDSPaEq9Ybtw6frS7",
+      "vault_stake_observation": {
+        "account_sha256": "d7cb2f18ae59676bcc84fed9f3cab381a5c8558e4b99f950263a900add0b7eeb",
+        "cal_staked": 100000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [
+        {
+          "account_sha256": "e7d1808eeb26adb95a5e4d15b56df24109d3f007d61a01e4b8d7e4cda463ae32",
+          "address": "9ffWh3i7Nhkbzzk9mmLz58e3Dvd9ir8krsw3a6wwpW63",
+          "amount_base_units": 100000000000000,
+          "authority": "5qAU6BSdHaWAae88U31HNnTkzk1WkHKNN4tEJPftq4Zd",
+          "mint": "DHpRojrdEbKHyWJJqNy3EuG82ksRmnxjUqQaYVmpkTiJ",
+          "state": "initialized"
+        }
+      ],
+      "attributable_total": 100000000000000,
+      "canonical_observation": null,
+      "canonical_position": "GnYgenuScFdXLKFsYCzeXjaC2bi2TRFcpGDHMSmbXN6C",
+      "decision": "retired_fixture",
+      "legacy_balance_account": "4QM67Mi4qr1Py1oZArHasZd2rLV6r7jZVFwpMr71gfEu",
+      "legacy_balance_authority": "8Fr8e9fKp3EKSsDhhWV67e7K5XEHnKDUUQw2a2h1u6nf",
+      "legacy_wallet_ata": "9ffWh3i7Nhkbzzk9mmLz58e3Dvd9ir8krsw3a6wwpW63",
+      "lp_mint": "DHpRojrdEbKHyWJJqNy3EuG82ksRmnxjUqQaYVmpkTiJ",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000000,
+      "retirement": {
+        "account_state_mutated": false,
+        "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+        "retired_at": "2026-07-18T17:15:00Z",
+        "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+        "transaction_signatures": []
+      },
+      "rider": "5qAU6BSdHaWAae88U31HNnTkzk1WkHKNN4tEJPftq4Zd",
+      "vault_activation_observation": {
+        "account_sha256": "2f8aaba60c84bd33ef131778ed6e7f9a4565e04cad785bfd3d930422d13ce9f1",
+        "address": "64JPvwcPyLrv8sEa1FEey3fbiGcdxcfJYGJ9uRGjWVbK",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 5
+      },
+      "vault_id": 5,
+      "vault_stake": "5cUPAZcxhDBQvNg1dxVkZy2M3nPN8mn4skQTD4Q2J4St",
+      "vault_stake_observation": {
+        "account_sha256": "ffaf4b76bf48e55c2815afe89df261e735c4c93b03a6c1f698e6db41f7a59d1c",
+        "cal_staked": 100000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 149877,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [
+        {
+          "account_sha256": "adf5da12cb1ed4d0afe2d19520b2f1bc100ddbe6bfed15a5d8c35e7bb0f580b5",
+          "address": "6wj4wEJ7enBs6nSSqaphZ8rCM2CsHyZzSyR7iRvsNzDz",
+          "amount_base_units": 100000000000000,
+          "authority": "9mLLguhcPAVsqX1bk6ZhSDpNcvFfZtcPbXfSF75eXMZe",
+          "mint": "CvHn6fADVyZNupubnsvagMcpBhxcqdvsq9FBYH8K7Hch",
+          "state": "initialized"
+        }
+      ],
+      "attributable_total": 100000000000000,
+      "canonical_observation": null,
+      "canonical_position": "8B2g15X4VYsGWKthpF18QF2sZXhKmyjBECCh9VSTqTSZ",
+      "decision": "retired_fixture",
+      "legacy_balance_account": "8fbfuYThjtNdQ2o4QK4T6SKseTqQ4jyxU3bGvzssTtGc",
+      "legacy_balance_authority": "6GLszEojb8Hyg1bnwcXG6w316z22kdEGMsYootuWFpcT",
+      "legacy_wallet_ata": "6wj4wEJ7enBs6nSSqaphZ8rCM2CsHyZzSyR7iRvsNzDz",
+      "lp_mint": "CvHn6fADVyZNupubnsvagMcpBhxcqdvsq9FBYH8K7Hch",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000000,
+      "retirement": {
+        "account_state_mutated": false,
+        "reason": "Pre-cohort full-stack smoke fixture whose random in-memory rider key was not persisted.",
+        "retired_at": "2026-07-18T17:15:00Z",
+        "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+        "transaction_signatures": []
+      },
+      "rider": "9mLLguhcPAVsqX1bk6ZhSDpNcvFfZtcPbXfSF75eXMZe",
+      "vault_activation_observation": {
+        "account_sha256": "f5d89b33a677e3a826cfb35e680b2fac596ecabd17f1eb3d17d7813ff3d67f43",
+        "address": "FeMyB6PbVkrTXreVUFm4TcFcWkf7kbbaGv2THv1513qM",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 6
+      },
+      "vault_id": 6,
+      "vault_stake": "HybEwhcB5TVwpJFHkzyg7rA7Hbwnge8xgwLB9C4AWvpf",
+      "vault_stake_observation": {
+        "account_sha256": "d4cf1ad8f86ddc90b26d89ed12f996d927ac2ea302606eefb35d769bbf2d949d",
+        "cal_staked": 100000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 149877,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 0,
+      "canonical_observation": null,
+      "canonical_position": "6uMMdGLkewd1RwhJxbL2U7oFTQVDZZAPHELd6GZu7y15",
+      "decision": "no_position",
+      "legacy_balance_account": "Cco1HCDHMkAiVr9cYX5Uzz5kvPRheqYnxyhqPhzwe93f",
+      "legacy_balance_authority": "D1uoi9hNTK7JwfY6uVtxsueyHCv7WMm2fNAPQtNpTrBS",
+      "legacy_wallet_ata": "HvpyKb18kPobcAPfzp8xVLa7NCn9uebrTQLubcYqzVUM",
+      "lp_mint": "3z3V29h1pvXLiYPmA9yrhi8AFFWDGMkBjyDSHrinVtsa",
+      "reasons": [],
+      "recorded_lp_tokens": 0,
+      "rider": "Fr7wkgkTmqbkgwfqm2Fdfy5LnpqE1FFscFHxc4x5HBrh",
+      "vault_activation_observation": {
+        "account_sha256": "0eea07413f1e2765de4b212b0eb911c47706312091a419b4dd7620347c6d6acf",
+        "address": "4MFkwYGY4StLgp2hSybQg6GFx7waWQRWVWktBvQfmzjz",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 7
+      },
+      "vault_id": 7,
+      "vault_stake": "4bcERvWfe7X8gwoD35RgL7uJg7bhdYZpWRcrrvzqDDhr",
+      "vault_stake_observation": {
+        "account_sha256": "cd75b4ce1e3b13cb07b846482bb14512abae2a6b305724f4875f8b9536dd6730",
+        "cal_staked": 0,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 0,
+      "canonical_observation": null,
+      "canonical_position": "FN2vvg4sdGbkyTYWqQXLjJhaUDdCzpJ9ycDV6dVLGYiU",
+      "decision": "no_position",
+      "legacy_balance_account": "3e3GZG5EdUsdrDuabt4gySDQEuo3uy3T6CL1zBxEgmQ7",
+      "legacy_balance_authority": "CZEXpWu6kWXYrS48Z9buDsigX81RH1Zoqm7EhM6qX2Ae",
+      "legacy_wallet_ata": "8MbuWUYJfnYp4YkwzKrNBReeHVJPbnfZK9N7bqAbauzM",
+      "lp_mint": "BqfJz6z823zYGsBsoEbDRGfe98Wn5yv4ftVsRyAkGXik",
+      "reasons": [],
+      "recorded_lp_tokens": 0,
+      "rider": "BKtoBaRSVwmy5tn5tB5n1CjrHceF7ygtb1ZJjxqetkJ8",
+      "vault_activation_observation": {
+        "account_sha256": "f890734088180223137dd9bc842360502a450390e41273441f8fa8cbddc0bede",
+        "address": "7GHEiqaJXjWkc69gum1GrNVuMm7FpLVDYYxo9CTPoyNa",
+        "economics_start_epoch": 120,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 8
+      },
+      "vault_id": 8,
+      "vault_stake": "BHMda5deVgnSVCxPDzkbxV4ztQPBfekCESCWNBJu9ftQ",
+      "vault_stake_observation": {
+        "account_sha256": "c67469a683ee4980ca35fc2b9994d45478ea9e9aa20f3178096d48fd8552f90f",
+        "cal_staked": 0,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 100000000000000,
+      "canonical_observation": {
+        "account_sha256": "7cffd7b9022c4964a5717c89819399b44db99ffe64db38e4225c868f29e38993",
+        "address": "A5dBNMX4NdgTZaK274fXKqeQfzi1gxAHYCoJkEydBb11",
+        "amount_base_units": 100000000000000,
+        "authority": "G3PwUpehAfvq5TzELtVRgNiA5Pjocz5kgTKRbjpzgv9u",
+        "mint": "HghzMDB6XqAcMJqYWVvbjWjAc7tGT2ZqoxyrkkYntSDe",
+        "state": "frozen"
+      },
+      "canonical_position": "A5dBNMX4NdgTZaK274fXKqeQfzi1gxAHYCoJkEydBb11",
+      "decision": "ready",
+      "legacy_balance_account": "CYWUUsmrC5bQD1H8msEZsRWQ13wot1k4uXF6uUfnGbCw",
+      "legacy_balance_authority": "76bhJgPwvvAHQFa9qDkz6k2wDjxDNUQ7B4unddmc8Ss3",
+      "legacy_wallet_ata": "6oc6JvWWCHychu6Js1thd6MSSQhH8tR9cp17mzD6jKee",
+      "lp_mint": "HghzMDB6XqAcMJqYWVvbjWjAc7tGT2ZqoxyrkkYntSDe",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000000,
+      "rider": "3eoWZQVGyHsyRPhihMiUptP2RNRNvMeCEJdzY6717pwu",
+      "vault_activation_observation": {
+        "account_sha256": "64c33324c5aa1887ed375d50bff1b353a7e1e2472e0d9dcd4fbf78594f1d671b",
+        "address": "9ZtHAG4gaMVrv1wTF3Ax5JaCm3rQkNQBf6GJNdYw9BnQ",
+        "economics_start_epoch": 127,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 9
+      },
+      "vault_id": 9,
+      "vault_stake": "G3PwUpehAfvq5TzELtVRgNiA5Pjocz5kgTKRbjpzgv9u",
+      "vault_stake_observation": {
+        "account_sha256": "ebb79ab657ecb6951cc9ff292e261df00dfeb1cf94f16bc8ebc3ea762eed999b",
+        "cal_staked": 100000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 60000000000000,
+      "canonical_observation": {
+        "account_sha256": "4a81962576d7e0657437d517b5c0718be71ed42123290515cfd9921dc851579b",
+        "address": "BgTaaPMRqcjBSW2DB4UvT4HenTdrygaiwt9tHyXMujvZ",
+        "amount_base_units": 60000000000000,
+        "authority": "F87d94BPDjPtiHbzCYsA8aLxYUUHHwwGNpBCgFp8XsqM",
+        "mint": "HaMuqEMm6QXAmRP7pButXPsr8jJGgMPURqQgRDScDEjU",
+        "state": "frozen"
+      },
+      "canonical_position": "BgTaaPMRqcjBSW2DB4UvT4HenTdrygaiwt9tHyXMujvZ",
+      "decision": "ready",
+      "legacy_balance_account": "C9NQBNuFCwf1stqqzGg4yBYqJCpfQp3NKqCeJTQ6M8QE",
+      "legacy_balance_authority": "5KVQRC5w5ZmaATwvria7uP15N7BM9zY7fR3dw2519iQV",
+      "legacy_wallet_ata": "H5AUsm7DwCJpeY4ds7QYe1rec2bXPUzMos666rGWyBtY",
+      "lp_mint": "HaMuqEMm6QXAmRP7pButXPsr8jJGgMPURqQgRDScDEjU",
+      "reasons": [],
+      "recorded_lp_tokens": 60000000000000,
+      "rider": "H2F3GerKj6nhtNb2VACdUwprFbFGosZMABaaExuSLMgW",
+      "vault_activation_observation": {
+        "account_sha256": "ce8a0fda43ef7fcd0d7c23c0b279556c453d3617bde046a61a19a2b1a0855878",
+        "address": "7zEJcwWqu19mQDo7W1MdLKiTdsBRboKbKuuGwAKvxXBW",
+        "economics_start_epoch": 127,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 10
+      },
+      "vault_id": 10,
+      "vault_stake": "F87d94BPDjPtiHbzCYsA8aLxYUUHHwwGNpBCgFp8XsqM",
+      "vault_stake_observation": {
+        "account_sha256": "26348e742d4fd631a2ae1001506d055368de4030943a2d23b25c90f4ad5679fe",
+        "cal_staked": 60000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 60000000000000,
+      "canonical_observation": {
+        "account_sha256": "dbf27f02bdc2e3099230066392efcd6e1bdc2f4d78bea07dfe96a43490d3e027",
+        "address": "CmXyqB23RrkPCgLXZjLwyWXquwTfhNHXnxxHFStSoTmu",
+        "amount_base_units": 60000000000000,
+        "authority": "8mU4YaHip451HyZrxCi2W6gNVEeP4apPbGxun5VdjuHA",
+        "mint": "6YXpbPwFBxd6wxBj4iEXg9sSE8yyUscSU5NUso6AJaWS",
+        "state": "frozen"
+      },
+      "canonical_position": "CmXyqB23RrkPCgLXZjLwyWXquwTfhNHXnxxHFStSoTmu",
+      "decision": "ready",
+      "legacy_balance_account": "C2qoZrihiBhhuZkU6iRZUU6FDTihraWN1ZAz8e1fGcHr",
+      "legacy_balance_authority": "7P5TfPfDCAwkLMdzhu3Wpa2cpvTt1GLThffq9XFSF6zN",
+      "legacy_wallet_ata": "3ecGYk57BFTB1HwfiEE4Rohv9rb8CgUx3XrCnEqvFmxi",
+      "lp_mint": "6YXpbPwFBxd6wxBj4iEXg9sSE8yyUscSU5NUso6AJaWS",
+      "reasons": [],
+      "recorded_lp_tokens": 60000000000000,
+      "rider": "8eaBsUpMAMTpX1DmRXmT2KBmCHpC4AJpYkwESotLJw5E",
+      "vault_activation_observation": {
+        "account_sha256": "55d5b4f729553d0e893d9f928d2a5a957fdab190a0c067856f45ab477a2e7fd5",
+        "address": "1xaKwy2YnNta2yDqZqyeRyczFzXUbvw2ApEbvTV9gHJ",
+        "economics_start_epoch": 127,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 11
+      },
+      "vault_id": 11,
+      "vault_stake": "8mU4YaHip451HyZrxCi2W6gNVEeP4apPbGxun5VdjuHA",
+      "vault_stake_observation": {
+        "account_sha256": "1dbe176df4f1fe26e8b25ed128ad796ace069cfd0144cf5caa4c119c0eb460a1",
+        "cal_staked": 60000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 60000000000000,
+      "canonical_observation": {
+        "account_sha256": "53705673accd23fd9158a1104c405c667cd5a364f683506ffc27423d01db29ad",
+        "address": "4jzpLyk44gJg92c61sj4k7kutwqQzyCXWm6aYQiK5tiZ",
+        "amount_base_units": 60000000000000,
+        "authority": "5rkXynA8xxmDuwFzQyVCQFnJWCVy8T2kZN33Fi1KaL9X",
+        "mint": "99KvR9BYBRLaMpRRBBXzk3VEoj2aThQ26AmLsfKQyHPc",
+        "state": "frozen"
+      },
+      "canonical_position": "4jzpLyk44gJg92c61sj4k7kutwqQzyCXWm6aYQiK5tiZ",
+      "decision": "ready",
+      "legacy_balance_account": "2T5U4fYw6d8gZmoSBU5GsPFU4iTnn82ZmV5XgxE7qTWA",
+      "legacy_balance_authority": "5k3mNhy4j15K3GvP9En4Rko3Xs6Sek6crx6DJk2tsuLP",
+      "legacy_wallet_ata": "ABxv6qYHr9ifEuSj9Q766ZiBuvhcM6oEpEyFUXDKiG1o",
+      "lp_mint": "99KvR9BYBRLaMpRRBBXzk3VEoj2aThQ26AmLsfKQyHPc",
+      "reasons": [],
+      "recorded_lp_tokens": 60000000000000,
+      "rider": "6v4ZJja4Ur3z2MTfsSWKhY88nNaJZPoqFSyoP52zjS4r",
+      "vault_activation_observation": {
+        "account_sha256": "1456ff29be482fdccc878b11327b325152ec9bf266803b52ee5610dfbb6cabc6",
+        "address": "HJknPriXDdMuHQrY2zNhfhyRSafXMky6fgK3bq6bhb7N",
+        "economics_start_epoch": 127,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 12
+      },
+      "vault_id": 12,
+      "vault_stake": "5rkXynA8xxmDuwFzQyVCQFnJWCVy8T2kZN33Fi1KaL9X",
+      "vault_stake_observation": {
+        "account_sha256": "b26f9970c9b6ea23ae5a295c5c3bec9f1da38054167c9c4fd8056c1b6a075ac2",
+        "cal_staked": 60000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 60000000000000,
+      "canonical_observation": {
+        "account_sha256": "75578030b1213f80ba30aa0bef1bda07e57a9df12b833d5dbc8e916be0584faf",
+        "address": "4Rs2Ah6n1jouAfhkh7mvU2NyAmftayyAM6S2pWjegMfy",
+        "amount_base_units": 60000000000000,
+        "authority": "63WsCr4cgv7gjjEK3cfPiWBktXq3NBpadhN6sEuifion",
+        "mint": "HJm2ujSjXn4hwcfb9ii2th3eqjyTCa6P73q1G8QAoua6",
+        "state": "frozen"
+      },
+      "canonical_position": "4Rs2Ah6n1jouAfhkh7mvU2NyAmftayyAM6S2pWjegMfy",
+      "decision": "ready",
+      "legacy_balance_account": "3vVR41ss5xZTAehmX1r4PmFiM8DHovXC78Ybm9LQD5ba",
+      "legacy_balance_authority": "7vthMaTzjdTUEpJBEUfci8i8JhVd1VobD18yF8epssiX",
+      "legacy_wallet_ata": "6eStjFVRebgXfigtT3KCSKzoKmMsmyMxVPKPEWvuoQS8",
+      "lp_mint": "HJm2ujSjXn4hwcfb9ii2th3eqjyTCa6P73q1G8QAoua6",
+      "reasons": [],
+      "recorded_lp_tokens": 60000000000000,
+      "rider": "4ktNPE2E3crMDDgGvmoJjyYYbYrFKDxBR6zDSJjHRwPU",
+      "vault_activation_observation": {
+        "account_sha256": "dd9186c813cd4359d0566f604c5d8376025fd712cc70300d26aeb5d93b616cb6",
+        "address": "3za4jQkhCB7RDL6tn3MV4HgsmdiFN6VwhrgQqV1jTJuE",
+        "economics_start_epoch": 127,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 14
+      },
+      "vault_id": 14,
+      "vault_stake": "63WsCr4cgv7gjjEK3cfPiWBktXq3NBpadhN6sEuifion",
+      "vault_stake_observation": {
+        "account_sha256": "61d6dff96fa707e37221e3637b473994fc037f13eb2cb2bdc49f3e1ef062cf72",
+        "cal_staked": 60000000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [
+        {
+          "account_sha256": "59bf897ebe1c8b2b435b522ea6bb0d4106e7e5c4dc015eebcb27792708948443",
+          "address": "D9n8kXHZkVZFHDftzyucJreQrp8pRpPPmqnu7r3GsJLG",
+          "amount_base_units": 100000000000,
+          "authority": "jPBYXEaVpGHGJ3SHkFZS6LB5R92MYTQpgvTDR9FGaWk",
+          "mint": "EbLg2oQFdS37QQcfK744u4zExcDRYz2viQFbRrSpGAM7",
+          "state": "initialized"
+        }
+      ],
+      "attributable_total": 100000000000,
+      "canonical_observation": null,
+      "canonical_position": "64XnRJBpAxcA6gDYtYeynu4MPCruMkACawC7FiDCuypo",
+      "decision": "retired_fixture",
+      "legacy_balance_account": "GXg2TpNhKt6LueS9j9ZVH2nvAM7nHNMGRLfzmAwk7SZW",
+      "legacy_balance_authority": "3WUUM8wwLSLSDVfiof3qrowUMZvrKkZVWs7X8DGaYubV",
+      "legacy_wallet_ata": "D9n8kXHZkVZFHDftzyucJreQrp8pRpPPmqnu7r3GsJLG",
+      "lp_mint": "EbLg2oQFdS37QQcfK744u4zExcDRYz2viQFbRrSpGAM7",
+      "reasons": [],
+      "recorded_lp_tokens": 100000000000,
+      "retirement": {
+        "account_state_mutated": false,
+        "reason": "Pre-cohort Balance proof fixture whose default random in-memory rider key was not persisted.",
+        "retired_at": "2026-07-18T17:15:00Z",
+        "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+        "transaction_signatures": []
+      },
+      "rider": "jPBYXEaVpGHGJ3SHkFZS6LB5R92MYTQpgvTDR9FGaWk",
+      "vault_activation_observation": {
+        "account_sha256": "37e7707ab7ff1efcfa450cafaea0694975c37a69dcdf60d60a8ebc6990580302",
+        "address": "HenNv4i43qxG4bdXtqeEeYVXLveJytKPUT1RZm1yo5fF",
+        "economics_start_epoch": 127,
+        "is_active": true,
+        "seed_generation": 1,
+        "vault_id": 15
+      },
+      "vault_id": 15,
+      "vault_stake": "5QjQcoRNgz1YwWemUbjwi7WEZGKMLbM12mNC6PM8eHrp",
+      "vault_stake_observation": {
+        "account_sha256": "3dc4b2c12105c4bf929654690b4844f2b2bffa2659fae80f456674e2992d4c23",
+        "cal_staked": 100000000000,
+        "effective_lp_tokens": 0,
+        "pending_effective_week_plus_one": 0,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "legacy"
+      }
+    },
+    {
+      "actions": [],
+      "attributable_sources": [],
+      "attributable_total": 0,
+      "canonical_observation": {
+        "account_sha256": "06d8991cd1bfb1e12eabef1b5da5e2ee4f614c168bbdc1a0ab56cb8df70be0eb",
+        "address": "ByCXXzEJwitHwFqzoN9T9MX72d5QQpy8M8Hs9TsAJaCK",
+        "amount_base_units": 0,
+        "authority": "FmyrBB9qszkUwwnmXz8dVyC2bmBHVNuTrLnm3VVwzzWH",
+        "mint": "6PKHQXTqHtGxQvVBQhyMJpvFoHomnbj1o64GCtWR86Aq",
+        "state": "frozen"
+      },
+      "canonical_position": "ByCXXzEJwitHwFqzoN9T9MX72d5QQpy8M8Hs9TsAJaCK",
+      "decision": "no_position",
+      "legacy_balance_account": "d9Rd4bBKX5BdPw8A384dQuB6FeFVvY1oN1o9zojq6YG",
+      "legacy_balance_authority": "FEopX9qKzaBRwbpuDbyeV4fJd6XbZRspnXxqy2Hj1rRq",
+      "legacy_wallet_ata": "6M9c2Z5PxRYyfJkcrEZ7hWtYTEDfWpayjA4d9RXoc1R1",
+      "lp_mint": "6PKHQXTqHtGxQvVBQhyMJpvFoHomnbj1o64GCtWR86Aq",
+      "reasons": [],
+      "recorded_lp_tokens": 0,
+      "rider": "3boUdo36YNZEr4yWUgu4HyAv3bU7d8VgXoC8Ff9veQ3U",
+      "vault_activation_observation": {
+        "account_sha256": "70863fe3d8f1ad2ec2892a0653a57d89e5c16dedebcd86bb09c07748cccc455d",
+        "address": "4YgeqmRoYELtKUmnfwSryoBeg8yFCL2V9SpskYC39u9e",
+        "economics_start_epoch": 132,
+        "is_active": true,
+        "seed_generation": 2,
+        "vault_id": 16
+      },
+      "vault_id": 16,
+      "vault_stake": "FmyrBB9qszkUwwnmXz8dVyC2bmBHVNuTrLnm3VVwzzWH",
+      "vault_stake_observation": {
+        "account_sha256": "a5f1413197da170570e7d97967ef4be915fb2e814cc5bafe08e88c65332689cd",
+        "cal_staked": 0,
+        "effective_lp_tokens": 100000000000000,
+        "pending_effective_week_plus_one": 134,
+        "pending_lp_tokens": 0,
+        "rewards_earned": 0,
+        "snapshot_layout": "weekly"
+      }
+    }
+  ],
+  "program_id": "HsPhhMukUKu641e9hDJUJJW4chvF5EXYzuG2xBwMrnst",
+  "retirement": {
+    "manifest_sha256": "a9ba7cd9114ada7b4a5c6ece4a50e571db0d9a463e5bdd32e93d97cf22ba4b4f",
+    "mutation": "none",
+    "retirement_count": 6,
+    "retirement_id": "devnet-pre-cohort-dead-key-lp-fixtures-2026-07-18",
+    "transaction_signatures": []
+  },
+  "rpc_url": "https://api.devnet.solana.com",
+  "schema": "boulderroller.lp-custody-inventory.v1",
+  "summary": {
+    "decision_counts": {
+      "no_position": 4,
+      "ready": 5,
+      "retired_fixture": 6
+    },
+    "position_count": 15,
+    "retired_fixture_count": 6,
+    "rollout_ready": true,
+    "surviving_position_count": 5,
+    "vault_count": 15
+  },
+  "vaults": [
+    {
+      "lp_mint": "EfqVL5vSDeChtyAGV8iAihN2ARMuEaGTdi1ihq15stWP",
+      "lp_mint_account_sha256": "67f3288bf0aa436440a20dc1760ee276882ed60bc79abc3934cf3ee18f9a288b",
+      "mint_supply": 0,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 0,
+      "unattributed_holders": [],
+      "vault_id": 1,
+      "vault_stake_recorded_total": 0
+    },
+    {
+      "lp_mint": "De15VdKebJXgt939RJd85BPTnA1YsMVhJsuQNfJX1XNr",
+      "lp_mint_account_sha256": "52968b086b73b4f17d47651296684944545cbf146d9cf908a6878411af29820b",
+      "mint_supply": 100000000000000,
+      "retired_stake_recorded_total": 100000000000000,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 100000000000000,
+      "unattributed_holders": [],
+      "vault_id": 2,
+      "vault_stake_recorded_total": 100000000000000
+    },
+    {
+      "lp_mint": "5GCNvHu5frd4KbtP5DhUQ5dUZnMAJXpP2QH5ZRsYXSkv",
+      "lp_mint_account_sha256": "68cf0988170a9872ce5ca228fbf765793a3648c881fd61d7046f67e0701d955b",
+      "mint_supply": 100000000000000,
+      "retired_stake_recorded_total": 100000000000000,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 100000000000000,
+      "unattributed_holders": [],
+      "vault_id": 3,
+      "vault_stake_recorded_total": 100000000000000
+    },
+    {
+      "lp_mint": "8g43kAt5gWrFB5n1LRdmBxqyKLZhn7rwSbwrvENXKuB5",
+      "lp_mint_account_sha256": "397fe4d45d08405d39b012e8eea79af9b051e23ab4921a3fc2b499f1901bce7c",
+      "mint_supply": 100000000000000,
+      "retired_stake_recorded_total": 100000000000000,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 100000000000000,
+      "unattributed_holders": [],
+      "vault_id": 4,
+      "vault_stake_recorded_total": 100000000000000
+    },
+    {
+      "lp_mint": "DHpRojrdEbKHyWJJqNy3EuG82ksRmnxjUqQaYVmpkTiJ",
+      "lp_mint_account_sha256": "6b02a377d080b17b3678d0a18ef15de0b27501a9e072b6f4e8b5ae8a2f3508b4",
+      "mint_supply": 100000000000000,
+      "retired_stake_recorded_total": 100000000000000,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 100000000000000,
+      "unattributed_holders": [],
+      "vault_id": 5,
+      "vault_stake_recorded_total": 100000000000000
+    },
+    {
+      "lp_mint": "CvHn6fADVyZNupubnsvagMcpBhxcqdvsq9FBYH8K7Hch",
+      "lp_mint_account_sha256": "db3d724a8b2d33effc8578580fba167bf7547053bd6570df0124af318557039e",
+      "mint_supply": 100000000000000,
+      "retired_stake_recorded_total": 100000000000000,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 100000000000000,
+      "unattributed_holders": [],
+      "vault_id": 6,
+      "vault_stake_recorded_total": 100000000000000
+    },
+    {
+      "lp_mint": "3z3V29h1pvXLiYPmA9yrhi8AFFWDGMkBjyDSHrinVtsa",
+      "lp_mint_account_sha256": "0b3374467e03bc2de64e10469a04923cc7a62af682ef6938926d9192f3d57b45",
+      "mint_supply": 0,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 0,
+      "unattributed_holders": [],
+      "vault_id": 7,
+      "vault_stake_recorded_total": 0
+    },
+    {
+      "lp_mint": "BqfJz6z823zYGsBsoEbDRGfe98Wn5yv4ftVsRyAkGXik",
+      "lp_mint_account_sha256": "b1fe794e1ee255e79517c2b0274da425f0850fc4c9c1226a5d34694876e16aa7",
+      "mint_supply": 0,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 0,
+      "unattributed_holders": [],
+      "vault_id": 8,
+      "vault_stake_recorded_total": 0
+    },
+    {
+      "lp_mint": "HghzMDB6XqAcMJqYWVvbjWjAc7tGT2ZqoxyrkkYntSDe",
+      "lp_mint_account_sha256": "f1255ce4ea93996f748518430334a9f17400e841eb4e927496ee4f29e720dbcd",
+      "mint_supply": 100000000000000,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 100000000000000,
+      "token_account_total": 100000000000000,
+      "unattributed_holders": [],
+      "vault_id": 9,
+      "vault_stake_recorded_total": 100000000000000
+    },
+    {
+      "lp_mint": "HaMuqEMm6QXAmRP7pButXPsr8jJGgMPURqQgRDScDEjU",
+      "lp_mint_account_sha256": "45fa6a69e3b732314ba2031a1bcc74b0427d632a56fc7924dc206727f735a98e",
+      "mint_supply": 60000000000000,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 60000000000000,
+      "token_account_total": 60000000000000,
+      "unattributed_holders": [],
+      "vault_id": 10,
+      "vault_stake_recorded_total": 60000000000000
+    },
+    {
+      "lp_mint": "6YXpbPwFBxd6wxBj4iEXg9sSE8yyUscSU5NUso6AJaWS",
+      "lp_mint_account_sha256": "b77f70cb52223282d79a265064341341da63eb5e8c20705123ea9384bd5060d8",
+      "mint_supply": 60000000000000,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 60000000000000,
+      "token_account_total": 60000000000000,
+      "unattributed_holders": [],
+      "vault_id": 11,
+      "vault_stake_recorded_total": 60000000000000
+    },
+    {
+      "lp_mint": "99KvR9BYBRLaMpRRBBXzk3VEoj2aThQ26AmLsfKQyHPc",
+      "lp_mint_account_sha256": "a30abd0af59d05e327615ed9188de1888d13266f52e2dc9f3ec145c236633c2e",
+      "mint_supply": 60000000000000,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 60000000000000,
+      "token_account_total": 60000000000000,
+      "unattributed_holders": [],
+      "vault_id": 12,
+      "vault_stake_recorded_total": 60000000000000
+    },
+    {
+      "lp_mint": "HJm2ujSjXn4hwcfb9ii2th3eqjyTCa6P73q1G8QAoua6",
+      "lp_mint_account_sha256": "40d72e3fde44ae0a0115b60c50db64621409cfd92db96a19a34e41480f248173",
+      "mint_supply": 60000000000000,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 60000000000000,
+      "token_account_total": 60000000000000,
+      "unattributed_holders": [],
+      "vault_id": 14,
+      "vault_stake_recorded_total": 60000000000000
+    },
+    {
+      "lp_mint": "EbLg2oQFdS37QQcfK744u4zExcDRYz2viQFbRrSpGAM7",
+      "lp_mint_account_sha256": "0b9d3b6bc1495f9f50ea69d5bbdfbee5607a797d561b79a4221ea987f1c53046",
+      "mint_supply": 100000000000,
+      "retired_stake_recorded_total": 100000000000,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 100000000000,
+      "unattributed_holders": [],
+      "vault_id": 15,
+      "vault_stake_recorded_total": 100000000000
+    },
+    {
+      "lp_mint": "6PKHQXTqHtGxQvVBQhyMJpvFoHomnbj1o64GCtWR86Aq",
+      "lp_mint_account_sha256": "671ad2cc56325eb16c26fab0c8d18aa0f088e72a4404a4f825a2f16567d05ba1",
+      "mint_supply": 0,
+      "retired_stake_recorded_total": 0,
+      "surviving_stake_recorded_total": 0,
+      "token_account_total": 0,
+      "unattributed_holders": [],
+      "vault_id": 16,
+      "vault_stake_recorded_total": 0
+    }
+  ]
+}

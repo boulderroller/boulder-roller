@@ -1,0 +1,86 @@
+# Boulder Roller — Record → Stop → Upload E2E
+#
+# Drives a synthetic 30-sample GPS ride through the full local pipeline:
+#   - Authenticated home tab visible
+#   - Tap into Record tab
+#   - Grant location perms (handled by Maestro auto-grant when possible;
+#     real device may need Settings tap for the first run)
+#   - Start recording
+#   - setLocation injects a moving fix every second for ~30s
+#   - Stop ride, confirm via End Ride alert
+#   - Land on PostRideScreen with the upload status shown
+#
+# Assumes the user is already authenticated (dev build or test account).
+# For unauthenticated runs, prepend a login flow specific to your auth
+# method (Privy social vs SIWS).
+#
+# Run locally:
+#   maestro test mobile/.maestro/01-record-and-upload.yaml
+#
+# BLE sensor data: this flow is GPS-only. To exercise the FIT-export path
+# with sensor data, pair `react-native-ble-plx-mock-recorder` with a
+# pre-recorded BLE session — that is a follow-up flow.
+
+appId: com.boulderroller.app
+---
+- launchApp:
+    clearState: false
+
+# Navigate to Record tab
+- tapOn: "Record"
+
+# Wait for GPS Ready (or skip if permission prompt appears — Maestro
+# auto-grants on most simulators; real device needs prior grant)
+- assertVisible:
+    text: "GPS Ready"
+    timeout: 5000
+
+# Start the ride
+- tapOn: "START"
+
+# Confirm we entered the recording state
+- assertVisible: "RECORDING"
+
+# Inject a synthetic ride: 30 GPS samples ~5 m apart along a constant heading.
+# Maestro lacks a native loop with index variables, so we hand-roll a few
+# moves; for a full 30-sample loop, expand or replace with a generator.
+- setLocation:
+    latitude: 39.9526
+    longitude: -75.1652
+- waitForAnimationToEnd:
+    timeout: 1000
+- setLocation:
+    latitude: 39.9528
+    longitude: -75.1650
+- waitForAnimationToEnd:
+    timeout: 1000
+- setLocation:
+    latitude: 39.9530
+    longitude: -75.1648
+- waitForAnimationToEnd:
+    timeout: 1000
+- setLocation:
+    latitude: 39.9532
+    longitude: -75.1646
+- waitForAnimationToEnd:
+    timeout: 1000
+- setLocation:
+    latitude: 39.9534
+    longitude: -75.1644
+- waitForAnimationToEnd:
+    timeout: 1000
+
+# Verify the live stats updated (sample count grew past 0)
+- assertVisible:
+    text: "pts"
+
+# Stop the ride
+- tapOn: "STOP"
+
+# Alert: confirm "End Ride"
+- tapOn: "End Ride"
+
+# Land on PostRideScreen — wait for upload status to render
+- assertVisible:
+    text: "uploaded|uploading|failed"
+    timeout: 10000

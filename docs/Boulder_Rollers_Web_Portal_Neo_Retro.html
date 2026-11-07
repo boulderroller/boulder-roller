@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Boulder Rollers - Neo-Retro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <style>
+        :root {
+            /* Elemental Brand Colors injected into 98.css logic */
+            --brand-red: #D9381E;
+            /* Egyptian Red */
+            --brand-red-light: #ff573e;
+            --brand-gold: #C5A059;
+            /* Lock of Hair Gold */
+            --brand-black: #0f0b0b;
+            /* Grecian Black */
+
+            --surface-grey: #c0c0c0;
+            --surface-light: #dfdfdf;
+            --surface-dark: #808080;
+
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background-color: var(--surface-grey);
+            color: #000;
+            font-family: var(--font-body);
+            /* Modern readability */
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Overriding 98.css defaults for "Consumer Grade" feel */
+        .window {
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+            /* Softer shadow */
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, var(--brand-black), var(--brand-red));
+            /* Brand Gradient */
+            padding: 4px 8px;
+        }
+
+        .title-bar-text {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        button {
+            font-family: var(--font-heading) !important;
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* Custom Layouts */
+        .app-shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .app-shell {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-header {
+            padding: 16px;
+            text-align: center;
+            background: var(--surface-light);
+            border-bottom: 2px solid var(--surface-dark);
+            margin-bottom: 12px;
+        }
+
+        .brand-logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--brand-red);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .brand-sub {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0 12px;
+        }
+
+        .nav-item {
+            text-align: left;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-item.active {
+            background: var(--brand-black);
+            color: var(--brand-gold);
+            border: 2px solid var(--surface-light);
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #222;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .stat-box {
+            background: #fff;
+            border: 2px inset #dfdfdf;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #666;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--brand-black);
+        }
+
+        .stat-trend {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            color: var(--brand-red);
+        }
+
+        .trend-neutral {
+            color: #666;
+        }
+
+        /* Data Table - "Neo" Style */
+        .neo-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            border: 2px inset #dfdfdf;
+        }
+
+        .neo-table th {
+            background: var(--surface-light);
+            padding: 10px;
+            text-align: left;
+            font-family: var(--font-heading);
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--surface-dark);
+            color: #444;
+        }
+
+        .neo-table td {
+            padding: 10px;
+            border-bottom: 1px dotted #ccc;
+            font-size: 13px;
+        }
+
+        .neo-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .neo-table tr:hover {
+            background: rgba(217, 56, 30, 0.05);
+            /* Subtle Red Tint */
+        }
+
+        .pile-name {
+            font-weight: 600;
+            color: var(--brand-black);
+        }
+
+        .pile-meta {
+            font-size: 10px;
+            color: #777;
+        }
+
+        .action-btn {
+            min-width: 80px;
+            padding: 4px 8px;
+        }
+
+        .action-btn.primary {
+            font-weight: bold;
+            color: var(--brand-red);
+        }
+
+        /* Wallet Connection */
+        .wallet-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 2px inset #dfdfdf;
+            padding: 4px 8px;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--brand-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 4px var(--brand-gold);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <div class="window sidebar-card">
+            <div class="title-bar">
+                <div class="title-bar-text">System</div>
+            </div>
+            <div class="window-body" style="height: 100%; display: flex; flex-direction: column;">
+                <div class="brand-header">
+                    <div class="brand-logo">BOULDER<br>ROLLERS</div>
+                    <div class="brand-sub">Dung Beetle Cycling</div>
+                </div>
+
+                <nav class="nav-menu">
+                    <button class="nav-item active">
+                        <span>Dashboard</span>
+                        <span>⌘1</span>
+                    </button>
+                    <button class="nav-item">
+                        <span>Piles Map</span>
+                        <span>⌘2</span>
+                    </button>
+                    <button class="nav-item">
+                        <span>My Beetle</span>
+                        <span>⌘3</span>
+                    </button>
+                    <button class="nav-item">
+                        <span>Governance</span>
+                        <span>⌘4</span>
+                    </button>
+                </nav>
+
+                <div style="margin-top: auto; padding: 12px;">
+                    <fieldset>
+                        <legend>Wallet</legend>
+                        <div class="wallet-status">
+                            <div class="indicator"></div>
+                            <div style="font-family: var(--font-mono); font-size: 12px;">0x...B33T</div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 11px; color: #666;">
+                            Network: <strong>Solana Mainnet</strong>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Header Stats -->
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">Overview · Epoch 12</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-label">Total DUNG</span>
+                            <span class="stat-value">12,340.8</span>
+                            <span class="stat-trend trend-up">▲ 12.4% this epoch</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">CAL Energy</span>
+                            <span class="stat-value">1,600</span>
+                            <span class="stat-trend trend-neutral">/ 2,500 Daily Cap</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Staked Value</span>
+                            <span class="stat-value">$4,200.50</span>
+                            <span class="stat-trend trend-up">Generating 14% APY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Piles Table -->
+            <div class="window" style="flex-grow: 1;">
+                <div class="title-bar">
+                    <div class="title-bar-text">Active Piles (Segments)</div>
+                </div>
+                <div class="window-body">
+                    <table class="neo-table">
+                        <thead>
+                            <tr>
+                                <th>Pile / Segment</th>
+                                <th>Rewards (DUNG)</th>
+                                <th>My Stake</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="pile-name">Col du Bas Bois</div>
+                                    <div class="pile-meta">Gravel · 2.4km · 4%</div>
+                                </td>
+                                <td style="font-family: var(--font-mono);">+420.5</td>
+                                <td style="font-family: var(--font-mono);">1,200</td>
+                                <td><span style="color: var(--brand-gold); font-weight: bold;">Leader</span></td>
+                                <td><button class="action-btn primary">Claim</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pile-name">Philly Crit Circuit</div>
+                                    <div class="pile-meta">Road · 1.1km · Flat</div>
+                                </td>
+                                <td style="font-family: var(--font-mono);">+112.0</td>
+                                <td style="font-family: var(--font-mono);">500</td>
+                                <td><span style="color: #666;">Active</span></td>
+                                <td><button class="action-btn">Manage</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pile-name">Manayunk Wall</div>
+                                    <div class="pile-meta">Road · 0.8km · 14%</div>
+                                </td>
+                                <td style="font-family: var(--font-mono);">+850.2</td>
+                                <td style="font-family: var(--font-mono);">--</td>
+                                <td><span style="color: var(--brand-red); font-weight: bold;">Hot</span></td>
+                                <td><button class="action-btn">Stake</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 16px; display: flex; justify-content: flex-end; gap: 8px;">
+                        <button disabled>Previous</button>
+                        <button>Next Epoch</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

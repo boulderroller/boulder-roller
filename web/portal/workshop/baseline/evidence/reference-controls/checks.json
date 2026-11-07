@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "name": "Adjacent Strava sections, source widths and Squint on both images",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "name": "Reference and Squint controls preserve imports, room returns and frame state",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "name": "Provenance separates source evidence and absent Strava references",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "name": "Held data releases in place and offline reads can recover",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "name": "No browser runtime errors",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "Adjacent Strava sections, source widths and Squint on both images",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "Reference and Squint controls preserve imports, room returns and frame state",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "Provenance separates source evidence and absent Strava references",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "Held data releases in place and offline reads can recover",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "Phone touch Squint and held fixture upload release",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "No browser runtime errors",
+      "pass": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "profile-squint-1440.png",
+      "url": "http://localhost:4324/?surface=profile&variant=profile-v1&scenario=owner&viewer=owner&route=%2Fprofile",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "date": "2026-09-13T19:33:08.715Z",
+      "kind": "local retained V1 with historical Strava reference",
+      "sourceRevision": "a63ffc77f9638b78d3a404be2575aaa7ddd9c145"
+    },
+    {
+      "file": "profile-reference-1440.png",
+      "url": "http://localhost:4324/?surface=profile&variant=profile-v1&scenario=owner&viewer=owner&route=%2Fprofile",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "date": "2026-09-13T19:33:08.972Z",
+      "kind": "local retained V1 with historical Strava reference",
+      "sourceRevision": "a63ffc77f9638b78d3a404be2575aaa7ddd9c145"
+    },
+    {
+      "file": "data-controls-1440.png",
+      "url": "http://localhost:4324/?surface=rides&variant=rides-v1&scenario=library&viewer=owner&route=%2Fprofile%3Ftab%3Drides",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "date": "2026-09-13T19:33:16.256Z",
+      "kind": "local retained V1 with historical Strava reference",
+      "sourceRevision": "a63ffc77f9638b78d3a404be2575aaa7ddd9c145"
+    },
+    {
+      "file": "profile-stacked-390.png",
+      "url": "http://localhost:4324/?surface=profile&variant=profile-v1&scenario=owner&viewer=owner&route=%2Fprofile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "date": "2026-09-13T19:33:25.494Z",
+      "kind": "local retained V1 with historical Strava reference",
+      "sourceRevision": "a63ffc77f9638b78d3a404be2575aaa7ddd9c145"
+    },
+    {
+      "file": "profile-phone-reference-390.png",
+      "url": "http://localhost:4324/?surface=profile&variant=profile-v1&scenario=owner&viewer=owner&route=%2Fprofile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "date": "2026-09-13T19:33:25.623Z",
+      "kind": "local retained V1 with historical Strava reference",
+      "sourceRevision": "a63ffc77f9638b78d3a404be2575aaa7ddd9c145"
+    },
+    {
+      "file": "data-controls-390.png",
+      "url": "http://localhost:4324/?surface=rides&variant=rides-v1&scenario=library&viewer=owner&route=%2Fprofile%3Ftab%3Drides",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "date": "2026-09-13T19:33:31.183Z",
+      "kind": "local retained V1 with historical Strava reference",
+      "sourceRevision": "a63ffc77f9638b78d3a404be2575aaa7ddd9c145"
+    }
+  ]
+}

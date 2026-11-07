@@ -1,0 +1,69 @@
+#!/bin/sh
+# BoulderRoller pre-commit hook
+#
+# This hook runs tracker and product safety checks before every commit:
+# BLOCKERS (will prevent commit):
+# - Unstaged tracker changes: keeps issue state in the same commit as its work
+# - h3-resolution-guard: Blocks commits that change H3 resolution from 10
+# - keypair-guard: Blocks staging a Solana keypair file (64-byte JSON array)
+# WARNINGS (will warn but allow commit):
+# - detector-param-guard: Warns when detector code changes without DETECTOR_PARAMS.md update
+# - tokenomics-guard: Warns when lib.rs constants change without doc updates
+# - devnet-address-guard: Warns when devnet addresses change, finds stale references
+#
+# These checks mirror the Claude Code hooks in .claude/settings.json but run
+# for ALL developers, not just those using Claude Code.
+#
+# The shared BoulderRoller Git configuration points core.hooksPath at this
+# directory so every worktree uses this tracked hook set.
+#
+# TO BYPASS (emergency only):
+#   git commit --no-verify -m "BREAKING: ..."
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+# Tracker changes are never flushed or staged implicitly. If a bd mutation was
+# made after staging, stop so the exact JSONL diff can be reviewed and staged.
+if ! git -C "$REPO_ROOT" diff --quiet -- .beads/issues.jsonl; then
+    echo "Pre-commit blocked: .beads/issues.jsonl has unstaged changes." >&2
+    echo "Review and stage the tracker diff with its related work." >&2
+    exit 1
+fi
+
+# --- BoulderRoller product safety guards ---
+
+# 1. H3 resolution guard: blocks commits that change H3 resolution from 10
+if [ -f "$REPO_ROOT/scripts/hooks/h3-resolution-guard.sh" ]; then
+    if ! bash "$REPO_ROOT/scripts/hooks/h3-resolution-guard.sh"; then
+        echo "" >&2
+        echo "Pre-commit blocked by h3-resolution-guard check." >&2
+        echo "See output above for details." >&2
+        exit 1
+    fi
+fi
+
+# 1b. Keypair guard: blocks staging a Solana keypair file, devnet included
+if [ -f "$REPO_ROOT/scripts/hooks/keypair-guard.sh" ]; then
+    if ! sh "$REPO_ROOT/scripts/hooks/keypair-guard.sh"; then
+        echo "" >&2
+        echo "Pre-commit blocked by keypair-guard check." >&2
+        exit 1
+    fi
+fi
+
+# 2. Detector parameter drift guard: warns when detector code changes without doc update
+if [ -f "$REPO_ROOT/scripts/hooks/detector-param-guard.sh" ]; then
+    bash "$REPO_ROOT/scripts/hooks/detector-param-guard.sh" || true
+fi
+
+# 3. Tokenomics constants guard: warns when lib.rs constants change without doc update
+if [ -f "$REPO_ROOT/scripts/hooks/tokenomics-guard.sh" ]; then
+    bash "$REPO_ROOT/scripts/hooks/tokenomics-guard.sh" || true
+fi
+
+# 4. Devnet address guard: warns when addresses change, finds stale references
+if [ -f "$REPO_ROOT/scripts/hooks/devnet-address-guard.sh" ]; then
+    bash "$REPO_ROOT/scripts/hooks/devnet-address-guard.sh" || true
+fi
+
+exit 0

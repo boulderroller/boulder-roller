@@ -1,0 +1,18 @@
+Batch D corrective full-suite evidence
+Date: 2026-08-13
+Class: local/offline arm64 iPhone 17 simulator
+
+Command:
+  xcodebuild -project BoulderRoller.xcodeproj -scheme BoulderRoller \
+    -destination 'platform=iOS Simulator,id=83285814-8448-43E4-9AB5-630A48FFF29C' \
+    CODE_SIGNING_ALLOWED=NO test
+
+Outcome:
+  292 tests executed
+  292 passed
+  0 failures
+
+The two tests added since suite-290 are the unsigned-simulator refresh-token
+persistence check and the deterministic cold-start check proving overlapping
+plus sequential resume callers issue one refresh request and persist generation
+1 -> 2. This is local/offline proof, not signed-device or production evidence.

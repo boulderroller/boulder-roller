@@ -1,0 +1,107 @@
+policy_version: br-source-admission-1
+classification: Inference
+catalogue_status: Eligible product families only; no actual tile is admitted by this file. Asset hashes, supplied notices, dates, coverage and review records must be resolved first.
+cross_record_rules:
+- Validate schema with JSON Schema Draft 2020-12 and a format checker; do not treat a licence label as evidence.
+- Unknown rights, unknown upstream closure, an unreviewed integration route or missing notices cannot pass admission.
+- Admission is purpose-specific. Profile processing additionally requires coverage, datum, registration, interpolation and quality approval; legal permission alone never ratifies a climb.
+- Pin every actual byte asset, upstream licence and notice bundle. Product updates create new assets and do not mutate a released profile.
+- For every sample, record all contributing asset IDs, sampling/transform policy and blend weights where relevant; the notice set is their union.
+- Cross-tile interpolation and fallbacks are contributors. An expressly prohibited diagnostic fallback must fail rather than mix silently.
+- Licence Ouverte source_updated_at must refer to the reused information, not a scrape date or unrelated catalogue refresh.
+- Copernicus GLO-30-F requires full modified-data and liability notices and documented downstream pass-through; a COPERNICUS_30 service name is not sufficient to establish GLO-30-only bytes.
+- No unresolved {template} tokens are allowed in a published notice; compare the final bytes with the admitted notice bundle.
+- Raw-source redistribution is assessed only if raw source assets are included; the complete final geographic export does not by itself require source raster redistribution.
+- No secret credentials or private reviewer/ride identifiers enter the public source manifest; export public decision summaries and rights facts, not private evidence.
+- Do not infer exact Terrain Tiles sources solely from the region label. Use versioned source manifests/footprints or supplied headers and include all contributing zoom levels; unresolved sources block that layer.
+- Content SHA, byte length, vertical datum and pixel registration are checked against actual assets; validation of declarations is not proof the declarations are true.
+regions:
+- region_id: philadelphia
+  eligible_products:
+  - USGS 3DEP 1/3 arc-second (about 10 m)
+  review_only_products:
+  - USGS 3DEP 1 m
+  notice_ids:
+  - usgs_3dep
+  sources:
+  - S9
+  note: 'Preserve D6: 10 m bulk; 1 m for disputes/review unless separately ratified. Asset-level coverage remains required.'
+- region_id: pittsburgh
+  eligible_products:
+  - USGS 3DEP 1/3 arc-second (about 10 m)
+  review_only_products:
+  - USGS 3DEP 1 m
+  notice_ids:
+  - usgs_3dep
+  sources:
+  - S9
+  note: Same Pennsylvania sourcing posture; no assertion of exact downloaded tiles or local bridge accuracy.
+- region_id: sheffield
+  eligible_products:
+  - Environment Agency 2022 LIDAR Composite DTM 1 m
+  - Environment Agency time-stamped DTM, where its own asset notice and licence are verified
+  discovery_only_products:
+  - OS Terrain 50
+  notice_ids:
+  - ea_dtm_2022
+  conditional_notice_ids:
+  - os_terrain50
+  sources:
+  - S10
+  - S11
+  - S12
+  - S13
+  note: An EA time-stamped asset uses its own supplied notice, not necessarily the 2022 composite notice. OS Terrain 50 is not a default 10 m canonical-profile substitute.
+- region_id: oisans
+  eligible_products:
+  - IGN RGE ALTI 1 m
+  - IGN MNT LiDAR HD, where downloadable and coverage-verified
+  notice_ids:
+  - ign_rge_alti
+  - ign_lidar_mnt
+  sources:
+  - S14
+  - S15
+  - S16
+  note: Emit only used products. Actual edition/source-update dates are unresolved. Do not claim complete Oisans LiDAR HD coverage from a national catalogue.
+- region_id: default
+  eligible_products:
+  - COP-DEM-GLO-30-F under the Free & Open WorldDEM-30 licence
+  notice_ids:
+  - cop30_modified
+  - cop30_liability
+  sources:
+  - S17
+  - S18
+  - S23
+  note: Use an identified public GLO-30 asset; no implicit GLO-90/service fallback. DSM, not guaranteed bare earth. No default substitution into a frozen registered definition.
+rejected_or_quarantined:
+- source: FABDEM under CC BY-NC-SA 4.0
+  decision: reject_for_product_use
+  reason: No commercial permission in the free licence. A separately reviewed grant must also permit the intended downstream open-profile distribution.
+  sources:
+  - S19
+- source: CC BY 4.0 input proposed for integrated ODbL profile
+  decision: quarantine_pending_integration_review
+  reason: Commercial permission is not automatic integration compatibility. Seek an adequate permission/waiver or reviewed alternative structure; not a general ban on CC BY commercial use.
+  sources:
+  - S20
+  - S21
+- source: Unknown, no-redistribution, research-only, NC or NDA-restricted input
+  decision: reject_or_quarantine
+  reason: Must establish both product use and required downstream rights before use, including private product-directed discovery.
+- source: AWS Terrain Tiles as canonical-profile input
+  decision: not_admitted_by_this_policy
+  reason: Display source only here; mixture/provenance and technical fidelity require separate canonical-profile review. Not a blanket legal prohibition.
+  sources:
+  - S6
+  - S7
+  - S8
+- source: CARTO hosted tiles as registry/export source
+  decision: reject
+  reason: Basemap service is not the licensed raw OSM extraction source. Do not include hosted tiles in the geographic export.
+  sources:
+  - S4
+- source: OS Terrain 5 / Copernicus EEA-10 or GLO-30-R / commercial WorldDEM
+  decision: not_admitted_by_product_name
+  reason: Separate terms and eligibility must be established; no inheritance from Terrain 50 or GLO-30-F.

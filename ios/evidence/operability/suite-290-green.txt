@@ -1,0 +1,9 @@
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.067 (0.069) seconds
+	 Executed 32 tests, with 0 failures (0 unexpected) in 0.532 (0.543) seconds
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.064 (0.069) seconds
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.022 (0.026) seconds
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.363 (0.368) seconds
+	 Executed 290 tests, with 0 failures (0 unexpected) in 4.511 (4.623) seconds
+	 Executed 290 tests, with 0 failures (0 unexpected) in 4.511 (4.624) seconds
+** TEST SUCCEEDED **
+DONE

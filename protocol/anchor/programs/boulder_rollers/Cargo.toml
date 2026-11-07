@@ -1,0 +1,28 @@
+[package]
+name = "boulder_rollers"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+default = ["no-idl"]
+no-idl = []
+# Simulated rate provenance only; never use this build for a deployed network.
+stage1-localnet = ["smoke-helpers"]
+# Localnet-only test setup instructions (open-week, pending-reward and stake
+# eligibility overrides). Refuses to compile without stage1-localnet.
+smoke-helpers = []
+# Real SPL pool identity registered once by the admin, for devnet rehearsal only.
+stage1-devnet = []
+no-entrypoint = []
+cpi = ["no-entrypoint"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = { version = "0.29.0", features = ["init-if-needed"] }
+anchor-spl = { version = "0.29.0", default-features = false, features = ["token", "token_2022"] }
+
+[dev-dependencies]
+serde_json = "1"

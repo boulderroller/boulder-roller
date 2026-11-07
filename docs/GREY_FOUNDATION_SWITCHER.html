@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Grey Foundation Switcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* SIGNAL COLORS — constant across all palettes */
+      --mint: #3DFFA3;
+      --violet: #A78BFA;
+      --coral: #FF6B8A;
+      --amber: #FBBF24;
+      --cyan: #22D3EE;
+    }
+
+    /* ================================================
+       GREY PALETTES — switchable via data attribute
+    ================================================ */
+
+    /* COOL GREY (Curve-style, slight blue undertone) */
+    [data-palette="cool"] {
+      --grey-950: #101114;
+      --grey-900: #16181D;
+      --grey-850: #1C1E24;
+      --grey-800: #22252C;
+      --grey-750: #2A2D36;
+      --grey-700: #32363F;
+      --grey-600: #444954;
+      --grey-500: #5C616E;
+      --grey-400: #787E8C;
+      --grey-300: #9BA0AC;
+      --grey-200: #C5C9D2;
+      --grey-100: #E8EAF0;
+      --grey-50:  #F4F5F7;
+    }
+
+    /* WARM GREY (slight brown/amber undertone) */
+    [data-palette="warm"] {
+      --grey-950: #121110;
+      --grey-900: #1A1816;
+      --grey-850: #211F1C;
+      --grey-800: #2A2723;
+      --grey-750: #33302B;
+      --grey-700: #3D3933;
+      --grey-600: #524D45;
+      --grey-500: #6B655C;
+      --grey-400: #8A8379;
+      --grey-300: #A9A298;
+      --grey-200: #CCC7BE;
+      --grey-100: #EBE8E3;
+      --grey-50:  #F7F5F2;
+    }
+
+    /* NEUTRAL GREY (pure grey, no undertone) */
+    [data-palette="neutral"] {
+      --grey-950: #111111;
+      --grey-900: #181818;
+      --grey-850: #1F1F1F;
+      --grey-800: #262626;
+      --grey-750: #2E2E2E;
+      --grey-700: #363636;
+      --grey-600: #484848;
+      --grey-500: #606060;
+      --grey-400: #808080;
+      --grey-300: #A0A0A0;
+      --grey-200: #C8C8C8;
+      --grey-100: #E8E8E8;
+      --grey-50:  #F5F5F5;
+    }
+
+    /* NAVY GREY (stronger blue undertone) */
+    [data-palette="navy"] {
+      --grey-950: #0C0E14;
+      --grey-900: #12151E;
+      --grey-850: #181C28;
+      --grey-800: #1F2433;
+      --grey-750: #272D3F;
+      --grey-700: #303848;
+      --grey-600: #424B5C;
+      --grey-500: #5A6478;
+      --grey-400: #768094;
+      --grey-300: #969FAF;
+      --grey-200: #BFC5D0;
+      --grey-100: #E4E7ED;
+      --grey-50:  #F3F4F7;
+    }
+
+    /* OLIVE GREY (slight green undertone) */
+    [data-palette="olive"] {
+      --grey-950: #10110F;
+      --grey-900: #171916;
+      --grey-850: #1E201C;
+      --grey-800: #262823;
+      --grey-750: #2E312B;
+      --grey-700: #373A33;
+      --grey-600: #4A4D44;
+      --grey-500: #62665B;
+      --grey-400: #7F8377;
+      --grey-300: #9EA296;
+      --grey-200: #C4C8BD;
+      --grey-100: #E7EAE3;
+      --grey-50:  #F4F6F2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+
+    body {
+      background: var(--grey-950);
+      color: var(--grey-200);
+      min-height: 100vh;
+      transition: background 0.3s ease;
+    }
+
+    /* ================================================
+       HEADER / PALETTE SWITCHER
+    ================================================ */
+
+    .header {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 48px 20px;
+    }
+
+    .header-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--grey-100);
+      margin-bottom: 8px;
+    }
+
+    .header-title span {
+      color: var(--violet);
+    }
+
+    .header-desc {
+      font-size: 15px;
+      color: var(--grey-400);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* PALETTE TABS */
+    .palette-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .palette-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      background: var(--grey-900);
+      border: 2px solid var(--grey-800);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--grey-300);
+    }
+
+    .palette-tab:hover {
+      border-color: var(--grey-600);
+      background: var(--grey-850);
+    }
+
+    .palette-tab.active {
+      border-color: var(--violet);
+      background: var(--grey-850);
+      color: var(--grey-100);
+    }
+
+    .palette-preview {
+      display: flex;
+      gap: 2px;
+    }
+
+    .palette-preview-chip {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    /* Specific palette preview colors */
+    .palette-tab[data-target="cool"] .palette-preview-chip:nth-child(1) { background: #16181D; }
+    .palette-tab[data-target="cool"] .palette-preview-chip:nth-child(2) { background: #32363F; }
+    .palette-tab[data-target="cool"] .palette-preview-chip:nth-child(3) { background: #5C616E; }
+    .palette-tab[data-target="cool"] .palette-preview-chip:nth-child(4) { background: #9BA0AC; }
+
+    .palette-tab[data-target="warm"] .palette-preview-chip:nth-child(1) { background: #1A1816; }
+    .palette-tab[data-target="warm"] .palette-preview-chip:nth-child(2) { background: #3D3933; }
+    .palette-tab[data-target="warm"] .palette-preview-chip:nth-child(3) { background: #6B655C; }
+    .palette-tab[data-target="warm"] .palette-preview-chip:nth-child(4) { background: #A9A298; }
+
+    .palette-tab[data-target="neutral"] .palette-preview-chip:nth-child(1) { background: #181818; }
+    .palette-tab[data-target="neutral"] .palette-preview-chip:nth-child(2) { background: #363636; }
+    .palette-tab[data-target="neutral"] .palette-preview-chip:nth-child(3) { background: #606060; }
+    .palette-tab[data-target="neutral"] .palette-preview-chip:nth-child(4) { background: #A0A0A0; }
+
+    .palette-tab[data-target="navy"] .palette-preview-chip:nth-child(1) { background: #12151E; }
+    .palette-tab[data-target="navy"] .palette-preview-chip:nth-child(2) { background: #303848; }
+    .palette-tab[data-target="navy"] .palette-preview-chip:nth-child(3) { background: #5A6478; }
+    .palette-tab[data-target="navy"] .palette-preview-chip:nth-child(4) { background: #969FAF; }
+
+    .palette-tab[data-target="olive"] .palette-preview-chip:nth-child(1) { background: #171916; }
+    .palette-tab[data-target="olive"] .palette-preview-chip:nth-child(2) { background: #373A33; }
+    .palette-tab[data-target="olive"] .palette-preview-chip:nth-child(3) { background: #62665B; }
+    .palette-tab[data-target="olive"] .palette-preview-chip:nth-child(4) { background: #9EA296; }
+
+    /* ================================================
+       GREY SCALE DISPLAY (updates with palette)
+    ================================================ */
+
+    .scale-section {
+      max-width: 1400px;
+      margin: 32px auto;
+      padding: 0 48px;
+    }
+
+    .scale-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 12px;
+    }
+
+    .scale-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .scale-chip {
+      flex: 1;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .scale-chip span { opacity: 0.8; }
+
+    .signal-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .signal-chip {
+      flex: 1;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--grey-950);
+    }
+
+    /* ================================================
+       COMPONENT GRID
+    ================================================ */
+
+    .grid-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 48px 60px;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1100px) {
+      .component-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .component-grid { grid-template-columns: 1fr; }
+      .header { padding: 30px 24px 20px; }
+      .scale-section { padding: 0 24px; }
+      .grid-section { padding: 20px 24px 40px; }
+      .palette-tabs { gap: 6px; }
+      .palette-tab { padding: 10px 14px; font-size: 11px; }
+    }
+
+    /* ================================================
+       CARD BASE
+    ================================================ */
+
+    .card {
+      background: var(--grey-900);
+      border: 1px solid var(--grey-800);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--grey-700);
+    }
+
+    /* ================================================
+       METRIC CARD
+    ================================================ */
+
+    .metric {
+      padding: 24px;
+      position: relative;
+    }
+
+    .metric-stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .metric-stripe.mint { background: linear-gradient(90deg, var(--mint), transparent 60%); }
+    .metric-stripe.violet { background: linear-gradient(90deg, var(--violet), transparent 60%); }
+    .metric-stripe.coral { background: linear-gradient(90deg, var(--coral), transparent 60%); }
+    .metric-stripe.amber { background: linear-gradient(90deg, var(--amber), transparent 60%); }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric-value.mint { color: var(--mint); }
+    .metric-value.violet { color: var(--violet); }
+    .metric-value.coral { color: var(--coral); }
+    .metric-value.amber { color: var(--amber); }
+
+    .metric-unit {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--grey-500);
+      transition: color 0.3s;
+    }
+
+    .metric-spark {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 28px;
+      margin-top: 16px;
+    }
+
+    .spark {
+      flex: 1;
+      border-radius: 2px;
+      opacity: 0.5;
+    }
+
+    .spark.mint { background: var(--mint); }
+    .spark.violet { background: var(--violet); }
+    .spark.coral { background: var(--coral); }
+    .spark.amber { background: var(--amber); }
+
+    /* ================================================
+       TERMINAL
+    ================================================ */
+
+    .terminal { font-family: var(--font-mono); }
+
+    .terminal-bar {
+      padding: 12px 16px;
+      background: var(--grey-850);
+      border-bottom: 1px solid var(--grey-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .terminal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: var(--mint); }
+    .terminal-dot:nth-child(2) { background: var(--violet); }
+    .terminal-dot:nth-child(3) { background: var(--coral); }
+
+    .terminal-title {
+      font-size: 11px;
+      color: var(--grey-400);
+      transition: color 0.3s;
+    }
+
+    .terminal-body {
+      padding: 14px 16px;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .t-prompt { font-weight: 600; }
+    .t-prompt.mint { color: var(--mint); }
+    .t-prompt.violet { color: var(--violet); }
+    .t-prompt.cyan { color: var(--cyan); }
+
+    .t-text { color: var(--grey-400); transition: color 0.3s; }
+    .t-val { font-weight: 600; }
+    .t-val.mint { color: var(--mint); }
+    .t-val.violet { color: var(--violet); }
+
+    .t-tag {
+      margin-left: auto;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .t-tag.ok { background: rgba(61, 255, 163, 0.12); color: var(--mint); }
+    .t-tag.pending { background: rgba(251, 191, 36, 0.12); color: var(--amber); }
+
+    /* ================================================
+       BEETLE CARD
+    ================================================ */
+
+    .beetle-card {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .beetle-rank-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .beetle-visual {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+
+    .beetle-shell {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--grey-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .beetle-shell::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50% 50% 45% 45%;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--mint), var(--violet), var(--coral));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .beetle-rank-letter {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--mint), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+    }
+
+    .beetle-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--grey-100);
+      margin-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .beetle-title {
+      font-size: 12px;
+      color: var(--grey-500);
+      font-style: italic;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .beetle-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--grey-800);
+      transition: border-color 0.3s;
+    }
+
+    .beetle-stat-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .beetle-stat:nth-child(1) .beetle-stat-value { color: var(--violet); }
+    .beetle-stat:nth-child(2) .beetle-stat-value { color: var(--mint); }
+    .beetle-stat:nth-child(3) .beetle-stat-value { color: var(--coral); }
+
+    .beetle-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-600);
+      margin-top: 2px;
+      transition: color 0.3s;
+    }
+
+    /* ================================================
+       CLAIM CARD
+    ================================================ */
+
+    .claim-header {
+      padding: 14px 18px;
+      background: var(--grey-850);
+      border-bottom: 1px solid var(--grey-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .claim-header-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      transition: color 0.3s;
+    }
+
+    .claim-header-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-list { padding: 8px; }
+
+    .claim-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      transition: background 0.15s;
+    }
+
+    .claim-item:hover { background: var(--grey-850); }
+
+    .claim-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--grey-800);
+      border: 1px solid var(--grey-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .claim-info { flex: 1; }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--grey-200);
+      font-size: 13px;
+      transition: color 0.3s;
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--grey-500);
+      transition: color 0.3s;
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    .claim-action { padding: 12px; }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--violet), var(--coral));
+      color: #fff;
+    }
+
+    .btn-gradient:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    /* ================================================
+       FEED
+    ================================================ */
+
+    .feed-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--grey-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.3s;
+    }
+
+    .feed-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      transition: color 0.3s;
+    }
+
+    .feed-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mint);
+    }
+
+    .feed-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--grey-850);
+      transition: background 0.15s, border-color 0.3s;
+    }
+
+    .feed-item:last-child { border-bottom: none; }
+    .feed-item:hover { background: var(--grey-850); }
+
+    .feed-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--grey-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: background 0.3s;
+    }
+
+    .feed-content { flex: 1; }
+
+    .feed-action-text {
+      font-weight: 600;
+      color: var(--grey-200);
+      font-size: 12px;
+      transition: color 0.3s;
+    }
+
+    .feed-detail {
+      font-size: 10px;
+      color: var(--grey-500);
+      transition: color 0.3s;
+    }
+
+    .feed-amount {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .feed-amount.positive { color: var(--mint); }
+    .feed-amount.neutral { color: var(--violet); }
+    .feed-amount.negative { color: var(--coral); }
+
+    /* ================================================
+       CURRENT PALETTE INFO
+    ================================================ */
+
+    .palette-info {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px 40px;
+    }
+
+    .palette-info-card {
+      background: var(--grey-900);
+      border: 1px solid var(--grey-800);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .palette-info-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 12px;
+    }
+
+    .palette-info-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--grey-100);
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .palette-info-desc {
+      font-size: 14px;
+      color: var(--grey-400);
+      line-height: 1.6;
+      transition: color 0.3s;
+    }
+  </style>
+</head>
+<body data-palette="cool">
+
+  <div class="header">
+    <div class="header-tag">Interactive Grey Study</div>
+    <h1 class="header-title">Grey <span>Foundation</span> Switcher</h1>
+    <p class="header-desc">Click a palette below to see how the entire interface changes. Same signal colors, different grey undertones. Watch how the vibe shifts.</p>
+
+    <div class="palette-tabs">
+      <div class="palette-tab active" data-target="cool" onclick="setPalette('cool')">
+        <div class="palette-preview">
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+        </div>
+        Cool
+      </div>
+      <div class="palette-tab" data-target="warm" onclick="setPalette('warm')">
+        <div class="palette-preview">
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+        </div>
+        Warm
+      </div>
+      <div class="palette-tab" data-target="neutral" onclick="setPalette('neutral')">
+        <div class="palette-preview">
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+        </div>
+        Neutral
+      </div>
+      <div class="palette-tab" data-target="navy" onclick="setPalette('navy')">
+        <div class="palette-preview">
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+        </div>
+        Navy
+      </div>
+      <div class="palette-tab" data-target="olive" onclick="setPalette('olive')">
+        <div class="palette-preview">
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+          <div class="palette-preview-chip"></div>
+        </div>
+        Olive
+      </div>
+    </div>
+  </div>
+
+  <!-- GREY SCALE DISPLAY -->
+  <div class="scale-section">
+    <div class="scale-label">Current Grey Scale</div>
+    <div class="scale-row">
+      <div class="scale-chip" style="background: var(--grey-950); color: var(--grey-400);"><span>950</span></div>
+      <div class="scale-chip" style="background: var(--grey-900); color: var(--grey-400);"><span>900</span></div>
+      <div class="scale-chip" style="background: var(--grey-850); color: var(--grey-400);"><span>850</span></div>
+      <div class="scale-chip" style="background: var(--grey-800); color: var(--grey-400);"><span>800</span></div>
+      <div class="scale-chip" style="background: var(--grey-750); color: var(--grey-400);"><span>750</span></div>
+      <div class="scale-chip" style="background: var(--grey-700); color: var(--grey-300);"><span>700</span></div>
+      <div class="scale-chip" style="background: var(--grey-600); color: var(--grey-300);"><span>600</span></div>
+      <div class="scale-chip" style="background: var(--grey-500); color: var(--grey-200);"><span>500</span></div>
+      <div class="scale-chip" style="background: var(--grey-400); color: var(--grey-950);"><span>400</span></div>
+      <div class="scale-chip" style="background: var(--grey-300); color: var(--grey-950);"><span>300</span></div>
+      <div class="scale-chip" style="background: var(--grey-200); color: var(--grey-950);"><span>200</span></div>
+      <div class="scale-chip" style="background: var(--grey-100); color: var(--grey-950);"><span>100</span></div>
+      <div class="scale-chip" style="background: var(--grey-50); color: var(--grey-950);"><span>50</span></div>
+    </div>
+    <div class="scale-label">Signal Colors (constant)</div>
+    <div class="signal-row">
+      <div class="signal-chip" style="background: var(--mint);">Mint</div>
+      <div class="signal-chip" style="background: var(--violet);">Violet</div>
+      <div class="signal-chip" style="background: var(--coral);">Coral</div>
+      <div class="signal-chip" style="background: var(--amber);">Amber</div>
+      <div class="signal-chip" style="background: var(--cyan);">Cyan</div>
+    </div>
+  </div>
+
+  <!-- COMPONENT GRID -->
+  <div class="grid-section">
+    <div class="component-grid">
+
+      <div class="card metric">
+        <div class="metric-stripe violet"></div>
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value violet">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark violet" style="height: 45%;"></div>
+          <div class="spark violet" style="height: 62%;"></div>
+          <div class="spark violet" style="height: 71%;"></div>
+          <div class="spark violet" style="height: 85%;"></div>
+          <div class="spark violet" style="height: 78%;"></div>
+          <div class="spark violet" style="height: 92%;"></div>
+        </div>
+      </div>
+
+      <div class="card metric">
+        <div class="metric-stripe mint"></div>
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value mint">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark mint" style="height: 30%;"></div>
+          <div class="spark mint" style="height: 55%;"></div>
+          <div class="spark mint" style="height: 72%;"></div>
+          <div class="spark mint" style="height: 88%;"></div>
+          <div class="spark mint" style="height: 95%;"></div>
+          <div class="spark mint" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="card metric">
+        <div class="metric-stripe coral"></div>
+        <div class="metric-label">CAL Balance</div>
+        <div class="metric-value coral">1,847</div>
+        <div class="metric-unit">of 2,500 daily cap</div>
+        <div class="metric-spark">
+          <div class="spark coral" style="height: 100%;"></div>
+          <div class="spark coral" style="height: 92%;"></div>
+          <div class="spark coral" style="height: 85%;"></div>
+          <div class="spark coral" style="height: 78%;"></div>
+          <div class="spark coral" style="height: 74%;"></div>
+          <div class="spark coral" style="height: 74%;"></div>
+        </div>
+      </div>
+
+      <div class="card terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+          </div>
+          <div class="terminal-title">roll@dung-beetle</div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt mint">◆</span>
+            <span class="t-text">TSS: <span class="t-val mint">118</span> · crossings: <span class="t-val mint">9</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt violet">◇</span>
+            <span class="t-text">earning <span class="t-val violet">+118.0 DUNG</span></span>
+            <span class="t-tag ok">OK</span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt cyan">→</span>
+            <span class="t-text">epoch distribution in 2d 14h</span>
+            <span class="t-tag pending">PENDING</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card beetle-card">
+        <div class="beetle-rank-badge">S RANK</div>
+        <div class="beetle-visual">
+          <div class="beetle-shell"><span class="beetle-rank-letter">S</span></div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-name">booka_shade</div>
+        <div class="beetle-title">"The Alpine Assassin"</div>
+        <div class="beetle-stats">
+          <div class="beetle-stat"><div class="beetle-stat-value">8,450</div><div class="beetle-stat-label">Boulder</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">23</div><div class="beetle-stat-label">Piles</div></div>
+          <div class="beetle-stat"><div class="beetle-stat-value">285w</div><div class="beetle-stat-label">FTP</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-list">
+          <div class="claim-item">
+            <div class="claim-icon">💎</div>
+            <div class="claim-info"><div class="claim-name">PHILLY CRIT</div><div class="claim-detail">Leader + stake</div></div>
+            <div class="claim-amount">+18.4</div>
+          </div>
+          <div class="claim-item">
+            <div class="claim-icon">🦢</div>
+            <div class="claim-info"><div class="claim-name">SOUTH HILL</div><div class="claim-detail">Swanny seat</div></div>
+            <div class="claim-amount">+3.3</div>
+          </div>
+        </div>
+        <div class="claim-action"><button class="btn btn-gradient">CLAIM ALL</button></div>
+      </div>
+
+      <div class="card">
+        <div class="feed-header">
+          <span class="feed-title">Recent Activity</span>
+          <span class="feed-live">Live</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">🚴</div>
+          <div class="feed-content"><div class="feed-action-text">TSS Reward</div><div class="feed-detail">9 pile crossings · 2h ago</div></div>
+          <div class="feed-amount positive">+118.0</div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">💰</div>
+          <div class="feed-content"><div class="feed-action-text">Staked PHILLY CRIT</div><div class="feed-detail">420 DUNG · 1d ago</div></div>
+          <div class="feed-amount neutral">−120.0</div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-icon">⚔️</div>
+          <div class="feed-content"><div class="feed-action-text">Lost MANAYUNK WALL</div><div class="feed-detail">Dethroned · 3d ago</div></div>
+          <div class="feed-amount negative">−45.0</div>
+        </div>
+      </div>
+
+      <div class="card metric">
+        <div class="metric-stripe amber"></div>
+        <div class="metric-label">Epoch Ends</div>
+        <div class="metric-value amber">2d 14h</div>
+        <div class="metric-unit">until distribution</div>
+        <div class="metric-spark">
+          <div class="spark amber" style="height: 15%;"></div>
+          <div class="spark amber" style="height: 38%;"></div>
+          <div class="spark amber" style="height: 52%;"></div>
+          <div class="spark amber" style="height: 68%;"></div>
+          <div class="spark amber" style="height: 82%;"></div>
+          <div class="spark amber" style="height: 95%;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PALETTE INFO -->
+  <div class="palette-info">
+    <div class="palette-info-card">
+      <div class="palette-info-title">Current Palette</div>
+      <div class="palette-info-name" id="palette-name">Cool Grey</div>
+      <div class="palette-info-desc" id="palette-desc">Slight blue undertone. Professional, technical, Curve/Hyperliquid energy. Reads as trustworthy and serious. Best for: trading interfaces, power-user tools.</div>
+    </div>
+  </div>
+
+  <script>
+    const paletteData = {
+      cool: {
+        name: 'Cool Grey',
+        desc: 'Slight blue undertone. Professional, technical, Curve/Hyperliquid energy. Reads as trustworthy and serious. Best for: trading interfaces, power-user tools.'
+      },
+      warm: {
+        name: 'Warm Grey',
+        desc: 'Slight brown/amber undertone. Comfortable, lived-in, less clinical. Easier on eyes for long sessions. Best for: community apps, extended use, approachable feel.'
+      },
+      neutral: {
+        name: 'Neutral Grey',
+        desc: 'Pure grey, no color cast. Maximum neutrality — lets signal colors do all the talking. Best for: pure data visualization, minimal distraction.'
+      },
+      navy: {
+        name: 'Navy Grey',
+        desc: 'Strong blue undertone. Premium, sophisticated, night-sky depth. Signal colors really pop. Best for: premium positioning, crypto/finance apps.'
+      },
+      olive: {
+        name: 'Olive Grey',
+        desc: 'Slight green undertone. Organic, natural, unexpected. Unique vibe that stands out. Best for: differentiation, outdoor/nature adjacent brands.'
+      }
+    };
+
+    function setPalette(palette) {
+      // Update body data attribute
+      document.body.setAttribute('data-palette', palette);
+      
+      // Update active tab
+      document.querySelectorAll('.palette-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('data-target') === palette) {
+          tab.classList.add('active');
+        }
+      });
+      
+      // Update info card
+      document.getElementById('palette-name').textContent = paletteData[palette].name;
+      document.getElementById('palette-desc').textContent = paletteData[palette].desc;
+    }
+  </script>
+
+</body>
+</html>

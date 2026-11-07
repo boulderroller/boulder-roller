@@ -1,0 +1,12 @@
+{
+  "package": "geist",
+  "version": "1.7.2",
+  "url": "https://registry.npmjs.org/geist/-/geist-1.7.2.tgz",
+  "packageSha256": "88cbfaca51646078f3172802643691bb8fe2df15ca4c455b1b101e49b7d469a6",
+  "member": "package/dist/fonts/geist-sans/Geist-Variable.woff2",
+  "fontSha256": "a369fcf5628ea2aa4e1b9e2ec6a5b3624e365bda588e1f0f2f12b564f728fbb8",
+  "bytes": 69652,
+  "licenseUrl": "https://raw.githubusercontent.com/vercel/geist-font/main/OFL.txt",
+  "licenseSha256": "c683bfbcc7e087f5d37a54ef628f10387c451a83ddc459b151403a164ac46c90",
+  "use": "Locally delivered official variable Geist, CSSweight100..900; preserved original static fonts continue toauthor the recorded profile."
+}

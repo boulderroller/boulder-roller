@@ -1,0 +1,126 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run perf:release",
+  "outputDirectory": "build",
+  "installCommand": "npm install",
+  "headers": [
+    {
+      "source": "/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/og.ts": {
+      "includeFiles": "{server/fonts/**,node_modules/@vercel/og/dist/**}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/climbs/:id",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(Twitterbot|facebookexternalhit|Slackbot|LinkedInBot|Discordbot|WhatsApp|Applebot|iMessage|TelegramBot).*"
+        }
+      ],
+      "destination": "/api/share?kind=climbs&id=:id"
+    },
+    {
+      "source": "/rides/:id",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(Twitterbot|facebookexternalhit|Slackbot|LinkedInBot|Discordbot|WhatsApp|Applebot|iMessage|TelegramBot).*"
+        }
+      ],
+      "destination": "/api/share?kind=rides&id=:id"
+    },
+    {
+      "source": "/riders/:id",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(Twitterbot|facebookexternalhit|Slackbot|LinkedInBot|Discordbot|WhatsApp|Applebot|iMessage|TelegramBot).*"
+        }
+      ],
+      "destination": "/api/share?kind=riders&id=:id"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.boulderroller.xyz/:path*"
+    },
+    {
+      "source": "/climbs/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/climb/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/segments/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/rides/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ride/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/activities/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/riders/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/rider/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/athletes/:id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/html.*"
+        }
+      ],
+      "destination": "/index.html"
+    }
+  ]
+}

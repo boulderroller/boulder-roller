@@ -1,0 +1,16 @@
+{
+  "jito_addresses": "https://www.jito.network/docs/jitosol/jitosol-liquid-staking/security/deployed-programs/",
+  "jito_layout": "https://github.com/solana-program/stake-pool/blob/24b4875ffe0fde7e1b140d9979b9f17660e89291/program/src/state.rs",
+  "marinade_addresses": "https://docs.marinade.finance/developers/contract-addresses",
+  "marinade_formula": "https://github.com/marinade-finance/liquid-staking-program/blob/d4e20237f08add67f030927fe12a097b62b837f5/programs/marinade-finance/src/state/mod.rs#L215-L262",
+  "marinade_deposit": "https://github.com/marinade-finance/liquid-staking-program/blob/d4e20237f08add67f030927fe12a097b62b837f5/programs/marinade-finance/src/instructions/user/deposit.rs#L87-L124",
+  "marinade_unstake": "https://github.com/marinade-finance/liquid-staking-program/blob/d4e20237f08add67f030927fe12a097b62b837f5/programs/marinade-finance/src/instructions/delayed_unstake/order_unstake.rs#L40-L66",
+  "marinade_updates": "https://github.com/marinade-finance/liquid-staking-program/blob/d4e20237f08add67f030927fe12a097b62b837f5/programs/marinade-finance/src/instructions/crank/update.rs#L409-L432",
+  "jup_pool_mint": "https://github.com/igneous-labs/sanctum-lst-list/blob/0360a1af31a6c6d99ce1947029d732e2cb2d6682/sanctum-lst-list.toml#L1351-L1361",
+  "jup_program_id": "https://learn.sanctum.so/docs/for-developers/deployed-programs",
+  "jup_current_fee_documentation": "https://learn.sanctum.so/docs/technical-documentation/sanctum-lsts",
+  "jup_source_layout": "https://github.com/igneous-labs/sanctum-spl-stake-pool/blob/5fd31ede7629761d7c98b2358161cdc219e669fa/stake-pool/program/src/state.rs",
+  "jup_source_withdraw_sol": "https://github.com/igneous-labs/sanctum-spl-stake-pool/blob/5fd31ede7629761d7c98b2358161cdc219e669fa/stake-pool/program/src/processor.rs#L3425-L3540",
+  "jup_source_withdraw_stake": "https://github.com/igneous-labs/sanctum-spl-stake-pool/blob/5fd31ede7629761d7c98b2358161cdc219e669fa/stake-pool/program/src/processor.rs#L3110-L3190",
+  "jup_launch_post_historical": "https://discuss.jup.ag/t/jupsol-jupiter-staked-sol/14666"
+}

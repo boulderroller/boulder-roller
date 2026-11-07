@@ -1,0 +1,119 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "canon_id": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "canon_version": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "distance_unit": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "elevation_unit": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "geographic_revision_id": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "missing_reason": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "profile_serializer_id": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "provenance_status": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "samples": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "dist_m": {
+            "type": "number"
+          },
+          "elev_m": {
+            "type": "number"
+          },
+          "source_contribution_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "dist_m",
+          "elev_m",
+          "source_contribution_ids"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "vertical_datum": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "canon_id",
+    "canon_version",
+    "geographic_revision_id",
+    "profile_serializer_id",
+    "vertical_datum",
+    "distance_unit",
+    "elevation_unit",
+    "provenance_status",
+    "missing_reason",
+    "samples"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,37 @@
+# Local validation report
+Executed on 2026-09-07 in this conversation runtime.
+Command: python -m unittest discover -v
+Python 3.13.5; PyYAML 6.0.3; jsonschema 4.26.0.
+Result: 27 local tests passed. All YAML files parsed; all Python files compiled.
+Fixtures are synthetic, including example URLs and asset hashes. No live production endpoint, database role, existing BLAKE3 profile serializer, chain transaction or asset-licence factual assertion was validated.
+Production acceptance requirements are specified in production-boundary-tests.md and export-contract.md and remain to be run against the actual implementation.
+test_all_publication_prerequisites_fail_closed (test_boundary_contract.BoundaryContractTests.test_all_publication_prerequisites_fail_closed) ... ok
+test_changed_payload_with_stale_revision_rejected (test_boundary_contract.BoundaryContractTests.test_changed_payload_with_stale_revision_rejected) ... ok
+test_duplicate_revision_rejected (test_boundary_contract.BoundaryContractTests.test_duplicate_revision_rejected) ... ok
+test_freeze_does_not_alias_original_dictionary (test_boundary_contract.BoundaryContractTests.test_freeze_does_not_alias_original_dictionary) ... ok
+test_matcher_cannot_return_private_reference (test_boundary_contract.BoundaryContractTests.test_matcher_cannot_return_private_reference) ... ok
+test_missing_required_field_blocks_publication (test_boundary_contract.BoundaryContractTests.test_missing_required_field_blocks_publication) ... ok
+test_missing_revision_cannot_fallback (test_boundary_contract.BoundaryContractTests.test_missing_revision_cannot_fallback) ... ok
+test_new_geographic_revision_preserves_prior_bytes (test_boundary_contract.BoundaryContractTests.test_new_geographic_revision_preserves_prior_bytes) ... ok
+test_nonfinite_values_block_publication (test_boundary_contract.BoundaryContractTests.test_nonfinite_values_block_publication) ... ok
+test_private_state_changes_cannot_change_reference_reader_outputs (test_boundary_contract.BoundaryContractTests.test_private_state_changes_cannot_change_reference_reader_outputs) ... ok
+test_publication_does_not_change_protocol_version (test_boundary_contract.BoundaryContractTests.test_publication_does_not_change_protocol_version) ... ok
+test_release_and_row_are_immutable (test_boundary_contract.BoundaryContractTests.test_release_and_row_are_immutable) ... ok
+test_returned_dictionary_does_not_mutate_snapshot (test_boundary_contract.BoundaryContractTests.test_returned_dictionary_does_not_mutate_snapshot) ... ok
+test_unclassified_field_blocks_publication (test_boundary_contract.BoundaryContractTests.test_unclassified_field_blocks_publication) ... ok
+test_unsigned_inputs_keep_exact_profile_bytes (test_boundary_contract.BoundaryContractTests.test_unsigned_inputs_keep_exact_profile_bytes) ... ok
+test_complete_synthetic_declaration_validates (test_source_schema.SourceSchemaTests.test_complete_synthetic_declaration_validates) ... ok
+test_invalid_date_and_unknown_field_fail (test_source_schema.SourceSchemaTests.test_invalid_date_and_unknown_field_fail) ... ok
+test_legal_admission_does_not_skip_quality_review (test_source_schema.SourceSchemaTests.test_legal_admission_does_not_skip_quality_review) ... ok
+test_missing_french_source_update_date_fails (test_source_schema.SourceSchemaTests.test_missing_french_source_update_date_fails) ... ok
+test_missing_upstream_closure_fails (test_source_schema.SourceSchemaTests.test_missing_upstream_closure_fails) ... ok
+test_no_derived_distribution_permission_fails (test_source_schema.SourceSchemaTests.test_no_derived_distribution_permission_fails) ... ok
+test_pass_through_without_evidence_fails (test_source_schema.SourceSchemaTests.test_pass_through_without_evidence_fails) ... ok
+test_pending_integration_fails (test_source_schema.SourceSchemaTests.test_pending_integration_fails) ... ok
+test_raw_distribution_right_not_required_when_no_raw_asset_exported (test_source_schema.SourceSchemaTests.test_raw_distribution_right_not_required_when_no_raw_asset_exported) ... ok
+test_unknown_commercial_permission_fails (test_source_schema.SourceSchemaTests.test_unknown_commercial_permission_fails) ... ok
+test_unknown_surface_or_registration_fails_canonical_use (test_source_schema.SourceSchemaTests.test_unknown_surface_or_registration_fails_canonical_use) ... ok
+test_unresolved_integration_fails (test_source_schema.SourceSchemaTests.test_unresolved_integration_fails) ... ok
+----------------------------------------------------------------------
+Ran 27 tests in 0.133s
+OK

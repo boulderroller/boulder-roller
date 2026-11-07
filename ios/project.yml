@@ -1,0 +1,76 @@
+# BoulderRoller — native iOS app (slice one).
+# Project generation: XcodeGen (`brew install xcodegen && xcodegen generate`).
+# Chosen over a committed .xcodeproj because the manifest is reviewable text,
+# regeneration is deterministic, and merge conflicts in project.pbxproj die
+# by construction. See ios/README.md for the full build sequence.
+name: BoulderRoller
+options:
+  bundleIdPrefix: com.boulderroller
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+packages:
+  Privy:
+    url: https://github.com/privy-io/privy-ios
+    from: 2.14.0
+  WorkoutParse:
+    path: Packages/WorkoutParse
+targets:
+  BoulderRoller:
+    type: application
+    platform: iOS
+    sources:
+      - path: BoulderRoller
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.boulderroller.app
+        INFOPLIST_FILE: BoulderRoller/Support/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+        CODE_SIGN_STYLE: Automatic
+        # Device builds stay unsigned locally; release archiving overrides
+        # via ios/scripts/archive.sh once the founder's team + ASC key exist
+        # (CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM=...).
+        CODE_SIGNING_ALLOWED: "NO"
+        # Simulator builds MUST ad-hoc sign so entitlements exist and the
+        # keychain works. Unsigned sim builds fail every keychain call with
+        # errSecMissingEntitlement (-34018), which silently invalidated all
+        # live-simulator session evidence and masked the Aug 17
+        # sign-out-on-every-refresh defect.
+        "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": "YES"
+        "CODE_SIGN_IDENTITY[sdk=iphonesimulator*]": "-"
+        CODE_SIGN_ENTITLEMENTS: BoulderRoller/Support/BoulderRoller.entitlements
+        ENABLE_PREVIEWS: YES
+        # Fallback build number; release builds stamp the real monotonic
+        # number from git via ios/scripts/build_number.sh.
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 0.1.0
+        SUPPORTS_MACCATALYST: NO
+        # dSYMs in every configuration so release archives always carry
+        # symbol maps for the self-hosted crash pipeline (odmi6.14).
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+    dependencies:
+      - package: Privy
+        product: Privy
+      - package: WorkoutParse
+        product: WorkoutParse
+  BoulderRollerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: BoulderRollerTests
+      - path: ../web/portal/scripts/fixtures/prepared-stage1-transactions.json
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.boulderroller.app.tests
+        SWIFT_VERSION: "5.0"
+        IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGNING_ALLOWED: "NO"
+        "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": "YES"
+        "CODE_SIGN_IDENTITY[sdk=iphonesimulator*]": "-"
+    dependencies:
+      - target: BoulderRoller

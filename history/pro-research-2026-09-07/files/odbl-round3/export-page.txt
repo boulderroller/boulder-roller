@@ -1,0 +1,14 @@
+Open climb data
+Download the complete published climb geography used by Boulder Roller. No account, wallet, token ownership, or payment is required. Commercial reuse is permitted under the licences below.
+Release: {release_id}. Published: {published_at_utc}. Schema: {export_schema_version}. Includes {climb_identity_count} climb identities and {geographic_revision_count} geographic revisions across {region_count} regions.
+Download complete release — ZIP, {measured_compressed_bytes}. Uncompressed size: {measured_uncompressed_bytes}. SHA-256: {archive_sha256}.
+Contents: climb centerlines, start and finish lines, authoritative corridors, H3 coverage, elevation samples, geographic revision history, and source/licence notices. The release includes all active and historical published revisions in its manifest, not only the map’s current selection.
+Also available: individual files; region extracts (subsets, not the complete release); schema and verification instructions; source notices; previous releases.
+Licence: the published climb database is available under ODbL 1.0. It contains data derived from © OpenStreetMap contributors. Third-party elevation-content terms and notices are identified in SOURCES.jsonl and NOTICES.txt. Those notices apply where the corresponding source contributes.
+Boulder Roller grants ODbL rights in its contributions to this database to the extent it holds those rights. Source providers retain the rights and notices identified in this release; no exclusive right is claimed over public-domain source material.
+This release does not contain private candidate hypotheses, raw ride recordings, rider identities, or economic account records. It does not include CARTO basemap tiles or AWS Terrain Tiles merely because those layers appear on the website.
+Geometry and elevation processing are described in the release manifest. Source providers do not endorse Boulder Roller. An export release is not a change to a climb’s sporting rules or its on-chain commitment.
+Required functional links: © OpenStreetMap contributors ? https://www.openstreetmap.org/copyright ; ODbL 1.0 ? https://opendatacommons.org/licenses/odbl/1-0/ ; each source notice ? the actual versioned source/licence record. The source-offer URL must work before public activation.
+Any {placeholder} is a build failure, not publishable copy. This is a page template, not an actual export or a claim about measured release sizes.
+The attachments require an open attributed canon without an account, while raw ride evidence stays in off-chain attestation [protocol-truths.txt §§5.2, 10, 14.7].
+ODbL §§4.2 and 4.6 govern notices and the machine-readable data offer [S1].

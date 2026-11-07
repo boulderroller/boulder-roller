@@ -1,0 +1,992 @@
+{
+  "candidate_manifest_sha256": "da93ce9735a7e609248b67d8f7c6d1d4ea53d8f017e8710e1e76aec20cdc9adb",
+  "candidates": [
+    {
+      "candidate_fingerprint": "60be6e5919d1f2c27743170bbe10780c29a546dbb6ceba56baf64681bbbea9cf",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 306,
+        "distance_meters": 1647,
+        "vert_decimeters": 504
+      },
+      "display_name": "Andorra Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "andorra-park-church",
+      "registry_metrics": {
+        "avg_gradient_pct": 3.06,
+        "length_m": 1646.74,
+        "vert_m": 50.39
+      }
+    },
+    {
+      "candidate_fingerprint": "6691e1964aae7e8833af386488f274cb71f6f0db3954de476e6a2e75fda2e721",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1367,
+        "distance_meters": 216,
+        "vert_decimeters": 296
+      },
+      "display_name": "Church Street",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-021d05b6f16f77de",
+      "registry_metrics": {
+        "avg_gradient_pct": 13.666,
+        "length_m": 216.3,
+        "vert_m": 29.56
+      }
+    },
+    {
+      "candidate_fingerprint": "0285da1a05b0bcad31f4d5519917747edf8b064ceecd8b9f5bec99fefdc48bd9",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 427,
+        "distance_meters": 1287,
+        "vert_decimeters": 549
+      },
+      "display_name": "Merion Square Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-08178449ffff4318",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.267,
+        "length_m": 1287.49,
+        "vert_m": 54.94
+      }
+    },
+    {
+      "candidate_fingerprint": "6f71db7ec1f7b36120f26ae6bf03fc8104dc419b4097cfb0a5bb795bcb3a3b97",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 208,
+        "distance_meters": 2713,
+        "vert_decimeters": 565
+      },
+      "display_name": "Cynwyd Heritage Trail",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-0e8ee14b86c83681",
+      "registry_metrics": {
+        "avg_gradient_pct": 2.083,
+        "length_m": 2712.85,
+        "vert_m": 56.52
+      }
+    },
+    {
+      "candidate_fingerprint": "ad6c15e489124ab295ef6183d6b70218285c427f45db9084f8f456bf3bd3bbeb",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 831,
+        "distance_meters": 261,
+        "vert_decimeters": 217
+      },
+      "display_name": "Parker Avenue",
+      "launch_authority": "locked_july_18_validated_boundary",
+      "launch_decision_id": "canon-1d0fe5f96ba79e86",
+      "registry_metrics": {
+        "avg_gradient_pct": 8.314,
+        "length_m": 260.94,
+        "vert_m": 21.7
+      }
+    },
+    {
+      "candidate_fingerprint": "9c4b6ec2900620b7ddf607b691e08c2874ce60b2bbf26c10106fc6b2df955e9b",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 657,
+        "distance_meters": 937,
+        "vert_decimeters": 616
+      },
+      "display_name": "Old Gulph Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-1de680b68c8841b9",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.568,
+        "length_m": 937.16,
+        "vert_m": 61.55
+      }
+    },
+    {
+      "candidate_fingerprint": "f1db7087fd8466960dee2739dbb492746f5ba89db74979e71834ea426b3bd311",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 950,
+        "distance_meters": 224,
+        "vert_decimeters": 213
+      },
+      "display_name": "Stony Lane",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-21270f6c8286a494",
+      "registry_metrics": {
+        "avg_gradient_pct": 9.502,
+        "length_m": 223.78,
+        "vert_m": 21.26
+      }
+    },
+    {
+      "candidate_fingerprint": "fccf5af0324143e4844a8cb457f2685e59c1d3d255eacd66d56b24b6cfba4e62",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 339,
+        "distance_meters": 2493,
+        "vert_decimeters": 846
+      },
+      "display_name": "Manor Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-265cfcfa0fb3213e",
+      "registry_metrics": {
+        "avg_gradient_pct": 3.393,
+        "length_m": 2492.72,
+        "vert_m": 84.58
+      }
+    },
+    {
+      "candidate_fingerprint": "4b6876ea85ca4604e14d5863bd68e2ffbf7ab491006e217e18702c500812b3a1",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 576,
+        "distance_meters": 1159,
+        "vert_decimeters": 667
+      },
+      "display_name": "Conshohocken State Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-27921d9d554b85bd",
+      "registry_metrics": {
+        "avg_gradient_pct": 5.755,
+        "length_m": 1158.51,
+        "vert_m": 66.67
+      }
+    },
+    {
+      "candidate_fingerprint": "09761a9ee3acc47d0297da185b954511d322ece7b3b40867cfadfe5d588e3fb6",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 316,
+        "distance_meters": 2597,
+        "vert_decimeters": 820
+      },
+      "display_name": "Barren Hill Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-279a69d24907bc89",
+      "registry_metrics": {
+        "avg_gradient_pct": 3.157,
+        "length_m": 2597.11,
+        "vert_m": 81.98
+      }
+    },
+    {
+      "candidate_fingerprint": "436ef72c11d1ed342e9be49a0a19e8d1667a873dfe731f7418c1922423942c21",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 348,
+        "distance_meters": 2098,
+        "vert_decimeters": 729
+      },
+      "display_name": "Old Gulph Road / Williamson Road / Youngs Ford Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-299006c86a71f0a0",
+      "registry_metrics": {
+        "avg_gradient_pct": 3.475,
+        "length_m": 2098.35,
+        "vert_m": 72.92
+      }
+    },
+    {
+      "candidate_fingerprint": "ebc02b3e7a7390b39f985f54fa08713736d35f56e2945836794795202bb8a6f4",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 533,
+        "distance_meters": 1623,
+        "vert_decimeters": 866
+      },
+      "display_name": "Rose Glen Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-45cce7f975578a7d",
+      "registry_metrics": {
+        "avg_gradient_pct": 5.334,
+        "length_m": 1623.37,
+        "vert_m": 86.59
+      }
+    },
+    {
+      "candidate_fingerprint": "ef2c9a235a7b5b4b365d323e4c7d3f73e309390a850d694044a356e24094b45b",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 436,
+        "distance_meters": 1498,
+        "vert_decimeters": 652
+      },
+      "display_name": "Hagys Ford Road North / Hagys Ford Road",
+      "launch_authority": "locked_july_18_validated_boundary",
+      "launch_decision_id": "canon-4698d2a41a0d7f8f",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.356,
+        "length_m": 1497.64,
+        "vert_m": 65.23
+      }
+    },
+    {
+      "candidate_fingerprint": "d245703771852a36060d112fbc0e4be79e536c21832a51aae7a14ac856e89404",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 303,
+        "distance_meters": 1644,
+        "vert_decimeters": 497
+      },
+      "display_name": "Ellis Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-47bed4f058a4ab7e",
+      "registry_metrics": {
+        "avg_gradient_pct": 3.025,
+        "length_m": 1644.02,
+        "vert_m": 49.72
+      }
+    },
+    {
+      "candidate_fingerprint": "b8aee2f2a2a330ed7876ac771684909985fbae7c9537065546a4847fc6fe6823",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 889,
+        "distance_meters": 862,
+        "vert_decimeters": 767
+      },
+      "display_name": "Righters Mill Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-595357866895fab9",
+      "registry_metrics": {
+        "avg_gradient_pct": 8.889,
+        "length_m": 862.39,
+        "vert_m": 76.66
+      }
+    },
+    {
+      "candidate_fingerprint": "048fec31d6e62261c9bdde25487de3fd730a775a343cfddf9e5b80c860abd043",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 762,
+        "distance_meters": 890,
+        "vert_decimeters": 679
+      },
+      "display_name": "Shurs Lane",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-6995a8596de18562",
+      "registry_metrics": {
+        "avg_gradient_pct": 7.622,
+        "length_m": 890.45,
+        "vert_m": 67.87
+      }
+    },
+    {
+      "candidate_fingerprint": "24915f5806892118fc3bfdd552da485cbb6233aaca31cc8329ed37050b66f5f8",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 445,
+        "distance_meters": 1188,
+        "vert_decimeters": 529
+      },
+      "display_name": "McClenaghan Mill Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-69e5d91cd246bded",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.448,
+        "length_m": 1188.2,
+        "vert_m": 52.85
+      }
+    },
+    {
+      "candidate_fingerprint": "dd99c786dd0018f2d016a9f80d4baa0c87bcbbfc7b7099417e0c2abbf6abc7b1",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 787,
+        "distance_meters": 886,
+        "vert_decimeters": 697
+      },
+      "display_name": "Sprague Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-6c5eb2e73b21538e",
+      "registry_metrics": {
+        "avg_gradient_pct": 7.866,
+        "length_m": 886.21,
+        "vert_m": 69.71
+      }
+    },
+    {
+      "candidate_fingerprint": "ab15f3a5915d384ba53505c09d31cd9a0a3c44dab55baf99b8a3162ef9c25064",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 415,
+        "distance_meters": 1640,
+        "vert_decimeters": 680
+      },
+      "display_name": "Centennial Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-794844097b53a512",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.146,
+        "length_m": 1639.79,
+        "vert_m": 67.99
+      }
+    },
+    {
+      "candidate_fingerprint": "289af8c222f75a7b2a029c61c4b75c36e6674f91eca08d5a82d25d0c31643b80",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 582,
+        "distance_meters": 1206,
+        "vert_decimeters": 702
+      },
+      "display_name": "Leverington Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-7af1a916969cc399",
+      "registry_metrics": {
+        "avg_gradient_pct": 5.823,
+        "length_m": 1206.32,
+        "vert_m": 70.24
+      }
+    },
+    {
+      "candidate_fingerprint": "c4abaf71a05c798f6b6b240399da9c7744def4c8346eaefa8a2952e783644f98",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1036,
+        "distance_meters": 652,
+        "vert_decimeters": 675
+      },
+      "display_name": "Bryn Tyddyn Drive",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-84bcbd7ae9765da8",
+      "registry_metrics": {
+        "avg_gradient_pct": 10.362,
+        "length_m": 651.5,
+        "vert_m": 67.51
+      }
+    },
+    {
+      "candidate_fingerprint": "2f07cd48b6cf74efab04d63742cb3af5f1910f88f61fe9dfa7931593b209030e",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 575,
+        "distance_meters": 944,
+        "vert_decimeters": 543
+      },
+      "display_name": "Paoli Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-890cefb60f8c5802",
+      "registry_metrics": {
+        "avg_gradient_pct": 5.746,
+        "length_m": 944.23,
+        "vert_m": 54.26
+      }
+    },
+    {
+      "candidate_fingerprint": "d26d892663ce7519402df0b11ceaa8055b494c9cf23329c498a26807e3d24a0e",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 637,
+        "distance_meters": 496,
+        "vert_decimeters": 316
+      },
+      "display_name": "Domino Lane",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-9d72baea48dbeded",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.367,
+        "length_m": 496.19,
+        "vert_m": 31.59
+      }
+    },
+    {
+      "candidate_fingerprint": "16e8b6371930a28784890cf68f0c86e8f3f5d03055f3bd5f669fe6bd16b93913",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 961,
+        "distance_meters": 529,
+        "vert_decimeters": 509
+      },
+      "display_name": "West Bells Mill Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-9f34c3ecdccc3fd7",
+      "registry_metrics": {
+        "avg_gradient_pct": 9.61,
+        "length_m": 529.44,
+        "vert_m": 50.88
+      }
+    },
+    {
+      "candidate_fingerprint": "45183af8f933b69198ce14f10b5ad114cdec826dd800c8344644b887d221362b",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1054,
+        "distance_meters": 220,
+        "vert_decimeters": 232
+      },
+      "display_name": "Gay Street",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-a234db159b2f16aa",
+      "registry_metrics": {
+        "avg_gradient_pct": 10.544,
+        "length_m": 220.39,
+        "vert_m": 23.24
+      }
+    },
+    {
+      "candidate_fingerprint": "6373004e6a66963137f0aabdc615cca376a872b6484f9fd639fae76afc73e4e1",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1087,
+        "distance_meters": 547,
+        "vert_decimeters": 594
+      },
+      "display_name": "Levering Street / Lyceum Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-a5328e90bebaec92",
+      "registry_metrics": {
+        "avg_gradient_pct": 10.866,
+        "length_m": 546.66,
+        "vert_m": 59.4
+      }
+    },
+    {
+      "candidate_fingerprint": "cf58a18927d2e9fb316cba76c578afbcc4aa4a2a893d7d8efcaaa31aaa2347b4",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 488,
+        "distance_meters": 1020,
+        "vert_decimeters": 498
+      },
+      "display_name": "Falls Road / Neill Drive",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-a99efed4c22a1a3f",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.882,
+        "length_m": 1019.91,
+        "vert_m": 49.79
+      }
+    },
+    {
+      "candidate_fingerprint": "7037d25ca11746bbf71301c087172f462c9c50486fc437794e063c855eaa5861",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 243,
+        "distance_meters": 1959,
+        "vert_decimeters": 476
+      },
+      "display_name": "Morris Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-aa9c75a504294c52",
+      "registry_metrics": {
+        "avg_gradient_pct": 2.433,
+        "length_m": 1958.51,
+        "vert_m": 47.64
+      }
+    },
+    {
+      "candidate_fingerprint": "a04bf67cec4aa8278a66348e8f3596d581bbe27e295de63a69baf98eb78d098e",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1550,
+        "distance_meters": 211,
+        "vert_decimeters": 328
+      },
+      "display_name": "Dehaven Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-b4a5e8097af40993",
+      "registry_metrics": {
+        "avg_gradient_pct": 15.501,
+        "length_m": 211.43,
+        "vert_m": 32.77
+      }
+    },
+    {
+      "candidate_fingerprint": "84fcc8fce72b0198a6534269222fdbc4043ddc276ed93d72b71844ef26194188",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 430,
+        "distance_meters": 2031,
+        "vert_decimeters": 874
+      },
+      "display_name": "Jefferson Street / North Woodbine Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-b670dc809f8e643b",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.301,
+        "length_m": 2031.31,
+        "vert_m": 87.36
+      }
+    },
+    {
+      "candidate_fingerprint": "16907f925140cc3a2d42dbf2a1578d46ac7b335a90048d7362db2ef21b48e57c",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 293,
+        "distance_meters": 1621,
+        "vert_decimeters": 474
+      },
+      "display_name": "Mill Creek Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-b8b1ba7821917943",
+      "registry_metrics": {
+        "avg_gradient_pct": 2.927,
+        "length_m": 1620.69,
+        "vert_m": 47.43
+      }
+    },
+    {
+      "candidate_fingerprint": "a0689062802adff84c2b50ed55ce26c5a141c38295bab4d44ebe750761048194",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1374,
+        "distance_meters": 204,
+        "vert_decimeters": 281
+      },
+      "display_name": "Fairview Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-ba07f7836f5992d4",
+      "registry_metrics": {
+        "avg_gradient_pct": 13.739,
+        "length_m": 204.14,
+        "vert_m": 28.05
+      }
+    },
+    {
+      "candidate_fingerprint": "9417ed5b90b2e4d228e67859a4ebe51d2b56db13cb6019b01060724eb32efcd2",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 616,
+        "distance_meters": 386,
+        "vert_decimeters": 238
+      },
+      "display_name": "Wynnefield Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-bf5e56199c2cdef5",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.159,
+        "length_m": 386.33,
+        "vert_m": 23.79
+      }
+    },
+    {
+      "candidate_fingerprint": "3fb34fe0d6bad180b99377fcd3a6ed1d9a5e851db9476fbd097f52b116fc1b77",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 435,
+        "distance_meters": 1332,
+        "vert_decimeters": 579
+      },
+      "display_name": "Grays Lane",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-c1ec5bb0d5b9c101",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.347,
+        "length_m": 1332.41,
+        "vert_m": 57.91
+      }
+    },
+    {
+      "candidate_fingerprint": "e306323ba3ae41a214a856d78a66da6fdb596f5e41224ae648245643eaec020a",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1034,
+        "distance_meters": 337,
+        "vert_decimeters": 349
+      },
+      "display_name": "Gypsy Lane",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-c64bbf1444d0500a",
+      "registry_metrics": {
+        "avg_gradient_pct": 10.344,
+        "length_m": 337.46,
+        "vert_m": 34.91
+      }
+    },
+    {
+      "candidate_fingerprint": "97ea1558369a9dea0e6c53366724eeb369c8a9ee453ad01c5b517511c685be46",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 668,
+        "distance_meters": 721,
+        "vert_decimeters": 482
+      },
+      "display_name": "Shawmont Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-cad891a15fe27cfc",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.677,
+        "length_m": 721.17,
+        "vert_m": 48.15
+      }
+    },
+    {
+      "candidate_fingerprint": "880e1f5845a58bba54fb2d262d08d7afe4680a88921210a3258503d819bf189e",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 24,
+        "distance_meters": 4979,
+        "vert_decimeters": 119
+      },
+      "display_name": "Schuylkill River Trail",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-ea8cb4140e9dfb84",
+      "registry_metrics": {
+        "avg_gradient_pct": 0.238,
+        "length_m": 4979.21,
+        "vert_m": 11.86
+      }
+    },
+    {
+      "candidate_fingerprint": "19240ff8370a5ee3c8ba8f60e0ceb6dd11609495dacf574055424fcc9a417690",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 292,
+        "distance_meters": 1605,
+        "vert_decimeters": 468
+      },
+      "display_name": "Cheltenham Avenue",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-ee44c1688fd336e2",
+      "registry_metrics": {
+        "avg_gradient_pct": 2.917,
+        "length_m": 1604.87,
+        "vert_m": 46.81
+      }
+    },
+    {
+      "candidate_fingerprint": "bda8bb3b1b6abb0280615381782fc51b680f45c2ded2ea5e9fd9b488710e9dab",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 873,
+        "distance_meters": 855,
+        "vert_decimeters": 747
+      },
+      "display_name": "Hagys Mill Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-f70229a2b246dc1b",
+      "registry_metrics": {
+        "avg_gradient_pct": 8.732,
+        "length_m": 855.25,
+        "vert_m": 74.68
+      }
+    },
+    {
+      "candidate_fingerprint": "39731ec14dac6dc6781e37e89d7720d36bce4ec344a5c91472cd31ee4e528d21",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 801,
+        "distance_meters": 289,
+        "vert_decimeters": 232
+      },
+      "display_name": "Stanton Street",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-f7b0e5c1a81a3e3a",
+      "registry_metrics": {
+        "avg_gradient_pct": 8.012,
+        "length_m": 289.43,
+        "vert_m": 23.19
+      }
+    },
+    {
+      "candidate_fingerprint": "6e22216e802e53f960022e6e87ebb7455a0fad8d637f76aac061839c4f731aa9",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 876,
+        "distance_meters": 824,
+        "vert_decimeters": 722
+      },
+      "display_name": "Green Lane",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-f8b5759fd4d3b699",
+      "registry_metrics": {
+        "avg_gradient_pct": 8.763,
+        "length_m": 823.97,
+        "vert_m": 72.21
+      }
+    },
+    {
+      "candidate_fingerprint": "5161e8eda0ce68934cdd4d135a6f2a8c68501bf3853d6e249ba4e1440b383cda",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 535,
+        "distance_meters": 577,
+        "vert_decimeters": 309
+      },
+      "display_name": "Black Rock Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-f900cfb8fdb96b47",
+      "registry_metrics": {
+        "avg_gradient_pct": 5.351,
+        "length_m": 576.69,
+        "vert_m": 30.86
+      }
+    },
+    {
+      "candidate_fingerprint": "5082caadd5b7828ea5593ab29ba803fc6b6d2bb70065f6ff9f6aa6a15b60d638",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 486,
+        "distance_meters": 1529,
+        "vert_decimeters": 743
+      },
+      "display_name": "Lafayette Road",
+      "launch_authority": "tim_review_approve_exact_lineage",
+      "launch_decision_id": "canon-fa6f4fe69abc9a60",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.858,
+        "length_m": 1528.87,
+        "vert_m": 74.28
+      }
+    },
+    {
+      "candidate_fingerprint": "5f01d38a9553dabebc345b6b9288e41c09ffe5086d80fe0049317edfb942316f",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 791,
+        "distance_meters": 1024,
+        "vert_decimeters": 809
+      },
+      "display_name": "Conshohocken State Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "conshohocken-state-approved-full-route",
+      "registry_metrics": {
+        "avg_gradient_pct": 7.906,
+        "length_m": 1023.52,
+        "vert_m": 80.92
+      }
+    },
+    {
+      "candidate_fingerprint": "717006225c672bdad7a25b153959f64007a52ab47ce81ff016be730755b77ccb",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 636,
+        "distance_meters": 1241,
+        "vert_decimeters": 789
+      },
+      "display_name": "Conshohocken State Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "conshohocken-state-woodmont-spring-mill",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.361,
+        "length_m": 1240.97,
+        "vert_m": 78.94
+      }
+    },
+    {
+      "candidate_fingerprint": "162607a27fdf9d52729c4d9e41543e6e79d56fb8d1836ac3ccf557db9777b8f0",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 332,
+        "distance_meters": 1687,
+        "vert_decimeters": 559
+      },
+      "display_name": "Falls Road / Conshohocken Avenue",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "falls-road-first-curve",
+      "registry_metrics": {
+        "avg_gradient_pct": 3.316,
+        "length_m": 1686.52,
+        "vert_m": 55.93
+      }
+    },
+    {
+      "candidate_fingerprint": "e71a6a2c8a8ab8f8d2b6af30949c558019762ef37a90f79b355300e3de48b843",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 932,
+        "distance_meters": 715,
+        "vert_decimeters": 667
+      },
+      "display_name": "Flat Rock Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "flat-rock-hidden-river",
+      "registry_metrics": {
+        "avg_gradient_pct": 9.323,
+        "length_m": 715.47,
+        "vert_m": 66.7
+      }
+    },
+    {
+      "candidate_fingerprint": "5e858966c5b6019e3c04d8f421f51f04ecd3b7d4c9fa53db39e721bc4e52d08f",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1166,
+        "distance_meters": 331,
+        "vert_decimeters": 386
+      },
+      "display_name": "Mary Waters Ford Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "mary-waters-flat-rock-jefferson",
+      "registry_metrics": {
+        "avg_gradient_pct": 11.663,
+        "length_m": 330.82,
+        "vert_m": 38.58
+      }
+    },
+    {
+      "candidate_fingerprint": "e8ae6b133ffa8268d6022284ac275baff97073b5d3a541cb137255b65a7f98e6",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 477,
+        "distance_meters": 1062,
+        "vert_decimeters": 507
+      },
+      "display_name": "Midvale Avenue",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "midvale-henry",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.772,
+        "length_m": 1062.07,
+        "vert_m": 50.68
+      }
+    },
+    {
+      "candidate_fingerprint": "2a260047ed00fcc757867345844fc7b0655ad7a8e9a94a44e10aac6735f77dfe",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 608,
+        "distance_meters": 1530,
+        "vert_decimeters": 931
+      },
+      "display_name": "Port Royal Avenue",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "port-royal-approved-full-route",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.081,
+        "length_m": 1530.43,
+        "vert_m": 93.07
+      }
+    },
+    {
+      "candidate_fingerprint": "5a3c65b280f819661663e9c2d6d767e2c8534d3fe5aa9b46938d6b7b822a7e04",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 1143,
+        "distance_meters": 198,
+        "vert_decimeters": 226
+      },
+      "display_name": "Rockland Avenue",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "rockland-approved-full-route",
+      "registry_metrics": {
+        "avg_gradient_pct": 11.431,
+        "length_m": 197.87,
+        "vert_m": 22.62
+      }
+    },
+    {
+      "candidate_fingerprint": "7f501c4a828bbd5344b4e1051dd355f9c314bc5cb7bf47945234bfccb4addd33",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 638,
+        "distance_meters": 1102,
+        "vert_decimeters": 703
+      },
+      "display_name": "Valley Green Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "valley-green-creek-bridge",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.377,
+        "length_m": 1102.36,
+        "vert_m": 70.3
+      }
+    },
+    {
+      "candidate_fingerprint": "26348f029a22221f53d325e86c4636989f2afe4faae246fe842af0483b7e1656",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 824,
+        "distance_meters": 1012,
+        "vert_decimeters": 834
+      },
+      "display_name": "Waverly Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "waverly-approved-full-route",
+      "registry_metrics": {
+        "avg_gradient_pct": 8.241,
+        "length_m": 1012.39,
+        "vert_m": 83.44
+      }
+    },
+    {
+      "candidate_fingerprint": "0b3903c31e6cfb8ff2c62393f793dfa04187eb16461f35dc5eafd7c92bcde9df",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 429,
+        "distance_meters": 723,
+        "vert_decimeters": 310
+      },
+      "display_name": "Calumet Street / West Coulter Street",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "west-coulter-conrad",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.292,
+        "length_m": 722.59,
+        "vert_m": 31.01
+      }
+    },
+    {
+      "candidate_fingerprint": "56aad7164f1372b9e67d40766c0a5174d72c74125ecbc85b86c770cf81e028e1",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 466,
+        "distance_meters": 1212,
+        "vert_decimeters": 564
+      },
+      "display_name": "West School House Lane",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "west-school-house-henry",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.655,
+        "length_m": 1212.05,
+        "vert_m": 56.42
+      }
+    },
+    {
+      "candidate_fingerprint": "f39b5e3500a7542755bb82f55af3bd863c234468cbba46ea8f97337e9b88f0a0",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 626,
+        "distance_meters": 1088,
+        "vert_decimeters": 681
+      },
+      "display_name": "Wises Mill Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "wises-mill-henry",
+      "registry_metrics": {
+        "avg_gradient_pct": 6.263,
+        "length_m": 1087.96,
+        "vert_m": 68.13
+      }
+    },
+    {
+      "candidate_fingerprint": "c1b072c5dcb791b534b6ba287a71e605c2b5a42bffe63c94a697bccb653d6ce6",
+      "chain_metric_projection": {
+        "algorithm": "boulderroller_chain_metric_projection_v1",
+        "avg_gradient_basis_points": 415,
+        "distance_meters": 2037,
+        "vert_decimeters": 845
+      },
+      "display_name": "Youngs Ford Road",
+      "launch_authority": "ratified_boundary_registry",
+      "launch_decision_id": "youngs-ford-lafayette-waverly",
+      "registry_metrics": {
+        "avg_gradient_pct": 4.149,
+        "length_m": 2037.01,
+        "vert_m": 84.52
+      }
+    }
+  ],
+  "projection_algorithm": "boulderroller_chain_metric_projection_v1",
+  "schema": "boulderroller.chain-metric-launch-manifest",
+  "schema_version": 1,
+  "source": {
+    "canon_report_sha256": "de67892dc600affd97e0a5158f3a369ca29777b214ecce41be0e47060736bf0e",
+    "resolver": "tools/corpus/canon_traversal_replay.py::resolve_launch_canon_candidates",
+    "resolver_audit": {
+      "boundary_ratifications": 15,
+      "carried_approve_labels": 44,
+      "locked_validated_carries": [
+        "Hagys Ford Road North / Hagys Ford Road",
+        "Parker Avenue"
+      ],
+      "pending_approve_labels": [],
+      "resolved_candidates": 57
+    },
+    "review_labels_sha256": "77fbdcc691de9d82124f3d848035f103e5433c6ef2bbe3d8bd64782041c4fdd9"
+  }
+}

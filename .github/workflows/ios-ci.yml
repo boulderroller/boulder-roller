@@ -1,0 +1,95 @@
+name: iOS CI
+
+on:
+  # Pushes to main that touch the app run here too: direct pushes skip pull
+  # requests, and the self-hosted Mac costs nothing. Run by hand before a release.
+  push:
+    branches: [main]
+    paths:
+      - 'ios/**'
+  workflow_dispatch:
+    inputs:
+      hosted:
+        description: Run on a GitHub-hosted macOS runner (paid) instead of the self-hosted Mac
+        type: boolean
+        default: false
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'ios/**'
+      - 'workout-parse/**'
+      - '.github/workflows/ios-ci.yml'
+
+# The draft state is part of the group, so a skipped draft run can never
+# cancel the ready_for_review run that arrives alongside a push.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.event.pull_request.draft || false }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    # Drafts skip this job; it runs when the pull request is marked ready, or by hand.
+    # It runs on Tim's Mac (label boulder-ios) at no cost. A manual run can choose the
+    # paid GitHub-hosted runner when the Mac is offline.
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && inputs.hosted) && 'macos-26' || fromJSON('["self-hosted", "macOS", "ARM64", "boulder-ios"]') }}
+    timeout-minutes: 45
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Select Xcode 26
+        if: runner.environment == 'github-hosted'
+        run: sudo xcode-select -s /Applications/Xcode_26.6.app
+
+      - name: Check Xcode version
+        run: xcodebuild -version
+
+      # The self-hosted Mac uses its own simulator and build cache, so CI never takes
+      # over the simulator or DerivedData in daily use.
+      - name: Choose simulator and build cache
+        run: |
+          if [ "$RUNNER_ENVIRONMENT" = "github-hosted" ]; then
+            echo "SIM_NAME=iPhone 17" >> "$GITHUB_ENV"
+            echo "DERIVED_DATA=$RUNNER_TEMP/DerivedData" >> "$GITHUB_ENV"
+          else
+            echo "SIM_NAME=CI iPhone 17" >> "$GITHUB_ENV"
+            echo "DERIVED_DATA=$HOME/Library/Developer/Xcode/DerivedData-CI" >> "$GITHUB_ENV"
+          fi
+
+      - name: Prepare the CI simulator
+        if: runner.environment != 'github-hosted'
+        run: |
+          if ! xcrun simctl list devices available | grep -q "$SIM_NAME ("; then
+            xcrun simctl create "$SIM_NAME" "iPhone 17" com.apple.CoreSimulator.SimRuntime.iOS-26-5
+          fi
+
+      - name: Build Rust and UniFFI parser artifacts
+        run: bash ios/scripts/build_parser.sh
+
+      - name: Install XcodeGen
+        run: command -v xcodegen >/dev/null || brew install xcodegen
+
+      - name: Generate Xcode project from project.yml
+        run: xcodegen generate --spec project.yml
+        working-directory: ios
+
+      - name: Resolve Swift Packages
+        run: xcodebuild -project ios/BoulderRoller.xcodeproj -scheme BoulderRoller -resolvePackageDependencies
+
+      - name: Build
+        run: >-
+          xcodebuild -project ios/BoulderRoller.xcodeproj -scheme BoulderRoller
+          -configuration Debug build
+          -derivedDataPath "$DERIVED_DATA"
+          -destination "platform=iOS Simulator,name=$SIM_NAME,OS=26.5"
+          CODE_SIGNING_ALLOWED=NO
+
+      - name: Test
+        run: >-
+          xcodebuild test -project ios/BoulderRoller.xcodeproj -scheme BoulderRoller
+          -derivedDataPath "$DERIVED_DATA"
+          -destination "platform=iOS Simulator,name=$SIM_NAME,OS=26.5"
+          CODE_SIGNING_ALLOWED=NO

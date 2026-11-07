@@ -1,0 +1,103 @@
+{
+  "contractVersion": "portal.qa.v1",
+  "liveTargets": {
+    "portal": "https://app.boulderroller.xyz",
+    "apiFacade": "/api",
+    "backend": "https://api.boulderroller.xyz",
+    "legacyApiRedirects": [
+      "https://api.boulderroller.org"
+    ],
+    "healthPath": "/health",
+    "corsProbePath": "/auth/bootstrap"
+  },
+  "smokeSurfaces": [
+    {
+      "name": "Feed",
+      "route": "/",
+      "purpose": "Authenticated landing surface renders without blocking on secondary feed projections."
+    },
+    {
+      "name": "My Activities",
+      "route": "/profile?tab=rides",
+      "purpose": "Rider can reach their ride list and start upload/debug loops."
+    },
+    {
+      "name": "Ride Proof",
+      "route": "/activities/qa-finalized-ride",
+      "purpose": "Ride detail explains processing state, proof references, and earnings without exposing raw diagnostics by default."
+    },
+    {
+      "name": "Climb",
+      "route": "/climbs/qa-climb",
+      "purpose": "Climb-first public object is reachable from Portal."
+    },
+    {
+      "name": "Portfolio",
+      "route": "/profile?tab=portfolio",
+      "purpose": "Wallet and economy surfaces can load independently of ride proof details."
+    },
+    {
+      "name": "Settings",
+      "route": "/settings",
+      "purpose": "User configuration and integration surfaces are reachable during QA."
+    }
+  ],
+  "rideProofStates": [
+    {
+      "id": "native-counting",
+      "label": "Counting",
+      "status": "processing",
+      "attestationStatus": "pending",
+      "canonicalMatch": null,
+      "finalizedAt": null,
+      "userMeaning": "Ride evidence is still being processed."
+    },
+    {
+      "id": "finalized-earned",
+      "label": "Finalized",
+      "status": "completed",
+      "attestationStatus": "attested",
+      "canonicalMatch": true,
+      "finalizedAt": "2026-04-20T13:05:00+00:00",
+      "userMeaning": "Ride proof and earned outcomes are complete."
+    },
+    {
+      "id": "needs-review",
+      "label": "Needs review",
+      "status": "under_review",
+      "attestationStatus": "pending",
+      "canonicalMatch": false,
+      "finalizedAt": null,
+      "userMeaning": "Ride evidence needs a human or retry pass before it counts."
+    },
+    {
+      "id": "not-counted",
+      "label": "Not counted",
+      "status": "failed",
+      "attestationStatus": "failed",
+      "canonicalMatch": false,
+      "finalizedAt": null,
+      "userMeaning": "This ride did not produce protocol outcomes."
+    }
+  ],
+  "sourceDisplayPolicy": {
+    "defaultVisible": [
+      "Evidence source"
+    ],
+    "technicalOnly": [
+      "Source quality",
+      "Trackpoints",
+      "Max source gap",
+      "Source ID",
+      "Source diagnostics",
+      "Protocol state"
+    ]
+  },
+  "stateSubjects": [
+    "storage",
+    "matching",
+    "cal",
+    "position",
+    "collection"
+  ]
+}

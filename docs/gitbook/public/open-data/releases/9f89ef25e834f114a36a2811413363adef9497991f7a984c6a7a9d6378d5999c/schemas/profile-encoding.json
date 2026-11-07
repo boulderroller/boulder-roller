@@ -1,0 +1,19 @@
+{
+  "domain": "boulderroller-canon-profile-v1",
+  "encoding": "UTF-8 domain followed by each runtime float formatted .2f as distance:elevation; in stored order",
+  "serializer": "blake3_canonical_profile_v1",
+  "test_vector": {
+    "blake3": "8b0b5e33a5d495b913a979b2c33a948fbaca731fe067bb219e855facf5662600",
+    "bytes_hex": "626f756c646572726f6c6c65722d63616e6f6e2d70726f66696c652d7631302e30303a3130302e30303b31322e33353a3130312e32333b",
+    "samples": [
+      {
+        "dist_m": 0.0,
+        "elev_m": 100.0
+      },
+      {
+        "dist_m": 12.345,
+        "elev_m": 101.234
+      }
+    ]
+  }
+}

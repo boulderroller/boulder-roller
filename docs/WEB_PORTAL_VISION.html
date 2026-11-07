@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dung Beetle Cycling — Web Portal Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --void-black: #111111;
+            --international-orange: #FF4400;
+            --brushed-aluminum: #E0E0E0;
+            --stucco: #F4F4F0;
+            --warm-gray: #666666;
+            --light-gray: #AAAAAA;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--stucco);
+            color: var(--void-black);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--void-black);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .top-nav .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--international-orange);
+            letter-spacing: 0.5px;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .top-nav .nav-links a {
+            color: var(--brushed-aluminum);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 64px;
+            padding: 60px 80px 100px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--brushed-aluminum);
+        }
+
+        .section-header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--warm-gray);
+            max-width: 600px;
+        }
+
+        .section-header .badge {
+            display: inline-block;
+            background: var(--international-orange);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* Page Section */
+        .page-section {
+            margin-bottom: 100px;
+        }
+
+        .page-section h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--void-black);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-section h2 .page-num {
+            background: var(--void-black);
+            color: var(--stucco);
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .page-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: var(--void-black);
+        }
+
+        .page-section h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--international-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 24px 0 12px;
+        }
+
+        /* Wireframe Container */
+        .wireframe {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            margin: 24px 0;
+        }
+
+        .wireframe-header {
+            background: var(--void-black);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wireframe-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--warm-gray);
+        }
+
+        .wireframe-dot.red { background: #ff5f57; }
+        .wireframe-dot.yellow { background: #ffbd2e; }
+        .wireframe-dot.green { background: #28ca42; }
+
+        .wireframe-url {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin-left: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--light-gray);
+        }
+
+        .wireframe-content {
+            padding: 0;
+            min-height: 500px;
+            background: var(--stucco);
+        }
+
+        /* Mock UI Elements */
+        .mock-nav {
+            background: var(--void-black);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mock-nav .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--international-orange);
+        }
+
+        .mock-nav .links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .mock-nav .link {
+            font-size: 11px;
+            color: var(--brushed-aluminum);
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .mock-nav .link.active {
+            color: #fff;
+            border-bottom-color: var(--international-orange);
+        }
+
+        .mock-nav .wallet {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--brushed-aluminum);
+        }
+
+        .mock-content {
+            padding: 32px;
+        }
+
+        .mock-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .mock-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .mock-card.span-4 { grid-column: span 4; }
+        .mock-card.span-6 { grid-column: span 6; }
+        .mock-card.span-8 { grid-column: span 8; }
+        .mock-card.span-12 { grid-column: span 12; }
+
+        .mock-card h5 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .mock-stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--void-black);
+        }
+
+        .mock-stat.orange { color: var(--international-orange); }
+
+        .mock-stat-label {
+            font-size: 12px;
+            color: var(--warm-gray);
+            margin-top: 4px;
+        }
+
+        .mock-placeholder {
+            background: var(--brushed-aluminum);
+            border-radius: 8px;
+            height: 100%;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-gray);
+            font-size: 12px;
+        }
+
+        .mock-map {
+            background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mock-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .mock-map .label {
+            background: var(--void-black);
+            color: var(--stucco);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            z-index: 1;
+        }
+
+        .mock-marker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--international-orange);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .mock-list-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--brushed-aluminum);
+            gap: 16px;
+        }
+
+        .mock-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .mock-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--brushed-aluminum);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .mock-list-content {
+            flex: 1;
+        }
+
+        .mock-list-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .mock-list-meta {
+            font-size: 12px;
+            color: var(--warm-gray);
+        }
+
+        .mock-list-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .mock-btn {
+            background: var(--void-black);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .mock-btn.orange {
+            background: var(--international-orange);
+        }
+
+        .mock-btn.outline {
+            background: transparent;
+            border: 2px solid var(--void-black);
+            color: var(--void-black);
+        }
+
+        /* Beetle Card Mock */
+        .mock-beetle-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 16px;
+            padding: 32px;
+            color: var(--stucco);
+            text-align: center;
+        }
+
+        .mock-beetle-card .rank {
+            display: inline-block;
+            background: var(--international-orange);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .mock-beetle-card .avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--brushed-aluminum);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .mock-beetle-card .name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .mock-beetle-card .stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mock-beetle-card .stat-label {
+            color: var(--light-gray);
+        }
+
+        /* Feature List */
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .feature-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--stucco);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h5 {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--void-black);
+            color: var(--stucco);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child { border-radius: 8px 0 0 0; }
+        th:last-child { border-radius: 0 8px 0 0; }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--brushed-aluminum);
+            background: #fff;
+        }
+
+        /* Code blocks */
+        pre {
+            background: var(--void-black);
+            color: var(--brushed-aluminum);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .highlight { color: var(--international-orange); }
+        .comment { color: var(--light-gray); }
+        .string { color: #98c379; }
+
+        /* Callout */
+        .callout {
+            background: #fff;
+            border-left: 4px solid var(--international-orange);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout strong {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--international-orange);
+        }
+
+        /* Tabs Mock */
+        .mock-tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--brushed-aluminum);
+            padding: 4px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .mock-tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--warm-gray);
+        }
+
+        .mock-tab.active {
+            background: #fff;
+            color: var(--void-black);
+        }
+
+        /* Progress bar */
+        .mock-progress {
+            height: 8px;
+            background: var(--brushed-aluminum);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+        .mock-progress-fill {
+            height: 100%;
+            background: var(--international-orange);
+            border-radius: 4px;
+        }
+
+        /* Chart placeholder */
+        .mock-chart {
+            height: 200px;
+            background: linear-gradient(to top, rgba(255,68,0,0.1) 0%, transparent 100%);
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 8px 8px;
+            gap: 4px;
+        }
+
+        .mock-chart-bar {
+            flex: 1;
+            background: var(--international-orange);
+            border-radius: 4px 4px 0 0;
+            opacity: 0.7;
+        }
+
+        /* Sidebar mock */
+        .mock-sidebar {
+            background: var(--void-black);
+            width: 240px;
+            padding: 24px 0;
+            min-height: 500px;
+        }
+
+        .mock-sidebar-item {
+            padding: 12px 24px;
+            font-size: 13px;
+            color: var(--brushed-aluminum);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mock-sidebar-item.active {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            border-left: 3px solid var(--international-orange);
+        }
+
+        .mock-sidebar-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Page divider */
+        .divider {
+            height: 1px;
+            background: var(--brushed-aluminum);
+            margin: 60px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            main {
+                padding: 40px 24px;
+            }
+            .mock-grid {
+                grid-template-columns: 1fr;
+            }
+            .mock-card.span-4,
+            .mock-card.span-6,
+            .mock-card.span-8 {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="logo">🪲 DUNG BEETLE CYCLING — WEB PORTAL VISION</div>
+    <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#pages">Pages</a>
+        <a href="#features">Features</a>
+        <a href="#ux">UX Flows</a>
+    </div>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section class="section-header" id="overview">
+    <span class="badge">PRODUCT VISION</span>
+    <h1>Web Portal</h1>
+    <p>A comprehensive web experience for managing your beetle, exploring piles, tracking performance, and participating in the economy.</p>
+</section>
+
+<!-- PORTAL PHILOSOPHY -->
+<section class="page-section">
+    <h2><span class="page-num">0</span> Portal Philosophy</h2>
+    
+    <div class="callout">
+        <strong>Web vs. Mobile:</strong> The web portal is for deep engagement — analytics, portfolio management, map exploration, governance. Mobile is for quick actions — recording rides, checking stats, uploading.
+    </div>
+    
+    <div class="feature-list">
+        <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <div class="feature-text">
+                <h5>Data-Rich Experience</h5>
+                <p>TrainingPeaks-level analytics and visualization. Power curves, TSS trends, performance charts.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🗺️</div>
+            <div class="feature-text">
+                <h5>Full Map Exploration</h5>
+                <p>Discover piles globally. Filter by tier, activity, potential yield. Plan routes.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💰</div>
+            <div class="feature-text">
+                <h5>Portfolio Management</h5>
+                <p>Track your claims, LP positions, earnings history. Stake/unstake with full context.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚖️</div>
+            <div class="feature-text">
+                <h5>Governance Hub</h5>
+                <p>Swanny seat management, tribunal voting, photo curation. Community-first moderation.</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Design Principles</h3>
+    <ul>
+        <li><strong>Utilitarian elegance</strong> — Professional, clean, no unnecessary decoration</li>
+        <li><strong>Data density</strong> — Show more information, let power users thrive</li>
+        <li><strong>Keyboard-first</strong> — Power users can navigate without mouse</li>
+        <li><strong>Dark mode native</strong> — Default dark, light optional</li>
+        <li><strong>Progressive disclosure</strong> — Simple surface, depth on demand</li>
+    </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 1: LANDING -->
+<section class="page-section" id="pages">
+    <h2><span class="page-num">1</span> Landing Page (Marketing)</h2>
+    <p>First impression for new users. Convert visitors to signups.</p>
+    
+    <div class="wireframe">
+        <div class="wireframe-header">
+            <div class="wireframe-dot red"></div>
+            <div class="wireframe-dot yellow"></div>
+            <div class="wireframe-dot green"></div>
+            <div class="wireframe-url">dungbeetle.cycling</div>
+        </div>
+        <div class="wireframe-content" style="background: var(--void-black); color: var(--stucco); padding: 60px; text-align: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--international-orange); margin-bottom: 24px;">🪲 DUNG BEETLE CYCLING</div>
+            <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 24px; line-height: 1.1;">Own the roads<br>you ride.</h1>
+            <p style="font-size: 18px; color: var(--brushed-aluminum); max-width: 500px; margin: 0 auto 40px;">Stake in segments. Compete on leaderboards. Earn from the routes you love.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 60px;">
+                <span class="mock-btn orange">Get Started</span>
+                <span class="mock-btn outline" style="border-color: var(--brushed-aluminum); color: var(--brushed-aluminum);">Watch Demo</span>
+            </div>
+            <div style="display: flex; gap: 60px; justify-content: center; font-size: 14px;">
+                <div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--international-orange);">12,847</div>
+                    <div style="color: var(--light-gray);">Active Beetles</div>
+                </div>
+                <div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--international-orange);">45,231</div>
+                    <div style="color: var(--light-gray);">Piles Created</div>
+                </div>
+                <div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--international-orange);">2.4M</div>
+                    <div style="color: var(--light-gray);">DUNG Distributed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4>Sections Below Fold</h4>
+    <ul>
+        <li><strong>How It Works</strong> — 3-step visual (Ride → Compete → Earn)</li>
+        <li><strong>The Economy</strong> — CAL/DUNG explanation with animation</li>
+        <li><strong>Featured Piles</strong> — Top 5 most active segments globally</li>
+        <li><strong>Beetle Showcase</strong> — Gallery of SS-rank beetles</li>
+        <li><strong>Testimonials</strong> — Quotes from beta users</li>
+        <li><strong>FAQ</strong> — Common questions</li>
+        <li><strong>Footer</strong> — Links, socials, legal</li>
+    </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 2: DASHBOARD -->
+<section class="page-section">
+    <h2><span class="page-num">2</span> Dashboard (Home)</h2>
+    <p>Command center after login. Overview of everything important.</p>
+    
+    <div class="wireframe">
+        <div class="wireframe-header">
+            <div class="wireframe-dot red"></div>
+            <div class="wireframe-dot yellow"></div>
+            <div class="wireframe-dot green"></div>
+            <div class="wireframe-url">app.dungbeetle.cycling/dashboard</div>
+        </div>
+        <div class="wireframe-content">
+            <div class="mock-nav">
+                <div class="logo">🪲 DUNG BEETLE</div>
+                <div class="links">
+                    <span class="link active">Dashboard</span>
+                    <span class="link">Map</span>
+                    <span class="link">Rides</span>
+                    <span class="link">Portfolio</span>
+                    <span class="link">Governance</span>
+                </div>
+                <div class="wallet">8xK4...7nPq</div>
+            </div>
+            <div class="mock-content">
+                <div class="mock-grid">
+                    <!-- Beetle Card -->
+                    <div class="mock-card span-4">
+                        <div class="mock-beetle-card">
+                            <div class="rank">A</div>
+                            <div class="avatar">🪲</div>
+                            <div class="name">BEETLE #4821</div>
+                            <div class="stat-row">
+                                <span class="stat-label">Boulder</span>
+                                <span>8,450 DUNG</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Weekly Haul</span>
+                                <span>+147 DUNG</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Piles Owned</span>
+                                <span>23</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Row -->
+                    <div class="mock-card span-8">
+                        <h5>This Week</h5>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 16px;">
+                            <div>
+                                <div class="mock-stat">847</div>
+                                <div class="mock-stat-label">TSS Earned</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat orange">147</div>
+                                <div class="mock-stat-label">DUNG Earned</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat">12</div>
+                                <div class="mock-stat-label">Rides</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat">3</div>
+                                <div class="mock-stat-label">New PRs</div>
+                            </div>
+                        </div>
+                        <div class="mock-chart" style="margin-top: 24px; height: 120px;">
+                            <div class="mock-chart-bar" style="height: 40%;"></div>
+                            <div class="mock-chart-bar" style="height: 60%;"></div>
+                            <div class="mock-chart-bar" style="height: 45%;"></div>
+                            <div class="mock-chart-bar" style="height: 80%;"></div>
+                            <div class="mock-chart-bar" style="height: 70%;"></div>
+                            <div class="mock-chart-bar" style="height: 90%;"></div>
+                            <div class="mock-chart-bar" style="height: 55%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- CAL Balance -->
+                    <div class="mock-card span-4">
+                        <h5>Energy</h5>
+                        <div class="mock-stat" style="font-size: 36px;">1,847</div>
+                        <div class="mock-stat-label">CAL Available</div>
+                        <div class="mock-progress" style="margin-top: 16px;">
+                            <div class="mock-progress-fill" style="width: 74%;"></div>
+                        </div>
+                        <div style="font-size: 12px; color: var(--warm-gray);">653 CAL burned today</div>
+                    </div>
+                    
+                    <!-- Epoch Countdown -->
+                    <div class="mock-card span-4">
+                        <h5>Epoch Ends</h5>
+                        <div class="mock-stat" style="font-size: 36px;">2d 14h</div>
+                        <div class="mock-stat-label">Until Distribution</div>
+                        <div style="margin-top: 16px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--brushed-aluminum);">
+                                <span style="color: var(--warm-gray);">Your projected haul</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">~156 DUNG</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="mock-card span-4">
+                        <h5>Quick Actions</h5>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px;">
+                            <span class="mock-btn orange" style="text-align: center;">Upload Ride</span>
+                            <span class="mock-btn" style="text-align: center;">Explore Piles</span>
+                            <span class="mock-btn outline" style="text-align: center;">Claim Rewards</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="mock-card span-6">
+                        <h5>Recent Activity</h5>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar">🏆</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">New PR on "Alpine Crusher"</div>
+                                <div class="mock-list-meta">2 hours ago</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--success);">3rd place</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar">💰</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Epoch 47 Distribution</div>
+                                <div class="mock-list-meta">Yesterday</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">+147 DUNG</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar">📍</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Staked in "Coastal Sprint"</div>
+                                <div class="mock-list-meta">2 days ago</div>
+                            </div>
+                            <div class="mock-list-value">100 DUNG</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Top Positions -->
+                    <div class="mock-card span-6">
+                        <h5>Your Top Leaderboard Positions</h5>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: gold; color: var(--void-black); font-size: 14px; font-weight: 700;">1</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Hillside Loop</div>
+                                <div class="mock-list-meta">12:34 • 847 TSS</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">~45 DUNG</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: silver; color: var(--void-black); font-size: 14px; font-weight: 700;">2</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Downtown Sprint</div>
+                                <div class="mock-list-meta">0:47 • 124 TSS</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">~30 DUNG</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: #cd7f32; color: #fff; font-size: 14px; font-weight: 700;">3</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Alpine Crusher</div>
+                                <div class="mock-list-meta">45:12 • 1,247 TSS</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">~22 DUNG</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4>Dashboard Components</h4>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Purpose</th>
+            <th>Updates</th>
+        </tr>
+        <tr>
+            <td>Beetle Card</td>
+            <td>Identity at a glance</td>
+            <td>Real-time</td>
+        </tr>
+        <tr>
+            <td>Weekly Stats</td>
+            <td>Performance overview</td>
+            <td>After each ride</td>
+        </tr>
+        <tr>
+            <td>CAL Balance</td>
+            <td>Energy management</td>
+            <td>Real-time</td>
+        </tr>
+        <tr>
+            <td>Epoch Countdown</td>
+            <td>Distribution anticipation</td>
+            <td>Live countdown</td>
+        </tr>
+        <tr>
+            <td>Recent Activity</td>
+            <td>Transaction feed</td>
+            <td>Real-time</td>
+        </tr>
+        <tr>
+            <td>Leaderboard Positions</td>
+            <td>Competitive standing</td>
+            <td>After rides</td>
+        </tr>
+    </table>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 3: MAP EXPLORER -->
+<section class="page-section">
+    <h2><span class="page-num">3</span> Map Explorer</h2>
+    <p>Full-screen map for discovering and analyzing piles globally.</p>
+    
+    <div class="wireframe">
+        <div class="wireframe-header">
+            <div class="wireframe-dot red"></div>
+            <div class="wireframe-dot yellow"></div>
+            <div class="wireframe-dot green"></div>
+            <div class="wireframe-url">app.dungbeetle.cycling/map</div>
+        </div>
+        <div class="wireframe-content" style="display: flex;">
+            <!-- Sidebar -->
+            <div style="width: 360px; background: #fff; border-right: 1px solid var(--brushed-aluminum); padding: 24px;">
+                <div style="margin-bottom: 20px;">
+                    <input type="text" placeholder="Search piles..." style="width: 100%; padding: 12px 16px; border: 2px solid var(--brushed-aluminum); border-radius: 8px; font-size: 14px;">
+                </div>
+                
+                <div class="mock-tabs">
+                    <span class="mock-tab active">Nearby</span>
+                    <span class="mock-tab">Trending</span>
+                    <span class="mock-tab">Staked</span>
+                </div>
+                
+                <div class="mock-list-item">
+                    <div class="mock-avatar" style="background: var(--international-orange); color: #fff; font-size: 12px;">💎</div>
+                    <div class="mock-list-content">
+                        <div class="mock-list-title">Alpine Crusher</div>
+                        <div class="mock-list-meta">12.4 km • 847m gain</div>
+                    </div>
+                    <div class="mock-list-value" style="font-size: 12px; color: var(--success);">~45 DUNG/wk</div>
+                </div>
+                
+                <div class="mock-list-item">
+                    <div class="mock-avatar" style="background: gold; color: var(--void-black); font-size: 12px;">🥇</div>
+                    <div class="mock-list-content">
+                        <div class="mock-list-title">Hillside Loop</div>
+                        <div class="mock-list-meta">5.2 km • 124m gain</div>
+                    </div>
+                    <div class="mock-list-value" style="font-size: 12px; color: var(--success);">~32 DUNG/wk</div>
+                </div>
+                
+                <div class="mock-list-item">
+                    <div class="mock-avatar" style="background: silver; color: var(--void-black); font-size: 12px;">🥈</div>
+                    <div class="mock-list-content">
+                        <div class="mock-list-title">Coastal Sprint</div>
+                        <div class="mock-list-meta">0.8 km • 12m gain</div>
+                    </div>
+                    <div class="mock-list-value" style="font-size: 12px; color: var(--success);">~18 DUNG/wk</div>
+                </div>
+                
+                <div class="mock-list-item">
+                    <div class="mock-avatar" style="background: #cd7f32; color: #fff; font-size: 12px;">🥉</div>
+                    <div class="mock-list-content">
+                        <div class="mock-list-title">River Path</div>
+                        <div class="mock-list-meta">3.1 km • 45m gain</div>
+                    </div>
+                    <div class="mock-list-value" style="font-size: 12px; color: var(--success);">~12 DUNG/wk</div>
+                </div>
+                
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--brushed-aluminum);">
+                    <h5 style="font-size: 11px; color: var(--light-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Filters</h5>
+                    <div style="font-size: 13px; display: flex; flex-direction: column; gap: 8px;">
+                        <label><input type="checkbox" checked> Diamond & Platinum</label>
+                        <label><input type="checkbox" checked> Gold</label>
+                        <label><input type="checkbox"> Silver & Bronze</label>
+                        <label><input type="checkbox"> Show staked only</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Area -->
+            <div style="flex: 1; position: relative;">
+                <div class="mock-map" style="height: 100%; min-height: 500px; border-radius: 0;">
+                    <div class="mock-marker" style="top: 30%; left: 40%;"></div>
+                    <div class="mock-marker" style="top: 45%; left: 55%;"></div>
+                    <div class="mock-marker" style="top: 60%; left: 35%;"></div>
+                    <div class="mock-marker" style="top: 25%; left: 65%; background: gold;"></div>
+                    <div class="mock-marker" style="top: 70%; left: 70%;"></div>
+                    
+                    <!-- Popup -->
+                    <div style="position: absolute; top: 42%; left: 58%; background: #fff; border-radius: 12px; padding: 16px; width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);">
+                        <div style="font-weight: 600; margin-bottom: 8px;">Alpine Crusher</div>
+                        <div style="font-size: 12px; color: var(--warm-gray); margin-bottom: 12px;">12.4 km • 847m elevation</div>
+                        <div style="display: flex; gap: 16px; font-size: 12px; margin-bottom: 12px;">
+                            <div>
+                                <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">2,847</div>
+                                <div style="color: var(--light-gray);">Crossings</div>
+                            </div>
+                            <div>
+                                <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">45</div>
+                                <div style="color: var(--light-gray);">DUNG/wk</div>
+                            </div>
+                            <div>
+                                <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">12.4%</div>
+                                <div style="color: var(--light-gray);">APY</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <span class="mock-btn orange" style="flex: 1; text-align: center; padding: 8px; font-size: 11px;">View Pile</span>
+                            <span class="mock-btn" style="flex: 1; text-align: center; padding: 8px; font-size: 11px;">Stake</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Controls -->
+                <div style="position: absolute; top: 16px; right: 16px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 4px;">
+                    <div style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer;">+</div>
+                    <div style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-top: 1px solid var(--brushed-aluminum);">−</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4>Map Features</h4>
+    <div class="feature-list">
+        <div class="feature-item">
+            <div class="feature-icon">🔍</div>
+            <div class="feature-text">
+                <h5>Search & Filter</h5>
+                <p>Find piles by name, location, tier, or yield potential. Filter by your stakes.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📍</div>
+            <div class="feature-text">
+                <h5>Pile Markers</h5>
+                <p>Color-coded by tier. Click for quick stats popup. Double-click to view detail.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🛣️</div>
+            <div class="feature-text">
+                <h5>Route Overlay</h5>
+                <p>See pile paths on map. Highlight your completed segments vs. new opportunities.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <div class="feature-text">
+                <h5>Heatmap Mode</h5>
+                <p>Toggle heatmap showing activity density, yield hotspots, or competition level.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 4: PILE DETAIL -->
+<section class="page-section">
+    <h2><span class="page-num">4</span> Pile Detail Page</h2>
+    <p>Everything about a single pile. Leaderboard, stats, staking, history.</p>
+    
+    <div class="wireframe">
+        <div class="wireframe-header">
+            <div class="wireframe-dot red"></div>
+            <div class="wireframe-dot yellow"></div>
+            <div class="wireframe-dot green"></div>
+            <div class="wireframe-url">app.dungbeetle.cycling/pile/alpine-crusher</div>
+        </div>
+        <div class="wireframe-content">
+            <div class="mock-nav">
+                <div class="logo">🪲 DUNG BEETLE</div>
+                <div class="links">
+                    <span class="link">Dashboard</span>
+                    <span class="link active">Map</span>
+                    <span class="link">Rides</span>
+                    <span class="link">Portfolio</span>
+                    <span class="link">Governance</span>
+                </div>
+                <div class="wallet">8xK4...7nPq</div>
+            </div>
+            <div class="mock-content">
+                <!-- Header -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <span style="background: linear-gradient(135deg, #60a5fa, #3b82f6); color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600;">💎 DIAMOND</span>
+                            <span style="color: var(--light-gray); font-size: 13px;">Created by 8xK4...2nPq</span>
+                        </div>
+                        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px;">Alpine Crusher</h1>
+                        <p style="color: var(--warm-gray);">12.4 km • 847m elevation gain • Boulder, CO</p>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <span class="mock-btn orange">Stake DUNG</span>
+                        <span class="mock-btn">Share</span>
+                    </div>
+                </div>
+                
+                <div class="mock-grid">
+                    <!-- Map Preview -->
+                    <div class="mock-card span-8">
+                        <div class="mock-map" style="height: 250px;">
+                            <div style="position: absolute; top: 20%; left: 30%; width: 40%; height: 60%; border: 3px solid var(--international-orange); border-radius: 8px; opacity: 0.5;"></div>
+                            <span class="label">Route Preview</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="mock-card span-4">
+                        <h5>Pile Stats</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+                            <div>
+                                <div class="mock-stat" style="font-size: 24px;">14,847</div>
+                                <div class="mock-stat-label">Total Crossings</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat" style="font-size: 24px;">847</div>
+                                <div class="mock-stat-label">This Week</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat orange" style="font-size: 24px;">456</div>
+                                <div class="mock-stat-label">DUNG Pot</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat" style="font-size: 24px;">12.4%</div>
+                                <div class="mock-stat-label">Est. APY</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--brushed-aluminum);">
+                            <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px;">
+                                <span style="color: var(--warm-gray);">Total Staked</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">24,500 DUNG</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                                <span style="color: var(--warm-gray);">Your Stake</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--international-orange);">500 DUNG (2%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaderboard -->
+                    <div class="mock-card span-6">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <h5 style="margin: 0;">Leaderboard</h5>
+                            <div class="mock-tabs" style="margin: 0; background: var(--stucco);">
+                                <span class="mock-tab active" style="padding: 6px 12px;">This Week</span>
+                                <span class="mock-tab" style="padding: 6px 12px;">All Time</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: gold; color: var(--void-black); font-weight: 700;">1</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">SpeedDemon42</div>
+                                <div class="mock-list-meta">32:14 • 1,247 TSS</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">30%</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: silver; color: var(--void-black); font-weight: 700;">2</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">MountainGoat</div>
+                                <div class="mock-list-meta">33:47 • 1,189 TSS</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">20%</div>
+                        </div>
+                        <div class="mock-list-item" style="background: rgba(255,68,0,0.05);">
+                            <div class="mock-avatar" style="background: #cd7f32; color: #fff; font-weight: 700;">3</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">You (Beetle #4821)</div>
+                                <div class="mock-list-meta">34:12 • 1,156 TSS</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--international-orange);">15%</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: var(--brushed-aluminum); font-weight: 700;">4</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">ClimbKing</div>
+                                <div class="mock-list-meta">35:01 • 1,098 TSS</div>
+                            </div>
+                            <div class="mock-list-value">10%</div>
+                        </div>
+                        <div style="text-align: center; padding-top: 12px;">
+                            <a href="#" style="color: var(--international-orange); font-size: 13px; text-decoration: none;">View full leaderboard →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Swannys -->
+                    <div class="mock-card span-6">
+                        <h5>Swanny Seats</h5>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px;">
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: var(--void-black); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px;">🦢</div>
+                                <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px;">ClimbKing</div>
+                                <div style="font-size: 11px; color: var(--warm-gray);">18 days left</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: var(--void-black); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px;">🦢</div>
+                                <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px;">AlpineAce</div>
+                                <div style="font-size: 11px; color: var(--warm-gray);">24 days left</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center; border: 2px dashed var(--brushed-aluminum);">
+                                <div style="width: 48px; height: 48px; background: var(--brushed-aluminum); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: var(--warm-gray); font-size: 20px;">?</div>
+                                <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px; color: var(--warm-gray);">Open Seat</div>
+                                <div style="font-size: 11px; color: var(--international-orange);">Claim for 1,000 DUNG</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Chart -->
+                    <div class="mock-card span-12">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <h5 style="margin: 0;">Activity History</h5>
+                            <div class="mock-tabs" style="margin: 0; background: var(--stucco);">
+                                <span class="mock-tab active" style="padding: 6px 12px;">Crossings</span>
+                                <span class="mock-tab" style="padding: 6px 12px;">Pot Size</span>
+                                <span class="mock-tab" style="padding: 6px 12px;">Stakers</span>
+                            </div>
+                        </div>
+                        <div class="mock-chart" style="height: 150px;">
+                            <div class="mock-chart-bar" style="height: 45%;"></div>
+                            <div class="mock-chart-bar" style="height: 52%;"></div>
+                            <div class="mock-chart-bar" style="height: 48%;"></div>
+                            <div class="mock-chart-bar" style="height: 61%;"></div>
+                            <div class="mock-chart-bar" style="height: 58%;"></div>
+                            <div class="mock-chart-bar" style="height: 72%;"></div>
+                            <div class="mock-chart-bar" style="height: 68%;"></div>
+                            <div class="mock-chart-bar" style="height: 75%;"></div>
+                            <div class="mock-chart-bar" style="height: 82%;"></div>
+                            <div class="mock-chart-bar" style="height: 78%;"></div>
+                            <div class="mock-chart-bar" style="height: 85%;"></div>
+                            <div class="mock-chart-bar" style="height: 91%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--light-gray); margin-top: 8px;">
+                            <span>12 weeks ago</span>
+                            <span>This week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 5: PROFILE -->
+<section class="page-section">
+    <h2><span class="page-num">5</span> Profile / Beetle Card</h2>
+    <p>Your identity. Full beetle card, stats, achievements, accessories.</p>
+    
+    <div class="wireframe">
+        <div class="wireframe-header">
+            <div class="wireframe-dot red"></div>
+            <div class="wireframe-dot yellow"></div>
+            <div class="wireframe-dot green"></div>
+            <div class="wireframe-url">app.dungbeetle.cycling/beetle/4821</div>
+        </div>
+        <div class="wireframe-content">
+            <div class="mock-nav">
+                <div class="logo">🪲 DUNG BEETLE</div>
+                <div class="links">
+                    <span class="link">Dashboard</span>
+                    <span class="link">Map</span>
+                    <span class="link">Rides</span>
+                    <span class="link">Portfolio</span>
+                    <span class="link">Governance</span>
+                </div>
+                <div class="wallet">8xK4...7nPq</div>
+            </div>
+            <div class="mock-content">
+                <div class="mock-grid">
+                    <!-- Large Beetle Card -->
+                    <div class="mock-card span-4" style="padding: 0; overflow: hidden;">
+                        <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 40px; color: var(--stucco); text-align: center;">
+                            <div style="display: inline-block; background: var(--international-orange); padding: 6px 16px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-weight: 700; margin-bottom: 24px;">A-RANK</div>
+                            <div style="width: 140px; height: 140px; background: var(--brushed-aluminum); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 60px;">🪲</div>
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; margin-bottom: 8px;">BEETLE #4821</div>
+                            <div style="color: var(--light-gray); font-size: 13px; margin-bottom: 24px;">"Alpine Assassin"</div>
+                            
+                            <div style="text-align: left; font-size: 14px;">
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <span style="color: var(--light-gray);">Boulder</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">8,450 DUNG</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <span style="color: var(--light-gray);">Piles Owned</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">23</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <span style="color: var(--light-gray);">FTP</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">285w (Cat 3)</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <span style="color: var(--light-gray);">Total TSS</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">124,500</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                                    <span style="color: var(--light-gray);">Member Since</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">Mar 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 20px; background: #fff;">
+                            <div style="display: flex; gap: 8px;">
+                                <span class="mock-btn orange" style="flex: 1; text-align: center; font-size: 12px;">Share Card</span>
+                                <span class="mock-btn outline" style="flex: 1; text-align: center; font-size: 12px;">Download</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accessories -->
+                    <div class="mock-card span-8">
+                        <h5>Accessories</h5>
+                        <p style="font-size: 13px; color: var(--warm-gray); margin-bottom: 20px;">Earned through achievements. Contribute to your rank coherence.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🪨</div>
+                                <div style="font-weight: 600; font-size: 12px;">Boulder</div>
+                                <div style="font-size: 10px; color: var(--international-orange);">Legendary</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🦵</div>
+                                <div style="font-weight: 600; font-size: 12px;">Legs</div>
+                                <div style="font-size: 10px; color: var(--success);">Pistons</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ef4444, #dc2626); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🔥</div>
+                                <div style="font-weight: 600; font-size: 12px;">Trail</div>
+                                <div style="font-size: 10px; color: var(--danger);">Flames</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👑</div>
+                                <div style="font-weight: 600; font-size: 12px;">Headgear</div>
+                                <div style="font-size: 10px; color: #8b5cf6;">Crown</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🏔️</div>
+                                <div style="font-weight: 600; font-size: 12px;">Background</div>
+                                <div style="font-size: 10px; color: #3b82f6;">Alpine</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center;">
+                                <div style="width: 48px; height: 48px; background: var(--brushed-aluminum); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🐚</div>
+                                <div style="font-weight: 600; font-size: 12px;">Shell</div>
+                                <div style="font-size: 10px; color: var(--warm-gray);">Battle-Scarred</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center; border: 2px dashed var(--brushed-aluminum);">
+                                <div style="width: 48px; height: 48px; background: var(--brushed-aluminum); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; opacity: 0.5;">📡</div>
+                                <div style="font-weight: 600; font-size: 12px; color: var(--light-gray);">Antennae</div>
+                                <div style="font-size: 10px; color: var(--light-gray);">Locked</div>
+                            </div>
+                            <div style="background: var(--stucco); border-radius: 8px; padding: 16px; text-align: center; border: 2px dashed var(--brushed-aluminum);">
+                                <div style="width: 48px; height: 48px; background: var(--brushed-aluminum); border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; opacity: 0.5;">✨</div>
+                                <div style="font-weight: 600; font-size: 12px; color: var(--light-gray);">Aura</div>
+                                <div style="font-size: 10px; color: var(--light-gray);">Locked</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 24px; padding: 16px; background: var(--stucco); border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; font-size: 14px;">Coherence Score</div>
+                                    <div style="font-size: 12px; color: var(--warm-gray);">How well your accessories tell a story</div>
+                                </div>
+                                <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--international-orange);">74</div>
+                            </div>
+                            <div class="mock-progress" style="margin-top: 12px;">
+                                <div class="mock-progress-fill" style="width: 74%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--light-gray); margin-top: 8px;">
+                                <span>C (0)</span>
+                                <span>B (40)</span>
+                                <span>A (60)</span>
+                                <span>S (80)</span>
+                                <span>SS (95)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Achievements -->
+                    <div class="mock-card span-12">
+                        <h5>Recent Achievements</h5>
+                        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 16px;">
+                            <div style="text-align: center;">
+                                <div style="width: 64px; height: 64px; background: gold; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🏆</div>
+                                <div style="font-size: 12px; font-weight: 600;">First KOM</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 64px; height: 64px; background: var(--international-orange); border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🔥</div>
+                                <div style="font-size: 12px; font-weight: 600;">100 Rides</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 64px; height: 64px; background: #3b82f6; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;">⛰️</div>
+                                <div style="font-size: 12px; font-weight: 600;">Climber</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 64px; height: 64px; background: #10b981; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;">💰</div>
+                                <div style="font-size: 12px; font-weight: 600;">10K Boulder</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 64px; height: 64px; background: #8b5cf6; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🦢</div>
+                                <div style="font-size: 12px; font-weight: 600;">Swanny</div>
+                            </div>
+                            <div style="text-align: center; opacity: 0.4;">
+                                <div style="width: 64px; height: 64px; background: var(--brushed-aluminum); border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;">?</div>
+                                <div style="font-size: 12px; font-weight: 600;">???</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 6: PORTFOLIO -->
+<section class="page-section">
+    <h2><span class="page-num">6</span> Portfolio</h2>
+    <p>Economic command center. Track all your stakes, earnings, and LP positions.</p>
+    
+    <div class="wireframe">
+        <div class="wireframe-header">
+            <div class="wireframe-dot red"></div>
+            <div class="wireframe-dot yellow"></div>
+            <div class="wireframe-dot green"></div>
+            <div class="wireframe-url">app.dungbeetle.cycling/portfolio</div>
+        </div>
+        <div class="wireframe-content">
+            <div class="mock-nav">
+                <div class="logo">🪲 DUNG BEETLE</div>
+                <div class="links">
+                    <span class="link">Dashboard</span>
+                    <span class="link">Map</span>
+                    <span class="link">Rides</span>
+                    <span class="link active">Portfolio</span>
+                    <span class="link">Governance</span>
+                </div>
+                <div class="wallet">8xK4...7nPq</div>
+            </div>
+            <div class="mock-content">
+                <!-- Overview Stats -->
+                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-bottom: 32px;">
+                    <div class="mock-card" style="text-align: center;">
+                        <h5>Total Boulder</h5>
+                        <div class="mock-stat orange">8,450</div>
+                        <div class="mock-stat-label">DUNG</div>
+                    </div>
+                    <div class="mock-card" style="text-align: center;">
+                        <h5>Staked</h5>
+                        <div class="mock-stat">3,500</div>
+                        <div class="mock-stat-label">DUNG (41%)</div>
+                    </div>
+                    <div class="mock-card" style="text-align: center;">
+                        <h5>Available</h5>
+                        <div class="mock-stat">4,950</div>
+                        <div class="mock-stat-label">DUNG</div>
+                    </div>
+                    <div class="mock-card" style="text-align: center;">
+                        <h5>Projected Weekly</h5>
+                        <div class="mock-stat" style="color: var(--success);">+156</div>
+                        <div class="mock-stat-label">DUNG</div>
+                    </div>
+                    <div class="mock-card" style="text-align: center;">
+                        <h5>Lifetime Earned</h5>
+                        <div class="mock-stat">24,847</div>
+                        <div class="mock-stat-label">DUNG</div>
+                    </div>
+                </div>
+                
+                <div class="mock-grid">
+                    <!-- Stakes Table -->
+                    <div class="mock-card span-8">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <h5 style="margin: 0;">Your Stakes</h5>
+                            <span class="mock-btn orange" style="font-size: 11px; padding: 8px 16px;">+ Stake More</span>
+                        </div>
+                        
+                        <table style="margin: 0;">
+                            <tr>
+                                <th>Pile</th>
+                                <th>Staked</th>
+                                <th>LP Tokens</th>
+                                <th>Share</th>
+                                <th>Est. Weekly</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: var(--international-orange);">💎</span>
+                                        Alpine Crusher
+                                    </div>
+                                </td>
+                                <td>1,500 DUNG</td>
+                                <td>1,423 LP</td>
+                                <td>6.1%</td>
+                                <td style="color: var(--success);">+28 DUNG</td>
+                                <td><a href="#" style="color: var(--international-orange); text-decoration: none; font-size: 12px;">Manage</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: gold;">🥇</span>
+                                        Hillside Loop
+                                    </div>
+                                </td>
+                                <td>1,000 DUNG</td>
+                                <td>987 LP</td>
+                                <td>4.2%</td>
+                                <td style="color: var(--success);">+18 DUNG</td>
+                                <td><a href="#" style="color: var(--international-orange); text-decoration: none; font-size: 12px;">Manage</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: silver;">🥈</span>
+                                        Coastal Sprint
+                                    </div>
+                                </td>
+                                <td>500 DUNG</td>
+                                <td>512 LP</td>
+                                <td>2.8%</td>
+                                <td style="color: var(--success);">+9 DUNG</td>
+                                <td><a href="#" style="color: var(--international-orange); text-decoration: none; font-size: 12px;">Manage</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #cd7f32;">🥉</span>
+                                        River Path
+                                    </div>
+                                </td>
+                                <td>500 DUNG</td>
+                                <td>498 LP</td>
+                                <td>5.1%</td>
+                                <td style="color: var(--success);">+12 DUNG</td>
+                                <td><a href="#" style="color: var(--international-orange); text-decoration: none; font-size: 12px;">Manage</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Earnings History -->
+                    <div class="mock-card span-4">
+                        <h5>Earnings History</h5>
+                        <div class="mock-chart" style="height: 180px; margin: 16px 0;">
+                            <div class="mock-chart-bar" style="height: 55%;"></div>
+                            <div class="mock-chart-bar" style="height: 62%;"></div>
+                            <div class="mock-chart-bar" style="height: 58%;"></div>
+                            <div class="mock-chart-bar" style="height: 71%;"></div>
+                            <div class="mock-chart-bar" style="height: 68%;"></div>
+                            <div class="mock-chart-bar" style="height: 75%;"></div>
+                            <div class="mock-chart-bar" style="height: 82%;"></div>
+                            <div class="mock-chart-bar" style="height: 78%;"></div>
+                        </div>
+                        <div style="text-align: center; font-size: 13px; color: var(--warm-gray);">Last 8 epochs</div>
+                    </div>
+                    
+                    <!-- Transaction History -->
+                    <div class="mock-card span-12">
+                        <h5>Transaction History</h5>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: var(--success); font-size: 14px;">↓</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Epoch 47 Distribution</div>
+                                <div class="mock-list-meta">Nov 24, 2025 00:00 UTC</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--success);">+147 DUNG</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: var(--void-black); font-size: 14px; color: #fff;">→</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">Staked in "Coastal Sprint"</div>
+                                <div class="mock-list-meta">Nov 22, 2025 14:32 UTC</div>
+                            </div>
+                            <div class="mock-list-value">-500 DUNG</div>
+                        </div>
+                        <div class="mock-list-item">
+                            <div class="mock-avatar" style="background: var(--success); font-size: 14px;">↓</div>
+                            <div class="mock-list-content">
+                                <div class="mock-list-title">TSS Rewards (Ride #847)</div>
+                                <div class="mock-list-meta">Nov 21, 2025 08:45 UTC</div>
+                            </div>
+                            <div class="mock-list-value" style="color: var(--success);">+156 DUNG</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 7: RIDES -->
+<section class="page-section">
+    <h2><span class="page-num">7</span> Rides / Training</h2>
+    <p>TrainingPeaks-level analytics. TSS tracking, power curves, ride history.</p>
+    
+    <h4>Key Features</h4>
+    <div class="feature-list">
+        <div class="feature-item">
+            <div class="feature-icon">📈</div>
+            <div class="feature-text">
+                <h5>TSS Calendar</h5>
+                <p>Daily/weekly/monthly TSS view. Training load tracking. Fatigue modeling.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text">
+                <h5>Power Curve</h5>
+                <p>1s to 60m power bests. Compare to category benchmarks. Track progression.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🗓️</div>
+            <div class="feature-text">
+                <h5>Ride History</h5>
+                <p>Full list of uploads. Filter by date, pile, performance. Export data.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <div class="feature-text">
+                <h5>Ride Detail</h5>
+                <p>Full ride analysis. Segment splits. HR/Power zones. Map replay.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAGE 8: GOVERNANCE -->
+<section class="page-section">
+    <h2><span class="page-num">8</span> Governance</h2>
+    <p>Swanny seat management, tribunal voting, community moderation.</p>
+    
+    <h4>Key Features</h4>
+    <div class="feature-list">
+        <div class="feature-item">
+            <div class="feature-icon">🦢</div>
+            <div class="feature-text">
+                <h5>Your Swanny Seats</h5>
+                <p>Manage seats you hold. View time remaining. Complete tasks to earn.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚖️</div>
+            <div class="feature-text">
+                <h5>Tribunal</h5>
+                <p>Review flagged rides. Vote Clean/Doped. See evidence, make judgment.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📸</div>
+            <div class="feature-text">
+                <h5>Photo Curation</h5>
+                <p>Vote on pile cover photos. Submit new photos. 2/3 majority to change.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🔍</div>
+            <div class="feature-text">
+                <h5>Available Seats</h5>
+                <p>Browse open Swanny seats. Filter by pile tier, yield, competition.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ADDITIONAL PAGES -->
+<section class="page-section" id="features">
+    <h2><span class="page-num">+</span> Additional Pages</h2>
+    
+    <table>
+        <tr>
+            <th>Page</th>
+            <th>Purpose</th>
+            <th>Priority</th>
+        </tr>
+        <tr>
+            <td>Settings</td>
+            <td>Account, wallet, notifications, privacy, data export</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>Leaderboards (Global)</td>
+            <td>Top beetles by DUNG, TSS, KOMs. Weekly/All-time</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Create Pile</td>
+            <td>Draw segment on map, set metadata, pay creation fee</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>Upload Ride</td>
+            <td>Drag-drop GPX/FIT, preview, confirm segments</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>Help / Docs</td>
+            <td>FAQ, guides, terminology, support</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Public Profiles</td>
+            <td>View any beetle's public stats, card, achievements</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Notifications</td>
+            <td>Inbox for epoch payouts, position changes, governance</td>
+            <td>Medium</td>
+        </tr>
+    </table>
+</section>
+
+<div class="divider"></div>
+
+<!-- UX FLOWS -->
+<section class="page-section" id="ux">
+    <h2>Key UX Flows</h2>
+    
+    <h3>1. New User Onboarding</h3>
+    <pre>
+Landing Page
+    ↓ Click "Get Started"
+Connect Wallet (Phantom/Solflare)
+    ↓ Sign message
+Create Beetle (auto-assigned #)
+    ↓ Shown empty card
+Dashboard (empty state)
+    ↓ CTA: "Upload your first ride"
+Upload Ride Flow
+    ↓ GPX/FIT processed
+First DUNG earned! 🎉
+    ↓ Guided tour of dashboard
+Suggest nearby piles to stake in
+    </pre>
+    
+    <h3>2. Stake in Pile</h3>
+    <pre>
+Map Explorer or Pile Detail
+    ↓ Click "Stake DUNG"
+Staking Modal:
+  - Amount input
+  - Show projected weekly yield
+  - Show current APY
+  - Show your new share %
+    ↓ Confirm
+Sign Transaction (wallet)
+    ↓ Success
+Updated stake shown in Portfolio
+    </pre>
+    
+    <h3>3. Claim Swanny Seat</h3>
+    <pre>
+Pile Detail → Open Swanny Seat
+    ↓ Click "Claim Seat"
+Swanny Modal:
+  - Confirm 1,000 DUNG lock
+  - Show 30-day commitment
+  - Show expected earnings
+  - Show required tasks
+    ↓ Confirm
+Sign Transaction
+    ↓ Success
+Swanny badge on profile
+Governance tab unlocked
+    </pre>
+    
+    <h3>4. Weekly Epoch Distribution</h3>
+    <pre>
+Sunday 00:00 UTC
+    ↓ Backend triggers close_epoch()
+Notification: "Epoch 47 complete!"
+    ↓ User visits Dashboard
+"Claim Rewards" button active
+    ↓ Click claim
+Sign harvest_rewards() tx
+    ↓ Success
+Boulder updated
+Transaction in history
+    </pre>
+</section>
+
+<div class="divider"></div>
+
+<!-- TECH CONSIDERATIONS -->
+<section class="page-section">
+    <h2>Technical Considerations</h2>
+    
+    <h4>Frontend Stack</h4>
+    <ul>
+        <li><strong>Framework:</strong> Next.js 14 (App Router)</li>
+        <li><strong>Styling:</strong> Tailwind CSS + custom design tokens</li>
+        <li><strong>State:</strong> Zustand or Jotai (simple, performant)</li>
+        <li><strong>Web3:</strong> @solana/web3.js + wallet-adapter</li>
+        <li><strong>Maps:</strong> Mapbox GL JS</li>
+        <li><strong>Charts:</strong> Recharts or Tremor</li>
+        <li><strong>Data fetching:</strong> TanStack Query</li>
+    </ul>
+    
+    <h4>Real-Time Features</h4>
+    <ul>
+        <li>WebSocket for live leaderboard updates</li>
+        <li>SSE for epoch countdown sync</li>
+        <li>Polling fallback for wallet balance</li>
+    </ul>
+    
+    <h4>Performance Targets</h4>
+    <ul>
+        <li>LCP < 2.5s (Largest Contentful Paint)</li>
+        <li>FID < 100ms (First Input Delay)</li>
+        <li>CLS < 0.1 (Cumulative Layout Shift)</li>
+        <li>Map load < 1s with cached tiles</li>
+    </ul>
+    
+    <h4>Accessibility</h4>
+    <ul>
+        <li>WCAG 2.1 AA compliance</li>
+        <li>Full keyboard navigation</li>
+        <li>Screen reader support</li>
+        <li>Color contrast ratios met</li>
+    </ul>
+</section>
+
+<footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--brushed-aluminum); text-align: center;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--international-orange); margin-bottom: 8px;">🪲 DUNG BEETLE CYCLING</div>
+    <div style="color: var(--light-gray); font-size: 13px;">Web Portal Vision Document</div>
+    <div style="color: var(--light-gray); font-size: 12px; margin-top: 8px;">Last updated: November 2025</div>
+</footer>
+
+</main>
+
+</body>
+</html>

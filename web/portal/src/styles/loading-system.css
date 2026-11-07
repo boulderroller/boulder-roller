@@ -1,0 +1,58 @@
+:root {
+  --t-state: 120ms;
+  --t-arrive: 200ms;
+  --t-settle: 320ms;
+  --ease: cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+.ledger-slot { display: inline-block; flex: none; vertical-align: middle; max-width: 100%; pointer-events: none; }
+.ledger-slot--text { height: 8px; width: 12ch; background: var(--br-card); border-radius: 0; }
+.ledger-slot--number { height: 2px; width: 6ch; background: var(--br-ink-faint); border-radius: 0; }
+.ledger-slot--avatar { height: 40px; width: 40px; background: var(--br-card); border-radius: 50%; }
+.ledger-slot--glyph { height: 2px; width: 28px; background: var(--br-ink-faint); border-radius: 0; }
+.ledger-slot-copy { display: grid; gap: 12px; min-width: 0; }
+.ledger-slot-row { min-height: 56px; display: flex; align-items: center; gap: 16px; border-top: 1px solid var(--br-ink-faint); }
+.ledger-slot-row > :last-child { margin-left: auto; }
+.shell-live-rule { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--br-terrain); opacity: 0; transition: opacity var(--t-state) var(--ease); pointer-events: none; }
+.shell-live-rule[data-live="true"] { opacity: 1; }
+.shell-live-rule[data-offline="true"] { background: var(--br-ink-faint); opacity: 1; }
+.ledger-state-row { min-height: 56px; display: flex; align-items: center; gap: 16px; padding: 10px 0; border-top: 1px solid var(--br-ink-faint); color: var(--br-ink); background: transparent; }
+.ledger-state-mark { width: 28px; height: 2px; background: var(--br-ink-faint); flex: none; }
+.ledger-state-copy { min-width: 0; flex: 1; }
+.ledger-state-copy strong { font-weight: 600; }
+.ledger-state-copy p { margin: 4px 0 0; color: var(--br-ink-soft); }
+.ledger-state-action { margin-left: auto; }
+.ledger-state-action :is(button,a) { background: transparent; color: var(--br-ink); border: 0; padding: 0; box-shadow: none; }
+.ledger-state-action svg { display: none; }
+.ledger-state-action :is(button,a)::after { content: ' ›' / '';  }
+.retained-room { position: relative; }
+.retained-room[data-offline="true"] > .retained-room-content { opacity: .55; }
+.offline-pinned-row { position: sticky; top: var(--portal-shell-header-height, 62px); z-index: 20; background: var(--br-paper); padding-inline: 24px; }
+.failure-paper { background: var(--br-paper); min-height: 100%; }
+.failure-sheet { max-width: 720px; margin: 32px 24px; }
+.failure-door-row { display: flex; justify-content: space-between; color: var(--br-ink); padding: 16px 0; border-top: 1px solid var(--br-ink-faint); }
+.loading-rider-identity { padding: 24px; background: var(--br-paper-soft); max-width: 360px; }
+.climb-empty-band { height: 185px; border-bottom: 1px solid var(--br-ink-faint); }
+:is(.portal-sheet,.public-room-door,.portal-responsive-modal__drawer-content) :focus-visible { outline: 2px solid var(--br-ink-faint) !important; outline-offset: 2px !important; box-shadow: none !important; }
+@media (max-width: 440px) { .climb-empty-band { height: 104px; } .failure-sheet { margin: 20px 16px; } }
+@media (prefers-reduced-motion: reduce) { :root { --t-state: 0ms; --t-arrive: 0ms; --t-settle: 0ms; } }
+
+/* Only an opened object arrives; rooms and values have no entry animation. */
+@keyframes ledger-sheet-arrive { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+@keyframes ledger-sheet-leave { from { opacity: 1; } to { opacity: 0; } }
+:is([data-slot="dialog-content"],.public-room-door,.climb-map-dialog)[data-state="open"] { animation: ledger-sheet-arrive var(--t-arrive) var(--ease); }
+:is([data-slot="dialog-content"],.public-room-door,.climb-map-dialog)[data-state="closed"] { animation: ledger-sheet-leave var(--t-state) var(--ease); }
+:is([data-slot="dialog-overlay"],.public-room-scrim,.climb-map-overlay)[data-state="open"] { animation: ledger-sheet-leave var(--t-arrive) var(--ease) reverse; }
+:is([data-slot="dialog-overlay"],.public-room-scrim,.climb-map-overlay)[data-state="closed"] { animation: ledger-sheet-leave var(--t-state) var(--ease); }
+.app-boot-screen__header { position: relative; }
+.app-boot-screen__panel { border: 0; box-shadow: none; background: transparent; }
+.ledger-state-copy h3 { margin: 0; font-size: inherit; line-height: inherit; font-weight: 600; }
+.ledger-state-action :is(button,a):focus-visible { outline: 2px solid var(--br-ink-faint); outline-offset: 2px; }
+.ledger-state-action :is(button,a):hover { color: var(--br-ink); }
+[data-vaul-drawer] { transition-duration: var(--t-arrive) !important; transition-timing-function: var(--ease) !important; }
+[data-vaul-drawer][data-state="closed"] { transition-duration: var(--t-state) !important; }
+:is(.ride-room-ground,.climb-room-ground,.ride-room-sheet,.climb-room-sheet) { transition: height var(--t-settle) var(--ease); }
+[data-dragging="true"] > :is(.ride-room-ground,.climb-room-ground,.ride-room-sheet,.climb-room-sheet) { transition: none; }
+
+.ride-analysis-loading-instrument { height: 118px; display: flex; align-items: flex-start; justify-content: space-between; padding-top: 12px; border-block: 1px solid var(--br-ink-faint); }
+
+.portal-panel:has(> .ledger-state-row) { border: 0; border-radius: 0; background: transparent; box-shadow: none; }

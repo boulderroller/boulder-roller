@@ -1,0 +1,52 @@
+import {useEffect,useMemo,useState} from 'react';
+import {AnalysisTable,Button,Card,Chip,EffortFigure,Frame,Leaderboard,LinkButton,ListRow,MapArt,Masthead,MenuSelect,Note,Profile,ReadoutGrid,ResultSummary,Section,Stat,Stats,Unit,destinationHref} from '../v15';
+import {WorkshopGate} from '../v15/WorkshopGate';
+import {clock,comparisonFor,dateLabel,effortHref,isNewBest,profileHref,signed} from '../effort/model';
+import {installEffortHistory} from '../effort/navigation';
+import {formatNumber} from '../../src/lib/formatters';
+import {ClimbV17Backing} from './ClimbV17Backing';
+import {climbChoices,climbData,climbHref,climbPower,climbState,leaderboardRows,overallNote,periods,scenarios,type ClimbData} from './climbV17Model';
+import './climb-v17.css';
+
+const f=(n:number,d=0)=>formatNumber(n,d,d);
+function YourHill({data,change}:{data:ClimbData;change:(key:string,value:string)=>void}){
+ const best=data.best!,compare=comparisonFor(best,data.state.compare),comparison=compare?best.comparisons[compare.id]:undefined;
+ const [index,setIndex]=useState(0),[section,setSection]=useState<number|null>(null);
+ const rows=leaderboardRows(data,{tab:'overall',period:'all-time'}),place=rows.find(r=>r.current),fastest=rows[0];
+ const previous=comparisonFor(best,'best'),recordedFastest=comparisonFor(best,'fastest');
+ const point=best.samples[index],compareLabel=compare?`${data.state.compare==='best'?'Previous best':'Fastest'} · ${dateLabel(compare.date)}`:undefined;
+ return <Section title="You and this hill"><div className="climb-stack">
+  <Stats><Stat label="Your best" value={clock(best.metrics.time_s)} basis={dateLabel(best.date)}/>{place&&<Stat label="Your standing" value={`${place.rank} of ${rows.length}`} basis="All time · illustrative"/>}<Stat label="Your efforts" value={String(data.history.length)} basis={`Version ${data.version}`}/></Stats>
+  <Masthead title="Your best" kicker={dateLabel(best.date)} kind="figure" layout="stacked" stats={[]} summary={<ResultSummary time={clock(best.metrics.time_s)} power={climbPower(best)} newBest={isNewBest(best)} place={place?{rank:place.rank,total:rows.length,illustrative:true}:undefined} placeBasis={place?.id===fastest?.id?'Fastest':place?.gap} basis={compare?`${signed(best.metrics.time_s-compare.metrics.time_s)} to ${data.state.compare==='best'?'previous best':'fastest'}`:undefined} controls={<MenuSelect label="Compare" value={data.state.compare} options={[{value:'best',label:previous?`Previous best · ${clock(previous.metrics.time_s)}`:'Previous best · none yet',disabled:!previous},{value:'fastest',label:recordedFastest?`Fastest · ${clock(recordedFastest.metrics.time_s)}`:place?.rank===1?'Fastest · this effort':'Fastest · recording unavailable',disabled:!recordedFastest},{value:'none',label:'None'}]} onChange={v=>change('compare',v)}/>}/>} art={<EffortFigure points={best.samples} bands={best.bands} index={index} onIndex={setIndex} comparison={comparison?.points} comparisonLabel={compareLabel} average={best.metrics.avg_power_w} highlight={section===null?undefined:[best.sections[section].from,best.sections[section].to]} readouts={[{label:'Distance',value:`${f(point.distance_m/1000,2)} km`},{label:'Elapsed',value:clock(point.elapsed_s)},{label:'Elevation',value:`${f(point.elevation_m)} m`},{label:'Grade, 50 m',value:`${f(point.grade_pct,1)}%`},...(point.power_5s_w===undefined?[]:[{label:'Power, 5 s',value:`${f(point.power_5s_w)} W`,power:true}]),...(comparison?[{label:'Gap',value:signed(comparison.points[index].gap_s)}]:[])]}/>}/>
+  <div className="climb-columns"><Section title="Sections"><Card flush><AnalysisTable label="Your best sections" columns={[{label:'Section'},{label:'Grade',detail:true,repeatOnCompact:true},{label:'Time'},...(compare?[{label:'Gap'}]:[])]} rows={best.sections.map((s,i)=>({id:String(i),active:section===i,onHighlight:()=>{setSection(i);setIndex(Math.max(0,best.samples.findIndex(p=>p.distance_m>=s.from)));},cells:[`${f(s.from)}–${f(s.to)} m`,`${f(s.grade,1)}%`,clock(s.metrics.time_s),...(comparison?[signed(comparison.section_gaps_s[i])]:[])]}))} onLeave={()=>setSection(null)}/></Card><LinkButton href={effortHref(best,'rider')}>Analyze your best</LinkButton></Section>
+   <Section title="Your efforts"><Card flush>{data.history.map(e=><ListRow key={e.id} name={dateLabel(e.date)} meta={e.id===best.id?<><span>Best time</span>{isNewBest(e)&&<> · New best</>}</>:undefined} current={e.id===best.id} power={climbPower(e)} figure={clock(e.metrics.time_s)} gap={e.id===best.id?undefined:signed(e.metrics.time_s-best.metrics.time_s)} href={effortHref(e,'rider')}/>)}</Card><Note>Recorded efforts · version {data.version}</Note></Section>
+  </div>
+ </div></Section>;
+}
+export function ClimbV17(){
+ const [search,setSearch]=useState(location.search),state=climbState(search),data=useMemo(()=>climbData(state),[state.scenario,state.viewer,state.gates,state.bonding,state.compare]);
+ const [cursor,setCursor]=useState<number|null>(null),[fixturesOpen,setFixturesOpen]=useState(false),terrain=data.terrain,profile=terrain.profile;
+ useEffect(installEffortHistory,[]);
+ useEffect(()=>{const pop=()=>setSearch(location.search);window.addEventListener('popstate',pop);return()=>window.removeEventListener('popstate',pop);},[]);
+ const change=(key:string,value:string)=>{const url=new URL(location.href);url.searchParams.set(key,value);history.replaceState(history.state,'',url);setSearch(url.search);};
+ const length=profile.at(-1)!.d,gain=profile.at(-1)!.elevation-profile[0].elevation,steepest=Math.max(...data.sections.map(s=>s.grade)),selected=profile[Math.min(cursor??0,profile.length-1)];
+ const initialRows=leaderboardRows(data,{tab:new URLSearchParams(search).get('tab')??'overall',period:new URLSearchParams(search).get('period')??'all-time'});
+ const emptyMessage=(query:{tab:string})=>query.tab==='qualified'?'No power-verified times yet':state.scenario==='no-vault-empty'?'No leaderboard is available for this climb without a vault.':data.fresh?'No times on version 2 yet. Earlier times remain on version 1.':'No times in this period';
+ return <div className="v15-kit climb-page" data-viewer={state.viewer} data-scenario={state.scenario} data-version={data.version}>
+  <Frame section="map" phoneTitle={terrain.name} crumbs={[{label:'Map',href:destinationHref('map')},{label:terrain.name}]} account={state.viewer==='anon'?undefined:{name:state.viewer==='rider'?terrain.rider_name:'Alex',href:state.viewer==='rider'?profileHref(terrain,'rider'):destinationHref('profile')}} items={{map:climbChoices().map(c=>({...c,href:climbHref({scenario:c.id,viewer:state.viewer,gates:state.gates}),current:c.id===terrain.climb}))}} footer={<><Note>Workshop · recorded gate times · illustrative riders, places and backing · no live account or publication.</Note><Button onClick={()=>setFixturesOpen(!fixturesOpen)} aria-expanded={fixturesOpen}>Workshop fixtures</Button>{fixturesOpen&&<div className="climb-controls"><MenuSelect label="Scenario" value={state.scenario} options={scenarios} onChange={v=>location.assign(climbHref({...state,scenario:v}))}/><MenuSelect label="Viewer" value={state.viewer} options={[{value:'rider',label:'Owner'},{value:'visitor',label:'Visitor'},{value:'anon',label:'Signed out'}]} onChange={v=>change('viewer',v)}/><MenuSelect label="Bonding state" value={state.bonding} options={[{value:'prebond',label:'Not bonded yet'},{value:'bonded',label:'Bonded'},{value:'stale',label:'At last epoch’s rate'},{value:'rehearsal',label:'Deposits closed'}]} onChange={v=>change('bonding',v)}/></div>}</>}>
+   <div className="climb-stack">
+    <Masthead title={terrain.name} long={terrain.name.length>24} kicker="Philadelphia, Pennsylvania" stats={[{label:'Distance',value:f(length/1000,2),unit:'km'},{label:'Gain',value:f(gain),unit:'m'},{label:'Avg grade',value:f(gain/length*100,1),unit:'%'}]} art={<MapArt geometry={data.geometry} name={terrain.name} controls/>}/>
+    <div className="climb-controls"><Chip kind="status">Version {data.version}{state.scenario==='earlier-version'?' · Earlier version':''}</Chip>{data.fresh?<LinkButton href={climbHref({scenario:'earlier-version',viewer:state.viewer})}>Earlier version · 1</LinkButton>:state.scenario==='earlier-version'?<LinkButton href={climbHref({scenario:'successor',viewer:state.viewer})}>Current version · 2</LinkButton>:null}<Note>{state.gates==='v2'&&!data.fresh?'Replayed new gates · workshop':data.fresh?'New finish · fresh leaderboard':state.scenario==='earlier-version'?'Earlier finish · times remain on this version':'100 m grade bands'}</Note></div>
+    <Section title="The hill" aside={`Steepest ${f(steepest,1)}% · 100 m`}><Card><Profile key={`${terrain.climb}-${state.gates}`} points={profile} onInspect={setCursor}/><ReadoutGrid tone="light" items={[{label:'Distance',value:`${f(selected.d/1000,2)} km`},{label:'Elevation',value:`${f(selected.elevation)} m`},{label:'Grade, 100 m',value:`${f((data.sections.find(s=>selected.d>=s.from&&selected.d<s.to)??data.sections.at(-1)!).grade,1)}%`}]}/></Card></Section>
+    <div id="leaderboard"><Section title="Leaderboard" aside={state.scenario==='no-vault-rides'?'From rides':data.hasVault?'Vault leaderboard · illustrative':'No vault'}>
+     <Leaderboard key={`${state.scenario}-${state.viewer}-${state.gates}`} initialRows={initialRows} load={async(query,signal)=>{await new Promise<void>(resolve=>setTimeout(resolve,180));return signal.aborted?[]:leaderboardRows(data,query);}} signedIn={state.viewer==='rider'} excerpt={10} periods={periods} overallNote={overallNote} emptyMessage={emptyMessage}/>
+     <Note>{state.scenario==='no-vault-rides'?'Leaderboard from rides · this version only · proposed':data.hasVault?'Illustrative vault leaderboard · recorded gate times':'This climb has no vault.'}{data.available&&' · Each rider’s fastest ascent'}</Note>
+    </Section></div>
+    {data.best&&<YourHill key={`${terrain.climb}-${state.gates}`} data={data} change={change}/>}
+    {data.hasVault&&<div id="backing"><ClimbV17Backing state={state.bonding} name={terrain.name}/></div>}
+    <Section title="Sources and how it works"><Card flush><ListRow name="OpenStreetMap" meta="Road geography" href="https://www.openstreetmap.org/copyright"/><ListRow name="USGS 3DEP" meta="Elevation" href="https://www.usgs.gov/3d-elevation-program"/><ListRow name="How climbs work" href="https://docs.boulderroller.xyz/rides/results"/></Card></Section>
+   </div>
+  </Frame>
+ </div>;
+}
+export function ClimbV17Preview(){return <WorkshopGate><ClimbV17/></WorkshopGate>;}

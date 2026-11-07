@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dung Beetle Cycling — Color System Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      --void: #000000;
+      --void-1: #080808;
+      --void-2: #0F0F0F;
+      --void-3: #161616;
+      --void-4: #1C1C1C;
+      --void-5: #242424;
+      
+      /* Text - HIGHER CONTRAST */
+      --light-100: #FFFFFF;
+      --light-90: rgba(255,255,255,0.92);
+      --light-75: rgba(255,255,255,0.75);
+      --light-60: rgba(255,255,255,0.60);
+      --light-45: rgba(255,255,255,0.45);
+      --light-25: rgba(255,255,255,0.25);
+      --light-12: rgba(255,255,255,0.12);
+      --light-06: rgba(255,255,255,0.06);
+      
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--void);
+      color: var(--light-90);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+
+    body {
+      padding: 48px;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    /* ================================================
+       HEADER
+    ================================================ */
+
+    .study-header {
+      margin-bottom: 80px;
+      max-width: 700px;
+    }
+
+    .study-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--light-45);
+      margin-bottom: 16px;
+    }
+
+    .study-title {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .study-desc {
+      font-size: 17px;
+      color: var(--light-60);
+      line-height: 1.6;
+    }
+
+    /* ================================================
+       PALETTE SECTIONS
+    ================================================ */
+
+    .palette-section {
+      margin-bottom: 120px;
+    }
+
+    .palette-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--light-06);
+    }
+
+    .palette-info h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .palette-info p {
+      font-size: 15px;
+      color: var(--light-60);
+      max-width: 500px;
+    }
+
+    .palette-swatches {
+      display: flex;
+      gap: 4px;
+    }
+
+    .swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .swatch::after {
+      content: attr(data-name);
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--light-45);
+      white-space: nowrap;
+    }
+
+    /* ================================================
+       COMPONENT GRID
+    ================================================ */
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1200px) {
+      .component-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 800px) {
+      .component-grid { grid-template-columns: 1fr; }
+      body { padding: 24px; }
+    }
+
+    /* ================================================
+       PALETTE 1: PHOSPHOR GREEN
+       Inspired by vintage terminals, radar, oscilloscopes
+    ================================================ */
+
+    .phosphor {
+      --signal: #39FF14;
+      --signal-bright: #7FFF00;
+      --signal-dim: #2ECC0F;
+      --signal-glow: rgba(57, 255, 20, 0.5);
+      --signal-wash: rgba(57, 255, 20, 0.08);
+      --signal-trace: rgba(57, 255, 20, 0.03);
+    }
+
+    /* ================================================
+       PALETTE 2: ELECTRIC VIOLET
+       Premium, unexpected, distinctly not-Strava
+    ================================================ */
+
+    .violet {
+      --signal: #A855F7;
+      --signal-bright: #C084FC;
+      --signal-dim: #9333EA;
+      --signal-glow: rgba(168, 85, 247, 0.5);
+      --signal-wash: rgba(168, 85, 247, 0.12);
+      --signal-trace: rgba(168, 85, 247, 0.04);
+    }
+
+    /* ================================================
+       PALETTE 3: PLASMA CYAN
+       High-tech, clean, sharp
+    ================================================ */
+
+    .cyan {
+      --signal: #22D3EE;
+      --signal-bright: #67E8F9;
+      --signal-dim: #06B6D4;
+      --signal-glow: rgba(34, 211, 238, 0.5);
+      --signal-wash: rgba(34, 211, 238, 0.10);
+      --signal-trace: rgba(34, 211, 238, 0.03);
+    }
+
+    /* ================================================
+       PALETTE 4: HOT CORAL
+       Warm but not orange, organic, alive
+    ================================================ */
+
+    .coral {
+      --signal: #FF6B9D;
+      --signal-bright: #FF8FB8;
+      --signal-dim: #E84D7E;
+      --signal-glow: rgba(255, 107, 157, 0.5);
+      --signal-wash: rgba(255, 107, 157, 0.10);
+      --signal-trace: rgba(255, 107, 157, 0.03);
+    }
+
+    /* ================================================
+       SHARED COMPONENTS
+    ================================================ */
+
+    .demo-card {
+      background: var(--void-2);
+      border: 1px solid var(--light-06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    /* --- METRIC CARD --- */
+    .metric-card {
+      padding: 28px;
+      position: relative;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--signal), transparent);
+    }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-45);
+      margin-bottom: 12px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--signal);
+      line-height: 1;
+      text-shadow: 0 0 40px var(--signal-glow);
+    }
+
+    .metric-unit {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--light-60);
+      margin-top: 8px;
+    }
+
+    .metric-spark {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 40px;
+      margin-top: 20px;
+    }
+
+    .spark-bar {
+      flex: 1;
+      background: var(--signal);
+      border-radius: 2px;
+      opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+
+    .spark-bar:hover {
+      opacity: 1;
+    }
+
+    /* --- TERMINAL CARD --- */
+    .terminal-card {
+      font-family: var(--font-mono);
+    }
+
+    .terminal-header {
+      padding: 14px 20px;
+      background: var(--void-3);
+      border-bottom: 1px solid var(--light-06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--light-60);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 12px var(--signal-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .terminal-body {
+      padding: 16px 20px;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 12px;
+    }
+
+    .t-prompt {
+      color: var(--signal);
+      font-weight: 600;
+    }
+
+    .t-text {
+      color: var(--light-75);
+    }
+
+    .t-dim {
+      color: var(--light-45);
+    }
+
+    .t-signal {
+      color: var(--signal);
+      font-weight: 600;
+    }
+
+    .t-tag {
+      margin-left: auto;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--signal-wash);
+      color: var(--signal);
+    }
+
+    /* --- BEETLE CARD --- */
+    .beetle-card {
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .beetle-visual {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .beetle-shell {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--void-4);
+      border: 2px solid var(--signal);
+      box-shadow: 0 0 30px var(--signal-wash);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .beetle-rank {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--signal);
+      text-shadow: 0 0 20px var(--signal-glow);
+    }
+
+    .beetle-boulder {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 28px;
+      height: 28px;
+      background: radial-gradient(circle at 30% 30%, var(--signal-bright), var(--signal), var(--signal-dim));
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--signal-glow);
+    }
+
+    .beetle-info h3 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 4px;
+    }
+
+    .beetle-info .name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--light-100);
+      margin-bottom: 2px;
+    }
+
+    .beetle-info .title {
+      font-size: 13px;
+      color: var(--light-60);
+      font-style: italic;
+    }
+
+    /* --- BUTTON --- */
+    .btn-signal {
+      width: 100%;
+      padding: 16px;
+      background: var(--signal);
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--void);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 20px;
+    }
+
+    .btn-signal:hover {
+      box-shadow: 0 0 30px var(--signal-glow);
+      transform: translateY(-2px);
+    }
+
+    /* --- CLAIM ROW --- */
+    .claim-card {
+      padding: 0;
+    }
+
+    .claim-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--light-06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .claim-header-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-45);
+    }
+
+    .claim-header-value {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--signal);
+      text-shadow: 0 0 20px var(--signal-glow);
+    }
+
+    .claim-row {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid var(--light-06);
+    }
+
+    .claim-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .claim-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--signal-wash);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .claim-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .claim-name {
+      font-weight: 600;
+      color: var(--light-100);
+      font-size: 13px;
+    }
+
+    .claim-detail {
+      font-size: 11px;
+      color: var(--light-45);
+    }
+
+    .claim-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--signal);
+    }
+
+    .claim-action {
+      padding: 16px 20px;
+    }
+
+    /* --- DATA RIVER --- */
+    .river-demo {
+      background: var(--void-1);
+      border: 1px solid var(--light-06);
+      border-radius: 12px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      overflow: hidden;
+      grid-column: span 3;
+    }
+
+    @media (max-width: 1200px) {
+      .river-demo { grid-column: span 2; }
+    }
+
+    @media (max-width: 800px) {
+      .river-demo { grid-column: span 1; flex-wrap: wrap; }
+    }
+
+    .river-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .river-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 10px var(--signal-glow);
+    }
+
+    .river-label {
+      color: var(--light-45);
+    }
+
+    .river-value {
+      color: var(--light-100);
+      font-weight: 600;
+    }
+
+    /* --- WAVEFORM FULL --- */
+    .waveform-demo {
+      background: var(--void-2);
+      border: 1px solid var(--light-06);
+      border-radius: 12px;
+      padding: 24px;
+      grid-column: span 3;
+    }
+
+    @media (max-width: 1200px) {
+      .waveform-demo { grid-column: span 2; }
+    }
+
+    @media (max-width: 800px) {
+      .waveform-demo { grid-column: span 1; }
+    }
+
+    .waveform-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .waveform-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-45);
+    }
+
+    .waveform-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--signal);
+    }
+
+    .waveform-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 80px;
+    }
+
+    .wave {
+      flex: 1;
+      background: linear-gradient(to top, var(--signal-dim), var(--signal));
+      border-radius: 2px;
+      opacity: 0.7;
+      transition: opacity 0.1s, transform 0.1s;
+    }
+
+    .wave:hover {
+      opacity: 1;
+      transform: scaleY(1.05);
+      transform-origin: bottom;
+    }
+
+    /* ================================================
+       COMPARISON NOTES
+    ================================================ */
+
+    .notes {
+      margin-top: 120px;
+      padding: 48px;
+      background: var(--void-2);
+      border: 1px solid var(--light-12);
+      border-radius: 20px;
+    }
+
+    .notes h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 1000px) {
+      .notes-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .notes-grid { grid-template-columns: 1fr; }
+    }
+
+    .note-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .note-item h3 .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .note-item p {
+      font-size: 13px;
+      color: var(--light-60);
+      line-height: 1.6;
+    }
+
+    .phosphor-dot { background: #39FF14; }
+    .violet-dot { background: #A855F7; }
+    .cyan-dot { background: #22D3EE; }
+    .coral-dot { background: #FF6B9D; }
+  </style>
+</head>
+<body>
+
+  <header class="study-header">
+    <div class="study-tag">Color System Study</div>
+    <h1 class="study-title">Four Signals</h1>
+    <p class="study-desc">Same void, same structure, different personality. Each palette applied to identical components. Higher contrast text throughout. Pick your signal.</p>
+  </header>
+
+  <!-- ================================================
+       PALETTE 1: PHOSPHOR GREEN
+  ================================================ -->
+  <section class="palette-section phosphor">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Phosphor Green</h2>
+        <p>Vintage terminal. Radar screen. Oscilloscope. The original machine signal. Reads as "serious tool" — hacker energy without trying too hard.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #39FF14;" data-name="signal"></div>
+        <div class="swatch" style="background: #7FFF00;" data-name="bright"></div>
+        <div class="swatch" style="background: #2ECC0F;" data-name="dim"></div>
+        <div class="swatch" style="background: rgba(57,255,20,0.15);" data-name="wash"></div>
+      </div>
+    </div>
+
+    <div class="component-grid">
+      <div class="river-demo">
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">EPOCH</span>
+          <span class="river-value">47</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BLOCK</span>
+          <span class="river-value">284,291,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">GLOBAL POT</span>
+          <span class="river-value">42,800 DUNG</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BEETLES</span>
+          <span class="river-value">12,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">DISTRIBUTION</span>
+          <span class="river-value">2d 14h 32m</span>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 45%;"></div>
+          <div class="spark-bar" style="height: 62%;"></div>
+          <div class="spark-bar" style="height: 58%;"></div>
+          <div class="spark-bar" style="height: 71%;"></div>
+          <div class="spark-bar" style="height: 85%;"></div>
+          <div class="spark-bar" style="height: 78%;"></div>
+          <div class="spark-bar" style="height: 92%;"></div>
+        </div>
+      </div>
+
+      <div class="demo-card terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-status">
+            <div class="status-dot"></div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">ingest <span class="t-signal">crit-session.fit</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">crossings: <span class="t-signal">9</span> · TSS: <span class="t-signal">118</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">earning <span class="t-signal">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card beetle-card">
+        <div class="beetle-visual">
+          <div class="beetle-shell">
+            <span class="beetle-rank">S</span>
+          </div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-info">
+          <h3>Beetle #4821</h3>
+          <div class="name">booka_shade</div>
+          <div class="title">"The Alpine Assassin"</div>
+        </div>
+      </div>
+
+      <div class="demo-card claim-card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">📍</div>
+          <div class="claim-info">
+            <div class="claim-name">PHILLY CRIT</div>
+            <div class="claim-detail">Leader + stake</div>
+          </div>
+          <div class="claim-amount">+18.4</div>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">🦢</div>
+          <div class="claim-info">
+            <div class="claim-name">SOUTH HILL</div>
+            <div class="claim-detail">Swanny seat</div>
+          </div>
+          <div class="claim-amount">+3.3</div>
+        </div>
+        <div class="claim-action">
+          <button class="btn-signal">CLAIM ALL</button>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 30%;"></div>
+          <div class="spark-bar" style="height: 48%;"></div>
+          <div class="spark-bar" style="height: 55%;"></div>
+          <div class="spark-bar" style="height: 72%;"></div>
+          <div class="spark-bar" style="height: 88%;"></div>
+          <div class="spark-bar" style="height: 95%;"></div>
+          <div class="spark-bar" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="waveform-demo">
+        <div class="waveform-header">
+          <span class="waveform-label">30-Day Activity</span>
+          <span class="waveform-value">12,450 TSS</span>
+        </div>
+        <div class="waveform-bars">
+          <div class="wave" style="height: 35%;"></div>
+          <div class="wave" style="height: 42%;"></div>
+          <div class="wave" style="height: 38%;"></div>
+          <div class="wave" style="height: 55%;"></div>
+          <div class="wave" style="height: 48%;"></div>
+          <div class="wave" style="height: 62%;"></div>
+          <div class="wave" style="height: 58%;"></div>
+          <div class="wave" style="height: 71%;"></div>
+          <div class="wave" style="height: 65%;"></div>
+          <div class="wave" style="height: 78%;"></div>
+          <div class="wave" style="height: 72%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 82%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 75%;"></div>
+          <div class="wave" style="height: 92%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 95%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       PALETTE 2: ELECTRIC VIOLET
+  ================================================ -->
+  <section class="palette-section violet">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Electric Violet</h2>
+        <p>Unexpected. Premium. Luxury tech. Never seen in cycling apps. Reads as "this is different" — immediately distinctive, slightly mysterious.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #A855F7;" data-name="signal"></div>
+        <div class="swatch" style="background: #C084FC;" data-name="bright"></div>
+        <div class="swatch" style="background: #9333EA;" data-name="dim"></div>
+        <div class="swatch" style="background: rgba(168,85,247,0.15);" data-name="wash"></div>
+      </div>
+    </div>
+
+    <div class="component-grid">
+      <div class="river-demo">
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">EPOCH</span>
+          <span class="river-value">47</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BLOCK</span>
+          <span class="river-value">284,291,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">GLOBAL POT</span>
+          <span class="river-value">42,800 DUNG</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BEETLES</span>
+          <span class="river-value">12,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">DISTRIBUTION</span>
+          <span class="river-value">2d 14h 32m</span>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 45%;"></div>
+          <div class="spark-bar" style="height: 62%;"></div>
+          <div class="spark-bar" style="height: 58%;"></div>
+          <div class="spark-bar" style="height: 71%;"></div>
+          <div class="spark-bar" style="height: 85%;"></div>
+          <div class="spark-bar" style="height: 78%;"></div>
+          <div class="spark-bar" style="height: 92%;"></div>
+        </div>
+      </div>
+
+      <div class="demo-card terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-status">
+            <div class="status-dot"></div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">ingest <span class="t-signal">crit-session.fit</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">crossings: <span class="t-signal">9</span> · TSS: <span class="t-signal">118</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">earning <span class="t-signal">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card beetle-card">
+        <div class="beetle-visual">
+          <div class="beetle-shell">
+            <span class="beetle-rank">S</span>
+          </div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-info">
+          <h3>Beetle #4821</h3>
+          <div class="name">booka_shade</div>
+          <div class="title">"The Alpine Assassin"</div>
+        </div>
+      </div>
+
+      <div class="demo-card claim-card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">📍</div>
+          <div class="claim-info">
+            <div class="claim-name">PHILLY CRIT</div>
+            <div class="claim-detail">Leader + stake</div>
+          </div>
+          <div class="claim-amount">+18.4</div>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">🦢</div>
+          <div class="claim-info">
+            <div class="claim-name">SOUTH HILL</div>
+            <div class="claim-detail">Swanny seat</div>
+          </div>
+          <div class="claim-amount">+3.3</div>
+        </div>
+        <div class="claim-action">
+          <button class="btn-signal">CLAIM ALL</button>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 30%;"></div>
+          <div class="spark-bar" style="height: 48%;"></div>
+          <div class="spark-bar" style="height: 55%;"></div>
+          <div class="spark-bar" style="height: 72%;"></div>
+          <div class="spark-bar" style="height: 88%;"></div>
+          <div class="spark-bar" style="height: 95%;"></div>
+          <div class="spark-bar" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="waveform-demo">
+        <div class="waveform-header">
+          <span class="waveform-label">30-Day Activity</span>
+          <span class="waveform-value">12,450 TSS</span>
+        </div>
+        <div class="waveform-bars">
+          <div class="wave" style="height: 35%;"></div>
+          <div class="wave" style="height: 42%;"></div>
+          <div class="wave" style="height: 38%;"></div>
+          <div class="wave" style="height: 55%;"></div>
+          <div class="wave" style="height: 48%;"></div>
+          <div class="wave" style="height: 62%;"></div>
+          <div class="wave" style="height: 58%;"></div>
+          <div class="wave" style="height: 71%;"></div>
+          <div class="wave" style="height: 65%;"></div>
+          <div class="wave" style="height: 78%;"></div>
+          <div class="wave" style="height: 72%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 82%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 75%;"></div>
+          <div class="wave" style="height: 92%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 95%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       PALETTE 3: PLASMA CYAN
+  ================================================ -->
+  <section class="palette-section cyan">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Plasma Cyan</h2>
+        <p>Clean. Sharp. Technical precision. Reads as "aerospace" or "medical instrument" — high-tech but not cold. Good contrast, very readable.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #22D3EE;" data-name="signal"></div>
+        <div class="swatch" style="background: #67E8F9;" data-name="bright"></div>
+        <div class="swatch" style="background: #06B6D4;" data-name="dim"></div>
+        <div class="swatch" style="background: rgba(34,211,238,0.15);" data-name="wash"></div>
+      </div>
+    </div>
+
+    <div class="component-grid">
+      <div class="river-demo">
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">EPOCH</span>
+          <span class="river-value">47</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BLOCK</span>
+          <span class="river-value">284,291,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">GLOBAL POT</span>
+          <span class="river-value">42,800 DUNG</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BEETLES</span>
+          <span class="river-value">12,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">DISTRIBUTION</span>
+          <span class="river-value">2d 14h 32m</span>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 45%;"></div>
+          <div class="spark-bar" style="height: 62%;"></div>
+          <div class="spark-bar" style="height: 58%;"></div>
+          <div class="spark-bar" style="height: 71%;"></div>
+          <div class="spark-bar" style="height: 85%;"></div>
+          <div class="spark-bar" style="height: 78%;"></div>
+          <div class="spark-bar" style="height: 92%;"></div>
+        </div>
+      </div>
+
+      <div class="demo-card terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-status">
+            <div class="status-dot"></div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">ingest <span class="t-signal">crit-session.fit</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">crossings: <span class="t-signal">9</span> · TSS: <span class="t-signal">118</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">earning <span class="t-signal">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card beetle-card">
+        <div class="beetle-visual">
+          <div class="beetle-shell">
+            <span class="beetle-rank">S</span>
+          </div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-info">
+          <h3>Beetle #4821</h3>
+          <div class="name">booka_shade</div>
+          <div class="title">"The Alpine Assassin"</div>
+        </div>
+      </div>
+
+      <div class="demo-card claim-card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">📍</div>
+          <div class="claim-info">
+            <div class="claim-name">PHILLY CRIT</div>
+            <div class="claim-detail">Leader + stake</div>
+          </div>
+          <div class="claim-amount">+18.4</div>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">🦢</div>
+          <div class="claim-info">
+            <div class="claim-name">SOUTH HILL</div>
+            <div class="claim-detail">Swanny seat</div>
+          </div>
+          <div class="claim-amount">+3.3</div>
+        </div>
+        <div class="claim-action">
+          <button class="btn-signal">CLAIM ALL</button>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 30%;"></div>
+          <div class="spark-bar" style="height: 48%;"></div>
+          <div class="spark-bar" style="height: 55%;"></div>
+          <div class="spark-bar" style="height: 72%;"></div>
+          <div class="spark-bar" style="height: 88%;"></div>
+          <div class="spark-bar" style="height: 95%;"></div>
+          <div class="spark-bar" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="waveform-demo">
+        <div class="waveform-header">
+          <span class="waveform-label">30-Day Activity</span>
+          <span class="waveform-value">12,450 TSS</span>
+        </div>
+        <div class="waveform-bars">
+          <div class="wave" style="height: 35%;"></div>
+          <div class="wave" style="height: 42%;"></div>
+          <div class="wave" style="height: 38%;"></div>
+          <div class="wave" style="height: 55%;"></div>
+          <div class="wave" style="height: 48%;"></div>
+          <div class="wave" style="height: 62%;"></div>
+          <div class="wave" style="height: 58%;"></div>
+          <div class="wave" style="height: 71%;"></div>
+          <div class="wave" style="height: 65%;"></div>
+          <div class="wave" style="height: 78%;"></div>
+          <div class="wave" style="height: 72%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 82%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 75%;"></div>
+          <div class="wave" style="height: 92%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 95%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       PALETTE 4: HOT CORAL
+  ================================================ -->
+  <section class="palette-section coral">
+    <div class="palette-header">
+      <div class="palette-info">
+        <h2>Hot Coral</h2>
+        <p>Warm but not orange. Organic. Alive. Human. Reads as "energy" without being aggressive — approachable but still bold. Unexpected for cycling.</p>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background: #FF6B9D;" data-name="signal"></div>
+        <div class="swatch" style="background: #FF8FB8;" data-name="bright"></div>
+        <div class="swatch" style="background: #E84D7E;" data-name="dim"></div>
+        <div class="swatch" style="background: rgba(255,107,157,0.15);" data-name="wash"></div>
+      </div>
+    </div>
+
+    <div class="component-grid">
+      <div class="river-demo">
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">EPOCH</span>
+          <span class="river-value">47</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BLOCK</span>
+          <span class="river-value">284,291,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">GLOBAL POT</span>
+          <span class="river-value">42,800 DUNG</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">BEETLES</span>
+          <span class="river-value">12,847</span>
+        </div>
+        <div class="river-item">
+          <div class="river-dot"></div>
+          <span class="river-label">DISTRIBUTION</span>
+          <span class="river-value">2d 14h 32m</span>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Boulder</div>
+        <div class="metric-value">8,450</div>
+        <div class="metric-unit">DUNG balance</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 45%;"></div>
+          <div class="spark-bar" style="height: 62%;"></div>
+          <div class="spark-bar" style="height: 58%;"></div>
+          <div class="spark-bar" style="height: 71%;"></div>
+          <div class="spark-bar" style="height: 85%;"></div>
+          <div class="spark-bar" style="height: 78%;"></div>
+          <div class="spark-bar" style="height: 92%;"></div>
+        </div>
+      </div>
+
+      <div class="demo-card terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-status">
+            <div class="status-dot"></div>
+            <span>roll@dung-beetle</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">ingest <span class="t-signal">crit-session.fit</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">crossings: <span class="t-signal">9</span> · TSS: <span class="t-signal">118</span></span>
+          </div>
+          <div class="t-line">
+            <span class="t-prompt">→</span>
+            <span class="t-text">earning <span class="t-signal">+118.0 DUNG</span></span>
+            <span class="t-tag">OK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card beetle-card">
+        <div class="beetle-visual">
+          <div class="beetle-shell">
+            <span class="beetle-rank">S</span>
+          </div>
+          <div class="beetle-boulder"></div>
+        </div>
+        <div class="beetle-info">
+          <h3>Beetle #4821</h3>
+          <div class="name">booka_shade</div>
+          <div class="title">"The Alpine Assassin"</div>
+        </div>
+      </div>
+
+      <div class="demo-card claim-card">
+        <div class="claim-header">
+          <span class="claim-header-label">Unclaimed</span>
+          <span class="claim-header-value">+36.5 DUNG</span>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">📍</div>
+          <div class="claim-info">
+            <div class="claim-name">PHILLY CRIT</div>
+            <div class="claim-detail">Leader + stake</div>
+          </div>
+          <div class="claim-amount">+18.4</div>
+        </div>
+        <div class="claim-row">
+          <div class="claim-icon">🦢</div>
+          <div class="claim-info">
+            <div class="claim-name">SOUTH HILL</div>
+            <div class="claim-detail">Swanny seat</div>
+          </div>
+          <div class="claim-amount">+3.3</div>
+        </div>
+        <div class="claim-action">
+          <button class="btn-signal">CLAIM ALL</button>
+        </div>
+      </div>
+
+      <div class="demo-card metric-card">
+        <div class="metric-label">Weekly TSS</div>
+        <div class="metric-value">847</div>
+        <div class="metric-unit">stress score</div>
+        <div class="metric-spark">
+          <div class="spark-bar" style="height: 30%;"></div>
+          <div class="spark-bar" style="height: 48%;"></div>
+          <div class="spark-bar" style="height: 55%;"></div>
+          <div class="spark-bar" style="height: 72%;"></div>
+          <div class="spark-bar" style="height: 88%;"></div>
+          <div class="spark-bar" style="height: 95%;"></div>
+          <div class="spark-bar" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="waveform-demo">
+        <div class="waveform-header">
+          <span class="waveform-label">30-Day Activity</span>
+          <span class="waveform-value">12,450 TSS</span>
+        </div>
+        <div class="waveform-bars">
+          <div class="wave" style="height: 35%;"></div>
+          <div class="wave" style="height: 42%;"></div>
+          <div class="wave" style="height: 38%;"></div>
+          <div class="wave" style="height: 55%;"></div>
+          <div class="wave" style="height: 48%;"></div>
+          <div class="wave" style="height: 62%;"></div>
+          <div class="wave" style="height: 58%;"></div>
+          <div class="wave" style="height: 71%;"></div>
+          <div class="wave" style="height: 65%;"></div>
+          <div class="wave" style="height: 78%;"></div>
+          <div class="wave" style="height: 72%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 82%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 75%;"></div>
+          <div class="wave" style="height: 92%;"></div>
+          <div class="wave" style="height: 88%;"></div>
+          <div class="wave" style="height: 95%;"></div>
+          <div class="wave" style="height: 85%;"></div>
+          <div class="wave" style="height: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       COMPARISON NOTES
+  ================================================ -->
+  <section class="notes">
+    <h2>Comparison Notes</h2>
+    <div class="notes-grid">
+      <div class="note-item">
+        <h3><span class="dot phosphor-dot"></span> Phosphor Green</h3>
+        <p>Most "tool-like". Strong hacker/terminal association. Very high contrast and legibility. Risk: could read as "trying to be Matrix" if overdone. Best for: power users who want to feel like operators.</p>
+      </div>
+      <div class="note-item">
+        <h3><span class="dot violet-dot"></span> Electric Violet</h3>
+        <p>Most distinctive. Zero association with cycling or crypto. Premium, mysterious, slightly alien. Risk: might feel "too fashion" for fitness audience. Best for: standing out completely, attracting design-forward users.</p>
+      </div>
+      <div class="note-item">
+        <h3><span class="dot cyan-dot"></span> Plasma Cyan</h3>
+        <p>Most balanced. Technical but not cold. Medical/aerospace precision. Very readable, good contrast. Risk: safer choice, less memorable. Best for: broad appeal, professional credibility.</p>
+      </div>
+      <div class="note-item">
+        <h3><span class="dot coral-dot"></span> Hot Coral</h3>
+        <p>Most human. Warm, energetic, alive. Completely unexpected for cycling. Risk: might read as "social app" rather than "serious tool". Best for: approachability, standing out from dark/cold competitors.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

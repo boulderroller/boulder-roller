@@ -1,0 +1,319 @@
+# Documentation index
+
+Documents in `docs/`, including `docs/design/` and retained subdirectories.
+The [TRUTHS-first hierarchy](FRESHEST_SPEC.md#source-of-truth-hierarchy)
+resolves conflicts; a category here does not change an authority's scope.
+This inventory covers Markdown, text, HTML and presentation documents, plus
+retained design-evidence records; source code, configuration and media assets
+are not documents in this index.
+
+## authority
+
+The documents that govern within their stated scope; ratified direction and implementation or deployment evidence remain distinct.
+
+- [ABSTENTION_POLICY.md](ABSTENTION_POLICY.md) — Abstention rules for absent or ambiguous canonical truth.
+- [AGENT_OPERATING_MODEL.md](AGENT_OPERATING_MODEL.md) — Repository, Beads, verification and landing procedure under AGENTS.md.
+- [BACKEND_TRUTHS.md](BACKEND_TRUTHS.md) — Backend semantics and recovery contracts under PROTOCOL_TRUTHS.
+- [design/BR_IDENTITY_SYSTEM.md](design/BR_IDENTITY_SYSTEM.md) — Canonical brand identity contract.
+- [design/CANON_BUILD_DECISIONS.md](design/CANON_BUILD_DECISIONS.md) — Ratified canon-build decisions and gates.
+- [design/LANGUAGE_SPEC.md](design/LANGUAGE_SPEC.md) — Rider vocabulary, state grammar and visibility rules.
+- [design/MOBILE_DESIGN_CONSTITUTION.md](design/MOBILE_DESIGN_CONSTITUTION.md) — Ratified native iOS design contract.
+- [design/PORTAL_DATA_INTERACTION_CONTRACT.md](design/PORTAL_DATA_INTERACTION_CONTRACT.md) — Interaction contract; palette directions yield to the September amendment.
+- [design/PORTAL_DESIGN_SYSTEM_2026.md](design/PORTAL_DESIGN_SYSTEM_2026.md) — Portal visual contract, subject to the September amendment.
+- [design/PORTAL_STANDARDS_AMENDMENT_2026-09-07.md](design/PORTAL_STANDARDS_AMENDMENT_2026-09-07.md) — Controls the named palette, numerical absence and other portal conflicts.
+- [design/PROOF_ECONOMY_PRIMITIVES.md](design/PROOF_ECONOMY_PRIMITIVES.md) — Ratified composition grammar for rider objects and economic detail.
+- [design/RIDE_CANONICALIZATION_SPEC.md](design/RIDE_CANONICALIZATION_SPEC.md) — Versioned ride canonicalization and replay contract.
+- [design/SETTLEMENT_CLOCK_V2_CUTOVER_RUNBOOK.md](design/SETTLEMENT_CLOCK_V2_CUTOVER_RUNBOOK.md) — Binding Monday handoff and Tuesday finalization cutover procedure.
+- [DETECTOR_PARAMS.md](DETECTOR_PARAMS.md) — Existing detector constants and scoring rules; tuning remains frozen.
+- [FRESHEST_SPEC.md](FRESHEST_SPEC.md) — Product specification, direction and frozen designs under the TRUTHS-first hierarchy.
+- [MOBILE_TRUTHS.md](MOBILE_TRUTHS.md) — Mobile evidence, custody and upload semantics under PROTOCOL_TRUTHS.
+- [PORTAL_TRUTHS.md](PORTAL_TRUTHS.md) — Portal semantics, as amended on 2026-09-07.
+- [PROTOCOL_TRUTHS.md](PROTOCOL_TRUTHS.md) — Canonical protocol semantics; wins on conflict.
+- [rfcs/BOULDER_ROLLER_BALANCE_GASLESS_EXECUTION.md](rfcs/BOULDER_ROLLER_BALANCE_GASLESS_EXECUTION.md) — Balance target architecture with ratified rider-session authority.
+- [rfcs/BOULDER_ROLLER_BALANCE_POLICY_DELEGATE_MODEL.md](rfcs/BOULDER_ROLLER_BALANCE_POLICY_DELEGATE_MODEL.md) — Scoped Balance execution and delegation authority model.
+- [rfcs/BOULDER_ROLLER_BALANCE_PROTOCOL_MODEL.md](rfcs/BOULDER_ROLLER_BALANCE_PROTOCOL_MODEL.md) — Balance protocol contract and rider-session amendment.
+- [rfcs/BOULDER_ROLLER_BALANCE_TRANSACTION_COORDINATOR.md](rfcs/BOULDER_ROLLER_BALANCE_TRANSACTION_COORDINATOR.md) — Balance backend operation and coordination contract.
+- [runbooks/BALANCE_SECURITY_OPERATIONS.md](runbooks/BALANCE_SECURITY_OPERATIONS.md) — Balance rollout security gate under protocol and security authorities.
+- [security/BOULDER_ROLLER_BALANCE_GASLESS_THREAT_MODEL.md](security/BOULDER_ROLLER_BALANCE_GASLESS_THREAT_MODEL.md) — Balance security implementation gate and rider-session amendment.
+- [TRUTH_CONTRACT_V1.md](TRUTH_CONTRACT_V1.md) — Truth contract with the ratified V4-B canon amendment.
+- [VAULT_MATCHING_SYSTEMS.md](VAULT_MATCHING_SYSTEMS.md) — Binding canonical Climb and Vault matching contract.
+
+## reference
+
+Supporting guides, candidate designs, research and public explanations; verify dated examples and operational state before use.
+
+- [BENCHMARK_V1.md](BENCHMARK_V1.md) — Earlier detector benchmark reference; not a tuning mandate.
+- [CI_CD_SECRETS_GUIDE.md](CI_CD_SECRETS_GUIDE.md) — Configuration reference; operational setup must be checked before use.
+- [CLIENT_SIDE_BUILDING.md](CLIENT_SIDE_BUILDING.md) — Transaction-building reference; verify examples against current code.
+- [DECISION_TRACE.md](DECISION_TRACE.md) — Detector decision-trace reference.
+- [design/BACKEND_TRUTHS_GATE_1.md](design/BACKEND_TRUTHS_GATE_1.md) — Dated backend coverage matrix; executable tests determine current coverage.
+- [design/FIGMA_DESIGN_SYSTEM_WORKFLOW.md](design/FIGMA_DESIGN_SYSTEM_WORKFLOW.md) — Design workflow reference; current design authorities take precedence.
+- [design/FIRST_TRAVERSE_PUBLIC_PREVIEW_ARCHITECTURE.md](design/FIRST_TRAVERSE_PUBLIC_PREVIEW_ARCHITECTURE.md) — Candidate architecture, not ratified product direction.
+- [design/MOBILE_RESUME_STRATEGY.md](design/MOBILE_RESUME_STRATEGY.md) — Ratified native direction and retained original build sequence.
+- [design/PRODUCT_PATH_REGISTRY.md](design/PRODUCT_PATH_REGISTRY.md) — Dated path map; surface names and assignments are not current authority.
+- [design/PROTOCOL_TRUTHS_ALIGNMENT_GATE.md](design/PROTOCOL_TRUTHS_ALIGNMENT_GATE.md) — Dated alignment coverage matrix, including the earlier mobile lane.
+- [design/README.md](design/README.md) — Design-document routing reference; this index includes newer authorities.
+- [DEVNET_TEST_DATA.md](DEVNET_TEST_DATA.md) — Test-data reference; not current chain evidence.
+- [gitbook/climbs/climbs.md](gitbook/climbs/climbs.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/climbs/leaderboards.md](gitbook/climbs/leaderboards.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/climbs/local-legend.md](gitbook/climbs/local-legend.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/climbs/vaults.md](gitbook/climbs/vaults.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/dung/balance.md](gitbook/dung/balance.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/dung/distribution.md](gitbook/dung/distribution.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/dung/fees.md](gitbook/dung/fees.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/dung/settlement-weeks.md](gitbook/dung/settlement-weeks.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/getting-started/access.md](gitbook/getting-started/access.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/getting-started/account.md](gitbook/getting-started/account.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/getting-started/ios.md](gitbook/getting-started/ios.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/getting-started/upload.md](gitbook/getting-started/upload.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/index.md](gitbook/index.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/open-data.md](gitbook/open-data.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/README.md](gitbook/README.md) — Maintainer build and manual-deployment instructions.
+- [gitbook/reference/faq.md](gitbook/reference/faq.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/reference/glossary.md](gitbook/reference/glossary.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/reference/terms.md](gitbook/reference/terms.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/rides/cal.md](gitbook/rides/cal.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/rides/feed.md](gitbook/rides/feed.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/rides/privacy.md](gitbook/rides/privacy.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/rides/processing.md](gitbook/rides/processing.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/rides/results.md](gitbook/rides/results.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/rides/training.md](gitbook/rides/training.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/support/common-issues.md](gitbook/support/common-issues.md) — Public guidance; governed by the internal authorities above.
+- [gitbook/support/contact.md](gitbook/support/contact.md) — Public guidance; governed by the internal authorities above.
+- [INTEGRATION_REGISTRY.md](INTEGRATION_REGISTRY.md) — Integration reference; verify current operational configuration.
+- [legal/01-ip-analysis.md](legal/01-ip-analysis.md) — Retained legal analysis or draft; not a published rider policy.
+- [legal/02-token-economics.md](legal/02-token-economics.md) — Retained legal analysis or draft; not a published rider policy.
+- [legal/03-technical-architecture.md](legal/03-technical-architecture.md) — Retained legal analysis or draft; not a published rider policy.
+- [legal/05-additional-issues.md](legal/05-additional-issues.md) — Retained legal analysis or draft; not a published rider policy.
+- [legal/06-tokenomics-code-gap-analysis.md](legal/06-tokenomics-code-gap-analysis.md) — Retained legal analysis or draft; not a published rider policy.
+- [legal/PROVISIONAL_PATENT_APPLICATION.md](legal/PROVISIONAL_PATENT_APPLICATION.md) — Retained legal analysis or draft; not a published rider policy.
+- [MAINNET_DEPLOYMENT_PROCEDURE.md](MAINNET_DEPLOYMENT_PROCEDURE.md) — Draft deployment procedure with explicit sign-off gates.
+- [README.md](README.md) — This inventory; governing documents retain their own precedence.
+- [research/BOULDERSCAN_MOBILE_SPEC.md](research/BOULDERSCAN_MOBILE_SPEC.md) — Dated research; not a product or implementation mandate.
+- [research/BOULDERSCAN_UX_INTELLIGENCE_AUDIT.md](research/BOULDERSCAN_UX_INTELLIGENCE_AUDIT.md) — Dated research; not a product or implementation mandate.
+- [research/DEPIN_ATTESTATION_COMPETITIVE_LANDSCAPE.md](research/DEPIN_ATTESTATION_COMPETITIVE_LANDSCAPE.md) — Dated research; not a product or implementation mandate.
+- [research/MOBILE_UX_DEEP_RESEARCH.md](research/MOBILE_UX_DEEP_RESEARCH.md) — Dated research; not a product or implementation mandate.
+- [research/PHYSICS_RESIDUAL_NOISE_BUDGET.md](research/PHYSICS_RESIDUAL_NOISE_BUDGET.md) — Dated research; not a product or implementation mandate.
+- [research/POWER_PROFILE_CLASSIFICATION_SPORTS_SCIENCE.md](research/POWER_PROFILE_CLASSIFICATION_SPORTS_SCIENCE.md) — Dated research; not a product or implementation mandate.
+- [research/SOLANA_MOBILE_DAPP_PATTERNS.md](research/SOLANA_MOBILE_DAPP_PATTERNS.md) — Dated research; not a product or implementation mandate.
+- [research/THRESHOLD_FIT_PLAUSIBILITY.md](research/THRESHOLD_FIT_PLAUSIBILITY.md) — Dated research; not a product or implementation mandate.
+- [rfcs/BOULDER_ROLLER_BALANCE_PRIVY_POLICY_PROTOTYPE.md](rfcs/BOULDER_ROLLER_BALANCE_PRIVY_POLICY_PROTOTYPE.md) — Provider limitation and prototype decision record.
+- [rfcs/CLIMB_DETECTION_CANONICAL_V2.md](rfcs/CLIMB_DETECTION_CANONICAL_V2.md) — Earlier canonical-v2 implementation reference; tuning remains frozen.
+- [rfcs/CLIMB_DETECTION_V3_ARCHITECTURE.md](rfcs/CLIMB_DETECTION_V3_ARCHITECTURE.md) — Draft detector research; not admitted implementation work.
+- [rfcs/SEGMENT_WORTHINESS_MODEL.md](rfcs/SEGMENT_WORTHINESS_MODEL.md) — Dated worthiness research; current canon decisions take precedence.
+- [runbooks/api-server-down.md](runbooks/api-server-down.md) — Incident-response reference; verify current infrastructure before use.
+- [runbooks/API_DNS_SETUP.md](runbooks/API_DNS_SETUP.md) — DNS setup reference; verify current infrastructure before use.
+- [runbooks/BALANCE_DEVNET_E2E.md](runbooks/BALANCE_DEVNET_E2E.md) — Devnet outcome-probe procedure; not evidence of a current run.
+- [runbooks/BALANCE_PRODUCTION_ROLLOUT.md](runbooks/BALANCE_PRODUCTION_ROLLOUT.md) — Staged rollout procedure and gates; not deployment authorization.
+- [runbooks/DEVNET_RESTORE_DRILL.md](runbooks/DEVNET_RESTORE_DRILL.md) — Bounded restore-drill procedure and dated evidence.
+- [runbooks/DUNG_RESERVATION_MIGRATION.md](runbooks/DUNG_RESERVATION_MIGRATION.md) — Versioned reservation migration procedure; retains its execution gates.
+- [runbooks/IOS_CRASH_SYMBOLICATION.md](runbooks/IOS_CRASH_SYMBOLICATION.md) — Native crash-symbolication operations.
+- [runbooks/KEY_ROTATION.md](runbooks/KEY_ROTATION.md) — Protocol-role rotation procedure.
+- [runbooks/MOBILE_CREDENTIALS.md](runbooks/MOBILE_CREDENTIALS.md) — Native credential lifecycle and ownership reference.
+- [runbooks/MOBILE_PUSH_OPERATIONS.md](runbooks/MOBILE_PUSH_OPERATIONS.md) — Native push operations and APNs boundary.
+- [runbooks/STRAVA_FILE_IMPORT_CUTOVER.md](runbooks/STRAVA_FILE_IMPORT_CUTOVER.md) — File-import cutover procedure; execution remains separately gated.
+- [security/ANCHOR_SECURITY.md](security/ANCHOR_SECURITY.md) — Anchor security architecture reference; check the current program.
+- [security/KEY_MAP.md](security/KEY_MAP.md) — Dated devnet custody-map reference; not fresh chain evidence.
+- [security/MAINNET_GATE.md](security/MAINNET_GATE.md) — Agent analysis; Tim still ratifies gate criteria and any mainnet ceremony.
+- [security/THREAT_MODEL.md](security/THREAT_MODEL.md) — Threat-model reference with explicit sections under review.
+- [SOLANA_PROGRAMS_GUIDE.md](SOLANA_PROGRAMS_GUIDE.md) — Program and account reference; verify examples against the current ABI.
+- [WORKOUT_PARSER_SPEC.md](WORKOUT_PARSER_SPEC.md) — Earlier parser reference; current Threshold authority is in the TRUTHS docs.
+
+## historical
+
+Kept for history, do not build from.
+
+- [2027_INTERFACE_STUDY.html](2027_INTERFACE_STUDY.html) — Retained prototype or visual study.
+- [ALPHA_RELEASE_SCOPE.md](ALPHA_RELEASE_SCOPE.md) — Earlier Alpha scope and superseded precedence.
+- [Boulder_Rollers_Executive_Premium.html](Boulder_Rollers_Executive_Premium.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Curve_Light.html](Boulder_Rollers_Web_Portal_Curve_Light.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Curve_Light_V2.html](Boulder_Rollers_Web_Portal_Curve_Light_V2.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Mockup.html](Boulder_Rollers_Web_Portal_Mockup.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Neo_Retro.html](Boulder_Rollers_Web_Portal_Neo_Retro.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Retro.html](Boulder_Rollers_Web_Portal_Retro.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Retro_98.html](Boulder_Rollers_Web_Portal_Retro_98.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Retro_Carbon.html](Boulder_Rollers_Web_Portal_Retro_Carbon.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Retro_Design.html](Boulder_Rollers_Web_Portal_Retro_Design.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Retro_Enhanced.html](Boulder_Rollers_Web_Portal_Retro_Enhanced.html) — Retained prototype or visual study.
+- [Boulder_Rollers_Web_Portal_Retro_Hybrid.html](Boulder_Rollers_Web_Portal_Retro_Hybrid.html) — Retained prototype or visual study.
+- [BOULDER_ROLLERS_WHITEPAPER.md](BOULDER_ROLLERS_WHITEPAPER.md) — Earlier specification, plan, audit or session record.
+- [boulderroller-sim-deck/index.html](boulderroller-sim-deck/index.html) — Retained prototype or visual study.
+- [boulderroller-storydeck/index.html](boulderroller-storydeck/index.html) — Retained prototype or visual study.
+- [CAL_ALLOCATION_PIPELINE_ANNOUNCEMENT.md](CAL_ALLOCATION_PIPELINE_ANNOUNCEMENT.md) — Earlier specification, plan, audit or session record.
+- [CLIMB_DETECTION_V2_PLAN.md](CLIMB_DETECTION_V2_PLAN.md) — Earlier specification, plan, audit or session record.
+- [CLIMB_DETECTION_V2_SPEC.md](CLIMB_DETECTION_V2_SPEC.md) — Earlier specification, plan, audit or session record.
+- [CLIMB_PATTERN_IMPLEMENTATION.md](CLIMB_PATTERN_IMPLEMENTATION.md) — Earlier specification, plan, audit or session record.
+- [COLOR_SYSTEM_STUDY.html](COLOR_SYSTEM_STUDY.html) — Retained prototype or visual study.
+- [CURVE_GREY_STUDY.html](CURVE_GREY_STUDY.html) — Retained prototype or visual study.
+- [DAILY_CHECKLIST.md](DAILY_CHECKLIST.md) — Earlier specification, plan, audit or session record.
+- [design/B4_LEADERBOARD_INVERSION_AUDIT.md](design/B4_LEADERBOARD_INVERSION_AUDIT.md) — Earlier specification, plan, audit or session record.
+- [design/BR_PRIMITIVE_TARGETS_2026-05-12.md](design/BR_PRIMITIVE_TARGETS_2026-05-12.md) — Earlier specification, plan, audit or session record.
+- [design/DEAD_CODE_CLEANUP_SPEC.md](design/DEAD_CODE_CLEANUP_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/DESIGN_SYSTEM_MIGRATION.md](design/DESIGN_SYSTEM_MIGRATION.md) — Earlier specification, plan, audit or session record.
+- [design/evidence/LP_CUSTODY_DEVNET_INVENTORY_2026-07-17.json](design/evidence/LP_CUSTODY_DEVNET_INVENTORY_2026-07-17.json) — Dated custody observation; not current chain evidence.
+- [design/evidence/LP_CUSTODY_DEVNET_RETIREMENTS_2026-07-18.json](design/evidence/LP_CUSTODY_DEVNET_RETIREMENTS_2026-07-18.json) — Dated custody observation; not current chain evidence.
+- [design/HACKATHON_DEMO_SCRIPT.md](design/HACKATHON_DEMO_SCRIPT.md) — Earlier specification, plan, audit or session record.
+- [design/HOME_FEED_SURFACE_SPEC.md](design/HOME_FEED_SURFACE_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/M2_BLE_POWER_AUDIT.md](design/M2_BLE_POWER_AUDIT.md) — Earlier specification, plan, audit or session record.
+- [design/MATH_AUDIT_2026-07-09.md](design/MATH_AUDIT_2026-07-09.md) — Earlier specification, plan, audit or session record.
+- [design/MATH_AUDIT_2026-07.md](design/MATH_AUDIT_2026-07.md) — Earlier specification, plan, audit or session record.
+- [design/MATH_AUDIT_PHASE2_2026-07-12.md](design/MATH_AUDIT_PHASE2_2026-07-12.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_ARCHITECTURE_REVIEW.md](design/MOBILE_ARCHITECTURE_REVIEW.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_CLIMBS_IMPLEMENTATION_SPEC.md](design/MOBILE_CLIMBS_IMPLEMENTATION_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_CONTENT_PRIMITIVES_SPEC.md](design/MOBILE_CONTENT_PRIMITIVES_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_DATA_CONTRACTS.md](design/MOBILE_DATA_CONTRACTS.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_DETAIL_EXPERIENCE_SPEC.md](design/MOBILE_DETAIL_EXPERIENCE_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_DETAIL_GRAMMAR_SPEC.md](design/MOBILE_DETAIL_GRAMMAR_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_FELT_EXPERIENCE.md](design/MOBILE_FELT_EXPERIENCE.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_HOME_FEED_IMPLEMENTATION_SPEC.md](design/MOBILE_HOME_FEED_IMPLEMENTATION_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_PHASE0_AUDIT.md](design/MOBILE_PHASE0_AUDIT.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_PHASE0_AUTH_STATE.md](design/MOBILE_PHASE0_AUTH_STATE.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_PHASE0_GPS_INTEGRITY.md](design/MOBILE_PHASE0_GPS_INTEGRITY.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_PHASE0_RESOLUTIONS.md](design/MOBILE_PHASE0_RESOLUTIONS.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_PHASE0_TESTING_CI.md](design/MOBILE_PHASE0_TESTING_CI.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_PROTOCOL_TRUTHS_CROSSWALK.md](design/MOBILE_PROTOCOL_TRUTHS_CROSSWALK.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_RECORDING_SURFACE_AUDIT.md](design/MOBILE_RECORDING_SURFACE_AUDIT.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_RESEARCH_AUDIT_2026-04-16.md](design/MOBILE_RESEARCH_AUDIT_2026-04-16.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_RIDE_DETAIL_IMPLEMENTATION_SPEC.md](design/MOBILE_RIDE_DETAIL_IMPLEMENTATION_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_RIDER_IDENTITY_SOCIAL_SHAPE_SPEC.md](design/MOBILE_RIDER_IDENTITY_SOCIAL_SHAPE_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_RIDER_SOCIAL_SPINE_IMPLEMENTATION_SPEC.md](design/MOBILE_RIDER_SOCIAL_SPINE_IMPLEMENTATION_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_SURFACE_SYSTEM_SPEC.md](design/MOBILE_SURFACE_SYSTEM_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/MOBILE_TRUTHS_GATE_1.md](design/MOBILE_TRUTHS_GATE_1.md) — Expo coverage matrix; native enforcement is linked from MOBILE_TRUTHS §13.5.
+- [design/PORTAL_COMPLETION_PROGRAM.md](design/PORTAL_COMPLETION_PROGRAM.md) — Earlier specification, plan, audit or session record.
+- [design/PROTOCOL_AGENT_RETURN_BRIEF.md](design/PROTOCOL_AGENT_RETURN_BRIEF.md) — April 2026 return brief and frozen-agent scheduling.
+- [design/PROTOCOL_ALIGNMENT_FIX_PLAN.md](design/PROTOCOL_ALIGNMENT_FIX_PLAN.md) — Earlier specification, plan, audit or session record.
+- [design/READERS_PATH_PASS.md](design/READERS_PATH_PASS.md) — Dated documentation pass and its retained outcome.
+- [design/renderings/br-app-icon-seal-board-2026-08-18.html](design/renderings/br-app-icon-seal-board-2026-08-18.html) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/br-identity-interactions-board.html](design/renderings/br-identity-interactions-board.html) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/br-identity-refinement-board.html](design/renderings/br-identity-refinement-board.html) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/br-identity-renderings.html](design/renderings/br-identity-renderings.html) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/br-identity-state-range-board.html](design/renderings/br-identity-state-range-board.html) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/BR_IDENTITY_VISUAL_PACKET_2026-05-12.pptx](design/renderings/BR_IDENTITY_VISUAL_PACKET_2026-05-12.pptx) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/current-captures/2026-05-12/AUDIT.md](design/renderings/current-captures/2026-05-12/AUDIT.md) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/current-captures/2026-05-12/manifest.json](design/renderings/current-captures/2026-05-12/manifest.json) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/current-captures/2026-05-12/README.md](design/renderings/current-captures/2026-05-12/README.md) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/manifest.json](design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/manifest.json) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/README.md](design/renderings/implementation-captures/2026-05-12/ride-fixture-pass/README.md) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/implementation-captures/2026-05-12/ride-map-header-pass/manifest.json](design/renderings/implementation-captures/2026-05-12/ride-map-header-pass/manifest.json) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/implementation-captures/2026-05-12/ride-map-header-pass/README.md](design/renderings/implementation-captures/2026-05-12/ride-map-header-pass/README.md) — Dated visual study or capture record; not current product evidence.
+- [design/renderings/README.md](design/renderings/README.md) — Dated visual study or capture record; not current product evidence.
+- [design/SOLANA_MOBILE_BUILD_NOTES.md](design/SOLANA_MOBILE_BUILD_NOTES.md) — Earlier specification, plan, audit or session record.
+- [design/UNIFFI_SPIKE_FINDINGS.md](design/UNIFFI_SPIKE_FINDINGS.md) — Completed, dated parser spike; local and simulator evidence only.
+- [design/V4B_BLAST_RADIUS_INVENTORY.md](design/V4B_BLAST_RADIUS_INVENTORY.md) — Earlier specification, plan, audit or session record.
+- [design/V4B_MIGRATION_AND_TESTS.md](design/V4B_MIGRATION_AND_TESTS.md) — Earlier specification, plan, audit or session record.
+- [design/V4B_OPEN_QUESTIONS_RESOLUTION.md](design/V4B_OPEN_QUESTIONS_RESOLUTION.md) — Earlier specification, plan, audit or session record.
+- [design/V4B_PROTOCOL_SURGERY_SCOPE.md](design/V4B_PROTOCOL_SURGERY_SCOPE.md) — Earlier specification, plan, audit or session record.
+- [design/V4B_RUST_ANCHOR_KNOWLEDGE_REFERENCE.md](design/V4B_RUST_ANCHOR_KNOWLEDGE_REFERENCE.md) — Earlier specification, plan, audit or session record.
+- [design/WEB_PORTAL_WIRING_SPEC.md](design/WEB_PORTAL_WIRING_SPEC.md) — Earlier specification, plan, audit or session record.
+- [design/WORKOUT_PARSE_TEARDOWN_2026-08-07.md](design/WORKOUT_PARSE_TEARDOWN_2026-08-07.md) — Earlier specification, plan, audit or session record.
+- [design/WWPTD_DISPATCHER_PLAYBOOK.md](design/WWPTD_DISPATCHER_PLAYBOOK.md) — Superseded April 2026 orchestration and sprint plan.
+- [design/WWPTD_EPIC_PORTFOLIO_2026-04-17.md](design/WWPTD_EPIC_PORTFOLIO_2026-04-17.md) — Earlier specification, plan, audit or session record.
+- [DESIGN_EVOLUTION_CONCEPTS.html](DESIGN_EVOLUTION_CONCEPTS.html) — Retained prototype or visual study.
+- [designer-brief-feb5-2026.html](designer-brief-feb5-2026.html) — Retained prototype or visual study.
+- [designer-brief-feb5-2026.md](designer-brief-feb5-2026.md) — Earlier specification, plan, audit or session record.
+- [designer/design-workflow.md](designer/design-workflow.md) — Earlier designer handoff or capture material.
+- [designer/DESIGNER_BRIEF_2026-04-13.md](designer/DESIGNER_BRIEF_2026-04-13.md) — Earlier designer handoff or capture material.
+- [designer/DESIGNER_HANDOFF_JAN2026.md](designer/DESIGNER_HANDOFF_JAN2026.md) — Earlier designer handoff or capture material.
+- [DESIGNER_TOPOLOGY.md](DESIGNER_TOPOLOGY.md) — Earlier specification, plan, audit or session record.
+- [ECONOMIC_MODEL_FORMAL.md](ECONOMIC_MODEL_FORMAL.md) — Superseded economic model with a TGE horizon.
+- [FIGMA_IOS_PORT_BRIEF.md](FIGMA_IOS_PORT_BRIEF.md) — Earlier specification, plan, audit or session record.
+- [GAP_BACKLOG.md](GAP_BACKLOG.md) — Earlier specification, plan, audit or session record.
+- [gitbook/open-data/releases/9f89ef25e834f114a36a2811413363adef9497991f7a984c6a7a9d6378d5999c/index.md](gitbook/open-data/releases/9f89ef25e834f114a36a2811413363adef9497991f7a984c6a7a9d6378d5999c/index.md) — Frozen open-data release document; preserve published bytes.
+- [gitbook/public/open-data/releases/9f89ef25e834f114a36a2811413363adef9497991f7a984c6a7a9d6378d5999c/NOTICES.txt](gitbook/public/open-data/releases/9f89ef25e834f114a36a2811413363adef9497991f7a984c6a7a9d6378d5999c/NOTICES.txt) — Frozen open-data release document; preserve published bytes.
+- [githubruntest.md](githubruntest.md) — Earlier specification, plan, audit or session record.
+- [grants/BOULDER_ROLLER_HACKATHON_SUBMISSION.md](grants/BOULDER_ROLLER_HACKATHON_SUBMISSION.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/COLOSSEUM_SPRING_HACKATHON.md](grants/COLOSSEUM_SPRING_HACKATHON.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/COLOSSEUM_SUBMISSION_FIELDS.md](grants/COLOSSEUM_SUBMISSION_FIELDS.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/GRANT_DRAFT_A.md](grants/GRANT_DRAFT_A.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/GRANT_DRAFT_B.md](grants/GRANT_DRAFT_B.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/GRANT_DRAFT_C.md](grants/GRANT_DRAFT_C.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/SOLANA_GRANT_RESEARCH.md](grants/SOLANA_GRANT_RESEARCH.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/SOLANA_MOBILE_BUILDER_GRANT_DRAFT.md](grants/SOLANA_MOBILE_BUILDER_GRANT_DRAFT.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/SOLANA_MOBILE_BUILDER_GRANT_V2.md](grants/SOLANA_MOBILE_BUILDER_GRANT_V2.md) — Earlier grant or hackathon material; not current product scope.
+- [grants/SOLANA_MOBILE_BUILDER_GRANT_V3.md](grants/SOLANA_MOBILE_BUILDER_GRANT_V3.md) — Earlier grant or hackathon material; not current product scope.
+- [GREY_FOUNDATION_SWITCHER.html](GREY_FOUNDATION_SWITCHER.html) — Retained prototype or visual study.
+- [INTEGRATION_TEST_PLAN.md](INTEGRATION_TEST_PLAN.md) — Earlier specification, plan, audit or session record.
+- [KNOWN_ISSUES.md](KNOWN_ISSUES.md) — Earlier specification, plan, audit or session record.
+- [MULTI_AGENT_COORDINATOR_GUIDE.md](MULTI_AGENT_COORDINATOR_GUIDE.md) — Earlier specification, plan, audit or session record.
+- [MULTI_SIGNAL_STUDY.html](MULTI_SIGNAL_STUDY.html) — Retained prototype or visual study.
+- [MVP_DEMO_GUIDE.md](MVP_DEMO_GUIDE.md) — Earlier specification, plan, audit or session record.
+- [NATIVE_MOBILE_APP_STRATEGY.md](NATIVE_MOBILE_APP_STRATEGY.md) — Earlier specification, plan, audit or session record.
+- [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) — Earlier specification, plan, audit or session record.
+- [PLATFORM_DELIVERY_CHECKLIST.md](PLATFORM_DELIVERY_CHECKLIST.md) — Earlier specification, plan, audit or session record.
+- [PLATFORM_FEATURE_MATRIX.md](PLATFORM_FEATURE_MATRIX.md) — Earlier specification, plan, audit or session record.
+- [PORTAL_FRESH.html](PORTAL_FRESH.html) — Retained prototype or visual study.
+- [PORTAL_MOCKUP.html](PORTAL_MOCKUP.html) — Retained prototype or visual study.
+- [PORTAL_PROTOCOL_GAP_ANALYSIS.md](PORTAL_PROTOCOL_GAP_ANALYSIS.md) — Earlier specification, plan, audit or session record.
+- [PORTAL_PROTOCOL_VALIDATION_REPORT.md](PORTAL_PROTOCOL_VALIDATION_REPORT.md) — Earlier specification, plan, audit or session record.
+- [PORTAL_RICH.html](PORTAL_RICH.html) — Retained prototype or visual study.
+- [PORTAL_V2.html](PORTAL_V2.html) — Retained prototype or visual study.
+- [PORTAL_V3.html](PORTAL_V3.html) — Retained prototype or visual study.
+- [PRE_TGE_WORK.md](PRE_TGE_WORK.md) — Earlier specification, plan, audit or session record.
+- [PROFILE_HUB_PLAN.md](PROFILE_HUB_PLAN.md) — Earlier specification, plan, audit or session record.
+- [PROJECT_AUDIT_MVP_ROADMAP_2024-11-26.md](PROJECT_AUDIT_MVP_ROADMAP_2024-11-26.md) — Earlier specification, plan, audit or session record.
+- [pytest.md](pytest.md) — Earlier specification, plan, audit or session record.
+- [react-mockups/FEATURES.md](react-mockups/FEATURES.md) — Retained prototype or visual study.
+- [react-mockups/index.html](react-mockups/index.html) — Retained prototype or visual study.
+- [react-mockups/prod.html](react-mockups/prod.html) — Retained prototype or visual study.
+- [react-mockups/PRODUCTION_PLAN.md](react-mockups/PRODUCTION_PLAN.md) — Retained prototype or visual study.
+- [react-mockups/REALISM_PLAN.md](react-mockups/REALISM_PLAN.md) — Retained prototype or visual study.
+- [react-mockups/realistic-fixed.html](react-mockups/realistic-fixed.html) — Retained prototype or visual study.
+- [react-mockups/realistic.html](react-mockups/realistic.html) — Retained prototype or visual study.
+- [rfcs/DUPLICATE_UPLOAD_DETECTION.md](rfcs/DUPLICATE_UPLOAD_DETECTION.md) — Earlier or frozen proposal; not admitted implementation work.
+- [rfcs/ingest-v2.md](rfcs/ingest-v2.md) — Earlier or frozen proposal; not admitted implementation work.
+- [rfcs/PRIVY_AUTH_UX.md](rfcs/PRIVY_AUTH_UX.md) — Earlier or frozen proposal; not admitted implementation work.
+- [rfcs/RIDER_ARCHETYPES.md](rfcs/RIDER_ARCHETYPES.md) — Earlier or frozen proposal; not admitted implementation work.
+- [rfcs/TOKENOMICS_PARAMETERS.md](rfcs/TOKENOMICS_PARAMETERS.md) — Earlier or frozen proposal; not admitted implementation work.
+- [rfcs/USER_ACCOUNT_PDA_ARCHITECTURE.md](rfcs/USER_ACCOUNT_PDA_ARCHITECTURE.md) — Earlier or frozen proposal; not admitted implementation work.
+- [runbooks/AUDIT_BACKEND_FIXES.md](runbooks/AUDIT_BACKEND_FIXES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/AUDIT_IOS_FIXES.md](runbooks/AUDIT_IOS_FIXES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/AUDIT_WEB_FIXES.md](runbooks/AUDIT_WEB_FIXES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/COORDINATED_BACKEND_DEPLOY_THRESHOLD.md](runbooks/COORDINATED_BACKEND_DEPLOY_THRESHOLD.md) — Executed coordinated deployment record, not a new deployment instruction.
+- [runbooks/COORDINATOR_HANDOFF.md](runbooks/COORDINATOR_HANDOFF.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/INGEST_V2_3_DAY_SCOPE.md](runbooks/INGEST_V2_3_DAY_SCOPE.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/MASTER_AUDIT_COORDINATOR.md](runbooks/MASTER_AUDIT_COORDINATOR.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/MASTER_CONTEXT.md](runbooks/MASTER_CONTEXT.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE2_BACKEND_INFRASTRUCTURE.md](runbooks/PHASE2_BACKEND_INFRASTRUCTURE.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE2_BACKEND_PROCESSING.md](runbooks/PHASE2_BACKEND_PROCESSING.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE2_CLIENT_UPDATES.md](runbooks/PHASE2_CLIENT_UPDATES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE2_MASTER_COORDINATOR.md](runbooks/PHASE2_MASTER_COORDINATOR.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE3_INTEGRATION_FIXES.md](runbooks/PHASE3_INTEGRATION_FIXES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE4_API_HTTPS_FIXES.md](runbooks/PHASE4_API_HTTPS_FIXES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/PHASE5_CLOUDFLARE_HTTPS.md](runbooks/PHASE5_CLOUDFLARE_HTTPS.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/WORKER_A_DEFI_TOKENOMICS.md](runbooks/WORKER_A_DEFI_TOKENOMICS.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/WORKER_B_SOCIAL_BACKEND.md](runbooks/WORKER_B_SOCIAL_BACKEND.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/WORKER_C_IOS_FEATURES.md](runbooks/WORKER_C_IOS_FEATURES.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/WORKER_D_TRAINING_ANALYTICS.md](runbooks/WORKER_D_TRAINING_ANALYTICS.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [runbooks/WORKER_E_SECURITY_COMPLIANCE.md](runbooks/WORKER_E_SECURITY_COMPLIANCE.md) — Earlier worker, rollout or audit instructions; not current assignments.
+- [schemas.md](schemas.md) — Earlier specification, plan, audit or session record.
+- [SESSION_1_AUDIT_REPORT.md](SESSION_1_AUDIT_REPORT.md) — Earlier specification, plan, audit or session record.
+- [SESSION_2.2_DEBRIEF.md](SESSION_2.2_DEBRIEF.md) — Earlier specification, plan, audit or session record.
+- [SESSION_2025-12-06_PORTAL_V2_REDESIGN.md](SESSION_2025-12-06_PORTAL_V2_REDESIGN.md) — Earlier specification, plan, audit or session record.
+- [SESSION_2_COMPLETION_REPORT.md](SESSION_2_COMPLETION_REPORT.md) — Earlier specification, plan, audit or session record.
+- [SESSION_2_RESUME_INSTRUCTIONS.md](SESSION_2_RESUME_INSTRUCTIONS.md) — Earlier specification, plan, audit or session record.
+- [SESSION_2_TASKS.md](SESSION_2_TASKS.md) — Earlier specification, plan, audit or session record.
+- [SESSION_3_COMPLETION_REPORT.md](SESSION_3_COMPLETION_REPORT.md) — Earlier specification, plan, audit or session record.
+- [SESSION_3_TASKS.md](SESSION_3_TASKS.md) — Earlier specification, plan, audit or session record.
+- [SESSION_STATE_2024-11-28.md](SESSION_STATE_2024-11-28.md) — Earlier specification, plan, audit or session record.
+- [STATECHARTS.md](STATECHARTS.md) — Earlier specification, plan, audit or session record.
+- [STUBS.md](STUBS.md) — Earlier specification, plan, audit or session record.
+- [TECHNICAL_SPEC_V2.md](TECHNICAL_SPEC_V2.md) — Earlier specification, plan, audit or session record.
+- [TERMINAL_UI_STUDY.html](TERMINAL_UI_STUDY.html) — Retained prototype or visual study.
+- [THE_HILL_KNOWS_ITS_OWN_NAME.md](THE_HILL_KNOWS_ITS_OWN_NAME.md) — Earlier specification, plan, audit or session record.
+- [TILE_ATTESTATION_ARCHITECTURE.md](TILE_ATTESTATION_ARCHITECTURE.md) — Earlier specification, plan, audit or session record.
+- [TILE_IMPLEMENTATION_PLAN.md](TILE_IMPLEMENTATION_PLAN.md) — Earlier specification, plan, audit or session record.
+- [tokenomics-upgrades-notes.md](tokenomics-upgrades-notes.md) — Earlier specification, plan, audit or session record.
+- [TONE_STUDY.html](TONE_STUDY.html) — Retained prototype or visual study.
+- [TWITTER_LAUNCH_CONTENT.md](TWITTER_LAUNCH_CONTENT.md) — Earlier specification, plan, audit or session record.
+- [USER_ACTION_REQUIRED.md](USER_ACTION_REQUIRED.md) — Earlier specification, plan, audit or session record.
+- [WEB_PORTAL_DESIGN_HANDOFF.md](WEB_PORTAL_DESIGN_HANDOFF.md) — Earlier specification, plan, audit or session record.
+- [WEB_PORTAL_VISION.html](WEB_PORTAL_VISION.html) — Retained prototype or visual study.
+- [WORKER_1_SOLANA_PROGRAMS.md](WORKER_1_SOLANA_PROGRAMS.md) — Earlier specification, plan, audit or session record.
+- [WORKER_1_START.md](WORKER_1_START.md) — Earlier specification, plan, audit or session record.
+- [WORKER_2_BACKEND_API.md](WORKER_2_BACKEND_API.md) — Earlier specification, plan, audit or session record.
+- [WORKER_2_START.md](WORKER_2_START.md) — Earlier specification, plan, audit or session record.
+- [WORKER_3_IOS_APP.md](WORKER_3_IOS_APP.md) — Earlier specification, plan, audit or session record.
+- [WORKER_3_START.md](WORKER_3_START.md) — Earlier specification, plan, audit or session record.
+- [WORKER_4_DEVOPS.md](WORKER_4_DEVOPS.md) — Earlier specification, plan, audit or session record.
+- [WORKER_4_START.md](WORKER_4_START.md) — Earlier specification, plan, audit or session record.
+- [WORKER_INSTRUCTIONS.md](WORKER_INSTRUCTIONS.md) — Earlier specification, plan, audit or session record.

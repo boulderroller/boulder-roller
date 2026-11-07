@@ -1,0 +1,36 @@
+{
+  "name": "boulderscan",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "smoke:launch": "node ../../scripts/check-boulderscan-launch.mjs",
+    "smoke:browser": "node ./scripts/check-browser.mjs"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.21",
+    "maplibre-contour": "^0.1.0",
+    "maplibre-gl": "^6.7.0",
+    "pmtiles": "^4.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "playwright": "^1.58.2",
+    "typescript": "^5.6.3",
+    "vite": "6.4.4",
+    "vitest": "^3.2.6"
+  },
+  "overrides": {
+    "tinypool": "2.1.2"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "vite": "6.4.2",
+    "maplibre-gl": "6.7.0",
+    "maplibre-contour": "0.1.0"
+  }
+}

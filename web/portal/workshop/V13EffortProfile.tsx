@@ -1,0 +1,9 @@
+import { V12Relief } from './V12Relief';
+import { nearestIndex, type AnalysisSample } from './v3Model';
+import { distanceLabel, integer } from './scenario';
+/** An inspection surface: exploring the terrain never navigates away from the result. */
+export function V13EffortProfile({points,cursor,onCursor}:{points:AnalysisSample[];cursor:number|null;onCursor:(index:number|null)=>void}){
+ const first=points[0],last=points.at(-1)!,extent=last.d-first.d,point=points.find(p=>p.index===cursor);
+ const index=point?points.indexOf(point):0;
+ return <div className="v13-expanded-profile"><V12Relief points={points}/><svg className="v13-effort-profile-control" viewBox="0 0 300 80" preserveAspectRatio="none" role="slider" tabIndex={0} aria-label="Inspect climb elevation" aria-valuemin={0} aria-valuemax={points.length-1} aria-valuenow={index} aria-valuetext={`${distanceLabel(points[index].d-first.d)} kilometers${points[index].elevation===null?'':`, ${integer(points[index].elevation!)} meters elevation`}`} onPointerMove={e=>{const rect=e.currentTarget.getBoundingClientRect(),ratio=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));onCursor(points[nearestIndex(points,first.d+ratio*extent,'distance')].index);}} onPointerLeave={()=>onCursor(null)} onFocus={()=>onCursor(first.index)} onBlur={()=>onCursor(null)} onKeyDown={e=>{if(['ArrowLeft','ArrowRight','Home','End','Escape'].includes(e.key)){e.preventDefault();onCursor(e.key==='Escape'?null:e.key==='Home'?first.index:e.key==='End'?last.index:points[Math.max(0,Math.min(points.length-1,index+(e.key==='ArrowRight'?1:-1)))].index);}}}>{point&&extent>0&&<line x1={(point.d-first.d)/extent*300} x2={(point.d-first.d)/extent*300} y1={0} y2={80}/>}</svg><div className="v13-effort-profile-axis"><span>0 km</span><strong>{point&&<>{distanceLabel(point.d-first.d)} km{point.elevation!==null&&<> · {integer(point.elevation)} m</>}</>}</strong><span>{distanceLabel(extent)} km</span></div></div>;
+}

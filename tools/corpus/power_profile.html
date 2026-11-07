@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tim Weigelt — Power Profile</title>
+<style>
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Liberation Mono', monospace;
+  --text-display-xl: 4.5rem;
+  --text-display: 3.5rem;
+  --text-heading: 1.5rem;
+  --text-title: 1.125rem;
+  --text-body: 1rem;
+  --text-label: 0.8125rem;
+  --text-caption: 0.6875rem;
+  --bg-void: #0a0a0a;
+  --bg-surface-1: #161616;
+  --bg-surface-2: #1c1c1c;
+  --bg-surface-3: #242424;
+  --text-primary: #e8e4de;
+  --text-secondary: #9a9590;
+  --text-tertiary: #5c5955;
+  --gold: #d4a853;
+  --gold-light: #e6c882;
+  --gold-dim: #a8864a;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.10);
+  --cat-sprint: #e85d3a;
+  --cat-climb: #d4a853;
+  --cat-short: #e8c547;
+  --cat-endurance: #7c6fae;
+  --section-gap: 5rem;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+.page { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+
+.header { text-align: center; padding: 2rem 0 1rem; margin-bottom: var(--section-gap); }
+.header__name { font-size: var(--text-heading); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+.header__sub { font-size: var(--text-label); color: var(--text-tertiary); letter-spacing: 0.04em; }
+
+.hero-row { display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 800px; margin: 0 auto var(--section-gap); }
+.hero-stat { text-align: center; padding: 1.5rem 1rem; }
+.hero-stat:not(:last-child) { border-right: 1px solid var(--border-subtle); }
+.hero-stat__label { font-size: var(--text-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.hero-stat__value { font-family: var(--font-mono); font-size: var(--text-display); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--text-primary); font-variant-numeric: tabular-nums lining-nums; }
+.hero-stat__value--featured { font-size: var(--text-display-xl); color: var(--gold); }
+.hero-stat__unit { font-family: var(--font-sans); font-weight: 400; font-size: 0.45em; color: var(--text-tertiary); margin-left: 0.1em; }
+.hero-stat__secondary { font-size: var(--text-body); font-weight: 500; color: var(--text-secondary); margin-top: 0.5rem; }
+
+.section { margin-bottom: var(--section-gap); }
+.section__header { font-size: var(--text-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-bottom: 1.5rem; }
+
+.chart-container { position: relative; display: inline-block; width: 100%; }
+.chart-tooltip { position: absolute; pointer-events: none; background: var(--bg-surface-3); border: 1px solid var(--border-default); color: var(--text-primary); padding: 10px 14px; border-radius: 6px; font-size: 13px; line-height: 1.5; box-shadow: 0 8px 24px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.15s ease; white-space: nowrap; z-index: 10; transform: translate(-50%, -100%); margin-top: -14px; }
+.chart-tooltip.visible { opacity: 1; }
+.tt-name { font-weight: 600; margin-bottom: 2px; }
+.tt-date { color: var(--text-tertiary); font-size: 11px; }
+.tt-watts { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--gold); }
+.tt-dur { color: var(--text-secondary); font-size: 12px; }
+.tt-badge { display: inline-block; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 5px; border-radius: 3px; margin-left: 6px; }
+.tt-badge--m { background: rgba(138,154,106,0.15); color: #8a9a6a; }
+.tt-badge--e { background: rgba(154,149,144,0.10); color: #9a9590; }
+
+.curve-legend { display: flex; gap: 1.5rem; margin-top: 1rem; justify-content: center; }
+.curve-legend__item { display: flex; align-items: center; gap: 6px; font-size: var(--text-caption); color: var(--text-secondary); }
+
+.trophy-wall { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.trophy-wall .tier-break { grid-column: span 6; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 20%, rgba(255,255,255,0.04) 80%, transparent 100%); margin: 4px 0; }
+
+.card { background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 20px; opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, background 0.2s ease, border-color 0.2s ease; }
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover { background: var(--bg-surface-2); border-color: var(--border-default); }
+.card--hero { grid-column: span 3; padding: 28px; border-left: 3px solid var(--accent, var(--gold)); box-shadow: 0 4px 24px -8px rgba(0,0,0,0.4), inset 0 1px 0 0 rgba(255,255,255,0.02); }
+.card--featured { grid-column: span 3; border-left: 3px solid var(--accent, var(--gold)); }
+.card--compact { grid-column: span 2; border-left: 3px solid var(--accent, var(--gold)); }
+.card[data-effort="sprint"] { --accent: var(--cat-sprint); }
+.card[data-effort="climb"] { --accent: var(--cat-climb); }
+.card[data-effort="short"] { --accent: var(--cat-short); }
+.card[data-effort="endurance"] { --accent: var(--cat-endurance); }
+.card--hero[data-effort="sprint"] { background: linear-gradient(135deg, rgba(232,93,58,0.06) 0%, transparent 40%), var(--bg-surface-1); }
+.card--hero[data-effort="climb"] { background: linear-gradient(135deg, rgba(212,168,83,0.06) 0%, transparent 40%), var(--bg-surface-1); }
+
+.card__header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.card__category { font-size: var(--text-caption); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent, var(--text-secondary)); }
+.card__date { font-size: var(--text-caption); color: var(--text-tertiary); }
+.card__name { font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 8px; }
+.card--hero .card__name { font-size: 1.625rem; }
+.card--featured .card__name { font-size: 1.25rem; }
+.card--compact .card__name { font-size: 1.0625rem; font-weight: 500; color: #d0ccc6; }
+.card__stats { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-mono); color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.card--hero .card__stats { font-size: 1rem; }
+.card--featured .card__stats { font-size: 0.875rem; }
+.card--compact .card__stats { font-size: 0.8125rem; color: var(--text-tertiary); }
+.card__stats .sep { color: #333; }
+
+.footer-stats { display: flex; justify-content: center; gap: 2.5rem; padding: 2rem 0; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; }
+.footer-stat { text-align: center; }
+.footer-stat__value { font-family: var(--font-mono); font-size: var(--text-title); font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.footer-stat__label { font-size: var(--text-caption); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; }
+
+@media (max-width: 768px) {
+  .hero-row { grid-template-columns: 1fr; }
+  .hero-stat:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  .hero-stat__value { font-size: 2.5rem; }
+  .hero-stat__value--featured { font-size: 3.5rem; }
+  .trophy-wall { grid-template-columns: repeat(2, 1fr); }
+  .card--hero, .card--featured { grid-column: span 2; }
+  .card--compact { grid-column: span 1; }
+  .trophy-wall .tier-break { grid-column: span 2; }
+}
+@media (max-width: 480px) {
+  .trophy-wall { grid-template-columns: 1fr; }
+  .card--hero, .card--featured, .card--compact { grid-column: span 1; }
+  .trophy-wall .tier-break { grid-column: span 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card { opacity: 1; transform: none; transition: background 0.2s ease, border-color 0.2s ease; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header__name">Tim Weigelt</div>
+  <div class="header__sub">1,416 rides &middot; 2012&ndash;2026 &middot; 64 kg race weight</div>
+</div>
+
+<div class="hero-row">
+  <div class="hero-stat">
+    <div class="hero-stat__label">20-Minute Power</div>
+    <div class="hero-stat__value">359<span class="hero-stat__unit">W</span></div>
+    <div class="hero-stat__secondary">5.6 W/kg</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat__label">Peak Sprint</div>
+    <div class="hero-stat__value hero-stat__value--featured">1,332<span class="hero-stat__unit">W</span></div>
+    <div class="hero-stat__secondary">20.8 W/kg</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat__label">60-Minute Power</div>
+    <div class="hero-stat__value">304<span class="hero-stat__unit">W</span></div>
+    <div class="hero-stat__secondary">4.8 W/kg</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section__header">Power Curve</div>
+  <div class="chart-container" id="curve-container"></div>
+  <div class="curve-legend">
+    <div class="curve-legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="#d4a853" stroke="#e8e4de" stroke-width="1.5"/></svg>Measured</div>
+    <div class="curve-legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="none" stroke="#d4a853" stroke-width="1.5" stroke-dasharray="2,2"/></svg>VAM Estimated</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section__header">Career Arc</div>
+  <div class="timeline-container" id="timeline-container"></div>
+</div>
+
+<div class="section">
+  <div class="section__header">Signature Rides</div>
+  <div class="trophy-wall" id="trophy-wall"></div>
+</div>
+
+<div class="footer-stats">
+  <div class="footer-stat"><div class="footer-stat__value">1,416</div><div class="footer-stat__label">Rides</div></div>
+  <div class="footer-stat"><div class="footer-stat__value">79,674</div><div class="footer-stat__label">Kilometers</div></div>
+  <div class="footer-stat"><div class="footer-stat__value">730</div><div class="footer-stat__label">KM Vertical</div></div>
+  <div class="footer-stat"><div class="footer-stat__value">6,771</div><div class="footer-stat__label">Hours</div></div>
+  <div class="footer-stat"><div class="footer-stat__value">14</div><div class="footer-stat__label">Years</div></div>
+</div>
+
+</div>
+<script>
+// Data
+const curveData = [
+  { dur: 5, label: '5s', watts: 1332, wkg: 20.8, measured: true, date: 'Apr 2014', name: 'Finally a win \u2014 Luray, VA' },
+  { dur: 60, label: '1min', watts: 725, wkg: 11.3, measured: true, date: 'Jun 2016', name: 'Morning Ride' },
+  { dur: 180, label: '3min', watts: 499, wkg: 7.8, measured: false, date: 'Feb 2020', name: 'Afternoon Ride \u2014 SEPA' },
+  { dur: 300, label: '5min', watts: 437, wkg: 6.8, measured: true, date: 'May 2016', name: 'Morning Ride' },
+  { dur: 600, label: '10min', watts: 359, wkg: 5.6, measured: false, date: 'Sep 2013', name: 'GMSR Stage 3' },
+  { dur: 1200, label: '20min', watts: 359, wkg: 5.6, measured: true, date: 'Jul 2014', name: 'Philadelphia, PA' },
+  { dur: 1800, label: '30min', watts: 285, wkg: 4.5, measured: false, date: 'Feb 2018', name: 'Malibu training camp' },
+  { dur: 3600, label: '60min', watts: 304, wkg: 4.8, measured: true, date: 'Jul 2014', name: 'Philadelphia, PA' },
+];
+const yearData = [
+  { year: 2012, wkg: 3.8, rides: 39, km: 1961, vert: 18 },
+  { year: 2013, wkg: 4.8, rides: 144, km: 8415, vert: 93 },
+  { year: 2014, wkg: 5.6, rides: 148, km: 9157, vert: 85 },
+  { year: 2015, wkg: 5.2, rides: 166, km: 9824, vert: 127 },
+  { year: 2016, wkg: 5.3, rides: 123, km: 8821, vert: 77 },
+  { year: 2017, wkg: 5.2, rides: 172, km: 11075, vert: 83 },
+  { year: 2018, wkg: 4.6, rides: 16, km: 898, vert: 16 },
+  { year: 2019, wkg: 3.7, rides: 169, km: 8934, vert: 68, caveat: true, estWkg: 5.0 },
+  { year: 2020, wkg: 4.3, rides: 171, km: 8352, vert: 86 },
+  { year: 2021, wkg: 1.3, rides: 38, km: 1901, vert: 10 },
+  { year: 2022, wkg: 1.3, rides: 64, km: 3261, vert: 23 },
+  { year: 2023, wkg: 1.1, rides: 7, km: 240, vert: 2 },
+  { year: 2024, wkg: 1.1, rides: 59, km: 2409, vert: 16 },
+  { year: 2025, wkg: 1.3, rides: 89, km: 4086, vert: 24 },
+  { year: 2026, wkg: 1.1, rides: 11, km: 340, vert: 2 },
+];
+const trophies = [
+  { tier: 'hero', effort: 'sprint', cat: 'Peak Sprint', name: 'Finally a win', watts: '1,332W', wkg: '20.8 W/kg', date: 'Apr 2014' },
+  { tier: 'hero', effort: 'climb', cat: 'Best 20-min Climb', name: 'Catskills Stage 3', watts: '~346W', wkg: '~5.4 W/kg', date: 'Aug 2013' },
+  { tier: 'featured', effort: 'climb', cat: 'Peak 20-min (measured)', name: 'Philadelphia, PA', watts: '359W', wkg: '5.6 W/kg', date: 'Jul 2014' },
+  { tier: 'featured', effort: 'endurance', cat: 'Peak 60-min', name: 'Philadelphia, PA', watts: '304W', wkg: '4.8 W/kg', date: 'Jul 2014' },
+  { tier: 'featured', effort: 'short', cat: 'Peak 5-min', name: 'Morning Ride', watts: '437W', wkg: '6.8 W/kg', date: 'May 2016' },
+  { tier: 'featured', effort: 'sprint', cat: 'Peak NP', name: 'winning ride', watts: '399W', wkg: '6.2 W/kg', date: 'May 2015' },
+  { tier: 'compact', effort: 'short', cat: 'SEPA 3-min', name: 'Afternoon Ride', watts: '~499W', wkg: '~7.8 W/kg', date: 'Feb 2020' },
+  { tier: 'compact', effort: 'short', cat: 'SEPA 5-min', name: 'Morning Ride', watts: '~332W', wkg: '~5.2 W/kg', date: 'May 2016' },
+  { tier: 'compact', effort: 'climb', cat: '10-min Climb', name: 'GMSR Stage 3', watts: '~359W', wkg: '~5.6 W/kg', date: 'Sep 2013' },
+  { tier: 'compact', effort: 'climb', cat: 'Best 60-min Climb', name: 'Baldy and some change', watts: '~259W', wkg: '~4.0 W/kg', date: 'Jan 2014' },
+  { tier: 'compact', effort: 'climb', cat: 'GA/NC 20-min', name: 'light work in the mountains', watts: '~274W', wkg: '~4.3 W/kg', date: 'Mar 2020' },
+  { tier: 'compact', effort: 'endurance', cat: 'Biggest Vert Day', name: 'WISSAHICKON 100', watts: '3,911m', wkg: '11.8 hrs', date: 'May 2020' },
+];
+
+// SVG helpers
+function svgEl(tag, attrs) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  if (attrs) for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  return el;
+}
+function svgText(tag, attrs, text) {
+  const el = svgEl(tag, attrs);
+  el.textContent = text;
+  return el;
+}
+function monotoneCubicPath(points) {
+  const n = points.length;
+  if (n < 2) return '';
+  if (n === 2) return 'M' + points[0].x.toFixed(1) + ',' + points[0].y.toFixed(1) + 'L' + points[1].x.toFixed(1) + ',' + points[1].y.toFixed(1);
+  const delta = [], m = [];
+  for (let i = 0; i < n - 1; i++) delta.push((points[i + 1].y - points[i].y) / (points[i + 1].x - points[i].x));
+  m.push(delta[0]);
+  for (let i = 1; i < n - 1; i++) m.push(delta[i - 1] * delta[i] <= 0 ? 0 : (delta[i - 1] + delta[i]) / 2);
+  m.push(delta[n - 2]);
+  for (let i = 0; i < n - 1; i++) {
+    if (Math.abs(delta[i]) < 1e-12) { m[i] = 0; m[i + 1] = 0; } else {
+      const a = m[i] / delta[i], b = m[i + 1] / delta[i], s = a * a + b * b;
+      if (s > 9) { const t = 3 / Math.sqrt(s); m[i] = t * a * delta[i]; m[i + 1] = t * b * delta[i]; }
+    }
+  }
+  let path = 'M' + points[0].x.toFixed(1) + ',' + points[0].y.toFixed(1);
+  for (let i = 0; i < n - 1; i++) {
+    const dx = (points[i + 1].x - points[i].x) / 3;
+    path += ' C' + (points[i].x + dx).toFixed(1) + ',' + (points[i].y + m[i] * dx).toFixed(1) + ' ' + (points[i + 1].x - dx).toFixed(1) + ',' + (points[i + 1].y - m[i + 1] * dx).toFixed(1) + ' ' + points[i + 1].x.toFixed(1) + ',' + points[i + 1].y.toFixed(1);
+  }
+  return path;
+}
+
+// Power Curve
+function renderPowerCurve(container) {
+  var W = 920, H = 460, pad = { top: 30, right: 40, bottom: 50, left: 65 };
+  var cW = W - pad.left - pad.right, cH = H - pad.top - pad.bottom;
+  var logMin = Math.log(5), logMax = Math.log(3600), logR = logMax - logMin;
+  var xS = function(s) { return pad.left + ((Math.log(s) - logMin) / logR) * cW; };
+  var wMin = 200, wMax = 1400;
+  var yS = function(w) { return pad.top + (1 - (w - wMin) / (wMax - wMin)) * cH; };
+
+  var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, style: 'width:100%;height:auto;' });
+  var defs = svgEl('defs');
+  var grad = svgEl('linearGradient', { id: 'curveFill', x1: '0', y1: '0', x2: '0', y2: '1' });
+  grad.appendChild(svgEl('stop', { offset: '0%', 'stop-color': '#d4a853', 'stop-opacity': '0.22' }));
+  grad.appendChild(svgEl('stop', { offset: '100%', 'stop-color': '#d4a853', 'stop-opacity': '0.02' }));
+  defs.appendChild(grad);
+  svg.appendChild(defs);
+
+  // Grid
+  for (var w = 200; w <= 1400; w += 200) {
+    svg.appendChild(svgEl('line', { x1: pad.left, y1: yS(w), x2: W - pad.right, y2: yS(w), stroke: 'rgba(255,255,255,0.04)', 'stroke-width': '0.5' }));
+    svg.appendChild(svgText('text', { x: pad.left - 10, y: yS(w) + 4, fill: '#5c5955', 'font-size': '11', 'text-anchor': 'end', 'font-family': 'Inter,sans-serif' }, w));
+  }
+  curveData.forEach(function(d) {
+    var xx = xS(d.dur);
+    svg.appendChild(svgEl('line', { x1: xx, y1: pad.top, x2: xx, y2: pad.top + cH, stroke: 'rgba(255,255,255,0.03)', 'stroke-width': '0.5' }));
+    svg.appendChild(svgText('text', { x: xx, y: pad.top + cH + 20, fill: '#5c5955', 'font-size': '11', 'text-anchor': 'middle', 'font-family': 'Inter,sans-serif' }, d.label));
+  });
+
+  // Thresholds
+  var thresholds = [{ label: 'Cat 3', watts: 270, color: '#c8b86a' }, { label: 'Cat 1', watts: 340, color: '#d97a3e' }, { label: 'Pro', watts: 420, color: '#e85d3a' }];
+  thresholds.forEach(function(th) {
+    svg.appendChild(svgEl('line', { x1: pad.left, y1: yS(th.watts), x2: W - pad.right, y2: yS(th.watts), stroke: th.color, 'stroke-width': '0.75', 'stroke-dasharray': '4,4', opacity: '0.25' }));
+    svg.appendChild(svgText('text', { x: W - pad.right - 4, y: yS(th.watts) - 5, fill: th.color, opacity: '0.5', 'font-size': '10', 'text-anchor': 'end', 'font-family': 'Inter,sans-serif', 'font-weight': '500' }, th.label));
+  });
+
+  // Curve
+  var pts = curveData.map(function(d) { return { x: xS(d.dur), y: yS(d.watts) }; });
+  var curvePath = monotoneCubicPath(pts);
+  var areaPath = curvePath + ' L' + pts[pts.length - 1].x.toFixed(1) + ',' + (pad.top + cH).toFixed(1) + ' L' + pts[0].x.toFixed(1) + ',' + (pad.top + cH).toFixed(1) + ' Z';
+  svg.appendChild(svgEl('path', { d: areaPath, fill: 'url(#curveFill)', stroke: 'none' }));
+  svg.appendChild(svgEl('path', { d: curvePath, fill: 'none', stroke: '#d4a853', 'stroke-width': '2.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }));
+
+  // Dots
+  var dotsG = svgEl('g');
+  curveData.forEach(function(d, i) {
+    var px = pts[i].x, py = pts[i].y;
+    if (d.measured) {
+      dotsG.appendChild(svgEl('circle', { cx: px, cy: py, r: '5', fill: '#d4a853', stroke: '#e8e4de', 'stroke-width': '1.5' }));
+    } else {
+      dotsG.appendChild(svgEl('circle', { cx: px, cy: py, r: '5', fill: 'none', stroke: '#d4a853', 'stroke-width': '2', 'stroke-dasharray': '2.5,2.5' }));
+    }
+    dotsG.appendChild(svgEl('circle', { cx: px, cy: py, r: '14', fill: 'transparent', cursor: 'pointer', 'data-idx': i }));
+  });
+  svg.appendChild(dotsG);
+
+  // Y axis label
+  var yl = svgText('text', { x: '16', y: pad.top + cH / 2, fill: '#5c5955', 'font-size': '11', 'text-anchor': 'middle', 'font-family': 'Inter,sans-serif', transform: 'rotate(-90,16,' + (pad.top + cH / 2) + ')' }, 'Watts');
+  svg.appendChild(yl);
+
+  container.appendChild(svg);
+
+  // Tooltip
+  var tooltip = document.createElement('div');
+  tooltip.className = 'chart-tooltip';
+  container.appendChild(tooltip);
+
+  dotsG.addEventListener('mouseenter', function(e) {
+    var hit = e.target.closest('circle[data-idx]');
+    if (!hit) return;
+    var d = curveData[+hit.dataset.idx];
+    var rect = svg.getBoundingClientRect();
+    var vb = svg.viewBox.baseVal;
+    var pt = pts[+hit.dataset.idx];
+    var badge = d.measured ? '<span class="tt-badge tt-badge--m">measured</span>' : '<span class="tt-badge tt-badge--e">estimated</span>';
+    tooltip.innerHTML = '<div class="tt-name">' + d.name + badge + '</div><div class="tt-date">' + d.date + '</div><span class="tt-watts">' + d.watts + 'W</span> <span class="tt-dur">@ ' + d.label + '</span><br><span class="tt-dur">' + d.wkg + ' W/kg</span>';
+    tooltip.style.left = (pt.x * rect.width / vb.width) + 'px';
+    tooltip.style.top = (pt.y * rect.height / vb.height) + 'px';
+    tooltip.classList.add('visible');
+  }, true);
+  dotsG.addEventListener('mouseleave', function(e) {
+    if (e.target.closest('circle[data-idx]')) tooltip.classList.remove('visible');
+  }, true);
+}
+
+// Career Timeline
+function renderTimeline(container) {
+  var W = 900, H = 360, pad = { top: 40, right: 30, bottom: 50, left: 50 };
+  var pW = W - pad.left - pad.right, pH = H - pad.top - pad.bottom;
+  var yMin = 0, yMax = 6.2;
+  var xF = function(yr) { return pad.left + ((yr - 2012) / (2026 - 2012)) * pW; };
+  var yF = function(v) { return pad.top + (1 - (v - yMin) / (yMax - yMin)) * pH; };
+
+  var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, style: 'width:100%;height:auto;' });
+  var defs = svgEl('defs');
+  var grad = svgEl('linearGradient', { id: 'tlFill', x1: '0', y1: '0', x2: '0', y2: '1' });
+  grad.appendChild(svgEl('stop', { offset: '0%', 'stop-color': '#d4a853', 'stop-opacity': '0.35' }));
+  grad.appendChild(svgEl('stop', { offset: '100%', 'stop-color': '#d4a853', 'stop-opacity': '0.02' }));
+  defs.appendChild(grad);
+  svg.appendChild(defs);
+
+  // Y grid + labels
+  for (var v = 1; v <= 6; v++) {
+    svg.appendChild(svgEl('line', { x1: pad.left, y1: yF(v), x2: W - pad.right, y2: yF(v), stroke: 'rgba(255,255,255,0.04)', 'stroke-width': '0.5' }));
+    svg.appendChild(svgText('text', { x: pad.left - 8, y: yF(v) + 4, fill: '#5c5955', 'font-size': '11', 'text-anchor': 'end', 'font-family': 'Inter,sans-serif' }, v));
+  }
+  svg.appendChild(svgText('text', { x: '14', y: pad.top + pH / 2, fill: '#5c5955', 'font-size': '11', 'text-anchor': 'middle', 'font-family': 'Inter,sans-serif', transform: 'rotate(-90,14,' + (pad.top + pH / 2) + ')' }, 'W/kg (20-min peak)'));
+
+  // Era band
+  svg.appendChild(svgEl('rect', { x: xF(2013), y: pad.top, width: xF(2020) - xF(2013), height: pH, fill: '#d4a853', opacity: '0.05', rx: '4' }));
+  svg.appendChild(svgText('text', { x: (xF(2013) + xF(2020)) / 2, y: pad.top - 10, 'text-anchor': 'middle', 'font-size': '10', fill: '#5c5955', 'font-weight': '500', 'letter-spacing': '0.5', 'font-family': 'Inter,sans-serif' }, 'RACING YEARS'));
+
+  // Category thresholds
+  [{ w: 3.7, label: 'Cat 3', col: '#c8b86a' }, { w: 4.7, label: 'Cat 1', col: '#d97a3e' }, { w: 5.3, label: 'Pro', col: '#e85d3a' }].forEach(function(th) {
+    svg.appendChild(svgEl('line', { x1: pad.left, y1: yF(th.w), x2: W - pad.right, y2: yF(th.w), stroke: th.col, 'stroke-width': '0.5', 'stroke-dasharray': '3,3', opacity: '0.2' }));
+    svg.appendChild(svgText('text', { x: W - pad.right + 4, y: yF(th.w) + 3.5, fill: th.col, opacity: '0.4', 'font-size': '9', 'font-family': 'Inter,sans-serif' }, th.label));
+  });
+
+  // Curve + area
+  var pts = yearData.map(function(d) { return { x: xF(d.year), y: yF(d.wkg) }; });
+  var curvePath = monotoneCubicPath(pts);
+  var areaPath = curvePath + ' L' + xF(2026).toFixed(1) + ',' + yF(0).toFixed(1) + ' L' + xF(2012).toFixed(1) + ',' + yF(0).toFixed(1) + ' Z';
+  svg.appendChild(svgEl('path', { d: areaPath, fill: 'url(#tlFill)' }));
+  svg.appendChild(svgEl('path', { d: curvePath, fill: 'none', stroke: '#d4a853', 'stroke-width': '2.5', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+
+  // Dots
+  yearData.forEach(function(d, i) {
+    svg.appendChild(svgEl('circle', { cx: pts[i].x, cy: pts[i].y, r: '3.5', fill: '#d4a853', stroke: '#0a0a0a', 'stroke-width': '1.5' }));
+  });
+
+  // 2019 ghost dot
+  var idx = yearData.findIndex(function(d) { return d.year === 2019; });
+  if (idx >= 0) {
+    var d19 = yearData[idx];
+    svg.appendChild(svgEl('line', { x1: xF(2019), y1: yF(d19.wkg), x2: xF(2019), y2: yF(d19.estWkg), stroke: '#d4a853', 'stroke-width': '1', 'stroke-dasharray': '3,2', opacity: '0.35' }));
+    svg.appendChild(svgEl('circle', { cx: xF(2019), cy: yF(d19.estWkg), r: '5', fill: 'none', stroke: '#d4a853', 'stroke-width': '1.5', 'stroke-dasharray': '3,2', opacity: '0.45' }));
+    svg.appendChild(svgText('text', { x: xF(2019) + 10, y: yF(4.35), 'font-size': '9', fill: '#9a9590', 'font-style': 'italic', 'font-family': 'Inter,sans-serif' }, 'rolling terrain'));
+  }
+
+  // X labels
+  yearData.forEach(function(d) {
+    var g = svgEl('g', { transform: 'translate(' + xF(d.year) + ',' + (pad.top + pH + 8) + ')' });
+    g.appendChild(svgEl('line', { x1: '0', y1: '0', x2: '0', y2: '5', stroke: '#3a3a3a', 'stroke-width': '1' }));
+    g.appendChild(svgText('text', { x: '0', y: '20', 'text-anchor': 'end', 'font-size': '11', fill: '#5c5955', 'font-family': 'Inter,sans-serif', transform: 'rotate(-35,0,20)' }, "'" + String(d.year).slice(2)));
+    svg.appendChild(g);
+  });
+
+  // Click interaction
+  var hlLine = svgEl('line', { x1: '0', y1: pad.top, x2: '0', y2: pad.top + pH, stroke: '#d4a853', 'stroke-width': '1.5', 'stroke-dasharray': '4,3', opacity: '0' });
+  var hlDot = svgEl('circle', { r: '6', fill: '#d4a853', stroke: '#e8e4de', 'stroke-width': '2', opacity: '0' });
+  svg.appendChild(hlLine);
+  svg.appendChild(hlDot);
+
+  var ttG = svgEl('g', { opacity: '0' });
+  ttG.appendChild(svgEl('rect', { rx: '6', fill: '#1c1c1c', stroke: 'rgba(255,255,255,0.1)', 'stroke-width': '1', width: '165', height: '72' }));
+  var ttYear = svgText('text', { x: '12', y: '20', fill: '#e8e4de', 'font-size': '14', 'font-weight': '700', 'font-family': 'Inter,sans-serif' }, '');
+  var ttVal = svgText('text', { x: '12', y: '38', fill: '#d4a853', 'font-size': '13', 'font-weight': '600', 'font-family': 'SF Mono,Consolas,monospace' }, '');
+  var ttMeta = svgText('text', { x: '12', y: '56', fill: '#9a9590', 'font-size': '11', 'font-family': 'Inter,sans-serif' }, '');
+  ttG.appendChild(ttYear); ttG.appendChild(ttVal); ttG.appendChild(ttMeta);
+  svg.appendChild(ttG);
+
+  // Hit targets
+  var hitG = svgEl('g');
+  var slotW = pW / yearData.length;
+  yearData.forEach(function(d, i) {
+    hitG.appendChild(svgEl('rect', { 'data-idx': i, x: xF(d.year) - slotW / 2, y: pad.top, width: slotW, height: pH, fill: 'transparent', cursor: 'pointer' }));
+  });
+  svg.appendChild(hitG);
+  container.appendChild(svg);
+
+  hitG.addEventListener('click', function(e) {
+    var rect = e.target.closest('rect[data-idx]');
+    if (!rect) return;
+    e.stopPropagation();
+    var d = yearData[+rect.dataset.idx];
+    var px = xF(d.year), py = yF(d.wkg);
+    hlLine.setAttribute('x1', px); hlLine.setAttribute('x2', px); hlLine.setAttribute('opacity', '1');
+    hlDot.setAttribute('cx', px); hlDot.setAttribute('cy', py); hlDot.setAttribute('opacity', '1');
+    var ttX = px > W - 190 ? px - 175 : px + 14;
+    var ttY = Math.max(pad.top, py - 36);
+    ttG.setAttribute('transform', 'translate(' + ttX + ',' + ttY + ')');
+    ttG.setAttribute('opacity', '1');
+    ttYear.textContent = d.year;
+    ttVal.textContent = d.wkg + ' W/kg';
+    ttMeta.textContent = d.rides + ' rides \u00b7 ' + d.km.toLocaleString() + ' km \u00b7 ' + d.vert + 'km vert';
+  });
+  svg.addEventListener('click', function(e) {
+    if (!e.target.closest('rect[data-idx]')) {
+      hlLine.setAttribute('opacity', '0'); hlDot.setAttribute('opacity', '0'); ttG.setAttribute('opacity', '0');
+    }
+  });
+}
+
+// Trophy Wall
+function renderTrophies(container) {
+  trophies.forEach(function(t, i) {
+    if (i === 2 || i === 6) {
+      var br = document.createElement('div');
+      br.className = 'tier-break';
+      container.appendChild(br);
+    }
+    var card = document.createElement('div');
+    card.className = 'card card--' + t.tier;
+    card.dataset.effort = t.effort;
+    card.style.transitionDelay = (i * 0.06) + 's';
+
+    var header = document.createElement('div');
+    header.className = 'card__header';
+    var catSpan = document.createElement('span');
+    catSpan.className = 'card__category';
+    catSpan.textContent = t.cat;
+    var dateSpan = document.createElement('span');
+    dateSpan.className = 'card__date';
+    dateSpan.textContent = t.date;
+    header.appendChild(catSpan);
+    header.appendChild(dateSpan);
+
+    var nameDiv = document.createElement('div');
+    nameDiv.className = 'card__name';
+    nameDiv.textContent = t.name;
+
+    var statsDiv = document.createElement('div');
+    statsDiv.className = 'card__stats';
+    var wSpan = document.createElement('span');
+    wSpan.textContent = t.watts;
+    var sepSpan = document.createElement('span');
+    sepSpan.className = 'sep';
+    sepSpan.textContent = '\u00b7';
+    var wkgSpan = document.createElement('span');
+    wkgSpan.textContent = t.wkg;
+    statsDiv.appendChild(wSpan);
+    statsDiv.appendChild(sepSpan);
+    statsDiv.appendChild(wkgSpan);
+
+    card.appendChild(header);
+    card.appendChild(nameDiv);
+    card.appendChild(statsDiv);
+    container.appendChild(card);
+  });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  container.querySelectorAll('.card').forEach(function(c) { observer.observe(c); });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', function() {
+  renderPowerCurve(document.getElementById('curve-container'));
+  renderTimeline(document.getElementById('timeline-container'));
+  renderTrophies(document.getElementById('trophy-wall'));
+});
+</script>
+</body>
+</html>

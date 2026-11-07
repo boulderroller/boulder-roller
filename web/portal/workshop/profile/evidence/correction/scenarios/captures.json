@@ -1,0 +1,104 @@
+{
+  "evidenceClass": "Local supplied-data browser renders",
+  "capturedAt": "2026-09-13T22:07:32.242Z",
+  "records": [
+    {
+      "scenario": "owner",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "public",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "private",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "empty",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "loading",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "error",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "stale",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "owner",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "public",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "private",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "empty",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "loading",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "error",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "scenario": "stale",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

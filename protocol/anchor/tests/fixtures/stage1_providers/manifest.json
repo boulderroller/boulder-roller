@@ -1,0 +1,84 @@
+{
+  "captured_at_utc": "2026-10-14T00:17:05.906142+00:00",
+  "rpc": "https://api.mainnet-beta.solana.com",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "getMultipleAccounts",
+    "params": [
+      [
+        "Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb",
+        "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+        "8szGkuLTAux9XMgZ2vtY39jVSowEcpBfFfD8hXSEqdGC",
+        "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+        "8VpRhuxa7sUUepdY3kQiTmX9rS5vx4WgaXiAnXq4KCtr",
+        "jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v",
+        "SysvarC1ock11111111111111111111111111111111",
+        "SysvarEpochSchedu1e111111111111111111111111"
+      ],
+      {
+        "encoding": "base64",
+        "commitment": "finalized"
+      }
+    ]
+  },
+  "slot": 456636487,
+  "accounts": [
+    {
+      "name": "jito-pool",
+      "address": "Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb",
+      "owner": "SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy",
+      "length": 611,
+      "sha256": "35e6517b565998f4d46cc1c114f6ce21ae5bddd9f032b8e8c6716b2a5b740e9d"
+    },
+    {
+      "name": "jito-mint",
+      "address": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+      "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "length": 82,
+      "sha256": "31a395e1e339be7b6648a1e6756c5119477a978109dd9ca3ae09bb7815875fbc"
+    },
+    {
+      "name": "msol-state",
+      "address": "8szGkuLTAux9XMgZ2vtY39jVSowEcpBfFfD8hXSEqdGC",
+      "owner": "MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD",
+      "length": 2616,
+      "sha256": "99923eb622865e10251533acbc3bc2583502a76224012a34b6316dec5a3a98b0"
+    },
+    {
+      "name": "msol-mint",
+      "address": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+      "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "length": 82,
+      "sha256": "b93be14096fb1124dcaf553a538588d149ae2d18e4f61894c5f58a1b0ecdbf1c"
+    },
+    {
+      "name": "jup-pool",
+      "address": "8VpRhuxa7sUUepdY3kQiTmX9rS5vx4WgaXiAnXq4KCtr",
+      "owner": "SPMBzsVUuoHA4Jm6KunbsotaahvVikZs1JyTW6iJvbn",
+      "length": 611,
+      "sha256": "2e2fedbf44ae06ba9fdf6f1ddf3d64b3a01f8a6d5544523d903550a1d580cc6c"
+    },
+    {
+      "name": "jup-mint",
+      "address": "jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v",
+      "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "length": 82,
+      "sha256": "c22dbf5d706db0bda25cac2dd87cfbb8d4800d48fc391207eddfc63ca9cde97a"
+    },
+    {
+      "name": "clock",
+      "address": "SysvarC1ock11111111111111111111111111111111",
+      "owner": "Sysvar1111111111111111111111111111111111111",
+      "length": 40,
+      "sha256": "f8c86fe8e301fefc87862342798609b01a662004bb1aa8025bde40f513d51516"
+    },
+    {
+      "name": "epoch-schedule",
+      "address": "SysvarEpochSchedu1e111111111111111111111111",
+      "owner": "Sysvar1111111111111111111111111111111111111",
+      "length": 33,
+      "sha256": "bc8e8d8331213d875b89f7e267acd9e983e47331fb7136c35eb50cab4f3030a3"
+    }
+  ]
+}

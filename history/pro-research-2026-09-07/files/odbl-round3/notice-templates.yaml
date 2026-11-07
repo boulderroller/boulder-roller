@@ -1,0 +1,113 @@
+schema_version: br-notices-1
+classification: 'Inference: this catalogue is a proposed implementation; each entry separately identifies its basis.'
+templates:
+  osm:
+    basis: Guidance
+    text: © OpenStreetMap contributors
+    href: https://www.openstreetmap.org/copyright
+    sources:
+    - S2
+    - S3
+  odbl:
+    basis: Inference
+    text: 'Climb data: ODbL 1.0 · Data and sources'
+    license_url: https://opendatacommons.org/licenses/odbl/1-0/
+    source_offer_path: /open-data
+    sources:
+    - S1
+    - S3
+  carto:
+    basis: Inference
+    text: © CARTO
+    href: https://carto.com/attributions
+    sources:
+    - S4
+    note: Chosen credit, not a grant to alter, proxy or redistribute hosted tiles.
+  mapzen_label:
+    basis: Inference
+    text: 'Terrain: Mapzen (AWS) · Terrain sources'
+    sources:
+    - S6
+    - S7
+    - S8
+    note: Convenience label; not a replacement for upstream notices. Do not assert an AWS blanket data licence.
+  usgs_3dep:
+    basis: Guidance
+    text: Data available from U.S. Geological Survey, National Geospatial Program.
+    sources:
+    - S9
+    note: USGS requests this acknowledgement; public-domain status is not conditioned on attribution.
+  ea_dtm_2022:
+    basis: Text
+    text: © Environment Agency copyright and/or database right 2022. All rights reserved.
+    license_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    sources:
+    - S10
+    - S11
+  ea_terrain_2015:
+    basis: Guidance
+    text: © Environment Agency copyright and/or database right 2015. All rights reserved.
+    license_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    sources:
+    - S7
+    note: Legacy notice in Terrain Tiles catalogue; not the notice for the separately acquired 2022 EA product.
+  os_terrain50:
+    basis: Inference
+    template: Contains OS data © Crown copyright and database right {source_copyright_year}.
+    license_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    sources:
+    - S12
+    note: Resolve the year from the actual supplied asset notice; no automatic current-year substitution.
+  ign_rge_alti:
+    basis: Inference
+    template: 'Source: IGN, RGE ALTI® {edition}. Source last updated {source_updated_at}. Licence Ouverte 2.0. Profile processing by Boulder Roller.'
+    license_url: https://www.data.gouv.fr/pages/legal/licences/etalab-2.0
+    sources:
+    - S15
+    - S16
+  ign_lidar_mnt:
+    basis: Inference
+    template: 'Source: IGN, MNT LiDAR HD {edition}. Source last updated {source_updated_at}. Licence Ouverte 2.0. Profile processing by Boulder Roller.'
+    license_url: https://www.data.gouv.fr/pages/legal/licences/etalab-2.0
+    sources:
+    - S14
+    - S16
+  cop30_modified:
+    basis: Text
+    text: produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.
+    license_url: https://docs.sentinel-hub.com/api/latest/static/files/data/dem/resources/license/License-COPDEM-30.pdf
+    sources:
+    - S17
+    note: Article 6(b). Retain full wording for adapted profiles.
+  cop30_liability:
+    basis: Text
+    text: The organisations in charge of the Copernicus programme by law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30.
+    sources:
+    - S17
+    note: 'Article 6(c): include in the legal notice for the distribution; article 6(e) requires relevant obligations to reach downstream users.'
+  eu_dem_terrain:
+    basis: Guidance
+    text: Produced using Copernicus data and information funded by the European Union - EU-DEM layers.
+    sources:
+    - S7
+    note: Terrain Tiles EU-DEM notice, not the Copernicus GLO-30 WorldDEM-30 notice.
+  usgs_terrain_global:
+    basis: Inference
+    text: 'Global terrain: SRTM and GMTED2010, U.S. Geological Survey.'
+    sources:
+    - S7
+    - S8
+    note: Emit only the contributing datasets. Preserve supplied modification and warranty notices in the source bundle.
+  noaa_etopo1:
+    basis: Guidance
+    text: Global ETOPO1 terrain data U.S. National Oceanic and Atmospheric Administration
+    sources:
+    - S7
+    note: Also preserve supplied NOAA notices in the source bundle.
+render_rules:
+  interactive: Keep OSM/CARTO visible without interaction. Keep a visible Terrain sources link adjacent; source notices appear in an associated panel. Show source-specific credits where reasonable/required.
+  static: Bake all applicable source credits into the image. Include written OSM copyright and durable source-offer URLs. Do not rely on detached captions, EXIF, alt text or QR alone.
+  copernicus_static: Keep the complete Article 6(b) notice with the image; Article 6(c) in the associated legal notice.
+  source_union: Union the contributing basemap, terrain, contour and profile source sets; deduplicate identical notices without discarding different years or products.
+  global_terrain: This catalogue is not a blanket clearance of every global Terrain Tiles source. Unresolved additional source IDs block the terrain layer/static renderer until their notices and rights are admitted.
+  source_separation: No CARTO/Mapzen credit on a profile-only graphic unless their material actually contributed.

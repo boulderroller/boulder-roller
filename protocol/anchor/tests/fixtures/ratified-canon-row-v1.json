@@ -1,0 +1,47 @@
+{
+  "artifact": "boulderroller.canon-registration",
+  "commitment": {
+    "bytes_hex": "01123e4567e89b42d3a456426614174000000100000000000000000000000000aedd59564db63ada0c6c64eeb1c9de65c3f1f51c6c0dfe22d8ded0d6c2ba208c",
+    "layout": "D12",
+    "sha256_hex": "092d18c3ab6e194442b49c1a513b5610d04bae741351a17a63f109d9b7804974"
+  },
+  "chain_metric_projection": {
+    "algorithm": "boulderroller_chain_metric_projection_v1",
+    "avg_gradient_basis_points": 525,
+    "distance_meters": 2000,
+    "vert_decimeters": 1005
+  },
+  "registry_row": {
+    "avg_gradient_pct": 5.25,
+    "canon_id": "123e4567-e89b-42d3-a456-426614174000",
+    "canonical_profile": [
+      {
+        "dist_m": 0,
+        "elev_m": 100
+      },
+      {
+        "dist_m": 1000,
+        "elev_m": 150.25
+      },
+      {
+        "dist_m": 2000,
+        "elev_m": 200.5
+      }
+    ],
+    "display_name": "Ratified Fixture Climb",
+    "id": "11111111-2222-4333-8444-555555555555",
+    "length_m": 2000,
+    "provenance": {
+      "canonical_profile_hash": {
+        "algorithm": "blake3_canonical_profile_v1",
+        "value": "aedd59564db63ada0c6c64eeb1c9de65c3f1f51c6c0dfe22d8ded0d6c2ba208c"
+      }
+    },
+    "record_continuity_policy": "new_record_board",
+    "status": "ratified",
+    "supersedes_climb_id": null,
+    "version": 1,
+    "vert_m": 100.5
+  },
+  "schema_version": 1
+}

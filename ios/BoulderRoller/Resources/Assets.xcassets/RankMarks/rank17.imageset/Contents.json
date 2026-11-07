@@ -1,0 +1,23 @@
+{
+  "images": [
+    {
+      "filename": "rank17.png",
+      "idiom": "universal",
+      "scale": "1x"
+    },
+    {
+      "filename": "rank17@2x.png",
+      "idiom": "universal",
+      "scale": "2x"
+    },
+    {
+      "filename": "rank17@3x.png",
+      "idiom": "universal",
+      "scale": "3x"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}

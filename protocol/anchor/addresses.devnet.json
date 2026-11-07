@@ -1,0 +1,26 @@
+{
+  "cluster": "devnet",
+  "programs": {
+    "boulder_rollers": "EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH"
+  },
+  "mints": {
+    "cal_mint": {
+      "address": "4bxTCxEQp993cXs5nqhfWthRCPSTDv5K6PMgsfunEaJh",
+      "decimals": 9,
+      "authority_seed": "cal_mint_auth",
+      "authority_address": "G6Jo49fQXqrTV9etztw3tzA6JK8JJZuZADh921JEEqtt"
+    },
+    "dung_mint": {
+      "address": "CqDFJWLpr49tB8xjHegy5JR5jwMCfmhicjuWawtKLeCk",
+      "decimals": 9,
+      "authority_seed": "dung_mint_auth",
+      "authority_address": "9wKkb4LW7J6QSWs1S6E2FZL58neHP7Zn7z9PgZMYHdPb"
+    },
+    "usdc_mint": {
+      "address": "DpLPBaRuLnBsR3P3meU1tmiNUxreXwskXBebTYKvNGne",
+      "decimals": 6,
+      "treasury_token_account": "GEL1JhavEKPuqVBvUiezUgNG2VYK1jtzsUazo2Scm1jA",
+      "note": "Devnet test USDC mint for Balance E2E only; do not use as production USDC."
+    }
+  }
+}
