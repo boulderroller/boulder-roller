@@ -74,6 +74,11 @@ Paths below are relative to `protocol/anchor/programs/boulder_rollers/src/`.
   (`:2827`).
 - Weekly distribution: `distribute_epoch_rewards` at `lib.rs:3176`. DUNG
   supply accounting and caps are checked by `assert_solvent` at `model.rs:646`.
+  The stakers' 27% unlocks with the number of distinct stakers
+  (`STAKER_UNLOCK_PCTS`, `constants.rs:164`): 1% of it at one staker, all of
+  it at ten. Each week's locked remainder goes to the record holders. DUNG
+  harvests carry a 5% fee and CAL withdrawals a 0.5% exit fee
+  (`constants.rs:83` and `:84`).
 - Version contract: `advance_program_version` at `lib.rs:236`. The version
   lives in `protocol/program-version.json` and is checked by
   `protocol/scripts/check_program_version.py`. The backend and indexer accept
@@ -110,6 +115,12 @@ Paths below are relative to `protocol/anchor/programs/boulder_rollers/src/`.
   intensity factor of 40 sustains, which is 160,000 per elapsed hour. There is
   no per-rider, per-week or total CAL cap, so a compromised attester key could
   credit large amounts to any address.
+- Stage 1 rider pay is published as Merkle roots signed by a publisher key set
+  on the city account (`set_stage1_publisher`, `lib.rs:3953`;
+  `publish_stage1_claim_set`, `lib.rs:3964`). The 65/25/10 split and each
+  rider's share are computed off chain, in
+  `backend/app/services/stage1_keeper_allocation.py:7`; the program does not
+  enforce them, so a compromised publisher key could misallocate a week's pay.
 - Climb registration (`register_ratified_climb`, `lib.rs:1298`) requires the
   config admin.
 - CAL and DUNG mint authorities are program-derived addresses, listed in
@@ -163,15 +174,15 @@ Program integration is from CI on `5963e455b`, the commit this copy was cut from
 | Same, devnet build | `cargo test -p boulder_rollers --features stage1-devnet` | 159 passed |
 | Program integration on a local validator | `python3 protocol/anchor/scripts/run-stage1-ci-group.py --group <name> ...`; exact arguments, groups and toolchain (Agave 2.1.21, Anchor 0.29) in `.github/workflows/solana-ci.yml` | 902 passed across eight groups and three builds. The 30 pending need the test-setup instructions, which only the local build has. |
 | Ride parser | `cd workout-parse && cargo test && cargo test --features osm` | 192 passed, then 295 with OSM. PyO3 0.21 needs Python 3.12 or older; set `PYO3_PYTHON` if your default is newer. |
-| Backend | `cd backend && pip install -r requirements.txt ../workout-parse && pytest` | 3,962 passed, 145 skipped, about 4 min on Python 3.11. The tests start their own temporary Postgres, so `initdb` and `pg_ctl` must be on PATH; on macOS also set `LC_ALL=en_US.UTF-8`, and run one suite at a time. Take the placeholder environment from `.github/workflows/backend-ci.yml`. On macOS one Linux-only process test skips, giving 3,961 and 146. |
+| Backend | `cd backend && pip install -r requirements.txt ../workout-parse && pytest` | 3,962 passed, 145 skipped, about 4 min in CI on Python 3.11. Run `npm ci` in `indexer/` first; one backend test drives the indexer's TypeScript. The tests start their own temporary Postgres, so `initdb` and `pg_ctl` must be on PATH; on macOS also set `LC_ALL=en_US.UTF-8`, and run one suite at a time. Take the placeholder environment from `.github/workflows/backend-ci.yml`. On macOS one Linux-only process test skips, giving 3,961 and 146. |
 | Indexer | `cd indexer && npm ci && npm test` | 299 passed |
 | Portal | `cd web/portal && npm ci && npm run perf:release` | Unit tests, build, typecheck of the gated file set and 15 static gates |
 | iOS | Steps in `.github/workflows/ios-ci.yml` (Xcode 26) | 674 tests, 1 skipped |
 
 The program, parser, backend, indexer and portal commands above were also run
 on this copy itself, on macOS, before it was published, with the results
-shown. This copy is a single commit, so its history and CI runs cannot be
-checked from here.
+shown. This copy starts from one commit without the working repository's
+history, so that history and its CI runs cannot be checked from here.
 
 ## Which document wins
 
@@ -184,8 +195,8 @@ they are kept as history, not current.
 
 ## Not in this copy
 
-- `history/`: dated study notes, reports and screenshots. The data files and
-  specs that code, tests or CI read are kept.
+- Most of `history/`: dated study notes, reports and screenshots. The few
+  data files and specs that code, tests or CI read are kept in place.
 - `archive/`: retired clients and programs.
 - The issue tracker (`.beads/`) and agent tool settings (`.claude/`).
 - `docs/legal/`, `docs/grants/`, two pitch decks, and screenshots of other
@@ -194,10 +205,12 @@ they are kept as history, not current.
   `docs/BOULDER_ROLLERS_V1_SPEC.md`, `docs/DUNG_BEETLE_CYCLING_COMPLETE.md`
   and `docs/DUNG_BEETLE_CYCLING_SPEC.html`) and four iOS screenshots of real
   ride routes.
+- A personal power profile, `tools/corpus/power_profile.html`.
 
 Links into those paths will not resolve. Apart from this file, a note at the
-top of `CLAUDE.md` and `README.md`, which is rewritten for this copy, every
-file is as it stands on main, with three privacy edits:
+top of `CLAUDE.md`, `README.md`, which is rewritten for this copy, and
+`docs/README.md`, which drops its entries for files not in this copy, every
+file is as it stands on main, with these edits:
 
 - One recorded test ride (`docs/in_the_bag_.fit`, and its copies in
   `web/portal/workshop/data/in-the-bag.json` and
@@ -208,6 +221,8 @@ file is as it stands on main, with three privacy edits:
 - A server address in three scripts, one doc and one end-to-end test is
   replaced with a placeholder.
 - One email address in an iOS test fixture is replaced.
+- The author line of `docs/rfcs/CLIMB_DETECTION_V3_ARCHITECTURE.md` named the
+  wrong person and now reads "the founder".
 
 ## How it was built
 

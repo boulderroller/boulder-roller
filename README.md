@@ -119,7 +119,8 @@ npm ci
 npm run dev
 ```
 
-Parser tests.
+Parser tests. PyO3 needs Python 3.12 or older; if yours is newer, set
+`PYO3_PYTHON`.
 
 ```bash
 cd workout-parse

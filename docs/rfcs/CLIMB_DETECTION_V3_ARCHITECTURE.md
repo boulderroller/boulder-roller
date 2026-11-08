@@ -1,7 +1,7 @@
 # RFC: Climb Detection v3 — Persistence + Road Fusion
 
 **Status:** Draft
-**Author:** Claude (with Gabe)
+**Author:** Claude (with the founder)
 **Date:** 2026-03-17
 **Supersedes:** v2 persistence-only detector
 
