@@ -48,7 +48,7 @@ final class ProfileEditContractTests: XCTestCase {
     /// `update_user_profile` drops nulls for identity fields (only
     /// physiology is null-clearable), so a null clear would be a silent
     /// no-op misreported as success. Empty string persists server-side.
-    func testProfileClearShipsEmptyStringBecauseServerDropsNulls() {
+    func testProfileClearSendsEmptyStringBecauseServerDropsNulls() {
         let cleared = APIClient.profileUpdateBody(
             displayName: .some(nil), location: .some(nil), bio: .some(nil)
         )

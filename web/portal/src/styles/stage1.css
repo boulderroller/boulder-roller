@@ -1,4 +1,4 @@
-/* Layout only: Stage 1 inherits the current room's sheets, rows and type. */
+/* Layout only: Stage 1 inherits the current page's sheets, rows and type. */
 .stage1-group { margin-block: 24px; }
 .stage1-group > .portfolio-sheet + .portfolio-sheet { margin-top: 16px; }
 .stage1-row.portfolio-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding-block: 14px; }

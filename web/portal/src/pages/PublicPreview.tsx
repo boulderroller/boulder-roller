@@ -1,7 +1,7 @@
-import { PublicRoom } from '../components/auth/PublicRoomShell';
-import { RideRoomDoor } from '../components/auth/PublicRoomDoor';
-import { browserRoom, composeBrowserTitle } from '../lib/browserTitle';
-import { RoomLoading } from '../components/loading/RoomLoading';
+import { PublicPageShell } from '../components/auth/PublicPageShell';
+import { RideAnalysisLink } from '../components/auth/RideAnalysisLink';
+import { browserPageName, composeBrowserTitle } from '../lib/browserTitle';
+import { PageLoading } from '../components/loading/PageLoading';
 import { FailureSheet, StateRow } from '../components/portal/FailureSpecies';
 import ProfileGroundMap from '../components/profile/ProfileGroundMap';
 import {
@@ -28,13 +28,13 @@ import ClimbGeography from '../components/climb/ClimbGeography';
 import ClimbLeaderboard from '../components/climb/ClimbLeaderboard';
 import { Stage1ClimbSection } from '../components/stage1/Stage1';
 import {
-  RideRoomGeography,
-  RideRoomIdentity,
-} from '../components/ride/RideRoom';
+  RidePageGeography,
+  RidePageIdentity,
+} from '../components/ride/RidePageComponents';
 import ProfileLedgerColumn from '../components/profile/ProfileLedgerColumn';
 import ProfileRecentRides from '../components/profile/ProfileRecentRides';
 import { rideFromPublic } from '../components/profile/groundModel';
-import '../styles/portal-public-rooms.css';
+import '../styles/portal-public-pages.css';
 
 const EMPTY: never[] = [];
 const finite = (value: unknown): value is number =>
@@ -67,17 +67,17 @@ function RidePreview({
   const [photosOpen, setPhotosOpen] = useState(false);
   return (
     <div
-      className="ride-detail-page ride-room-page portal-object-page portal-object-page--ride"
+      className="ride-detail-page ride-page portal-object-page portal-object-page--ride"
       data-object-page="ride"
     >
-      <RideRoomGeography
+      <RidePageGeography
         viewer="stranger"
         routePreview={routePreview}
         samples={EMPTY}
         spans={EMPTY}
         power={EMPTY}
         identity={
-          <RideRoomIdentity
+          <RidePageIdentity
             viewer="stranger"
             riderProfileHref={riderPath(ride.rider)}
             riderDisplayName={name}
@@ -95,7 +95,7 @@ function RidePreview({
                 : ''
             }
             placeLabel={routePreview?.placeLabel}
-            roomTitle={ride.title || preview.title}
+            pageTitle={ride.title || preview.title}
             stats={[
               [
                 'Distance',
@@ -113,11 +113,11 @@ function RidePreview({
           />
         }
       >
-        <RideRoomDoor viewer="stranger" onOpen={openDoor} />
+        <RideAnalysisLink viewer="stranger" onOpen={openDoor} />
         {visibleMedia.length > 0 && (
-          <section className="public-room-photos">
+          <section className="public-page-photos">
             <button
-              className="ride-room-kv"
+              className="ride-page-kv"
               type="button"
               aria-expanded={photosOpen}
               onClick={() => setPhotosOpen((value) => !value)}
@@ -126,7 +126,7 @@ function RidePreview({
               <span aria-hidden="true">›</span>
             </button>
             {photosOpen && (
-              <div className="public-room-photo-grid">
+              <div className="public-page-photo-grid">
                 {visibleMedia.map((item) => (
                   <img key={item.id} src={item.url!} alt="Ride photo" />
                 ))}
@@ -134,7 +134,7 @@ function RidePreview({
             )}
           </section>
         )}
-      </RideRoomGeography>
+      </RidePageGeography>
     </div>
   );
 }
@@ -157,7 +157,7 @@ function ClimbPreview({ preview }: { preview: ClimbPublicPreview }) {
           identity={
             <>
               {climb.elevationProfile?.length ? (
-                <div className="climb-room-glyph">
+                <div className="climb-page-glyph">
                   <ClimbShapeGlyph profile={climb.elevationProfile} />
                 </div>
               ) : null}
@@ -166,7 +166,7 @@ function ClimbPreview({ preview }: { preview: ClimbPublicPreview }) {
           }
         >
           {board && (
-            <div className="public-room-climb-ledger">
+            <div className="public-page-climb-ledger">
               <ClimbLeaderboard
                 viewer="stranger"
                 entries={board.entries.map((entry) => ({
@@ -222,10 +222,10 @@ function RiderPreview({ preview }: { preview: RiderPublicPreview }) {
     : [];
   // The preview contains leaderboard facts, but no canon geometry or canonical
   // climb IDs for these positions. Keep those rows read-only; do not fetch an
-  // authenticated ground or turn an absent join into a fabricated map/census.
+  // authenticated ground or turn an absent join into a fabricated map/ridden count.
   return (
     <div
-      className="profile-page public-room-profile portal-object-page"
+      className="profile-page public-page-profile portal-object-page"
       data-object-page="rider"
     >
       <div className="portal-frame">
@@ -233,7 +233,7 @@ function RiderPreview({ preview }: { preview: RiderPublicPreview }) {
           <ProfileGroundMap ground={EMPTY} onOpenClimb={() => {}} />
           <div className="profile-ground__fade" aria-hidden="true" />
         <div
-          className="public-room-profile-column profile-ledger-layer"
+          className="public-page-profile-column profile-ledger-layer"
           data-object-layer="rider-identity"
         >
           <ProfileLedgerColumn
@@ -269,7 +269,7 @@ function RiderPreview({ preview }: { preview: RiderPublicPreview }) {
             }
             seats={finite(stats?.top10Count) ? stats.top10Count : null}
             crowns={finite(stats?.komCount) ? stats.komCount : null}
-            census={null}
+            riddenCount={null}
             positionsState="ready"
             retryingPositions={false}
             onRetryPositions={() => {}}
@@ -287,7 +287,7 @@ function RiderPreview({ preview }: { preview: RiderPublicPreview }) {
               }))}
           >
             {!canView && (
-              <div className="public-room-private">
+              <div className="public-page-private">
                 <strong>Private profile</strong>
                 <p>Sign in to request full profile access.</p>
               </div>
@@ -372,8 +372,8 @@ export default function PublicPreviewPage() {
   const preview = previewQuery.data;
 
   useLayoutEffect(() => {
-    document.title = previewQuery.isPlaceholderData ? composeBrowserTitle(null, browserRoom(location.pathname))
-      : preview?.seo?.title || composeBrowserTitle(null, browserRoom(location.pathname));
+    document.title = previewQuery.isPlaceholderData ? composeBrowserTitle(null, browserPageName(location.pathname))
+      : preview?.seo?.title || composeBrowserTitle(null, browserPageName(location.pathname));
   }, [location.pathname, preview?.seo?.title, previewQuery.isPlaceholderData]);
 
   useEffect(() => {
@@ -388,11 +388,11 @@ export default function PublicPreviewPage() {
     robots.content = preview.seo.robots || 'index,follow';
   }, [preview?.seo?.robots, preview?.seo?.title]);
   return (
-    <PublicRoom key={location.pathname}>
+    <PublicPageShell key={location.pathname}>
       {(openDoor) => {
         if (previewQuery.isLoading)
-          return <RoomLoading />;
-        if (route && previewQuery.isError && (previewQuery.error as { statusCode?: number }).statusCode !== 404) return <RoomLoading failure={<StateRow title="Preview unavailable" action={<button onClick={() => void previewQuery.refetch()}>Try again</button>} />} />;
+          return <PageLoading />;
+        if (route && previewQuery.isError && (previewQuery.error as { statusCode?: number }).statusCode !== 404) return <PageLoading failure={<StateRow title="Preview unavailable" action={<button onClick={() => void previewQuery.refetch()}>Try again</button>} />} />;
         if (!route || !preview || previewQuery.isError)
           return (
             <FailureSheet title="Preview unavailable" description={null} doors={[{ label: 'Feed', href: '/' }, { label: 'Map', href: '/climbs' }, { label: 'Rides', href: '/profile?tab=rides' }]} />
@@ -403,6 +403,6 @@ export default function PublicPreviewPage() {
           return <ClimbPreview preview={preview} />;
         return <RiderPreview preview={preview} />;
       }}
-    </PublicRoom>
+    </PublicPageShell>
   );
 }

@@ -1,5 +1,5 @@
 import { BackgroundFetchIndicator } from '../loading/LoadingSystem';
-import { RetainedRoom } from './FailureSpecies';
+import { RetainedPage } from './FailureSpecies';
 import * as React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -529,7 +529,7 @@ export function PortalShell({
         </header>
 
         <main className="portal-shell__content">
-          <RetainedRoom>{children}</RetainedRoom>
+          <RetainedPage>{children}</RetainedPage>
         </main>
       </div>
     </div>

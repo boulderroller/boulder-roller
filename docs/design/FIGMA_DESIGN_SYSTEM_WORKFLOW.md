@@ -142,7 +142,7 @@ Wire each Figma component to its React counterpart via `.figma.ts` mapping files
 | File | Purpose |
 |---|---|
 | `web/portal/src/styles/globals.css` | Semantic CSS tokens (the source of truth for color values in code) |
-| `web/portal/src/styles/portal-surface-polish.css` | Portal-specific surface tokens and component styles |
+| `web/portal/src/styles/portal-surfaces.css` | Portal-specific surface tokens and component styles |
 | `web/portal/src/styles/portal-spine.css` | Core portal layout and component styles |
 | `web/portal/src/components/ui/` | All shadcn/ui components (owned, editable) |
 | `web/portal/src/components/ui/button.tsx` | Button — the canonical example of CVA variant pattern |

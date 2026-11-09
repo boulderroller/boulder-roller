@@ -178,7 +178,9 @@ Paths below are relative to `protocol/anchor/programs/boulder_rollers/src/`.
 ## Check it yourself
 
 Results are from CI on commit `31d6171e0` (5 Nov 2026) unless marked local.
-Program integration is from CI on `5963e455b`, the commit this copy was cut from, which moved fixed test ports out of Linux's ephemeral port range. The other commits after `31d6171e0` change only docs, one comment, two unused build scripts and two test ride files.
+Program integration is from CI on `5963e455b`, the commit this copy was first cut from, which moved fixed test ports out of Linux's ephemeral port range. The other commits between `31d6171e0` and `5963e455b` change only docs, one comment, two unused build scripts and two test ride files.
+
+This copy was updated on 9 Nov 2026 from `47f772346`. Since `5963e455b`, main changed how the backend pages and orders database reads (notifications, account export, photo order), with new tests, and renamed files and identifiers under the naming standard in `docs/process/AGENTS.md`. The program did not change. Results marked 9 Nov were rerun locally on `47f772346`.
 
 | What | Command | Result |
 |---|---|---|
@@ -186,15 +188,15 @@ Program integration is from CI on `5963e455b`, the commit this copy was cut from
 | Same, devnet build | `cargo test -p boulder_rollers --features stage1-devnet` | 159 passed |
 | Program integration on a local validator | `python3 protocol/anchor/scripts/run-stage1-ci-group.py --group <name> ...`; exact arguments, groups and toolchain (Agave 2.1.21, Anchor 0.29) in `.github/workflows/solana-ci.yml` | 902 passed across eight groups and three builds. The 30 pending need the test-setup instructions, which only the local build has. |
 | Ride parser | `cd workout-parse && cargo test && cargo test --features osm` | 192 passed, then 295 with OSM. PyO3 0.21 needs Python 3.12 or older; set `PYO3_PYTHON` if your default is newer. |
-| Backend | `cd backend && pip install -r requirements.txt ../workout-parse && pytest` | 3,962 passed, 145 skipped, about 4 min in CI on Python 3.11. Run `npm ci` in `indexer/` first; one backend test drives the indexer's TypeScript. The tests start their own temporary Postgres, so `initdb` and `pg_ctl` must be on PATH; on macOS also set `LC_ALL=en_US.UTF-8`, and run one suite at a time. Take the placeholder environment from `.github/workflows/backend-ci.yml`. On macOS one Linux-only process test skips, giving 3,961 and 146. |
-| Indexer | `cd indexer && npm ci && npm test` | 299 passed |
-| Portal | `cd web/portal && npm ci && npm run perf:release` | Unit tests, build, typecheck of the gated file set and 15 static gates |
-| iOS | Steps in `.github/workflows/ios-ci.yml` (Xcode 26) | 674 tests, 1 skipped |
+| Backend | `cd backend && pip install -r requirements.txt ../workout-parse && pytest` | 3,962 passed, 145 skipped, about 4 min in CI on Python 3.11. Run `npm ci` in `indexer/` first; one backend test drives the indexer's TypeScript. The tests start their own temporary Postgres, so `initdb` and `pg_ctl` must be on PATH; on macOS also set `LC_ALL=en_US.UTF-8`, and run one suite at a time. Take the placeholder environment from `.github/workflows/backend-ci.yml`. On macOS one Linux-only process test skips, giving 3,961 and 146. 9 Nov, macOS: 3,968 passed, 146 skipped. |
+| Indexer | `cd indexer && npm ci && npm test` | 299 passed; the same on 9 Nov |
+| Portal | `cd web/portal && npm ci && npm run perf:release` | Unit tests, build, typecheck of the gated file set and 15 static gates; passes on 9 Nov |
+| iOS | Steps in `.github/workflows/ios-ci.yml` (Xcode 26) | 674 tests, 1 skipped; the same on 9 Nov, iPhone 17 simulator |
 
 The program, parser, backend, indexer and portal commands above were also run
-on this copy itself, on macOS, before it was published, with the results
-shown. This copy starts from one commit without the working repository's
-history, so that history and its CI runs cannot be checked from here.
+on the first published copy itself, on macOS, with the results shown. This
+copy has its own short history, not the working repository's, so that history
+and its CI runs cannot be checked from here.
 
 ## Which document wins
 
@@ -218,6 +220,9 @@ they are kept as history, not current.
   and `docs/DUNG_BEETLE_CYCLING_SPEC.html`) and four iOS screenshots of real
   ride routes.
 - A personal power profile, `tools/corpus/power_profile.html`.
+- The portal's design workshop (`web/portal/workshop/`): design drafts, their
+  tests and the scripts that build and deploy them, apart from one recorded
+  ride file that the website's terrain check reads.
 
 Links into those paths will not resolve. Apart from this file, a note at the
 top of `CLAUDE.md`, `README.md`, which is rewritten for this copy, and
@@ -228,13 +233,17 @@ file is as it stands on main, with these edits:
   `web/portal/workshop/data/in-the-bag.json` and
   `history/ride-room-2026-09-05/build/capture-fixture.json.gz`) has every GPS
   point within 1 km of its start and end moved to the edge of that circle.
-  Timestamps, power, speed, distance and elevation are unchanged, and the two
-  hashes that pin the JSON copy are updated.
+  Timestamps, power, speed, distance and elevation are unchanged, and the hash
+  that pins the JSON copy is updated.
 - A server address in three scripts, one doc and one end-to-end test is
   replaced with a placeholder.
 - One email address in an iOS test fixture is replaced.
+- `web/portal/package.json` drops its four workshop scripts.
 - The author line of `docs/rfcs/CLIMB_DETECTION_V3_ARCHITECTURE.md` named the
   wrong person and now reads "the founder".
+- `docs/FRESHEST_SPEC.md`, `docs/PROTOCOL_TRUTHS.md` and
+  `docs/rfcs/TOKENOMICS_PARAMETERS.md` carry corrections to the stage 1
+  staking-token facts, made in this copy on 9 Nov 2026.
 
 ## How it was built
 

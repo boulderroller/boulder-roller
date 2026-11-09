@@ -1,6 +1,6 @@
 """Paging helpers for the pinned postgrest-py client (0.13.x).
 
-Two facts about that client's wire format break naive offset pagination:
+Three facts about that client break naive pagination and filtering:
 
 * ``range(start, end)`` sends the header ``Range: start-(end - 1)``. Its end is
   exclusive, unlike PostgREST's inclusive header and supabase-js, so
@@ -9,18 +9,22 @@ Two facts about that client's wire format break naive offset pagination:
 * Every ``order()`` call becomes its own ``order`` query parameter, and
   PostgREST applies only the first one. Chained tie-breakers are dropped, and
   rows that tie on the first column can repeat or go missing between pages.
+* It has no ``or_()``, so an ``or`` filter, such as a keyset cursor over
+  several columns, cannot be written with the client's filter methods.
 
 Paging loops keep a :class:`PageCursor`: it advances by ``len(page)``, ends the
 read on a page too short to be full under either client convention, and raises
 rather than read forever when a server or a fake ignores the window. Sort keys
-go through :func:`order_by`. A read that must return exactly ``n`` rows, such as
-an API page or a bounded scan, uses :func:`window`, whose ``limit``/``offset``
-parameters mean the same thing in every client version.
+go through :func:`order_by`, ``or`` filters through :func:`any_of`, and a
+keyset read resumes with :func:`after`. A read that must return exactly ``n``
+rows, such as an API page or a bounded scan, uses :func:`window`, whose
+``limit``/``offset`` parameters mean the same thing in every client version.
 """
 
 from __future__ import annotations
 
-from typing import Any, Sized, TypeVar
+import json
+from typing import Any, Sequence, Sized, TypeVar
 
 _QueryT = TypeVar("_QueryT")
 
@@ -79,6 +83,39 @@ def order_by(query: _QueryT, *columns: str, desc: bool = False) -> _QueryT:
     query_any: Any = query
     joined = ",".join(columns)
     return query_any.order(joined, desc=True) if desc else query_any.order(joined)
+
+
+def any_of(query: _QueryT, *conditions: str) -> _QueryT:
+    """Keep rows that meet any of ``conditions``: PostgREST's ``or`` filter.
+
+    Each condition is ``column.operator.value`` or a nested ``and(...)``. The
+    parameter is added the way newer clients' ``or_()`` adds it.
+    """
+    if not conditions:
+        raise ValueError("any_of needs at least one condition")
+    query_any: Any = query
+    query_any.params = query_any.params.add("or", "(" + ",".join(conditions) + ")")
+    return query_any
+
+
+def after(query: _QueryT, columns: Sequence[str], values: Sequence[Any]) -> _QueryT:
+    """Keep rows that sort after ``values`` on ascending ``columns``.
+
+    Over several columns this is the row comparison ``(a, b) > (x, y)``:
+    ``a > x``, or ``a = x and b > y``. Values are JSON-quoted, which suits the
+    schema-owned keys a keyset read pages on.
+    """
+    if not columns or len(columns) != len(values):
+        raise ValueError("after needs one value for each column")
+    query_any: Any = query
+    if len(columns) == 1:
+        return query_any.gt(columns[0], values[0])
+    clauses = []
+    for index, column in enumerate(columns):
+        terms = [f"{columns[j]}.eq.{json.dumps(values[j])}" for j in range(index)]
+        terms.append(f"{column}.gt.{json.dumps(values[index])}")
+        clauses.append(terms[0] if len(terms) == 1 else "and(" + ",".join(terms) + ")")
+    return any_of(query_any, *clauses)
 
 
 def window(query: _QueryT, offset: int, size: int) -> _QueryT:

@@ -98,10 +98,6 @@
       },
       "scripts": {
             "dev": "vite",
-            "workshop": "vite --config workshop/vite.config.ts",
-            "workshop:build": "vite build --config workshop/vite.config.ts",
-            "workshop:test": "tsx --test workshop/tests/*.test.ts",
-            "workshop:typecheck": "tsc -p workshop/tsconfig.json --pretty false",
             "build": "vite build",
             "typecheck:gate": "tsc --project tsconfig.gate.json --pretty false",
     "test:sentry": "tsx --test scripts/test-sentry.mts",

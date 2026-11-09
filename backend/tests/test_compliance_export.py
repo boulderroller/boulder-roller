@@ -57,7 +57,11 @@ for path in sorted(SQL.glob("[0-9][0-9][0-9]_*.sql")):
 
 
 class ExportClient:
-    """PostgREST double with a two-row server cap independent of page size."""
+    """PostgREST double with a two-row server cap independent of page size.
+
+    Like the pinned client it has no or_(); composite keyset reads run through
+    tests.pinned_postgrest instead.
+    """
     def __init__(self, failure=None):
         self.failure = failure
         self.calls = []
@@ -86,7 +90,6 @@ class ExportQuery:
     def __init__(self, client, table):
         self.client, self.name = client, table
         self.filters, self.greater = {}, {}
-        self.disjunction = None
         self.columns, self.keys = "*", []
         self.start, self.end = 0, 1
 
@@ -106,12 +109,8 @@ class ExportQuery:
         self.greater[key] = value
         return self
 
-    def or_(self, value):
-        self.disjunction = value
-        return self
-
     def order(self, key, desc=False):
-        self.keys.append(key)
+        self.keys = self.keys or key.split(",")  # PostgREST applies the first order parameter only.
         return self
 
     def limit(self, value):
@@ -129,17 +128,6 @@ class ExportQuery:
         rows = [r for r in self.client.rows.get(self.name, [])
                 if all((r.get(k) in v if isinstance(v, list) else r.get(k) == v) for k, v in self.filters.items())
                 and all(r.get(k) > v for k, v in self.greater.items())]
-        if self.disjunction:
-            groups = re.split(r",(?![^()]*\))", self.disjunction)
-            def matches(row, group):
-                terms = group[4:-1].split(",") if group.startswith("and(") else [group]
-                for term in terms:
-                    key, operator, raw = term.split(".", 2)
-                    value = json.loads(raw)
-                    if not (row[key] == value if operator == "eq" else row[key] > value):
-                        return False
-                return True
-            rows = [r for r in rows if any(matches(r, g) for g in groups)]
         rows.sort(key=lambda r: tuple(r[k] for k in self.keys))
         rows = rows[self.start:min(self.end + 1, self.start + 2)]
         if self.columns != "*":
@@ -281,7 +269,7 @@ def test_export_double_rejects_nonexistent_tables():
 
 
 @pytest.mark.asyncio
-async def test_keyset_pagination_survives_deletion_and_composite_keys(monkeypatch):
+async def test_keyset_pagination_survives_deletion(monkeypatch):
     from app.services.data_export import ExportReader
     client = ExportClient()
     real_execute = ExportQuery.execute
@@ -293,12 +281,60 @@ async def test_keyset_pagination_survives_deletion_and_composite_keys(monkeypatc
     async def run(fn): return fn()
     reader = ExportReader(client, run)
     assert [r["id"] for r in await reader.rows("privacy_zones", {"user_id": UID})] == list("01234")
-    client.rows["leaderboard_entries"] = [
-        {"user_id": UID, "segment_id": segment, "epoch_number": epoch}
-        for segment in ("a", "b") for epoch in range(5)
-    ]
-    rows = await reader.rows("leaderboard_entries", {"user_id": UID}, "segment_id,epoch_number")
-    assert len(rows) == 10
+
+
+@pytest.mark.asyncio
+async def test_account_export_reads_every_composite_key_row_through_the_pinned_client():
+    # The real pinned client has no or_(), and PostgREST applies only its first
+    # order parameter. Rows tie on their first key, and page boundaries cut
+    # those runs.
+    from app.services.data_export import export_account
+    from tests.pinned_postgrest import PinnedPostgrest
+
+    wallet = "fixture-wallet"
+    datasets = {
+        "leaderboard_entries": ("segment_id", "epoch_number", [
+            {"user_id": UID, "segment_id": str(UUID(int=segment)), "epoch_number": epoch}
+            for segment in (1, 2) for epoch in range(600)]),
+        "ride_effort_completion_windows": ("ride_id", "vault_id", [
+            {"user_id": UID, "ride_id": str(UUID(int=ride)), "vault_id": vault}
+            for ride in (3, 4) for vault in range(1, 301)]),
+        "vault_leaderboards": ("vault_signature", "rank", [
+            {"wallet": wallet, "vault_signature": f"vault-{vault:03d}", "rank": rank}
+            for vault in range(60) for rank in range(1, 11)]),
+    }
+    tables = {table: list(rows) for table, (_, _, rows) in datasets.items()}
+    tables["leaderboard_entries"].append(
+        {"user_id": str(UUID(int=99)), "segment_id": str(UUID(int=1)), "epoch_number": 0})
+    tables["users"] = [{"id": UID, "wallet": wallet}]
+    server = PinnedPostgrest(tables)
+    async def run(fn): return fn()
+
+    exported = await export_account(server.client, run, UID)
+
+    for table, (first, second, rows) in datasets.items():
+        assert [(row[first], row[second]) for row in exported[table]] == sorted(
+            (row[first], row[second]) for row in rows), table
+
+
+def test_ride_download_streams_every_canon_evidence_row_through_the_pinned_client(monkeypatch):
+    from tests.pinned_postgrest import PinnedPostgrest
+
+    ride_id = "22222222-2222-4222-8222-222222222222"
+    # One ride file evaluated under successive parser versions: every row ties on its hash.
+    evidence = [{"ride_id": ride_id, "ride_hash_hex": "ab" * 32, "ride_parser_version": version,
+                 "evidence_version": "canon_traversal_evidence_v1"} for version in range(1, 6)]
+    server = PinnedPostgrest({"rides": [{"id": ride_id, "user_id": UID}],
+                              "canon_traversal_evidence": evidence})
+    monkeypatch.setattr(compliance, "ComplianceRepository", lambda: repository(server.client))
+    app = FastAPI()
+    app.include_router(compliance.router)
+    app.dependency_overrides[get_current_user] = lambda: AuthenticatedUser("fixture-wallet", UID, "device")
+    with TestClient(app) as http:
+        response = http.get(f"/compliance/export/rides/{ride_id}/data")
+
+    assert response.status_code == 200
+    assert [row["ride_parser_version"] for row in response.json()["canon_traversal_evidence"]] == [1, 2, 3, 4, 5]
 
 
 @pytest.mark.asyncio

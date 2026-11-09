@@ -14,7 +14,7 @@ export default function ClimbRides({ vaultId, full = false, best = false, rank }
   const path = useClimbPanelPath();
   const history = useQuery({ placeholderData: undefined, queryKey: ['climb-rides', vaultId, user?.id], queryFn: () => api.getMyVaultEffortHistory(vaultId), enabled: Boolean(user), staleTime: 60_000 });
   if (!user) return null;
-  if (best) return <p className="climb-room-yours">Your best <b>{history.isPending ? <Slot variant="number" /> : !history.isError && history.data?.bestTimeSeconds ? formatRaceTime(history.data.bestTimeSeconds) : ABSENT_VALUE}</b> · {formatOrdinal(rank)}</p>;
+  if (best) return <p className="climb-page-yours">Your best <b>{history.isPending ? <Slot variant="number" /> : !history.isError && history.data?.bestTimeSeconds ? formatRaceTime(history.data.bestTimeSeconds) : ABSENT_VALUE}</b> · {formatOrdinal(rank)}</p>;
   const completeRideHistory = !history.isError && history.data && history.data.efforts.length === history.data.totalCount && history.data.efforts.every(effort => Boolean(effort.rideId));
   const rideCount = completeRideHistory ? new Set(history.data!.efforts.map(effort => effort.rideId)).size : null;
   if (!full) return <div className="climb-ledger-card"><ClimbNavigationRow to={path('rides')} label="Your history" value={history.isPending ? <Slot /> : rideCount === null ? ABSENT_VALUE : `${formatInteger(rideCount)} rides`} /></div>;

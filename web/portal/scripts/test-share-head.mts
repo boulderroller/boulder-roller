@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GET as handler } from '../api/share.ts';
 
-for (const [kind, room] of [['climbs', 'Climb'], ['rides', 'Ride'], ['riders', 'Rider']]) {
+for (const [kind, pageName] of [['climbs', 'Climb'], ['rides', 'Ride'], ['riders', 'Rider']]) {
   test(`crawler head: ${kind}, existing description, no money or credentials`, async () => {
     const original = globalThis.fetch;
     globalThis.fetch = async (url, options) => {
@@ -10,12 +10,12 @@ for (const [kind, room] of [['climbs', 'Climb'], ['rides', 'Ride'], ['riders', '
       assert.equal(options?.cache, 'no-store');
       assert.equal(options?.credentials, 'omit');
       assert.equal(new Headers(options?.headers).has('authorization'), false);
-      return Response.json({ contractVersion: 'public_preview.v1', objectType: room.toLowerCase(), title: 'A <hill> & "name"', seo: {description: 'Philadelphia', robots: 'index,follow'}, previewPolicy: {privacy: {canView: true}}, calEarned: 999 });
+      return Response.json({ contractVersion: 'public_preview.v1', objectType: pageName.toLowerCase(), title: 'A <hill> & "name"', seo: {description: 'Philadelphia', robots: 'index,follow'}, previewPolicy: {privacy: {canView: true}}, calEarned: 999 });
     };
     try {
       const response = await handler(new Request(`https://app.boulderroller.xyz/api/share?kind=${kind}&id=abc`, {headers: {cookie: 'private=secret', authorization: 'Bearer secret'}}));
       const html = await response.text();
-      assert.match(html, new RegExp(`A &lt;hill&gt; &amp; &quot;name&quot; · ${room} · Boulder Roller`));
+      assert.match(html, new RegExp(`A &lt;hill&gt; &amp; &quot;name&quot; · ${pageName} · Boulder Roller`));
       assert.match(html, /content="Philadelphia"/);
       assert.match(html, new RegExp(`https://app.boulderroller.xyz/api/og\\?kind=${kind}&(?:amp;)?id=abc`));
       assert.match(html, /summary_large_image/);

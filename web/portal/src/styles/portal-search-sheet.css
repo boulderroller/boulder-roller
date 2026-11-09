@@ -5,7 +5,7 @@
  * A field, scope words, rows. Results group by kind under All; each row is
  * glyph · title / subtitle · one trailing value. Recent is rows, not chips.
  * Desktop: a 640px sheet hung under the header. Mobile: the drawer, full
- * height, with Search / Done in its bar. Loads after the guide room.
+ * height, with Search / Done in its bar. Loads after the guide page.
  */
 
 [data-slot="dialog-content"].portal-responsive-modal__dialog-content:has(.portal-sheet) {

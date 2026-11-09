@@ -28,7 +28,7 @@ export default function ProofPage() {
     );
   }
   return (
-    <div className="receipt-room" aria-busy="true">
+    <div className="receipt-page" aria-busy="true">
       <div className="receipt-column">
         <h1>Transaction</h1>
       </div>

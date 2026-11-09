@@ -26,8 +26,8 @@ final class WkgPrivacyTests: XCTestCase {
     }
 
     @MainActor
-    private func loadedModel(sharing: Bool = false) -> PrivacyRoomModel {
-        let model = PrivacyRoomModel()
+    private func loadedModel(sharing: Bool = false) -> PrivacyModel {
+        let model = PrivacyModel()
         model.cachedSettings = { nil }
         model.cachedZones = { nil }
         var initial = try! settings()
@@ -78,8 +78,8 @@ final class WkgPrivacyTests: XCTestCase {
     }
 
     @MainActor
-    func testUnavailableRoomNeverWrites() async {
-        let model = PrivacyRoomModel()
+    func testUnavailableScreenNeverWrites() async {
+        let model = PrivacyModel()
         var calls = 0
         model.putShareWkg = { _ in
             calls += 1
@@ -187,7 +187,7 @@ final class WkgPrivacyTests: XCTestCase {
     }
 
     @MainActor
-    func testReopenedRoomCannotPublishConsentWhileWriteIsPending() async throws {
+    func testReopenedScreenCannotPublishConsentWhileWriteIsPending() async throws {
         let started = expectation(description: "PUT pending")
         let gate = WkgReadGate(started: started, heldMethod: "PUT")
         DelayedWkgURLProtocol.gate = gate

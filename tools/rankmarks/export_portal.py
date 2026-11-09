@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Install the rank-mark bake as typed portal assets.
+"""Install the rank-mark render output as typed portal assets.
 
-The bake itself stays ignored. This exporter validates the numbered and podium
+The render output itself stays ignored. This exporter validates the numbered and podium
 manifest contracts before replacing only its own ``src/assets/rankmarks``
 directory with density-aware PNG imports and a typed lookup table.
 """
@@ -30,7 +30,7 @@ DEFAULT_DESTINATION = (
 
 
 class ExportError(ValueError):
-    """The bake or destination does not satisfy the portal import contract."""
+    """The render output or destination does not satisfy the portal import contract."""
 
 
 def parse_args() -> argparse.Namespace:
@@ -140,18 +140,18 @@ def validate_png(path: Path, expected_pixels: int) -> None:
         header = path.read_bytes()[:24]
     except FileNotFoundError as error:
         raise ExportError(
-            f"missing baked sprite: {path}\n"
-            "Regenerate the bake with /Applications/Blender.app/Contents/MacOS/Blender "
-            "-b -P tools/rankmarks/bake.py, followed by the same command with "
+            f"missing rendered sprite: {path}\n"
+            "Regenerate the sprites with /Applications/Blender.app/Contents/MacOS/Blender "
+            "-b -P tools/rankmarks/render_production_assets.py, followed by the same command with "
             "-- --podium-only."
         ) from error
 
     if len(header) != 24 or header[:8] != b"\x89PNG\r\n\x1a\n":
-        raise ExportError(f"baked sprite is not a valid PNG: {path}")
+        raise ExportError(f"rendered sprite is not a valid PNG: {path}")
     width, height = struct.unpack(">II", header[16:24])
     if (width, height) != (expected_pixels, expected_pixels):
         raise ExportError(
-            f"baked sprite has {width}x{height}px dimensions, expected "
+            f"rendered sprite has {width}x{height}px dimensions, expected "
             f"{expected_pixels}x{expected_pixels}px: {path}"
         )
 

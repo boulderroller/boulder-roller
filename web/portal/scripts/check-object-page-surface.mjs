@@ -28,7 +28,7 @@ async function readRepo(relativePath) {
 }
 
 const rideView = (await readPortal('src/pages/RideViewCore.tsx'))
-  + (await readPortal('src/components/ride/RideRoom.tsx')); // Shared room composition retains the same object grammar.
+  + (await readPortal('src/components/ride/RidePageComponents.tsx')); // Shared page composition retains the same object grammar.
 const climbView = await readPortal('src/pages/ClimbView.tsx');
 const climbIdentity = await readPortal('src/components/climb/ClimbIdentity.tsx');
 const climbGeography = await readPortal('src/components/climb/ClimbGeography.tsx');
@@ -43,7 +43,7 @@ const vaultCreationModal = await readPortal('src/components/vault/CanonVaultCrea
 const vaultCreationHook = await readPortal('src/components/vault/useCanonVaultCreation.ts');
 const apiClient = await readPortal('src/lib/api.ts');
 const profile = await readPortal('src/pages/Profile.tsx');
-const polishCss = await readPortal('src/styles/portal-surface-polish.css');
+const surfacesCss = await readPortal('src/styles/portal-surfaces.css');
 const spineCss = await readPortal('src/styles/portal-spine.css');
 const routeSpec = await readPortal('e2e/portal-v2-routes.spec.ts');
 const packageJson = JSON.parse(await readPortal('package.json'));
@@ -252,7 +252,7 @@ for (const needle of [
   '.portal-object-page--climb',
   '.portal-object-page--rider',
 ]) {
-  assertContains(polishCss, needle, 'portal-surface-polish.css');
+  assertContains(surfacesCss, needle, 'portal-surfaces.css');
 }
 
 for (const needle of [

@@ -3,7 +3,7 @@ import { readFileSync, mkdirSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
 import { cardElement } from '../server/share-card';
-import { instrumentSamples, pathFor } from '../src/components/ride/rideRoomModel';
+import { instrumentSamples, pathFor } from '../src/components/ride/ridePageModel';
 import { fixtures } from '../scripts/share-card-fixtures.mts';
 
 const capture = JSON.parse(gunzipSync(readFileSync(path.resolve('../../history/ride-room-2026-09-05/build/capture-fixture.json.gz'))).toString());
@@ -39,10 +39,10 @@ async function setup(page: Page, projection: unknown = presentation) {
   });
 }
 const values = ['128.7 km', '1,013 m', '5:12:07'];
-test('02 same ride presentation drives room, analysis and public share facts', async ({ page }) => {
+test('02 same ride presentation drives page, analysis and public share facts', async ({ page }) => {
   await setup(page);
   await page.goto('/activities/ride-1');
-  for (const value of values) await expect(page.locator('.ride-room-card')).toContainText(value);
+  for (const value of values) await expect(page.locator('.ride-page-card')).toContainText(value);
   await page.goto('/activities/ride-1/analysis');
   for (const value of values) await expect(page.locator('.ride-analysis-stats')).toContainText(value);
   const publicProjection = { ...presentation, metricBasis: { ...presentation.metricBasis, viewerProjection: 'public' } };
@@ -86,7 +86,7 @@ for (const width of [1440, 390]) test(`04 readable analysis text and separated p
   await page.goto('/activities/ride-1/analysis');
   await expect(page.locator('.ride-instrument')).toHaveCount(4);
   await page.evaluate(() => document.fonts.ready);
-  const violations = await page.locator('.ride-analysis-room').evaluate(root => {
+  const violations = await page.locator('.ride-analysis-page').evaluate(root => {
     return [...root.querySelectorAll('*')].flatMap(el => {
       if (![...el.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent?.trim())) return [];
       if (el.closest('.ride-instrument-table,.ride-analysis-keyboard')) return [];
@@ -168,7 +168,7 @@ for (const known of [true, false]) test(`09 trace and maximum ${known ? 'retain 
     await expect(maximum).toContainText('Native power samples');
   } else {
     await expect(maximum).toHaveCount(0);
-    await expect(page.locator('.ride-analysis-room')).not.toContainText('Native power samples');
+    await expect(page.locator('.ride-analysis-page')).not.toContainText('Native power samples');
   }
 });
 
@@ -211,9 +211,9 @@ for (const width of [1440, 390]) test(`lane B local evidence at ${width}`, async
     await page.screenshot({ path: path.join(evidenceDir, `${name}-${width}.png`), fullPage: true, animations: 'disabled' });
   };
   await page.goto('/activities/ride-1');
-  await expect(page.locator('.ride-room-card')).toContainText('128.7 km');
-  await expect(page.locator('.ride-room-climbs a')).toHaveCount(3);
-  await save('ride-room');
+  await expect(page.locator('.ride-page-card')).toContainText('128.7 km');
+  await expect(page.locator('.ride-page-climbs a')).toHaveCount(3);
+  await save('ride-page');
   await page.goto('/activities/ride-1/analysis');
   await expect(page.locator('.ride-instrument')).toHaveCount(4);
   await save('analysis-whole');

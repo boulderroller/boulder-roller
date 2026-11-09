@@ -40,6 +40,6 @@ describe('canonical climb detail contract', () => {
     expect(markup).not.toContain('Vault Balances');
     expect(markup).not.toContain('All-time fastest recorded rides');
     expect(markup).toContain('Registration');
-    expect(markup).not.toContain('data-climb-figure='); // Compatibility values never fill the new room.
+    expect(markup).not.toContain('data-climb-figure='); // Compatibility values never fill the new page.
   });
 });

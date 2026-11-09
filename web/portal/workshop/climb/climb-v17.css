@@ -1,5 +1,0 @@
-.climb-page .climb-stack{display:grid;gap:var(--v15-space-28);min-width:0}
-.climb-page .climb-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:var(--v15-space-16);align-items:start}
-.climb-page .climb-controls{display:flex;flex-wrap:wrap;gap:var(--v15-space-12);align-items:center}
-.climb-page .climb-actions{display:flex;flex-wrap:wrap;gap:var(--v15-space-12);padding:var(--v15-space-16) var(--v15-card-x)}
-@media(max-width:1100px){.climb-page .climb-columns{grid-template-columns:minmax(0,1fr)}}

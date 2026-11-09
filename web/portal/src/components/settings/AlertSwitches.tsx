@@ -62,7 +62,7 @@ export function AlertSwitches({ headingId }: { headingId: string }) {
         {meta ? <span className="settings-sheet__meta">{meta}</span> : null}
       </div>
       {loading ? (
-        <div className="settings-room__deferred">Loading alerts</div>
+        <div className="settings-page__deferred">Loading alerts</div>
       ) : !preferences ? (
         <div className="settings-row">
           <span className="settings-row__sub">Could not load alerts</span>

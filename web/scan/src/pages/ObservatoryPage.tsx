@@ -1,5 +1,5 @@
 import {LedgerRow} from '@/components/ExplorerPrimitives';
-import {useRoomSheet} from '@/components/RoomSheet';
+import {useExpandableSheet} from '@/components/ExpandableSheet';
 import {IndexedStamp} from '@/components/FreshnessStamp';
 import { useCallback, useEffect, useRef, useState } from "react";
 import { composeBrowserTitle } from "../../../portal/server/browser-title";
@@ -9,7 +9,7 @@ import { getObservatory } from "@/lib/api";
 import { formatAtomic, formatDuration } from "@/lib/format";
 import ObservatoryGround from "@/components/ground/ObservatoryGround";
 import ObservatorySearch from "@/components/ObservatorySearch";
-import type { GroundClimb, RoomEvent, WeekProjection } from "@/types";
+import type { GroundClimb, DisplayEvent, WeekProjection } from "@/types";
 
 const EMPTY_CLIMBS: GroundClimb[] = [];
 const words = {
@@ -58,7 +58,7 @@ export function weekRows(week: WeekProjection) {
     ],
   ].filter((row): row is string[] => Boolean(row[2]));
 }
-function eventTime(value: RoomEvent["block_time"]) {
+function eventTime(value: DisplayEvent["block_time"]) {
   if (value == null) return undefined;
   const d = new Date(
     typeof value === "number" || /^\d+$/.test(value)
@@ -76,7 +76,7 @@ function eventTime(value: RoomEvent["block_time"]) {
     timeZone: "UTC",
   }).replaceAll(",", "");
 }
-function valueText(event: RoomEvent) {
+function valueText(event: DisplayEvent) {
   if (!event.value) return null;
   const { amount, unit } = event.value;
   if (unit === "CAL" || unit === "DUNG") {
@@ -91,7 +91,7 @@ function valueText(event: RoomEvent) {
   if (unit === "meters") return `${(Number(amount) / 1000).toFixed(1)} km`;
   return `${amount} ${unit}`;
 }
-export function RecentRow({ event }: { event: RoomEvent }) {
+export function RecentRow({ event }: { event: DisplayEvent }) {
   if (!event.kind || !event.object || !event.signature) return null;
   return (
     <LedgerRow to={`/tx/${event.signature}`} data-event-kind={event.kind}
@@ -102,7 +102,7 @@ export function RecentRow({ event }: { event: RoomEvent }) {
 }
 export default function ObservatoryPage() {
   const result = useInfiniteQuery({
-    queryKey: ["observatory-room"],
+    queryKey: ["observatory"],
     queryFn: ({ pageParam }) => getObservatory(pageParam),
     initialPageParam: 0,
     getNextPageParam: (last) => last.events_next_offset ?? undefined,
@@ -112,7 +112,7 @@ export default function ObservatoryPage() {
     week = data?.week ?? {};
   const climbs = data?.climbs ?? EMPTY_CLIMBS;
   const [chosen, setChosen] = useState<GroundClimb | null>(null);
-  const {sheet, expanded, grip} = useRoomSheet();
+  const {sheet, expanded, grip} = useExpandableSheet();
   const end = useRef<HTMLDivElement>(null);
   const choose = useCallback((c: GroundClimb) => setChosen(c), []);
   const selected = chosen
@@ -167,8 +167,8 @@ export default function ObservatoryPage() {
   });
   return (
     <div
-      className="observatory-room"
-      data-room-loaded={Boolean(data)}
+      className="observatory-page"
+      data-page-loaded={Boolean(data)}
       aria-busy={result.isLoading}
     >
       <ObservatoryGround climbs={climbs} onChoose={choose} />

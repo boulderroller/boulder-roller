@@ -1,7 +1,0 @@
-.baseline-workshop[hidden]{display:none}
-.baseline-notice,.baseline-stale{padding:10px 24px;font-size:12px;color:#48523e;background:#eef1e8}.baseline-workshop .preview-frame{height:1000px}.baseline-workshop .preview-frame[data-viewport=phone]{width:390px;height:844px}.baseline-workshop .data-dialog textarea{min-height:240px}.baseline-workshop .workshop-info code{overflow-wrap:anywhere}.baseline-workshop .workshop-info a{text-decoration:underline}.baseline-workshop .workshop-subbar>span{overflow-wrap:anywhere;min-width:0}@media(max-width:600px){.baseline-workshop .workshop-subbar{gap:8px;align-items:flex-start;flex-wrap:wrap}.baseline-workshop .workshop-subbar>div{flex-wrap:wrap}.baseline-workshop .workshop-status{gap:8px;flex-wrap:wrap}.baseline-workshop .preview-frame[data-viewport=fit]{height:844px}.baseline-workshop .scenario-picker{max-width:100%}}
-
-.baseline-reference-tabs{padding:10px 16px;flex-wrap:wrap;gap:6px;border-bottom:1px solid #e7e8e1}.baseline-reference .reference-image img{height:auto}.baseline-reference>p a{text-decoration:underline}.baseline-reference .reference-heading button{display:flex;align-items:center;justify-content:center;min-width:28px;min-height:28px}
-@media(max-width:850px){.baseline-workshop .with-reference.viewport-desktop .reference-panel{width:100%}.baseline-reference{border-left:0;border-top:1px solid #d0d2c9}}
-
-.baseline-workshop .data-actions{flex-wrap:wrap}.baseline-workshop .data-actions button,.baseline-workshop .upload-scenario{font-size:12px;min-height:36px}

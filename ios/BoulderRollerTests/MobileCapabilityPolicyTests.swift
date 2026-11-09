@@ -23,7 +23,7 @@ struct MobileCapabilityPolicyTests {
 
     // MARK: Old server / old app compatibility
 
-    @Test func oldServerWithoutBlockKeepsShippedDefaults() {
+    @Test func oldServerWithoutBlockKeepsReleasedDefaults() {
         let response = status("{\(rolloutJSON)}")
         #expect(response.mobileCapabilities == nil)
         let policy = MobileCapabilityPolicy.from(block: nil, fetchedAt: .now)

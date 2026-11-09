@@ -9,7 +9,7 @@ import type {
 } from '../../lib/api';
 
 // The Profile — Ground model (Tim-ratified 2026-09-02). Pure functions that
-// turn the API's climbs, leaderboard positions and rides into what the room
+// turn the API's climbs, leaderboard positions and rides into what the page
 // draws: every canon climb on the ground by tier, the rider's photos, and
 // the year's rides. Times are public, money is private — nothing economic
 // enters this model.

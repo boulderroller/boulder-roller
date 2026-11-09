@@ -6,7 +6,7 @@ vi.mock("@/components/ground/ObservatoryGround", () => ({
 }));
 import { weekRows, RecentRow } from "./ObservatoryPage";
 import { fixtureObservatory } from "@/fixtures/data";
-describe("Week room truth", () => {
+describe("Week page truth", () => {
   it("leaves every unindexed figure absent, without zero or substitute sentences", () => {
     expect(weekRows({})).toEqual([]);
     expect(

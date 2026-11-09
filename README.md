@@ -146,8 +146,9 @@ Proprietary. Contact the owner.
 
 ## This repository
 
-A public copy of the main branch on 5 November 2026, commit `5963e455b` of the
-private repository where development happens. One person built it with AI
-coding agents: 3,373 commits since 29 October 2025. Planning notes, the issue
-tracker, legal and grant files and screenshots of other apps are not included.
+A public copy of the main branch, last updated on 9 November 2026 from commit
+`47f772346` of the private repository where development happens. One person
+built it with AI coding agents: 3,390 commits since 29 October 2025. Planning
+notes, the issue tracker, legal and grant files, the portal's design workshop
+and screenshots of other apps are not included.
 `AGENTS.md` lists every difference.

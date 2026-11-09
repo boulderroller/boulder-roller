@@ -53,7 +53,7 @@ class PropertyTests(unittest.TestCase):
                 self.assertTrue(result['P1'], (seed, strategy))
                 self.assertTrue(result['P2_cash'], (seed, strategy))
 
-    def test_counterexamples_must_not_be_blessed(self):
+    def test_counterexamples_must_fail_their_properties(self):
         self.assertFalse(unfunded_trader(self.p)['P3'])
         self.assertFalse(holder_drawdown(self.p, False)['P2_marked'])
         self.assertTrue(holder_drawdown(self.p)['P2_marked'])

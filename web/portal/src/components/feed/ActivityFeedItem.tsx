@@ -174,7 +174,7 @@ export const ActivityFeedItem = memo(({
     const when = [activity.date, activity.placeLabel].filter(Boolean).join(' · ');
     const showCal = Boolean(activity.isOwn) && activity.calEarned != null && activity.calEarned > 0;
     const result = activity.resultSummary;
-    // Whole-second times use the shared Ride room duration formatter. Smaller measurements
+    // Whole-second times use the shared Ride page duration formatter. Smaller measurements
     // keep a separate seconds unit and never round a positive value to zero.
     const resultSeconds = result?.timeSeconds ?? null;
     const resultExponent = resultSeconds !== null && resultSeconds > 0 && resultSeconds < 1e-20

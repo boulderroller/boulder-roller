@@ -1,6 +1,6 @@
 import {afterEach,expect,it,vi} from 'vitest';
 afterEach(()=>{vi.unstubAllEnvs();vi.unstubAllGlobals();vi.resetModules()});
-it('never substitutes fixture money into a failed live room request',async()=>{
+it('never substitutes fixture money into a failed live page request',async()=>{
  vi.stubEnv('VITE_USE_SCAN_FIXTURES','false');
  vi.stubEnv('VITE_ALLOW_FIXTURE_FALLBACK','true');
  vi.stubEnv('DEV',true);

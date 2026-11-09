@@ -85,7 +85,7 @@ function emitLoadingMetric(detail: LoadingMetricDetail) {
   window.dispatchEvent(new CustomEvent(LOADING_METRIC_EVENT, { detail }));
 }
 
-export { RoomLoading as RouteLoadingFallback } from './RoomLoading';
+export { PageLoading as RouteLoadingFallback } from './PageLoading';
 
 export function LoadingRows({ label, description, rows = 4 }: { label: string; description?: string; rows?: number }) {
   return <div aria-busy="true"><SlotRows count={rows} /><span className="sr-only" role="status">{label}{description ? ` ${description}` : ''}</span></div>;

@@ -30,7 +30,7 @@
   background: var(--br-paper-soft);
   overflow: visible;
 }
-.ride-analysis-room {
+.ride-analysis-page {
   max-width: 1160px;
   margin: auto;
   padding: 22px 40px 56px;
@@ -280,7 +280,7 @@
   }
 }
 @media (max-width: 440px) {
-  .ride-analysis-room {
+  .ride-analysis-page {
     padding: 14px 16px 44px;
   }
   .ride-analysis-back > span:last-child {
@@ -295,7 +295,7 @@
     row-gap: 6px;
   }
   .ride-analysis-stats {
-    /* Preserve the shared room override that followed analysis before extraction. */
+    /* Preserve the shared page override that followed analysis before extraction. */
     margin-top: 10px !important;
     padding-bottom: 10px;
     grid-template-columns: 1fr 1fr;
@@ -333,32 +333,32 @@
     grid-template-columns: 1fr;
   }
 }
-.ride-analysis-room .ride-instrument-fill {
+.ride-analysis-page .ride-instrument-fill {
   fill: var(--climb-band-0);
 }
-.ride-analysis-room .ride-instrument-label-ground {
+.ride-analysis-page .ride-instrument-label-ground {
   fill: var(--br-paper);
 }
-.ride-analysis-room .ride-scrub-dot {
+.ride-analysis-page .ride-scrub-dot {
   fill: var(--br-terrain);
   stroke: var(--br-paper);
   stroke-width: 1.2;
 }
-.ride-analysis-room .ride-analysis-columns h2 {
+.ride-analysis-page .ride-analysis-columns h2 {
   color: var(--br-ink-soft);
   font: 600 12px/16px var(--br-font-sans);
   text-transform: none;
   letter-spacing: 0;
 }
-.ride-analysis-room .ride-analysis-columns .ride-words {
+.ride-analysis-page .ride-analysis-columns .ride-words {
   text-transform: none;
   font-size: var(--br-label-size);
   line-height: var(--br-label-line-height);
 }
-.ride-analysis-room .ride-figure-line > span {
+.ride-analysis-page .ride-figure-line > span {
   text-transform: none;
 }
-.ride-analysis-room .ride-analysis-log {
+.ride-analysis-page .ride-analysis-log {
   border-radius: 16px;
   background: var(--br-paper-soft);
   border-top: 0;
@@ -379,8 +379,8 @@
   line-height: var(--br-label-line-height);
   }
 }
-.ride-room-page
-  .ride-analysis-room
+.ride-page
+  .ride-analysis-page
   :is(
     .ride-figure-line > span,
     .ride-analysis-columns h2,

@@ -51,7 +51,7 @@ function manualChunks(id: string): string | undefined {
   }
 
   if (!id.includes('node_modules')) return undefined;
-  // Both map rooms share the already-budgeted vector runtime.
+  // Both map pages share the already-budgeted vector runtime.
   if (id.includes('/maplibre-gl/')) return 'ClimbMap';
 
   const normalizedId = id.toLowerCase();

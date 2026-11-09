@@ -6,12 +6,12 @@ vi.mock("@/components/ground/ObservatoryGround", () => ({
 }));
 import { AccountPageContent } from "./AccountPage";
 const wallet = "A".repeat(32);
-it("renders the Account room with strict absence and wallet-only identity", () => {
+it("renders the Account page with strict absence and wallet-only identity", () => {
   const html = renderToStaticMarkup(
     <StaticRouter location="/account/test">
       <AccountPageContent
         pubkey={wallet}
-        room={{
+        data={{
           ground: [],
           positions: [],
           completions: [],
@@ -49,7 +49,7 @@ it("uses public handle and keeps custody rows distinct", () => {
     <StaticRouter location="/account/test">
       <AccountPageContent
         pubkey={wallet}
-        room={{
+        data={{
           handle: "@tim",
           ground: [],
           positions: [],

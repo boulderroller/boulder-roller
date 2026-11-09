@@ -262,7 +262,7 @@ struct PrivacyZoneEditor: View {
                 dismiss()
             } catch {
                 saving = false
-                errorMessage = PrivacyRoomModel.message(for: error)
+                errorMessage = PrivacyModel.message(for: error)
             }
         }
     }
@@ -279,7 +279,7 @@ struct PrivacyZoneEditor: View {
                 dismiss()
             } catch {
                 deleting = false
-                errorMessage = PrivacyRoomModel.message(for: error)
+                errorMessage = PrivacyModel.message(for: error)
             }
         }
     }

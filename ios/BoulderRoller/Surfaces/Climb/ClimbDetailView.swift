@@ -18,7 +18,7 @@ struct ClimbDetailView: View {
     @State private var results: VaultEffortHistoryResponse?
     @State private var positionTruth: ResolvedVaultPosition?
     @State private var legendName: String?
-    @State private var showLeaderboardRoom = false
+    @State private var showLeaderboard = false
     @State private var showMapViewer = false
     @State private var selectedRideId: String?
     @State private var riderProfileWallet: String?
@@ -88,8 +88,8 @@ struct ClimbDetailView: View {
         .navigationTitle(climb?.name ?? "Climb")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbarContent }
-        .navigationDestination(isPresented: $showLeaderboardRoom) {
-            LeaderboardRoom(
+        .navigationDestination(isPresented: $showLeaderboard) {
+            LeaderboardView(
                 climbName: climb?.name ?? "Climb",
                 entries: boardEntries,
                 myWallet: session.currentUser?.wallet,
@@ -470,7 +470,7 @@ struct ClimbDetailView: View {
                 .padding(.horizontal, Theme.margin)
             } else {
                 SectionHeader(title: "Leaderboard", trailing: "See All") {
-                    showLeaderboardRoom = true
+                    showLeaderboard = true
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 20)

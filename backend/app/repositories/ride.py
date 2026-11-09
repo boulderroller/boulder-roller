@@ -428,9 +428,8 @@ class RideRepository(BaseRepository):
                 .eq("ride_id", ride_id)
                 .neq("moderation_state", "hidden")
                 .neq("moderation_state", "removed")
-                .order("sort_order", desc=False)
-                .order("created_at", desc=False)
             )
+            query = order_by(query, "sort_order", "created_at")
             if not include_uploading:
                 query = query.eq("upload_status", "ready")
             return query.execute()
@@ -458,10 +457,8 @@ class RideRepository(BaseRepository):
                 .in_("ride_id", unique_ids)
                 .neq("moderation_state", "hidden")
                 .neq("moderation_state", "removed")
-                .order("ride_id", desc=False)
-                .order("sort_order", desc=False)
-                .order("created_at", desc=False)
             )
+            query = order_by(query, "ride_id", "sort_order", "created_at")
             if not include_uploading:
                 query = query.eq("upload_status", "ready")
             return query.execute()

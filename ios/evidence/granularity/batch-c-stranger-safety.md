@@ -34,15 +34,15 @@ allowed set {200, 400, 800, 1600 m} and the optional label mirrors the
 50-char cap; the Add gate mirrors the server-declared `max_zones`, never a
 compiled copy. Live lifecycle verified end-to-end against production zone
 CRUD: create with 400 m + label (`c1-zone-editor-400m-label.png` →
-`c1-privacy-room-zone-created.png`), reopen loads the saved zone, confirmed
+`c1-privacy-screen-zone-created.png`), reopen loads the saved zone, confirmed
 destructive delete returns the room to empty
-(`c1-privacy-room-zone-deleted-cleanup.png` — this is also the cleanup
+(`c1-privacy-screen-zone-deleted-cleanup.png` — this is also the cleanup
 proof). Footer is the one-line grouped-list education string:
 "Rides you share hide inside your zones." The owner's own surfaces stay
 complete — projection is entirely server-side (`ride_privacy.py` edge law).
 
 Dynamic Type: `c1-avatar-sheet-a11y-large.png`,
-`c1-privacy-room-a11y-large.png` (accessibility Large — labels wrap, the
+`c1-privacy-screen-a11y-large.png` (accessibility Large — labels wrap, the
 single trailing element truncates, nothing clips or overlaps). Rows are
 combined accessibility elements with labels throughout.
 

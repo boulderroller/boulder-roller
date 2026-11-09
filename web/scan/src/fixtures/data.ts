@@ -1,4 +1,4 @@
-import roomCanon from './observatory-canon.json';
+import observatoryCanon from './observatory-canon.json';
 import type {
   AccountResponse,
   ClimbResponse,
@@ -453,7 +453,7 @@ export const fixtureAccount: AccountResponse = {
 
 // Ratified board fixtures only. Never merged into a live response.
 fixtureObservatory.week = {epoch:142,settles_at:'2026-09-13T12:00:00Z',climbs_registered:57,cal_deposited:'21020000000000',riders:118,rides_attested:412,dung_distributed:'341600000000'};
-fixtureObservatory.climbs = roomCanon as import('@/types').GroundClimb[];
+fixtureObservatory.climbs = observatoryCanon as import('@/types').GroundClimb[];
 fixtureObservatory.indexed = {slot:493821992,at:'2026-09-07T17:00:00Z',age_seconds:180};
 fixtureObservatory.program_id = 'EVjP2Vdz9buHNphywPhoybf213poa8EiSW6FGbXWFqYH';
 fixtureObservatory.events_next_offset = null;
@@ -466,8 +466,8 @@ fixtureObservatory.recent_events = [
   ['registration','Lemon Hill',undefined,600,'meters'],
   ['settlement','Wises Mill Road',undefined,'3400000000','DUNG',141],
 ].map(([kind,name,actor,amount,unit,epoch],i)=>({
-  event_name:String(kind),kind:kind as import('@/types').RoomEvent['kind'],
-  object:{id:roomCanon.find(c=>c.name===name)?.id ?? '11111111-1111-4111-8111-111111111111',name:String(name),type:'climb'},
+  event_name:String(kind),kind:kind as import('@/types').DisplayEvent['kind'],
+  object:{id:observatoryCanon.find(c=>c.name===name)?.id ?? '11111111-1111-4111-8111-111111111111',name:String(name),type:'climb'},
   actor:actor as string|undefined,value:{amount:amount as string|number,unit:String(unit)},
   epoch:epoch as number|undefined,signature:fixtureTransaction.signature,
   tx_signature:fixtureTransaction.signature,event_index:i,fields:{},slot:493821992-i,block_time:1788714000-i*3600,

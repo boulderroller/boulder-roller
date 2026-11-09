@@ -256,7 +256,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           checkAuth();
         } else if (e.newValue !== 'true' && isAuthenticated) {
           // Another tab logged out - sync logout
-          // Retire the owner room before cache notifications can restart its reads.
+          // Retire the owner page before cache notifications can restart its reads.
           flushSync(() => {
             invalidateSessionChecks();
             clearAuthHandoffPending();

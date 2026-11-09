@@ -16,7 +16,7 @@ def _source() -> str:
     return SCRIPT.read_text(encoding="utf-8")
 
 
-def test_vault_stake_census_queries_by_discriminator_before_validating_size() -> None:
+def test_vault_stake_enumeration_queries_by_discriminator_before_validating_size() -> None:
     source = _source()
 
     assert "filters: [{ dataSize: VAULT_STAKE_SIZE }]" not in source

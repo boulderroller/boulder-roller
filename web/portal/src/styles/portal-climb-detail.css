@@ -50,7 +50,7 @@
 .climb-ledger-empty { padding: 24px 20px; color: var(--br-ink-soft); font-size: 0.875rem; line-height: 1.6; }
 .climb-ledger-empty strong { display: block; color: var(--br-ink); font-weight: 500; }
 .climb-ledger-empty p { margin: 6px 0 0; }
-/* Read words, not a segmented pill: the Training room's Time | Load switch.
+/* Read words, not a segmented pill: the Training page's Time | Load switch.
    Active is ink at weight, inactive is muted — no capsule, no filled segment. */
 .climb-metric-picker { display: inline-flex; gap: 14px; padding: 0; margin: 0; border: 0; background: transparent; }
 .climb-metric-picker label { position: relative; cursor: pointer; }
@@ -125,9 +125,9 @@
 .climb-detail-page.portal-page { padding: 0; background: var(--br-paper); }
 .climb-detail-page.portal-object-page .climb-detail-frame { width: 100%; }
 
-/* The ratified board's room anatomy; operation surfaces keep their own controls. */
+/* The ratified board's page anatomy; operation surfaces keep their own controls. */
 .climb-detail-page { --climb-profile-ground: var(--climb-band-0); }
-.climb-room {
+.climb-page-geography {
   --climb-band-0: var(--br-ink-faint);
   --climb-band-3: var(--br-ink-muted);
   --climb-band-6: var(--br-ink-soft);
@@ -135,20 +135,20 @@
   --climb-band-12plus: var(--br-ink);
   position: relative;
 }
-.climb-room-ground { position: relative; height: var(--climb-ground-height, 720px); background: var(--climb-map-paper); }
-.climb-room-ground .climb-map::after { content: ""; z-index: 1; position: absolute; inset: auto 0 0; height: 110px; background: linear-gradient(transparent, var(--br-paper)); pointer-events: none; }
-.climb-room-identity { position: absolute; z-index: 3; width: 360px; left: 40px; top: 36px; padding: 22px 24px 20px; border: 1px solid var(--br-card); border-radius: 16px; background: var(--br-paper-soft); box-shadow: var(--portal-panel-shadow); }
-.climb-room-glyph { position: absolute; left: 24px; top: 22px; width: 56px; height: 36px; padding: 8px; border-radius: 8px; background: var(--br-card); }
-.climb-room-glyph .climb-shape-glyph__fill { fill: var(--br-ink-faint); }
-.climb-room-glyph .climb-shape-glyph__line { stroke: var(--br-ink); stroke-width: 1.4; fill: none; }
-.climb-room-yours { min-height: 0; line-height: 1.45; margin: 0; padding-top: 14px; color: var(--br-ink-soft); font-size: .8125rem; }
-.climb-room-yours b { color: var(--br-ink); font-weight: 600; }
-.climb-room-seam { position: relative; height: 22px; }
-.climb-room-seam button[role="slider"] { position: absolute; inset: -11px 0; width: 100%; height: 44px; display: grid; place-items: center; border: 0; padding: 0; background: transparent; cursor: ns-resize; touch-action: none; z-index: 2; }
-.climb-room-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--br-ink-faint); }
-.climb-room-seam button:is(:hover,:active) .climb-room-handle { background: var(--br-ink-soft); }
-.climb-room-grip { border-bottom: 1px solid var(--br-card); }
-.climb-room-back { position: absolute; z-index: 4; top: 0; left: 40px; font-size: var(--br-label-size); line-height: var(--br-label-line-height); color: var(--br-ink-soft); }
+.climb-page-ground { position: relative; height: var(--climb-ground-height, 720px); background: var(--climb-map-paper); }
+.climb-page-ground .climb-map::after { content: ""; z-index: 1; position: absolute; inset: auto 0 0; height: 110px; background: linear-gradient(transparent, var(--br-paper)); pointer-events: none; }
+.climb-page-identity { position: absolute; z-index: 3; width: 360px; left: 40px; top: 36px; padding: 22px 24px 20px; border: 1px solid var(--br-card); border-radius: 16px; background: var(--br-paper-soft); box-shadow: var(--portal-panel-shadow); }
+.climb-page-glyph { position: absolute; left: 24px; top: 22px; width: 56px; height: 36px; padding: 8px; border-radius: 8px; background: var(--br-card); }
+.climb-page-glyph .climb-shape-glyph__fill { fill: var(--br-ink-faint); }
+.climb-page-glyph .climb-shape-glyph__line { stroke: var(--br-ink); stroke-width: 1.4; fill: none; }
+.climb-page-yours { min-height: 0; line-height: 1.45; margin: 0; padding-top: 14px; color: var(--br-ink-soft); font-size: .8125rem; }
+.climb-page-yours b { color: var(--br-ink); font-weight: 600; }
+.climb-page-seam { position: relative; height: 22px; }
+.climb-page-seam button[role="slider"] { position: absolute; inset: -11px 0; width: 100%; height: 44px; display: grid; place-items: center; border: 0; padding: 0; background: transparent; cursor: ns-resize; touch-action: none; z-index: 2; }
+.climb-page-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--br-ink-faint); }
+.climb-page-seam button:is(:hover,:active) .climb-page-handle { background: var(--br-ink-soft); }
+.climb-page-grip { border-bottom: 1px solid var(--br-card); }
+.climb-page-back { position: absolute; z-index: 4; top: 0; left: 40px; font-size: var(--br-label-size); line-height: var(--br-label-line-height); color: var(--br-ink-soft); }
 .climb-detail-frame { position: relative; }
 .climb-position-numeral { padding: 22px 20px 16px; color: var(--br-ink); font: 600 2.125rem/1 var(--br-font-mono); overflow-wrap: anywhere; }
 .climb-action-row, .climb-ledger-card > .climb-navigation-row:not(:first-child), .climb-position-numeral + .climb-kv { border-top: 1px solid var(--br-card); }
@@ -159,53 +159,53 @@
 .climb-legend-row .climb-result-value small { display: block; color: var(--br-ink-muted); font: 400 var(--br-label-size)/var(--br-label-line-height) var(--br-font-sans); }
 .climb-legend-avatar { display: block; width: 28px; height: 28px; border-radius: 50%; background: var(--br-card); }
 .climb-top-ten { display: none; }
-.climb-room-ground .climb-map-zoom { position: absolute; right: 0; bottom: calc(var(--climb-ground-height) - 290px); }
-.climb-room-ground .climb-map-north { left: auto; }
-.climb-room .climb-map-status { top: auto; bottom: 56px; }
-.climb-room .climb-map-controls { z-index: 4; }
+.climb-page-ground .climb-map-zoom { position: absolute; right: 0; bottom: calc(var(--climb-ground-height) - 290px); }
+.climb-page-ground .climb-map-north { left: auto; }
+.climb-page-geography .climb-map-status { top: auto; bottom: 56px; }
+.climb-page-geography .climb-map-controls { z-index: 4; }
 @media (max-width: 999px) and (min-width: 441px) {
-  .climb-room-identity { top: 36px; }
+  .climb-page-identity { top: 36px; }
   .climb-detail-columns { gap: 24px; padding-inline: 24px; }
 }
 @media (max-width: 760px) and (min-width: 441px) {
   .climb-detail-columns { grid-template-columns: 1fr; }
 }
 @media (max-width: 440px) {
-  .climb-room { height: calc(100dvh - var(--portal-shell-header-height)); overflow: hidden; }
-  .climb-room-ground { height: 100%; }
-  .climb-room-identity { left: 16px; right: 16px; top: 16px; width: auto; padding: 16px 18px 14px; }
-  .climb-room-glyph { top: 16px; left: 18px; }
+  .climb-page-geography { height: calc(100dvh - var(--portal-shell-header-height)); overflow: hidden; }
+  .climb-page-ground { height: 100%; }
+  .climb-page-identity { left: 16px; right: 16px; top: 16px; width: auto; padding: 16px 18px 14px; }
+  .climb-page-glyph { top: 16px; left: 18px; }
   .climb-summary { margin-top: 12px; padding-bottom: 12px; }
-  .climb-room-yours { padding-top: 10px; }
-  .climb-room-sheet { position: absolute; z-index: 5; inset: auto 0 0; height: var(--climb-sheet-height, 58%); display: flex; flex-direction: column; border-radius: 20px 20px 0 0; background: var(--br-paper-soft); box-shadow: var(--portal-panel-shadow); overflow: hidden; }
-  .climb-room-grip { flex: none; touch-action: none; }
-  .climb-room-ledger-scroll { min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; }
+  .climb-page-yours { padding-top: 10px; }
+  .climb-page-sheet { position: absolute; z-index: 5; inset: auto 0 0; height: var(--climb-sheet-height, 58%); display: flex; flex-direction: column; border-radius: 20px 20px 0 0; background: var(--br-paper-soft); box-shadow: var(--portal-panel-shadow); overflow: hidden; }
+  .climb-page-grip { flex: none; touch-action: none; }
+  .climb-page-ledger-scroll { min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; }
   .climb-detail-columns { display: flex; flex-direction: column; gap: 26px; padding: 20px 16px 44px; }
   .climb-detail-columns > * { width: 100%; }
-  .climb-room .climb-ledger-card { background: var(--climb-profile-ground); }
-  .climb-room-ground .climb-map-north { top: auto; bottom: calc(var(--climb-sheet-height) + 130px); left: 16px; right: auto; }
-  .climb-room-ground .climb-map-controls { top: auto; bottom: calc(var(--climb-sheet-height) + 48px); right: 8px; }
-  .climb-room-ground .climb-map-controls button:first-child { display: none; }
-  .climb-room-ground .climb-map-zoom { display: none; }
-  .climb-room-ground .climb-map-bottom { bottom: calc(var(--climb-sheet-height) + 2px); }
+  .climb-page-geography .climb-ledger-card { background: var(--climb-profile-ground); }
+  .climb-page-ground .climb-map-north { top: auto; bottom: calc(var(--climb-sheet-height) + 130px); left: 16px; right: auto; }
+  .climb-page-ground .climb-map-controls { top: auto; bottom: calc(var(--climb-sheet-height) + 48px); right: 8px; }
+  .climb-page-ground .climb-map-controls button:first-child { display: none; }
+  .climb-page-ground .climb-map-zoom { display: none; }
+  .climb-page-ground .climb-map-bottom { bottom: calc(var(--climb-sheet-height) + 2px); }
   /* Keep the longer provider row clear of the fitted endpoint's 44px target. */
-  .climb-room-ground .climb-map-bottom[data-lift-attribution="true"] .climb-map-attribution { transform: translateY(-44px); }
-  .climb-room-ground .climb-map-attribution a { font-size: var(--br-label-size); line-height: var(--br-label-line-height); padding-inline: 2px; }
+  .climb-page-ground .climb-map-bottom[data-lift-attribution="true"] .climb-map-attribution { transform: translateY(-44px); }
+  .climb-page-ground .climb-map-attribution a { font-size: var(--br-label-size); line-height: var(--br-label-line-height); padding-inline: 2px; }
   .climb-top-ten { display: flex; }
   .climb-detail-leaderboard[data-show-all="false"] .climb-result-row:nth-child(n+6):not([data-viewer="true"]) { display: none; }
   .climb-data-attribution { padding: 0 16px 24px; }
-  .climb-room-back { top: 0; left: 16px; min-height: 16px; font-size: var(--br-label-size); line-height: var(--br-label-line-height); }
+  .climb-page-back { top: 0; left: 16px; min-height: 16px; font-size: var(--br-label-size); line-height: var(--br-label-line-height); }
 }
 
-/* Vector ground in the existing city room; column, rows and hover card retain their grammar. */
+/* Vector ground in the existing Climbs page; column, rows and hover card retain their grammar. */
 
 .climb-vault-stack .climb-section-heading h3 { margin: 0; color: var(--br-ink-soft); font-size: var(--br-label-size); line-height: var(--br-label-line-height); }
 
-.climb-room-expand { display: none; }
+.climb-page-expand { display: none; }
 .climb-detail-page .climb-section-heading { font-weight: 600; }
 .climb-section-heading .climb-metric-picker { text-transform: none; letter-spacing: 0; }
 .portal-shell:has(.climb-detail-page) .portal-shell__badge { background: var(--br-ink); }
 @media (max-width: 440px) {
-  .climb-room-ground .climb-map-controls { display: none; }
-  .climb-room-expand { position: absolute; z-index: 3; right: 8px; top: 0; display: grid; place-items: center; width: 44px; height: 44px; border: 0; padding: 0; background: transparent; color: var(--br-ink); }
+  .climb-page-ground .climb-map-controls { display: none; }
+  .climb-page-expand { position: absolute; z-index: 3; right: 8px; top: 0; display: grid; place-items: center; width: 44px; height: 44px; border: 0; padding: 0; background: transparent; color: var(--br-ink); }
 }

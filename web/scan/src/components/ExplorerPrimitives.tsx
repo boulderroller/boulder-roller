@@ -46,7 +46,7 @@ export function StatCard({ label, value, detail }: StatCardProps) {
   );
 }
 
-/** One linked ledger-row primitive shared by the Week and Climb rooms. */
+/** One linked ledger-row primitive shared by the Week and Climb pages. */
 export function LedgerRow({
   to,
   mark,

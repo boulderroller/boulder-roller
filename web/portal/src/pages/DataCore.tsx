@@ -17,7 +17,7 @@ import { ABSENT_VALUE, formatDate, formatFixed, formatInteger, formatRaceTime, f
 // read are words), Consistency (the heatmap), Threshold (rows in the
 // ratified vocabulary), Power curve (the landed figure). State words are
 // data, so ink or gray, never cobalt; cobalt only on a scrub. Nothing on
-// this room explains itself; the numbers do.
+// this page explains itself; the numbers do.
 
 type LoadWindow = '4-weeks' | '26-weeks' | 'year';
 type LoadRead = 'stress' | 'time' | 'distance' | 'climbing';
@@ -173,8 +173,8 @@ export default function DataCore() {
       : ABSENT_VALUE;
 
   return (
-    <section className="training-room" aria-label="Training" aria-busy={initialLoading}>
-      <div className="training-room__column">
+    <section className="training-page" aria-label="Training" aria-busy={initialLoading}>
+      <div className="training-page__column">
         <section className="training-sheet training-load" aria-labelledby="training-load-heading">
           <div className="training-sheet__head">
             <h2 id="training-load-heading" className="training-sheet__eyebrow">Load</h2>
@@ -281,7 +281,7 @@ export default function DataCore() {
         </section>
       </div>
 
-      <div className="training-room__column">
+      <div className="training-page__column">
         <section className="training-sheet training-threshold" aria-labelledby="training-threshold-heading">
           <div className="training-sheet__head">
             <h2 id="training-threshold-heading" className="training-sheet__eyebrow">Threshold</h2>

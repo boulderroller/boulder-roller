@@ -1,0 +1,1229 @@
+/*
+ * Settings page — the avatar sheet on web (Tim-ratified 2026-09-02, boards
+ * "Settings — Identity" and "Settings — Privacy" on the Night Ledger Rooms
+ * canvas).
+ *
+ * No hero band, no metric row, no theme picker. One header line carries
+ * the page's name and its only actions (Reset gray, Save cobalt, only while
+ * something changed). A rail of words picks the section; the column is a
+ * stack of sheets made of 52px rows: label gray on the left, value ink on
+ * the right, a chevron when a row opens something, words when the choice is
+ * one of a few. Nothing here commits money, so nothing here is filled.
+ * The privacy, zones, sessions and deletion organs keep their markup and
+ * contracts; this sheet only restyles them. Loads after the portfolio page.
+ */
+
+.settings-page .portal-frame {
+  padding-top: 0;
+}
+
+/* ---- header line ------------------------------------------------------ */
+
+.settings-page__header {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 40px;
+  border-bottom: 1px solid var(--portal-surface-paper);
+}
+
+.settings-page__title {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--portal-public-ink);
+}
+
+.settings-page__actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+/* The truth word stays; the pill chrome does not (no pill species). */
+.settings-page .settings-v2-actions__status .portal-truth-pill {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page__action {
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+}
+
+.settings-page__action--save {
+  color: var(--portal-chrome-accent);
+}
+
+.settings-page__action:disabled {
+  color: var(--portal-public-ink-muted);
+  cursor: default;
+}
+
+.settings-page__action:focus-visible,
+.settings-page__rail-word:focus-visible,
+.settings-page__text:focus-visible,
+.settings-words button:focus-visible,
+.settings-row--tap:focus-visible {
+  outline: 2px solid var(--portal-chrome-accent);
+  outline-offset: -2px;
+}
+
+/* ---- rail and column --------------------------------------------------- */
+
+.settings-page__grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 640px);
+  gap: 40px;
+  padding: 28px 40px 60px;
+}
+
+.settings-page__rail {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+}
+
+.settings-page__rail-word {
+  display: block;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-muted);
+  text-align: left;
+  cursor: pointer;
+}
+
+.settings-page__rail-word:hover {
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page__rail-word[aria-current='page'] {
+  color: var(--portal-public-ink);
+}
+
+.settings-page__column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---- sheets and rows --------------------------------------------------- */
+
+.settings-sheet {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--portal-surface-paper);
+  background: var(--portal-public-paper-soft);
+}
+
+.settings-sheet__eyebrow {
+  display: block;
+  margin: 0;
+  padding: 12px 20px 0;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-sheet__eyebrow + .settings-row,
+.settings-sheet__eyebrow + .settings-identity,
+.settings-sheet__eyebrow + .settings-page__deferred,
+.settings-sheet__eyebrow + .ride-privacy-controls,
+.settings-sheet__eyebrow + .ride-privacy-controls-status,
+.settings-sheet__eyebrow + .settings-v2-privacy-zones,
+.settings-sheet__eyebrow + .settings-v2-session-manager {
+  border-top: 0;
+}
+
+.settings-sheet__note {
+  margin: 0;
+  padding: 0 20px 12px;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: 1.4;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-sheet__note--warning {
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-row {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  background: transparent;
+  font-family: var(--br-font-sans);
+  text-align: left;
+}
+
+.settings-row--tap {
+  cursor: pointer;
+}
+
+.settings-row--tap:hover {
+  background: color-mix(in oklab, var(--portal-surface-paper) 55%, transparent);
+}
+
+.settings-row--tap:disabled {
+  cursor: default;
+}
+
+.settings-row--block {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 14px 20px 14px;
+}
+
+.settings-row__label {
+  flex: none;
+  font-size: 14px;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-row__label--ink {
+  color: var(--portal-public-ink);
+  font-weight: 600;
+}
+
+.settings-row__label--danger {
+  color: var(--portal-danger);
+  font-weight: 600;
+}
+
+.settings-row__trail {
+  display: inline-flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  text-align: right;
+}
+
+.settings-row__value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+}
+
+.settings-row__value--mono {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-row__sub {
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-row__unit {
+  font-size: 14px;
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-row__input {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+  text-align: right;
+}
+
+.settings-row__input--short {
+  max-width: 96px;
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-row__input::placeholder {
+  font-weight: 400;
+  color: var(--portal-public-ink-faint);
+}
+
+.settings-page .settings-row__input:focus,
+.settings-page .settings-row__input:focus-visible,
+.settings-page .settings-row__textarea:focus,
+.settings-page .settings-row__textarea:focus-visible {
+  /* The row is the field; the global ring and 2px border stay off it. */
+  border-width: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.settings-row__textarea {
+  width: 100%;
+  min-height: 72px;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  resize: none;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--portal-public-ink);
+}
+
+.settings-row__count {
+  align-self: flex-end;
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  color: var(--portal-public-ink-faint);
+}
+
+.settings-row__chevron {
+  flex: none;
+  color: var(--portal-public-ink-faint);
+}
+
+.settings-words {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.settings-words button {
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-muted);
+  cursor: pointer;
+}
+
+.settings-words button:hover {
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-words button[aria-pressed='true'] {
+  color: var(--portal-public-ink);
+}
+
+.settings-page__text {
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+}
+
+.settings-page__text--do {
+  color: var(--portal-chrome-accent);
+}
+
+.settings-page__text:disabled {
+  color: var(--portal-public-ink-muted);
+  cursor: default;
+}
+
+.settings-page__action-row {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+}
+
+.settings-page__action-row--do {
+  color: var(--portal-chrome-accent);
+}
+
+.settings-page__deferred {
+  padding: 14px 20px 18px;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  color: var(--portal-public-ink-muted);
+}
+
+/* ---- identity header --------------------------------------------------- */
+
+.settings-identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 20px;
+}
+
+.settings-identity__who {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 16px;
+}
+
+.settings-identity__avatar {
+  display: inline-flex;
+  flex: none;
+  width: 72px;
+  height: 72px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--portal-public-line);
+  background: var(--portal-surface-paper);
+  font-family: var(--br-font-sans);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-identity__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.settings-identity__copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.settings-identity__name {
+  font-family: var(--br-font-sans);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--portal-public-ink);
+  overflow-wrap: anywhere;
+}
+
+.settings-identity__meta {
+  font-family: var(--br-font-sans);
+  font-size: 13px;
+  color: var(--portal-public-ink-soft);
+  overflow-wrap: anywhere;
+}
+
+.settings-identity__actions {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 18px;
+}
+
+.settings-page .settings-v2-file-input {
+  display: none;
+}
+
+/* ---- power zones ------------------------------------------------------- */
+
+.settings-zones {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--portal-surface-paper);
+}
+
+.settings-zones__cell {
+  display: grid;
+  gap: 4px;
+}
+
+.settings-zones__cell span {
+  font-family: var(--br-font-sans);
+  font-size: 11px;
+  color: var(--portal-public-ink-faint);
+}
+
+.settings-zones__cell strong {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+}
+
+/* ---- ride privacy controls as rows ------------------------------------- */
+
+.settings-page .ride-privacy-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.settings-page .ride-privacy-controls__group {
+  display: flex;
+  min-height: 52px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 8px 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+}
+
+.settings-page .ride-privacy-controls__group legend {
+  float: left;
+  margin: 0;
+  padding: 0;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page .ride-privacy-controls__options {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 16px;
+  margin-left: auto;
+}
+
+.settings-page .ride-privacy-controls__option,
+.settings-page .ride-privacy-controls__option:has(input:checked) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.settings-page .ride-privacy-controls__option input {
+  /* The word is the control: the radio covers it, invisible but clickable. */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.settings-page .ride-privacy-controls__option strong {
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .ride-privacy-controls__option:has(input:checked) strong {
+  color: var(--portal-public-ink);
+}
+
+.settings-page .ride-privacy-controls__option:has(input:focus-visible) strong {
+  outline: 2px solid var(--portal-chrome-accent);
+  outline-offset: 2px;
+}
+
+.settings-page .ride-privacy-controls__option small {
+  display: none;
+}
+
+.settings-page .ride-privacy-controls__distance {
+  /* The distance picker takes its own line under the map words. */
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding-top: 4px;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .ride-privacy-controls__distance select {
+  padding: 2px 4px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--portal-surface-paper);
+  font-family: var(--br-font-mono);
+  font-size: var(--br-label-size);
+  color: var(--portal-public-ink);
+}
+
+.settings-page .ride-privacy-controls__summary,
+.settings-page .ride-privacy-controls__zones,
+.settings-page .ride-privacy-controls__provider-notice {
+  margin: 0;
+  padding: 0 20px;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: 1.4;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page .ride-privacy-controls__summary {
+  padding-top: 10px;
+}
+
+.settings-page .ride-privacy-controls__zones {
+  padding-bottom: 14px;
+}
+
+.settings-page .ride-privacy-controls-status {
+  margin: 0;
+  padding: 14px 20px 18px;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page .ride-privacy-controls-status button {
+  margin-left: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-chrome-accent);
+  cursor: pointer;
+}
+
+/* ---- privacy zones as rows --------------------------------------------- */
+
+.settings-page .settings-v2-privacy-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.settings-page .settings-v2-privacy-zones__header,
+.settings-page .settings-v2-privacy-zones > .settings-v2-privacy-zones__copy {
+  display: none;
+}
+
+.settings-page .settings-v2-privacy-zones__loading {
+  padding: 14px 20px 18px;
+}
+
+.settings-page .settings-v2-privacy-zone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.settings-page .settings-v2-privacy-zone-card {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+}
+
+.settings-page .settings-v2-privacy-zone-card__main {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-page .settings-v2-privacy-zone-card__icon {
+  display: none;
+}
+
+.settings-page .settings-v2-privacy-zone-card__title {
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+}
+
+.settings-page .settings-v2-privacy-zone-card__meta {
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .settings-v2-privacy-zone-card__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-page .settings-v2-privacy-zone-card__icon-button {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--portal-public-ink-muted);
+  cursor: pointer;
+}
+
+.settings-page .settings-v2-privacy-zone-card__icon-button:hover {
+  color: var(--portal-public-ink);
+  background: var(--portal-surface-paper);
+}
+
+.settings-page .settings-v2-privacy-zone-card__select {
+  padding: 2px 4px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--portal-surface-paper);
+  font-family: var(--br-font-mono);
+  font-size: var(--br-label-size);
+  color: var(--portal-public-ink);
+}
+
+.settings-page .settings-v2-privacy-zone-add {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--portal-chrome-accent);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.settings-page .settings-v2-privacy-zone-add svg {
+  display: none;
+}
+
+.settings-page .settings-v2-privacy-zone-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 20px 18px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+}
+
+.settings-page .settings-v2-privacy-zone-form__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-page .settings-v2-privacy-zone-form__title {
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+}
+
+.settings-page .settings-v2-privacy-zone-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-page .settings-v2-privacy-zone-field__label {
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page .settings-v2-privacy-zone-field__input {
+  padding: 8px 10px;
+  border: 1px solid var(--portal-surface-paper);
+  border-radius: 8px;
+  background: var(--portal-public-paper);
+  font-family: var(--br-font-mono);
+  font-size: 14px;
+  color: var(--portal-public-ink);
+}
+
+.settings-page .settings-v2-privacy-zones__copy,
+.settings-page .settings-v2-privacy-zones__max {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: 1.4;
+  color: var(--portal-public-ink-faint);
+}
+
+.settings-page .settings-v2-privacy-zones__max {
+  padding: 12px 20px 16px;
+}
+
+.settings-page .settings-v2-privacy-zone-radius-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.settings-page .settings-v2-privacy-zone-radius-option {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.settings-page .settings-v2-privacy-zone-radius-option__value {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .settings-v2-privacy-zone-radius-option[aria-pressed='true'] .settings-v2-privacy-zone-radius-option__value {
+  color: var(--portal-public-ink);
+}
+
+.settings-page .settings-v2-privacy-zone-radius-option__desc {
+  display: none;
+}
+
+.settings-page .settings-v2-privacy-zone-form__submit {
+  align-self: center;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-family: var(--br-font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--portal-chrome-accent);
+}
+
+.settings-page .settings-v2-privacy-zone-form__submit:disabled {
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .settings-v2-privacy-zone-form__submit-icon {
+  display: none;
+}
+
+/* ---- sessions as rows -------------------------------------------------- */
+
+.settings-page .settings-v2-session-manager {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.settings-page .settings-v2-session-manager__header {
+  display: flex;
+  order: 2;
+  justify-content: center;
+  padding: 0;
+}
+
+.settings-page .settings-v2-session-manager__heading {
+  display: none;
+}
+
+.settings-page .settings-v2-session-manager__danger-command {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.settings-page .settings-v2-session-manager__danger-command svg {
+  display: none;
+}
+
+.settings-page .settings-v2-session-manager__loading,
+.settings-page .settings-v2-session-empty {
+  margin: 0;
+  padding: 14px 20px 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  text-align: left;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page .settings-v2-session-manager,
+.settings-page .settings-v2-session-list,
+.settings-page .settings-v2-session-empty {
+  min-height: 0;
+  height: auto;
+}
+
+.settings-page .settings-v2-session-empty p {
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  color: var(--portal-public-ink-soft);
+}
+
+.settings-page .settings-v2-session-list {
+  display: flex;
+  order: 1;
+  flex-direction: column;
+  gap: 0;
+}
+
+.settings-page .settings-v2-session-row {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 20px;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  border-radius: 0;
+  background: transparent;
+}
+
+.settings-page .settings-v2-session-row__icon {
+  display: none;
+}
+
+.settings-page .settings-v2-session-row__content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.settings-page .settings-v2-session-row__title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.settings-page .settings-v2-session-row__title {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+}
+
+.settings-page .settings-v2-session-row__badge {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .settings-v2-session-row__browser,
+.settings-page .settings-v2-session-row__detail {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .settings-v2-session-row__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.settings-page .settings-v2-session-row__detail svg {
+  display: none;
+}
+
+.settings-page .settings-v2-session-row__revoke {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.settings-page .settings-v2-session-row__button-icon {
+  display: none;
+}
+
+/* ---- account deletion as a row ----------------------------------------- */
+
+.settings-page .settings-v2-section-break--danger {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--portal-surface-paper);
+  background: transparent;
+}
+
+.settings-page .settings-v2-danger-heading {
+  display: none;
+}
+
+.settings-page .settings-v2-danger-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 12px 20px 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.settings-page .settings-v2-danger-panel__content {
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.settings-page .settings-v2-danger-panel__title {
+  /* The row's button already says Delete account; the copy is the row's text. */
+  display: none;
+}
+
+.settings-page .settings-v2-danger-panel__copy {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: 1.4;
+  color: var(--portal-public-ink-muted);
+}
+
+.settings-page .settings-v2-panel-danger-button {
+  flex: none;
+  padding: 6px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portal-danger);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* ---- narrower pages ---------------------------------------------------- */
+
+@media (width < 64rem) {
+  .settings-page__header {
+    padding: 0 16px;
+  }
+
+  .settings-page__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px 16px 48px;
+  }
+
+  .settings-page__rail {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 22px;
+    padding-top: 0;
+  }
+
+  .settings-page__rail-word {
+    padding: 8px 0;
+  }
+
+  .settings-identity {
+    flex-wrap: wrap;
+  }
+
+  .settings-zones {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .settings-page .ride-privacy-controls__group {
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* ---- Alerts (the notification switches, 2026-09-03) ------------------- */
+
+.settings-sheet__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 20px;
+}
+
+.settings-sheet__head + .settings-row {
+  border-top: 0;
+}
+
+.settings-sheet__meta {
+  padding-top: 12px;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+}
+
+.settings-row--switch {
+  min-height: 56px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.settings-row__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.settings-row__retry {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+}
+
+/* A switch is interaction: the one cobalt on the sheet. */
+.settings-page .settings-row__switch {
+  width: 40px;
+  height: 24px;
+  flex: none;
+  border-color: transparent;
+  background: var(--portal-surface-paper);
+}
+
+.settings-page .settings-row__switch[data-state='checked'] {
+  border-color: transparent;
+  background: var(--portal-chrome-accent);
+}
+
+.settings-page .settings-row__switch [data-slot='switch-thumb'] {
+  width: 20px;
+  height: 20px;
+  margin-left: 1px;
+  background: var(--portal-public-ink-soft);
+}
+
+.settings-page .settings-row__switch[data-state='checked'] [data-slot='switch-thumb'] {
+  background: var(--portal-public-ink);
+}

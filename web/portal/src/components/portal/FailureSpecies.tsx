@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Slot } from '../loading/Slot';
-import '../../styles/portal-public-rooms.css';
+import '../../styles/portal-public-pages.css';
 
 const AccessPanel = lazy(() => import('../auth/AccessPanel'));
 
@@ -30,11 +30,11 @@ export function StateRow({ title, description, action, icon: _icon, className = 
   </div>;
 }
 
-export function RetainedRoom({ children }: { children: ReactNode }) {
+export function RetainedPage({ children }: { children: ReactNode }) {
   const offline = useOffline();
-  return <div className="retained-room" data-offline={offline}>
+  return <div className="retained-page" data-offline={offline}>
     {offline && <StateRow className="offline-pinned-row" role="status" title="No connection. Try again." />}
-    <div className="retained-room-content">{children}</div>
+    <div className="retained-page-content">{children}</div>
   </div>;
 }
 
@@ -61,8 +61,8 @@ export function SignInDoor({ help }: { help: string }) {
     try { sessionStorage.setItem('br_return_url', location.pathname + location.search + location.hash); } catch { /* optional storage */ }
   }, []);
   return <Dialog.Root open>
-    <Dialog.Portal><Dialog.Overlay className="public-room-scrim" />
-      <Dialog.Content className="public-room-door access-gate" aria-describedby="session-door-help" onInteractOutside={e => e.preventDefault()} onEscapeKeyDown={e => e.preventDefault()}>
+    <Dialog.Portal><Dialog.Overlay className="sign-in-dialog-overlay" />
+      <Dialog.Content className="sign-in-dialog access-gate" aria-describedby="session-door-help" onInteractOutside={e => e.preventDefault()} onEscapeKeyDown={e => e.preventDefault()}>
         <Dialog.Title className="sr-only">Sign in</Dialog.Title>
         <div className="access-entry-page"><div className="access-entry-page__intro">
           <p id="session-door-help">{help}</p>

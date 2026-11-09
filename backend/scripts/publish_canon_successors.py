@@ -141,7 +141,7 @@ def canon_digest(cursor, ids, *, stable=False):
     return row_digest(cursor, query + ' WHERE id=ANY(%s::uuid[])', (ids,))
 
 
-def malformed_pattern_census(cursor):
+def verify_pattern_registry_ids(cursor):
     cursor.execute("""SELECT count(*) FROM public.patterns_climb
         WHERE match_trace->>'registry_id' IS NOT NULL
         AND NOT pg_input_is_valid(match_trace->>'registry_id', 'uuid')""")
@@ -150,8 +150,8 @@ def malformed_pattern_census(cursor):
     return count
 
 
-def preflight_census(cursor):
-    malformed = malformed_pattern_census(cursor)
+def preflight_integrity_counts(cursor):
+    malformed = verify_pattern_registry_ids(cursor)
     cursor.execute("""SELECT count(*) FROM public.canon_corridor_cells cells
         JOIN public.canon_climbs c ON c.id=cells.canon_climb_id
         WHERE c.status IS DISTINCT FROM 'ratified'""")
@@ -161,12 +161,12 @@ def preflight_census(cursor):
 
 
 def reference_digests(cursor, ids, canon_ids):
-    malformed_pattern_census(cursor)
+    verify_pattern_registry_ids(cursor)
     queries = {
         'climb_efforts': ('SELECT * FROM public.climb_efforts WHERE climb_id=ANY(%s::uuid[])', (ids,)),
         # UUID comparison matches the trigger/FK semantics, including valid
         # non-hyphenated spellings. Malformed legacy values fail closed.
-        # CASE protects the cast even if a legacy UPDATE races the census.
+        # CASE protects the cast even if a legacy UPDATE races the integrity check.
         'patterns_climb': ("""SELECT * FROM public.patterns_climb WHERE
             CASE WHEN pg_input_is_valid(match_trace->>'registry_id', 'uuid')
                  THEN (match_trace->>'registry_id')::uuid END=ANY(%s::uuid[])""", (ids,)),
@@ -237,7 +237,7 @@ def validate_archive(archive, rows):
 
 def preflight(cursor, rows, baseline_path=PREDECESSORS):
     require_schema(cursor)
-    census = preflight_census(cursor)
+    integrity_counts = preflight_integrity_counts(cursor)
     baseline_bytes = Path(baseline_path).read_bytes()
     if hashlib.sha256(baseline_bytes).hexdigest() != BEFORE_SHA256: raise ValueError('Reviewed predecessor digest drifted')
     baseline = {r['candidate_fingerprint']: r for r in json.loads(baseline_bytes)['candidates']}
@@ -265,7 +265,7 @@ def preflight(cursor, rows, baseline_path=PREDECESSORS):
     if [r[0] for r in cursor.fetchall()] != [SHAWMONT_ID]: raise RuntimeError('Expected Shawmont to be the only registered climb')
     cursor.execute('SELECT status,version FROM public.canon_climbs WHERE id=%s::uuid', (SHAWMONT_ID,))
     if cursor.fetchone() != ('ratified',1): raise RuntimeError('Shawmont state drift')
-    return {'predecessors': [{'id': r[0], 'updated_at': r[5]} for r in existing.values()], 'census': census}
+    return {'predecessors': [{'id': r[0], 'updated_at': r[5]} for r in existing.values()], 'census': integrity_counts}
 
 
 def create_archive(connection, rows, baseline_path=PREDECESSORS):

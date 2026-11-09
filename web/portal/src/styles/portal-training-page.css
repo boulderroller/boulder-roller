@@ -1,0 +1,345 @@
+/*
+ * Training page — figures on paper (Tim-ratified 2026-09-03, boards
+ * "Training — figures on paper" and "Training — states" on the Night Ledger
+ * Rooms canvas).
+ *
+ * Four sheets and no dashboard. State words are data, so they read in ink
+ * or gray; cobalt exists only on a scrub. Words choose the figure's window
+ * and read. Threshold is rows in the ratified vocabulary. Loads after the
+ * rides page.
+ */
+
+.training-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 24px;
+  align-items: start;
+}
+
+.training-page__column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.training-sheet {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--portal-public-paper-soft);
+  border: 1px solid var(--portal-public-line);
+  border-radius: 16px;
+}
+
+.training-sheet__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 24px 0;
+}
+
+.training-sheet__eyebrow {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--portal-public-ink-soft);
+}
+
+.training-sheet__meta {
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+}
+
+.training-words {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.training-words--reads {
+  padding: 16px 24px 0;
+}
+
+.training-word {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  color: var(--portal-public-ink-muted);
+  cursor: pointer;
+}
+
+.training-word[aria-pressed='true'] {
+  color: var(--portal-public-ink);
+}
+
+.training-word:disabled {
+  color: var(--portal-public-ink-faint);
+  cursor: default;
+}
+
+/* ---- Load --------------------------------------------------------------- */
+
+.training-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 18px 24px 0;
+}
+
+.training-trio__cell {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.training-trio__cell strong {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 28px;
+  line-height: 0.9;
+  font-weight: 700;
+  color: var(--portal-public-ink);
+}
+
+.training-trio__cell > span {
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.training-load__figure {
+  padding: 14px 24px 4px;
+}
+
+.training-load__footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 24px 16px;
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+}
+
+.training-load__facts strong,
+.training-sheet__footer strong {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+}
+
+/* The truth word stays; the pill chrome does not (no pill species). */
+.training-page .portal-truth-pill {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+}
+
+.training-page .portal-truth-pill[data-tone='warning'] {
+  color: var(--portal-public-ink-soft);
+}
+
+.training-sheet__empty {
+  margin: 0;
+  padding: 22px 24px 20px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--portal-public-ink-muted);
+}
+
+.training-sheet__state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 24px 0;
+  padding: 10px 0;
+  border-top: 1px solid var(--portal-public-line);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--portal-public-ink-soft);
+}
+
+.training-sheet__state strong {
+  font-weight: 600;
+  color: var(--portal-public-ink);
+}
+
+.training-sheet__retry {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--br-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ---- Consistency ---------------------------------------------------------- */
+
+.training-consistency__figure {
+  padding: 16px 24px 4px;
+}
+
+.training-sheet__footer {
+  padding: 8px 24px 16px;
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+}
+
+/* ---- Threshold ------------------------------------------------------------ */
+
+.training-threshold .training-sheet__head {
+  padding-bottom: 6px;
+}
+
+.training-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-top: 1px solid var(--portal-public-line);
+}
+
+.training-row__label {
+  font-size: 14px;
+  color: var(--portal-public-ink-soft);
+}
+
+.training-row__trail {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+
+.training-row__sub {
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  color: var(--portal-public-ink-muted);
+  white-space: nowrap;
+}
+
+.training-row__value {
+  font-family: var(--br-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--portal-public-ink);
+  white-space: nowrap;
+}
+
+.training-row__value--word {
+  font-family: var(--br-font-sans);
+}
+
+/* ---- Power curve ---------------------------------------------------------- */
+
+.training-power__figure {
+  padding: 14px 16px 12px;
+}
+
+/* ---- narrower pages -------------------------------------------------- */
+
+@media (width < 64rem) {
+  .training-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .training-page {
+    gap: 16px;
+  }
+
+  .training-page__column {
+    gap: 16px;
+  }
+
+  .training-sheet__head,
+  .training-words--reads,
+  .training-trio,
+  .training-load__footer,
+  .training-sheet__footer,
+  .training-sheet__empty,
+  .training-row {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .training-sheet__state {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .training-load__figure,
+  .training-consistency__figure {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .training-power__figure {
+    padding: 12px 8px 10px;
+  }
+
+  .training-trio__cell strong {
+    font-size: 24px;
+  }
+
+  .training-load__footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* Keyboard exploration shares the same chart readout as pointer input. */
+.training-chart svg:focus-visible {
+  outline: 2px solid var(--portal-chrome-accent);
+  outline-offset: -2px;
+}
+
+.training-chart__readout {
+  margin: 6px 0 0;
+  min-height: 16px;
+  font-family: var(--br-font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--portal-public-ink-soft);
+  overflow-wrap: anywhere;
+}
+
+.training-load__snapshot { padding: 0 24px; }

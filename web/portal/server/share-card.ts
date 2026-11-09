@@ -1,6 +1,6 @@
 import { createElement as h } from 'react';
 import type { ReactElement } from 'react';
-import { ROOMS } from './share-preview.js';
+import { PAGE_NAMES } from './share-preview.js';
 import { rideCardShape, ridePresentationFacts, formatRidePresentation } from './ride-card-shape.js';
 import type { Preview, ShareObject } from './share-preview.js';
 
@@ -44,8 +44,8 @@ export function cardElement(object: ShareObject | null, preview: Preview | null)
   if (!object || !preview) {
     children.push(svg([h('rect',{x:544,y:231,width:48,height:48,rx:10,fill:INK})]), label('Boulder Roller',616,273,52,{weight:700}));
   } else {
-    const room = ROOMS[object.kind];
-    children.push(svg([h('rect',{x:72,y:548,width:18,height:18,rx:4,fill:INK})]), label('Boulder Roller',104,563,22,{weight:600}),label(room,1128,563,22,{soft:true,right:true}));
+    const pageName = PAGE_NAMES[object.kind];
+    children.push(svg([h('rect',{x:72,y:548,width:18,height:18,rx:4,fill:INK})]), label('Boulder Roller',104,563,22,{weight:600}),label(pageName,1128,563,22,{soft:true,right:true}));
     if (object.kind === 'climbs') {
       const c = preview.climb ?? {};
       children.push(label('Climb geography: © OpenStreetMap contributors · openstreetmap.org/copyright',72,589,16));
@@ -92,7 +92,7 @@ export function cardElement(object: ShareObject | null, preview: Preview | null)
       children.push(svg([h('circle',{cx:112,cy:140,r:40,fill:SHEET,stroke:LINE}),rule(236)]),label(name.slice(0,1).toUpperCase(),100,153,34,{soft:true,weight:600}),label(name,176,128,60,{weight:700}),label(sub,176,170,26,{soft:true}));
       const stats = preview.leaderboard?.stats ?? {};
       [p.totalRides,stats.top10Count,stats.komCount].forEach((value,i) => children.push(label(number(value),[72,420,768][i],340,88,{mono:true,width:340}),label(['Rides','Seats','Crowns'][i],[72,420,768][i],378,22,{soft:true})));
-      // No census in the public payload: an absent join is not a zero or a fabricated denominator.
+      // No ridden count in the public payload: an absent join is not a zero or a fabricated denominator.
     }
   }
   return h('div',{style:{display:'flex',position:'relative',width:1200,height:630,background:'#0F0E0C',color:INK,fontFamily:'Geist',overflow:'hidden'}},...children);

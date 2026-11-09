@@ -34,7 +34,7 @@ struct SettlementsView: View {
 
     var body: some View {
         NavigationStack {
-            room
+            content
                 .toolbar(.hidden, for: .navigationBar)
                 .navigationDestination(item: $selectedWeek) { group in
                     SettlementWeekView(
@@ -55,7 +55,7 @@ struct SettlementsView: View {
         return session.balanceActions.collect && money.canSubmit
     }
 
-    private var room: some View {
+    private var content: some View {
         ZStack {
             Theme.sheet.ignoresSafeArea()
             ScrollView {

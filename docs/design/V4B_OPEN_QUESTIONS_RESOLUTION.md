@@ -7,7 +7,7 @@
 **Semantic authority:** [`docs/PROTOCOL_TRUTHS.md`](../PROTOCOL_TRUTHS.md) wins on any conflict.
 **Parent research:**
 - [V4B_PROTOCOL_SURGERY_SCOPE](./V4B_PROTOCOL_SURGERY_SCOPE.md) §9 (8 Qs)
-- [V4B_BLAST_RADIUS_INVENTORY](./V4B_BLAST_RADIUS_INVENTORY.md) §10 (10 Qs)
+- [V4B_IDL_CONSUMER_INVENTORY](./V4B_IDL_CONSUMER_INVENTORY.md) §10 (10 Qs)
 - [V4B_MIGRATION_AND_TESTS](./V4B_MIGRATION_AND_TESTS.md) §8 (11 Qs)
 - [V4B_RUST_ANCHOR_KNOWLEDGE_REFERENCE](./V4B_RUST_ANCHOR_KNOWLEDGE_REFERENCE.md) §14 (3 emergent Qs)
 
@@ -94,7 +94,7 @@
 **Reasoning:**
 - FIX_PLAN Decision #1 (fresh program ID) + Decision #2 (clean slate for 16 devnet vaults) = no V4-A state to seed into V4-B.
 - `VaultActivation` exists specifically to gate in-flight historical seeding; the concept is moot on a greenfield deploy.
-- V4B_BLAST_RADIUS §1.2 already flags it as "Legacy activation; may collapse under V4-B."
+- V4B_IDL_CONSUMER_INVENTORY §1.2 already flags it as "Legacy activation; may collapse under V4-B."
 - V4B_PROTOCOL_SURGERY_SCOPE §4.9 lists `admin_backfill_vault_activation` as a retire candidate.
 - Dropping it removes the `admin_activate_vault` + `admin_backfill_vault_activation` instructions and `VaultActivated` event (or marks them dead under Decision #2's clean slate).
 
@@ -110,9 +110,9 @@
 
 ---
 
-## Source B — V4B_BLAST_RADIUS_INVENTORY §10 (10 questions)
+## Source B — V4B_IDL_CONSUMER_INVENTORY §10 (10 questions)
 
-### Q-B1 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q1] — Rename `ClimbCompleted` event's `vault_id` field → `climb_id`?
+### Q-B1 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q1] — Rename `ClimbCompleted` event's `vault_id` field → `climb_id`?
 **Resolution:** `DERIVED-TRUTHS` + `DERIVED-WWPTD`
 **Answer:** **Yes — rename to `climb` (Pubkey). Add an `Option<Pubkey> vault` alongside.**
 **Reasoning:**
@@ -121,12 +121,12 @@
 - P1 "Climb-first": Climb is the primary object; the vault reference is secondary information (may be None in future Climb-without-Vault cases).
 - **Shape:** `ClimbCompleted { climb: Pubkey, vault: Option<Pubkey>, ride_attestation: Pubkey, rider: Pubkey, time_s: u32, cal_tributed: u64, is_new_kom: bool, completed_at: i64, timestamp: i64 }`.
 
-### Q-B2 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q2] — Rename `VaultLeaderboard` → `ClimbLeaderboard` or `RecordBoard`?
+### Q-B2 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q2] — Rename `VaultLeaderboard` → `ClimbLeaderboard` or `RecordBoard`?
 **Resolution:** Moot — `VaultLeaderboard` is **retired** per Q-A5 (fold into Climb).
 **Answer:** **No rename needed; the account ceases to exist.** The field on Climb is `record_board: [RecordBoardEntry; 10]` per FIX_PLAN WS-1 line 328. Indexer table renames to `indexed_record_boards` downstream (wdvr.8 scope).
 **Reasoning:** If Climb holds the data directly, there's no separate account to name.
 
-### Q-B3 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q3] — Rename `distributeEpochRewards` → `finalizeSettlementWeek`?
+### Q-B3 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q3] — Rename `distributeEpochRewards` → `finalizeSettlementWeek`?
 **Resolution:** `DERIVED-FIXPLAN`
 **Answer:** **Yes — fold into 0uv8.**
 **Reasoning:**
@@ -135,7 +135,7 @@
 - Decision #7 ratifies "explicit `finalize_settlement_week` instruction."
 - Since 0uv8 owns IDL-visible surface rename (V4B_PROTOCOL_SURGERY_SCOPE §8), this rename lands there; compat alias for one release is unnecessary on fresh program ID (Decision #1).
 
-### Q-B4 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q4] — Does `LocalLegend` stay keyed by `vault_id`?
+### Q-B4 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q4] — Does `LocalLegend` stay keyed by `vault_id`?
 **Resolution:** `DERIVED-TRUTHS` + `DERIVED-WWPTD`
 **Answer:** **No — key by Vault PDA** (`[LOCAL_LEGEND_SEED, vault_pda.as_ref()]`).
 **Reasoning:**
@@ -144,7 +144,7 @@
 - Eliminates the last `vault_id` dependency in child PDAs. Fresh program ID = no compat burden.
 - FIX_PLAN WS-1 target `LocalLegend { vault: Pubkey, ... }` (line 453) already stores `vault` as a full Pubkey, not an id — the shape is ready.
 
-### Q-B5 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q5] — `ClimbCompletionReceipt` field `vault: Pubkey` — rename to `climb: Pubkey`?
+### Q-B5 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q5] — `ClimbCompletionReceipt` field `vault: Pubkey` — rename to `climb: Pubkey`?
 **Resolution:** `DERIVED-TRUTHS` + `DERIVED-FIXPLAN`
 **Answer:** **Yes — receipt keys by Climb, not Vault.** PDA: `[CLIMB_COMPLETION_RECEIPT_SEED, ride_attestation, climb]`.
 **Reasoning:**
@@ -154,7 +154,7 @@
 - Committed current code at `lib.rs:2580-2584` has field named `vault: Pubkey` — this is a naming bug from pre-V4-B scaffolding, not a semantic choice. 0uv8 fixes it.
 - Fresh program ID (Decision #1) = no backward compat penalty.
 
-### Q-B6 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q6] — Fresh program ID vs on-chain migration instruction?
+### Q-B6 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q6] — Fresh program ID vs on-chain migration instruction?
 **Resolution:** `DERIVED-FIXPLAN` + `DERIVED-COMMUNITY`
 **Answer:** **Fresh program ID.** No migration instruction.
 **Reasoning:**
@@ -164,7 +164,7 @@
 - Precedent: V4-A used this pattern (commit `823d75ee Rotate devnet program id for V4-A fresh lane`).
 - V4B_MIGRATION_AND_TESTS §1 concludes: *"Option A is the obvious winner."* Lowest one-way-door risk for hackathon sprint with protocol agent iced.
 
-### Q-B7 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q7] — Does `0uv8` retire the Merkle-path dead code in the same slice, or is that `wdvr.8`?
+### Q-B7 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q7] — Does `0uv8` retire the Merkle-path dead code in the same slice, or is that `wdvr.8`?
 **Resolution:** `DERIVED-FIXPLAN`
 **Answer:** **0uv8 retires it in the same slice.** On the Rust/Anchor side. Backend-side cleanup (`merkle_proof.py`, `cal_allocator.py`, etc.) lands as part of the same workstream.
 **Reasoning:**
@@ -174,7 +174,7 @@
 - Leaving dead account structs in IDL for wdvr.8 to remove would mean two IDL regenerations; better to do it once.
 - **wdvr.8 still owns:** docs, portal, mobile consumer copy, stale references in scripts, archived compat-alias retirement.
 
-### Q-B8 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q8] — Backend table renames `indexed_vaults` → `indexed_climbs`?
+### Q-B8 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q8] — Backend table renames `indexed_vaults` → `indexed_climbs`?
 **Resolution:** `DERIVED-TRUTHS` + `DERIVED-FIXPLAN`
 **Answer:** **Split: create `indexed_climbs` (primary) and keep `indexed_vaults` (economic attachment, narrower).**
 **Reasoning:**
@@ -183,11 +183,11 @@
 - BACKEND_TRUTHS §4.3: projection shapes match on-chain shapes. Split accounts = split tables.
 - Scope: table creation/rename is `wdvr.8` tail work (V4B_PROTOCOL_SURGERY_SCOPE §8). 0uv8 delivers the IDL; indexer writers update; DB migration lands in wdvr.8 coordination.
 
-### Q-B9 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q9] — `VaultActivation` account — retire, or keep as `ClimbActivation`?
+### Q-B9 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q9] — `VaultActivation` account — retire, or keep as `ClimbActivation`?
 **Resolution:** Same as Q-A7.
 **Answer:** **Retire.** Fresh deploy + clean slate = no activation concept needed.
 
-### Q-B10 [source: V4B_BLAST_RADIUS_INVENTORY §10 Q10] — Retire `UserState` in `0uv8`, or wait?
+### Q-B10 [source: V4B_IDL_CONSUMER_INVENTORY §10 Q10] — Retire `UserState` in `0uv8`, or wait?
 **Resolution:** `DERIVED-FIXPLAN`
 **Answer:** **Retire in 0uv8. `RiderSoul` is the replacement.**
 **Reasoning:**
@@ -409,7 +409,7 @@ This catches wrong-climb/wrong-vault pairings at the edge.
 - [`docs/BACKEND_TRUTHS.md`](../BACKEND_TRUTHS.md) — §§4, 8, 10, 12
 - [`docs/design/PROTOCOL_ALIGNMENT_FIX_PLAN.md`](./PROTOCOL_ALIGNMENT_FIX_PLAN.md) — Principles P1, P5, P6, P9, P10, P11, P12, P14, P15; Decisions #1, #2, #3, #7, #8, #11, #16; WS-1
 - [`docs/design/V4B_PROTOCOL_SURGERY_SCOPE.md`](./V4B_PROTOCOL_SURGERY_SCOPE.md) §9
-- [`docs/design/V4B_BLAST_RADIUS_INVENTORY.md`](./V4B_BLAST_RADIUS_INVENTORY.md) §10
+- [`docs/design/V4B_IDL_CONSUMER_INVENTORY.md`](./V4B_IDL_CONSUMER_INVENTORY.md) §10
 - [`docs/design/V4B_MIGRATION_AND_TESTS.md`](./V4B_MIGRATION_AND_TESTS.md) §8
 - [`docs/design/V4B_RUST_ANCHOR_KNOWLEDGE_REFERENCE.md`](./V4B_RUST_ANCHOR_KNOWLEDGE_REFERENCE.md) §14
 - [`docs/design/WWPTD_DISPATCHER_PLAYBOOK.md`](./WWPTD_DISPATCHER_PLAYBOOK.md)

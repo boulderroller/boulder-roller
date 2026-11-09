@@ -35,7 +35,7 @@ You return to find:
 ### Portfolio + dispatch docs
 - `docs/design/WWPTD_EPIC_PORTFOLIO_2026-04-17.md` — 13 epics mapped with bead IDs
 - `docs/design/WWPTD_DISPATCHER_PLAYBOOK.md` — dispatch principles + current sprint state
-- `docs/design/HACKATHON_DEMO_SCRIPT.md` — demo narrative candidate
+- `docs/design/HACKATHON_DEMONSTRATION_SCRIPT.md` — demo narrative candidate
 
 ### Commits on main (in order)
 - `fc5a4222` Close 5hdl.1 M1 clock-domain hygiene

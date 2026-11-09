@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ultra-minimal watch mode - runs quick.py every 5 seconds
+# Ultra-minimal watch mode - runs health_check.py every 5 seconds
 # Perfect for a small terminal pane
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -36,9 +36,9 @@ while true; do
     # Clear previous output (but keep header)
     tput cup 10 0
 
-    # Run quick check
-    python3 "$SCRIPT_DIR/quick.py" $REMOTE_FLAG 2>/dev/null || {
-        echo "Error running quick.py"
+    # Run health check
+    python3 "$SCRIPT_DIR/health_check.py" $REMOTE_FLAG 2>/dev/null || {
+        echo "Error running health_check.py"
     }
 
     # Wait

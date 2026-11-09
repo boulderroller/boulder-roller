@@ -1,4 +1,4 @@
-/** The upload deep link keeps its room as the return destination. */
+/** The upload deep link keeps its page as the return destination. */
 export function readUploadReturnTo(state: unknown): string {
   if (!state || typeof state !== 'object') return '/profile?tab=rides';
 

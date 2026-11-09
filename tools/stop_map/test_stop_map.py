@@ -183,7 +183,7 @@ def test_control_on_other_road_or_opposite_approach_does_not_match():
     assert match_control(snapped(), [Control(1, 10, 90.1, "stop", 1)]) is None
 
 
-def test_unknown_facing_stop_is_not_blessed_and_nearest_applicable_wins():
+def test_unknown_facing_stop_is_not_matched_and_nearest_applicable_wins():
     assert match_control(snapped(), [Control(1, 10, 51, "stop", None)]) is None
     controls = [Control(2, 10, 70, "stop", 1), Control(1, 10, 60, "stop", 1)]
     assert match_control(snapped(), controls).control_id == 1

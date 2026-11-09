@@ -221,12 +221,12 @@ async function checkPublicPreview() {
   const routes = await readRepo('web/portal/src/lib/publicPreviewRoutes.ts');
   const app = await readRepo('web/portal/src/AuthenticatedApp.tsx');
   const publicRoutes = publicRoutesOnlyBlock(app);
-  const [previewObjectPage, publicRoomShell, authHandoff] = await Promise.all([
+  const [previewObjectPage, publicPageShell, authHandoff] = await Promise.all([
     'web/portal/src/pages/PublicPreview.tsx',
-    'web/portal/src/components/auth/PublicRoomShell.tsx',
+    'web/portal/src/components/auth/PublicPageShell.tsx',
     'web/portal/src/lib/authHandoff.ts',
   ].map(readRepo));
-  const previewPage = [previewObjectPage, publicRoomShell, authHandoff].join('\n');
+  const previewPage = [previewObjectPage, publicPageShell, authHandoff].join('\n');
   const appEntry = await readRepo('web/portal/src/App.tsx');
   const inviteGate = await readRepo('web/portal/src/components/auth/InviteGate.tsx');
   const contracts = await readRepo('backend/app/public_preview_contracts.py');
@@ -245,22 +245,22 @@ async function checkPublicPreview() {
   assertNotContains(publicRoutes, 'path="/leaderboard', 'public route mount');
   assertContains(previewPage, 'portal-shell__header', 'PublicPreview shared shell');
   assertContains(previewPage, 'ClimbLeaderboard', 'PublicPreview shared leaderboard');
-  assertContains(publicRoomShell, 'const navigate = useNavigate()', 'PublicPreview entry navigation');
-  assertRegex(publicRoomShell, /navigate\(\s*['"]\/['"]\s*[,)]/, 'PublicPreview entry navigation', 'must navigate to the existing app entry at /');
+  assertContains(publicPageShell, 'const navigate = useNavigate()', 'PublicPreview entry navigation');
+  assertRegex(publicPageShell, /navigate\(\s*['"]\/['"]\s*[,)]/, 'PublicPreview entry navigation', 'must navigate to the existing app entry at /');
   assertContains(appEntry, 'if (!publicPreviewPath && (isLoading || !isAuthenticated))', 'full-page app entry boundary');
   assertContains(appEntry, '<InviteGate', 'full-page app entry boundary');
   assertContains(inviteGate, '<main className="invite-gate access-gate">', 'full-page app entry');
   assertContains(inviteGate, "import AccessPanel from './AccessPanel'", 'full-page app entry');
   assertContains(inviteGate, '<AccessPanel', 'full-page app entry');
-  for (const overlay of ['@radix-ui/react-dialog', '<Dialog.', '<dialog', 'role="dialog"', "role='dialog'", 'public-room-scrim', 'public-room-door']) {
+  for (const overlay of ['@radix-ui/react-dialog', '<Dialog.', '<dialog', 'role="dialog"', "role='dialog'", 'sign-in-dialog-overlay', 'sign-in-dialog']) {
     assertNotContains(previewPage, overlay, 'PublicPreview must leave entry to the full page');
   }
-  assertContains(publicRoomShell, "import { storeReturnIntent } from '../../lib/authHandoff'", 'PublicPreview return writer');
-  assertRegex(publicRoomShell, /storeReturnIntent\(\s*`\$\{location\.pathname\}\$\{location\.search\}\$\{location\.hash\}`/, 'PublicPreview return writer', 'must preserve the object path, query and fragment');
+  assertContains(publicPageShell, "import { storeReturnIntent } from '../../lib/authHandoff'", 'PublicPreview return writer');
+  assertRegex(publicPageShell, /storeReturnIntent\(\s*`\$\{location\.pathname\}\$\{location\.search\}\$\{location\.hash\}`/, 'PublicPreview return writer', 'must preserve the object path, query and fragment');
   assertRegex(authHandoff, /export function storeReturnIntent\(destination: string\)\s*\{[\s\S]*?sessionStorage\.setItem\(['"]br_return_url['"]/, 'authHandoff return writer', 'must retain the return-intent storage write');
-  assertNotContains(previewObjectPage + publicRoomShell, 'sessionStorage.setItem', 'PublicPreview shared handoff writer');
-  assertContains(previewPage, 'RideRoomIdentity', 'PublicPreview shared ride identity');
-  assertContains(previewPage, 'RideRoomGeography', 'PublicPreview shared ride geography');
+  assertNotContains(previewObjectPage + publicPageShell, 'sessionStorage.setItem', 'PublicPreview shared handoff writer');
+  assertContains(previewPage, 'RidePageIdentity', 'PublicPreview shared ride identity');
+  assertContains(previewPage, 'RidePageGeography', 'PublicPreview shared ride geography');
   assertContains(previewPage, 'br_return_url', 'PublicPreview return destination');
   assertNotContains(previewPage, 'MetricTile', 'retired preview grid');
   assertContains(contracts, 'PUBLIC_PREVIEW_FIXTURE_TEXT_RE', 'public preview contracts');

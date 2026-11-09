@@ -24,25 +24,25 @@
 .ledger-state-action :is(button,a) { background: transparent; color: var(--br-ink); border: 0; padding: 0; box-shadow: none; }
 .ledger-state-action svg { display: none; }
 .ledger-state-action :is(button,a)::after { content: ' ›' / '';  }
-.retained-room { position: relative; }
-.retained-room[data-offline="true"] > .retained-room-content { opacity: .55; }
+.retained-page { position: relative; }
+.retained-page[data-offline="true"] > .retained-page-content { opacity: .55; }
 .offline-pinned-row { position: sticky; top: var(--portal-shell-header-height, 62px); z-index: 20; background: var(--br-paper); padding-inline: 24px; }
 .failure-paper { background: var(--br-paper); min-height: 100%; }
 .failure-sheet { max-width: 720px; margin: 32px 24px; }
 .failure-door-row { display: flex; justify-content: space-between; color: var(--br-ink); padding: 16px 0; border-top: 1px solid var(--br-ink-faint); }
 .loading-rider-identity { padding: 24px; background: var(--br-paper-soft); max-width: 360px; }
 .climb-empty-band { height: 185px; border-bottom: 1px solid var(--br-ink-faint); }
-:is(.portal-sheet,.public-room-door,.portal-responsive-modal__drawer-content) :focus-visible { outline: 2px solid var(--br-ink-faint) !important; outline-offset: 2px !important; box-shadow: none !important; }
+:is(.portal-sheet,.sign-in-dialog,.portal-responsive-modal__drawer-content) :focus-visible { outline: 2px solid var(--br-ink-faint) !important; outline-offset: 2px !important; box-shadow: none !important; }
 @media (max-width: 440px) { .climb-empty-band { height: 104px; } .failure-sheet { margin: 20px 16px; } }
 @media (prefers-reduced-motion: reduce) { :root { --t-state: 0ms; --t-arrive: 0ms; --t-settle: 0ms; } }
 
-/* Only an opened object arrives; rooms and values have no entry animation. */
+/* Only an opened object arrives; pages and values have no entry animation. */
 @keyframes ledger-sheet-arrive { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 @keyframes ledger-sheet-leave { from { opacity: 1; } to { opacity: 0; } }
-:is([data-slot="dialog-content"],.public-room-door,.climb-map-dialog)[data-state="open"] { animation: ledger-sheet-arrive var(--t-arrive) var(--ease); }
-:is([data-slot="dialog-content"],.public-room-door,.climb-map-dialog)[data-state="closed"] { animation: ledger-sheet-leave var(--t-state) var(--ease); }
-:is([data-slot="dialog-overlay"],.public-room-scrim,.climb-map-overlay)[data-state="open"] { animation: ledger-sheet-leave var(--t-arrive) var(--ease) reverse; }
-:is([data-slot="dialog-overlay"],.public-room-scrim,.climb-map-overlay)[data-state="closed"] { animation: ledger-sheet-leave var(--t-state) var(--ease); }
+:is([data-slot="dialog-content"],.sign-in-dialog,.climb-map-dialog)[data-state="open"] { animation: ledger-sheet-arrive var(--t-arrive) var(--ease); }
+:is([data-slot="dialog-content"],.sign-in-dialog,.climb-map-dialog)[data-state="closed"] { animation: ledger-sheet-leave var(--t-state) var(--ease); }
+:is([data-slot="dialog-overlay"],.sign-in-dialog-overlay,.climb-map-overlay)[data-state="open"] { animation: ledger-sheet-leave var(--t-arrive) var(--ease) reverse; }
+:is([data-slot="dialog-overlay"],.sign-in-dialog-overlay,.climb-map-overlay)[data-state="closed"] { animation: ledger-sheet-leave var(--t-state) var(--ease); }
 .app-boot-screen__header { position: relative; }
 .app-boot-screen__panel { border: 0; box-shadow: none; background: transparent; }
 .ledger-state-copy h3 { margin: 0; font-size: inherit; line-height: inherit; font-weight: 600; }
@@ -50,8 +50,8 @@
 .ledger-state-action :is(button,a):hover { color: var(--br-ink); }
 [data-vaul-drawer] { transition-duration: var(--t-arrive) !important; transition-timing-function: var(--ease) !important; }
 [data-vaul-drawer][data-state="closed"] { transition-duration: var(--t-state) !important; }
-:is(.ride-room-ground,.climb-room-ground,.ride-room-sheet,.climb-room-sheet) { transition: height var(--t-settle) var(--ease); }
-[data-dragging="true"] > :is(.ride-room-ground,.climb-room-ground,.ride-room-sheet,.climb-room-sheet) { transition: none; }
+:is(.ride-page-ground,.climb-page-ground,.ride-page-sheet,.climb-page-sheet) { transition: height var(--t-settle) var(--ease); }
+[data-dragging="true"] > :is(.ride-page-ground,.climb-page-ground,.ride-page-sheet,.climb-page-sheet) { transition: none; }
 
 .ride-analysis-loading-instrument { height: 118px; display: flex; align-items: flex-start; justify-content: space-between; padding-top: 12px; border-block: 1px solid var(--br-ink-faint); }
 

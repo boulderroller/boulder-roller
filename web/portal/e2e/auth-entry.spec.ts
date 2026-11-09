@@ -1005,7 +1005,7 @@ test.describe('Auth Entry Flow', () => {
     await expect(page.getByRole('button', { name: 'Ride analysis Sign in' })).toBeVisible();
     await expect(page.getByText('Please connect your wallet')).toHaveCount(0);
     await expect(page.locator('.public-preview-hero__object')).toHaveCount(0);
-    await expect(page.locator('.ride-room-card-head')).toBeVisible();
+    await expect(page.locator('.ride-page-card-head')).toBeVisible();
 
     if (captureDir) {
       fs.mkdirSync(captureDir, { recursive: true });
@@ -1018,7 +1018,7 @@ test.describe('Auth Entry Flow', () => {
       await page.setViewportSize({ width: 390, height: 844 });
       await page.reload({ waitUntil: 'domcontentloaded' });
       await expect(page.getByRole('heading', { name: 'Public Share Ride' })).toBeVisible();
-      await expect(page.locator('.ride-room-card-head')).toBeVisible();
+      await expect(page.locator('.ride-page-card-head')).toBeVisible();
       await page.waitForTimeout(800);
       await page.screenshot({
         path: path.join(captureDir, 'public-preview-ride-mobile-390x844.png'),
@@ -1032,7 +1032,7 @@ test.describe('Auth Entry Flow', () => {
     await page.getByRole('button', { name: 'Ride analysis Sign in' }).click();
     await expect(page).toHaveURL('/');
     await expect(page.locator('main.invite-gate')).toBeVisible();
-    await expect(page.locator('.public-room, .public-room-scrim, [role="dialog"]')).toHaveCount(0);
+    await expect(page.locator('.public-page, .sign-in-dialog-overlay, [role="dialog"]')).toHaveCount(0);
     await expect(page.getByLabel('Email', { exact: true })).toBeFocused();
     expect(await page.evaluate(() => sessionStorage.getItem('br_return_url'))).toBe('/rides/public-ride-1?from=share#ride');
     await captureLane('entry');
@@ -1045,7 +1045,7 @@ test.describe('Auth Entry Flow', () => {
     expect(objectReads.length).toBeGreaterThan(0);
     expect(objectReads.every(Boolean)).toBe(true);
     expect(await page.evaluate(() => sessionStorage.getItem('br_return_url'))).toBeNull();
-    await expect(page.locator('.public-room, main.invite-gate')).toHaveCount(0);
+    await expect(page.locator('.public-page, main.invite-gate')).toHaveCount(0);
     await captureLane('return');
   });
 
@@ -2901,7 +2901,7 @@ test.describe('Entry capture', () => {
     await page.evaluate(() => window.dispatchEvent(new CustomEvent('br:session-expired', { detail: { reason: 'network_error' } })));
     await expect(page.locator('.offline-pinned-row')).toContainText('No connection. Try again.');
     await expect(page.locator('.shell-live-rule')).toHaveAttribute('data-offline', 'true');
-    await expect(page.locator('.retained-room-content')).toHaveCSS('opacity', '0.55');
+    await expect(page.locator('.retained-page-content')).toHaveCSS('opacity', '0.55');
     await captureAccessRendering(page, 'connection-lost');
     await expect(page.getByRole('dialog', { name: 'Sign in', exact: true })).toHaveCount(0);
     await expect(page.locator('.offline-pinned-row')).toHaveCount(1);

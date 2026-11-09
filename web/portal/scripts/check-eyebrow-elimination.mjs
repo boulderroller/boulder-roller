@@ -33,7 +33,7 @@ const placementContracts = [
   },
   {
     file: 'pages/Docs.tsx',
-    // The docs' contents page (2026-09-03): the room's name, then one gray word to the site.
+    // The docs' contents page (2026-09-03): the page's name, then one gray word to the site.
     markers: ['className="guide__header"', 'className="guide__title"', 'className="guide__word"'],
   },
   {
@@ -60,7 +60,7 @@ const placementContracts = [
           throw new Error(`Portfolio truth must appear exactly once as trailing eyebrow meta: ${marker}`);
         }
       }
-      const css = await readFile(path.join(sourceRoot, 'styles/portal-portfolio-room.css'), 'utf8');
+      const css = await readFile(path.join(sourceRoot, 'styles/portal-portfolio-page.css'), 'utf8');
       if (css.includes('portal-page-hero__status-footer')) {
         throw new Error('Portfolio CSS retains the retired status-footer selector');
       }
@@ -83,7 +83,7 @@ const placementContracts = [
   },
   {
     file: 'pages/PublicPreview.tsx',
-    markers: ['<RideRoomIdentity', '<ClimbIdentity', '<ProfileLedgerColumn'],
+    markers: ['<RidePageIdentity', '<ClimbIdentity', '<ProfileLedgerColumn'],
     forbidden: ['public-preview-hero__object', 'MetricTile', 'PreviewStat'],
   },
   {

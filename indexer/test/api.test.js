@@ -142,7 +142,7 @@ test('GET /v1/observatory returns the frozen top-level shape', async () => {
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -304,7 +304,7 @@ test('GET /v1/transactions/:signature returns metadata, instructions, events, an
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -490,7 +490,7 @@ test('GET /v1/vaults/:id separates activation audit from live recent activity', 
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -556,7 +556,7 @@ test('GET /v1/climbs returns UUID-backed registry Climbs with optional Vault eco
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -580,7 +580,7 @@ test('GET /v1/climbs/:id uses a registry UUID and rejects unbound numeric aliase
   setApiRuntimeForTests({
     query: async (text, params) => {
       if (text.includes('AS climb_references')) return { rows: [] };
-      if (text.includes('climb-room:identity')) return { rows: [] };
+      if (text.includes('climb-page-data:identity')) return { rows: [] };
       if (text.includes('FROM public.canon_climbs AS canon')) {
         assert.equal(params[0], CANON_CLIMB_ID);
         return {
@@ -601,7 +601,7 @@ test('GET /v1/climbs/:id uses a registry UUID and rejects unbound numeric aliase
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -633,7 +633,7 @@ test('GET /v1/climbs/:id uses a registry UUID and rejects unbound numeric aliase
 test('GET /v1/climbs/:id attaches only an exact active Vault and Record Board', async () => {
   setApiRuntimeForTests({
     query: async (text, params) => {
-      if (text.includes('climb-room:identity')) return { rows: [] };
+      if (text.includes('climb-page-data:identity')) return { rows: [] };
       if (text.includes('FROM public.canon_climbs AS canon')) {
         assert.match(text, /indexed\.vault_pda = candidate\.pda/);
         return {
@@ -724,7 +724,7 @@ test('GET /v1/climbs/:id attaches only an exact active Vault and Record Board', 
       if (text.includes('FROM indexer_sync_state')) {
         return { rows: [] };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -747,7 +747,7 @@ test('GET /v1/climbs/:id attaches only an exact active Vault and Record Board', 
 test('GET /v1/climbs/:id suppresses stale Vault data when exact activation recheck fails', async () => {
   setApiRuntimeForTests({
     query: async (text) => {
-      if (text.includes('climb-room:identity')) return { rows: [] };
+      if (text.includes('climb-page-data:identity')) return { rows: [] };
       if (text.includes('FROM public.canon_climbs AS canon')) {
         return {
           rows: [
@@ -785,7 +785,7 @@ test('GET /v1/climbs/:id suppresses stale Vault data when exact activation reche
       ) {
         return { rows: [] };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -945,7 +945,7 @@ test('GET /v1/accounts/:pubkey returns recent events and live SPL balances', asy
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
     getRpcConnection: () => ({
@@ -1069,7 +1069,7 @@ test('GET /v1/accounts/:pubkey filters VaultActivated out of default recent acti
       if (text.includes('FROM users')) {
         return { rows: [] };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
     getRpcConnection: () => ({
@@ -1101,7 +1101,7 @@ test('GET /v1/accounts/resolve resolves a public username to wallet pubkey', asy
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -1146,7 +1146,7 @@ test('GET /v1/accounts/:pubkey returns 404 when the indexed account is missing',
       ) {
         return { rows: [] };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });
@@ -1210,7 +1210,7 @@ test('GET /v1/accounts/:pubkey returns rider_soul-only profile when legacy accou
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
     getRpcConnection: () => ({
@@ -1272,7 +1272,7 @@ test('GET /v1/ride-attestations filters by rider and ride hash', async () => {
           ],
         };
       }
-      if (text.includes("transaction-room:") || text.includes("account-room:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
+      if (text.includes("transaction-receipt:") || text.includes("account-page-data:") || text.includes("SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")) return {rows: []};
       throw new Error(`Unexpected query: ${text}`);
     },
   });

@@ -2433,7 +2433,7 @@ async function routeCohortStrangerWalkApi(page: Page, unexpectedApiCalls: string
       return;
     }
 
-    // 24xry.22: the Ride Room shares the Climb Room's vector basemap reads.
+    // 24xry.22: the Ride page shares the Climb page's vector basemap reads.
     if (method === 'GET' && url.protocol === 'https:' && (url.hostname === 'basemaps.cartocdn.com' || /^tiles(?:-[a-d])?\.basemaps\.cartocdn\.com$/.test(url.hostname))) {
       await route.continue();
       return;
@@ -3169,8 +3169,8 @@ test.describe('Cohort stranger walk rehearsal', () => {
 
     await expect(page.getByRole('heading', { name: 'First Counted Ride' })).toBeVisible();
     await expect(page.locator('.ride-detail-jewelry')).toHaveCount(0);
-    await expect(page.locator('.ride-room-climbs .ride-room-row')).toHaveCount(1);
-    const matchedClimbCard = page.locator('.ride-room-climbs a[href="/climbs/climb-manayunk"]');
+    await expect(page.locator('.ride-page-climbs .ride-page-row')).toHaveCount(1);
+    const matchedClimbCard = page.locator('.ride-page-climbs a[href="/climbs/climb-manayunk"]');
     await expect(matchedClimbCard).toContainText('Manayunk Wall');
     await expect(matchedClimbCard).toHaveAttribute('href', '/climbs/climb-manayunk');
 
@@ -3185,7 +3185,7 @@ test.describe('Cohort stranger walk rehearsal', () => {
 
     if (captureDir) {
       fs.mkdirSync(captureDir, { recursive: true });
-      await expect(page.locator('.ride-room-card')).toHaveCSS('opacity', '1');
+      await expect(page.locator('.ride-page-card')).toHaveCSS('opacity', '1');
       await page.screenshot({ path: path.join(captureDir, 'stranger-walk-counted-ride-desktop.png'), fullPage: true });
       await openAndAssertCountedRideLog();
       await page.screenshot({ path: path.join(captureDir, 'stranger-walk-counted-proof-desktop.png'), fullPage: true });
@@ -3194,9 +3194,9 @@ test.describe('Cohort stranger walk rehearsal', () => {
       await page.reload({ waitUntil: 'domcontentloaded' });
       await expect(page.getByRole('heading', { name: 'First Counted Ride' })).toBeVisible();
       await expect(page.getByText('Manayunk Wall').first()).toBeVisible();
-      const mobileMatchedClimbCard = page.locator('.ride-room-climbs a[href="/climbs/climb-manayunk"]');
+      const mobileMatchedClimbCard = page.locator('.ride-page-climbs a[href="/climbs/climb-manayunk"]');
       await expect(mobileMatchedClimbCard).toHaveAttribute('href', '/climbs/climb-manayunk');
-      await expect(page.locator('.ride-room-card')).toHaveCSS('opacity', '1');
+      await expect(page.locator('.ride-page-card')).toHaveCSS('opacity', '1');
       await page.screenshot({ path: path.join(captureDir, 'stranger-walk-counted-ride-mobile.png'), fullPage: true });
       await openAndAssertCountedRideLog();
       await page.screenshot({ path: path.join(captureDir, 'stranger-walk-counted-proof-mobile.png'), fullPage: true });
@@ -3576,7 +3576,7 @@ test.describe('Night Ledger profile truth and keyboard', () => {
   });
 
   for (const state of ['missing', 'partial', 'unmatched', 'failed']) {
-    test(`profile ${state} positions never claim a complete ridden census and can retry`, async ({ page }, testInfo) => {
+    test(`profile ${state} positions never claim a complete ridden count and can retry`, async ({ page }, testInfo) => {
       test.setTimeout(50_000);
       let recovered = false;
       let requests = 0;
@@ -3597,7 +3597,7 @@ test.describe('Night Ledger profile truth and keyboard', () => {
       await page.setViewportSize({ width: 1440, height: 1000 });
       await page.goto('/profile');
       await expect(page.getByText('Positions unavailable.', { exact: true })).toBeVisible({ timeout: 30_000 });
-      await expect(page.locator('.profile-ledger__census')).toHaveCount(0);
+      await expect(page.locator('.profile-ledger__ridden-count')).toHaveCount(0);
       await expect(page.locator('.profile-ground__mark')).toHaveCount(0);
       if (state !== 'failed') await expect(page.locator('.profile-ledger__trio')).toContainText('4');
       if (state === 'missing') {
@@ -3612,7 +3612,7 @@ test.describe('Night Ledger profile truth and keyboard', () => {
       await page.getByRole('button', { name: 'Retry positions', exact: true }).click();
       await expect.poll(() => requests).toBeGreaterThan(before);
       await expect(page.getByText('Positions unavailable.', { exact: true })).toHaveCount(0);
-      await expect(page.locator('.profile-ledger__census')).toContainText('1');
+      await expect(page.locator('.profile-ledger__ridden-count')).toContainText('1');
       await expect(page.locator('.profile-ledger__row')).toHaveCount(1);
     });
   }
@@ -3624,13 +3624,13 @@ test.describe('Night Ledger profile truth and keyboard', () => {
       positions: [],
     } }));
     await page.goto('/profile');
-    await expect(page.locator('.profile-ledger__census strong')).toHaveText('0');
+    await expect(page.locator('.profile-ledger__ridden-count strong')).toHaveText('0');
     await expect(page.getByText('Positions unavailable.', { exact: true })).toHaveCount(0);
   });
 });
 
 test.describe('Portal navigation topology', () => {
-  test('keeps only Feed and Climbs in nav and redirects personal rooms into self Profile tabs', async ({ page }) => {
+  test('keeps only Feed and Climbs in nav and redirects personal pages into self Profile tabs', async ({ page }) => {
     test.setTimeout(60_000);
     const unexpectedApiCalls: string[] = [];
 
@@ -3884,7 +3884,7 @@ test.describe('Portal V2 route shell', () => {
               await expect(page.locator('[data-object-page="rider"]')).toBeVisible();
               await expect(page.locator('[data-object-layer="rider-identity"]')).toBeVisible();
               await expect(page.locator('[data-object-layer="rider-activity-history"]').first()).toBeVisible();
-              // Profile — Ground (ratified 2026-09-02): the map is the room, the
+              // Profile — Ground (ratified 2026-09-02): the map is the page, the
               // ledger column floats on it, the held climb wears its rank mark.
               await expect(page.locator('.profile-ground .maplibregl-canvas')).toBeVisible();
               await expect(page.locator('.profile-ground__map')).toHaveAttribute('data-rendered-held-climbs', '1');
@@ -3892,7 +3892,7 @@ test.describe('Portal V2 route shell', () => {
               await expect(page.locator('.profile-ground__mark img')).toHaveCount(1);
               await expect(page.locator('.profile-ledger__trio .profile-pair')).toHaveCount(3);
               await expect(page.locator('.profile-ledger__row')).toHaveCount(1);
-              await expect(page.locator('.profile-ledger__census')).toContainText('of 4 climbs ridden');
+              await expect(page.locator('.profile-ledger__ridden-count')).toContainText('of 4 climbs ridden');
               await expect(page.locator('.profile-photos')).toHaveCount(0);
               await expect(page.locator('.profile-year')).toBeVisible();
               await expect(page.locator('.profile-recent__row')).toHaveCount(3);
@@ -4066,12 +4066,12 @@ test.describe('Portal V2 route shell', () => {
               await expect(page.locator('[data-object-page="ride"]')).toBeVisible();
               for (const layer of ['ride-identity','ride-route-map','ride-stats','ride-elevation-climbs']) await expect(page.locator(`[data-object-layer="${layer}"]`).first()).toBeVisible();
               await expect(page.getByRole('heading', {name:'Morning Ride'})).toBeVisible();
-              await expect(page.locator('.ride-room-card .ride-room-stats dt')).toHaveText(['Distance','Elevation','Time']);
+              await expect(page.locator('.ride-page-card .ride-page-stats dt')).toHaveText(['Distance','Elevation','Time']);
               await expect(page.locator('.ride-instruments,.ride-detail-window-nav,.ride-detail-jewelry,#ride-detail-sidebar')).toHaveCount(0);
               await expect(page.getByText('Solo ride',{exact:true})).toHaveCount(0);
               await expect(page.getByText('Ride file',{exact:true})).toHaveCount(0);
-              await expect(page.locator('.ride-room-climbs a')).toContainText('Full Stack Smoke');
-              await expect(page.locator('.ride-room-climbs a')).toHaveAttribute('href','/climbs/climb-1');
+              await expect(page.locator('.ride-page-climbs a')).toContainText('Full Stack Smoke');
+              await expect(page.locator('.ride-page-climbs a')).toHaveAttribute('href','/climbs/climb-1');
               await expect(page.getByRole('link',{name:'Ride analysis',exact:true})).toHaveCount(1);
               await page.getByRole('button',{name:'More ride actions'}).click();
               await expect(page.getByRole('menuitem',{name:'Copy ride link'})).toBeVisible();
@@ -4133,7 +4133,7 @@ test.describe('Portal V2 route shell', () => {
     }
   });
 
-  test('retires frozen rooms and the provider callback at desktop and mobile', async ({ page }) => {
+  test('retires frozen pages and the provider callback at desktop and mobile', async ({ page }) => {
     test.setTimeout(45_000);
     const unexpectedApiCalls: string[] = [];
 
@@ -4463,7 +4463,7 @@ test.describe('Portal V2 route shell', () => {
     // Hovering a row lights the climb on the ground and shows the bottom card; the card opens the climb.
     await climbResult.hover();
     await expect(page.locator('.climb-discovery-route--hovered[data-climb-id="climb-1"]')).toHaveCount(1);
-    const bottomCard = page.locator('.climbs-room__card[data-climb-id="climb-1"]');
+    const bottomCard = page.locator('.climbs-page__card[data-climb-id="climb-1"]');
     await expect(bottomCard).toBeVisible();
     await expect(bottomCard).toContainText('Manayunk Wall');
     await expect(bottomCard).toContainText('0.8 km · 69 m · 8.2%');
@@ -4482,7 +4482,7 @@ test.describe('Portal V2 route shell', () => {
     await expect(welshResult).toHaveAttribute('data-selected', 'true');
     await expect(climbResult).toHaveAttribute('data-selected', 'false');
 
-    // Clicking a row chooses the climb: the ground moves to it and settles; it does not leave the room.
+    // Clicking a row chooses the climb: the ground moves to it and settles; it does not leave the page.
     await climbResult.click();
     await expect(page).toHaveURL(/\/climbs$/);
     await expect(climbResult).toHaveAttribute('data-selected', 'true');
@@ -4636,7 +4636,7 @@ test.describe('Portal V2 route shell', () => {
     const search = page.getByPlaceholder('Search climbs');
     await search.fill('Manayunk');
     await expect(page.getByText('Welsh Valley Road')).toHaveCount(0);
-    // A fresh room searches the whole canon; a bbox joins only once an area was chosen.
+    // A fresh page searches the whole canon; a bbox joins only once an area was chosen.
     await expect.poll(() => browseListRequests.some((request) => (
       request.startsWith('/climbs/list?q=Manayunk&')
       && request.includes('limit=100')
@@ -4743,10 +4743,10 @@ test.describe('Portal V2 route shell', () => {
     await routePortalApi(page, unexpectedApiCalls, { darkMode: false });
 
     await page.goto('/activities/ride-1');
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-ready','true');
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-ready','true');
     const band=page.locator('.ride-band svg');
     await band.hover({position:{x:220,y:46}});
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-scrub-index',await page.locator('.ride-band').getAttribute('data-scrub-index') ?? '');
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-scrub-index',await page.locator('.ride-band').getAttribute('data-scrub-index') ?? '');
     await page.getByRole('link',{name:'Ride analysis',exact:true}).click();
     await expect(page.locator('.ride-instrument')).toHaveCount(5);
     const speed=page.locator('.ride-instrument[data-metric="speed"]');
@@ -5182,7 +5182,7 @@ test.describe('Portal V2 route shell', () => {
     await page.goto('/activities/ride-public', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Public Ride' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Analyze' })).toHaveCount(0);
-    const rideActions = page.locator('.ride-room-card');
+    const rideActions = page.locator('.ride-page-card');
     await rideActions.getByRole('button', { name: 'More ride actions' }).click();
     await expect(rideActions.getByRole('menuitem', { name: 'Delete ride' })).toHaveCount(0);
     await expect(rideActions.getByRole('menuitem', { name: 'Report ride' })).toBeVisible();
@@ -5287,7 +5287,7 @@ test.describe('Portal V2 route shell', () => {
 
           await page.goto('/activities/ride-no-power', { waitUntil: 'domcontentloaded' });
           await expect(page.getByRole('heading', { name: 'No Power Ride' })).toBeVisible();
-          await page.locator('.ride-room-card').getByRole('button', { name: 'More ride actions' }).click();
+          await page.locator('.ride-page-card').getByRole('button', { name: 'More ride actions' }).click();
           await expect(page.getByRole('menuitem', { name: 'Delete ride', exact: true })).toHaveCount(viewer.owner ? 1 : 0);
           await page.keyboard.press('Escape');
           await page.getByRole('link', { name: 'Ride analysis', exact: true }).click();
@@ -5371,7 +5371,7 @@ test.describe('Portal V2 route shell', () => {
 
     await page.goto('/activities/ride-1');
     await expect(page.locator('.ride-band')).toBeVisible();
-    const climb=page.locator('.ride-room-climbs a');
+    const climb=page.locator('.ride-page-climbs a');
     await expect(climb).toContainText('Full Stack Smoke');
     await expect(climb).toHaveAttribute('href','/climbs/climb-1');
     await expect(page.getByRole('button',{name:'Analyze selected'})).toHaveCount(0);
@@ -5396,7 +5396,7 @@ test.describe('Portal V2 route shell', () => {
 
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto('/activities/ride-filtered-climbs');
-    await expect(page.locator('.ride-room-climbs a[href="/climbs/climb-without-offsets"]')).toHaveCount(1);
+    await expect(page.locator('.ride-page-climbs a[href="/climbs/climb-without-offsets"]')).toHaveCount(1);
     await page.getByRole('link',{name:'Ride analysis',exact:true}).click();
     const span=page.locator('.ride-instrument[data-metric="elevation"] [data-climb-id="climb-after-filter"]');
     await expect(span).toBeVisible();
@@ -5431,19 +5431,19 @@ test.describe('Portal V2 route shell', () => {
     await routePortalApi(page, unexpectedApiCalls, { darkMode: false });
 
     await page.goto('/activities/ride-1');
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-ready','true');
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-ready','true');
     // 24xry.22: the band scrub replaces the removed overview selection panels.
     const latency=await page.locator('.ride-band svg').evaluate(async el=>{
       const box=el.getBoundingClientRect(); const start=performance.now();
       el.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,clientX:box.left+box.width*.35,clientY:box.top+40}));
-      return await new Promise<number>((resolve,reject)=>{const check=()=>{const band=document.querySelector('.ride-band')?.getAttribute('data-scrub-index');const map=document.querySelector('.ride-room-map')?.getAttribute('data-scrub-index');if(band&&band===map&&document.querySelector('.ride-scrub line'))return resolve(performance.now()-start);if(performance.now()-start>100)return reject(Error('scrub linkage exceeded 100ms'));requestAnimationFrame(check);};check();});
+      return await new Promise<number>((resolve,reject)=>{const check=()=>{const band=document.querySelector('.ride-band')?.getAttribute('data-scrub-index');const map=document.querySelector('.ride-map')?.getAttribute('data-scrub-index');if(band&&band===map&&document.querySelector('.ride-scrub line'))return resolve(performance.now()-start);if(performance.now()-start>100)return reject(Error('scrub linkage exceeded 100ms'));requestAnimationFrame(check);};check();});
     });
     expect(latency).toBeLessThan(100);
     await page.locator('.ride-band svg').hover({position:{x:220,y:40}});
     await expect(page.locator('.ride-map-scrub')).toBeVisible();
-    await expect(page.locator('.ride-room-climbs a')).toHaveAttribute('href','/climbs/climb-1');
+    await expect(page.locator('.ride-page-climbs a')).toHaveAttribute('href','/climbs/climb-1');
     await page.mouse.move(24,24);
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-scrub-index','');
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-scrub-index','');
     expect(unexpectedApiCalls).toEqual([]);
   });
 
@@ -5502,15 +5502,15 @@ test.describe('Portal V2 route shell', () => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/activities/ride-1', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Morning Ride' })).toBeVisible();
-    await expect(page.locator('.ride-room-map[data-route-ready="true"]')).toBeVisible();
+    await expect(page.locator('.ride-map[data-route-ready="true"]')).toBeVisible();
 
     await expect(page.locator('.ride-detail-window-nav')).toHaveCount(0);
     await expect(page.getByText('Solo ride', { exact: true })).toHaveCount(0);
     await expect(page.getByText('Ride file', { exact: true })).toHaveCount(0);
-    await expect(page.locator('.ride-room-card dt',{hasText:/^Time$/})).toBeVisible();
-    await expect(page.locator('.ride-room-avatar')).toHaveText('DP');
+    await expect(page.locator('.ride-page-card dt',{hasText:/^Time$/})).toBeVisible();
+    await expect(page.locator('.ride-page-avatar')).toHaveText('DP');
 
-    const rideActions = page.locator('.ride-room-card');
+    const rideActions = page.locator('.ride-page-card');
     await expect(rideActions.getByRole('button',{name:'Comments',exact:true})).toBeVisible();
     await expect(page.getByRole('link',{name:'Ride analysis',exact:true})).toHaveCount(1);
     await rideActions.getByRole('button',{name:'Comments',exact:true}).click();
@@ -5542,7 +5542,7 @@ test.describe('Portal V2 route shell', () => {
       (window as Window & { __copiedRideUrl?: string }).__copiedRideUrl
     ))).toMatch(/\/activities\/ride-1$/);
 
-    const mapBox = await page.locator('.ride-room-ground').boundingBox();
+    const mapBox = await page.locator('.ride-page-ground').boundingBox();
     const startBox = await page.getByRole('button',{name:'Start',exact:true}).boundingBox();
     const finishBox = await page.getByRole('button',{name:'Finish',exact:true}).boundingBox();
     expect(mapBox, 'overview map box').not.toBeNull();
@@ -5556,10 +5556,10 @@ test.describe('Portal V2 route shell', () => {
         expect(mapBox.y + mapBox.height - endpoint.y - endpoint.height).toBeGreaterThanOrEqual(24);
       }
     }
-    await expect(page.locator('.ride-room-climbs a')).toHaveAttribute('href','/climbs/climb-1');
+    await expect(page.locator('.ride-page-climbs a')).toHaveAttribute('href','/climbs/climb-1');
     await page.getByRole('link',{name:'Ride analysis',exact:true}).click();
-    await expect(page.locator('.ride-analysis-room')).toBeVisible();
-    // Previously clicked the loading frame's inert Back div; require the ratified room's real return link.
+    await expect(page.locator('.ride-analysis-page')).toBeVisible();
+    // Previously clicked the loading frame's inert Back div; require the ratified page's real return link.
     await expect(page.locator('a.ride-analysis-back')).toHaveAttribute('href', '/activities/ride-1');
     await page.locator('a.ride-analysis-back').click();
     await page.getByRole('link',{name:'Verification',exact:true}).click();
@@ -5614,7 +5614,7 @@ test.describe('Portal V2 route shell', () => {
     }));
     expect(mobileWidth.scrollWidth).toBeLessThanOrEqual(mobileWidth.viewportWidth);
     if (captureDir) {
-      await expect(page.locator('.ride-room-map[data-route-ready="true"]')).toBeVisible();
+      await expect(page.locator('.ride-map[data-route-ready="true"]')).toBeVisible();
       await page.waitForTimeout(600);
       await page.screenshot({ path: path.join(captureDir, 'rideview-refinements-mobile-390.png') });
     }
@@ -5627,7 +5627,7 @@ test.describe('Portal V2 route shell', () => {
     }));
     expect(narrowWidth.scrollWidth).toBeLessThanOrEqual(narrowWidth.viewportWidth);
     if (captureDir) {
-      await expect(page.locator('.ride-room-map[data-route-ready="true"]')).toBeVisible();
+      await expect(page.locator('.ride-map[data-route-ready="true"]')).toBeVisible();
       await page.waitForTimeout(600);
       await page.screenshot({ path: path.join(captureDir, 'rideview-refinements-mobile-320.png') });
     }
@@ -5651,11 +5651,11 @@ test.describe('Portal V2 route shell', () => {
     await page.goto('/activities/ride-private-route');
     await expect(page.getByRole('heading',{name:'Private Route Ride'})).toBeVisible();
     await expect(page.getByRole('link',{name:'Tim Trail',exact:true})).toBeVisible();
-    await expect(page.locator('.ride-room-map canvas')).toBeVisible();
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-segments', '0');
-    await expect(page.locator('.ride-room-map .maplibregl-marker')).toHaveCount(0);
-    await expect(page.locator('.ride-room-card .ride-room-stats dt')).toHaveText(['Distance','Elevation','Time']);
-    await expect(page.locator('.ride-room-climbs a')).toHaveAttribute('href','/climbs/climb-1');
+    await expect(page.locator('.ride-map canvas')).toBeVisible();
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-segments', '0');
+    await expect(page.locator('.ride-map .maplibregl-marker')).toHaveCount(0);
+    await expect(page.locator('.ride-page-card .ride-page-stats dt')).toHaveText(['Distance','Elevation','Time']);
+    await expect(page.locator('.ride-page-climbs a')).toHaveAttribute('href','/climbs/climb-1');
     await page.getByRole('link',{name:'Ride analysis',exact:true}).click();
     await expect(page.locator('.ride-instrument[data-metric="power"] .ride-instrument-trace')).toHaveAttribute('d','');
     await expect(page.locator('.ride-instrument[data-metric="power"] .ride-instrument-readout')).toHaveText('');
@@ -5746,20 +5746,20 @@ test.describe('Portal V2 route shell', () => {
 
     await page.goto('/activities/ride-error');
     await expect(page.getByRole('heading',{name:'Sparse Ride'})).toBeVisible();
-    await expect(page.locator('.ride-room-map canvas')).toBeVisible();
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-segments', '0');
-    await expect(page.locator('.ride-room-map .maplibregl-marker')).toHaveCount(0);
-    await expect(page.locator('.ride-room-climbs .ride-room-row')).toHaveCount(0);
-    await expect(page.locator('.ride-room-card .ride-room-stats')).toBeVisible();
+    await expect(page.locator('.ride-map canvas')).toBeVisible();
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-segments', '0');
+    await expect(page.locator('.ride-map .maplibregl-marker')).toHaveCount(0);
+    await expect(page.locator('.ride-page-climbs .ride-page-row')).toHaveCount(0);
+    await expect(page.locator('.ride-page-card .ride-page-stats')).toBeVisible();
     await expect(page.getByText('Tile layer unavailable')).toHaveCount(0);
     await expect(page.getByRole('button',{name:'Open map layer controls'})).toHaveCount(0);
     await page.goto('/activities/ride-coordinate-error');
     await expect(page.getByRole('heading',{name:'Coordinate Sparse Ride'})).toBeVisible();
-    await expect(page.locator('.ride-room-map canvas')).toBeVisible();
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-segments', '0');
-    await expect(page.locator('.ride-room-map .maplibregl-marker')).toHaveCount(0);
+    await expect(page.locator('.ride-map canvas')).toBeVisible();
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-segments', '0');
+    await expect(page.locator('.ride-map .maplibregl-marker')).toHaveCount(0);
     await expect(page.locator('.ride-band-line')).not.toHaveAttribute('d','');
-    await expect(page.locator('.ride-room-climbs a')).toHaveCount(1);
+    await expect(page.locator('.ride-page-climbs a')).toHaveCount(1);
     expect(unexpectedApiCalls).toEqual([]);
   });
 });
@@ -6279,7 +6279,7 @@ test.describe('My Rides truth contract', () => {
     }
   }
 
-  test('failed uploads show the upload date and failure sentence without ride figures or a Ride Room link', async ({ page }) => {
+  test('failed uploads show the upload date and failure sentence without ride figures or a Ride page link', async ({ page }) => {
     const unexpectedApiCalls: string[] = [];
     await prepareAuthenticatedRideLog(page);
     await routePortalApi(page, unexpectedApiCalls, {
@@ -6359,7 +6359,7 @@ test.describe('My Rides truth contract', () => {
       const captureDir = process.env.PORTAL_FAILED_UPLOAD_CAPTURE_DIR ?? testInfo.outputDir;
       fs.mkdirSync(captureDir, { recursive: true });
       await page.screenshot({ path: path.join(captureDir, `failed-upload-dark-${width}.png`), fullPage: true });
-      // Reuse the log's existing sheet destination and return to the same room.
+      // Reuse the log's existing sheet destination and return to the same page.
       await action.focus();
       await page.keyboard.press('Enter');
       const sheet = page.getByRole('dialog', { name: 'Upload ride', exact: true });
@@ -6944,7 +6944,7 @@ test.describe('ClimbView Phase C capture', () => {
     await page.route('**/vaults/1/my-completions?**', route => route.fulfill({ json: {
       vault_id: 1, vault_name: boardClimb.name, efforts: [0,1,2,3].map(index => ({ id: `reference-effort-${index}`, ride_id: `reference-ride-${index}`, time_seconds: 341 + index, avg_power_w: null, achieved_at: iso(index), is_pr: index === 0, improvement: null })), total_count: 4, best_time_seconds: 341, total_prs: 1,
     } }));
-    const output = process.env.PORTAL_CLIMB_ROOM_CAPTURE_DIR;
+    const output = process.env.PORTAL_CLIMB_PAGE_CAPTURE_DIR;
     if (output) fs.mkdirSync(output, { recursive: true });
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: width === 1440 ? 1000 : 844 });
@@ -6953,34 +6953,34 @@ test.describe('ClimbView Phase C capture', () => {
       await expect(page.getByRole('heading', { name: 'Port Royal Avenue' })).toBeVisible();
       await expect(banner).toBeVisible();
       await banner.click();
-      await expect(page.locator('.climb-room-yours')).toHaveText('Your best 5:41 · 7th');
+      await expect(page.locator('.climb-page-yours')).toHaveText('Your best 5:41 · 7th');
       await expect(page.locator('.climb-map')).toHaveAttribute('data-canon-ready', 'true');
       await page.waitForLoadState('networkidle');
       const seam = page.getByRole('slider', { name: 'Climb route and elevation', exact: true });
-      const identity = await page.locator('.climb-room-identity').boundingBox();
-      const ground = await page.locator('.climb-room-ground').boundingBox();
+      const identity = await page.locator('.climb-page-identity').boundingBox();
+      const ground = await page.locator('.climb-page-ground').boundingBox();
       expect(identity!.y).toBeGreaterThan(ground!.y);
       expect(identity!.x).toBe(width === 1440 ? 40 : 16);
       expect(identity!.width).toBe(width === 1440 ? 360 : 358);
-      const glyph = await page.locator('.climb-room-glyph svg').boundingBox();
+      const glyph = await page.locator('.climb-page-glyph svg').boundingBox();
       expect([glyph!.width, glyph!.height]).toEqual([40, 20]);
-      const handleSize = await page.locator('.climb-room-handle').boundingBox();
+      const handleSize = await page.locator('.climb-page-handle').boundingBox();
       expect([handleSize!.width, handleSize!.height]).toEqual([36, 4]);
       await expect(page.locator('.climb-result-rank img')).toHaveCount(3);
       await expect(page.locator('.climb-detail-leaderboard .climb-result-row:visible')).toHaveCount(width === 1440 ? 10 : 5);
       await expect.poll(() => page.locator('.climb-map-endpoint').evaluateAll(endpoints => {
-        const card = document.querySelector('.climb-room-identity')!.getBoundingClientRect();
+        const card = document.querySelector('.climb-page-identity')!.getBoundingClientRect();
         return endpoints.filter(endpoint => { const r = endpoint.getBoundingClientRect(); return Math.min(card.right, r.right) > Math.max(card.left, r.left) && Math.min(card.bottom, r.bottom) > Math.max(card.top, r.top); }).length;
       }), { message: 'The route endpoints fit clear of the identity card' }).toBe(0);
       const inspect = page.getByRole('slider', { name: 'Position on elevation profile' });
       await inspect.fill(String(Math.round(boardClimb.profile[112][0])));
-      // Focus follows keyboard interaction; scroll the room back to its reading frame.
+      // Focus follows keyboard interaction; scroll the page back to its reading frame.
       await page.evaluate(() => window.scrollTo(0, 0));
-      if (output) await page.screenshot({ path: path.join(output, `climb-room-${width}-reading.png`), fullPage: width === 1440 });
+      if (output) await page.screenshot({ path: path.join(output, `climb-page-${width}-reading.png`), fullPage: width === 1440 });
       if (width === 390) {
         await page.getByRole('button', { name: 'Top 10', exact: true }).click();
         await expect(page.locator('.climb-detail-leaderboard .climb-result-row:visible')).toHaveCount(10);
-        await page.locator('.climb-room-ledger-scroll').evaluate(el => { el.scrollTop = 0; });
+        await page.locator('.climb-page-ledger-scroll').evaluate(el => { el.scrollTop = 0; });
       }
       const endpointBefore = await page.getByRole('button', { name: 'Finish of climb', exact: true }).boundingBox();
       const handle = await seam.boundingBox();
@@ -6989,11 +6989,11 @@ test.describe('ClimbView Phase C capture', () => {
       await page.mouse.move(handle!.x + handle!.width / 2, handle!.y + handle!.height / 2 + 320, { steps: 12 });
       await page.mouse.up();
       await expect(seam).toHaveAttribute('aria-valuenow', width === 1440 ? '1040' : '150');
-      if (width === 390) expect(await page.locator('.climb-room-sheet').evaluate(el => getComputedStyle(el).borderTopLeftRadius)).toBe('20px');
+      if (width === 390) expect(await page.locator('.climb-page-sheet').evaluate(el => getComputedStyle(el).borderTopLeftRadius)).toBe('20px');
       const endpointAfter = await page.getByRole('button', { name: 'Finish of climb', exact: true }).boundingBox();
       expect(Math.abs(endpointAfter!.y - endpointBefore!.y) + Math.abs(endpointAfter!.x - endpointBefore!.x)).toBeGreaterThan(10);
       await page.waitForLoadState('networkidle');
-      if (output) await page.screenshot({ path: path.join(output, `climb-room-${width}-looking-around.png`), fullPage: width === 1440 });
+      if (output) await page.screenshot({ path: path.join(output, `climb-page-${width}-looking-around.png`), fullPage: width === 1440 });
       // Pan the live map, then resize: the rider's chosen camera is retained.
       const canvas = page.locator('.climb-map-canvas canvas');
       const mapBox = await canvas.boundingBox();
@@ -7193,12 +7193,12 @@ test.describe('Gate A capture', () => {
       await page.goto('/activities/ride-1');
       await expect(page.getByRole('heading',{name:'Morning Ride'})).toBeVisible();
       await expect(page.locator('.portal-shell__brand-mark')).toHaveText('');
-      await expect(page.locator('.ride-room-avatar')).toBeVisible();
-      await expect(page.locator('.ride-room-card .ride-room-stats>div')).toHaveCount(3);
-      const layout=await page.evaluate(()=>{const card=document.querySelector('.ride-room-card')!.getBoundingClientRect();const rows=[...document.querySelectorAll('.ride-room-card .ride-room-stats>div')].map(el=>el.getBoundingClientRect());return {width:card.width,left:card.left,columns:new Set(rows.map(r=>Math.round(r.left))).size,rows:new Set(rows.map(r=>Math.round(r.top))).size,overflow:document.documentElement.scrollWidth-window.innerWidth};});
+      await expect(page.locator('.ride-page-avatar')).toBeVisible();
+      await expect(page.locator('.ride-page-card .ride-page-stats>div')).toHaveCount(3);
+      const layout=await page.evaluate(()=>{const card=document.querySelector('.ride-page-card')!.getBoundingClientRect();const rows=[...document.querySelectorAll('.ride-page-card .ride-page-stats>div')].map(el=>el.getBoundingClientRect());return {width:card.width,left:card.left,columns:new Set(rows.map(r=>Math.round(r.left))).size,rows:new Set(rows.map(r=>Math.round(r.top))).size,overflow:document.documentElement.scrollWidth-window.innerWidth};});
       expect(layout.width).toBe(width===1440?360:width-32);expect(layout.left).toBe(width===1440?40:16);
       expect(layout.columns).toBe(3);expect(layout.rows).toBe(1);expect(layout.overflow).toBeLessThanOrEqual(0);
-      await expect(page.locator('.ride-room-spine')).toBeVisible({visible:width===1440});
+      await expect(page.locator('.ride-page-spine')).toBeVisible({visible:width===1440});
       if(width===1440){const nav=await page.locator('.portal-shell__topbar > .portal-shell-primary-nav').boundingBox();expect(Math.abs(nav!.x+nav!.width/2-width/2)).toBeLessThanOrEqual(2);}
     }
     expect(unexpectedApiCalls).toEqual([]);
@@ -7218,11 +7218,11 @@ test.describe('Gate A capture', () => {
     const measureStats = async (ridePath: string, heading: string) => {
       await page.goto(ridePath, { waitUntil: 'domcontentloaded' });
       await expect(page.getByRole('heading', { name: heading })).toBeVisible();
-      await expect(page.locator('.ride-room-card .ride-room-stats>div')).toHaveCount(3);
+      await expect(page.locator('.ride-page-card .ride-page-stats>div')).toHaveCount(3);
       return page.evaluate(() => {
-        const container = document.querySelector<HTMLElement>('.ride-room-card .ride-room-stats');
+        const container = document.querySelector<HTMLElement>('.ride-page-card .ride-page-stats');
         const containerRect = container?.getBoundingClientRect();
-        const stats = Array.from(document.querySelectorAll<HTMLElement>('.ride-room-card .ride-room-stats>div'));
+        const stats = Array.from(document.querySelectorAll<HTMLElement>('.ride-page-card .ride-page-stats>div'));
         const firstValue = stats[0]?.querySelector<HTMLElement>('dd');
         const firstLabel = stats[0]?.querySelector<HTMLElement>('dt');
         const valueStyle = firstValue ? window.getComputedStyle(firstValue) : null;
@@ -7266,8 +7266,8 @@ test.describe('Gate A capture', () => {
     expect(rideOne.valueFontVariantNumeric).toContain('tabular-nums');
 
     await page.goto('/activities/ride-1', { waitUntil: 'domcontentloaded' });
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-ready','true');
-    const hoverLatencyMs=await page.locator('.ride-band svg').evaluate(async el=>{const b=el.getBoundingClientRect(),start=performance.now();el.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,clientX:b.left+200,clientY:b.top+45}));return await new Promise<number>((resolve,reject)=>{const check=()=>{const i=document.querySelector('.ride-band')?.getAttribute('data-scrub-index');if(i&&document.querySelector('.ride-room-map')?.getAttribute('data-scrub-index')===i)return resolve(performance.now()-start);if(performance.now()-start>100)return reject(Error('scrub linkage exceeded 100ms'));requestAnimationFrame(check);};check();});});
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-ready','true');
+    const hoverLatencyMs=await page.locator('.ride-band svg').evaluate(async el=>{const b=el.getBoundingClientRect(),start=performance.now();el.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,clientX:b.left+200,clientY:b.top+45}));return await new Promise<number>((resolve,reject)=>{const check=()=>{const i=document.querySelector('.ride-band')?.getAttribute('data-scrub-index');if(i&&document.querySelector('.ride-map')?.getAttribute('data-scrub-index')===i)return resolve(performance.now()-start);if(performance.now()-start>100)return reject(Error('scrub linkage exceeded 100ms'));requestAnimationFrame(check);};check();});});
     expect(hoverLatencyMs).toBeLessThan(100);
 
     fs.writeFileSync(artifacts.measurements, `${JSON.stringify({
@@ -7653,7 +7653,7 @@ test.describe('Public preview privacy cache', () => {
 
     await page.goto('/rides/preview-ride', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Shawmont Morning' })).toBeVisible();
-    await page.locator('.public-room .portal-shell__brand').click();
+    await page.locator('.public-page .portal-shell__brand').click();
     await expect(page).toHaveURL(/\/$/);
     // The URL changes before React finishes leaving the preview. Returning during
     // that transition cancels navigation instead of exercising cache remounting.
@@ -7688,9 +7688,9 @@ test.describe('Ratified typography review evidence', () => {
     await expect(page.locator('main').getByText('CAL', { exact: true })).toHaveCount(0);
     await expect(page.locator('main').getByText('DUNG', { exact: true })).toHaveCount(0);
 
-    const statusValue = page.locator('.ride-room-card-head b');
-    const signInValue = page.locator('.ride-room-door button > span').last();
-    const metricValue = page.locator('.ride-room-stats dd').first();
+    const statusValue = page.locator('.ride-page-card-head b');
+    const signInValue = page.locator('.ride-analysis-link button > span').last();
+    const metricValue = page.locator('.ride-page-stats dd').first();
     await expect(statusValue).toBeVisible();
     await expect(signInValue).toBeVisible();
     await expect(metricValue).toBeVisible();
@@ -7757,7 +7757,7 @@ test.describe('Ratified typography review evidence', () => {
     await page.goto('/rides/preview-ride', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Shawmont Morning' })).toBeVisible();
     const statusStyle = await readTypographyStyle(
-      page.locator('.ride-room-card-head b'),
+      page.locator('.ride-page-card-head b'),
     );
     expectSansTypography(statusStyle);
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
@@ -7877,20 +7877,20 @@ test.describe('Ratified typography review evidence', () => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/activities/ride-1', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Morning Ride' })).toBeVisible();
-    await expect(page.locator('.ride-room-map[data-route-ready="true"]')).toBeVisible();
+    await expect(page.locator('.ride-map[data-route-ready="true"]')).toBeVisible();
     await page.waitForTimeout(1_000);
-    const rideOverviewValue = page.locator('.ride-room-card .ride-room-stats dd').first();
+    const rideOverviewValue = page.locator('.ride-page-card .ride-page-stats dd').first();
     const rideOverviewStyle = await readTypographyStyle(rideOverviewValue);
     expectMonoTypography(rideOverviewStyle);
-    measurements.rideRoomMonoTrio = rideOverviewStyle;
-    await captureTypographyPage(page, 'ride-room-mono-trio-desktop-1440x1000.png');
+    measurements.ridePageMonoTrio = rideOverviewStyle;
+    await captureTypographyPage(page, 'ride-page-mono-trio-desktop-1440x1000.png');
 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.reload({ waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Morning Ride' })).toBeVisible();
-    await expect(page.locator('.ride-room-map[data-route-ready="true"]')).toBeVisible();
+    await expect(page.locator('.ride-map[data-route-ready="true"]')).toBeVisible();
     await page.waitForTimeout(800);
-    await captureTypographyPage(page, 'ride-room-mono-trio-mobile-390x844.png');
+    await captureTypographyPage(page, 'ride-page-mono-trio-mobile-390x844.png');
 
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/upload', { waitUntil: 'domcontentloaded' });
@@ -8075,7 +8075,7 @@ test.describe('Training audit recovery', () => {
   });
 });
 
-// 24xry.22: the ratified overview door owns navigation into the separate instrument room.
+// 24xry.22: the ratified overview door owns navigation into the separate instrument page.
 async function routeRideServerPower(page: Page, metrics: Record<string, unknown>, unexpected: string[]) {
   const effortId = '11111111-1111-4111-8111-111111111111';
   page.on('request', request => {
@@ -8091,7 +8091,7 @@ async function routeRideServerPower(page: Page, metrics: Record<string, unknown>
   });
 }
 
-test('Ride Room opens its own analysis room with synchronized instruments and no effort reads', async ({ page }) => {
+test('Ride page opens its own analysis page with synchronized instruments and no effort reads', async ({ page }) => {
   const unexpectedApiCalls: string[] = [];
   await page.addInitScript(() => {
     localStorage.setItem('br_authenticated', 'true');
@@ -8114,18 +8114,18 @@ test('Ride Room opens its own analysis room with synchronized instruments and no
     values: Array.from({length:43},(_,i)=>100+i*5), sample_count:43,
   } }); });
   await page.goto('/activities/ride-1');
-  await expect(page.locator('.ride-room')).toBeVisible();
-  await expect(page.locator('.ride-room-card')).toContainText('Morning Ride');
-  await expect(page.locator('.ride-room-card')).toContainText('1 kudos');
-  await expect(page.locator('.ride-room .ride-instruments')).toHaveCount(0);
-  await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-ready','true');
+  await expect(page.locator('.ride-page-geography')).toBeVisible();
+  await expect(page.locator('.ride-page-card')).toContainText('Morning Ride');
+  await expect(page.locator('.ride-page-card')).toContainText('1 kudos');
+  await expect(page.locator('.ride-page-geography .ride-instruments')).toHaveCount(0);
+  await expect(page.locator('.ride-map')).toHaveAttribute('data-route-ready','true');
   await page.getByRole('button',{name:'Zoom in',exact:true}).click();
-  await page.locator('.ride-room-map canvas').evaluate(el=>el.setAttribute('data-mount-witness','rider-zoom'));
+  await page.locator('.ride-map canvas').evaluate(el=>el.setAttribute('data-mount-witness','rider-zoom'));
   releasePower();
   await page.getByRole('button', { name: 'Power', exact: true }).click();
-  await expect(page.locator('.ride-room-row-value').first()).toContainText('⚡ 324 W');
-  await expect(page.locator('.ride-room-row-value').first()).toContainText('4.32 W/kg');
-  await expect(page.locator('.ride-room-map canvas')).toHaveAttribute('data-mount-witness','rider-zoom');
+  await expect(page.locator('.ride-page-row-value').first()).toContainText('⚡ 324 W');
+  await expect(page.locator('.ride-page-row-value').first()).toContainText('4.32 W/kg');
+  await expect(page.locator('.ride-map canvas')).toHaveAttribute('data-mount-witness','rider-zoom');
   await page.getByRole('link', { name: 'Ride analysis', exact: true }).click();
   await expect(page).toHaveURL(/\/activities\/ride-1\/analysis$/);
   await expect(page.getByRole('heading', { name: 'Ride analysis', exact: true })).toBeVisible();
@@ -8148,14 +8148,14 @@ test('Ride Room opens its own analysis room with synchronized instruments and no
   expect(unexpectedApiCalls).toEqual([]);
 });
 
-for (const width of [1440, 390]) test(`Ride Room climb estimate opens independently of its row at ${width}`, async ({ page }) => {
+for (const width of [1440, 390]) test(`Ride page climb estimate opens independently of its row at ${width}`, async ({ page }) => {
   const unexpected: string[] = [];
   await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
   await page.addInitScript(() => localStorage.setItem('br_authenticated', 'true'));
   await routePortalApi(page, unexpected, { darkMode: false });
   await routeRideServerPower(page, { power_kind: 'estimated', estimated_power_w: 278, estimated_power_range_w: [250, 310] }, unexpected);
   await page.goto('/activities/ride-1');
-  const ledger = page.locator('.ride-room-ledger');
+  const ledger = page.locator('.ride-page-ledger');
   await expect(ledger.getByRole('button', { name: 'Estimated 278 watts' })).toBeVisible();
   await expect(ledger.locator('a button')).toHaveCount(0);
   await ledger.getByRole('button', { name: 'Estimated 278 watts' }).focus();
@@ -8172,7 +8172,7 @@ for (const width of [1440, 390]) test(`Ride Room climb estimate opens independen
   expect(unexpected).toEqual([]);
 });
 
-test('Ride Room social footer follows kudos and comment API results', async ({ page }) => {
+test('Ride page social footer follows kudos and comment API results', async ({ page }) => {
   const unexpected: string[] = [], errors: string[] = [];
   page.on('pageerror',error=>errors.push(error.message));
   await page.addInitScript(()=>localStorage.setItem('br_authenticated','true'));
@@ -8182,11 +8182,11 @@ test('Ride Room social footer follows kudos and comment API results', async ({ p
   await page.route('**/rides/ride-public/kudos',route=>{kudos=route.request().method()==='POST';return route.fulfill({json:{status:'ok'}});});
   await page.route('**/rides/ride-public/comments',route=>{
     if(route.request().method()!=='POST')return route.fallback();
-    added=true;return route.fulfill({json:{id:'comment-new',user_id:'user-test-1',content:'Ride Room comment fixture.',created_at:iso(1)}});
+    added=true;return route.fulfill({json:{id:'comment-new',user_id:'user-test-1',content:'Ride page comment fixture.',created_at:iso(1)}});
   });
   await page.route('**/rides/ride-public/comments/comment-new',route=>{added=false;return route.fulfill({json:{status:'ok'}});});
   await page.goto('/activities/ride-public');
-  const footer=page.locator('.ride-room-social-footer'),kudosButton=page.locator('#ride-social button').filter({hasText:'Give kudos'});
+  const footer=page.locator('.ride-page-social-footer'),kudosButton=page.locator('#ride-social button').filter({hasText:'Give kudos'});
   await expect(footer).toContainText('1 kudos');
   await kudosButton.click();
   await expect(footer).toContainText('2 kudos');
@@ -8194,12 +8194,12 @@ test('Ride Room social footer follows kudos and comment API results', async ({ p
   await kudosButton.click();
   await expect(footer).toContainText('1 kudos');
   await expect(kudosButton).toHaveAttribute('aria-pressed','false');
-  await page.getByPlaceholder('Add a comment...').fill('Ride Room comment fixture.');
+  await page.getByPlaceholder('Add a comment...').fill('Ride page comment fixture.');
   await page.getByRole('button',{name:'Post comment',exact:true}).click();
   await expect(footer.getByRole('button',{name:'Comments',exact:true})).toHaveText('2');
   await page.getByRole('button',{name:'Delete comment',exact:true}).click();
   await expect(footer.getByRole('button',{name:'Comments',exact:true})).toHaveText('1');
-  await expect(page.getByText('Ride Room comment fixture.',{exact:true})).toHaveCount(0);
+  await expect(page.getByText('Ride page comment fixture.',{exact:true})).toHaveCount(0);
   expect(errors).toEqual([]);expect(unexpected).toEqual([]);
 });
 
@@ -8213,10 +8213,10 @@ test('Ride analysis displays backend boundaries, moving clock and curve unchange
   expect(trainingRead(null).zones).toBeNull();
 });
 
-test('Ride Room validation renders and phone grip preserve the ratified split', async ({ page }, testInfo) => {
+test('Ride page validation renders and phone grip preserve the ratified split', async ({ page }, testInfo) => {
   test.setTimeout(120_000);
   const fixture=JSON.parse(gunzipSync(fs.readFileSync(path.resolve('../../history/ride-room-2026-09-05/build/capture-fixture.json.gz'))).toString());
-  const output=process.env.BR_CAPTURE_RIDE_ROOM_DIR ?? testInfo.outputPath('ride-room');
+  const output=process.env.BR_CAPTURE_RIDE_PAGE_DIR ?? testInfo.outputPath('ride-page');
   fs.mkdirSync(output,{recursive:true});
   const unexpected:string[]=[],errors:string[]=[];
   page.on('pageerror',e=>errors.push(e.message));
@@ -8238,14 +8238,14 @@ test('Ride Room validation renders and phone grip preserve the ratified split', 
     await page.setViewportSize({width,height:width===390?844:1000});
     await page.goto('/activities/ride-1');
     await expect(page.getByRole('heading',{name:'In the bag'})).toBeVisible();
-    await expect(page.locator('.ride-room-map')).toHaveAttribute('data-route-ready','true');
-    await expect(page.locator('.ride-room-card')).toContainText('128.7 km');
-    await expect(page.locator('.ride-room-climbs a')).toHaveCount(3);
-    await page.screenshot({path:path.join(output,`ride-room-${width}-reading.png`),fullPage:width===1440});
+    await expect(page.locator('.ride-map')).toHaveAttribute('data-route-ready','true');
+    await expect(page.locator('.ride-page-card')).toContainText('128.7 km');
+    await expect(page.locator('.ride-page-climbs a')).toHaveCount(3);
+    await page.screenshot({path:path.join(output,`ride-page-${width}-reading.png`),fullPage:width===1440});
     const grip=page.getByRole('slider',{name:'Ride route and elevation'}),box=await grip.boundingBox();expect(box).not.toBeNull();
     await page.mouse.move(box!.x+box!.width/2,box!.y+box!.height/2);await page.mouse.down();await page.mouse.move(box!.x+box!.width/2,box!.y+(width===390?320:260),{steps:12});await page.mouse.up();
     await expect(grip).toHaveAttribute('aria-valuenow',width===390?'150':/9[0-9][0-9]/);
-    await page.screenshot({path:path.join(output,`ride-room-${width}-looking.png`),fullPage:width===1440});
+    await page.screenshot({path:path.join(output,`ride-page-${width}-looking.png`),fullPage:width===1440});
     await grip.focus();await page.keyboard.press(width===390?'End':'Home');
     await page.getByRole('link',{name:'Ride analysis',exact:true}).click();
     await expect(page.locator('.ride-instrument')).toHaveCount(4);
@@ -8262,7 +8262,7 @@ test('Ride Room validation renders and phone grip preserve the ratified split', 
 });
 
 test.describe('Ratified browser tab grammar', () => {
-  test('titles follow loaded objects, URL rooms and sheets without changing shell headings', async ({ page }) => {
+  test('titles follow loaded objects, URL pages and sheets without changing shell headings', async ({ page }) => {
     test.setTimeout(90_000);
     await page.addInitScript(() => localStorage.setItem('br_authenticated', 'true'));
     await routePortalApi(page, [], { darkMode: true, withCanonVaultCreationSpecimen: true });
@@ -8276,7 +8276,7 @@ test.describe('Ratified browser tab grammar', () => {
       ['/profile?tab=training', 'Dung Beetle Phoenix · Training'],
       ['/profile?tab=portfolio', 'Dung Beetle Phoenix · Portfolio'],
       ['/rider/tim', 'Tim Trail · Rider'], ['/docs', 'Guide'],
-      ['/missing-room', 'Not found'], ['/?search=riders', 'Feed'],
+      ['/missing-page', 'Not found'], ['/?search=riders', 'Feed'],
     ]) {
       await page.goto(url);
       await expect(page).toHaveTitle(`${title} · Boulder Roller`);
@@ -8308,16 +8308,16 @@ test.describe('Portal pass chores', () => {
   });
   test('feed uses read-only ground', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('.feed-route-band .ride-room-map').first()).toBeVisible();
+    await expect(page.locator('.feed-route-band .ride-map').first()).toBeVisible();
     await expect(page.locator('.feed-route-band button')).toHaveCount(0);
-    await expect(page.locator('.feed-route-band .ride-room-map').first()).toHaveAttribute('data-route-ready', 'true');
-    await expect(page.locator('.feed-route-band .ride-room-map').first()).toHaveAttribute('data-ground-ready', 'true');
+    await expect(page.locator('.feed-route-band .ride-map').first()).toHaveAttribute('data-route-ready', 'true');
+    await expect(page.locator('.feed-route-band .ride-map').first()).toHaveAttribute('data-ground-ready', 'true');
     await expect(page.locator('.feed-activity-card__user-button').first()).toHaveText('@dungbeetlephoenix');
     // The base style ships with the app; our basemap host serves the tiles, glyphs and sprite.
     await page.route(/^https:\/\/api\.boulderroller\.xyz\/basemap\//, route => route.fulfill({ status: 503, body: '' }));
     await page.reload();
-    await expect(page.locator('.feed-route-band .ride-room-map').first()).toBeVisible();
-    await expect(page.locator('.feed-route-band .ride-room-map-canvas').first()).toHaveCSS('opacity', '0');
+    await expect(page.locator('.feed-route-band .ride-map').first()).toBeVisible();
+    await expect(page.locator('.feed-route-band .ride-map-canvas').first()).toHaveCSS('opacity', '0');
   });
   test('own profile carries social counts', async ({ page }) => {
     await page.goto('/profile');
@@ -8383,7 +8383,7 @@ test.describe('Portal pass chores', () => {
   test('ride refit and absent tribute', async ({ page }) => {
     await page.goto('/activities/ride-1');
     await expect(page.getByRole('button', { name: 'Fit ride in map' }).locator('.lucide-expand')).toBeVisible();
-    await expect(page.locator('.ride-room-kv').filter({ hasText: 'CAL tribute' })).toContainText('—');
+    await expect(page.locator('.ride-page-kv').filter({ hasText: 'CAL tribute' })).toContainText('—');
     await page.setViewportSize({ width: 390, height: 844 });
     const grip = page.getByRole('slider', { name: 'Ride route and elevation' });
     await grip.focus(); await grip.press('End');
@@ -8417,7 +8417,7 @@ test('Portal pass Portfolio truth appears once in each eyebrow', async ({ page }
   await expect(wallet.locator('.portfolio-sheet__meta')).toHaveCount(1);
   await expect(positions.locator('.portfolio-sheet__meta')).toHaveCount(1);
   await expect(wallet.locator('.portfolio-sheet__meta')).toHaveCSS('text-transform', 'none');
-  await expect(page.locator('.portfolio-room .portal-page-hero__status-footer, .portfolio-room .portal-truth-pill')).toHaveCount(0);
+  await expect(page.locator('.portfolio-page .portal-page-hero__status-footer, .portfolio-page .portal-truth-pill')).toHaveCount(0);
   await page.route('**/portfolio/snapshot?*', route => {
     const snapshot = responseFor(new URL(route.request().url()), 'GET', {}) as { freshness: { chain_status: string } };
     snapshot.freshness.chain_status = 'unavailable';
@@ -8429,29 +8429,29 @@ test('Portal pass Portfolio truth appears once in each eyebrow', async ({ page }
 });
 
 // 24xry.24: local fixture evidence, never production/rider proof.
-test.describe('ratified room state evidence', () => {
-  const rooms = [
+test.describe('ratified page state evidence', () => {
+  const pageCases = [
     { name: 'feed', route: '/', anatomy: '.feed-page', async: true },
-    { name: 'map', route: '/climbs', anatomy: '.climbs-room__column', async: true },
-    { name: 'climb', route: '/climbs/climb-1', anatomy: '.climb-room-ground', async: true },
-    { name: 'ride', route: '/activities/ride-1', anatomy: '.ride-room-ground', async: true },
-    { name: 'analysis', route: '/activities/ride-1/analysis', anatomy: '.ride-analysis-room', async: true },
+    { name: 'map', route: '/climbs', anatomy: '.climbs-page__column', async: true },
+    { name: 'climb', route: '/climbs/climb-1', anatomy: '.climb-page-ground', async: true },
+    { name: 'ride', route: '/activities/ride-1', anatomy: '.ride-page-ground', async: true },
+    { name: 'analysis', route: '/activities/ride-1/analysis', anatomy: '.ride-analysis-page', async: true },
     { name: 'profile', route: '/profile', anatomy: '.profile-ground', async: true },
     { name: 'rides', route: '/profile?tab=rides', anatomy: '.profile-ground', async: true },
     { name: 'training', route: '/profile?tab=training', anatomy: '.profile-ground', async: true },
     { name: 'portfolio', route: '/profile?tab=portfolio', anatomy: '.profile-ground', async: true },
-    { name: 'settings', route: '/settings?tab=privacy', anatomy: '.settings-room', async: true },
+    { name: 'settings', route: '/settings?tab=privacy', anatomy: '.settings-page', async: true },
     { name: 'notifications', route: '/notifications', anatomy: '.notifications-page', async: true },
     { name: 'guide', route: '/docs', anatomy: 'main', async: false },
     { name: 'search', route: '/?search=riders', anatomy: '.search-sheet', async: true },
     { name: 'upload', route: '/upload', anatomy: '.upload-sheet', async: true },
   ];
-  for (const room of rooms) test(`${room.name}: anatomy, slots, empty, failure and retained offline frames`, async ({ page }, testInfo) => {
+  for (const pageCase of pageCases) test(`${pageCase.name}: anatomy, slots, empty, failure and retained offline frames`, async ({ page }, testInfo) => {
     test.setTimeout(150_000);
     const output = process.env.BR_STATES_CAPTURE_DIR || testInfo.outputPath('states');
     fs.mkdirSync(output, { recursive: true });
     const errors: string[] = [];
-    page.on('pageerror', error => { errors.push(error.message); console.error('Room runtime:', error.stack); });
+    page.on('pageerror', error => { errors.push(error.message); console.error('Page runtime:', error.stack); });
     await page.addInitScript(() => { localStorage.setItem('br_authenticated', 'true'); localStorage.setItem('boulder-roller-theme-id', 'hoo-breddin'); localStorage.setItem('boulder-roller-dark-mode', 'false'); });
     const options: RouteFixtureOptions = { darkMode: false, withTrainingFigures: true, withClimbViewSpecimen: true };
     await routePortalApi(page, [], options);
@@ -8462,7 +8462,7 @@ test.describe('ratified room state evidence', () => {
     const held = new Promise<void>(resolve => { release = resolve; });
     await page.route('**/*', async route => {
       const request = route.request(), url = new URL(request.url());
-      if (room.name === 'ride' && /\/src\/pages\/RideViewCore\.tsx$/.test(url.pathname) && mode === 'loading') await held;
+      if (pageCase.name === 'ride' && /\/src\/pages\/RideViewCore\.tsx$/.test(url.pathname) && mode === 'loading') await held;
       if (!['fetch', 'xhr'].includes(request.resourceType()) || !/\/api\/|api\.boulderroller/.test(url.href) || isGroundAsset(url) || /\/auth\/|\/me$|\/users\/me$/.test(url.pathname)) return route.fallback();
       if (mode === 'loading') {
         if (/\/feed\/home$/.test(url.pathname)) heldFeedRequests += 1;
@@ -8489,20 +8489,20 @@ test.describe('ratified room state evidence', () => {
       for (const width of [1440, 390]) {
         await page.setViewportSize({ width, height: width === 1440 ? 1000 : 844 });
         await page.waitForTimeout(400);
-        expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${room.name}/${state}/${width} horizontal overflow`).toBeLessThanOrEqual(1);
-        await page.screenshot({ path: path.join(output, `${room.name}-${state}-${width}.png`) });
+        expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${pageCase.name}/${state}/${width} horizontal overflow`).toBeLessThanOrEqual(1);
+        await page.screenshot({ path: path.join(output, `${pageCase.name}-${state}-${width}.png`) });
       }
     };
     await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.goto(room.route, { waitUntil: 'commit' });
+    await page.goto(pageCase.route, { waitUntil: 'commit' });
     await page.waitForTimeout(1400);
     await expect(page.locator('.portal-shell__header').first()).toBeVisible();
-    await expect(page.locator(room.anatomy).first()).toBeVisible();
-    if (room.async) {
+    await expect(page.locator(pageCase.anatomy).first()).toBeVisible();
+    if (pageCase.async) {
       await expect(page.locator('.ledger-slot').first()).toBeVisible();
       await expect(page.locator('.shell-live-rule').first()).toHaveAttribute('data-live', 'true');
     }
-    if (room.name === 'feed') {
+    if (pageCase.name === 'feed') {
       // Previously checked only a generic slot; the ratified feed still renders ten SlotRows while its home read is held.
       await expect.poll(() => heldFeedRequests).toBeGreaterThan(0);
       await expect(page.locator('.feed-page .ledger-slot-row')).toHaveCount(10);
@@ -8518,24 +8518,24 @@ test.describe('ratified room state evidence', () => {
     await expect(page.locator('.ledger-slot')).toHaveCount(0, { timeout: 45_000 });
     await expect(page.locator('.shell-live-rule').first()).toHaveAttribute('data-live', 'false', { timeout: 40_000 });
     // The ratified feed band loads a map module after its data; retain a rendered map, not an unfinished import.
-    if (room.name === 'feed') await expect(page.locator('.feed-route-band .maplibregl-canvas').first()).toBeVisible();
+    if (pageCase.name === 'feed') await expect(page.locator('.feed-route-band .maplibregl-canvas').first()).toBeVisible();
     await page.context().setOffline(true);
     await expect(page.locator('.offline-pinned-row')).toHaveCount(1);
     await expect(page.locator('.shell-live-rule').first()).toHaveAttribute('data-offline', 'true');
-    await expect(page.locator('.retained-room-content')).toHaveCSS('opacity', '0.55');
+    await expect(page.locator('.retained-page-content')).toHaveCSS('opacity', '0.55');
     await capture('offline');
     await page.context().setOffline(false);
     mode = 'empty'; options.rideListTotal = 0; options.profileRideTotal = 0; options.withTrainingFigures = false;
-    await page.goto(room.route);
-    await expect(page.locator('.retained-room')).toBeVisible();
+    await page.goto(pageCase.route);
+    await expect(page.locator('.retained-page')).toBeVisible();
     await expect(page.locator('.app-boot-screen')).toHaveCount(0);
     await expect(page.locator('.shell-live-rule').first()).toHaveAttribute('data-live', 'false', { timeout: 40_000 });
-    await expect(page.locator(room.anatomy).first()).toBeVisible();
+    await expect(page.locator(pageCase.anatomy).first()).toBeVisible();
     await expect(page.locator('.ledger-slot')).toHaveCount(0, { timeout: 45_000 });
     await capture('empty');
     mode = 'failure';
-    await page.goto(room.route);
-    await expect(page.locator('.retained-room')).toBeVisible();
+    await page.goto(pageCase.route);
+    await expect(page.locator('.retained-page')).toBeVisible();
     await expect(page.locator('.app-boot-screen')).toHaveCount(0);
     await expect(page.locator('.shell-live-rule').first()).toHaveAttribute('data-live', 'false', { timeout: 45_000 });
     await expect(page.locator('.ledger-slot')).toHaveCount(0, { timeout: 45_000 });
@@ -8552,7 +8552,7 @@ async function assertFullPagePublicEntry(page: Page, destination: string) {
   await expect(page).toHaveURL('/');
   await expect(page.getByRole('region', { name: 'Account entry', exact: true })).toBeVisible();
   await expect(page.getByRole('textbox', { name: 'Email', exact: true })).toBeFocused();
-  await expect(page.locator('.public-room, .public-room-scrim, [role="dialog"]')).toHaveCount(0);
+  await expect(page.locator('.public-page, .sign-in-dialog-overlay, [role="dialog"]')).toHaveCount(0);
   expect(await page.evaluate(() => sessionStorage.getItem('br_return_url'))).toBe(destination);
   await page.keyboard.press('Escape');
   await expect(page).toHaveURL('/');
@@ -8561,9 +8561,9 @@ async function assertFullPagePublicEntry(page: Page, destination: string) {
 
 test.describe('public state evidence', () => {
   for (const specimen of [
-    { name: 'public-climb', route: '/climbs/preview-climb', anatomy: '.climb-room-ground' },
+    { name: 'public-climb', route: '/climbs/preview-climb', anatomy: '.climb-page-ground' },
     { name: 'public-rider', route: '/riders/tim', anatomy: '.profile-ground' },
-    { name: 'public-ride', route: '/rides/preview-ride', anatomy: '.ride-room-ground' },
+    { name: 'public-ride', route: '/rides/preview-ride', anatomy: '.ride-page-ground' },
   ]) test(`${specimen.name}: loading, empty, failure, offline and door`, async ({ page }, testInfo) => {
     test.setTimeout(120_000);
     const out = process.env.BR_STATES_CAPTURE_DIR || testInfo.outputPath('states'); fs.mkdirSync(out, { recursive: true });
@@ -8609,10 +8609,10 @@ test.describe('public state evidence', () => {
     await page.context().setOffline(true);
     await expect(page.locator('.offline-pinned-row')).toHaveCount(1);
     await expect(page.locator('.shell-live-rule')).toHaveAttribute('data-offline', 'true');
-    await expect(page.locator('.retained-room-content')).toHaveCSS('opacity', '0.55');
+    await expect(page.locator('.retained-page-content')).toHaveCSS('opacity', '0.55');
     await capture('offline'); await page.context().setOffline(false);
     await page.getByRole('button', { name: 'Sign in', exact: true }).first().click();
-    // Previously pinned the three public-room dialogs; lane D replaces them with full-page entry and browser Back.
+    // Previously pinned the three public-page dialogs; lane D replaces them with full-page entry and browser Back.
     await assertFullPagePublicEntry(page, specimen.route);
     await capture('door');
     await page.goBack();
@@ -8675,7 +8675,7 @@ test('state timing: live rule waits 160ms, keeps 420ms, and reduced motion remov
 test('state recovery: unknown route retains one shell and one sheet', async ({ page }, testInfo) => {
   await page.addInitScript(() => localStorage.setItem('br_authenticated', 'true'));
   await routePortalApi(page, [], {});
-  await page.goto('/missing-room');
+  await page.goto('/missing-page');
   await expect(page.locator('.portal-shell__header')).toHaveCount(1);
   await expect(page.locator('.failure-paper .failure-sheet')).toHaveCount(1);
   await expect(page.getByRole('link', { name: 'Rides', exact: true }).last()).toHaveAttribute('href', '/profile?tab=rides');
@@ -8848,7 +8848,7 @@ test('Training v2 frozen reads render on desktop and phone', async ({page}, test
     await expect(trainingCard).toHaveCount(0);
     await page.goto('/activities/ride-1');
     await page.getByRole('group',{name:'Climb values'}).getByRole('button',{name:'Power',exact:true}).click();
-    await expect(page.locator('.ride-room-climbs')).toContainText('244 W');
+    await expect(page.locator('.ride-page-climbs')).toContainText('244 W');
     await page.goto('/activities/ride-1/analysis');
     await expect(page.getByRole('heading',{name:'Ride analysis',exact:true})).toBeVisible();
     await expect(page.locator('.ride-metrics')).toContainText('53:30');

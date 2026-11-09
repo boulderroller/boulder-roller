@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react';
-import { RoomLoading } from '../components/loading/RoomLoading';
+import { PageLoading } from '../components/loading/PageLoading';
 
 const RideViewCore = lazy(() => import('./RideViewCore'));
 
 export default function RideView() {
   return (
-    <Suspense fallback={<RoomLoading />}>
+    <Suspense fallback={<PageLoading />}>
       <RideViewCore />
     </Suspense>
   );

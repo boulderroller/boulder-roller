@@ -35,8 +35,8 @@ final class PermissionChoreographyTests: XCTestCase {
 
     /// Screen locking is part of the ordinary recording journey, not a
     /// future permission seam. The production capability flag must stay on.
-    func testLockedScreenRecordingCapabilityIsShipped() {
-        XCTAssertTrue(PermissionChoreography.lockedScreenRecordingShipped)
+    func testLockedScreenRecordingCapabilityIsReleased() {
+        XCTAssertTrue(PermissionChoreography.lockedScreenRecordingReleased)
     }
 
     /// Locked-screen continuity must not silently arm the broader Always
@@ -88,13 +88,13 @@ final class PermissionChoreographyTests: XCTestCase {
     /// The ratified timing once the capability ships: only after a first
     /// successful While-Using recording, and only from the While-Using
     /// state (the upgrade is surfaced at the next Record open).
-    func testAlwaysUpgradeTimingOnceCapabilityShips() {
+    func testAlwaysUpgradeTimingOnceCapabilityIsReleased() {
         // Qualified: capability + completed recording + currently WhenInUse.
         XCTAssertTrue(
             PermissionChoreography.shouldOfferAlwaysUpgrade(
                 status: .authorizedWhenInUse,
                 hasCompletedWhileInUseRecording: true,
-                alwaysLocationRelaunchShipped: true
+                alwaysLocationRelaunchReleased: true
             )
         )
         // Never before a first successful while-in-use recording.
@@ -102,7 +102,7 @@ final class PermissionChoreographyTests: XCTestCase {
             PermissionChoreography.shouldOfferAlwaysUpgrade(
                 status: .authorizedWhenInUse,
                 hasCompletedWhileInUseRecording: false,
-                alwaysLocationRelaunchShipped: true
+                alwaysLocationRelaunchReleased: true
             )
         )
         // .notDetermined belongs to the While-Using ask, never the upgrade.
@@ -110,7 +110,7 @@ final class PermissionChoreographyTests: XCTestCase {
             PermissionChoreography.shouldOfferAlwaysUpgrade(
                 status: .notDetermined,
                 hasCompletedWhileInUseRecording: true,
-                alwaysLocationRelaunchShipped: true
+                alwaysLocationRelaunchReleased: true
             )
         )
         // Denied riders get the truthful Settings hand-off, not a re-ask.
@@ -118,7 +118,7 @@ final class PermissionChoreographyTests: XCTestCase {
             PermissionChoreography.shouldOfferAlwaysUpgrade(
                 status: .denied,
                 hasCompletedWhileInUseRecording: true,
-                alwaysLocationRelaunchShipped: true
+                alwaysLocationRelaunchReleased: true
             )
         )
         // Already Always: nothing to offer.
@@ -126,7 +126,7 @@ final class PermissionChoreographyTests: XCTestCase {
             PermissionChoreography.shouldOfferAlwaysUpgrade(
                 status: .authorizedAlways,
                 hasCompletedWhileInUseRecording: true,
-                alwaysLocationRelaunchShipped: true
+                alwaysLocationRelaunchReleased: true
             )
         )
     }

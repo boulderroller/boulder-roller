@@ -3,8 +3,8 @@ import { composeBrowserTitle } from './browser-title.js';
 // Server-only consumer: never forward the visitor's session to public previews.
 export const APP_ORIGIN = 'https://app.boulderroller.xyz';
 const API_ORIGIN = 'https://api.boulderroller.xyz';
-export const ROOMS = { climbs: 'Climb', rides: 'Ride', riders: 'Rider' } as const;
-export type Kind = keyof typeof ROOMS;
+export const PAGE_NAMES = { climbs: 'Climb', rides: 'Ride', riders: 'Rider' } as const;
+export type Kind = keyof typeof PAGE_NAMES;
 export type Preview = Record<string, any>;
 export type ShareObject = {kind: Kind; id: string; path: string};
 
@@ -35,7 +35,7 @@ export async function publicPreview(object: ShareObject | null): Promise<Preview
     });
     if (!response.ok) return null;
     const data = await response.json();
-    if (data?.contractVersion !== 'public_preview.v1' || data.objectType !== ROOMS[object.kind].toLowerCase()) return null;
+    if (data?.contractVersion !== 'public_preview.v1' || data.objectType !== PAGE_NAMES[object.kind].toLowerCase()) return null;
     if (data.seo?.robots !== 'index,follow' || data.previewPolicy?.privacy?.canView === false || data.previewPolicy?.privacy?.isOwner === true) return null;
     return data;
   } catch (error) {
@@ -46,9 +46,9 @@ export async function publicPreview(object: ShareObject | null): Promise<Preview
 
 export function objectTitle(object: ShareObject | null, preview: Preview | null): string {
   if (!object || !preview) return 'Boulder Roller';
-  const room = ROOMS[object.kind];
+  const pageName = PAGE_NAMES[object.kind];
   const name = typeof preview.title === 'string' ? preview.title.trim() : '';
-  return composeBrowserTitle(name || null, room);
+  return composeBrowserTitle(name || null, pageName);
 }
 
 export function imageUrl(object: ShareObject | null): string {

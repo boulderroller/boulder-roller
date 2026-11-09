@@ -7,7 +7,7 @@ design documents. Do not duplicate those sources into agent entrypoints.
 
 ## Delivery Contract
 
-- **Ship the admitted outcome.** Feature work ends in behavior a rider or
+- **Deliver the admitted outcome.** Feature work ends in behavior a rider or
   consuming system can exercise. Plans, audits, docs, tests, and refusal paths
   may support it; they do not independently complete it.
 - **Work only from admitted scope.** Pull assigned NOW/NEXT work or a direct
@@ -111,6 +111,29 @@ docs/AGENT_OPERATING_MODEL.md.
   concise commentary for progress.
 - For read-only questions, explanations, and diagnoses, do not create a branch,
   Bead, worktree, or implementation preflight unless a write follows.
+
+## Naming
+
+Every name you choose, for files, scripts, directories, functions, variables,
+classes, commits, branches, anything, must use precise professional vocabulary.
+Choose the word a 1972 IBM engineer would write in a specification. No slang,
+no casual shorthand, no cute or clever names, no words borrowed from chat
+culture. This applies universally, not only to the one example that follows: a
+script that deploys dashboards is `deploy_dashboards.sh`, not
+`push_dashboards.sh`. That is one illustration of the principle, not the extent
+of it.
+
+This extends to everything that persists or is referred to later: artifact
+titles, headings, section and button labels, memory entries, tracker titles,
+session and chapter titles, task-list items. A page that compares two deposit
+designs is "Deposit Design Comparison", not "Deposit Showdown". In conversation
+the same vocabulary governs the words for actions and objects: deploy, remove,
+verify, defect; not ship, nuke, sanity-check, busted. Do not coin nicknames for
+concepts; name them. Sentences remain plain and natural. The rule concerns
+precise words, not stiff prose.
+
+Words riders read are not names in this sense; they follow Rider-Facing
+Language Routing below.
 
 ## Rider-Facing Language Routing
 

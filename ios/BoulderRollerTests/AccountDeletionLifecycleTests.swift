@@ -2,11 +2,11 @@ import XCTest
 @testable import BoulderRoller
 
 final class AccountDeletionLifecycleTests: XCTestCase {
-    func testRatifiedExplainerShipsInDestructiveConfirmationDialog() throws {
+    func testRatifiedExplainerAppearsInDestructiveConfirmationDialog() throws {
         let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
         let viewURL = testsDirectory
             .deletingLastPathComponent()
-            .appendingPathComponent("BoulderRoller/Surfaces/Avatar/AccountDeletionRoomView.swift")
+            .appendingPathComponent("BoulderRoller/Surfaces/Avatar/AccountDeletionView.swift")
         let source = try String(contentsOf: viewURL, encoding: .utf8)
         let expected = "Text(\"Your identity and personal data will be removed. Your climb times, leaderboard history, and settled economics will remain linked to an anonymous account.\")"
 
@@ -285,7 +285,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy()
         let store = AccountDeletionCapabilityStoreSpy(saveError: TestError.unavailable)
         let inventory = AccountDeletionLocalInventory.fixture(rideIDs: [])
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { inventory },
@@ -309,7 +309,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy()
         let store = AccountDeletionCapabilityStoreSpy()
         let inventory = AccountDeletionLocalInventory.fixture(rideIDs: [])
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { inventory },
@@ -338,7 +338,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let store = AccountDeletionCapabilityStoreSpy()
         let inventory = AccountDeletionLocalInventory.fixture(rideIDs: ["ride-1"])
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { inventory },
@@ -374,7 +374,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy()
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
         var fenceCalls = 0
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -395,7 +395,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let reviewed = AccountDeletionLocalInventory.fixture(rideIDs: ["ride-1"])
         let changed = AccountDeletionLocalInventory.fixture(rideIDs: ["ride-1", "ride-2"])
         var snapshots = [reviewed, changed]
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { snapshots.removeFirst() },
@@ -422,7 +422,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let reviewed = AccountDeletionLocalInventory.fixture(rideIDs: ["ride-1"])
         let changed = AccountDeletionLocalInventory.fixture(rideIDs: ["ride-1", "ride-2"])
         var snapshots = [reviewed, reviewed, changed]
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { snapshots.removeFirst() },
@@ -457,7 +457,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let blocked = AccountDeletionStatus.fixture(status: .blocked, retryable: true)
         let service = AccountDeletionServiceSpy(status: blocked)
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { changed },
@@ -636,7 +636,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let service = AccountDeletionServiceSpy(status: nonRetryable)
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -698,7 +698,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             let service = AccountDeletionServiceSpy(status: .fixture(status: statusCode))
             let store = AccountDeletionCapabilityStoreSpy(capability: .fixture(owner: owner))
             let cleanup = CleanupSpy()
-            let model = AccountDeletionRoomModel(
+            let model = AccountDeletionModel(
                 service: service,
                 capabilityStore: store,
                 inventory: { .empty },
@@ -716,7 +716,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy(status: completed)
         let store = AccountDeletionCapabilityStoreSpy(capability: .fixture(owner: owner))
         let cleanup = CleanupSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -750,7 +750,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy(status: contradictory)
         let store = AccountDeletionCapabilityStoreSpy(capability: .fixture(owner: owner))
         let cleanup = CleanupSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -776,7 +776,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy(status: malformed)
         let store = AccountDeletionCapabilityStoreSpy(capability: .fixture(owner: owner))
         let cleanup = CleanupSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -802,7 +802,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let service = AccountDeletionServiceSpy(status: completed)
         let capability = AccountDeletionCapability.fixture(owner: owner)
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -831,7 +831,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             capability: .fixture(owner: owner)
         )
         var cleanupCount = 0
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: AccountDeletionServiceSpy(status: completed),
             capabilityStore: store,
             inventory: { discovered },
@@ -864,7 +864,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
         let cleanup = CleanupSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { remaining },
@@ -904,7 +904,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             status: .fixture(status: .blocked, retryable: true, blockers: [blocker])
         )
         let store = AccountDeletionCapabilityStoreSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -948,7 +948,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             status: .fixture(status: .blocked, retryable: true, blockers: [blocker])
         )
         let store = AccountDeletionCapabilityStoreSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1006,7 +1006,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let service = AccountDeletionServiceSpy(preflight: preflight, status: status)
         let store = AccountDeletionCapabilityStoreSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1035,7 +1035,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let inventory = AccountDeletionLocalInventory.fixture(rideIDs: ["ride-1"])
         let service = AccountDeletionServiceSpy()
         let store = AccountDeletionCapabilityStoreSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { inventory },
@@ -1081,7 +1081,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let store = AccountDeletionCapabilityStoreSpy()
         var replacementFenceOwner: RecordingOwner?
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1113,7 +1113,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let store = AccountDeletionCapabilityStoreSpy()
         let service = AccountDeletionServiceSpy()
         var fenceChecks = 0
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1149,7 +1149,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             statusError: APIError.http(status: 404, code: nil, message: nil)
         )
         var fenceChecks = 0
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1186,7 +1186,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             status: status
         )
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1210,7 +1210,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
         var fencedOwner: RecordingOwner?
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1242,7 +1242,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let store = AccountDeletionCapabilityStoreSpy()
         store.unconfirmedCapability = capability
         var replacementFenceOwner: RecordingOwner?
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1273,7 +1273,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let store = AccountDeletionCapabilityStoreSpy(capability: capability)
         var cleanupCount = 0
         var replacementFenceCount = 0
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1310,7 +1310,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             .available(capabilityB),
             .available(capabilityA),
         ])
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: AccountDeletionServiceSpy(status: .fixture(status: .queued)),
             capabilityStore: store,
             inventory: { .empty }
@@ -1387,7 +1387,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let store = AccountDeletionCapabilityStoreSpy()
         store.unconfirmedCapability = capability
         var replacementFenceCalled = false
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1412,7 +1412,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let store = AccountDeletionCapabilityStoreSpy(
             capability: .fixture(owner: .fixture)
         )
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1446,7 +1446,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         )
         let store = AccountDeletionCapabilityStoreSpy(capability: locallyCompleted)
         let cleanup = CleanupSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { throw TestError.unavailable },
@@ -1474,7 +1474,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
         let store = AccountDeletionCapabilityStoreSpy(
             capability: .fixture(owner: .fixture)
         )
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },
@@ -1508,7 +1508,7 @@ final class AccountDeletionLifecycleTests: XCTestCase {
             capability: .fixture(owner: .fixture)
         )
         let cleanup = CleanupGate()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: store,
             inventory: { .empty },

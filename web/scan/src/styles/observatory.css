@@ -68,13 +68,13 @@
   font-weight: 500;
   color: var(--soft);
 }
-.observatory-room {
+.observatory-page {
   height: calc(100dvh - 62px);
   position: relative;
   overflow: hidden;
   background: #161917;
 }
-.observatory-room .observatory-ground {
+.observatory-page .observatory-ground {
   position: absolute;
   inset: 0;
 }
@@ -351,7 +351,7 @@
   .week-shell__header > div > a {
     display: none;
   }
-  .observatory-room {
+  .observatory-page {
     height: calc(100dvh - 56px);
   }
   .observatory-search {

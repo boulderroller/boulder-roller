@@ -5,7 +5,7 @@ import { PortalFrame, PortalPage } from '../components/portal/PortalSpine';
  * Guide — the docs' contents page (Tim-ratified 2026-09-03, board "Guide and
  * Search" on the Night Ledger Rooms canvas).
  *
- * The public docs are the ratified prose, so this room stops describing them:
+ * The public docs are the ratified prose, so this page stops describing them:
  * six sheets in the docs' own sections, each row a page title that opens the
  * page. Nothing here is copy; the titles are the docs site's.
  */

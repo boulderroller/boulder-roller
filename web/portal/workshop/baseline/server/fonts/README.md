@@ -1,1 +1,0 @@
-Geist and Geist Mono from vercel/geist-font commit 10dc7658f13c38a474cde201bb09a4617267545b, bundled for share-card rendering under the accompanying OFL. Static TTF files; no runtime font provider request.

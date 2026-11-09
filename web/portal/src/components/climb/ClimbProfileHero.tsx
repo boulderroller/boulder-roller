@@ -8,7 +8,7 @@ export interface ProfilePoint {
   elevationM: number;
 }
 
-// Ratified Climb Room: a single ground tone and five luminance/weight rungs.
+// Ratified Climb page: a single ground tone and five luminance/weight rungs.
 const BAND_STEPS = [
   { minPct: 12, varName: '--climb-band-12plus', weight: 3 },
   { minPct: 9, varName: '--climb-band-9', weight: 2.2 },

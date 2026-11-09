@@ -36,7 +36,7 @@ import { Switch } from '../components/ui/switch';
 // on sheets: label in gray on the left, value in ink on the right, a chevron
 // when a row opens something, words when the choice is one of a few. The
 // privacy contract, zones, sessions, avatar crop and account deletion keep
-// their markup and behaviour; only the room around them changed.
+// their markup and behaviour; only the page around them changed.
 
 function Chevron() {
   return (
@@ -236,7 +236,7 @@ function DeferredSettingsSection({
 }: {
   label: string;
 }) {
-  return <div className="settings-room__deferred" aria-busy="true"><SlotRows count={4} /><span className="sr-only" role="status">{`Loading ${label}`}</span></div>;
+  return <div className="settings-page__deferred" aria-busy="true"><SlotRows count={4} /><span className="sr-only" role="status">{`Loading ${label}`}</span></div>;
 }
 
 export default function Settings() {
@@ -749,11 +749,11 @@ export default function Settings() {
   // -- Render --
 
   return (
-    <PortalPage className="settings-v2-page settings-room" aria-busy={isSaving || isExporting || isAvatarBusy}>
+    <PortalPage className="settings-v2-page settings-page" aria-busy={isSaving || isExporting || isAvatarBusy}>
       <PortalFrame>
-        <div className="settings-room__header">
-          <h1 className="settings-room__title">Settings</h1>
-          <div className="settings-room__actions">
+        <div className="settings-page__header">
+          <h1 className="settings-page__title">Settings</h1>
+          <div className="settings-page__actions">
             <span className="settings-v2-actions__status">
               <PortalTruthPill tone={hasUnsavedChanges ? 'warning' : 'verified'}>
                 {statusWord}
@@ -761,10 +761,10 @@ export default function Settings() {
             </span>
             {hasUnsavedChanges ? (
               <>
-                <button type="button" className="settings-room__action" onClick={handleReset} disabled={isSaving}>
+                <button type="button" className="settings-page__action" onClick={handleReset} disabled={isSaving}>
                   Reset
                 </button>
-                <button type="button" className="settings-room__action settings-room__action--save" onClick={handleSave} disabled={isSaving}>
+                <button type="button" className="settings-page__action settings-page__action--save" onClick={handleSave} disabled={isSaving}>
                   Save
                 </button>
               </>
@@ -772,15 +772,15 @@ export default function Settings() {
           </div>
         </div>
 
-        <div className="settings-room__grid">
-          <nav className="settings-room__rail" aria-label="Settings sections">
+        <div className="settings-page__grid">
+          <nav className="settings-page__rail" aria-label="Settings sections">
             {navItems.map((item) => {
               const isActive = section === item.id;
               return (
                 <button
                   key={item.id}
                   type="button"
-                  className="settings-room__rail-word"
+                  className="settings-page__rail-word"
                   aria-current={isActive ? 'page' : undefined}
                   onClick={() => handleTabChange(item.id)}
                   onMouseEnter={() => preloadSettingsTab(item.id)}
@@ -793,7 +793,7 @@ export default function Settings() {
             })}
           </nav>
 
-          <div className="settings-room__column">
+          <div className="settings-page__column">
             {saveError && <p className="settings-sheet__note" role="alert">{saveError}</p>}
             {section === 'profile' ? (
               <>
@@ -818,14 +818,14 @@ export default function Settings() {
                       />
                       <button
                         type="button"
-                        className={cn('settings-room__text', !hasUnsavedChanges && 'settings-room__text--do')}
+                        className={cn('settings-page__text', !hasUnsavedChanges && 'settings-page__text--do')}
                         onClick={() => avatarInputRef.current?.click()}
                         disabled={isAvatarBusy}
                       >
                         {isAvatarBusy ? 'Working' : 'Change photo'}
                       </button>
                       {user?.avatarUrl ? (
-                        <button type="button" className="settings-room__text" onClick={handleRemoveAvatar} disabled={isAvatarBusy}>
+                        <button type="button" className="settings-page__text" onClick={handleRemoveAvatar} disabled={isAvatarBusy}>
                           Remove
                         </button>
                       ) : null}
@@ -862,7 +862,7 @@ export default function Settings() {
                   {homeSearchOpen && <form id="settings-home-search" onSubmit={searchHome} className="settings-home-search">
                     <label className="settings-row"><span className="settings-row__label">Search places</span><input className="settings-row__input" autoFocus value={homeQuery} maxLength={120} autoComplete="off" onChange={e => { homeRequest.current++; setHomeQuery(e.target.value); setHomeResults(null); setHomeSearchState('idle'); }} /></label>
                     <p className="settings-sheet__note">Search public places only. Do not enter personal or confidential information.</p>
-                    <button type="submit" className="settings-room__text" disabled={homeQuery.trim().length < 3 || homeSearchState === 'loading'}>Search places</button>
+                    <button type="submit" className="settings-page__text" disabled={homeQuery.trim().length < 3 || homeSearchState === 'loading'}>Search places</button>
                     {homeSearchState === 'loading' && <div aria-busy="true"><SlotRows count={4} /><span className="sr-only" role="status">Loading</span></div>}
                     {homeSearchState === 'unavailable' && <p role="status">{ABSENT_VALUE}</p>}
                     {homeResults?.results.map(result => <button type="button" className="settings-row settings-row--tap" key={`${result.latitude}:${result.longitude}`} onClick={() => { homeRequest.current++; setFormData({ ...formData, location: result.displayName }); setHomeSearchOpen(false); homeBaseButton.current?.focus(); }}><span className="settings-row__value">{result.displayName}</span><Chevron /></button>)}
@@ -894,7 +894,7 @@ export default function Settings() {
                         <span className="settings-row__value settings-row__value--mono">{formatWatts(null)}</span>
                         <button
                           type="button"
-                          className="settings-room__text settings-room__text--do"
+                          className="settings-page__text settings-page__text--do"
                           onClick={() => void thresholdQuery.refetch()}
                         >
                           Try again
@@ -1070,7 +1070,7 @@ export default function Settings() {
                     <span className="settings-row__value settings-row__value--mono">{walletLabel ?? 'Not connected'}</span>
                   </span>
                 </button>
-                <button type="button" className="settings-room__action-row" onClick={handleDisconnectClick}>
+                <button type="button" className="settings-page__action-row" onClick={handleDisconnectClick}>
                   Disconnect wallet
                 </button>
               </section>

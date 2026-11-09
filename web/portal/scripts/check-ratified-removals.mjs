@@ -57,7 +57,7 @@ const profile = await readPortal('src/pages/Profile.tsx');
 const settings = await readPortal('src/pages/Settings.tsx');
 const indexCss = await readPortal('src/index.css');
 const globalsCss = await readPortal('src/styles/globals.css');
-const surfacePolishCss = await readPortal('src/styles/portal-surface-polish.css');
+const surfacesCss = await readPortal('src/styles/portal-surfaces.css');
 const spineCss = await readPortal('src/styles/portal-spine.css');
 const bundleBudget = await readPortal('perf/bundle-budget.json');
 const packageJson = JSON.parse(await readPortal('package.json'));
@@ -150,7 +150,7 @@ for (const needle of [
   '.achievement-row',
   '.leaderboard-',
 ]) {
-  assertNotContains(surfacePolishCss, needle, 'portal-surface-polish.css');
+  assertNotContains(surfacesCss, needle, 'portal-surfaces.css');
 }
 
 check(

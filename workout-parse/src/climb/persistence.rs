@@ -3617,7 +3617,7 @@ mod tests {
     }
 
     #[test]
-    fn test_vam_sanity_cap() {
+    fn test_vam_plausibility_cap() {
         // A climb that gains 50m in 10 seconds = 18000 m/hr → impossible
         let mut samples: Vec<TileSample> = Vec::new();
         for i in 0..20 {

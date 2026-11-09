@@ -187,7 +187,7 @@ async function previews(page: Page) {
   });
 }
 
-test('stranger ride uses the room and one access door without unavailable slots', async ({
+test('stranger ride uses the page and one access door without unavailable slots', async ({
   page,
 }) => {
   await previews(page);
@@ -199,13 +199,13 @@ test('stranger ride uses the room and one access door without unavailable slots'
       privateReads.push(request.url());
   });
   await page.goto('/activities/preview-ride?from=share#ride');
-  await expect(page.locator('.ride-room-card')).toContainText(
+  await expect(page.locator('.ride-page-card')).toContainText(
     'Shawmont Morning',
   );
-  await expect(page.locator('.ride-room-stats')).toContainText('31.8');
+  await expect(page.locator('.ride-page-stats')).toContainText('31.8');
   await expect(
     page.locator(
-      '.ride-band, .ride-room-spine, .ride-room-summary, .ride-room-social, .ride-room-social-footer, .ride-room-climbs, .ride-room-ledger-right',
+      '.ride-band, .ride-page-spine, .ride-page-summary, .ride-page-social, .ride-page-social-footer, .ride-page-climbs, .ride-page-ledger-right',
     ),
   ).toHaveCount(0);
   await expect(
@@ -216,7 +216,7 @@ test('stranger ride uses the room and one access door without unavailable slots'
   await expect(page).toHaveURL('/');
   await expect(page.locator('main.invite-gate')).toBeVisible();
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.locator('.public-room, .public-room-scrim')).toHaveCount(0);
+  await expect(page.locator('.public-page, .sign-in-dialog-overlay')).toHaveCount(0);
   await expect(page.getByLabel('Email', { exact: true })).toBeVisible();
   await expect(page.getByLabel('Email', { exact: true })).toBeFocused();
   expect(
@@ -226,7 +226,7 @@ test('stranger ride uses the room and one access door without unavailable slots'
   await expect(page.locator('main.invite-gate')).toBeVisible();
   for (let i = 0; i < 12; i += 1) {
     await page.keyboard.press('Tab');
-    expect(await page.evaluate(() => document.activeElement?.closest('.public-room'))).toBeNull();
+    expect(await page.evaluate(() => document.activeElement?.closest('.public-page'))).toBeNull();
   }
   await page.goBack();
   await expect(page).toHaveURL('/activities/preview-ride?from=share#ride');
@@ -236,7 +236,7 @@ test('stranger ride uses the room and one access door without unavailable slots'
 });
 
 for (const width of [1440, 390])
-  test(`public rooms and door render at ${width}`, async ({ page }) => {
+  test(`public pages and door render at ${width}`, async ({ page }) => {
     test.setTimeout(90000);
     await previews(page);
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
@@ -297,7 +297,7 @@ for (const width of [1440, 390])
         ),
       ).toBe(true);
       if (name === 'ride')
-        await expect(page.locator('.ride-room-map')).toHaveAttribute(
+        await expect(page.locator('.ride-map')).toHaveAttribute(
           'data-route-ready',
           'true',
         );
@@ -321,7 +321,7 @@ for (const width of [1440, 390])
           .click();
         await expect(page).toHaveURL('/');
         await expect(page.getByRole('dialog')).toHaveCount(0);
-        await expect(page.locator('.public-room')).toHaveCount(0);
+        await expect(page.locator('.public-page')).toHaveCount(0);
         const entry = page.locator('main.invite-gate');
         await expect(entry).toBeVisible();
         const box = await entry.boundingBox();
@@ -332,7 +332,7 @@ for (const width of [1440, 390])
     }
     await page.goto('/unknown-public-path');
     await expect(page.getByLabel('Email', { exact: true })).toBeVisible();
-    await expect(page.locator('.public-room')).toHaveCount(0);
+    await expect(page.locator('.public-page')).toHaveCount(0);
   });
 
 test('stranger projections omit missing metrics and revoke cached identities on focus', async ({
@@ -421,18 +421,18 @@ test('public preview return URL survives navigating to entry and back', async ({
   await previews(page);
   const destination = '/rides/preview-ride?from=share&view=route#ride';
   await page.goto(destination);
-  await expect(page.locator('.ride-room-card')).toContainText('Shawmont Morning');
+  await expect(page.locator('.ride-page-card')).toContainText('Shawmont Morning');
   await page.evaluate(() => sessionStorage.setItem('br_return_url', '/climbs/previous'));
   for (let attempt = 0; attempt < 2; attempt += 1) {
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
     await expect(page).toHaveURL('/');
     await expect(page.locator('main.invite-gate')).toBeVisible();
-    await expect(page.locator('.public-room, [role="dialog"]')).toHaveCount(0);
+    await expect(page.locator('.public-page, [role="dialog"]')).toHaveCount(0);
     await expect(page.getByLabel('Email', { exact: true })).toBeFocused();
     expect(await page.evaluate(() => sessionStorage.getItem('br_return_url'))).toBe(destination);
     await page.goBack();
     await expect(page).toHaveURL(destination);
-    await expect(page.locator('.ride-room-card')).toContainText('Shawmont Morning');
+    await expect(page.locator('.ride-page-card')).toContainText('Shawmont Morning');
     expect(await page.evaluate(() => sessionStorage.getItem('br_return_url'))).toBe(destination);
   }
 });

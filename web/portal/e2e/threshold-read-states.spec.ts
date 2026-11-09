@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-// Exercise the real Training room and query retries. Only HTTP data is replaced;
+// Exercise the real Training page and query retries. Only HTTP data is replaced;
 // these cases do not contact a backend, provider, or chain.
 const rider = {
   id: 'threshold-state-rider',

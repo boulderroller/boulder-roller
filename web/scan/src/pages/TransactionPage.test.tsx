@@ -47,7 +47,7 @@ import {
   transactionFixture,
   fixtureSignatures,
   receiptKinds,
-} from "@/fixtures/transaction-room";
+} from "@/fixtures/transaction-page";
 for (const [i, kind] of receiptKinds.entries())
   it(`renders ${kind} as a receipt with account and transaction doors`, () => {
     const data = transactionFixture(fixtureSignatures[i])!;

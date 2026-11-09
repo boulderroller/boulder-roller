@@ -242,7 +242,7 @@ test.describe('Settings', () => {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
       await page.goto('/settings?tab=privacy');
       await expect(page.getByText('No privacy zones saved.', { exact: true })).toBeVisible();
-      const notes = page.locator('.settings-room .ride-privacy-controls__summary, .settings-room .ride-privacy-controls__zones, .settings-sheet__note, .settings-v2-actions__status .portal-truth-pill');
+      const notes = page.locator('.settings-page .ride-privacy-controls__summary, .settings-page .ride-privacy-controls__zones, .settings-sheet__note, .settings-v2-actions__status .portal-truth-pill');
       const measurements = await notes.evaluateAll((elements) => {
         const rgb = (value: string) => (value.match(/[\d.]+/g) ?? []).map(Number);
         const luminance = (channels: number[]) => channels.slice(0, 3).map((value) => {

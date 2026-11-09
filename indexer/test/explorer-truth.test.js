@@ -61,7 +61,7 @@ function transactionQuery(events) {
     if (sql.includes('FROM indexed_transactions')) return { rows: [{ signature, status: 'success', instruction_index: 0, instruction_name: 'fixture', instruction_accounts: { rider: { pubkey: wallet, isSigner: true, isMut: true } } }] };
     if (sql.includes('FROM indexed_events')) return { rows: events };
     if (sql.includes('indexer_sync_state')) return { rows: [] };
-    if (sql.includes("transaction-room:")) return {rows:[]};
+    if (sql.includes("transaction-receipt:")) return {rows:[]};
     throw new Error(`Unexpected SQL: ${sql}`);
   };
 }

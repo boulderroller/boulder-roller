@@ -1,5 +1,5 @@
-import "@/styles/climb-room.css";
-import "@/styles/account-room.css";
+import "@/styles/climb-page.css";
+import "@/styles/account-page.css";
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -13,8 +13,8 @@ import ExplorerDialog from "@/components/ExplorerDialog";
 
 import { IndexedStamp } from "@/components/FreshnessStamp";
 import { ErrorState } from "@/components/PageStates";
-import type { AccountRoom } from "@/types";
-const empty: AccountRoom = {
+import type { AccountPageData } from "@/types";
+const empty: AccountPageData = {
   ground: [],
   positions: [],
   balances: [],
@@ -34,15 +34,15 @@ const rank = (n?: number) =>
   n === 1 ? "Crown" : n && n <= 10 ? "Seat" : undefined;
 export function AccountPageContent({
   pubkey,
-  room = empty,
+  data = empty,
 }: {
   pubkey: string;
-  room?: AccountRoom;
+  data?: AccountPageData;
 }) {
   const completions = useRef<HTMLDialogElement>(null),
     settlements = useRef<HTMLDialogElement>(null);
   const completionRows = (all = false) =>
-    room.completions
+    data.completions
       .slice(0, all ? undefined : 3)
       .map((r, i) => (
         <LedgerRow
@@ -60,7 +60,7 @@ export function AccountPageContent({
         />
       ));
   const settlementRows = (all = false) =>
-    room.settlements
+    data.settlements
       .slice(0, all ? undefined : 3)
       .map((r, i) => (
         <LedgerRow
@@ -78,21 +78,21 @@ export function AccountPageContent({
         />
       ));
   return (
-    <div className="account-room" data-room-loaded="true">
+    <div className="account-page" data-page-loaded="true">
       <div className="account-ground">
-        <ObservatoryGround climbs={room.ground} mode="account" />
+        <ObservatoryGround climbs={data.ground} mode="account" />
       </div>
       <section className="account-identity" aria-label="Rider">
         <div className="account-who">
           <span className="account-avatar">
-            {room.handle && room.avatar_url ? (
-              <img src={room.avatar_url} alt="" />
+            {data.handle && data.avatar_url ? (
+              <img src={data.avatar_url} alt="" />
             ) : (
-              (room.handle ?? pubkey).replace("@", "").slice(0, 2).toUpperCase()
+              (data.handle ?? pubkey).replace("@", "").slice(0, 2).toUpperCase()
             )}
           </span>
-          <h1 className={room.handle ? "" : "mono-inline"}>
-            {room.handle ?? shortenAddress(pubkey, 4).replace("...", "…")}
+          <h1 className={data.handle ? "" : "mono-inline"}>
+            {data.handle ?? shortenAddress(pubkey, 4).replace("...", "…")}
           </h1>
         </div>
         <button
@@ -102,20 +102,20 @@ export function AccountPageContent({
         >
           {pubkey}
         </button>
-        {room.since_week ? (
+        {data.since_week ? (
           <div className="account-since">
-            Since <b>Week {room.since_week}</b>
-            {room.since_date
-              ? ` · ${new Date(room.since_date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}`
+            Since <b>Week {data.since_week}</b>
+            {data.since_date
+              ? ` · ${new Date(data.since_date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}`
               : null}
           </div>
         ) : null}
         <div className="account-trio">
           {(
             [
-              ["Rides attested", room.rides_attested],
-              ["Seats", room.seats],
-              ["Crowns", room.crowns],
+              ["Rides attested", data.rides_attested],
+              ["Seats", data.seats],
+              ["Crowns", data.crowns],
             ] as const
           ).map(([label, value]) => (
             <div key={label}>
@@ -124,8 +124,8 @@ export function AccountPageContent({
             </div>
           ))}
         </div>
-        <h2 className="room-eyebrow">Positions</h2>
-        {room.positions.map((p) => (
+        <h2 className="page-eyebrow">Positions</h2>
+        {data.positions.map((p) => (
           <LedgerRow
             key={p.climb.id}
             to={`/climb/${p.climb.id}`}
@@ -140,18 +140,18 @@ export function AccountPageContent({
             value={p.cal ? formatAtomic(p.cal, "CAL") : undefined}
           />
         ))}
-        {room.attested_climbs && room.canon_count ? (
-          <div className="account-census">
-            {room.attested_climbs} of {room.canon_count} climbs attested
+        {data.attested_climbs && data.canon_count ? (
+          <div className="account-coverage">
+            {data.attested_climbs} of {data.canon_count} climbs attested
           </div>
         ) : null}
       </section>
       <div className="account-below">
         <div>
           <section>
-            <h2 className="room-eyebrow">Balances</h2>
-            <div className="room-surface">
-              {room.balances.map((b) => (
+            <h2 className="page-eyebrow">Balances</h2>
+            <div className="page-surface">
+              {data.balances.map((b) => (
                 <LedgerKv
                   key={b.account}
                   label={
@@ -169,20 +169,20 @@ export function AccountPageContent({
             </div>
           </section>
           <section>
-            <h2 className="room-eyebrow">
+            <h2 className="page-eyebrow">
               Completions
-              {room.completion_count ? (
-                <span>{room.completion_count}</span>
+              {data.completion_count ? (
+                <span>{data.completion_count}</span>
               ) : null}
             </h2>
-            <div className="room-surface">
+            <div className="page-surface">
               {completionRows()}
-              {room.completion_count ? (
+              {data.completion_count ? (
                 <button
-                  className="room-door"
+                  className="page-door"
                   onClick={() => completions.current?.showModal()}
                 >
-                  All completions · {room.completion_count}
+                  All completions · {data.completion_count}
                   <span>›</span>
                 </button>
               ) : null}
@@ -191,29 +191,29 @@ export function AccountPageContent({
         </div>
         <div>
           <section>
-            <h2 className="room-eyebrow">
+            <h2 className="page-eyebrow">
               Settlements
-              {room.settlement_count ? (
-                <span>{room.settlement_count}</span>
+              {data.settlement_count ? (
+                <span>{data.settlement_count}</span>
               ) : null}
             </h2>
-            <div className="room-surface">
+            <div className="page-surface">
               {settlementRows()}
-              {room.settlement_count ? (
+              {data.settlement_count ? (
                 <button
-                  className="room-door"
+                  className="page-door"
                   onClick={() => settlements.current?.showModal()}
                 >
-                  All settlements · {room.settlement_count}
+                  All settlements · {data.settlement_count}
                   <span>›</span>
                 </button>
               ) : null}
             </div>
           </section>
           <section>
-            <h2 className="room-eyebrow">Activity</h2>
-            <div className="room-surface">
-              {room.activity.map((e) => (
+            <h2 className="page-eyebrow">Activity</h2>
+            <div className="page-surface">
+              {data.activity.map((e) => (
                 <LedgerRow
                   key={`${e.tx_signature}-${e.event_index}`}
                   to={`/tx/${e.signature}`}
@@ -249,7 +249,7 @@ export function AccountPageContent({
             </div>
           </section>
         </div>
-        <IndexedStamp indexed={room.indexed} />
+        <IndexedStamp indexed={data.indexed} />
       </div>
       <ExplorerDialog ref={completions} aria-label="Completions">
         <h2>Completions</h2>
@@ -290,7 +290,7 @@ export default function AccountPage() {
       {q.isError ? (
         <ErrorState title="Account unavailable" onRetry={() => q.refetch()} />
       ) : null}
-      <AccountPageContent pubkey={pubkey} room={q.data?.room} />
+      <AccountPageContent pubkey={pubkey} data={q.data?.room} />
     </>
   );
 }

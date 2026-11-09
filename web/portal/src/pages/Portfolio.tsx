@@ -322,7 +322,7 @@ export default function Portfolio() {
 
   return (
     <section
-      className="portfolio-room"
+      className="portfolio-page"
       data-object-page="portfolio"
       aria-busy={loading}
       aria-live="polite"
@@ -330,7 +330,7 @@ export default function Portfolio() {
       {signerEnabled && (
         <WalletTransactionSignerBridge enabled onSignerReady={setSignerRef} />
       )}
-      <h1 className="portfolio-room__title">Portfolio</h1>
+      <h1 className="portfolio-page__title">Portfolio</h1>
 
       <div className="portfolio-hero">
         <div className="portfolio-hero__facts" aria-label="Portfolio summary">

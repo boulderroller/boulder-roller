@@ -22,7 +22,7 @@ import ClimbSection, {
 } from "@/components/ground/ClimbSection";
 import RankMark from "@/components/RankMark";
 import ExplorerDialog from "@/components/ExplorerDialog";
-import { useRoomSheet } from "@/components/RoomSheet";
+import { useExpandableSheet } from "@/components/ExpandableSheet";
 import type {
   ClimbResponse,
   ClimbRider,
@@ -30,7 +30,7 @@ import type {
   ClimbSettlement,
   GroundClimb,
 } from "@/types";
-import "@/styles/climb-room.css";
+import "@/styles/climb-page.css";
 const count = (n: number | undefined) =>
   n && n > 0 ? n.toLocaleString("en-US") : null;
 const positive = (n: unknown) =>
@@ -136,10 +136,10 @@ export default function VaultPage() {
   if (!result.data)
     return (
       <div
-        className="climb-room"
+        className="climb-page"
         aria-busy={result.isLoading}
-        data-room-loaded="false"
-        data-room-state={result.isError ? "error" : "loading"}
+        data-page-loaded="false"
+        data-page-state={result.isError ? "error" : "loading"}
       >
         {result.isError && <ErrorState title="Climb" onRetry={() => void result.refetch()} />}
       </div>
@@ -165,10 +165,10 @@ export function ClimbPageContent({
     ),
     [groundHeight, setGroundHeight] = useState(720);
   const [size, setSize] = useState({ width: 1440, height: 782, identity: 210 });
-  const room = useRef<HTMLDivElement>(null),
+  const page = useRef<HTMLDivElement>(null),
     identity = useRef<HTMLElement>(null),
     desktopDrag = useRef<{ y: number; height: number } | null>(null);
-  const { sheet, expanded, grip } = useRoomSheet("reading");
+  const { sheet, expanded, grip } = useExpandableSheet("reading");
   const phone = size.width < 700;
   const sheetHeight =
     sheet === "collapsed" ? 150 : size.height * (sheet === "max" ? 0.72 : 0.58);
@@ -191,9 +191,9 @@ export function ClimbPageContent({
   );
   useEffect(() => {
     const measure = () => {
-      if (room.current)
+      if (page.current)
         setSize({
-          width: room.current.clientWidth,
+          width: page.current.clientWidth,
           height:
             window.innerHeight -
             (document.querySelector(".week-shell__header")?.clientHeight ?? 62),
@@ -201,7 +201,7 @@ export function ClimbPageContent({
         });
     };
     const observer = new ResizeObserver(measure);
-    if (room.current) observer.observe(room.current);
+    if (page.current) observer.observe(page.current);
     if (identity.current) observer.observe(identity.current);
     window.addEventListener("resize", measure);
     measure();
@@ -454,9 +454,9 @@ export function ClimbPageContent({
   );
   return (
     <div
-      ref={room}
-      className="climb-room"
-      data-room-loaded="true"
+      ref={page}
+      className="climb-page"
+      data-page-loaded="true"
       data-sheet={expanded ? "reading" : "looking"}
       style={
         {
@@ -523,7 +523,7 @@ export function ClimbPageContent({
           <a href="https://docs.boulderroller.xyz/open-data">Data and sources</a>
         </div>
       </div>
-      <div className="climb-room-sheet">
+      <div className="climb-page-sheet">
         <div className="climb-grip">
           <button
             className="climb-seam"

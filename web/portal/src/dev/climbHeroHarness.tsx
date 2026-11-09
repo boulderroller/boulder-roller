@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import ClimbLeaderboard from '../components/climb/ClimbLeaderboard';
 import '../index.css';
 import '../styles/portal-spine.css';
-import '../styles/portal-surface-polish.css';
+import '../styles/portal-surfaces.css';
 import ClimbProfileHero, { type ProfilePoint } from '../components/climb/ClimbProfileHero';
 import PowerCurveChart from '../components/training/PowerCurveChart';
 import ConsistencyHeatmap from '../components/training/ConsistencyHeatmap';

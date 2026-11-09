@@ -260,7 +260,7 @@ struct ProfileEditSheet: View {
                 dismiss()
             } catch {
                 saving = false
-                saveErrorMessage = PrivacyRoomModel.message(for: error)
+                saveErrorMessage = PrivacyModel.message(for: error)
             }
         }
     }
@@ -341,7 +341,7 @@ final class AvatarUploadModel {
             phase = .idle
             return updated
         } catch {
-            phase = .failed(PrivacyRoomModel.message(for: error))
+            phase = .failed(PrivacyModel.message(for: error))
             return nil
         }
     }
@@ -356,7 +356,7 @@ final class AvatarUploadModel {
             phase = .idle
             return updated
         } catch {
-            phase = .failed(PrivacyRoomModel.message(for: error))
+            phase = .failed(PrivacyModel.message(for: error))
             return nil
         }
     }

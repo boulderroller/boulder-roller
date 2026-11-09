@@ -2,7 +2,7 @@
  * VaultPanel - Sidebar panel showing matched/created vaults
  *
  * ONLY shows vaults that exist on this ride - empty when no vaults matched.
- * Climb patterns belong in RideRoomLedger, not here.
+ * Climb patterns belong in RidePageLedger, not here.
  *
  * Design System:
  * - Geist Sans for UI, Geist Mono for data

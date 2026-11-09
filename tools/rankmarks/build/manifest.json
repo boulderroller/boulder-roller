@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generator": "tools/rankmarks/bake.py",
+  "generator": "tools/rankmarks/render_production_assets.py",
   "design_authority": {
     "bead": "boulderroller-v2-dtgj1.1",
     "source": "tools/rankmarks/paramset.py",

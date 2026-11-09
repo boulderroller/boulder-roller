@@ -879,7 +879,7 @@ enum AccountDeletionConflictCode: String, Equatable, Sendable {
 
 @MainActor
 @Observable
-final class AccountDeletionRoomModel {
+final class AccountDeletionModel {
     enum State: Equatable {
         case loading
         case ready(AccountDeletionPreflight, AccountDeletionLocalInventory)

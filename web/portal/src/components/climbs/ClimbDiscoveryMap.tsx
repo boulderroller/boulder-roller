@@ -33,18 +33,18 @@ function mapBoundsQuery(map: VectorMap): string {
   const bounds = map.getBounds();
   return [bounds.getWest(), bounds.getSouth(), bounds.getEast(), bounds.getNorth()].map(value => formatFixed(value, 5)).join(',');
 }
-// Measure the room's actual opaque overlays, including a reflowed search
+// Measure the page's actual opaque overlays, including a reflowed search
 // control and the phone sheet, instead of guessing from viewport width.
 function fitPadding(container: HTMLElement) {
   const box = container.getBoundingClientRect();
-  const room = container.closest('.climbs-room');
+  const layout = container.closest('.climbs-page__layout');
   const rect = (selector: string) => {
-    const element = room?.querySelector<HTMLElement>(selector);
+    const element = layout?.querySelector<HTMLElement>(selector);
     return element?.getClientRects().length ? element.getBoundingClientRect() : null;
   };
-  const column = rect('.climbs-room__column');
-  const controls = rect('.climbs-room__controls');
-  const card = rect('.climbs-room__card-layer');
+  const column = rect('.climbs-page__column');
+  const controls = rect('.climbs-page__controls');
+  const card = rect('.climbs-page__card-layer');
   const navigation = rect('.maplibregl-ctrl-group');
   const mobile = window.matchMedia('(max-width: 767px)').matches;
   return {
@@ -220,7 +220,7 @@ export default function ClimbDiscoveryMap(props: ClimbDiscoveryMapProps) {
       measured = padding;
     });
     observer.observe(container);
-    container.closest('.climbs-room')?.querySelectorAll('.climbs-room__column, .climbs-room__controls, .climbs-room__card-layer').forEach(element => observer.observe(element));
+    container.closest('.climbs-page__layout')?.querySelectorAll('.climbs-page__column, .climbs-page__controls, .climbs-page__card-layer').forEach(element => observer.observe(element));
     draw();
     return () => { observer.disconnect(); map.off('move', draw); map.off('resize', draw); svg.remove(); };
   }, [climbs, fitKey, hoveredClimbId, mapReady, selectedClimbId]);

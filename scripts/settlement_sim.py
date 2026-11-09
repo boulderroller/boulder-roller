@@ -188,4 +188,4 @@ for s in ("steady", "cold_start", "one_whale_staker", "halving"):
 print("\nBookkeeping invariants held (I1 conservation of splits, "
       "I2 mint+carry==available, I3 CAL->DUNG no leakage, I4 per-call staker cap).")
 print("This does not certify carry fairness, deferred-claim solvency, or crank liveness; "
-      "run scripts/math_audit_phase2.py for those counterexamples.")
+      "run scripts/reproduce_settlement_lifecycle_failures.py for those counterexamples.")

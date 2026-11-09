@@ -6,6 +6,8 @@ import json
 import re
 from typing import Any
 
+from ..utils.postgrest_paging import after, order_by
+
 
 class DataExportError(RuntimeError):
     """Safe diagnostics: dataset and failure class, never provider payloads."""
@@ -77,19 +79,9 @@ class ExportReader:
                 query = self.client.table(table).select(columns)
                 for field, value in filters.items():
                     query = query.in_(field, value) if isinstance(value, list) else query.eq(field, value)
-                for field in keys:
-                    query = query.order(field)
+                query = order_by(query, *keys)
                 if cursor is not None:
-                    if len(keys) == 1:
-                        query = query.gt(keys[0], cursor[0])
-                    else:
-                        # Lexicographic cursor; values are quoted, schema-owned keys.
-                        clauses = []
-                        for index, field in enumerate(keys):
-                            terms = [f"{keys[j]}.eq.{json.dumps(cursor[j])}" for j in range(index)]
-                            terms.append(f"{field}.gt.{json.dumps(cursor[index])}")
-                            clauses.append(terms[0] if len(terms) == 1 else "and(" + ",".join(terms) + ")")
-                        query = query.or_(",".join(clauses))
+                    query = after(query, keys, cursor)
                 return query.range(0, 499).execute()
             try:
                 page = getattr(await self.run(read), "data", None)

@@ -29,7 +29,7 @@ async function readPortal(relativePath) {
 const activityFeed = await readPortal('src/components/feed/ActivityFeedCore.tsx');
 const portalShell = await readPortal('src/components/portal/PortalShell.tsx');
 const utilityLinks = await readPortal('src/components/portal/PortalUtilityLinks.tsx');
-const polishCss = await readPortal('src/styles/portal-surface-polish.css');
+const surfacesCss = await readPortal('src/styles/portal-surfaces.css');
 const packageJson = JSON.parse(await readPortal('package.json'));
 
 assertContains(activityFeed, "import { PortalUtilityLinks } from '../portal/PortalUtilityLinks';", 'Home feed');
@@ -46,17 +46,17 @@ assertContains(utilityLinks, '© {formatFixed(currentYear, 0)} Boulder Roller', 
 assertNotContains(utilityLinks, 'github.com', 'Utility links');
 assertNotContains(utilityLinks, 'PortalPanel', 'Uncarded utility links');
 
-assertContains(polishCss, '.feed-rail-footer {', 'Rail footer styles');
-assertContains(polishCss, '.portal-account-utility-strip {', 'Collapsed utility strip styles');
-assertContains(polishCss, 'min-height: 48px;', 'Collapsed utility strip styles');
-assertContains(polishCss, '@media (width >= 64rem)', 'Rail-collapse breakpoint');
+assertContains(surfacesCss, '.feed-rail-footer {', 'Rail footer styles');
+assertContains(surfacesCss, '.portal-account-utility-strip {', 'Collapsed utility strip styles');
+assertContains(surfacesCss, 'min-height: 48px;', 'Collapsed utility strip styles');
+assertContains(surfacesCss, '@media (width >= 64rem)', 'Rail-collapse breakpoint');
 
-const railFooterStyles = polishCss.match(/\.feed-rail-footer\s*\{([^}]*)\}/)?.[1] ?? '';
+const railFooterStyles = surfacesCss.match(/\.feed-rail-footer\s*\{([^}]*)\}/)?.[1] ?? '';
 check(!/position\s*:\s*(fixed|sticky)/.test(railFooterStyles), 'Rail footer must remain in normal rail flow');
-const accountUtilityLinkStyles = polishCss.match(/\.portal-account-utility-strip \.portal-utility-links__link\s*\{([^}]*)\}/)?.[1] ?? '';
+const accountUtilityLinkStyles = surfacesCss.match(/\.portal-account-utility-strip \.portal-utility-links__link\s*\{([^}]*)\}/)?.[1] ?? '';
 assertContains(accountUtilityLinkStyles, 'min-width: 44px;', 'Collapsed utility link hit area');
 assertContains(accountUtilityLinkStyles, 'min-height: 44px;', 'Collapsed utility link hit area');
-const copyrightStyles = polishCss.match(/\.feed-rail-footer__copyright\s*\{([^}]*)\}/)?.[1] ?? '';
+const copyrightStyles = surfacesCss.match(/\.feed-rail-footer__copyright\s*\{([^}]*)\}/)?.[1] ?? '';
 assertContains(copyrightStyles, 'color: var(--portal-public-ink-muted);', 'Rail footer copyright contrast');
 
 check(packageJson.scripts?.['qa:home-feed-footer'] === 'node scripts/check-home-feed-rail-footer.mjs', 'package.json must expose qa:home-feed-footer');

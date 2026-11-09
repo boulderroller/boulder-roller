@@ -1,4 +1,4 @@
-"""Local PostgreSQL migration/legacy census contracts; no remote connection."""
+"""Local PostgreSQL migration/legacy integrity contracts; no remote connection."""
 from contextlib import closing
 from pathlib import Path
 
@@ -51,12 +51,12 @@ def test_canon_migration_guards_new_patterns_without_breaking_legacy_updates(db)
     assert db.fetchone() == (1,)
 
 
-def test_canon_check_censuses_malformed_legacy_ids_without_exporting_values(db, monkeypatch):
+def test_canon_check_counts_malformed_legacy_ids_without_exporting_values(db, monkeypatch):
     monkeypatch.setattr(publication, 'require_schema', lambda cursor: None)
     for value in (REGISTRY, REGISTRY.upper(), '{'+REGISTRY+'}', REGISTRY.replace('-',''), None):
         db.execute('INSERT INTO patterns_climb(match_trace) VALUES (%s)', (Json({'registry_id': value}),))
     db.execute("INSERT INTO patterns_climb(match_trace) VALUES ('{}')")
-    assert publication.preflight_census(db) == {'malformed_pattern_registry_ids': 0, 'non_ratified_cell_rows': 0}
+    assert publication.preflight_integrity_counts(db) == {'malformed_pattern_registry_ids': 0, 'non_ratified_cell_rows': 0}
     for value in ('PRIVATE-INVALID', '', 7, {}, []):
         db.execute("INSERT INTO patterns_climb(match_trace) VALUES ('{}') RETURNING id")
         identity = db.fetchone()[0]
@@ -65,7 +65,7 @@ def test_canon_check_censuses_malformed_legacy_ids_without_exporting_values(db, 
         publication.preflight(db, publication.load_successors())
 
 
-def test_canon_check_censuses_cells_owned_by_non_ratified_rows(db, monkeypatch):
+def test_canon_check_counts_cells_owned_by_non_ratified_rows(db, monkeypatch):
     monkeypatch.setattr(publication, 'require_schema', lambda cursor: None)
     db.execute('INSERT INTO canon_corridor_cells VALUES (%s)', (REGISTRY,))
     db.execute("UPDATE canon_climbs SET status='candidate'")

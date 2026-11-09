@@ -46,12 +46,12 @@ async function fixtureForPath<T>(path: string): Promise<T> {
   const { fixtureAccount, fixtureClimb, fixtureObservatory, fixtureTransaction, fixtureVault } = await import('@/fixtures/data');
   if (path.startsWith('/v1/observatory')) return (path.includes('events_offset') ? {...fixtureObservatory, recent_events: [], events_next_offset: null} : fixtureObservatory) as T;
   if (path.startsWith('/v1/climbs/')) {
-    return (await import('@/fixtures/climb-room')).fixtureClimbRoom as T;
+    return (await import('@/fixtures/climb-page')).fixtureClimbPage as T;
   }
   if (path.startsWith('/v1/vaults/')) return fixtureVault as T;
-  if (path.startsWith('/v1/transactions/')) { const {transactionFixture}=await import('@/fixtures/transaction-room'); const receipt=transactionFixture(path.split('/').pop()!); if(!receipt)throw createApiError('Not found',404);return receipt as T; }
+  if (path.startsWith('/v1/transactions/')) { const {transactionFixture}=await import('@/fixtures/transaction-page'); const receipt=transactionFixture(path.split('/').pop()!); if(!receipt)throw createApiError('Not found',404);return receipt as T; }
   if (path.startsWith('/v1/proofs/')) { if(path.endsWith('/'+ 'a'.repeat(64)))return {signature:'A'.repeat(88)} as T; throw createApiError('Not found',404); }
-  if (path.startsWith('/v1/accounts/')) { const {accountFixture}=await import('@/fixtures/account-room'); return accountFixture(path.split('/').pop()!) as T; }
+  if (path.startsWith('/v1/accounts/')) { const {accountFixture}=await import('@/fixtures/account-page'); return accountFixture(path.split('/').pop()!) as T; }
   if (path === '/v1/climbs') {
     return {
       climbs: fixtureObservatory.top_vaults,

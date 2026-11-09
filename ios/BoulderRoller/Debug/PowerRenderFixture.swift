@@ -21,11 +21,11 @@ enum PowerRenderFixtureMode: String {
 @MainActor
 struct PowerRenderFixtureRoot: View {
     let mode: PowerRenderFixtureMode
-    @State private var model: PrivacyRoomModel
+    @State private var model: PrivacyModel
 
     init(mode: PowerRenderFixtureMode) {
         self.mode = mode
-        let model = PrivacyRoomModel()
+        let model = PrivacyModel()
         var settings = Self.decode(PrivacySettings.self, Self.settingsJSON)
         let zones = PrivacyZonesList(zones: [], maxZones: 0)
         model.cachedSettings = { nil }
@@ -49,14 +49,14 @@ struct PowerRenderFixtureRoot: View {
         Group {
             if mode == .leaderboard {
                 NavigationStack {
-                    LeaderboardRoom(
+                    LeaderboardView(
                         climbName: "Fixture Hill",
                         entries: Self.decode([RecordBoardEntry].self, Self.boardJSON),
                         myWallet: nil
                     )
                 }
             } else {
-                PrivacyRoomView(renderModel: model)
+                PrivacyView(renderModel: model)
             }
         }
         .safeAreaInset(edge: .bottom) {

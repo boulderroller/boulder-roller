@@ -328,7 +328,7 @@ remainder, and staker allocation ≤ the amount labeled unlocked in that call.
 **Not certified:** fairness, liability solvency, or crank liveness. Phase 2 demonstrates
 that prior locked staker carry is re-unlocked every week, staker claims are not reserved
 against the Community cap, and queue/cursor composition can strand weeks. Run
-`scripts/math_audit_phase2.py` for the counterexamples.
+`scripts/reproduce_settlement_lifecycle_failures.py` for the counterexamples.
 
 **Quantified behaviors** (referenced above): single-staker limbo grows unbounded
 (106 DUNG = 22% of emissions after 40 wks — §2.4); post-halving the 1000:1 story is

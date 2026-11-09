@@ -76,11 +76,11 @@ const undefinedSources = (style: StyleSpecification) => style.layers.flatMap((la
   return typeof source === 'string' && !Object.hasOwn(style.sources, source) ? [`${layer.id} -> ${source}`] : [];
 });
 const pinnedGround = () => JSON.parse(readFileSync(new URL(CLIMB_MAP_STYLE_URL), 'utf8')) as StyleSpecification;
-const grounds = (base: StyleSpecification) => ({ base, rooms: nightLedgerMapStyle(base), bands: nightLedgerMapStyle(base, { landNames: false }), readOnly: nightLedgerMapStyle(base, { quiet: true }) });
+const grounds = (base: StyleSpecification) => ({ base, pages: nightLedgerMapStyle(base), bands: nightLedgerMapStyle(base, { landNames: false }), readOnly: nightLedgerMapStyle(base, { quiet: true }) });
 const GROUND_ASSETS = 'https://api.boulderroller.xyz/basemap/';
 
 // On 21 Oct 2026 CARTO's hosted Voyager style moved to a 'protomaps' source and every
-// ground layer on 'carto' lost its source, so all map rooms failed. The base style ships with the app.
+// ground layer on 'carto' lost its source, so all map pages failed. The base style ships with the app.
 test('the ground base style ships with the app and every ground layer reads a source the style defines', () => {
   const pinned = new URL(CLIMB_MAP_STYLE_URL);
   assert.equal(pinned.protocol, 'file:', `${CLIMB_MAP_STYLE_URL} must be the copy served with the app, not a moving upstream URL`);
@@ -91,7 +91,7 @@ test('the ground base style ships with the app and every ground layer reads a so
     assert.ok(style.layers.length > 0);
     assert.deepEqual(undefinedSources(style), [], `${name} ground has layers on undefined sources`);
   }
-  // The guard bites on the upstream shape that broke the rooms.
+  // The guard bites on the upstream shape that broke the pages.
   assert.notDeepEqual(undefinedSources(nightLedgerMapStyle({ ...base, sources: { protomaps: base.sources.carto } })), []);
 });
 

@@ -4,7 +4,7 @@ import { formatFixed } from '../../lib/formatters';
 // The climb's own canon profile at glyph size: the shape is the identity,
 // so each glyph is normalised to its own length and gain (the trailing
 // value on the row carries the size). Fill on the card rung, line in the
-// soft gray; the room lights the line cobalt when the climb is lit.
+// soft gray; the page lights the line cobalt when the climb is lit.
 
 export interface ShapePoint {
   distanceM: number;

@@ -1,9 +1,9 @@
 import { ridePresentationFacts, formatRidePresentation } from '../../server/ride-card-shape';
-import { RideRoomDoor } from '../components/auth/PublicRoomDoor';
-import RideRoomLedger from '../components/ride/RideRoomLedger';
+import { RideAnalysisLink } from '../components/auth/RideAnalysisLink';
+import RidePageLedger from '../components/ride/RidePageLedger';
 import { useBrowserTitleObject } from '../contexts/BrowserTitleContext';
 import { FailureSheet } from '../components/portal/FailureSpecies';
-import { RoomLoading, RideAnalysisSlots } from '../components/loading/RoomLoading';
+import { PageLoading, RideAnalysisSlots } from '../components/loading/PageLoading';
 import {
   useState,
   useMemo,
@@ -95,16 +95,16 @@ import {
   calculateGradeAtIndex,
 } from '../lib/rideTelemetry';
 import {
-  RideRoomIdentity,
-  RideRoomGeography,
-} from '../components/ride/RideRoom';
+  RidePageIdentity,
+  RidePageGeography,
+} from '../components/ride/RidePageComponents';
 import {
-  rideRoomModel,
+  ridePageModel,
   type RideSample,
-} from '../components/ride/rideRoomModel';
-import '../styles/portal-ride-room.css';
-const RideAnalysisRoom = lazy(
-  () => import('../components/ride/RideAnalysisRoom'),
+} from '../components/ride/ridePageModel';
+import '../styles/portal-ride-page.css';
+const RideAnalysisPage = lazy(
+  () => import('../components/ride/RideAnalysisPage'),
 );
 import RidePrivacyControls from '../components/privacy/RidePrivacyControls';
 import {
@@ -118,7 +118,7 @@ const DeleteConfirmModal = lazy(
 const sortRideMedia = (media: RideMedia[]) =>
   [...media].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
 const MAX_RIDE_MEDIA = 6;
-const EMPTY_ROOM_TELEMETRY: TelemetryData = {
+const EMPTY_PAGE_TELEMETRY: TelemetryData = {
   gps: null,
   power: null,
   cadence: null,
@@ -848,7 +848,7 @@ export default function RideView() {
   }, [showPrivacyModal]);
 
   // Loading state
-  const roomPower = useMemo(
+  const pagePower = useMemo(
     () =>
       hasTelemetryStreamData(telemetry.power) ||
       isRouteRedacted ||
@@ -870,9 +870,9 @@ export default function RideView() {
       ride?.durationS,
     ],
   );
-  const roomModel = useMemo(
+  const pageModel = useMemo(
     () =>
-      rideRoomModel(
+      ridePageModel(
         gpsPoints,
         isRouteRedacted
           ? {
@@ -887,7 +887,7 @@ export default function RideView() {
               ...telemetry,
               power: hasTelemetryStreamData(telemetry.power)
                 ? telemetry.power
-                : roomPower,
+                : pagePower,
             },
         climbPatterns,
         ride?.startedAt ?? '',
@@ -895,7 +895,7 @@ export default function RideView() {
     [
       gpsPoints,
       telemetry,
-      roomPower,
+      pagePower,
       climbPatterns,
       ride?.startedAt,
       isRouteRedacted,
@@ -904,9 +904,9 @@ export default function RideView() {
   // Stream arrival must not replace the map or discard a rider's camera.
   const geographyModel = useMemo(
     () =>
-      rideRoomModel(
+      ridePageModel(
         gpsPoints,
-        EMPTY_ROOM_TELEMETRY,
+        EMPTY_PAGE_TELEMETRY,
         climbPatterns,
         ride?.startedAt ?? '',
       ),
@@ -920,12 +920,12 @@ export default function RideView() {
         .catch(() => {});
   }, [activityId]);
 
-  if (isLoading) return <RoomLoading />;
+  if (isLoading) return <PageLoading />;
 
   if (error || !ride) {
     const isNotFound = /404|not.?found/i.test(error ?? '') || (!error && !ride);
     if (isNotFound) return <FailureSheet title="Ride not found" description="This ride is not in your log anymore." doors={[{ label: 'Rides', href: '/profile?tab=rides' }]} />;
-    return <div className="portal-object-page portal-object-page--ride" data-object-page="ride"><RideRoomGeography samples={[]} spans={[]} power={[]} identity={<StateRow title="Could not open this ride." action={<button type="button" onClick={() => void refetchRide()}>Try again</button>} />} children={null} /></div>;
+    return <div className="portal-object-page portal-object-page--ride" data-object-page="ride"><RidePageGeography samples={[]} spans={[]} power={[]} identity={<StateRow title="Could not open this ride." action={<button type="button" onClick={() => void refetchRide()}>Try again</button>} />} children={null} /></div>;
   }
 
   const rideStartedLabel = formatDateTime(ride.startedAt);
@@ -1192,7 +1192,7 @@ export default function RideView() {
 
   const formatClimbGrade = (selectedClimb: ClimbData) =>
     formatPercent(selectedClimb.avgGradient);
-  const formatRoomReadout = (sample: RideSample | undefined) => {
+  const formatPageReadout = (sample: RideSample | undefined) => {
     const activePointPower = sample?.power;
     const activePointHeartRate = sample?.heartRate;
     const activePointCadence = sample?.cadence;
@@ -1208,32 +1208,32 @@ export default function RideView() {
       speed: formatters.speedKmh(sample?.speed),
     };
   };
-  const roomTitle = displayRideTitle(
+  const pageTitle = displayRideTitle(
     ride.title,
     ride.startedAt,
     ride.routePreview?.placeLabel,
   );
-  const roomCal =
+  const pageCal =
     rideProof?.thresholdEconomyState === 'held'
       ? null
       : (rideProof?.calEarned ?? ride.calEarned);
-  const roomCalText = roomCal == null ? ABSENT_VALUE : formatInteger(roomCal);
-  const roomSummary = [
+  const pageCalText = pageCal == null ? ABSENT_VALUE : formatInteger(pageCal);
+  const pageSummary = [
     patterns
       ? `${formatInteger(climbs.length)} climb${climbs.length === 1 ? '' : 's'}`
       : '',
     climbs.some((c) => c.vaultMatch?.isPR)
       ? `${formatInteger(climbs.filter((c) => c.vaultMatch?.isPR).length)} new best`
       : '',
-    roomCal == null ? '' : `${roomCalText} CAL`,
+    pageCal == null ? '' : `${pageCalText} CAL`,
   ]
     .filter(Boolean)
     .join(' · ');
-  const roomProfile = roomModel.samples
+  const pageProfile = pageModel.samples
     .filter((p) => p.elevation !== null)
     .map((p) => ({ distanceM: p.d, elevationM: p.elevation! }));
-  const roomCounted = roomModel.spans.flatMap((span) => {
-    const points = roomModel.samples.filter(
+  const pageCounted = pageModel.spans.flatMap((span) => {
+    const points = pageModel.samples.filter(
       (p) => p.t >= span.start && p.t <= span.end,
     );
     return points.length > 1
@@ -1264,25 +1264,25 @@ export default function RideView() {
     }
   };
   const identity = (
-    <RideRoomIdentity
+    <RidePageIdentity
       riderProfileHref={riderProfileHref}
       riderDisplayName={riderDisplayName}
       riderAvatarUrl={riderAvatarUrl}
       riderInitials={riderInitials}
       rideStartedLabel={rideStartedLabel}
       placeLabel={ride.routePreview?.placeLabel}
-      roomTitle={roomTitle}
-      profile={roomProfile.length ? roomProfile : ride.elevationProfile}
-      spans={roomProfile.length ? roomCounted : ride.countedSpans}
+      pageTitle={pageTitle}
+      profile={pageProfile.length ? pageProfile : ride.elevationProfile}
+      spans={pageProfile.length ? pageCounted : ride.countedSpans}
       stats={[
         ['Distance', presentationText.distance],
         ['Elevation', presentationText.elevation],
         ['Time', presentationText.time],
       ]}
-      roomSummary={roomSummary}
+      pageSummary={pageSummary}
       actions={renderMoreRideActions('masthead')}
       social={
-        <div className="ride-room-social-footer">
+        <div className="ride-page-social-footer">
           <button onClick={jumpToSocial}>
             {rideInteractions
               ? `${formatIntegerLabel(rideInteractions.kudosCount)} kudos`
@@ -1302,7 +1302,7 @@ export default function RideView() {
   );
   return (
     <PortalPage
-      className="ride-detail-page ride-room-page portal-object-page portal-object-page--ride"
+      className="ride-detail-page ride-page portal-object-page portal-object-page--ride"
       data-object-page="ride"
     >
       <input
@@ -1314,19 +1314,19 @@ export default function RideView() {
         onChange={handleRideMediaFilesSelected}
       />
       {rideWindowView === 'overview' ? (
-        <RideRoomGeography
+        <RidePageGeography
           samples={geographyModel.samples}
           spans={geographyModel.spans}
-          power={roomModel.streams.power}
+          power={pageModel.streams.power}
           identity={identity}
         >
-          <RideRoomDoor href={`/activities/${activityId}/analysis`} />
-          <RideRoomLedger
+          <RideAnalysisLink href={`/activities/${activityId}/analysis`} />
+          <RidePageLedger
             climbRead={climbRead}
             setClimbRead={setClimbRead}
             climbs={climbs}
             getClimbObjectHref={getClimbObjectHref}
-            roomModel={roomModel}
+            pageModel={pageModel}
             climbPatterns={climbPatterns}
             formatDistance={formatDistance}
             formatElevation={formatElevation}
@@ -1351,33 +1351,33 @@ export default function RideView() {
             handleSetRideMediaCover={handleSetRideMediaCover}
             handleDeleteRideMedia={handleDeleteRideMedia}
             handleReportRideMedia={handleReportRideMedia}
-            roomCalText={roomCalText}
-            roomCal={roomCal}
+            pageCalText={pageCalText}
+            pageCal={pageCal}
           />
-        </RideRoomGeography>
+        </RidePageGeography>
       ) : rideWindowView === 'analysis' ? (
         <div data-object-layer="ride-stats">
           <Suspense fallback={<RideAnalysisSlots />}>
-            <RideAnalysisRoom
+            <RideAnalysisPage
               ride={ride}
               model={
-                isRouteRedacted ? { ...roomModel, samples: [] } : roomModel
+                isRouteRedacted ? { ...pageModel, samples: [] } : pageModel
               }
               isOwner={isOwner}
               ownerId={user?.id ?? null}
-              title={roomTitle}
+              title={pageTitle}
               rider={riderDisplayName}
               date={rideStartedLabel}
-              estimated={!!roomPower}
-              formatReadout={formatRoomReadout}
+              estimated={!!pagePower}
+              formatReadout={formatPageReadout}
             />
           </Suspense>
         </div>
       ) : (
-        <div className="ride-room-log" data-object-layer="ride-record-proof">
+        <div className="ride-page-log" data-object-layer="ride-record-proof">
           <Link className="ride-analysis-back" to={`/activities/${activityId}`}>
             <span>‹</span>
-            <b>{roomTitle}</b>
+            <b>{pageTitle}</b>
           </Link>
           <h1>Ride log</h1>
           {rideProof?.visible && <ProtocolProofCard proof={rideProof} />}

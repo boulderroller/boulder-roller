@@ -25,6 +25,7 @@ from uuid import UUID
 from app.services.patterns.climb import ClimbPattern
 from app.services.patterns.climb_signature import ClimbSignature, ClimbSignatureGenerator
 from app.services.sample_time import infer_sample_time_base, sample_in_time_window
+from app.utils.postgrest_paging import order_by
 
 logger = logging.getLogger(__name__)
 
@@ -176,17 +177,14 @@ class ClimbVaultService:
         # Supabase query for bounds overlap
         # Vault climb overlaps if: vault.max_lat >= user.min_lat AND vault.min_lat <= user.max_lat
         # AND vault.max_lon >= user.min_lon AND vault.min_lon <= user.max_lon
-        response = self.client.from_("climb_vault") \
+        query = self.client.from_("climb_vault") \
             .select("*") \
             .eq("active", True) \
             .gte("bounds_max_lat", min_lat) \
             .lte("bounds_min_lat", max_lat) \
             .gte("bounds_max_lon", min_lon) \
-            .lte("bounds_min_lon", max_lon) \
-            .order("total_vert_m", desc=True) \
-            .order("id") \
-            .limit(limit) \
-            .execute()
+            .lte("bounds_min_lon", max_lon)
+        response = order_by(query, "total_vert_m.desc", "id").limit(limit).execute()
 
         climbs = [self._row_to_vault_climb(row) for row in (response.data or [])]
         climbs.sort(key=lambda c: (-c.total_vert_m, str(c.id)))
@@ -206,14 +204,11 @@ class ClimbVaultService:
         # Supabase array overlap using PostgREST 'ov' operator
         # Format: {val1,val2,val3} for array overlap
         tile_array = "{" + ",".join(tile_ids) + "}"
-        response = self.client.from_("climb_vault") \
+        query = self.client.from_("climb_vault") \
             .select("*") \
             .eq("active", True) \
-            .filter("h3_tile_ids", "ov", tile_array) \
-            .order("total_vert_m", desc=True) \
-            .order("id") \
-            .limit(limit) \
-            .execute()
+            .filter("h3_tile_ids", "ov", tile_array)
+        response = order_by(query, "total_vert_m.desc", "id").limit(limit).execute()
 
         climbs = [self._row_to_vault_climb(row) for row in (response.data or [])]
         climbs.sort(key=lambda c: (-c.total_vert_m, str(c.id)))

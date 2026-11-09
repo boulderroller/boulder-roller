@@ -1,6 +1,6 @@
-import "@/styles/climb-room.css";
-import "@/styles/account-room.css";
-import "@/styles/transaction-room.css";
+import "@/styles/climb-page.css";
+import "@/styles/account-page.css";
+import "@/styles/transaction-page.css";
 import { useEffect, useRef, type ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -42,18 +42,18 @@ const weekRange = (f: TransactionReceipt["fields"]) =>
 function Sheet({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section>
-      <h2 className="room-eyebrow">{title}</h2>
-      <div className="room-surface">{children}</div>
+      <h2 className="page-eyebrow">{title}</h2>
+      <div className="page-surface">{children}</div>
     </section>
   );
 }
 export function TransactionNotFound({ id }: { id: string }) {
   return (
-    <div className="receipt-room">
+    <div className="receipt-page">
       <div className="receipt-column">
         <h1>Transaction</h1>
         <div className="receipt-sub mono-inline" title={id}>{compact(id)}</div>
-        <div className="room-surface receipt-not-found">
+        <div className="page-surface receipt-not-found">
           <span>Not found</span>
           <ObservatorySearch climbs={[]} triggerLabel="Search ›" />
         </div>
@@ -95,7 +95,7 @@ export function TransactionPageContent({
       </LedgerKv>
     );
   return (
-    <div className="receipt-room" data-room-loaded="true">
+    <div className="receipt-page" data-page-loaded="true">
       <div className="receipt-column">
         {r.climb ? (
           <Link className="receipt-back" to={`/climb/${r.climb.id}`}>
@@ -226,7 +226,7 @@ export function TransactionPageContent({
         <Sheet title="On chain">
           <LedgerKv label="Signature">
             <button
-              className="room-copy receipt-signature"
+              className="inline-copy-button receipt-signature"
               title={data.signature}
               onClick={() => void navigator.clipboard.writeText(data.signature)}
             >
@@ -271,10 +271,10 @@ export function TransactionPageContent({
             </LedgerKv>
           ))}
         </Sheet>
-        <div className="room-surface receipt-doors">
+        <div className="page-surface receipt-doors">
           {data.instructions.length ? (
             <button
-              className="room-door"
+              className="page-door"
               onClick={() => dialog.current?.showModal()}
             >
               Instructions · {data.instructions.length}
@@ -282,7 +282,7 @@ export function TransactionPageContent({
             </button>
           ) : null}
           <a
-            className="room-door"
+            className="page-door"
             href={`https://explorer.solana.com/tx/${encodeURIComponent(data.signature)}?cluster=devnet`}
             target="_blank"
             rel="noreferrer"
@@ -301,7 +301,7 @@ export function TransactionPageContent({
           </div>
           {data.instructions.map((ix) => (
             <section key={ix.instruction_index}>
-              <h2 className="room-eyebrow">{ix.name}</h2>
+              <h2 className="page-eyebrow">{ix.name}</h2>
               {Object.entries(ix.args ?? {}).map(([name, value]) =>
                 value != null ? (
                   <LedgerKv key={name} label={name}>
@@ -361,7 +361,7 @@ export default function TransactionPage() {
   return q.data ? (
     <TransactionPageContent data={q.data} />
   ) : (
-    <div className="receipt-room" aria-busy="true">
+    <div className="receipt-page" aria-busy="true">
       <div className="receipt-column">
         <h1>Transaction</h1>
       </div>

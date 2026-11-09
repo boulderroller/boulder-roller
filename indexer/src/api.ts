@@ -1,6 +1,6 @@
-import { buildTransactionRoom } from './transaction-room';
-import { buildAccountRoom } from './account-room';
-import { buildClimbRoom } from './climb-room';
+import { buildTransactionReceipt } from './transaction-receipt';
+import { buildAccountPageData } from './account-page-data';
+import { buildClimbPageData } from './climb-page-data';
 import http from 'http';
 import url from 'url';
 import { Connection, PublicKey } from '@solana/web3.js';
@@ -12,7 +12,7 @@ import { PRIVATE_STAGE1_INSTRUCTIONS, privatePayPredicate } from './program-visi
 import { visibleEvents, legacyTransactionPredicate, eventVisibilitySql } from './program-visibility';
 import { query } from './db';
 import { decodeExplorerEvents } from './explorer-events';
-import { attestedNumber, attestedAtomic, projectGround, projectIndexed, projectWeekClock, projectRoomEvent } from './observatory';
+import { attestedNumber, attestedAtomic, projectGround, projectIndexed, projectWeekClock, projectDisplayEvent } from './observatory';
 
 /**
  * BoulderScan public read API.
@@ -1230,7 +1230,7 @@ async function handleObservatory(res: http.ServerResponse, params: url.URLSearch
         dung_distributed: attestedAtomic(figures.rows[0]?.dung_distributed)};
     }
   }
-  const recentEvents = (await serializeLinkedEvents(eventsResult.rows)).map(event => projectRoomEvent(event, climbs));
+  const recentEvents = (await serializeLinkedEvents(eventsResult.rows)).map(event => projectDisplayEvent(event, climbs));
   json(res, 200, {
     week, climbs, indexed,
     events_next_offset: eventsResult.rows.length === 20 ? parseOffset(params.get('events_offset')) + 20 : null,
@@ -1331,7 +1331,7 @@ async function handleClimbDetail(
       distribution_history: [],
       activation_events: [],
       freshness,
-      ...await buildClimbRoom(runtime.query, projectedClimb, null, freshness),
+      ...await buildClimbPageData(runtime.query, projectedClimb, null, freshness),
     });
     return;
   }
@@ -1445,7 +1445,7 @@ async function handleClimbDetail(
       distribution_history: [],
       activation_events: [],
       freshness,
-      ...await buildClimbRoom(runtime.query, projectedClimb, null, freshness),
+      ...await buildClimbPageData(runtime.query, projectedClimb, null, freshness),
     });
     return;
   }
@@ -1463,7 +1463,7 @@ async function handleClimbDetail(
     ),
     activation_events: visibleEvents(activationEventsResult.rows).map(serializeEventRow),
     freshness,
-    ...await buildClimbRoom(runtime.query, projectedClimb, {...vaultResult.rows[0], legend: legendResult.rows[0], leaderboard: leaderboardResult.rows[0]?.entries}, freshness),
+    ...await buildClimbPageData(runtime.query, projectedClimb, {...vaultResult.rows[0], legend: legendResult.rows[0], leaderboard: leaderboardResult.rows[0]?.entries}, freshness),
   });
 }
 
@@ -1716,8 +1716,8 @@ async function handleTransactionDetail(
   const firstRow = txResult.rows[0];
   const events = decodeExplorerEvents(visibleEvents(eventsResult.rows).map(serializeEventRow));
 
-  const canon = await runtime.query(`/* transaction-room:canon */ ${CANON_CLIMB_SELECT} WHERE canon.status = 'ratified'`);
-  const receipt = await buildTransactionRoom(runtime.query, txResult.rows, events, canon.rows);
+  const canon = await runtime.query(`/* transaction-receipt:canon */ ${CANON_CLIMB_SELECT} WHERE canon.status = 'ratified'`);
+  const receipt = await buildTransactionReceipt(runtime.query, txResult.rows, events, canon.rows);
   json(res, 200, {
     receipt,
     signature: firstRow.signature,
@@ -1882,9 +1882,9 @@ async function handleAccountDetail(
   );
 
   const canon = await runtime.query(`${CANON_CLIMB_SELECT.replace("SELECT canon.id", "SELECT ST_AsGeoJSON(canon.centerline_geom)::json AS geometry, canon.id")} WHERE canon.status = 'ratified'`);
-  const room = await buildAccountRoom(runtime.query, pubkey, freshness, canon.rows, splBalances.token_accounts ?? []);
+  const pageData = await buildAccountPageData(runtime.query, pubkey, freshness, canon.rows, splBalances.token_accounts ?? []);
   json(res, 200, {
-    room,
+    room: pageData,
     pubkey,
     profile: profileResult.rows[0]
       ? {

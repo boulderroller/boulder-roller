@@ -112,7 +112,7 @@ final class SessionOperationsTests: XCTestCase {
         }
     }
 
-    func testDeletionRootScopesAcceptedOwnerAndPrefersTokenRecoveryOver401Room() {
+    func testDeletionRootScopesAcceptedOwnerAndPrefersTokenRecoveryOver401Screen() {
         let owner = RecordingOwner(id: "deleting-rider", wallet: "deleting-wallet")
         let other = RecordingOwner(id: "other-rider", wallet: "other-wallet")
         let capability = AccountDeletionCapability(
@@ -313,7 +313,7 @@ final class SessionOperationsTests: XCTestCase {
         await session.resume()
 
         let service = SessionDeletionServiceSpy()
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             service: service,
             capabilityStore: capabilityStore,
             inventory: {
@@ -961,7 +961,7 @@ final class SessionOperationsTests: XCTestCase {
             accountDeletionCapabilityStore: capabilityStore,
             accountDeletionSessionStore: sessionStore
         )
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             capabilityStore: capabilityStore,
             inventory: { .empty },
             localCleanup: { _, _ in },
@@ -1068,7 +1068,7 @@ final class SessionOperationsTests: XCTestCase {
             accountDeletionSessionStore: sessionStore,
             accountDeletionEmergencyFenceStore: emergencyStore
         )
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             capabilityStore: capabilityStore,
             inventory: { .empty },
             localCleanup: { _, _ in },
@@ -1459,7 +1459,7 @@ final class SessionOperationsTests: XCTestCase {
             accountDeletionCapabilityStore: capabilityStore
         )
         var cleanupOwners: [RecordingOwner] = []
-        let model = AccountDeletionRoomModel(
+        let model = AccountDeletionModel(
             capabilityStore: capabilityStore,
             inventory: { .empty },
             localCleanup: { capability, _ in
@@ -1620,7 +1620,7 @@ final class SessionOperationsTests: XCTestCase {
     }
 
     @MainActor
-    func testEmergencyWitnessClearFailureKeepsRichCompletionJournalAndRoom() {
+    func testEmergencyWitnessClearFailureKeepsRichCompletionJournalAndScreen() {
         let recoveryID = "failed-emergency-clear-recovery"
         let completed = AccountDeletionSessionRecord(
             recoveryID: recoveryID,
@@ -1763,7 +1763,7 @@ final class SessionOperationsTests: XCTestCase {
         XCTAssertEqual(AccountDeletionSessionRecordStore.records(), [retained])
     }
 
-    func testTwoAnonymousCompletionRoomsKeepExactOpaqueSlotsThroughDone() throws {
+    func testTwoAnonymousCompletionScreensKeepExactOpaqueSlotsThroughDone() throws {
         let completionA = AccountDeletionSessionRecord(
             recoveryID: "recovery-a",
             state: .deleted,
@@ -2287,7 +2287,7 @@ final class SessionOperationsTests: XCTestCase {
     /// ordinary 401 -> refresh branch. Stable deletion authority from that
     /// real wire path must still enter AppSession's durable recovery room.
     @MainActor
-    func testPrivyVerifyDeletionRefusalsEnterDurableRecoveryRoom() async throws {
+    func testPrivyVerifyDeletionRefusalsEnterDurableRecoveryScreen() async throws {
         defer { SessionRefreshURLProtocol.reset() }
 
         for state in [
@@ -2366,7 +2366,7 @@ final class SessionOperationsTests: XCTestCase {
     /// The SIWS verify endpoint is a separate production sign-in path and
     /// must publish the same stable lifecycle refusal.
     @MainActor
-    func testSignatureVerifyDeletionRefusalEntersDurableRecoveryRoom() async throws {
+    func testSignatureVerifyDeletionRefusalEntersDurableRecoveryScreen() async throws {
         defer { SessionRefreshURLProtocol.reset() }
         let exactCaseWallet = "0xDeLeTiOn-WaLLeT"
         SessionRefreshURLProtocol.install { request in

@@ -1159,13 +1159,13 @@ struct RideDetailView: View {
                 publication: publication
             )
         } catch {
-            return PrivacyRoomModel.message(for: error)
+            return PrivacyModel.message(for: error)
         }
         do {
             detail = try await APIClient.shared.rideDetail(id: rideId)
             return nil
         } catch {
-            return PrivacyRoomModel.message(for: error)
+            return PrivacyModel.message(for: error)
         }
     }
 

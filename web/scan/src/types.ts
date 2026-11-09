@@ -151,7 +151,7 @@ export type ObservatoryResponse = {
   total_completions: number;
   total_cal_staked: string;
   supply: SupplySummary | null;
-  recent_events: RoomEvent[];
+  recent_events: DisplayEvent[];
   top_vaults: VaultSummary[];
   freshness?: ScanFreshness;
 };
@@ -350,7 +350,7 @@ export type RideAttestationSummary = {
 };
 
 export type AccountResponse = {
-  room?: AccountRoom;
+  room?: AccountPageData;
   pubkey: string;
   profile?: AccountProfile | null;
   user_state: AccountUserState | null;
@@ -398,13 +398,13 @@ export type WeekProjection = {
   epoch?: number; settles_at?: string; climbs_registered?: number; cal_deposited?: string;
   riders?: number; rides_attested?: number; dung_distributed?: string;
 };
-export type RoomEvent = ExplorerEvent & {
+export type DisplayEvent = ExplorerEvent & {
   kind?: 'settlement' | 'attestation' | 'deposit' | 'legend' | 'registration';
   object?: {id: string; name: string; type: string}; actor?: string;
   value?: {amount: string | number; unit: string}; signature?: string; epoch?: number;
 };
 
-export type AccountRoom = {
+export type AccountPageData = {
  handle?:string; avatar_url?:string; since_week?:number; since_date?:string;
  rides_attested?:number; seats?:number; crowns?:number; attested_climbs?:number; canon_count?:number;
  indexed?:{slot:number;at:string;age_seconds:number};
@@ -413,7 +413,7 @@ export type AccountRoom = {
  balances:Array<{account:string;symbol:string;amount:string;custody?:'climb'}>;
  completions:Array<{climb:{id:string;name:string};signature:string;event_index?:number;time_s?:number;date?:string}>;
  settlements:Array<{climb:{id:string;name:string};signature:string;event_index?:number;week?:number;date?:string;rank?:number;dung?:string}>;
- activity:RoomEvent[]; completion_count?:number;settlement_count?:number;
+ activity:DisplayEvent[]; completion_count?:number;settlement_count?:number;
 };
 
 export type TransactionReceipt = {

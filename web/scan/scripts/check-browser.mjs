@@ -78,7 +78,7 @@ async function main() {
     const projectionResponse = page.waitForResponse(r => r.url().includes('/v1/observatory') && r.status() === 200);
     await checkPage(page, 'observatory browser', `${frontendBase}/`, 'Recent');
     const projection = await (await projectionResponse).json();
-    await page.waitForSelector('[data-room-loaded="true"]');
+    await page.waitForSelector('[data-page-loaded="true"]');
     await page.locator('[data-ground-ready="true"]').waitFor({ timeout: 45_000 });
     assert(await page.locator('.week-column').count() === 1, 'home: Week column');
     const week = projection.week || {};

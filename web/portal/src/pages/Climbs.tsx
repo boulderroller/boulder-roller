@@ -24,7 +24,7 @@ import { ABSENT_VALUE } from '../lib/formatters';
 
 const ClimbDiscoveryMap = lazy(() => import('../components/climbs/ClimbDiscoveryMap'));
 
-// Climbs — the city room (Tim-ratified 2026-09-03). The map is the room and
+// Climbs — the city room (Tim-ratified 2026-09-03). The map is the page and
 // opens on the whole canon; the column is the index. Every row leads with the
 // climb's own canon profile, then name, then the two facts not in the trailing
 // slot, then one trailing value that follows the sort word. The row is the tap
@@ -149,7 +149,7 @@ function ClimbRow({ climb, sort, selected, hovered, onSelect, onHover, rowRef }:
       ref={rowRef}
       className={[
         'climb-discovery-result',
-        'climbs-room__row',
+        'climbs-page__row',
         selected ? 'climb-discovery-result--selected' : '',
         hovered ? 'climb-discovery-result--hovered' : '',
       ].filter(Boolean).join(' ')}
@@ -168,12 +168,12 @@ function ClimbRow({ climb, sort, selected, hovered, onSelect, onHover, rowRef }:
       onFocus={() => onHover(true)}
       onBlur={() => onHover(false)}
     >
-      <ClimbShapeGlyph profile={climb.elevationProfile} className="climbs-room__glyph" />
-      <span className="climbs-room__identity">
-        <strong className="climbs-room__name">{name}</strong>
-        <span className="climbs-room__sub">{facts.sub}</span>
+      <ClimbShapeGlyph profile={climb.elevationProfile} className="climbs-page__glyph" />
+      <span className="climbs-page__identity">
+        <strong className="climbs-page__name">{name}</strong>
+        <span className="climbs-page__sub">{facts.sub}</span>
       </span>
-      <strong className="climbs-room__value">{facts.trailing}</strong>
+      <strong className="climbs-page__value">{facts.trailing}</strong>
     </Link>
   );
 }
@@ -234,7 +234,7 @@ export default function Climbs() {
     return () => window.clearTimeout(timeoutId);
   }, [searchQuery]);
 
-  // The room opens on the whole canon (no bbox); a moved map and "Search this
+  // The page opens on the whole canon (no bbox); a moved map and "Search this
   // area" narrow the query to the rider's viewport from then on.
   const {
     data: climbsData,
@@ -389,9 +389,9 @@ export default function Climbs() {
   }, [filteredClimbs, hoveredClimbId, selectedClimbId]);
 
   return (
-    <PortalPage className="climbs-room-page" aria-busy={initialLoading || climbsFetching}>
-      <section className="climbs-room" aria-label="Climb discovery">
-        <div className="climbs-room__map">
+    <PortalPage className="climbs-page" aria-busy={initialLoading || climbsFetching}>
+      <section className="climbs-page__layout" aria-label="Climb discovery">
+        <div className="climbs-page__map">
           <Suspense fallback={null}>
             <ClimbDiscoveryMap
               climbs={filteredClimbs}
@@ -416,7 +416,7 @@ export default function Climbs() {
         )}
 
         <aside
-          className={`climb-discovery__drawer climbs-room__column ${drawerExpanded ? 'climb-discovery__drawer--expanded' : 'climb-discovery__drawer--collapsed'}`}
+          className={`climb-discovery__drawer climbs-page__column ${drawerExpanded ? 'climb-discovery__drawer--expanded' : 'climb-discovery__drawer--collapsed'}`}
           data-expanded={drawerExpanded ? 'true' : 'false'}
         >
           <button
@@ -430,14 +430,14 @@ export default function Climbs() {
             {drawerExpanded ? <ChevronDown aria-hidden="true" /> : <ChevronUp aria-hidden="true" />}
           </button>
 
-          <header className="climbs-room__header">
+          <header className="climbs-page__header">
             <h1>Climbs</h1>
-            <span className="climbs-room__count">
+            <span className="climbs-page__count">
               <strong>{initialLoading ? <Slot variant="number" /> : formatters.integer(filteredClimbs.length)}</strong> in view
             </span>
           </header>
 
-          <label className="climbs-room__search" htmlFor={climbSearchId}>
+          <label className="climbs-page__search" htmlFor={climbSearchId}>
             <Search aria-hidden="true" />
             <span className="sr-only">Search climbs</span>
             <input
@@ -450,12 +450,12 @@ export default function Climbs() {
 
           </label>
 
-          <div className="climbs-room__words" aria-label="Climb view">
+          <div className="climbs-page__words" aria-label="Climb view">
             {tabOptions.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
-                className="climbs-room__word"
+                className="climbs-page__word"
                 aria-pressed={activeTab === tab.id}
                 data-available={tab.available ? 'true' : 'false'}
                 onClick={() => handleTabChange(tab.id)}
@@ -465,12 +465,12 @@ export default function Climbs() {
             ))}
           </div>
 
-          <div className="climbs-room__sorts" aria-label="Sort climbs">
+          <div className="climbs-page__sorts" aria-label="Sort climbs">
             {SORT_OPTIONS.map((option) => (
               <button
                 key={option.id}
                 type="button"
-                className="climbs-room__sort"
+                className="climbs-page__sort"
                 aria-pressed={activeSort === option.id}
                 onClick={() => handleSortChange(option.id)}
               >
@@ -487,9 +487,9 @@ export default function Climbs() {
             <StateRow title="Positions unavailable." action={<button type="button" onClick={() => void refetchStakes()}>Try again</button>} />
           )}
 
-          <div className="climbs-room__list">
+          <div className="climbs-page__list">
             {initialLoading ? (
-              <SlotRows count={100} className="climbs-room__rows" />
+              <SlotRows count={100} className="climbs-page__rows" />
             ) : climbsErrorMessage && !climbsData ? (
               <StateRow title="Could not load climbs" action={<button type="button" onClick={() => void refetchClimbs()}>Try again</button>} />
             ) : activeTab === 'staked' && positionsErrorMessage ? (
@@ -497,7 +497,7 @@ export default function Climbs() {
             ) : filteredClimbs.length === 0 ? (
               <StateRow title={activeTab === 'staked' ? 'No positions in view' : activeTab === 'vaults' ? 'No climbs with vaults in view' : 'No climbs in view'} action={activeTab !== 'all' && <button type="button" onClick={() => handleTabChange('all')}>All climbs</button>} />
             ) : (
-              <div className="climbs-room__rows">
+              <div className="climbs-page__rows">
                 {filteredClimbs.map((climb) => (
                   <ClimbRow
                     key={climb.id}
@@ -515,13 +515,13 @@ export default function Climbs() {
                 ))}
               </div>
             )}
-            <div className="climbs-room__list-fade" aria-hidden="true" />
+            <div className="climbs-page__list-fade" aria-hidden="true" />
           </div>
         </aside>
 
-        <div className="climbs-room__controls">
-        <form className="climb-discovery__place-search climbs-room__places" onSubmit={handlePlaceSearchSubmit}>
-          <div className="climbs-room__places-field">
+        <div className="climbs-page__controls">
+        <form className="climb-discovery__place-search climbs-page__places" onSubmit={handlePlaceSearchSubmit}>
+          <div className="climbs-page__places-field">
             <button type="submit" className="climb-discovery__place-submit" disabled={placeSearchState === 'loading'}>
               {placeSearchState === 'loading' ? null : <MapPin aria-hidden="true" />}
               <span className="sr-only">Search places</span>
@@ -577,7 +577,7 @@ export default function Climbs() {
           )}
         </form>
         {hasPendingArea && (
-          <button type="button" className="climbs-room__search-area" onClick={handleSearchArea}>
+          <button type="button" className="climbs-page__search-area" onClick={handleSearchArea}>
             Search this area
           </button>
         )}
@@ -589,14 +589,14 @@ export default function Climbs() {
           </div>
         )}
 
-        <div className="climbs-room__card-layer">
+        <div className="climbs-page__card-layer">
           {cardClimb && (
             <Link
-              className="climbs-room__card"
+              className="climbs-page__card"
               to={`/climbs/${encodeURIComponent(cardClimb.id)}`}
               data-climb-id={cardClimb.id}
             >
-              <span className="climbs-room__card-identity">
+              <span className="climbs-page__card-identity">
                 <strong>{cardClimb.name || 'Unnamed climb'}</strong>
                 <span>
                   {[
@@ -609,7 +609,7 @@ export default function Climbs() {
               <ChevronRight aria-hidden="true" />
             </Link>
           )}
-          <span className="climbs-room__canon-attribution">Climb data © OpenStreetMap contributors</span>
+          <span className="climbs-page__canon-attribution">Climb data © OpenStreetMap contributors</span>
         </div>
       </section>
     </PortalPage>

@@ -7,7 +7,7 @@ import { RankMark } from '../rankmarks/RankMark';
 // The ledger column (Profile — Ground, Tim-ratified 2026-09-02): floats on
 // the ground at its own height. Identity, the follow line, the Rides /
 // Seats / Crowns trio, the leaderboards the rider stands on, and the
-// census line. Times are public, money is private — nothing economic here.
+// ridden-count line. Times are public, money is private — nothing economic here.
 
 export interface LedgerRow {
   key: string;
@@ -44,7 +44,7 @@ interface ProfileLedgerColumnProps {
   seats: number | null;
   crowns: number | null;
   rows: LedgerRow[];
-  census: { ridden: number; total: number } | null;
+  riddenCount: { ridden: number; total: number } | null;
   positionsState: 'ready' | 'loading' | 'unavailable';
   retryingPositions: boolean;
   onRetryPositions: () => void;
@@ -67,7 +67,7 @@ export default function ProfileLedgerColumn({
   seats,
   crowns,
   rows,
-  census,
+  riddenCount,
   positionsState,
   retryingPositions,
   onRetryPositions,
@@ -215,10 +215,10 @@ export default function ProfileLedgerColumn({
         </div>
       ) : null}
 
-      {census ? (
-        <div className="profile-ledger__census">
-          <strong>{formatInteger(census.ridden)}</strong>
-          <span>{`of ${formatInteger(census.total)} climbs ridden`}</span>
+      {riddenCount ? (
+        <div className="profile-ledger__ridden-count">
+          <strong>{formatInteger(riddenCount.ridden)}</strong>
+          <span>{`of ${formatInteger(riddenCount.total)} climbs ridden`}</span>
         </div>
       ) : null}
 

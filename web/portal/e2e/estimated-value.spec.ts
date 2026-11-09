@@ -15,7 +15,7 @@ async function mount(page: Page, props: Record<string, unknown> = {}, copy?: [st
     <script type="module">
       import '/src/index.css';
       import '/src/styles/globals.css';
-      import '/src/styles/portal-surface-polish.css';
+      import '/src/styles/portal-surfaces.css';
       import React from '/node_modules/.vite/deps/react.js';
       import ReactDOM from '/node_modules/.vite/deps/react-dom_client.js';
       import { EstimatedValue } from '/src/components/EstimatedValue.tsx';

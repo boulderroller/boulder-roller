@@ -53,8 +53,8 @@ groundcover reads wrong, and living green breaks the stone family.
 
 ## Production work remaining (Phase 2/3 on the bead)
 
-- Full bake: every rank numeral x band, alpha, 1x/2x/3x + sprite manifest for
+- Full production render: every rank numeral x band, alpha, 1x/2x/3x + sprite manifest for
   portal and iOS; per-mark lighting (sheet rig compromises the band's dark
   quadrant).
-- Corner charge baked at 5 intensity steps per band.
+- Corner charge rendered at 5 intensity steps per band.
 - Gold stays out of the marks (earning-only ledger rule).

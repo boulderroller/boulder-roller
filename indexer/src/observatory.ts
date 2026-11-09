@@ -1,4 +1,4 @@
-/** Additive Week-room projection. Never infer a chain value from a canon row. */
+/** Additive Week-page projection. Never infer a chain value from a canon row. */
 export function attestedNumber(value: unknown): number | undefined {
   if (value == null || value === "") return undefined;
   const n = Number(value);
@@ -90,7 +90,7 @@ export function projectWeekClock(
     : starts_at + duration;
   return { epoch, starts_at, ends_at, finalizes_at: ends_at + 86400 };
 }
-export function projectRoomEvent(
+export function projectDisplayEvent(
   event: Record<string, any>,
   climbs: Record<string, any>[],
 ) {

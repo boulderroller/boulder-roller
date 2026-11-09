@@ -47,12 +47,12 @@ enum PermissionChoreography {
     /// The production app declares and exercises continuous background
     /// location for a foreground-started ride. This is the locked-screen
     /// capability, independent of any later Always-only relaunch feature.
-    static let lockedScreenRecordingShipped = true
+    static let lockedScreenRecordingReleased = true
 
     /// Automatic location relaunch after the app is terminated is a distinct
     /// capability. Keep the broader Always permission dormant until that
     /// service exists and has its own physical proof.
-    static let alwaysLocationRelaunchShipped = false
+    static let alwaysLocationRelaunchReleased = false
 
     /// The Always-upgrade moment, encoded ahead of the capability: offer it
     /// only after at least one successful While-Using recording (the rider
@@ -63,9 +63,9 @@ enum PermissionChoreography {
     static func shouldOfferAlwaysUpgrade(
         status: CLAuthorizationStatus,
         hasCompletedWhileInUseRecording: Bool,
-        alwaysLocationRelaunchShipped: Bool = Self.alwaysLocationRelaunchShipped
+        alwaysLocationRelaunchReleased: Bool = Self.alwaysLocationRelaunchReleased
     ) -> Bool {
-        guard alwaysLocationRelaunchShipped else { return false }
+        guard alwaysLocationRelaunchReleased else { return false }
         guard hasCompletedWhileInUseRecording else { return false }
         return status == .authorizedWhenInUse
     }

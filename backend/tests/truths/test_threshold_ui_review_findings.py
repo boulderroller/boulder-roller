@@ -132,19 +132,19 @@ def test_r8_pending_is_state_grammar_not_a_unit():
 
     assert "unit: 'Pending'" not in portal_ride
     assert 'unit: ride.thresholdTrainingState == "pending" ? "Pending"' not in ios_ride
-    # The Ride Room places state beneath the numeral, outside its CAL unit.
-    # Previously pinned the CAL markup in RideViewCore; lane C composes the same numeral/state through RideRoomLedger.
-    ledger = source("web/portal/src/components/ride/RideRoomLedger.tsx")
-    assert "<RideRoomLedger" in portal_ride
-    assert "roomCalText={roomCalText}" in portal_ride
-    assert "roomCal={roomCal}" in portal_ride
-    cal = ledger.split('className="ride-room-cal"', 1)[1].split("</div>", 1)[0]
+    # The Ride page places state beneath the numeral, outside its CAL unit.
+    # Previously pinned the CAL markup in RideViewCore; lane C composes the same numeral/state through RidePageLedger.
+    ledger = source("web/portal/src/components/ride/RidePageLedger.tsx")
+    assert "<RidePageLedger" in portal_ride
+    assert "pageCalText={pageCalText}" in portal_ride
+    assert "pageCal={pageCal}" in portal_ride
+    cal = ledger.split('className="ride-page-cal"', 1)[1].split("</div>", 1)[0]
     numeral, state = cal.split("</strong>", 1)
-    assert "{roomCalText}" in numeral
-    assert "{roomCal == null ? '' : ' CAL'}" in numeral
+    assert "{pageCalText}" in numeral
+    assert "{pageCal == null ? '' : ' CAL'}" in numeral
     assert "pending" not in numeral.lower()
-    assert "<span>{roomCal == null ? 'CAL pending' : ''}</span>" in state
-    assert "const roomCalText = roomCal == null ? ABSENT_VALUE : formatInteger(roomCal)" in portal_ride
+    assert "<span>{pageCal == null ? 'CAL pending' : ''}</span>" in state
+    assert "const pageCalText = pageCal == null ? ABSENT_VALUE : formatInteger(pageCal)" in portal_ride
     assert "· Pending" in ios_ride
 
 

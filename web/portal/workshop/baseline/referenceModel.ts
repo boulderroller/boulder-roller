@@ -1,7 +1,0 @@
-import provenance from './references/provenance.json';
-export type StravaReference={file:string;family:string;title:string;source:string;url:string;date:string;viewportWidth:number;pixelWidth:number;pixelHeight:number;viewer:string;note:string;kind:'historical Strava reference'};
-const families:Record<string,string>={profile:'profile',rides:'rides',training:'training',settings:'settings',search:'search','public-rider':'profile','public-ride':'ride','ride-flows':'ride','public-climb':'climb','climb-flows':'climb','legacy-analysis':'analysis',shell:'shell'};
-export const stravaReferencesFor=(room:string):StravaReference[]=>provenance.filter(r=>r.kind==='historical Strava reference'&&r.family===families[room]) as StravaReference[];
-export const portalReferencesFor=(room:string)=>provenance.filter(r=>r.kind==='historical supplied-fixture capture'&&r.file.startsWith(room+'-'));
-export const referenceTitle=(room:string)=>({profile:'Rider profile',rides:'My Activities',training:'Training',settings:'Settings',search:'Segment search',ride:'Ride',climb:'Climb',analysis:'Analysis',shell:'Navigation'}[families[room]]??room);
-export const referenceContext=(room:string)=>room.startsWith('public-')?'Signed-in object reference; not a signed-out or privacy-boundary capture.':room==='climb-flows'?'Climb context only. Strava has no supplied CAL, DUNG or Vault action reference.':room==='search'?'Climb-results reference only; other global-search categories were not captured.':'';

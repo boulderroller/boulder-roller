@@ -1,12 +1,13 @@
 """An in-memory PostgREST behind the real, pinned postgrest-py client.
 
 The client builds every request, so a test sees its exact wire format. In
-postgrest-py 0.13, ``range(a, b)`` sends ``Range: a-(b - 1)`` and every
-``order()`` call is its own ``order`` parameter. The server follows PostgREST:
-an inclusive Range header (a malformed one is ignored, an empty one is a 416),
-``limit``/``offset`` parameters, a max-rows cap, and only the first ``order``
-parameter. Rows that tie on the sort come back in an order that changes from
-request to request, as an unstable top-N sort's can.
+postgrest-py 0.13, ``range(a, b)`` sends ``Range: a-(b - 1)``, every
+``order()`` call is its own ``order`` parameter, and there is no ``or_()``.
+The server follows PostgREST: an inclusive Range header (a malformed one is
+ignored, an empty one is a 416), ``limit``/``offset`` parameters, ``or`` and
+``and`` filter trees, a max-rows cap, and only the first ``order`` parameter.
+Rows that tie on the sort come back in an order that changes from request to
+request, as an unstable top-N sort's can.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ from postgrest.utils import SyncClient
 
 BASE_URL = "http://postgrest.test"
 _RESERVED = {"select", "order", "limit", "offset", "on_conflict", "columns"}
+_LOGIC = {"or", "and"}
 _RANGE = re.compile(r"^(\d+)-(\d*)$")
 
 
@@ -56,7 +58,10 @@ class PinnedPostgrest:
         rows = list(self.tables.get(request.url.path.lstrip("/"), []))
         params = request.url.params
         for column, expression in params.multi_items():
-            if column not in _RESERVED:
+            if column in _LOGIC:
+                keep_row = _logic(column, expression)
+                rows = [row for row in rows if keep_row(row)]
+            elif column not in _RESERVED:
                 keep = _predicate(expression)
                 rows = [row for row in rows if keep(_value(row, column))]
         total = len(rows)
@@ -99,7 +104,9 @@ def _value(row: Mapping[str, Any], column: str) -> Any:
         head, key = column.split("->>", 1)
         nested = row.get(head)
         value = nested.get(key) if isinstance(nested, Mapping) else None
-        return None if value is None else str(value)
+        if value is None or isinstance(value, str):
+            return value
+        return json.dumps(value)  # ->> returns JSON text: true, 3, {"a": 1}
     return row.get(column)
 
 
@@ -170,6 +177,12 @@ def _predicate(expression: str) -> Callable[[Any], bool]:
         allowed = set(_in_values(criteria))
         def test(value):
             return value is not None and _text(value) in allowed
+    elif operator == "ov":
+        if not (criteria.startswith("{") and criteria.endswith("}")):
+            raise AssertionError(f"malformed ov filter {criteria!r}")
+        wanted = set(criteria[1:-1].split(",")) - {""}
+        def test(value):
+            return isinstance(value, list) and any(_text(item) in wanted for item in value)
     elif operator == "is":
         if criteria != "null":
             raise AssertionError(f"unsupported is filter {criteria!r}")
@@ -184,6 +197,57 @@ def _predicate(expression: str) -> Callable[[Any], bool]:
     else:
         raise AssertionError(f"unsupported filter operator {operator!r}")
     return (lambda value: not test(value)) if negate else test
+
+
+def _logic(operator: str, expression: str) -> Callable[[Mapping[str, Any]], bool]:
+    """An ``or``/``and`` tree such as ``(a.gt.1,and(a.eq.1,b.gt."x"))``."""
+    if not (expression.startswith("(") and expression.endswith(")")):
+        raise AssertionError(f"malformed {operator} filter {expression!r}")
+    tests = []
+    for term in _logic_terms(expression[1:-1]):
+        negate = term.startswith(("not.and(", "not.or("))
+        body = term[4:] if negate else term
+        name = body.split("(", 1)[0]
+        if name in _LOGIC:
+            test = _logic(name, body[len(name):])
+        else:
+            column, _, condition = body.partition(".")
+            keep = _predicate(_unquoted(condition))
+            test = lambda row, column=column, keep=keep: keep(_value(row, column))
+        tests.append((lambda row, test=test: not test(row)) if negate else test)
+    combine = any if operator == "or" else all
+    return lambda row: combine(test(row) for test in tests)
+
+
+def _logic_terms(body: str) -> List[str]:
+    terms, current, depth, quoted, escaped = [], "", 0, False, False
+    for char in body:
+        if escaped:
+            escaped = False
+        elif quoted and char == "\\":
+            escaped = True
+        elif char == '"':
+            quoted = not quoted
+        elif not quoted and char in "()":
+            depth += 1 if char == "(" else -1
+        elif not quoted and depth == 0 and char == ",":
+            terms.append(current)
+            current = ""
+            continue
+        current += char
+    if quoted or depth:
+        raise AssertionError(f"unbalanced logic tree {body!r}")
+    terms.append(current)
+    return terms
+
+
+def _unquoted(condition: str) -> str:
+    """Strip a logic-tree value's double quotes and escapes, as PostgREST does."""
+    prefix = "not." if condition.startswith("not.") else ""
+    operator, _, value = condition[len(prefix):].partition(".")
+    if operator != "in" and len(value) >= 2 and value[0] == value[-1] == '"':
+        value = re.sub(r"\\(.)", r"\1", value[1:-1])
+    return f"{prefix}{operator}.{value}"
 
 
 def _select_items(select: str) -> List[str]:

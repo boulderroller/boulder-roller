@@ -208,10 +208,10 @@ struct RootView: View {
                 reauthenticationRequested: session.accountDeletionReauthenticationRequested
             ) {
             case .lifecycle:
-                AccountDeletionRoomView(allowsDismiss: false)
+                AccountDeletionView(allowsDismiss: false)
             case .deletionSession:
                 if let deletionRecord = session.accountDeletionSessionRecord {
-                    AccountDeletionSessionRoomView(record: deletionRecord)
+                    AccountDeletionSessionView(record: deletionRecord)
                 }
             case .account:
                 switch session.phase {

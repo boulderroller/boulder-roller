@@ -288,7 +288,7 @@ final class PrivacyContractTests: XCTestCase {
         XCTAssertEqual(first.mimeType, "image/jpeg")
     }
 
-    func testRideMetadataBodyShipsOnlyAuthoredFields() {
+    func testRideMetadataBodyIncludesOnlyAuthoredFields() {
         XCTAssertEqual(
             APIClient.rideMetadataBody(title: "Hill loop", notes: nil) as NSDictionary,
             ["title": "Hill loop"] as NSDictionary
@@ -299,11 +299,11 @@ final class PrivacyContractTests: XCTestCase {
         )
     }
 
-    // MARK: Room model — fail closed, server-declared gating
+    // MARK: PrivacyModel — fail closed, server-declared gating
 
     @MainActor
-    func testRoomLoadsBothHalvesTogether() async {
-        let model = PrivacyRoomModel()
+    func testScreenLoadsBothHalvesTogether() async {
+        let model = PrivacyModel()
         model.fetchSettings = { Self.settingsFixture(visibility: .everyone, zoneCount: 0) }
         model.fetchZones = { PrivacyZonesList(zones: [], maxZones: 5) }
         await model.load()
@@ -318,8 +318,8 @@ final class PrivacyContractTests: XCTestCase {
     /// Zones failing while settings succeed must NOT render a room that
     /// silently shows "no zones" — the whole room is unavailable.
     @MainActor
-    func testZoneFailureFailsTheWholeRoomClosed() async {
-        let model = PrivacyRoomModel()
+    func testZoneFailureFailsTheWholeScreenClosed() async {
+        let model = PrivacyModel()
         model.fetchSettings = { Self.settingsFixture(visibility: .everyone, zoneCount: 2) }
         model.fetchZones = {
             throw APIError.http(
@@ -345,7 +345,7 @@ final class PrivacyContractTests: XCTestCase {
                 label: nil, createdAt: nil, updatedAt: nil
             )
         }
-        let model = PrivacyRoomModel()
+        let model = PrivacyModel()
         model.fetchSettings = { Self.settingsFixture(visibility: .everyone, zoneCount: 3) }
         model.fetchZones = { PrivacyZonesList(zones: zones, maxZones: 3) }
         await model.load()
@@ -358,7 +358,7 @@ final class PrivacyContractTests: XCTestCase {
 
     @MainActor
     func testSetDefaultVisibilityAdoptsServerResponse() async {
-        let model = PrivacyRoomModel()
+        let model = PrivacyModel()
         model.fetchSettings = { Self.settingsFixture(visibility: .everyone, zoneCount: 0) }
         model.fetchZones = { PrivacyZonesList(zones: [], maxZones: 5) }
         model.putDefaultVisibility = { requested in
@@ -373,7 +373,7 @@ final class PrivacyContractTests: XCTestCase {
 
     @MainActor
     func testFailedDefaultWriteLeavesPriorTruthStanding() async {
-        let model = PrivacyRoomModel()
+        let model = PrivacyModel()
         model.fetchSettings = { Self.settingsFixture(visibility: .everyone, zoneCount: 0) }
         model.fetchZones = { PrivacyZonesList(zones: [], maxZones: 5) }
         model.putDefaultVisibility = { _ in

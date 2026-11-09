@@ -144,7 +144,7 @@ Kept for history, do not build from.
 - [design/DESIGN_SYSTEM_MIGRATION.md](design/DESIGN_SYSTEM_MIGRATION.md) — Earlier specification, plan, audit or session record.
 - [design/evidence/LP_CUSTODY_DEVNET_INVENTORY_2026-07-17.json](design/evidence/LP_CUSTODY_DEVNET_INVENTORY_2026-07-17.json) — Dated custody observation; not current chain evidence.
 - [design/evidence/LP_CUSTODY_DEVNET_RETIREMENTS_2026-07-18.json](design/evidence/LP_CUSTODY_DEVNET_RETIREMENTS_2026-07-18.json) — Dated custody observation; not current chain evidence.
-- [design/HACKATHON_DEMO_SCRIPT.md](design/HACKATHON_DEMO_SCRIPT.md) — Earlier specification, plan, audit or session record.
+- [design/HACKATHON_DEMONSTRATION_SCRIPT.md](design/HACKATHON_DEMONSTRATION_SCRIPT.md) — Earlier specification, plan, audit or session record.
 - [design/HOME_FEED_SURFACE_SPEC.md](design/HOME_FEED_SURFACE_SPEC.md) — Earlier specification, plan, audit or session record.
 - [design/M2_BLE_POWER_AUDIT.md](design/M2_BLE_POWER_AUDIT.md) — Earlier specification, plan, audit or session record.
 - [design/MATH_AUDIT_2026-07-09.md](design/MATH_AUDIT_2026-07-09.md) — Earlier specification, plan, audit or session record.
@@ -191,7 +191,7 @@ Kept for history, do not build from.
 - [design/renderings/README.md](design/renderings/README.md) — Dated visual study or capture record; not current product evidence.
 - [design/SOLANA_MOBILE_BUILD_NOTES.md](design/SOLANA_MOBILE_BUILD_NOTES.md) — Earlier specification, plan, audit or session record.
 - [design/UNIFFI_SPIKE_FINDINGS.md](design/UNIFFI_SPIKE_FINDINGS.md) — Completed, dated parser spike; local and simulator evidence only.
-- [design/V4B_BLAST_RADIUS_INVENTORY.md](design/V4B_BLAST_RADIUS_INVENTORY.md) — Earlier specification, plan, audit or session record.
+- [design/V4B_IDL_CONSUMER_INVENTORY.md](design/V4B_IDL_CONSUMER_INVENTORY.md) — Earlier specification, plan, audit or session record.
 - [design/V4B_MIGRATION_AND_TESTS.md](design/V4B_MIGRATION_AND_TESTS.md) — Earlier specification, plan, audit or session record.
 - [design/V4B_OPEN_QUESTIONS_RESOLUTION.md](design/V4B_OPEN_QUESTIONS_RESOLUTION.md) — Earlier specification, plan, audit or session record.
 - [design/V4B_PROTOCOL_SURGERY_SCOPE.md](design/V4B_PROTOCOL_SURGERY_SCOPE.md) — Earlier specification, plan, audit or session record.

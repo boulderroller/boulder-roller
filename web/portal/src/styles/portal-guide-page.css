@@ -1,0 +1,138 @@
+/*
+ * Guide page — the docs' contents page (Tim-ratified 2026-09-03, board
+ * "Guide and Search" on the Night Ledger Rooms canvas).
+ *
+ * Six sheets in the settings species, titled by the docs' own sections; each
+ * row is a page title with a chevron and opens the page. The header carries
+ * the page's name and one gray word to the docs site. Loads after the
+ * notifications page.
+ */
+
+.guide {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 36px;
+  padding-right: 12px;
+}
+
+.guide__title {
+  margin: 0;
+  font-family: var(--br-font-sans);
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--portal-public-ink);
+}
+
+/* Gray word: navigation, not action. */
+.guide__word {
+  font-family: var(--br-font-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--portal-public-ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.guide__word:hover,
+.guide__word:focus-visible {
+  color: var(--portal-public-ink);
+  outline: none;
+}
+
+.guide__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+.guide__column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.guide-sheet {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--portal-surface-paper);
+  background: var(--portal-public-paper-soft);
+}
+
+.guide-sheet__eyebrow {
+  display: block;
+  margin: 0;
+  padding: 12px 20px 0;
+  min-height: 34px;
+  box-sizing: border-box;
+  font-family: var(--br-font-sans);
+  font-size: var(--br-label-size);
+  line-height: var(--br-label-line-height);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--portal-public-ink-soft);
+}
+
+.guide-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 0 20px;
+  border-top: 1px solid var(--portal-surface-paper);
+  color: var(--portal-public-ink);
+  text-decoration: none;
+}
+
+.guide-sheet__eyebrow + .guide-row {
+  border-top: 0;
+}
+
+.guide-row:hover,
+.guide-row:focus-visible {
+  background: color-mix(in oklab, var(--portal-surface-paper) 55%, transparent);
+  outline: none;
+}
+
+.guide-row__label {
+  font-family: var(--br-font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--portal-public-ink);
+}
+
+.guide-row__chevron {
+  flex: none;
+  color: var(--portal-public-ink-faint);
+}
+
+@media (max-width: 767px) {
+  .guide__header {
+    padding: 0 4px;
+  }
+
+  .guide__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .guide__column {
+    gap: 16px;
+  }
+}

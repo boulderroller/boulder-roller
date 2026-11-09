@@ -34,15 +34,15 @@ async function capture(page: Page, name: string) {
   await page.evaluate(() => document.fonts.ready);
   if (process.env.BR_LANE_C_MAP_READY && await page.locator('.climb-discovery__map-canvas[data-ground-ready], .feed-card [data-ground-ready]').count()) await expect(page.locator('.climb-discovery__map-canvas[data-ground-ready], .feed-card [data-ground-ready]').first()).toHaveAttribute('data-ground-ready', 'true', { timeout: 30000 });
   if (await page.locator('.profile-ground__map').count()) await page.waitForTimeout(1500);
-  if (await page.locator('.ride-room-map').count()) {
-    await expect(page.locator('.ride-room-map').first()).toHaveAttribute('data-route-ready', 'true');
+  if (await page.locator('.ride-map').count()) {
+    await expect(page.locator('.ride-map').first()).toHaveAttribute('data-route-ready', 'true');
     await page.waitForTimeout(1500);
   }
   await page.screenshot({ path: path.join(evidence, `${name}.png`), fullPage: true, animations: 'disabled' });
 }
 async function visibleRepresentations(page: Page, ids: string[]) {
   await expect.poll(() => page.locator('.climb-discovery-canon').evaluate((svg, expected) => {
-    const obstacles = Array.from(document.querySelectorAll('.climbs-room__column, .climbs-room__controls, .climbs-room__card-layer, .maplibregl-ctrl-group')).filter(el => el.getClientRects().length).map(el => el.getBoundingClientRect());
+    const obstacles = Array.from(document.querySelectorAll('.climbs-page__column, .climbs-page__controls, .climbs-page__card-layer, .maplibregl-ctrl-group')).filter(el => el.getClientRects().length).map(el => el.getBoundingClientRect());
     const map = svg.getBoundingClientRect();
     return expected.filter(id => Array.from(svg.querySelectorAll<SVGGraphicsElement>(`[data-climb-id="${id}"]`)).some(el => {
       if (getComputedStyle(el).display === 'none') return false;
@@ -57,8 +57,8 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await setup(page);
     await page.goto('/climbs');
-    await expect(page.locator('.climbs-room__count')).toHaveText('3 in view');
-    await expect(page.locator('.climbs-room__row')).toHaveCount(3);
+    await expect(page.locator('.climbs-page__count')).toHaveText('3 in view');
+    await expect(page.locator('.climbs-page__row')).toHaveCount(3);
     await visibleRepresentations(page, climbs.map(c => c.id));
     await expect(page.locator('.climb-discovery-marker[data-climb-id="hill-small"]')).toBeVisible();
     await capture(page, `climbs-${width}`);
@@ -66,12 +66,12 @@ for (const width of [1440, 390]) {
     await visibleRepresentations(page, climbs.map(c => c.id));
     await capture(page, `climbs-list-${width}`);
     await page.getByRole('button', { name: 'With vaults', exact: true }).click();
-    await expect(page.locator('.climbs-room__count')).toHaveText('2 in view');
-    await expect(page.locator('.climbs-room__row')).toHaveCount(2);
+    await expect(page.locator('.climbs-page__count')).toHaveText('2 in view');
+    await expect(page.locator('.climbs-page__row')).toHaveCount(2);
     await expect(page.locator('.climb-discovery-canon [data-climb-id="hill-east"]')).toHaveCount(0);
     await visibleRepresentations(page, ['hill-west', 'hill-small']);
     await page.getByRole('link', { name: 'Open West Hill', exact: true }).click();
-    await expect(page.locator('.climbs-room__card')).toHaveAttribute('data-climb-id', 'hill-west');
+    await expect(page.locator('.climbs-page__card')).toHaveAttribute('data-climb-id', 'hill-west');
     await expect(page.locator('.climb-discovery-route--selected')).toHaveAttribute('data-climb-id', 'hill-west');
     await visibleRepresentations(page, ['hill-west']);
   });
@@ -83,10 +83,10 @@ test('05 missing geometry uses only a permitted anchor, never a straight line', 
     { ...climbs[1], routePreview: null },
   ] } }));
   await page.goto('/climbs');
-  await expect(page.locator('.climbs-room__count')).toHaveText('1 in view');
+  await expect(page.locator('.climbs-page__count')).toHaveText('1 in view');
   await expect(page.locator('.climb-discovery-route')).toHaveCount(0);
   await expect(page.locator('.climb-discovery-marker')).toHaveCount(1);
-  await expect(page.locator('.climbs-room__row')).toHaveAttribute('data-climb-id', 'hill-west');
+  await expect(page.locator('.climbs-page__row')).toHaveAttribute('data-climb-id', 'hill-west');
 });
 
 const rideFixture = JSON.parse(gunzipSync(readFileSync(path.resolve('../../history/ride-room-2026-09-05/build/capture-fixture.json.gz'))).toString());
@@ -108,12 +108,12 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await rideSetup(page, true);
     await page.goto('/activities/ride-1');
-    await expect(page.locator('.ride-room-climbs .ride-room-row')).toHaveCount(1);
-    await expect(page.locator('.ride-room-climbs .ride-room-row')).toContainText('Wises Mill Road');
-    await expect(page.locator('.ride-room-cal')).toBeVisible();
-    await expect.poll(() => page.locator('.ride-room-climbs').evaluate(climbs => {
-      const social = document.querySelector('.ride-room-social')!;
-      const cal = document.querySelector('.ride-room-ledger-right')!;
+    await expect(page.locator('.ride-page-climbs .ride-page-row')).toHaveCount(1);
+    await expect(page.locator('.ride-page-climbs .ride-page-row')).toContainText('Wises Mill Road');
+    await expect(page.locator('.ride-page-cal')).toBeVisible();
+    await expect.poll(() => page.locator('.ride-page-climbs').evaluate(climbs => {
+      const social = document.querySelector('.ride-page-social')!;
+      const cal = document.querySelector('.ride-page-ledger-right')!;
       return {
         beforeSocial: !!(climbs.compareDocumentPosition(social) & Node.DOCUMENT_POSITION_FOLLOWING),
         beforeCal: !!(climbs.compareDocumentPosition(cal) & Node.DOCUMENT_POSITION_FOLLOWING),
@@ -122,17 +122,17 @@ for (const width of [1440, 390]) {
       };
     })).toEqual({ beforeSocial: true, beforeCal: true, visualSocial: true, visualCal: true });
     await capture(page, `ride-${width}`);
-    await page.locator('.ride-room-ledger').scrollIntoViewIfNeeded();
+    await page.locator('.ride-page-ledger').scrollIntoViewIfNeeded();
     await capture(page, `ride-results-${width}`);
   });
   test(`07 a ride without a permitted result invents none at ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await rideSetup(page, false);
     await page.goto('/activities/ride-1');
-    await expect(page.locator('.ride-room-ledger')).toBeVisible();
-    await expect(page.locator('.ride-room-climbs .ride-room-row')).toHaveCount(0);
-    await expect(page.locator('.ride-room-climbs')).not.toContainText('Wises Mill Road');
-    await expect(page.locator('.ride-room-cal')).toBeVisible();
+    await expect(page.locator('.ride-page-ledger')).toBeVisible();
+    await expect(page.locator('.ride-page-climbs .ride-page-row')).toHaveCount(0);
+    await expect(page.locator('.ride-page-climbs')).not.toContainText('Wises Mill Road');
+    await expect(page.locator('.ride-page-cal')).toBeVisible();
   });
 }
 
@@ -273,13 +273,13 @@ for (const surface of ['climbs', 'ride', 'feed']) for (const mode of ['reflow-32
     await page.goto(surface === 'climbs' ? '/climbs' : surface === 'ride' ? '/activities/ride-1' : '/');
     if (mode === 'text-spacing') await page.addStyleTag({ content: '* { letter-spacing: .12em !important; line-height: 1.5 !important; word-spacing: .16em !important; } p { margin-bottom: 2em !important; }' });
     if (surface === 'climbs') {
-      await expect(page.locator('.climbs-room__count')).toHaveText('3 in view');
+      await expect(page.locator('.climbs-page__count')).toHaveText('3 in view');
       await page.getByRole('button', { name: 'Expand climb results' }).click();
       await expect(page.getByRole('link', { name: 'Open West Hill' })).toBeVisible();
       await visibleRepresentations(page, climbs.map(c => c.id));
     } else if (surface === 'ride') {
-      await expect(page.locator('.ride-room-climbs .ride-room-row')).toHaveCount(1);
-      const results = await page.locator('.ride-room-climbs').boundingBox(), social = await page.locator('.ride-room-social').boundingBox();
+      await expect(page.locator('.ride-page-climbs .ride-page-row')).toHaveCount(1);
+      const results = await page.locator('.ride-page-climbs').boundingBox(), social = await page.locator('.ride-page-social').boundingBox();
       expect(results!.y).toBeLessThan(social!.y);
     } else {
       await expect(page.locator('.feed-card__result')).toContainText('3:55');
@@ -291,7 +291,7 @@ for (const surface of ['climbs', 'ride', 'feed']) for (const mode of ['reflow-32
   });
 }
 
-test('15 fractional Time uses the RideRoomLedger duration policy', async ({ page }) => {
+test('15 fractional Time uses the RidePageLedger duration policy', async ({ page }) => {
   await feedSetup(page, { ...resultSummary, timeSeconds: 235.9 });
   await page.goto('/');
   await expect(page.locator('.feed-card__result strong')).toHaveText('3:55');

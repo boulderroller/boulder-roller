@@ -97,7 +97,7 @@ backend/.uvicorn.log
 # Generated output artifacts (diagrams, charts, HTML reports)
 output/
 
-# Rank-mark production bakes: retain review/provenance, ignore 672 sprites.
+# Rank-mark production renders: retain review/provenance, ignore 672 sprites.
 !tools/rankmarks/build/
 tools/rankmarks/build/*
 !tools/rankmarks/build/manifest.json

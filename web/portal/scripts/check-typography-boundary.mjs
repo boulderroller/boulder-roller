@@ -8,7 +8,7 @@ const sourceRoot = path.join(portalRoot, 'src');
 const activeStyles = [
   'src/index.css',
   'src/styles/portal-spine.css',
-  'src/styles/portal-surface-polish.css',
+  'src/styles/portal-surfaces.css',
   'src/styles/loading-system.css',
   'src/styles/portal-climb-detail.css',
   'src/styles/portal-ride-analysis.css',
@@ -682,7 +682,7 @@ assertContains(
   'canonical technical-data family',
 );
 assertContains(
-  'src/styles/portal-surface-polish.css',
+  'src/styles/portal-surfaces.css',
   '.ride-detail-page .ride-detail-overview-stat__value',
   'Ride overview exception selector',
 );
@@ -692,14 +692,14 @@ assertContains(
   'Climb rider identity font rule',
 );
 assertContains(
-  'src/components/ride/RideRoom.tsx',
-  'ride-room-stats',
+  'src/components/ride/RidePageComponents.tsx',
+  'ride-page-stats',
   'shared ride metric family hook',
 );
 for (const [relativePath, expected, label] of [
   ['src/pages/RideViewCore.tsx', 'valueFamily="sans"', 'semantic proof datum family assignment'],
-  ['src/styles/portal-ride-room.css', 'var(--br-font-mono)', 'shared ride numerical family'],
-  ['src/pages/PublicPreview.tsx', 'RideRoomIdentity', 'preview consumes shared ride typography'],
+  ['src/styles/portal-ride-page.css', 'var(--br-font-mono)', 'shared ride numerical family'],
+  ['src/pages/PublicPreview.tsx', 'RidePageIdentity', 'preview consumes shared ride typography'],
   // One record board per climb (idm63, 2026-09-01): the rider hook lives on ClimbView.
   ['src/components/climb/ClimbLeaderboard.tsx', 'climb-result-rider', 'record board rider family hook'],
   ['src/components/climb/ClimbLeaderboard.tsx', 'climb-result-value', 'climb result value family hook'],
@@ -894,10 +894,10 @@ if (!/\.portal-truth-pill\s*\{[^}]*font-family:\s*var\(--br-font-sans\)/s.test(r
 }
 if (
   !/\.ride-detail-page \.ride-detail-overview-stat__value,[^}]*\{[^}]*font-family:\s*var\(--br-font-sans\)/s.test(
-    read('src/styles/portal-surface-polish.css'),
+    read('src/styles/portal-surfaces.css'),
   )
 ) {
-  failures.push('src/styles/portal-surface-polish.css must preserve the Ride overview Sans-numeric exception');
+  failures.push('src/styles/portal-surfaces.css must preserve the Ride overview Sans-numeric exception');
 }
 if (!/\.portfolio-fact__value\s*\{[^}]*font-family:\s*var\(--br-font-mono\)/s.test(read('src/styles/portal-spine.css'))) {
   failures.push('src/styles/portal-spine.css must render portfolio data values in Geist Mono');

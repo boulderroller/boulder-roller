@@ -8,7 +8,7 @@ hardening the sensor lane on physical hardware
 **Parent docs:**
 - [MOBILE_TRUTHS](../MOBILE_TRUTHS.md) — §2.3 Connected Hardware, §4.2
   Physiological Evidence (absence vs zero), §5.2, §12 naming
-- [HACKATHON_DEMO_SCRIPT](./HACKATHON_DEMO_SCRIPT.md) — Act 1 requires live
+- [HACKATHON_DEMONSTRATION_SCRIPT](./HACKATHON_DEMONSTRATION_SCRIPT.md) — Act 1 requires live
   power during recording
 
 Current sensor semantics are governed by [MOBILE_TRUTHS.md](../MOBILE_TRUTHS.md), with the native lane described in [`ios/README.md`](../../ios/README.md).

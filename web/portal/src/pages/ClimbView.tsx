@@ -1,5 +1,5 @@
 import { useBrowserTitleObject } from '../contexts/BrowserTitleContext';
-import { IdentitySlots } from '../components/loading/RoomLoading';
+import { IdentitySlots } from '../components/loading/PageLoading';
 import { SlotRows } from '../components/loading/Slot';
 import { FailureSheet, StateRow } from '../components/portal/FailureSpecies';
 import { useEffect, useRef, useState } from 'react';
@@ -117,7 +117,7 @@ export default function ClimbView({ initialCreationOpen = false, onCreationClose
     <WalletTransactionSignerBridge enabled={signerEnabled} onSignerReady={setSignerRef} />
     <PortalFrame className="climb-detail-frame">
       {showingPanel ? <Link to={panelPath()} className="climb-detail-back"><ArrowLeft size={15} aria-hidden="true" />Back</Link>
-        : <Link to="/climbs" className="climb-detail-back climb-room-back"><ArrowLeft size={15} aria-hidden="true" />All climbs</Link>}
+        : <Link to="/climbs" className="climb-detail-back climb-page-back"><ArrowLeft size={15} aria-hidden="true" />All climbs</Link>}
       {detailQuery.isPending ? <div aria-busy="true"><ClimbGeography identity={<IdentitySlots climb />}><div className="climb-detail-columns"><section><h2>Leaderboard</h2><SlotRows count={10} /></section><section><h2>Vault</h2><SlotRows count={4} /></section></div></ClimbGeography><span className="sr-only" role="status">Loading climb</span></div>
         : !climb ? <ClimbGeography identity={<StateRow title="Climb unavailable" action={<button type="button" onClick={() => void detailQuery.refetch()}>Try again</button>} />} />
         : <>
@@ -126,7 +126,7 @@ export default function ClimbView({ initialCreationOpen = false, onCreationClose
             {panel === 'rides' ? <ClimbRides key={`${vaultId}-rides`} vaultId={vaultId} full /> : <ClimbVaultSection key={vaultId} vaultId={vaultId} climbId={climb.canonId ? climb.id : undefined} panel={panel as 'deposit' | 'withdraw' | 'collect' | 'history'} />}
           </div> : <>
             <ClimbGeography key={climb.id} climb={climb} identity={<>
-              <div className="climb-room-glyph"><ClimbShapeGlyph profile={climb.elevationProfile} /></div>
+              <div className="climb-page-glyph"><ClimbShapeGlyph profile={climb.elevationProfile} /></div>
               <ClimbIdentity climb={climb} />
               {vaultId != null && <ClimbRides vaultId={vaultId} best rank={ownResult?.competitionRank ?? ownResult?.rank} />}
             </>}>

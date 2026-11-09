@@ -1,0 +1,211 @@
+/* Account board: the shared ground and ledger in the Profile geometry. */
+.climb-shell {
+  height: auto;
+  min-height: 100dvh;
+  overflow: visible;
+}
+.account-page {
+  position: relative;
+  background: var(--paper);
+}
+.account-ground {
+  height: 760px;
+  position: relative;
+  background: #161917;
+}
+.account-ground .observatory-ground {
+  position: absolute;
+  inset: 0;
+}
+.account-identity {
+  position: absolute;
+  z-index: 2;
+  left: 40px;
+  top: 36px;
+  width: 340px;
+  padding: 22px 24px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--card);
+  background: var(--sheet);
+  box-shadow: 0 12px 34px #0007;
+}
+.account-who {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.account-who h1 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.1;
+}
+.account-who h1.mono-inline {
+  font-size: 17px;
+}
+.account-avatar {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  color: var(--soft);
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+}
+.account-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.account-wallet {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--soft);
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.account-since {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--soft);
+}
+.account-since b {
+  color: var(--ink);
+}
+.account-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px 0;
+  border-block: 1px solid var(--card);
+}
+.account-trio span {
+  display: block;
+  font-size: 12px;
+  color: var(--soft);
+}
+.account-trio b {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--mono);
+  font-size: 20px;
+  line-height: 1.1;
+}
+.page-eyebrow {
+  margin: 14px 0 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--soft);
+  display: flex;
+  justify-content: space-between;
+}
+.account-coverage {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.account-identity .observatory-row {
+  padding: 0;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 10px;
+  min-height: 48px;
+}
+.account-identity .observatory-row b {
+  font-size: 14px;
+}
+.account-below {
+  max-width: 1160px;
+  margin: auto;
+  padding: 26px 40px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.account-below section + section {
+  margin-top: 26px;
+}
+.page-surface {
+  border-radius: 16px;
+  background: var(--sheet);
+  overflow: hidden;
+}
+.page-surface .ledger-kv {
+  min-height: 52px;
+  padding: 14px 20px;
+}
+.page-surface .ledger-kv b {
+  font-size: 15px;
+}
+.page-surface .observatory-row {
+  min-height: 56px;
+  padding: 0 20px;
+}
+.account-below .observatory-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.account-below .observatory-row > i {
+  display: none;
+}
+.page-door {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 20px;
+  border: 0;
+  border-top: 1px solid var(--card);
+  background: none;
+  color: var(--ink);
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+.page-door span {
+  color: var(--muted);
+}
+.inline-copy-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .account-ground {
+    height: 390px;
+  }
+  .account-identity {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    margin: -120px 16px 0;
+    padding: 18px 18px 14px;
+  }
+  .account-below {
+    grid-template-columns: 1fr;
+    padding: 8px 16px 40px;
+    gap: 0;
+  }
+  .account-below section {
+    margin-top: 26px;
+  }
+}
+.week-shell .account-wallet{font-family:var(--mono);font-size:12px;color:var(--soft)}
+.account-below>div{min-width:0}.account-below .observatory-row>div{min-width:0}.account-below .observatory-row b,.account-identity .observatory-row b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.account-below .ledger-kv>span{color:var(--soft)}

@@ -1,9 +1,9 @@
 import { lazy, memo, Suspense, useMemo, type CSSProperties } from 'react';
 import type { RoutePreview } from '../../lib/api';
-import type { RideSample, RideSpan } from '../ride/rideRoomModel';
+import type { RideSample, RideSpan } from '../ride/ridePageModel';
 import { MAP_GROUND } from '../climb/mapGroundPalette';
-import '../../styles/portal-ride-room.css';
-const RideRoomMap = lazy(() => import('../ride/RideRoomMap'));
+import '../../styles/portal-ride-page.css';
+const RideMap = lazy(() => import('../ride/RideMap'));
 const FIT = { top: 22, bottom: 40, left: 22, right: 22 };
 const NO_SPANS: RideSpan[] = [];
 const NO_SCRUB = () => {};
@@ -27,7 +27,7 @@ function RoutePreviewBandImpl({ preview, className }: { preview: RoutePreview | 
   }, [preview]);
   if (samples.length < 2) return null;
   return <div className={['feed-route-band', className].filter(Boolean).join(' ')} style={{ '--ride-map-paper': MAP_GROUND.paper, '--ride-map-label': MAP_GROUND.label } as CSSProperties}>
-    <Suspense fallback={null}><RideRoomMap samples={samples} spans={NO_SPANS} scrub={null} onScrub={NO_SCRUB} fitBox={FIT} readOnly /></Suspense>
+    <Suspense fallback={null}><RideMap samples={samples} spans={NO_SPANS} scrub={null} onScrub={NO_SCRUB} fitBox={FIT} readOnly /></Suspense>
   </div>;
 }
 export const RoutePreviewBand = memo(RoutePreviewBandImpl);

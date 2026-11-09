@@ -80,7 +80,7 @@ This pass used five lenses rather than another formula-only sweep:
   halvings, mid-week stake changes, response loss, and stale projections.
 - **Dynamic diagnostics:** reproduce carry re-unlock, cap overcommit, queue
   capacity, empty-week deadlock, anchor drift, and delayed halving in
-  `scripts/math_audit_phase2.py`.
+  `scripts/reproduce_settlement_lifecycle_failures.py`.
 - **Input and precision boundaries:** inspect parser resource allocation,
   missing samples, XML namespaces, PostgreSQL numeric types, Python floats,
   JavaScript `number`, and raw SPL base-unit displays.
@@ -207,7 +207,7 @@ Follow-up: `boulderroller-v2-reco`.
 amount (`:3028-3063`). Locked carry is therefore not merely waiting for the
 staker count to change; it gets another chance to unlock every week.
 
-The faithful 52-week model in `scripts/math_audit_phase2.py` gives a permanent
+The faithful 52-week model in `scripts/reproduce_settlement_lifecycle_failures.py` gives a permanent
 one-staker vault 315.999311210 DUNG from 1,404 DUNG of cumulative staker bucket:
 22.507%, not the published 1%. With enough time and a constant nonzero unlock,
 nearly all prior carry eventually pays.
@@ -650,7 +650,7 @@ defense in depth rather than unrecorded launch blockers.
 Reproduce the Phase 2 diagnostics with:
 
 ```bash
-python3 scripts/math_audit_phase2.py
+python3 scripts/reproduce_settlement_lifecycle_failures.py
 python3 scripts/settlement_sim.py
 python3 scripts/anchor_size_audit.py
 ```

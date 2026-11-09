@@ -34,7 +34,7 @@ the real production path, recorded live in-window. **No data was time-shifted.**
 - `17-deposit-sheet-zero-balance.png` — Deposit sheet: giant numeral input,
   Balance 0 + Max, card-stack sentence, ratified footnote, held blue capsule
   (inert until a valid amount exists — account holds 0 CAL).
-- `14-sensors-room-simulator-no-ble.png` — Sensors room on simulator:
+- `14-sensors-screen-simulator-no-ble.png` — Sensors room on simulator:
   CoreBluetooth is unsupported in the simulator, so the room shows its
   Bluetooth-off state. **Hardware gap (honest):** the My Devices / Available /
   Searching choreography and live HR/power/cadence parsing are implemented

@@ -1,9 +1,9 @@
 /** Ratified browser-tab grammar; visible shell headings are a separate contract. */
-export function composeBrowserTitle(object: string | null, room: string, brand = 'Boulder Roller'): string {
-  return [object?.trim() || null, room, brand].filter(Boolean).join(' · ');
+export function composeBrowserTitle(object: string | null, page: string, brand = 'Boulder Roller'): string {
+  return [object?.trim() || null, page, brand].filter(Boolean).join(' · ');
 }
 
-export function browserRoom(pathname: string, search = ''): string {
+export function browserPageName(pathname: string, search = ''): string {
   if (pathname === '/' || pathname === '/dashboard') return 'Feed';
   if (pathname === '/climbs' || pathname === '/map') return 'Map';
   if (pathname === '/profile') {

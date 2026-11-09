@@ -1,3 +1,0 @@
-/* Settled V13: V11's left cluster with V12's unchanged terrain measures. */
-.c13-elevations dt,.c13-elevations dd{white-space:nowrap}
-@media(max-width:700px){.c13-page .c13-elevations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.c13-page .c13-elevations>div{flex-direction:column;align-items:flex-start;gap:3px}.c13-elevations dd{font-size:13px}}

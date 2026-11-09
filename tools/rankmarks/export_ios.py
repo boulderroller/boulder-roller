@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Install the numbered rank-mark bake into the iOS asset catalog.
+"""Install the numbered rank-mark render output into the iOS asset catalog.
 
-The bake itself stays ignored. This exporter validates the production manifest
+The render output itself stays ignored. This exporter validates the production manifest
 before replacing only its own ``RankMarks`` asset-catalog group.
 """
 
@@ -28,7 +28,7 @@ DEFAULT_ASSET_CATALOG = (
 
 
 class ExportError(ValueError):
-    """The bake or destination does not satisfy the import contract."""
+    """The render output or destination does not satisfy the import contract."""
 
 
 def parse_args() -> argparse.Namespace:
@@ -105,10 +105,10 @@ def source_sprites(manifest: dict, build_dir: Path) -> dict[tuple[int, str], Pat
             source = build_dir / source_name
             if not source.is_file() or source.stat().st_size == 0:
                 raise ExportError(
-                    f"missing baked sprite: {source}\n"
-                    "Regenerate the bake with "
+                    f"missing rendered sprite: {source}\n"
+                    "Regenerate the sprites with "
                     "/Applications/Blender.app/Contents/MacOS/Blender "
-                    "-b -P tools/rankmarks/bake.py"
+                    "-b -P tools/rankmarks/render_production_assets.py"
                 )
             sprites[(rank, scale)] = source
 

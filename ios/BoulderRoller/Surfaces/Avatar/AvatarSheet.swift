@@ -241,11 +241,11 @@ struct AvatarSheet: View {
                 .presentationCornerRadius(Theme.crown)
         }
         .sheet(isPresented: $showPrivacy) {
-            PrivacyRoomView()
+            PrivacyView()
                 .presentationCornerRadius(Theme.crown)
         }
         .sheet(isPresented: $showAccountDeletion) {
-            AccountDeletionRoomView()
+            AccountDeletionView()
                 .presentationCornerRadius(Theme.crown)
         }
         .sheet(isPresented: $showProfileEdit) {

@@ -85,3 +85,26 @@ async def test_event_board_snapshot_is_persisted_without_later_board_read() -> N
     assert result == 'notification-1'
     snapshot['before'][0]['place'] = 1
     assert client.inserted[0]['metadata']['transition'] == dict(revision='event:7', occurredAt='2026-09-08T20:00:00Z', climbId='climb-7', beforePlace=4, afterPlace=None)
+
+
+@pytest.mark.asyncio
+async def test_dark_stage1_notifications_are_left_out_through_the_pinned_client() -> None:
+    # The real pinned client has no or_(); the route asks for this filter
+    # whenever Stage 1 is not live.
+    from tests.pinned_postgrest import PinnedPostgrest
+
+    def notification(day: int, *, stage1: Any = None, read: bool = False, dismissed: bool = False) -> dict:
+        return {"id": f"notification-{day}", "wallet": "wallet-1", "read": read,
+                "metadata": {} if stage1 is None else {"stage1": stage1},
+                "dismissed_at": "2026-10-25T00:00:00+00:00" if dismissed else None,
+                "created_at": f"2026-10-{day:02d}T00:00:00+00:00"}
+
+    rows = [notification(21), notification(22, stage1=True), notification(23, stage1=False, read=True),
+            notification(24, dismissed=True)]
+    repo = NotificationRepository(PinnedPostgrest({"notifications": rows}).client)
+
+    visible = await repo.get_wallet_notifications("wallet-1", exclude_stage1=True)
+    unread = await repo.get_unread_count("wallet-1", exclude_stage1=True)
+
+    assert [row["id"] for row in visible] == ["notification-23", "notification-21"]
+    assert unread == 1

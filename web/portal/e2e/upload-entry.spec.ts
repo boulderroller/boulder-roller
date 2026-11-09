@@ -368,7 +368,7 @@ test.describe('Upload entry points', () => {
   });
 });
 
-test('opens the approved Upload sheet over the return room', async ({ page }) => {
+test('opens the approved Upload sheet over the return page', async ({ page }) => {
   await routeAuthenticatedUpload(page);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/upload');
@@ -662,7 +662,7 @@ test('Privacy zones opens the existing Settings privacy destination', async ({ p
   await expect(page.getByRole('region', { name: 'Privacy zones', exact: true })).toBeVisible();
 });
 
-test('deep-link returnTo keeps its query and hash, and rejects external or recursive rooms', async ({ page }) => {
+test('deep-link returnTo keeps its query and hash, and rejects external or recursive pages', async ({ page }) => {
   await routeAuthenticatedUpload(page);
   for (const returnTo of ['/profile?tab=rides#upload-return', '//example.com', '/upload?again=1']) {
     await page.goto('/profile?tab=rides');

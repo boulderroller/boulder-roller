@@ -28,7 +28,7 @@ const dashboardLayout = await readPortal('src/components/layout/DashboardLayout.
 const profile = await readPortal('src/pages/Profile.tsx');
 const searchModal = await readPortal('src/components/modals/SearchModal.tsx');
 const loadingSystem = await readPortal('src/components/loading/LoadingSystem.tsx');
-const polishCss = await readPortal('src/styles/portal-surface-polish.css');
+const surfacesCss = await readPortal('src/styles/portal-surfaces.css');
 const routeSpec = await readPortal('e2e/portal-v2-routes.spec.ts');
 const packageJson = JSON.parse(await readPortal('package.json'));
 
@@ -107,7 +107,7 @@ for (const declaration of ['height: 2px', 'bottom: 0', 'background: var(--br-ter
 }
 for (const retired of ['route-transition-skeleton__route-figure', 'route-transition-skeleton__elevation-strip', 'route-transition-skeleton__route-svg']) {
   assertNotContains(loadingSystem, retired, 'Retired loading shape');
-  assertNotContains(polishCss, retired, 'Retired loading selector');
+  assertNotContains(surfacesCss, retired, 'Retired loading selector');
 }
 
 for (const token of [
@@ -123,7 +123,7 @@ for (const token of [
   '--portal-public-dung: #F1EEE8;',
   '.portal-shell__upload-label',
 ]) {
-  assertContains(polishCss, token, 'portal-surface-polish.css');
+  assertContains(surfacesCss, token, 'portal-surfaces.css');
 }
 
 assertContains(routeSpec, "await expect(accountMenu).toContainText('Portfolio');", 'portal route smoke');

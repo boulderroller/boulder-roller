@@ -10,7 +10,7 @@ BACKEND_TRUTHS = ROOT / "docs" / "BACKEND_TRUTHS.md"
 FRESHEST_SPEC = ROOT / "docs" / "FRESHEST_SPEC.md"
 MATH_AUDIT = ROOT / "docs" / "design" / "MATH_AUDIT_2026-07-09.md"
 MATH_AUDIT_PHASE2 = ROOT / "docs" / "design" / "MATH_AUDIT_PHASE2_2026-07-12.md"
-V4B_BLAST_RADIUS = ROOT / "docs" / "design" / "V4B_BLAST_RADIUS_INVENTORY.md"
+V4B_IDL_CONSUMER_INVENTORY = ROOT / "docs" / "design" / "V4B_IDL_CONSUMER_INVENTORY.md"
 COORDINATOR = ROOT / "backend" / "app" / "services" / "ride_economic_coordinator.py"
 
 
@@ -77,7 +77,7 @@ def test_backend_confirms_every_completion_before_crediting_cal() -> None:
 def test_audit_ledgers_mark_lrwd_landed_and_keep_projection_separate() -> None:
     audit = _read(MATH_AUDIT)
     phase2 = _read(MATH_AUDIT_PHASE2)
-    blast_radius = _read(V4B_BLAST_RADIUS)
+    consumer_inventory = _read(V4B_IDL_CONSUMER_INVENTORY)
 
     assert "Resolution (2026-07-14)" in audit
     assert "boulderroller-v2-4x3v" in audit
@@ -85,8 +85,8 @@ def test_audit_ledgers_mark_lrwd_landed_and_keep_projection_separate() -> None:
     assert "landed 2026-07-14" in phase2
     assert "boulderroller-v2-4x3v" in phase2
     assert "boulderroller-v2-29rm" in phase2
-    assert "deprecated ABI slot after LRWD" in blast_radius
-    assert "production instructions must not emit it" in blast_radius
+    assert "deprecated ABI slot after LRWD" in consumer_inventory
+    assert "production instructions must not emit it" in consumer_inventory
 
     alignment_plan = _read(ROOT / "docs" / "design" / "PROTOCOL_ALIGNMENT_FIX_PLAN.md")
     assert "P6 and P7 are superseded" in alignment_plan

@@ -11,7 +11,7 @@ import { GROUND } from '../../lib/mapColors';
 import { groundRouteSegments, type GroundClimb } from './groundModel';
 
 // The ground (Profile — Ground, Tim-ratified 2026-09-02): the map is the
-// room. The shared vector ground; every canon
+// page. The shared vector ground; every canon
 // climb drawn faint; the ones this rider has ridden in ink; the ones they
 // hold in cobalt over the casing with the white start dot and their rank
 // mark at the summit, the time beside it. The viewport fits the rider's

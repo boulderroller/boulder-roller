@@ -1,0 +1,447 @@
+/* Ratified Climb board dimensions; shared ground, rows, dialogs and gesture grammar. */
+.climb-shell {
+  height: auto;
+  min-height: 100dvh;
+  overflow: visible;
+}
+.climb-page {
+  position: relative;
+  background: var(--paper);
+  min-height: calc(100dvh - 62px);
+}
+.climb-ground {
+  position: relative;
+  height: var(--climb-ground-height, 720px);
+  overflow: hidden;
+  background: #161917;
+}
+.climb-ground .observatory-ground {
+  position: absolute;
+  inset: 0;
+}
+.climb-ground-fade {
+  position: absolute;
+  inset: auto 0 0;
+  height: 110px;
+  pointer-events: none;
+  background: linear-gradient(transparent, rgb(15 14 12 / 0.88));
+}
+.climb-ground .observatory-attribution {
+  z-index: 2;
+}
+.climb-identity {
+  position: absolute;
+  z-index: 3;
+  left: 40px;
+  top: 36px;
+  width: 360px;
+  padding: 22px 24px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--card);
+  background: var(--sheet);
+  box-shadow: 0 12px 34px #0007;
+}
+.climb-id-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.climb-glyph {
+  flex: none;
+  width: 56px;
+  height: 36px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: var(--card);
+}
+.climb-glyph svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.climb-id-row h1 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
+}
+.climb-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 0;
+  padding-bottom: 16px;
+}
+.climb-trio dt {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--soft);
+}
+.climb-trio dd {
+  margin: 3px 0 0;
+  font: 600 20px/1.1 var(--mono);
+  white-space: nowrap;
+}
+.climb-registered {
+  padding-top: 14px;
+  border-top: 1px solid var(--card);
+  font-size: 13px;
+  color: var(--soft);
+}
+.climb-north {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.1;
+  color: #c4c7bb;
+}
+.climb-map-controls {
+  position: absolute;
+  right: 14px;
+  top: 54px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.climb-map-controls button {
+  border: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #242824;
+  font-size: 18px;
+}
+.climb-endpoint {
+  color: var(--ink);
+  font: 500 11px/1.2 var(--br-font-sans);
+  padding: 0 12px;
+  text-shadow: 0 1px 3px #000;
+}
+.climb-endpoint::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f1eee8;
+}
+.climb-endpoint.maplibregl-marker-anchor-right::before {
+  left: auto;
+  right: -3px;
+  background: #161917;
+  border: 1.5px solid #f1eee8;
+}
+.observatory-ground:fullscreen {
+  width: 100vw;
+  height: 100dvh;
+  background: #161917;
+}
+.climb-grip {
+  background: var(--paper);
+}
+.climb-seam {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 22px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: ns-resize !important;
+  touch-action: none;
+}
+.climb-seam i {
+  display: block;
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: #4e4b46;
+}
+.climb-seam:hover i {
+  background: var(--soft);
+}
+.climb-section {
+  border-bottom: 1px solid #1c1b18;
+}
+.climb-section svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.climb-ledger {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 28px 40px 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.climb-ledger-column {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+.climb-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.climb-eyebrow h2 {
+  margin: 0;
+  font: inherit;
+}
+.climb-eyebrow button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+.climb-words {
+  display: flex;
+  gap: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+.climb-words button[aria-pressed="true"] {
+  color: var(--ink);
+}
+.climb-ledger-sheet {
+  position: relative;
+  border-radius: 16px;
+  background: var(--sheet);
+  overflow: hidden;
+}
+.climb-page .observatory-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 14px;
+  min-height: 56px;
+  padding: 8px 20px;
+}
+.climb-page .observatory-row:first-child {
+  border-top: 0;
+}
+.climb-page .observatory-row > i {
+  width: 28px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.climb-page .observatory-row span {
+  color: var(--muted);
+}
+.climb-page .observatory-row b {
+  line-height: 18px;
+}
+.climb-page .observatory-row em {
+  font-weight: 600;
+  text-align: right;
+}
+.climb-page .observatory-row em small {
+  display: block;
+  font: 400 12px/16px var(--br-font-sans);
+  color: var(--muted);
+}
+.rank-mark {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+}
+.rank-mark img {
+  width: 28px;
+  height: 28px;
+}
+.climb-avatar {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--card);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--soft) !important;
+}
+.climb-numeral {
+  padding: 22px 20px 6px;
+}
+.climb-numeral > b {
+  display: block;
+  font: 600 34px/1 var(--mono);
+  letter-spacing: -0.01em;
+}
+.climb-numeral > span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--soft);
+}
+.ledger-kv {
+  padding: 14px 20px;
+  font-size: 13px;
+  color: var(--soft);
+}
+.ledger-kv b {
+  font: 500 15px/1.45 var(--mono);
+  color: var(--ink);
+  text-align: right;
+}
+.ledger-chevron {
+  color: var(--muted);
+}
+.climb-all {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #24221e;
+  background: none;
+  text-align: left;
+}
+.climb-all > span {
+  font-size: 15px;
+  color: var(--ink);
+}
+.climb-detail-sheet .climb-dialog-rows {
+  max-height: calc(100dvh - 180px);
+  overflow-y: auto;
+}
+.climb-ledger-scroll > .week-stamp {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+@media (max-width: 699px) {
+  .climb-shell {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .climb-shell .week-shell__header {
+    height: 62px;
+  }
+  .climb-page {
+    height: calc(100dvh - 62px);
+    min-height: 0;
+    overflow: hidden;
+  }
+  .climb-ground {
+    height: 100%;
+  }
+  .climb-identity {
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    width: auto;
+    padding: 16px 18px 14px;
+  }
+  .climb-trio {
+    margin-top: 12px;
+    padding-bottom: 12px;
+  }
+  .climb-registered {
+    padding-top: 10px;
+  }
+  .climb-north {
+    left: 16px;
+    right: auto;
+    top: 200px;
+  }
+  .climb-map-controls {
+    top: 200px;
+  }
+  .climb-page-sheet {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    height: var(--climb-sheet-height);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    background: var(--sheet);
+    box-shadow: 0 -12px 34px #0007;
+  }
+  .climb-grip {
+    flex: none;
+    background: transparent;
+    touch-action: pan-x;
+  }
+  .climb-ledger-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .climb-ledger {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 16px 16px 44px;
+  }
+  .climb-ledger-column {
+    width: 100%;
+  }
+  .climb-ledger-sheet {
+    background: #201f1b;
+  }
+  .climb-page .observatory-row {
+    gap: 14px;
+    padding-inline: 16px;
+  }
+  .climb-ledger .climb-phone-extra {
+    display: none;
+  }
+  .climb-ground .observatory-attribution {
+    bottom: calc(var(--climb-sheet-height) + 10px);
+    font-size: 8px;
+  }
+  .climb-detail-sheet .climb-dialog-rows {
+    max-height: calc(100dvh - 100px);
+  }
+}
+
+.climb-place {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--soft);
+}
+@media (max-width: 699px) {
+  .climb-map-controls button:not(:first-child) {
+    display: none;
+  }
+}
+
+.climb-registered b { color:var(--ink); font-weight:600; }
+.climb-page > .state-card { margin:36px 40px; background:var(--sheet); border-color:var(--card); color:var(--ink); }
+.climb-page > .state-card .search-button { background:transparent; color:var(--ink); border:0; padding-inline:0; }
+@media (max-width:699px) { .climb-page > .state-card { margin:16px; } }
+
+.geographic-credit { font-size: 12px; line-height: 1.5; padding: 8px 16px; overflow-wrap: anywhere; }
+.geographic-credit a { color: inherit; text-decoration: underline; }
+.observatory-attribution { display: flex; flex-wrap: wrap; gap: 4px; max-width: calc(100% - 32px); }

@@ -295,7 +295,7 @@ final class RideEditModel {
             }
             return true
         } catch {
-            errorMessage = PrivacyRoomModel.message(for: error)
+            errorMessage = PrivacyModel.message(for: error)
             return false
         }
     }
@@ -326,7 +326,7 @@ final class RideEditModel {
             )
             return try await APIClient.shared.rideMedia(rideId: rideID)
         } catch {
-            errorMessage = PrivacyRoomModel.message(for: error)
+            errorMessage = PrivacyModel.message(for: error)
             return nil
         }
     }
@@ -374,7 +374,7 @@ final class RideEditModel {
         do {
             return try await operation()
         } catch {
-            errorMessage = PrivacyRoomModel.message(for: error)
+            errorMessage = PrivacyModel.message(for: error)
             return nil
         }
     }

@@ -1,5 +1,5 @@
 import { useBrowserTitleObject } from '../contexts/BrowserTitleContext';
-import { RoomLoading } from '../components/loading/RoomLoading';
+import { PageLoading } from '../components/loading/PageLoading';
 import { lazy, Suspense, useState, useEffect, useCallback, useMemo, type KeyboardEvent } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Activity, AlertTriangle } from 'lucide-react';
@@ -35,7 +35,7 @@ import { normalizeRiderHandle } from '../lib/riderIdentity';
 import { useFormatters } from '../hooks/useFormatters';
 import { useClimbs, useFeedSocialCounts, useMyLeaderboardPositions, useRides, useUserLeaderboardPositions } from '../hooks/queries';
 
-// Profile — Ground (Tim-ratified 2026-09-02). The map is the room: the
+// Profile — Ground (Tim-ratified 2026-09-02). The map is the page: the
 // rider's ground with the canon drawn faint, their climbs in ink, the ones
 // they hold in cobalt; the ledger column floating on it; then the photo
 // band, This year and Recent rides. Constitution law 6: times are public,
@@ -357,7 +357,7 @@ export default function Profile() {
     handleTabChange(selected);
   };
 
-  if (loading) return <RoomLoading />;
+  if (loading) return <PageLoading />;
 
   if (error || !profile) {
     return (
@@ -415,7 +415,7 @@ export default function Profile() {
       };
     });
 
-  const census = groundComplete && climbs.length > 0
+  const riddenCount = groundComplete && climbs.length > 0
     ? { ridden: new Set(positions.map((position) => position.vaultId)).size, total: climbs.length }
     : null;
 
@@ -469,7 +469,7 @@ export default function Profile() {
               seats={stats ? stats.top10Count : null}
               crowns={stats ? stats.komCount : null}
               rows={ledgerRows}
-              census={census}
+              riddenCount={riddenCount}
               positionsState={positionsState}
               retryingPositions={positionsRetrying}
               onRetryPositions={retryPositions}

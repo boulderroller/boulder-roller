@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from typing import List, Optional, Dict, Any, Sequence, TypedDict
 
 from ..notification_contracts import build_notification_insert, notification_is_suppressed
+from ..utils.postgrest_paging import any_of
 from .base import BaseRepository
 
 logger = logging.getLogger(__name__)
@@ -206,8 +207,8 @@ class NotificationRepository(BaseRepository):
         if exclude_stage1:
             def visible_query():
                 query = self.client.from_("notifications").select("*").eq("wallet", wallet) \
-                    .is_("dismissed_at", "null") \
-                    .or_("metadata->>stage1.is.null,metadata->>stage1.neq.true")
+                    .is_("dismissed_at", "null")
+                query = any_of(query, "metadata->>stage1.is.null", "metadata->>stage1.neq.true")
                 if unread_only:
                     query = query.eq("read", False)
                 if notification_types:
@@ -255,9 +256,11 @@ class NotificationRepository(BaseRepository):
         """Get count of unread notifications for a wallet."""
         if exclude_stage1:
             result = await self._run(
-                lambda: self.client.from_("notifications").select("id", count="exact")
-                    .eq("wallet", wallet).eq("read", False).is_("dismissed_at", "null")
-                    .or_("metadata->>stage1.is.null,metadata->>stage1.neq.true").execute(),
+                lambda: any_of(
+                    self.client.from_("notifications").select("id", count="exact")
+                    .eq("wallet", wallet).eq("read", False).is_("dismissed_at", "null"),
+                    "metadata->>stage1.is.null", "metadata->>stage1.neq.true",
+                ).execute(),
                 operation="notifications_visible_unread_count",
             )
             return int(result.count or 0)
