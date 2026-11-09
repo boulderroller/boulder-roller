@@ -34,7 +34,8 @@ protocol-owned liquidity. Supply is capped at 1 billion.
 or JupSOL. A hill bonds at 10 SOL. Its staking yield, less a 10% fee, pays
 riders. So does any USDC a sponsor adds, with no fee. Rider pay splits 65% for
 ascents, 25% to the top ten and 10% to the Local Legend. This is stage 1. It is
-in the devnet program and switched off for riders.
+in the devnet program, on a test stake pool because devnet has none of the
+three tokens, and switched off for riders.
 
 ## Where it stands
 

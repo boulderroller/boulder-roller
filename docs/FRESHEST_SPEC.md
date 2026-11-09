@@ -173,13 +173,15 @@ and their resolutions of older source wording are cited below.
   at week opening and requires backing at least half the city line (5 SOL in
   Philadelphia). A partial bonding week's yield waits. [Sources: DESIGN,
   Bonding and settled calls; STAGE1_SPEC §§2–4.][HB-S1]
-- **Ratified 13 Oct 2026.** Principal is deposit-time SOL redemption basis,
+- **Ratified 13 Oct 2026.** Principal is the deposit-time SOL basis (the
+  pool's SOL-per-token ratio at deposit, before any pool withdrawal fee),
   returned in the deposited token, subject to the originating lot's losses.
   Only surplus units actually transferred into earnings custody count as
   realized yield; payouts are in kind and below-basis lots harvest nothing.
   A backer's USDC is converted to SOL exposure, not a USDC repayment promise;
-  sponsor USDC instead funds riders directly. SOL/LST conversion, admitted
-  mints and rate adapters still require implementation proof. [Sources:
+  sponsor USDC instead funds riders directly. The three admitted mints and
+  their read-only rate readers are in the program (`stage1_providers.rs`);
+  SOL-to-staking-token conversion is not implemented. [Sources:
   STAGE1_SPEC §§3–4, 9; DESIGN, USDC settled call (6 Oct).][HB-S1]
 - **Ratified 13 Oct 2026.** Pilot caps are 2,000 SOL per staking token,
   500 per hill and 5,000 per deployment, with at least seven days before an
@@ -187,6 +189,9 @@ and their resolutions of older source wording are cited below.
   can block new intake without seizing existing positions. Caps are **running
   totals of deposit-time basis per staking token, hill and deployment**. The cap amounts
   and delay are in STAGE1_SPEC §3 and diamond.yaml `stage1.pilot_caps`.
+  The program implements the amounts, not the delay: the caps are written
+  once at city initialization (`stage1.rs:564`) and no instruction changes
+  them, so only a program upgrade can.
   **Basis measurement source: Tim, 13 Oct 2026; STAGE1_SPEC amendment pending
   on branch `codex/boulderroller-v2-0jc1s-stage1-custody`**, recorded in the
   [authorities brief][HB-BRIEF]. This decision resolves the current §3
@@ -196,8 +201,11 @@ and their resolutions of older source wording are cited below.
   remaining tokens**, and unharvested yield leaves with them. **Source: Tim,
   13 Oct 2026; STAGE1_SPEC amendment pending on branch
   `codex/boulderroller-v2-0jc1s-stage1-custody`**, recorded in the
-  [authorities brief][HB-BRIEF]. The current reference specification's ordinary
-  harvest-before-exit path does not establish this exception's implementation.
+  [authorities brief][HB-BRIEF]. Implemented in the program: the seven days
+  start at the first recorded outage (`record_stage1_provider_outage`,
+  `stage1.rs:379`), which is accepted only when the pool is unreadable or at
+  least two epochs behind, and `exit_rate` (`stage1.rs:1175`) then allows
+  the in-kind exit.
 - **Ratified 13 Oct 2026.** While a staking token's rate is stale, a hill's
   pledges in that token count as zero toward its bonding line instead of
   blocking other pledges or the bond, so one stale or delisted token cannot jam
@@ -206,8 +214,9 @@ and their resolutions of older source wording are cited below.
   convert them into ordinary stake with a chosen lock. **Source: Tim, 13 Oct
   2026, after the milestone 1a custody review; STAGE1_SPEC amendment pending
   on branch `codex/boulderroller-v2-0jc1s-stage1-custody`**, recorded in the
-  [round 3 brief][HB-R3]. The offline reference and the localnet build still
-  reject a stale rate here, so neither establishes this rule's implementation.
+  [round 3 brief][HB-R3]. Implemented in the program: `fresh_campaign`
+  (`stage1.rs:760`) gives lagging and unreadable token slots zero value
+  toward the line without blocking other tokens.
 - **Split and yield-only fee scope ratified 6 Oct 2026; 10% rate and
   allocation mechanics ratified 13 Oct.** Riders receive realized yield
   after the fixed 10% protocol yield fee, plus sponsor cash with no deduction

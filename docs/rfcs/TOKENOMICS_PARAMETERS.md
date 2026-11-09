@@ -62,6 +62,11 @@ instead joins that week's Record Royalty and is never unlocked retroactively.
 | JitoSOL | 4% + 0.1% exit | Lower but sustainable |
 | **Boulder Rollers** | **10% + 5% POL** | In line with industry |
 
+Note added 9 Nov 2026: these rows are not comparable. Jito's 4% is a fee on
+staking rewards. The 10% and 5% above are shares of DUNG emissions in the
+older CAL-vault model. Stage 1's 10% fee on realized yield is charged on top
+of Jito's 4%, which is already inside the JitoSOL rate.
+
 ---
 
 ## 2. The Local Legend System

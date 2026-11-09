@@ -86,14 +86,22 @@ Paths below are relative to `protocol/anchor/programs/boulder_rollers/src/`.
 - Stage 1 instructions include `pledge` (`lib.rs:70`), `bond` (`:80`) and
   `harvest_stage1` (`:138`), implemented in `stage1.rs` (`deposit` at `:889`,
   `harvest` at `:1419`). The program identifiers predate the rider vocabulary,
-  which says "deposit". `stage1_providers.rs` reads pinned JitoSOL, mSOL and
-  JupSOL stake-pool layouts directly, with no CPI. For the SPL pools it
-  records the pool's last update epoch so callers can refuse stale rates
-  (`stage1_providers.rs:202`). Stage 1 cash and DUNG claims use Merkle proofs.
-- Build features in `Cargo.toml`: `stage1-devnet` registers real pool
-  identities for devnet rehearsal; `stage1-localnet` simulates rates for local
-  tests and pulls in `smoke-helpers`, the test-setup instructions. Neither is
-  in the default build.
+  which says "deposit". `stage1_providers.rs` reads the pinned JitoSOL and
+  JupSOL stake-pool accounts and Marinade's state account directly,
+  read-only, with no CPI. For the SPL pools it reads the pool's last update
+  epoch (`stage1_providers.rs:259`) and treats a rate as current only in
+  that epoch (`:294`), so callers can refuse stale rates. Stage 1 cash and
+  DUNG claims use Merkle proofs.
+- Build features in `Cargo.toml`: `stage1-devnet` lets the admin register
+  one unbranded SPL test stake pool for devnet rehearsal (`stage1_devnet.rs`);
+  `stage1-localnet` simulates rates for local tests and pulls in
+  `smoke-helpers`, the test-setup instructions. Neither is in the default
+  build. The JitoSOL, mSOL and JupSOL identities are compiled into every
+  build, but none of those pools exists on devnet, so the devnet program has
+  never read a JitoSOL rate. The three mainnet pools are tested from mainnet
+  account snapshots loaded into a local validator
+  (`protocol/anchor/tests/fixtures/stage1_providers/`,
+  `protocol/anchor/tests/stage1_rate_adapters.spec.ts`).
 
 ## Trust model
 
@@ -130,10 +138,14 @@ Paths below are relative to `protocol/anchor/programs/boulder_rollers/src/`.
 
 - Stage 1 yield is small at current sizes. A hill bonds when its backing
   reaches 10 SOL (`S1_LINE`, `stage1.rs:19`); caps are 2,000 SOL per staking
-  token, 500 SOL per hill and 5,000 SOL in total (`:20` to `:22`). At
-  liquid-staking yields of about 5%, 10 SOL earns about 0.5 SOL a year for the
-  whole hill. Outside money can pay riders directly and does not need a bonded
-  hill: `sponsor_stage1` and `post_stage1_boost` (`stage1_sponsor.rs`) take
+  token, 500 SOL per hill and 5,000 SOL in total (`:20` to `:22`). JitoSOL
+  paid between 4.7% and 5.1% a year over the 90 days to 8 Nov 2026, after
+  Jito's own 4% fee (Jito's public stake-pool statistics). At 4.9%, 10 SOL
+  earns about 0.49 SOL a year for the whole hill, and riders receive about
+  0.44 SOL of it after the 10% protocol fee. The fee stays in the program's
+  earnings account for that token; no instruction withdraws it yet
+  (`stage1_claims.rs:33`). Outside money can pay riders directly and does
+  not need a bonded hill: `sponsor_stage1` and `post_stage1_boost` (`stage1_sponsor.rs`) take
   irrevocable, fee-free USDC for one hill-week, or spread a total across up to
   16 hills for up to 13 weeks. It is paid through the weekly claims on the same
   split as yield: 65% to ascents, 25% to the hill's top ten and 10% to its

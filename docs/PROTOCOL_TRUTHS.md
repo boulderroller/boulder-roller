@@ -1187,8 +1187,8 @@ wording are identified below.
 **Deployed — devnet rehearsal only.** The [8 Oct CHECKLIST, items 1, 3–4][HB-READY]
 and [13 Oct brief][HB-BRIEF] distinguish the devnet CAL-vault program of that
 time from stage 1. **Since 18 Oct 2026 the devnet program is the stage-1 build
-(program version 77), for rehearsal only; production keeps stage 1 off for
-riders.** STAGE1_SPEC's implementation
+(program version 77; version 78 since 6 Nov 2026), for rehearsal only;
+production keeps stage 1 off for riders.** STAGE1_SPEC's implementation
 evidence is **local, offline reference behavior**, not on-chain custody,
 verified people/rides, provider rates/liquidity or production authority.
 Its §9 and [STAGE1_PLAN §7][HB-PLAN] retain those implementation gates.
@@ -1273,7 +1273,11 @@ not claims of clearance. [Sources: DESIGN, settled Cities call][HB-DESIGN];
   amendment pending on branch `codex/boulderroller-v2-0jc1s-stage1-custody`**
   ([authorities brief][HB-BRIEF]). The current §3 formula
   `max(B, ceil(U * r))` is resolved by that decision in favor of deposit-time
-  basis totals.
+  basis totals. **Program state, 9 Nov 2026:** the amounts are implemented,
+  the delay is not. `initialize_city` writes the three caps once
+  (`stage1.rs:564` to `:566`) and no instruction raises or lowers them, so
+  today only a program upgrade changes a cap, and the single upgrade key has
+  no timelock.
 - **Ratified 6 Oct 2026; mechanics 13 Oct.** Founding lots lock for 26
   elapsed weeks from bonding; later lots choose 0/13/26/52 weeks from deposit.
   Notice can start only after lock expiry, lasts four elapsed weeks and names
@@ -1295,8 +1299,13 @@ not claims of clearance. [Sources: DESIGN, settled Cities call][HB-DESIGN];
   kind with **all of the lot's remaining tokens**; unharvested yield leaves
   with them. **Source: Tim, 13 Oct 2026; STAGE1_SPEC amendment pending on
   branch `codex/boulderroller-v2-0jc1s-stage1-custody`** ([authorities
-  brief][HB-BRIEF]). The ordinary sweep path above cannot be cited as proof
-  that this exception exists in the offline reference or deployed program.
+  brief][HB-BRIEF]). **Implemented in the program:** the seven days start
+  when `record_stage1_provider_outage` (`lib.rs:3949`, `stage1.rs:379`) first
+  records an outage, which it accepts only when the pool is unreadable or at
+  least two epochs behind; `exit_rate` (`stage1.rs:1175`) then allows the
+  in-kind exit. The clock therefore runs from the first recorded outage, not
+  from the moment the rate went stale. Tested in
+  `protocol/anchor/tests/stage1_rate_adapters.spec.ts:517`.
 - **Ratified 13 Oct 2026, stale tokens count as zero.** While a staking
   token's rate is stale, a hill's pledges in that token count as zero toward
   its bonding line instead of blocking other pledges or the bond, so one stale
@@ -1306,8 +1315,10 @@ not claims of clearance. [Sources: DESIGN, settled Cities call][HB-DESIGN];
   **Source: Tim, 13 Oct 2026, after the milestone 1a custody review;
   STAGE1_SPEC amendment pending on branch
   `codex/boulderroller-v2-0jc1s-stage1-custody`** ([round 3 brief][HB-R3]).
-  The offline reference and the localnet build still reject a stale rate here,
-  so neither can be cited as this rule's implementation.
+  **Implemented in the program:** `fresh_campaign` (`stage1.rs:760`) gives
+  lagging and unreadable token slots zero value toward the line without
+  blocking other tokens. Tested in
+  `protocol/anchor/tests/stage1_rate_adapters.spec.ts:329` and `:451`.
 
 ### 16.4 Weekly riding and money
 
